@@ -1,0 +1,31 @@
+site:
+  about:
+    siteName: Camunda BPM Data
+    siteDescription: Beautiful process data handling for Camunda BPM.
+    avatar: 'assets/media/favicon.png'
+
+allPages:
+  components:
+    - type: 'pageContent'
+      order: 10
+    - type: 'prism'
+      githubTheme: 'darcula'
+      languages:
+        - 'yaml'
+        - 'java'
+        - 'json'
+        - 'kotlin'
+        - 'markdown'
+      plugins:
+        - 'line-numbers'
+        - 'line-highlight'
+        - 'toolbar'
+        - 'show-language'
+        - 'copy-to-clipboard'
+
+services:
+  publications:
+    stages:
+      - type: 'githubPages'
+        username: 'zambrovski'
+        repo: 'holunda-io/camunda-bpm-data'
