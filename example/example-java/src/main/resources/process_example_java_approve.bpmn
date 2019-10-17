@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0yzhshp" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.3.4">
+  <bpmn:process id="process_example_java_approve" name="Approval" isExecutable="true" camunda:historyTimeToLive="P30D">
+    <bpmn:startEvent id="start" name="started" camunda:asyncBefore="true">
+      <bpmn:outgoing>SequenceFlow_0poe4mm</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0poe4mm" sourceRef="start" targetRef="service_load_data" />
+    <bpmn:endEvent id="end" name="ended">
+      <bpmn:incoming>SequenceFlow_10pjpf5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0ick8i5" sourceRef="service_load_data" targetRef="user_approve_data" />
+    <bpmn:serviceTask id="service_load_data" name="Load data" camunda:delegateExpression="${loadDataDelegate}">
+      <bpmn:incoming>SequenceFlow_0poe4mm</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ick8i5</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_0hwnmu6" sourceRef="user_approve_data" targetRef="service_read_data" />
+    <bpmn:userTask id="user_approve_data" name="Approve data" camunda:asyncAfter="true">
+      <bpmn:incoming>SequenceFlow_0ick8i5</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0hwnmu6</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="SequenceFlow_10pjpf5" sourceRef="service_read_data" targetRef="end" />
+    <bpmn:serviceTask id="service_read_data" name="Read data" camunda:delegateExpression="${readDataDelegate}">
+      <bpmn:incoming>SequenceFlow_0hwnmu6</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_10pjpf5</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="process_example_java_approve">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="start">
+        <dc:Bounds x="152" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="153" y="142" width="34" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0poe4mm_di" bpmnElement="SequenceFlow_0poe4mm">
+        <di:waypoint x="188" y="117" />
+        <di:waypoint x="250" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1x1jv0u_di" bpmnElement="end">
+        <dc:Bounds x="712" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="715" y="142" width="31" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ick8i5_di" bpmnElement="SequenceFlow_0ick8i5">
+        <di:waypoint x="350" y="117" />
+        <di:waypoint x="420" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0vutd51_di" bpmnElement="service_load_data">
+        <dc:Bounds x="250" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0hwnmu6_di" bpmnElement="SequenceFlow_0hwnmu6">
+        <di:waypoint x="520" y="117" />
+        <di:waypoint x="570" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="UserTask_03dpwqf_di" bpmnElement="user_approve_data">
+        <dc:Bounds x="420" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_10pjpf5_di" bpmnElement="SequenceFlow_10pjpf5">
+        <di:waypoint x="670" y="117" />
+        <di:waypoint x="712" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_1othko8_di" bpmnElement="service_read_data">
+        <dc:Bounds x="570" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

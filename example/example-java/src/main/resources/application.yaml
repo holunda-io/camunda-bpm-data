@@ -1,0 +1,11 @@
+spring.jpa.open-in-view: true
+camunda:
+  bpm:
+    admin-user:
+      id: admin
+      email: admin@localhost
+      first-name: Admin
+      last-name: Administratius
+      password: admin
+    filter:
+      create: all

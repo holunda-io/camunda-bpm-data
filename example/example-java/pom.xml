@@ -5,16 +5,11 @@
 
   <parent>
     <groupId>io.holunda</groupId>
-    <artifactId>camunda-bpm-data-parent</artifactId>
+    <artifactId>camunda-bpm-data-example-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>camunda-bpm-data</artifactId>
+  <artifactId>camunda-bpm-data-example-java</artifactId>
   <name>${project.artifactId}</name>
   <packaging>jar</packaging>
-
-  <properties>
-    <jacoco.skip>false</jacoco.skip>
-  </properties>
-
 </project>

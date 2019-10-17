@@ -4,14 +4,14 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.camunda.bpm.extension.data</groupId>
+    <groupId>io.holunda</groupId>
     <artifactId>camunda-bpm-data-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>camunda-bpm-data-example</artifactId>
+  <artifactId>camunda-bpm-data-example-parent</artifactId>
   <name>${project.artifactId}</name>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
 
   <properties>
     <maven.deploy.skip>true</maven.deploy.skip>
@@ -19,10 +19,15 @@
     <jacoco.skip>false</jacoco.skip>
   </properties>
 
+  <modules>
+    <module>example-java</module>
+    <module>example-kotlin</module>
+  </modules>
+
   <dependencies>
 
     <dependency>
-      <groupId>org.camunda.bpm.extension.data</groupId>
+      <groupId>io.holunda</groupId>
       <artifactId>camunda-bpm-data</artifactId>
       <version>${project.version}</version>
     </dependency>
