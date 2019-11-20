@@ -9,6 +9,21 @@ import static org.camunda.bpm.engine.variable.Variables.*;
 
 public class ValueWrapperUtil {
 
+  /**
+   * Hide instantiation.
+   */
+  private ValueWrapperUtil() {
+
+  }
+
+  /**
+   * Delivers typed value for a given type and value.
+   * @param clazz class of value.
+   * @param value value to encapsulate.
+   * @param isTransient transient flag.
+   * @param <T> type of value.
+   * @return typed value.
+   */
   public static <T> TypedValue getTypedValue(Class<T> clazz, Object value, boolean isTransient) {
     if (!clazz.isAssignableFrom(value.getClass())) {
       throw new IllegalArgumentException("Couldn't create TypedValue for " + clazz.getSimpleName() + " from value " + value);

@@ -1,6 +1,7 @@
 package io.holunda.camunda.bpm.data.example;
 
 import org.camunda.bpm.engine.delegate.JavaDelegate;
+import org.camunda.bpm.engine.variable.VariableMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -45,6 +46,10 @@ public class ExampleProcessApplication {
       LOG.info("{}", APPROVAL_QUANTITY_SHORT.from(delegateExecution).get());
       LOG.info("{}", APPROVAL_AMOUNT.from(delegateExecution).get());
       LOG.info("{}", APPROVAL_CRITICAL.from(delegateExecution).get());
+
+      final VariableMap variablesTyped = delegateExecution.getVariablesTyped();
+
+      LOG.info("{}", APPROVAL_ID.from(variablesTyped).get());
     };
   }
 

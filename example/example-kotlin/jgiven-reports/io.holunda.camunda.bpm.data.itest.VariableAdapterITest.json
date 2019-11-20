@@ -1,0 +1,124 @@
+{
+  "className": "io.holunda.camunda.bpm.data.itest.VariableAdapterITest",
+  "name": "Variable Adapter I",
+  "scenarios": [
+    {
+      "className": "io.holunda.camunda.bpm.data.itest.VariableAdapterITest",
+      "testMethodName": "should write to map and read from variable scope",
+      "description": "should write to map and read from variable scope",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "casesAsTable": false,
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "process with delegate is deployed",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "process with delegate is deployed"
+                },
+                {
+                  "value": "process_with_delegate",
+                  "argumentInfo": {
+                    "argumentName": "processDefinitionKey",
+                    "formattedValue": "process_with_delegate"
+                  }
+                },
+                {
+                  "value": "${myDelegate}",
+                  "argumentInfo": {
+                    "argumentName": "delegateExpression",
+                    "formattedValue": "${myDelegate}"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 475679971
+            },
+            {
+              "name": "get process definition",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "get process definition"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 9480941
+            },
+            {
+              "name": "process is started with variables",
+              "words": [
+                {
+                  "value": "process is started with variables"
+                },
+                {
+                  "value": "process_with_delegate",
+                  "argumentInfo": {
+                    "argumentName": "processDefinitionKey",
+                    "formattedValue": "process_with_delegate"
+                  }
+                },
+                {
+                  "value": "{\n  Double Variable \u003d\u003e Value \u002712.0\u0027 of type \u0027PrimitiveValueType[double]\u0027, isTransient\u003dfalse\n  Short Variable \u003d\u003e Value \u002711\u0027 of type \u0027PrimitiveValueType[short]\u0027, isTransient\u003dfalse\n  Date Variable \u003d\u003e Value \u0027Wed Nov 20 01:11:12 CET 2019\u0027 of type \u0027PrimitiveValueType[date]\u0027, isTransient\u003dfalse\n  Long Variable \u003d\u003e Value \u0027812\u0027 of type \u0027PrimitiveValueType[long]\u0027, isTransient\u003dfalse\n  Int Variable \u003d\u003e Value \u0027123\u0027 of type \u0027PrimitiveValueType[integer]\u0027, isTransient\u003dfalse\n  String Variable \u003d\u003e Value \u0027value\u0027 of type \u0027PrimitiveValueType[string]\u0027, isTransient\u003dfalse\n  Boolean Variable \u003d\u003e Value \u0027true\u0027 of type \u0027PrimitiveValueType[boolean]\u0027, isTransient\u003dfalse\n}",
+                  "argumentInfo": {
+                    "argumentName": "variables",
+                    "formattedValue": "{\n  Double Variable \u003d\u003e Value \u002712.0\u0027 of type \u0027PrimitiveValueType[double]\u0027, isTransient\u003dfalse\n  Short Variable \u003d\u003e Value \u002711\u0027 of type \u0027PrimitiveValueType[short]\u0027, isTransient\u003dfalse\n  Date Variable \u003d\u003e Value \u0027Wed Nov 20 01:11:12 CET 2019\u0027 of type \u0027PrimitiveValueType[date]\u0027, isTransient\u003dfalse\n  Long Variable \u003d\u003e Value \u0027812\u0027 of type \u0027PrimitiveValueType[long]\u0027, isTransient\u003dfalse\n  Int Variable \u003d\u003e Value \u0027123\u0027 of type \u0027PrimitiveValueType[integer]\u0027, isTransient\u003dfalse\n  String Variable \u003d\u003e Value \u0027value\u0027 of type \u0027PrimitiveValueType[string]\u0027, isTransient\u003dfalse\n  Boolean Variable \u003d\u003e Value \u0027true\u0027 of type \u0027PrimitiveValueType[boolean]\u0027, isTransient\u003dfalse\n}"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 34203891
+            },
+            {
+              "name": "variables had value",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "variables had value"
+                },
+                {
+                  "value": "{\n  Double Variable \u003d\u003e Value \u002712.0\u0027 of type \u0027PrimitiveValueType[double]\u0027, isTransient\u003dfalse\n  Short Variable \u003d\u003e Value \u002711\u0027 of type \u0027PrimitiveValueType[short]\u0027, isTransient\u003dfalse\n  Date Variable \u003d\u003e Value \u0027Wed Nov 20 01:11:12 CET 2019\u0027 of type \u0027PrimitiveValueType[date]\u0027, isTransient\u003dfalse\n  Long Variable \u003d\u003e Value \u0027812\u0027 of type \u0027PrimitiveValueType[long]\u0027, isTransient\u003dfalse\n  Int Variable \u003d\u003e Value \u0027123\u0027 of type \u0027PrimitiveValueType[integer]\u0027, isTransient\u003dfalse\n  String Variable \u003d\u003e Value \u0027value\u0027 of type \u0027PrimitiveValueType[string]\u0027, isTransient\u003dfalse\n  Boolean Variable \u003d\u003e Value \u0027true\u0027 of type \u0027PrimitiveValueType[boolean]\u0027, isTransient\u003dfalse\n}",
+                  "argumentInfo": {
+                    "argumentName": "readValues",
+                    "formattedValue": "{\n  Double Variable \u003d\u003e Value \u002712.0\u0027 of type \u0027PrimitiveValueType[double]\u0027, isTransient\u003dfalse\n  Short Variable \u003d\u003e Value \u002711\u0027 of type \u0027PrimitiveValueType[short]\u0027, isTransient\u003dfalse\n  Date Variable \u003d\u003e Value \u0027Wed Nov 20 01:11:12 CET 2019\u0027 of type \u0027PrimitiveValueType[date]\u0027, isTransient\u003dfalse\n  Long Variable \u003d\u003e Value \u0027812\u0027 of type \u0027PrimitiveValueType[long]\u0027, isTransient\u003dfalse\n  Int Variable \u003d\u003e Value \u0027123\u0027 of type \u0027PrimitiveValueType[integer]\u0027, isTransient\u003dfalse\n  String Variable \u003d\u003e Value \u0027value\u0027 of type \u0027PrimitiveValueType[string]\u0027, isTransient\u003dfalse\n  Boolean Variable \u003d\u003e Value \u0027true\u0027 of type \u0027PrimitiveValueType[boolean]\u0027, isTransient\u003dfalse\n}"
+                  }
+                },
+                {
+                  "value": "(io.holunda.camunda.bpm.data.factory.VariableFactory@1b83fac3, value), (io.holunda.camunda.bpm.data.factory.VariableFactory@1500edf3, Wed Nov 20 01:11:12 CET 2019), (io.holunda.camunda.bpm.data.factory.VariableFactory@759c53e5, 11), (io.holunda.camunda.bpm.data.factory.VariableFactory@28d37d43, 123), (io.holunda.camunda.bpm.data.factory.VariableFactory@2c02cf78, 812), (io.holunda.camunda.bpm.data.factory.VariableFactory@3e7fc07e, 12.0), (io.holunda.camunda.bpm.data.factory.VariableFactory@29ebaf2f, true)",
+                  "argumentInfo": {
+                    "argumentName": "variableWithValue",
+                    "formattedValue": "(io.holunda.camunda.bpm.data.factory.VariableFactory@1b83fac3, value), (io.holunda.camunda.bpm.data.factory.VariableFactory@1500edf3, Wed Nov 20 01:11:12 CET 2019), (io.holunda.camunda.bpm.data.factory.VariableFactory@759c53e5, 11), (io.holunda.camunda.bpm.data.factory.VariableFactory@28d37d43, 123), (io.holunda.camunda.bpm.data.factory.VariableFactory@2c02cf78, 812), (io.holunda.camunda.bpm.data.factory.VariableFactory@3e7fc07e, 12.0), (io.holunda.camunda.bpm.data.factory.VariableFactory@29ebaf2f, true)"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 40467642
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "success": true,
+          "durationInNanos": 614585289
+        }
+      ],
+      "durationInNanos": 614585289,
+      "executionStatus": "SUCCESS"
+    }
+  ],
+  "tagMap": {}
+}

@@ -1,11 +1,16 @@
 package io.holunda.camunda.bpm.data.adapter;
 
 import org.camunda.bpm.engine.delegate.VariableScope;
+import org.camunda.bpm.engine.variable.value.TypedValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Optional;
 
+/**
+ * Read-write adapter for variable scope.
+ * @param <T> type of value.
+ */
 public class ReadWriteAdapterVariableScope<T> implements ReadAdapter<T>, WriteAdapter<T> {
 
   private static final Logger LOG = LoggerFactory.getLogger(ReadWriteAdapterVariableScope.class);
@@ -13,6 +18,12 @@ public class ReadWriteAdapterVariableScope<T> implements ReadAdapter<T>, WriteAd
   private String variableName;
   private Class<T> clazz;
 
+  /**
+   * Constructs the adapter.
+   * @param variableScope variable scope to access.
+   * @param variableName variable to access.
+   * @param clazz class of variable value.
+   */
   public ReadWriteAdapterVariableScope(VariableScope variableScope, String variableName, Class<T> clazz) {
     this.variableScope = variableScope;
     this.variableName = variableName;
@@ -21,17 +32,18 @@ public class ReadWriteAdapterVariableScope<T> implements ReadAdapter<T>, WriteAd
 
   @Override
   public void set(T value) {
-    variableScope.setVariable(variableName, ValueWrapperUtil.getTypedValue(clazz, value, false));
+    set(value, false);
   }
 
   @Override
   public void set(T value, boolean isTransient) {
-    variableScope.setVariable(variableName, ValueWrapperUtil.getTypedValue(clazz, value, isTransient));
+    final TypedValue typedValue = ValueWrapperUtil.getTypedValue(clazz, value, isTransient);
+    variableScope.setVariable(variableName, typedValue);
   }
 
   @Override
   public void setLocal(T value) {
-    variableScope.setVariableLocal(variableName, ValueWrapperUtil.getTypedValue(clazz, value, false));
+    setLocal(value, false);
   }
 
   @Override
@@ -55,14 +67,15 @@ public class ReadWriteAdapterVariableScope<T> implements ReadAdapter<T>, WriteAd
 
   @SuppressWarnings("unchecked")
   private T getOrNull() {
-    Object value = variableScope.getVariable(variableName);
+    final Object value = variableScope.getVariable(variableName);
 
-    if(value == null)
+    if(value == null) {
       return null;
+    }
 
     if (clazz.isAssignableFrom(value.getClass())) {
       return (T) value;
     }
-    throw new IllegalStateException("Error reading " + variableName + ": Couldn't read TypedValue of " + clazz + " from " + value);
+    throw new IllegalStateException("Error reading " + variableName + ": Couldn't read value of " + clazz + " from " + value);
   }
 }

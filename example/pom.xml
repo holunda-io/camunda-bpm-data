@@ -15,7 +15,6 @@
 
   <properties>
     <maven.deploy.skip>true</maven.deploy.skip>
-    <jgiven.version>0.18.2</jgiven.version>
     <jacoco.skip>false</jacoco.skip>
   </properties>
 
@@ -113,7 +112,7 @@
     <dependency>
       <groupId>io.holunda.testing</groupId>
       <artifactId>camunda-bpm-jgiven</artifactId>
-      <version>0.0.2</version>
+      <version>0.0.5</version>
       <scope>test</scope>
     </dependency>
 

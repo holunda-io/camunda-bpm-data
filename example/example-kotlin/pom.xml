@@ -12,4 +12,6 @@
   <artifactId>camunda-bpm-data-example-kotlin</artifactId>
   <name>${project.artifactId}</name>
   <packaging>jar</packaging>
+
+
 </project>

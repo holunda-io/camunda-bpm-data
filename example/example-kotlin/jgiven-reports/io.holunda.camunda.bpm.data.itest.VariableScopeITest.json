@@ -1,0 +1,124 @@
+{
+  "className": "io.holunda.camunda.bpm.data.itest.VariableScopeITest",
+  "name": "Variable Scope I",
+  "scenarios": [
+    {
+      "className": "io.holunda.camunda.bpm.data.itest.VariableScopeITest",
+      "testMethodName": "should read variables from variable scope",
+      "description": "should read variables from variable scope",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "casesAsTable": false,
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "process with delegate is deployed",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "process with delegate is deployed"
+                },
+                {
+                  "value": "process_with_delegate",
+                  "argumentInfo": {
+                    "argumentName": "processDefinitionKey",
+                    "formattedValue": "process_with_delegate"
+                  }
+                },
+                {
+                  "value": "${myDelegate}",
+                  "argumentInfo": {
+                    "argumentName": "delegateExpression",
+                    "formattedValue": "${myDelegate}"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 471651984
+            },
+            {
+              "name": "get process definition",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "get process definition"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 10664097
+            },
+            {
+              "name": "process is started with variables",
+              "words": [
+                {
+                  "value": "process is started with variables"
+                },
+                {
+                  "value": "process_with_delegate",
+                  "argumentInfo": {
+                    "argumentName": "processDefinitionKey",
+                    "formattedValue": "process_with_delegate"
+                  }
+                },
+                {
+                  "value": "{\n  FOO \u003d\u003e Value \u0027value\u0027 of type \u0027PrimitiveValueType[string]\u0027, isTransient\u003dfalse\n}",
+                  "argumentInfo": {
+                    "argumentName": "variables",
+                    "formattedValue": "{\n  FOO \u003d\u003e Value \u0027value\u0027 of type \u0027PrimitiveValueType[string]\u0027, isTransient\u003dfalse\n}"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 35879047
+            },
+            {
+              "name": "variables had value",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "variables had value"
+                },
+                {
+                  "value": "{\n  FOO \u003d\u003e Value \u0027value\u0027 of type \u0027PrimitiveValueType[string]\u0027, isTransient\u003dfalse\n}",
+                  "argumentInfo": {
+                    "argumentName": "readValues",
+                    "formattedValue": "{\n  FOO \u003d\u003e Value \u0027value\u0027 of type \u0027PrimitiveValueType[string]\u0027, isTransient\u003dfalse\n}"
+                  }
+                },
+                {
+                  "value": "(io.holunda.camunda.bpm.data.factory.VariableFactory@b867869, value)",
+                  "argumentInfo": {
+                    "argumentName": "variableWithValue",
+                    "formattedValue": "(io.holunda.camunda.bpm.data.factory.VariableFactory@b867869, value)"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 52743474
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "success": true,
+          "durationInNanos": 630090110
+        }
+      ],
+      "durationInNanos": 630090110,
+      "executionStatus": "SUCCESS"
+    }
+  ],
+  "tagMap": {}
+}
