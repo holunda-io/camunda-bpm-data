@@ -2,8 +2,6 @@ package io.holunda.camunda.bpm.data.adapter;
 
 import org.camunda.bpm.engine.delegate.VariableScope;
 import org.camunda.bpm.engine.variable.value.TypedValue;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Optional;
 
@@ -13,7 +11,6 @@ import java.util.Optional;
  */
 public class ReadWriteAdapterVariableScope<T> implements ReadAdapter<T>, WriteAdapter<T> {
 
-  private static final Logger LOG = LoggerFactory.getLogger(ReadWriteAdapterVariableScope.class);
   private VariableScope variableScope;
   private String variableName;
   private Class<T> clazz;

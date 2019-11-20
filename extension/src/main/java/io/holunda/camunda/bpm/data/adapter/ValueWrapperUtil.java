@@ -6,7 +6,9 @@ import java.util.Date;
 
 import static org.camunda.bpm.engine.variable.Variables.*;
 
-
+/**
+ * Static util methods.
+ */
 public class ValueWrapperUtil {
 
   /**
