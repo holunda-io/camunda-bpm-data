@@ -28,4 +28,4 @@ jobs:
       uses: codecov/codecov-action@v1.0.2
       with:
         token: ${{secrets.CODECOV_TOKEN}}
-        file: example/target/site/jacoco-aggregate/jacoco.xml
+        file: example/example-kotlin/target/site/jacoco-aggregate/jacoco.xml
