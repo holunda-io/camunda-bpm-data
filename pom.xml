@@ -82,7 +82,6 @@
   </dependencyManagement>
 
   <dependencies>
-
     <dependency>
       <groupId>org.camunda.bpm</groupId>
       <artifactId>camunda-engine</artifactId>
