@@ -24,6 +24,7 @@ public class ValueWrapperUtil {
    * @param value value to encapsulate.
    * @param isTransient transient flag.
    * @param <T> type of value.
+   * @exception IllegalArgumentException if value and clazz are incompatible.
    * @return typed value.
    */
   public static <T> TypedValue getTypedValue(Class<T> clazz, Object value, boolean isTransient) {
