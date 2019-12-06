@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component
 import java.time.Instant
 import java.util.*
 
-class VariableAdapterWriteITest: CamundaBpmDataITestBase() {
+class VariableAdapterVariableMapWriteTest: CamundaBpmDataITestBase() {
 
   @Autowired
   lateinit var valueStoringServiceDelegate: ValueStoringServiceDelegate
 
   @Test
-  fun `should write to map and read from variable scope`() {
+  fun `should write to map`() {
 
     val date = Date.from(Instant.now())
     val complexValue = ComplexDataStructure("string", 17, date)
@@ -33,7 +33,7 @@ class VariableAdapterWriteITest: CamundaBpmDataITestBase() {
     LIST_STRING_VAR.on(variables).set(listOfStrings)
 
     given()
-      .process_with_delegate_is_deployed(delegateExpression = "\${myDelegate}")
+      .process_with_delegate_is_deployed(delegateExpression = "\${ValueStoringServiceDelegate}")
     whenever()
       .process_is_started_with_variables(variables = variables)
     then()
@@ -51,7 +51,7 @@ class VariableAdapterWriteITest: CamundaBpmDataITestBase() {
   }
 }
 
-@Component("myDelegate")
+@Component("ValueStoringServiceDelegate")
 class ValueStoringServiceDelegate : JavaDelegate {
 
   lateinit var vars: VariableMap

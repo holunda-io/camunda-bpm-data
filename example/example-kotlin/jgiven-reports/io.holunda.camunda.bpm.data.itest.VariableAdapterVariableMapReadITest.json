@@ -1,11 +1,11 @@
 {
-  "className": "io.holunda.camunda.bpm.data.itest.TaskServiceAdapterReadITest",
-  "name": "Task Service Adapter Read I",
+  "className": "io.holunda.camunda.bpm.data.itest.VariableAdapterVariableMapReadITest",
+  "name": "Variable Adapter Variable Map Read I",
   "scenarios": [
     {
-      "className": "io.holunda.camunda.bpm.data.itest.TaskServiceAdapterReadITest",
-      "testMethodName": "should write to variables-map and read runtime adapter",
-      "description": "should write to variables-map and read runtime adapter",
+      "className": "io.holunda.camunda.bpm.data.itest.VariableAdapterVariableMapReadITest",
+      "testMethodName": "should write to variables-map and read using adapter",
+      "description": "should write to variables-map and read using adapter",
       "tagIds": [],
       "explicitParameters": [],
       "derivedParameters": [],
@@ -15,38 +15,38 @@
           "caseNr": 1,
           "steps": [
             {
-              "name": "process with user task is deployed",
+              "name": "process with delegate is deployed",
               "words": [
                 {
                   "value": "Given",
                   "isIntroWord": true
                 },
                 {
-                  "value": "process with user task is deployed"
+                  "value": "process with delegate is deployed"
                 },
                 {
-                  "value": "process_with_user_task",
+                  "value": "process_with_delegate",
                   "argumentInfo": {
                     "argumentName": "processDefinitionKey",
-                    "formattedValue": "process_with_user_task"
+                    "formattedValue": "process_with_delegate"
                   }
                 },
                 {
-                  "value": "user_task",
+                  "value": "${ValueStoringUsingAdapterVariableMapServiceDelegate}",
                   "argumentInfo": {
-                    "argumentName": "taskDefinitionKey",
-                    "formattedValue": "user_task"
+                    "argumentName": "delegateExpression",
+                    "formattedValue": "${ValueStoringUsingAdapterVariableMapServiceDelegate}"
                   }
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 27643
+              "durationInNanos": 34365030
             },
             {
               "name": "get process definition",
               "words": [
                 {
-                  "value": "and",
+                  "value": "When",
                   "isIntroWord": true
                 },
                 {
@@ -54,7 +54,7 @@
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 169067
+              "durationInNanos": 112505
             },
             {
               "name": "process is started with variables",
@@ -63,10 +63,10 @@
                   "value": "process is started with variables"
                 },
                 {
-                  "value": "process_with_user_task",
+                  "value": "process_with_delegate",
                   "argumentInfo": {
                     "argumentName": "processDefinitionKey",
-                    "formattedValue": "process_with_user_task"
+                    "formattedValue": "process_with_delegate"
                   }
                 },
                 {
@@ -78,35 +78,7 @@
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 30860337
-            },
-            {
-              "name": "variable are read from task",
-              "words": [
-                {
-                  "value": "When",
-                  "isIntroWord": true
-                },
-                {
-                  "value": "variable are read from task"
-                },
-                {
-                  "value": "io.holunda.camunda.bpm.data.itest.ValueStoringUsingTaskService@29d2fa84",
-                  "argumentInfo": {
-                    "argumentName": "valueStoringUsingAdapterService",
-                    "formattedValue": "io.holunda.camunda.bpm.data.itest.ValueStoringUsingTaskService@29d2fa84"
-                  }
-                },
-                {
-                  "value": "user_task",
-                  "argumentInfo": {
-                    "argumentName": "taskDefinitionKey",
-                    "formattedValue": "user_task"
-                  }
-                }
-              ],
-              "status": "PASSED",
-              "durationInNanos": 66058002
+              "durationInNanos": 13541176
             },
             {
               "name": "variables had value",
@@ -134,17 +106,17 @@
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 540442
+              "durationInNanos": 488647
             }
           ],
           "explicitArguments": [],
           "derivedArguments": [],
           "status": "SUCCESS",
           "success": true,
-          "durationInNanos": 148039885
+          "durationInNanos": 52048067
         }
       ],
-      "durationInNanos": 148039885,
+      "durationInNanos": 52048067,
       "executionStatus": "SUCCESS"
     }
   ],
