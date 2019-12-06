@@ -1,8 +1,20 @@
 package io.holunda.camunda.bpm.data.adapter;
 
+/**
+ * Abstract read write adapter.
+ * @param <T> variable type.
+ */
 public abstract class AbstractReadWriteAdapter<T> implements ReadAdapter<T>, WriteAdapter<T> {
+
+  /**
+   * Variable name.
+   */
   protected final String variableName;
 
+  /**
+   * Constructs the adapter.
+   * @param variableName variable name,
+   */
   public AbstractReadWriteAdapter(String variableName) {this.variableName = variableName;}
 
   @Override

@@ -7,6 +7,7 @@ import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.DOUBL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.INT_VAR
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.LIST_STRING_VAR
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.LONG_VAR
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.SET_STRING_VAR
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.SHORT_VAR
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.STRING_VAR
 import org.camunda.bpm.engine.RuntimeService
@@ -30,6 +31,7 @@ class RuntimeServiceAdapterReadITest : CamundaBpmDataITestBase() {
     val date = Date.from(Instant.now())
     val complexValue = ComplexDataStructure("string", 17, date)
     val listOfStrings = listOf("Hello", "World")
+    val setOfStrings = setOf("Kermit", "Piggy")
     val variables = createVariables()
       .putValue(STRING_VAR.name, "value")
       .putValue(DATE_VAR.name, date)
@@ -40,6 +42,7 @@ class RuntimeServiceAdapterReadITest : CamundaBpmDataITestBase() {
       .putValue(BOOLEAN_VAR.name, true)
       .putValue(COMPLEX_VAR.name, complexValue)
       .putValue(LIST_STRING_VAR.name, listOfStrings)
+      .putValue(SET_STRING_VAR.name, setOfStrings)
 
     given()
       .process_with_user_task_is_deployed()
@@ -57,7 +60,8 @@ class RuntimeServiceAdapterReadITest : CamundaBpmDataITestBase() {
         DOUBLE_VAR to 12.0.toDouble(),
         BOOLEAN_VAR to true,
         COMPLEX_VAR to complexValue,
-        LIST_STRING_VAR to listOfStrings
+        LIST_STRING_VAR to listOfStrings,
+        SET_STRING_VAR to setOfStrings
       )
   }
 }
@@ -77,6 +81,7 @@ class ValueStoringUsingRuntimeService {
     vars[BOOLEAN_VAR.name] = BOOLEAN_VAR.from(runtimeService, executionId).get()
     vars[COMPLEX_VAR.name] = COMPLEX_VAR.from(runtimeService, executionId).get()
     vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(runtimeService, executionId).get()
+    vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(runtimeService, executionId).get()
   }
 }
 

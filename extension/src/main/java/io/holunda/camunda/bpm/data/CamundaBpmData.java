@@ -2,10 +2,12 @@ package io.holunda.camunda.bpm.data;
 
 import io.holunda.camunda.bpm.data.factory.BasicVariableFactory;
 import io.holunda.camunda.bpm.data.factory.ListVariableFactory;
+import io.holunda.camunda.bpm.data.factory.SetVariableFactory;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Factory methods for creating variable factories.
@@ -100,4 +102,16 @@ public class CamundaBpmData {
   public static <T> VariableFactory<List<T>> listVariable(String variableName, Class<T> clazz) {
     return new ListVariableFactory<>(variableName, clazz);
   }
+
+  /**
+   * Create variable factory for set of custom type.
+   * @param variableName name of the variable.
+   * @param clazz class of specifying the member type.
+   * @param <T> factory type.
+   * @return variable factory for given type.
+   */
+  public static <T> VariableFactory<Set<T>> setVariable(String variableName, Class<T> clazz) {
+    return new SetVariableFactory<>(variableName, clazz);
+  }
+
 }
