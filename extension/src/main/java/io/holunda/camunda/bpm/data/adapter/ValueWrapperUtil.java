@@ -20,12 +20,15 @@ public class ValueWrapperUtil {
 
   /**
    * Delivers typed value for a given type and value.
-   * @param clazz class of value.
-   * @param value value to encapsulate.
+   *
+   * @param clazz       class of value.
+   * @param value       value to encapsulate.
    * @param isTransient transient flag.
-   * @param <T> type of value.
-   * @exception IllegalArgumentException if value and clazz are incompatible.
+   * @param <T>         type of value.
+   *
    * @return typed value.
+   *
+   * @throws IllegalArgumentException if value and clazz are incompatible.
    */
   public static <T> TypedValue getTypedValue(Class<T> clazz, Object value, boolean isTransient) {
     if (!clazz.isAssignableFrom(value.getClass())) {

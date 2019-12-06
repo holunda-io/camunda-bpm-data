@@ -33,7 +33,7 @@ public class ExampleProcessApplication {
       APPROVAL_QUANTITY.on(delegateExecution).set(Integer.MAX_VALUE);
       APPROVAL_QUANTITY_LONG.on(delegateExecution).set(Long.MAX_VALUE);
       APPROVAL_QUANTITY_SHORT.on(delegateExecution).set(Short.MAX_VALUE);
-      APPROVAL_AMOUNT.on(delegateExecution).set(Double.MAX_VALUE-0.000001);
+      APPROVAL_AMOUNT.on(delegateExecution).set(Double.MAX_VALUE - 0.000001);
       APPROVAL_CRITICAL.on(delegateExecution).set(Boolean.TRUE);
     };
   }
