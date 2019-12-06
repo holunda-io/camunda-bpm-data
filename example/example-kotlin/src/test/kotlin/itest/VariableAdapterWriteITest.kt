@@ -1,7 +1,5 @@
 package io.holunda.camunda.bpm.data.itest
 
-import com.fasterxml.jackson.annotation.JsonIgnore
-import io.holunda.camunda.bpm.data.CamundaBpmData.*
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.JavaDelegate
 import org.camunda.bpm.engine.variable.VariableMap
@@ -13,17 +11,6 @@ import java.time.Instant
 import java.util.*
 
 class VariableAdapterWriteITest: CamundaBpmDataITestBase() {
-
-  companion object {
-    val STRING_VAR = stringVariable("String Variable")
-    val DATE_VAR = dateVariable("Date Variable")
-    val SHORT_VAR = shortVariable("Short Variable")
-    val INT_VAR = intVariable("Int Variable")
-    val LONG_VAR = longVariable("Long Variable")
-    val DOUBLE_VAR = doubleVariable("Double Variable")
-    val BOOLEAN_VAR = booleanVariable("Boolean Variable")
-    val COMPLEX_VAR = customVariable("Complex Variable", ComplexDataStructure::class.java)
-  }
 
   @Autowired
   lateinit var valueStoringServiceDelegate: ValueStoringServiceDelegate
@@ -71,12 +58,3 @@ class ValueStoringServiceDelegate : JavaDelegate {
   }
 }
 
-
-data class ComplexDataStructure(
-  val stringValue: String,
-  val intValue: Int,
-  val dateValue: Date
-) {
-  @JsonIgnore
-  private val valueToIgnore: String = "some hidden value"
-}
