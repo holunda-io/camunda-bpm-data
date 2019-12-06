@@ -26,6 +26,8 @@ public class ExampleProcessApplication {
   @Bean
   public JavaDelegate loadDataDelegate() {
     return delegateExecution -> {
+
+
       APPROVAL_ID.on(delegateExecution).set(UUID.randomUUID().toString());
       APPROVAL_DATE.on(delegateExecution).set(Date.from(Instant.now()));
       APPROVAL_QUANTITY.on(delegateExecution).set(Integer.MAX_VALUE);

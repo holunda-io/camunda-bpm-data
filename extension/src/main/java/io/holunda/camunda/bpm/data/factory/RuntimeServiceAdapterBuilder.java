@@ -2,7 +2,7 @@ package io.holunda.camunda.bpm.data.factory;
 
 
 import io.holunda.camunda.bpm.data.adapter.ReadAdapter;
-import io.holunda.camunda.bpm.data.adapter.ReadWriteAdapterRuntimeService;
+import io.holunda.camunda.bpm.data.adapter.basic.ReadWriteAdapterRuntimeService;
 import io.holunda.camunda.bpm.data.adapter.WriteAdapter;
 import org.camunda.bpm.engine.RuntimeService;
 
@@ -14,17 +14,17 @@ import org.camunda.bpm.engine.RuntimeService;
 public class RuntimeServiceAdapterBuilder<T> {
 
   private final RuntimeService runtimeService;
-  private final VariableFactory<T> variableFactory;
+  private final BasicVariableFactory<T> basicVariableFactory;
 
   /**
    * Constructs the builder.
    *
-   * @param variableFactory variable factory to use.
+   * @param basicVariableFactory variable factory to use.
    * @param runtimeService  task service to build adapter with.
    */
-  public RuntimeServiceAdapterBuilder(VariableFactory<T> variableFactory, RuntimeService runtimeService) {
+  public RuntimeServiceAdapterBuilder(BasicVariableFactory<T> basicVariableFactory, RuntimeService runtimeService) {
     this.runtimeService = runtimeService;
-    this.variableFactory = variableFactory;
+    this.basicVariableFactory = basicVariableFactory;
   }
 
   /**
@@ -35,7 +35,7 @@ public class RuntimeServiceAdapterBuilder<T> {
    * @return write adapter
    */
   public WriteAdapter<T> on(String executionId) {
-    return new ReadWriteAdapterRuntimeService<>(runtimeService, executionId, variableFactory.getName(), variableFactory.getVariableClass());
+    return new ReadWriteAdapterRuntimeService<>(runtimeService, executionId, basicVariableFactory.getName(), basicVariableFactory.getVariableClass());
   }
 
   /**
@@ -46,6 +46,6 @@ public class RuntimeServiceAdapterBuilder<T> {
    * @return read adapter.
    */
   public ReadAdapter<T> from(String executionId) {
-    return new ReadWriteAdapterRuntimeService<>(runtimeService, executionId, variableFactory.getName(), variableFactory.getVariableClass());
+    return new ReadWriteAdapterRuntimeService<>(runtimeService, executionId, basicVariableFactory.getName(), basicVariableFactory.getVariableClass());
   }
 }

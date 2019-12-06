@@ -149,7 +149,7 @@ public class ValueWrapperUtilTest {
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void shouldThrowException() {
+  public void shouldThrowExceptionOnWrongType() {
     ValueWrapperUtil.getTypedValue(Date.class, Instant.now(), false);
   }
 

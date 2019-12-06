@@ -1,0 +1,124 @@
+{
+  "className": "io.holunda.camunda.bpm.data.itest.VariableAdapterWriteITest",
+  "name": "Variable Adapter Write I",
+  "scenarios": [
+    {
+      "className": "io.holunda.camunda.bpm.data.itest.VariableAdapterWriteITest",
+      "testMethodName": "should write to map and read from variable scope",
+      "description": "should write to map and read from variable scope",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "casesAsTable": false,
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "process with delegate is deployed",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "process with delegate is deployed"
+                },
+                {
+                  "value": "process_with_delegate",
+                  "argumentInfo": {
+                    "argumentName": "processDefinitionKey",
+                    "formattedValue": "process_with_delegate"
+                  }
+                },
+                {
+                  "value": "${myDelegate}",
+                  "argumentInfo": {
+                    "argumentName": "delegateExpression",
+                    "formattedValue": "${myDelegate}"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 46806078
+            },
+            {
+              "name": "get process definition",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "get process definition"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 153304
+            },
+            {
+              "name": "process is started with variables",
+              "words": [
+                {
+                  "value": "process is started with variables"
+                },
+                {
+                  "value": "process_with_delegate",
+                  "argumentInfo": {
+                    "argumentName": "processDefinitionKey",
+                    "formattedValue": "process_with_delegate"
+                  }
+                },
+                {
+                  "value": "{\n  Double Variable \u003d\u003e Value \u002712.0\u0027 of type \u0027PrimitiveValueType[double]\u0027, isTransient\u003dfalse\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 06 17:26:27 CET 2019)\u0027, isTransient \u003d false\n  List Of String Variable \u003d\u003e Untyped value \u0027[Hello, World]\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Value \u002711\u0027 of type \u0027PrimitiveValueType[short]\u0027, isTransient\u003dfalse\n  Date Variable \u003d\u003e Value \u0027Fri Dec 06 17:26:27 CET 2019\u0027 of type \u0027PrimitiveValueType[date]\u0027, isTransient\u003dfalse\n  Long Variable \u003d\u003e Value \u0027812\u0027 of type \u0027PrimitiveValueType[long]\u0027, isTransient\u003dfalse\n  Int Variable \u003d\u003e Value \u0027123\u0027 of type \u0027PrimitiveValueType[integer]\u0027, isTransient\u003dfalse\n  String Variable \u003d\u003e Value \u0027value\u0027 of type \u0027PrimitiveValueType[string]\u0027, isTransient\u003dfalse\n  Boolean Variable \u003d\u003e Value \u0027true\u0027 of type \u0027PrimitiveValueType[boolean]\u0027, isTransient\u003dfalse\n}",
+                  "argumentInfo": {
+                    "argumentName": "variables",
+                    "formattedValue": "{\n  Double Variable \u003d\u003e Value \u002712.0\u0027 of type \u0027PrimitiveValueType[double]\u0027, isTransient\u003dfalse\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 06 17:26:27 CET 2019)\u0027, isTransient \u003d false\n  List Of String Variable \u003d\u003e Untyped value \u0027[Hello, World]\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Value \u002711\u0027 of type \u0027PrimitiveValueType[short]\u0027, isTransient\u003dfalse\n  Date Variable \u003d\u003e Value \u0027Fri Dec 06 17:26:27 CET 2019\u0027 of type \u0027PrimitiveValueType[date]\u0027, isTransient\u003dfalse\n  Long Variable \u003d\u003e Value \u0027812\u0027 of type \u0027PrimitiveValueType[long]\u0027, isTransient\u003dfalse\n  Int Variable \u003d\u003e Value \u0027123\u0027 of type \u0027PrimitiveValueType[integer]\u0027, isTransient\u003dfalse\n  String Variable \u003d\u003e Value \u0027value\u0027 of type \u0027PrimitiveValueType[string]\u0027, isTransient\u003dfalse\n  Boolean Variable \u003d\u003e Value \u0027true\u0027 of type \u0027PrimitiveValueType[boolean]\u0027, isTransient\u003dfalse\n}"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 13639315
+            },
+            {
+              "name": "variables had value",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "variables had value"
+                },
+                {
+                  "value": "{\n  Double Variable \u003d\u003e Value \u002712.0\u0027 of type \u0027PrimitiveValueType[double]\u0027, isTransient\u003dfalse\n  Complex Variable \u003d\u003e ObjectValue [value\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 06 17:26:27 CET 2019), isDeserialized\u003dtrue, serializationDataFormat\u003dapplication/json, objectTypeName\u003dio.holunda.camunda.bpm.data.itest.ComplexDataStructure, serializedValue\u003d64 chars, isTransient\u003dfalse]\n  List Of String Variable \u003d\u003e ObjectValue [value\u003d[Hello, World], isDeserialized\u003dtrue, serializationDataFormat\u003dapplication/x-java-serialized-object, objectTypeName\u003djava.util.Arrays$ArrayList, serializedValue\u003d172 chars, isTransient\u003dfalse]\n  Short Variable \u003d\u003e Value \u002711\u0027 of type \u0027PrimitiveValueType[short]\u0027, isTransient\u003dfalse\n  Date Variable \u003d\u003e Value \u0027Fri Dec 06 17:26:27 CET 2019\u0027 of type \u0027PrimitiveValueType[date]\u0027, isTransient\u003dfalse\n  Long Variable \u003d\u003e Value \u0027812\u0027 of type \u0027PrimitiveValueType[long]\u0027, isTransient\u003dfalse\n  Int Variable \u003d\u003e Value \u0027123\u0027 of type \u0027PrimitiveValueType[integer]\u0027, isTransient\u003dfalse\n  String Variable \u003d\u003e Value \u0027value\u0027 of type \u0027PrimitiveValueType[string]\u0027, isTransient\u003dfalse\n  Boolean Variable \u003d\u003e Value \u0027true\u0027 of type \u0027PrimitiveValueType[boolean]\u0027, isTransient\u003dfalse\n}",
+                  "argumentInfo": {
+                    "argumentName": "readValues",
+                    "formattedValue": "{\n  Double Variable \u003d\u003e Value \u002712.0\u0027 of type \u0027PrimitiveValueType[double]\u0027, isTransient\u003dfalse\n  Complex Variable \u003d\u003e ObjectValue [value\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 06 17:26:27 CET 2019), isDeserialized\u003dtrue, serializationDataFormat\u003dapplication/json, objectTypeName\u003dio.holunda.camunda.bpm.data.itest.ComplexDataStructure, serializedValue\u003d64 chars, isTransient\u003dfalse]\n  List Of String Variable \u003d\u003e ObjectValue [value\u003d[Hello, World], isDeserialized\u003dtrue, serializationDataFormat\u003dapplication/x-java-serialized-object, objectTypeName\u003djava.util.Arrays$ArrayList, serializedValue\u003d172 chars, isTransient\u003dfalse]\n  Short Variable \u003d\u003e Value \u002711\u0027 of type \u0027PrimitiveValueType[short]\u0027, isTransient\u003dfalse\n  Date Variable \u003d\u003e Value \u0027Fri Dec 06 17:26:27 CET 2019\u0027 of type \u0027PrimitiveValueType[date]\u0027, isTransient\u003dfalse\n  Long Variable \u003d\u003e Value \u0027812\u0027 of type \u0027PrimitiveValueType[long]\u0027, isTransient\u003dfalse\n  Int Variable \u003d\u003e Value \u0027123\u0027 of type \u0027PrimitiveValueType[integer]\u0027, isTransient\u003dfalse\n  String Variable \u003d\u003e Value \u0027value\u0027 of type \u0027PrimitiveValueType[string]\u0027, isTransient\u003dfalse\n  Boolean Variable \u003d\u003e Value \u0027true\u0027 of type \u0027PrimitiveValueType[boolean]\u0027, isTransient\u003dfalse\n}"
+                  }
+                },
+                {
+                  "value": "(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@654dbb78, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1dba7721, Fri Dec 06 17:26:27 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@24381e4a, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6c3627c, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@e5d9fa7, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@4010f232, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@24be6e34, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@39f3285d, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 06 17:26:27 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@5b312863, [Hello, World])",
+                  "argumentInfo": {
+                    "argumentName": "basicVariableWithValue",
+                    "formattedValue": "(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@654dbb78, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1dba7721, Fri Dec 06 17:26:27 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@24381e4a, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6c3627c, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@e5d9fa7, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@4010f232, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@24be6e34, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@39f3285d, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 06 17:26:27 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@5b312863, [Hello, World])"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 560254
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "success": true,
+          "durationInNanos": 66099632
+        }
+      ],
+      "durationInNanos": 66099632,
+      "executionStatus": "SUCCESS"
+    }
+  ],
+  "tagMap": {}
+}

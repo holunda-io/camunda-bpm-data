@@ -1,7 +1,7 @@
 package io.holunda.camunda.bpm.data.factory;
 
 import io.holunda.camunda.bpm.data.adapter.ReadAdapter;
-import io.holunda.camunda.bpm.data.adapter.ReadWriteAdapterTaskService;
+import io.holunda.camunda.bpm.data.adapter.basic.ReadWriteAdapterTaskService;
 import io.holunda.camunda.bpm.data.adapter.WriteAdapter;
 import org.camunda.bpm.engine.TaskService;
 
@@ -13,16 +13,16 @@ import org.camunda.bpm.engine.TaskService;
 public class TaskServiceAdapterBuilder<T> {
 
   private final TaskService taskService;
-  private final VariableFactory<T> variableFactory;
+  private final BasicVariableFactory<T> basicVariableFactory;
 
   /**
    * Constructs the builder.
-   * @param variableFactory variable factory to use.
+   * @param basicVariableFactory variable factory to use.
    * @param taskService task service to build adapter with.
    */
-  public TaskServiceAdapterBuilder(VariableFactory<T> variableFactory, TaskService taskService) {
+  public TaskServiceAdapterBuilder(BasicVariableFactory<T> basicVariableFactory, TaskService taskService) {
     this.taskService = taskService;
-    this.variableFactory = variableFactory;
+    this.basicVariableFactory = basicVariableFactory;
   }
 
   /**
@@ -33,7 +33,7 @@ public class TaskServiceAdapterBuilder<T> {
    * @return write adapter
    */
   public WriteAdapter<T> on(String taskId) {
-    return new ReadWriteAdapterTaskService<>(taskService, taskId, variableFactory.getName(), variableFactory.getVariableClass());
+    return new ReadWriteAdapterTaskService<>(taskService, taskId, basicVariableFactory.getName(), basicVariableFactory.getVariableClass());
   }
 
   /**
@@ -44,7 +44,7 @@ public class TaskServiceAdapterBuilder<T> {
    * @return read adapter.
    */
   public ReadAdapter<T> from(String taskId) {
-    return new ReadWriteAdapterTaskService<>(taskService, taskId, variableFactory.getName(), variableFactory.getVariableClass());
+    return new ReadWriteAdapterTaskService<>(taskService, taskId, basicVariableFactory.getName(), basicVariableFactory.getVariableClass());
   }
 
 }

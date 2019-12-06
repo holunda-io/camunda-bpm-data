@@ -1,8 +1,11 @@
 package io.holunda.camunda.bpm.data;
 
+import io.holunda.camunda.bpm.data.factory.BasicVariableFactory;
+import io.holunda.camunda.bpm.data.factory.ListVariableFactory;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Factory methods for creating variable factories.
@@ -19,7 +22,7 @@ public class CamundaBpmData {
    * @return variable factory for string.
    */
   public static VariableFactory<String> stringVariable(String variableName) {
-    return new VariableFactory<>(variableName, String.class);
+    return new BasicVariableFactory<>(variableName, String.class);
   }
 
   /**
@@ -28,7 +31,7 @@ public class CamundaBpmData {
    * @return variable factory for date.
    */
   public static VariableFactory<Date> dateVariable(String variableName) {
-    return new VariableFactory<>(variableName, Date.class);
+    return new BasicVariableFactory<>(variableName, Date.class);
   }
 
   /**
@@ -37,7 +40,7 @@ public class CamundaBpmData {
    * @return variable factory for integer.
    */
   public static VariableFactory<Integer> intVariable(String variableName) {
-    return new VariableFactory<>(variableName, Integer.class);
+    return new BasicVariableFactory<>(variableName, Integer.class);
   }
 
   /**
@@ -46,7 +49,7 @@ public class CamundaBpmData {
    * @return variable factory for long.
    */
   public static VariableFactory<Long> longVariable(String variableName) {
-    return new VariableFactory<>(variableName, Long.class);
+    return new BasicVariableFactory<>(variableName, Long.class);
   }
 
   /**
@@ -55,7 +58,7 @@ public class CamundaBpmData {
    * @return variable factory for short.
    */
   public static VariableFactory<Short> shortVariable(String variableName) {
-    return new VariableFactory<>(variableName, Short.class);
+    return new BasicVariableFactory<>(variableName, Short.class);
   }
 
   /**
@@ -64,7 +67,7 @@ public class CamundaBpmData {
    * @return variable factory for double.
    */
   public static VariableFactory<Double> doubleVariable(String variableName) {
-    return new VariableFactory<>(variableName, Double.class);
+    return new BasicVariableFactory<>(variableName, Double.class);
   }
 
   /**
@@ -73,7 +76,7 @@ public class CamundaBpmData {
    * @return variable factory for boolean.
    */
   public static VariableFactory<Boolean> booleanVariable(String variableName) {
-    return new VariableFactory<>(variableName, Boolean.class);
+    return new BasicVariableFactory<>(variableName, Boolean.class);
   }
 
   /**
@@ -84,6 +87,17 @@ public class CamundaBpmData {
    * @return variable factory for given type.
    */
   public static <T> VariableFactory<T> customVariable(String variableName, Class<T> clazz) {
-    return new VariableFactory<>(variableName, clazz);
+    return new BasicVariableFactory<>(variableName, clazz);
+  }
+
+  /**
+   * Create variable factory for list of custom type.
+   * @param variableName name of the variable.
+   * @param clazz class of specifying the member type.
+   * @param <T> factory type.
+   * @return variable factory for given type.
+   */
+  public static <T> VariableFactory<List<T>> listVariable(String variableName, Class<T> clazz) {
+    return new ListVariableFactory<>(variableName, clazz);
   }
 }

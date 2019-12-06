@@ -20,6 +20,7 @@ class VariableAdapterWriteITest: CamundaBpmDataITestBase() {
 
     val date = Date.from(Instant.now())
     val complexValue = ComplexDataStructure("string", 17, date)
+    val listOfStrings = listOf("Hello", "World")
     val variables = createVariables()
     STRING_VAR.on(variables).set("value")
     DATE_VAR.on(variables).set(date)
@@ -29,6 +30,7 @@ class VariableAdapterWriteITest: CamundaBpmDataITestBase() {
     DOUBLE_VAR.on(variables).set(12.0)
     BOOLEAN_VAR.on(variables).set(true)
     COMPLEX_VAR.on(variables).set(complexValue)
+    LIST_STRING_VAR.on(variables).set(listOfStrings)
 
     given()
       .process_with_delegate_is_deployed(delegateExpression = "\${myDelegate}")
@@ -43,7 +45,8 @@ class VariableAdapterWriteITest: CamundaBpmDataITestBase() {
         LONG_VAR to 812.toLong(),
         DOUBLE_VAR to 12.0.toDouble(),
         BOOLEAN_VAR to true,
-        COMPLEX_VAR to complexValue
+        COMPLEX_VAR to complexValue,
+        LIST_STRING_VAR to listOfStrings
       )
   }
 }
