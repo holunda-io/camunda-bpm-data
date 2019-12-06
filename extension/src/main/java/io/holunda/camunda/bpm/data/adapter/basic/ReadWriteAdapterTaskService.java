@@ -1,8 +1,6 @@
 package io.holunda.camunda.bpm.data.adapter.basic;
 
-import io.holunda.camunda.bpm.data.adapter.ValueWrapperUtil;
 import org.camunda.bpm.engine.TaskService;
-import org.camunda.bpm.engine.variable.value.TypedValue;
 
 import java.util.Optional;
 
@@ -42,8 +40,6 @@ public class ReadWriteAdapterTaskService<T> extends AbstractBasicReadWriteAdapte
 
   @Override
   public void setLocal(T value, boolean isTransient) {
-    final TypedValue typedValue = ValueWrapperUtil.getTypedValue(clazz, value, isTransient);
     taskService.setVariableLocal(taskId, variableName, getTypedValue(value, isTransient));
   }
-
 }
