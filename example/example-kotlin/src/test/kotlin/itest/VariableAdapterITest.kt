@@ -1,5 +1,6 @@
 package io.holunda.camunda.bpm.data.itest
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import io.holunda.camunda.bpm.data.CamundaBpmData.*
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.JavaDelegate
@@ -21,6 +22,7 @@ class VariableAdapterITest: CamundaBpmDataITestBase() {
     val LONG_VAR = longVariable("Long Variable")
     val DOUBLE_VAR = doubleVariable("Double Variable")
     val BOOLEAN_VAR = booleanVariable("Boolean Variable")
+    val COMPLEX_VAR = customVariable("Complex Variable", ComplexDataStructure::class.java)
   }
 
   @Autowired
@@ -30,7 +32,7 @@ class VariableAdapterITest: CamundaBpmDataITestBase() {
   fun `should write to map and read from variable scope`() {
 
     val date = Date.from(Instant.now())
-
+    val complexValue = ComplexDataStructure("string", 17, date)
     val variables = createVariables()
     STRING_VAR.on(variables).set("value")
     DATE_VAR.on(variables).set(date)
@@ -39,6 +41,7 @@ class VariableAdapterITest: CamundaBpmDataITestBase() {
     LONG_VAR.on(variables).set(812L)
     DOUBLE_VAR.on(variables).set(12.0)
     BOOLEAN_VAR.on(variables).set(true)
+    COMPLEX_VAR.on(variables).set(complexValue)
 
     given()
       .process_with_delegate_is_deployed(delegateExpression = "\${myDelegate}")
@@ -52,7 +55,8 @@ class VariableAdapterITest: CamundaBpmDataITestBase() {
         INT_VAR to 123.toInt(),
         LONG_VAR to 812.toLong(),
         DOUBLE_VAR to 12.0.toDouble(),
-        BOOLEAN_VAR to true
+        BOOLEAN_VAR to true,
+        COMPLEX_VAR to complexValue
       )
   }
 }
@@ -67,3 +71,12 @@ class ValueStoringServiceDelegate : JavaDelegate {
   }
 }
 
+
+data class ComplexDataStructure(
+  val stringValue: String,
+  val intValue: Int,
+  val dateValue: Date
+) {
+  @JsonIgnore
+  private val valueToIgnore: String = "some hidden value"
+}
