@@ -1,7 +1,15 @@
 package io.holunda.camunda.bpm.data.adapter;
 
 import org.camunda.bpm.engine.variable.type.PrimitiveValueType;
-import org.camunda.bpm.engine.variable.value.*;
+import org.camunda.bpm.engine.variable.value.BooleanValue;
+import org.camunda.bpm.engine.variable.value.DateValue;
+import org.camunda.bpm.engine.variable.value.DoubleValue;
+import org.camunda.bpm.engine.variable.value.IntegerValue;
+import org.camunda.bpm.engine.variable.value.LongValue;
+import org.camunda.bpm.engine.variable.value.ObjectValue;
+import org.camunda.bpm.engine.variable.value.ShortValue;
+import org.camunda.bpm.engine.variable.value.StringValue;
+import org.camunda.bpm.engine.variable.value.TypedValue;
 import org.junit.Test;
 
 import java.time.Instant;

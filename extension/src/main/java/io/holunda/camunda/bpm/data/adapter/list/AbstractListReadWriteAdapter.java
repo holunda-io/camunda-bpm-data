@@ -1,9 +1,7 @@
 package io.holunda.camunda.bpm.data.adapter.list;
 
 import io.holunda.camunda.bpm.data.adapter.AbstractReadWriteAdapter;
-import io.holunda.camunda.bpm.data.adapter.ReadAdapter;
 import io.holunda.camunda.bpm.data.adapter.ValueWrapperUtil;
-import io.holunda.camunda.bpm.data.adapter.WriteAdapter;
 import org.camunda.bpm.engine.variable.value.TypedValue;
 
 import java.util.Collections;
@@ -11,6 +9,7 @@ import java.util.List;
 
 /**
  * Base class for all list read-write adapter.
+ *
  * @param <T> member type.
  */
 public abstract class AbstractListReadWriteAdapter<T> extends AbstractReadWriteAdapter<List<T>> {
@@ -22,8 +21,9 @@ public abstract class AbstractListReadWriteAdapter<T> extends AbstractReadWriteA
 
   /**
    * Constructs the adapter.
+   *
    * @param variableName name of variable.
-   * @param memberClazz member class.
+   * @param memberClazz  member class.
    */
   public AbstractListReadWriteAdapter(String variableName, Class<T> memberClazz) {
     super(variableName);
@@ -32,7 +32,9 @@ public abstract class AbstractListReadWriteAdapter<T> extends AbstractReadWriteA
 
   /**
    * Read the value of null.
+   *
    * @param value raw value.
+   *
    * @return list or null.
    */
   @SuppressWarnings("unchecked")
@@ -59,8 +61,10 @@ public abstract class AbstractListReadWriteAdapter<T> extends AbstractReadWriteA
 
   /**
    * Retrieve typed value.
-   * @param value raw value.
+   *
+   * @param value       raw value.
    * @param isTransient transient flag.
+   *
    * @return typed value.
    */
   protected TypedValue getTypedValue(List<T> value, boolean isTransient) {

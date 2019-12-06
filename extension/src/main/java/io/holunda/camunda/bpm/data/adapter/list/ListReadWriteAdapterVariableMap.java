@@ -1,8 +1,6 @@
 package io.holunda.camunda.bpm.data.adapter.list;
 
-import io.holunda.camunda.bpm.data.adapter.ValueWrapperUtil;
 import org.camunda.bpm.engine.variable.VariableMap;
-import org.camunda.bpm.engine.variable.value.TypedValue;
 
 import java.util.List;
 import java.util.Optional;

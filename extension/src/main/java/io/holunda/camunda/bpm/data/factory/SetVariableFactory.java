@@ -2,10 +2,6 @@ package io.holunda.camunda.bpm.data.factory;
 
 import io.holunda.camunda.bpm.data.adapter.ReadAdapter;
 import io.holunda.camunda.bpm.data.adapter.WriteAdapter;
-import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterRuntimeService;
-import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterTaskService;
-import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterVariableMap;
-import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterVariableScope;
 import io.holunda.camunda.bpm.data.adapter.set.SetReadWriteAdapterRuntimeService;
 import io.holunda.camunda.bpm.data.adapter.set.SetReadWriteAdapterTaskService;
 import io.holunda.camunda.bpm.data.adapter.set.SetReadWriteAdapterVariableMap;
@@ -15,7 +11,6 @@ import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.delegate.VariableScope;
 import org.camunda.bpm.engine.variable.VariableMap;
 
-import java.util.List;
 import java.util.Set;
 
 /**

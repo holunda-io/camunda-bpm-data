@@ -2,10 +2,6 @@ package io.holunda.camunda.bpm.data.factory;
 
 import io.holunda.camunda.bpm.data.adapter.ReadAdapter;
 import io.holunda.camunda.bpm.data.adapter.WriteAdapter;
-import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterRuntimeService;
-import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterTaskService;
-import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterVariableMap;
-import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterVariableScope;
 import io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterRuntimeService;
 import io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterTaskService;
 import io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterVariableMap;
@@ -15,7 +11,6 @@ import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.delegate.VariableScope;
 import org.camunda.bpm.engine.variable.VariableMap;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -37,7 +32,7 @@ public class MapVariableFactory<K, V> implements VariableFactory<Map<K, V>> {
   }
 
   @Override
-  public WriteAdapter<Map<K,V>> on(VariableScope variableScope) {
+  public WriteAdapter<Map<K, V>> on(VariableScope variableScope) {
     return new MapReadWriteAdapterVariableScope<K, V>(variableScope, name, keyClazz, valueClazz);
   }
 
@@ -83,6 +78,7 @@ public class MapVariableFactory<K, V> implements VariableFactory<Map<K, V>> {
 
   /**
    * Retrieves key type.
+   *
    * @return key type.
    */
   public Class<K> getKeyClass() {
@@ -91,6 +87,7 @@ public class MapVariableFactory<K, V> implements VariableFactory<Map<K, V>> {
 
   /**
    * Retrieves value type.
+   *
    * @return value type.
    */
   public Class<V> getValueClass() {
