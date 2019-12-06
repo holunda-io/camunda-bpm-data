@@ -104,7 +104,7 @@ class ActionStage : Stage<ActionStage>() {
 @JGivenStage
 class AssertStage : Stage<AssertStage>() {
 
-  fun variables_had_value(readValues: VariableMap, vararg variableWithValue: Pair<VariableFactory<*>, Any>) {
+  fun variables_had_value(readValues: Map<String, Any>, vararg variableWithValue: Pair<VariableFactory<*>, Any>) {
     variableWithValue.forEach {
       assertThat(readValues).containsEntry(it.first.name, it.second)
     }

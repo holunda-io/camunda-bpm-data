@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component
 import java.time.Instant
 import java.util.*
 
-class VariableAdapterITest: CamundaBpmDataITestBase() {
+class VariableAdapterWriteITest: CamundaBpmDataITestBase() {
 
   companion object {
     val STRING_VAR = stringVariable("String Variable")
