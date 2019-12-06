@@ -2,11 +2,13 @@ package io.holunda.camunda.bpm.data;
 
 import io.holunda.camunda.bpm.data.factory.BasicVariableFactory;
 import io.holunda.camunda.bpm.data.factory.ListVariableFactory;
+import io.holunda.camunda.bpm.data.factory.MapVariableFactory;
 import io.holunda.camunda.bpm.data.factory.SetVariableFactory;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -20,7 +22,9 @@ public class CamundaBpmData {
 
   /**
    * Create string variable factory.
+   *
    * @param variableName name of the variable.
+   *
    * @return variable factory for string.
    */
   public static VariableFactory<String> stringVariable(String variableName) {
@@ -29,7 +33,9 @@ public class CamundaBpmData {
 
   /**
    * Create date variable factory.
+   *
    * @param variableName name of the variable.
+   *
    * @return variable factory for date.
    */
   public static VariableFactory<Date> dateVariable(String variableName) {
@@ -38,7 +44,9 @@ public class CamundaBpmData {
 
   /**
    * Create integer variable factory.
+   *
    * @param variableName name of the variable.
+   *
    * @return variable factory for integer.
    */
   public static VariableFactory<Integer> intVariable(String variableName) {
@@ -47,7 +55,9 @@ public class CamundaBpmData {
 
   /**
    * Create long variable factory.
+   *
    * @param variableName name of the variable.
+   *
    * @return variable factory for long.
    */
   public static VariableFactory<Long> longVariable(String variableName) {
@@ -56,7 +66,9 @@ public class CamundaBpmData {
 
   /**
    * Create short variable factory.
+   *
    * @param variableName name of the variable.
+   *
    * @return variable factory for short.
    */
   public static VariableFactory<Short> shortVariable(String variableName) {
@@ -65,7 +77,9 @@ public class CamundaBpmData {
 
   /**
    * Create double variable factory.
+   *
    * @param variableName name of the variable.
+   *
    * @return variable factory for double.
    */
   public static VariableFactory<Double> doubleVariable(String variableName) {
@@ -74,7 +88,9 @@ public class CamundaBpmData {
 
   /**
    * Create boolean variable factory.
+   *
    * @param variableName name of the variable.
+   *
    * @return variable factory for boolean.
    */
   public static VariableFactory<Boolean> booleanVariable(String variableName) {
@@ -83,9 +99,11 @@ public class CamundaBpmData {
 
   /**
    * Create variable factory for custom type.
+   *
    * @param variableName name of the variable.
-   * @param clazz class of specifying the type.
-   * @param <T> factory type.
+   * @param clazz        class of specifying the type.
+   * @param <T>          factory type.
+   *
    * @return variable factory for given type.
    */
   public static <T> VariableFactory<T> customVariable(String variableName, Class<T> clazz) {
@@ -94,9 +112,11 @@ public class CamundaBpmData {
 
   /**
    * Create variable factory for list of custom type.
+   *
    * @param variableName name of the variable.
-   * @param clazz class of specifying the member type.
-   * @param <T> factory type.
+   * @param clazz        class of specifying the member type.
+   * @param <T>          factory type.
+   *
    * @return variable factory for given type.
    */
   public static <T> VariableFactory<List<T>> listVariable(String variableName, Class<T> clazz) {
@@ -105,13 +125,29 @@ public class CamundaBpmData {
 
   /**
    * Create variable factory for set of custom type.
+   *
    * @param variableName name of the variable.
-   * @param clazz class of specifying the member type.
-   * @param <T> factory type.
+   * @param clazz        class of specifying the member type.
+   * @param <T>          factory type.
+   *
    * @return variable factory for given type.
    */
   public static <T> VariableFactory<Set<T>> setVariable(String variableName, Class<T> clazz) {
     return new SetVariableFactory<>(variableName, clazz);
   }
 
+  /**
+   * Create variable factory for map of custom key and custom value type.
+   *
+   * @param variableName name of the variable.
+   * @param keyClazz     class of specifying the key member type.
+   * @param valueClazz   class of specifying the value member type.
+   * @param <K>          factory key type.
+   * @param <V>          factory value type.
+   *
+   * @return variable factory for given type.
+   */
+  public static <K, V> VariableFactory<Map<K, V>> mapVariable(String variableName, Class<K> keyClazz, Class<V> valueClazz) {
+    return new MapVariableFactory<>(variableName, keyClazz, valueClazz);
+  }
 }

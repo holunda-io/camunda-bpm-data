@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component
 import java.time.Instant
 import java.util.*
 
-class VariableAdapterVariableMapWriteTest: CamundaBpmDataITestBase() {
+class VariableAdapterVariableMapWriteTest : CamundaBpmDataITestBase() {
 
   @Autowired
   lateinit var valueStoringServiceDelegate: ValueStoringServiceDelegate
@@ -22,6 +22,7 @@ class VariableAdapterVariableMapWriteTest: CamundaBpmDataITestBase() {
     val complexValue = ComplexDataStructure("string", 17, date)
     val listOfStrings = listOf("Hello", "World")
     val setOfStrings = setOf("Kermit", "Piggy")
+    val map: Map<String, Date> = mapOf("Twelve" to date, "Eleven" to date)
     val variables = createVariables()
     STRING_VAR.on(variables).set("value")
     DATE_VAR.on(variables).set(date)
@@ -33,6 +34,7 @@ class VariableAdapterVariableMapWriteTest: CamundaBpmDataITestBase() {
     COMPLEX_VAR.on(variables).set(complexValue)
     LIST_STRING_VAR.on(variables).set(listOfStrings)
     SET_STRING_VAR.on(variables).set(setOfStrings)
+    MAP_STRING_DATE_VAR.on(variables).set(map)
 
     given()
       .process_with_delegate_is_deployed(delegateExpression = "\${ValueStoringServiceDelegate}")
@@ -49,7 +51,8 @@ class VariableAdapterVariableMapWriteTest: CamundaBpmDataITestBase() {
         BOOLEAN_VAR to true,
         COMPLEX_VAR to complexValue,
         LIST_STRING_VAR to listOfStrings,
-        SET_STRING_VAR to setOfStrings
+        SET_STRING_VAR to setOfStrings,
+        MAP_STRING_DATE_VAR to map
       )
   }
 }

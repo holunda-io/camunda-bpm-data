@@ -7,6 +7,7 @@ import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.DOUBL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.INT_VAR
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.LIST_STRING_VAR
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.LONG_VAR
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.MAP_STRING_DATE_VAR
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.SET_STRING_VAR
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.SHORT_VAR
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.STRING_VAR
@@ -31,6 +32,7 @@ class VariableAdapterReadITest : CamundaBpmDataITestBase() {
     val complexValue = ComplexDataStructure("string", 17, date)
     val listOfStrings = listOf("Hello", "World")
     val setOfStrings = setOf("Kermit", "Piggy")
+    val map: Map<String, Date> = mapOf("Twelve" to date, "Eleven" to date)
     val variables = createVariables()
       .putValue(STRING_VAR.name, "value")
       .putValue(DATE_VAR.name, date)
@@ -42,6 +44,7 @@ class VariableAdapterReadITest : CamundaBpmDataITestBase() {
       .putValue(COMPLEX_VAR.name, complexValue)
       .putValue(LIST_STRING_VAR.name, listOfStrings)
       .putValue(SET_STRING_VAR.name, setOfStrings)
+      .putValue(MAP_STRING_DATE_VAR.name, map)
 
     given()
       .process_with_delegate_is_deployed(delegateExpression = "\${ValueStoringUsingAdapterVariableScopeServiceDelegate}")
@@ -58,7 +61,8 @@ class VariableAdapterReadITest : CamundaBpmDataITestBase() {
         BOOLEAN_VAR to true,
         COMPLEX_VAR to complexValue,
         LIST_STRING_VAR to listOfStrings,
-        SET_STRING_VAR to setOfStrings
+        SET_STRING_VAR to setOfStrings,
+        MAP_STRING_DATE_VAR to map
       )
   }
 }
@@ -66,7 +70,7 @@ class VariableAdapterReadITest : CamundaBpmDataITestBase() {
 @Component("ValueStoringUsingAdapterVariableScopeServiceDelegate")
 class ValueStoringUsingAdapterVariableScopeServiceDelegate : JavaDelegate {
 
-  val vars =  HashMap<String, Any>()
+  val vars = HashMap<String, Any>()
 
   override fun execute(delegateExecution: DelegateExecution) {
     vars[STRING_VAR.name] = STRING_VAR.from(delegateExecution).get()
@@ -79,6 +83,7 @@ class ValueStoringUsingAdapterVariableScopeServiceDelegate : JavaDelegate {
     vars[COMPLEX_VAR.name] = COMPLEX_VAR.from(delegateExecution).get()
     vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(delegateExecution).get()
     vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(delegateExecution).get()
+    vars[MAP_STRING_DATE_VAR.name] = MAP_STRING_DATE_VAR.from(delegateExecution).get()
   }
 }
 

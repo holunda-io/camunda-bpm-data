@@ -51,6 +51,7 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
     val COMPLEX_VAR = CamundaBpmData.customVariable("Complex Variable", ComplexDataStructure::class.java)
     val LIST_STRING_VAR = CamundaBpmData.listVariable("List Of String Variable", String::class.java)
     val SET_STRING_VAR = CamundaBpmData.setVariable("Set Of String Variable", String::class.java)
+    val MAP_STRING_DATE_VAR = CamundaBpmData.mapVariable("Map Of String to Date Variable", String::class.java, Date::class.java)
   }
 }
 
