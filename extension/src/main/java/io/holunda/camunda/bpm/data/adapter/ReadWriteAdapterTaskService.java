@@ -1,33 +1,33 @@
 package io.holunda.camunda.bpm.data.adapter;
 
-import org.camunda.bpm.engine.RuntimeService;
+import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.variable.value.TypedValue;
 
 import java.util.Optional;
 
 /**
- * Read write adapter for runtime service access.
+ * Read write adapter for task service access.
  *
  * @param <T> type of value.
  */
-public class ReadWriteAdapterRuntimeService<T> implements ReadAdapter<T>, WriteAdapter<T> {
+public class ReadWriteAdapterTaskService<T> implements ReadAdapter<T>, WriteAdapter<T> {
 
-  private final RuntimeService runtimeService;
-  private final String executionId;
+  private final TaskService taskService;
+  private final String taskId;
   private final String variableName;
   private final Class<T> clazz;
 
   /**
    * Constructs the adapter.
    *
-   * @param runtimeService runtime service to use.
-   * @param executionId    id of the execution to read from and write to.
-   * @param variableName   name of the variable.
-   * @param clazz          class of the variable.
+   * @param taskService  task service to use.
+   * @param taskId       id of the task to read from and write to.
+   * @param variableName name of the variable.
+   * @param clazz        class of the variable.
    */
-  public ReadWriteAdapterRuntimeService(RuntimeService runtimeService, String executionId, String variableName, Class<T> clazz) {
-    this.runtimeService = runtimeService;
-    this.executionId = executionId;
+  public ReadWriteAdapterTaskService(TaskService taskService, String taskId, String variableName, Class<T> clazz) {
+    this.taskService = taskService;
+    this.taskId = taskId;
     this.variableName = variableName;
     this.clazz = clazz;
   }
@@ -54,7 +54,7 @@ public class ReadWriteAdapterRuntimeService<T> implements ReadAdapter<T>, WriteA
   @Override
   public void set(T value, boolean isTransient) {
     final TypedValue typedValue = ValueWrapperUtil.getTypedValue(clazz, value, isTransient);
-    runtimeService.setVariable(executionId, variableName, typedValue);
+    taskService.setVariable(taskId, variableName, typedValue);
   }
 
   @Override
@@ -65,12 +65,12 @@ public class ReadWriteAdapterRuntimeService<T> implements ReadAdapter<T>, WriteA
   @Override
   public void setLocal(T value, boolean isTransient) {
     final TypedValue typedValue = ValueWrapperUtil.getTypedValue(clazz, value, isTransient);
-    runtimeService.setVariableLocal(executionId, variableName, typedValue);
+    taskService.setVariableLocal(taskId, variableName, typedValue);
   }
 
   @SuppressWarnings("unchecked")
   private T getOrNull() {
-    final Object value = runtimeService.getVariable(executionId, variableName);
+    final Object value = taskService.getVariable(taskId, variableName);
 
     if (value == null) {
       return null;
