@@ -52,6 +52,8 @@ public class ExampleProcessApplication {
       final VariableMap variablesTyped = delegateExecution.getVariablesTyped();
 
       LOG.info("{}", APPROVAL_ID.from(variablesTyped).get());
+
+
     };
   }
 

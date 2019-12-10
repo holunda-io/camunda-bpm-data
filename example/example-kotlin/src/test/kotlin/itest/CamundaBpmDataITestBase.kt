@@ -8,8 +8,9 @@ import com.tngtech.jgiven.integration.spring.EnableJGiven
 import com.tngtech.jgiven.integration.spring.JGivenStage
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest
 import io.holunda.camunda.bpm.data.CamundaBpmData
-import io.holunda.camunda.bpm.data.factory.BasicVariableFactory
 import io.holunda.camunda.bpm.data.factory.VariableFactory
+import io.holunda.camunda.bpm.data.itest.helper.ValueStoringUsingRuntimeService
+import io.holunda.camunda.bpm.data.itest.helper.ValueStoringUsingTaskService
 import org.assertj.core.api.Assertions.assertThat
 import org.camunda.bpm.engine.RepositoryService
 import org.camunda.bpm.engine.RuntimeService
@@ -136,6 +137,66 @@ class ActionStage : Stage<ActionStage>() {
     return self()
   }
 
+  fun process_with_user_task_and_delegate_is_deployed(
+    processDefinitionKey: String = "process_with_user_task",
+    taskDefinitionKey: String = "user_task",
+    delegateExpression: String = "\${serviceTaskDelegate}"
+  ): ActionStage {
+
+    val instance = Bpmn
+      .createExecutableProcess(processDefinitionKey)
+      .startEvent("start")
+      .userTask(taskDefinitionKey)
+      .serviceTask("service_task")
+      .camundaDelegateExpression(delegateExpression)
+      .endEvent("end")
+      .done()
+
+    val deployment = repositoryService
+      .createDeployment()
+      .addModelInstance("$processDefinitionKey.bpmn", instance)
+      .name(processDefinitionKey)
+      .deploy()
+
+    processDefinition = repositoryService
+      .createProcessDefinitionQuery()
+      .deploymentId(deployment.id)
+      .singleResult()
+
+    return self()
+  }
+
+  fun process_with_modifying_delegate_is_deployed(
+    processDefinitionKey: String = "process_with_delegate",
+    modifyingDelegateExpression: String = "\${modifyingServiceTaskDelegate}",
+    delegateExpression: String = "\${serviceTaskDelegate}"
+  ): ActionStage {
+
+    val instance = Bpmn
+      .createExecutableProcess(processDefinitionKey)
+      .startEvent("start")
+      .serviceTask("modifying_service_task")
+      .camundaDelegateExpression(modifyingDelegateExpression)
+      .serviceTask("service_task")
+      .camundaDelegateExpression(delegateExpression)
+      .endEvent("end")
+      .done()
+
+    val deployment = repositoryService
+      .createDeployment()
+      .addModelInstance("$processDefinitionKey.bpmn", instance)
+      .name(processDefinitionKey)
+      .deploy()
+
+    processDefinition = repositoryService
+      .createProcessDefinitionQuery()
+      .deploymentId(deployment.id)
+      .singleResult()
+
+    return self()
+  }
+
+
   fun process_is_started_with_variables(
     processDefinitionKey: String = this.processDefinition.key,
     variables: VariableMap
@@ -160,6 +221,26 @@ class ActionStage : Stage<ActionStage>() {
     return self()
   }
 
+  fun process_waits_in_task(taskDefinitionKey: String = "user_task") : ActionStage {
+    task = taskService
+      .createTaskQuery().processInstanceId(processInstance.id).taskDefinitionKey(taskDefinitionKey).singleResult()
+    return self()
+  }
+
+  fun task_is_completed() {
+    taskService.complete(task.id)
+  }
+
+  fun variable_are_modified_in_task(taskWritingAdapter: (taskService: TaskService, taskId: String) -> Unit): ActionStage {
+    taskWritingAdapter.invoke(this.taskService, this.task.id)
+    return self()
+  }
+
+  fun variable_are_modified_in_wait_state(runtimeWritingAdapter: (runtimeService: RuntimeService, executionId: String) -> Unit): ActionStage {
+    runtimeWritingAdapter.invoke(this.runtimeService, this.processInstance.id)
+    return self()
+  }
+
 }
 
 /**
@@ -168,9 +249,17 @@ class ActionStage : Stage<ActionStage>() {
 @JGivenStage
 class AssertStage : Stage<AssertStage>() {
 
-  fun variables_had_value(readValues: Map<String, Any>, vararg basicVariableWithValue: Pair<VariableFactory<*>, Any>) {
-    basicVariableWithValue.forEach {
+  fun variables_had_value(readValues: Map<String, Any>, vararg variableWithValue: Pair<VariableFactory<*>, Any>) {
+    variableWithValue.forEach {
       assertThat(readValues).containsEntry(it.first.name, it.second)
+    }
+  }
+
+  fun variables_had_not_value(readValues: Map<String, Any>, vararg variableWithValue: VariableFactory<*>) {
+    val emptyOptional = Optional.empty<Any>()
+
+    variableWithValue.forEach {
+      assertThat(readValues).containsEntry(it.name, emptyOptional)
     }
   }
 }

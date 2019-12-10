@@ -29,6 +29,6 @@ public abstract class AbstractReadWriteAdapter<T> implements ReadAdapter<T>, Wri
 
   @Override
   public T get() {
-    return getOptional().orElseThrow(() -> new IllegalStateException("Couldn't find required variable " + variableName));
+    return getOptional().orElseThrow(() -> new VariableNotFoundException("Couldn't find required variable " + variableName));
   }
 }

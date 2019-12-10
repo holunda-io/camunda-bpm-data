@@ -1,21 +1,9 @@
 package io.holunda.camunda.bpm.data.itest
 
-import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.BOOLEAN_VAR
-import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.COMPLEX_VAR
-import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.DATE_VAR
-import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.DOUBLE_VAR
-import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.INT_VAR
-import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.LIST_STRING_VAR
-import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.LONG_VAR
-import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.MAP_STRING_DATE_VAR
-import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.SET_STRING_VAR
-import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.SHORT_VAR
-import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.STRING_VAR
-import org.camunda.bpm.engine.TaskService
+import io.holunda.camunda.bpm.data.itest.helper.ValueStoringUsingTaskService
 import org.camunda.bpm.engine.variable.Variables.createVariables
 import org.junit.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Component
 import java.time.Instant
 import java.util.*
 
@@ -65,26 +53,6 @@ class TaskServiceAdapterReadITest : CamundaBpmDataITestBase() {
         SET_STRING_VAR to setOfStrings,
         MAP_STRING_DATE_VAR to map
       )
-  }
-}
-
-@Component
-class ValueStoringUsingTaskService {
-
-  val vars =  HashMap<String, Any>()
-
-  fun readValues(taskService: TaskService, taskId: String) {
-    vars[STRING_VAR.name] = STRING_VAR.from(taskService, taskId).get()
-    vars[DATE_VAR.name] = DATE_VAR.from(taskService, taskId).get()
-    vars[SHORT_VAR.name] = SHORT_VAR.from(taskService, taskId).get()
-    vars[INT_VAR.name] = INT_VAR.from(taskService, taskId).get()
-    vars[LONG_VAR.name] = LONG_VAR.from(taskService, taskId).get()
-    vars[DOUBLE_VAR.name] = DOUBLE_VAR.from(taskService, taskId).get()
-    vars[BOOLEAN_VAR.name] = BOOLEAN_VAR.from(taskService, taskId).get()
-    vars[COMPLEX_VAR.name] = COMPLEX_VAR.from(taskService, taskId).get()
-    vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(taskService, taskId).get()
-    vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(taskService, taskId).get()
-    vars[MAP_STRING_DATE_VAR.name] = MAP_STRING_DATE_VAR.from(taskService, taskId).get()
   }
 }
 

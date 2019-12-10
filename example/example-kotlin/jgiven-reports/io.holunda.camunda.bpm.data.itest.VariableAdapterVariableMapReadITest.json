@@ -40,7 +40,7 @@
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 55610227
+              "durationInNanos": 41399886
             },
             {
               "name": "get process definition",
@@ -54,7 +54,7 @@
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 290086
+              "durationInNanos": 119857
             },
             {
               "name": "process is started with variables",
@@ -70,15 +70,15 @@
                   }
                 },
                 {
-                  "value": "{\n  Double Variable \u003d\u003e Untyped value \u002712.0\u0027, isTransient \u003d false\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 06 22:41:59 CET 2019)\u0027, isTransient \u003d false\n  List Of String Variable \u003d\u003e Untyped value \u0027[Hello, World]\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Untyped value \u002711\u0027, isTransient \u003d false\n  Map Of String to Date Variable \u003d\u003e Untyped value \u0027{Twelve\u003dFri Dec 06 22:41:59 CET 2019, Eleven\u003dFri Dec 06 22:41:59 CET 2019}\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Untyped value \u0027Fri Dec 06 22:41:59 CET 2019\u0027, isTransient \u003d false\n  Long Variable \u003d\u003e Untyped value \u0027812\u0027, isTransient \u003d false\n  Set Of String Variable \u003d\u003e Untyped value \u0027[Kermit, Piggy]\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Untyped value \u0027123\u0027, isTransient \u003d false\n  String Variable \u003d\u003e Untyped value \u0027value\u0027, isTransient \u003d false\n  Boolean Variable \u003d\u003e Untyped value \u0027true\u0027, isTransient \u003d false\n}",
+                  "value": "{\n  Double Variable \u003d\u003e Untyped value \u002712.0\u0027, isTransient \u003d false\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dTue Dec 10 22:56:59 CET 2019)\u0027, isTransient \u003d false\n  List Of String Variable \u003d\u003e Untyped value \u0027[Hello, World]\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Untyped value \u002711\u0027, isTransient \u003d false\n  Map Of String to Date Variable \u003d\u003e Untyped value \u0027{Twelve\u003dTue Dec 10 22:56:59 CET 2019, Eleven\u003dTue Dec 10 22:56:59 CET 2019}\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Untyped value \u0027Tue Dec 10 22:56:59 CET 2019\u0027, isTransient \u003d false\n  Long Variable \u003d\u003e Untyped value \u0027812\u0027, isTransient \u003d false\n  Set Of String Variable \u003d\u003e Untyped value \u0027[Kermit, Piggy]\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Untyped value \u0027123\u0027, isTransient \u003d false\n  String Variable \u003d\u003e Untyped value \u0027value\u0027, isTransient \u003d false\n  Boolean Variable \u003d\u003e Untyped value \u0027true\u0027, isTransient \u003d false\n}",
                   "argumentInfo": {
                     "argumentName": "variables",
-                    "formattedValue": "{\n  Double Variable \u003d\u003e Untyped value \u002712.0\u0027, isTransient \u003d false\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 06 22:41:59 CET 2019)\u0027, isTransient \u003d false\n  List Of String Variable \u003d\u003e Untyped value \u0027[Hello, World]\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Untyped value \u002711\u0027, isTransient \u003d false\n  Map Of String to Date Variable \u003d\u003e Untyped value \u0027{Twelve\u003dFri Dec 06 22:41:59 CET 2019, Eleven\u003dFri Dec 06 22:41:59 CET 2019}\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Untyped value \u0027Fri Dec 06 22:41:59 CET 2019\u0027, isTransient \u003d false\n  Long Variable \u003d\u003e Untyped value \u0027812\u0027, isTransient \u003d false\n  Set Of String Variable \u003d\u003e Untyped value \u0027[Kermit, Piggy]\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Untyped value \u0027123\u0027, isTransient \u003d false\n  String Variable \u003d\u003e Untyped value \u0027value\u0027, isTransient \u003d false\n  Boolean Variable \u003d\u003e Untyped value \u0027true\u0027, isTransient \u003d false\n}"
+                    "formattedValue": "{\n  Double Variable \u003d\u003e Untyped value \u002712.0\u0027, isTransient \u003d false\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dTue Dec 10 22:56:59 CET 2019)\u0027, isTransient \u003d false\n  List Of String Variable \u003d\u003e Untyped value \u0027[Hello, World]\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Untyped value \u002711\u0027, isTransient \u003d false\n  Map Of String to Date Variable \u003d\u003e Untyped value \u0027{Twelve\u003dTue Dec 10 22:56:59 CET 2019, Eleven\u003dTue Dec 10 22:56:59 CET 2019}\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Untyped value \u0027Tue Dec 10 22:56:59 CET 2019\u0027, isTransient \u003d false\n  Long Variable \u003d\u003e Untyped value \u0027812\u0027, isTransient \u003d false\n  Set Of String Variable \u003d\u003e Untyped value \u0027[Kermit, Piggy]\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Untyped value \u0027123\u0027, isTransient \u003d false\n  String Variable \u003d\u003e Untyped value \u0027value\u0027, isTransient \u003d false\n  Boolean Variable \u003d\u003e Untyped value \u0027true\u0027, isTransient \u003d false\n}"
                   }
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 22488505
+              "durationInNanos": 23071916
             },
             {
               "name": "variables had value",
@@ -91,32 +91,32 @@
                   "value": "variables had value"
                 },
                 {
-                  "value": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 06 22:41:59 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dFri Dec 06 22:41:59 CET 2019, Eleven\u003dFri Dec 06 22:41:59 CET 2019}, Date Variable\u003dFri Dec 06 22:41:59 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}",
+                  "value": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dTue Dec 10 22:56:59 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dTue Dec 10 22:56:59 CET 2019, Eleven\u003dTue Dec 10 22:56:59 CET 2019}, Date Variable\u003dTue Dec 10 22:56:59 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}",
                   "argumentInfo": {
                     "argumentName": "readValues",
-                    "formattedValue": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 06 22:41:59 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dFri Dec 06 22:41:59 CET 2019, Eleven\u003dFri Dec 06 22:41:59 CET 2019}, Date Variable\u003dFri Dec 06 22:41:59 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}"
+                    "formattedValue": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dTue Dec 10 22:56:59 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dTue Dec 10 22:56:59 CET 2019, Eleven\u003dTue Dec 10 22:56:59 CET 2019}, Date Variable\u003dTue Dec 10 22:56:59 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}"
                   }
                 },
                 {
-                  "value": "(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@55a2ca5e, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6abca7a6, Fri Dec 06 22:41:59 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@12bb8943, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@45f4c27c, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@64710a6, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@949165f, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@47f677a4, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@2472ba04, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 06 22:41:59 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@1a0e5c0c, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@5bb45afc, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@2f0b5d79, {Twelve\u003dFri Dec 06 22:41:59 CET 2019, Eleven\u003dFri Dec 06 22:41:59 CET 2019})",
+                  "value": "(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@59043128, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@642334d6, Tue Dec 10 22:56:59 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6f2b608e, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@7c55e559, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@420068a, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@79d8075c, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@4d4337f9, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1e6f7c25, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dTue Dec 10 22:56:59 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@1a7f2d34, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@23243bc0, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@770c3ca2, {Twelve\u003dTue Dec 10 22:56:59 CET 2019, Eleven\u003dTue Dec 10 22:56:59 CET 2019})",
                   "argumentInfo": {
-                    "argumentName": "basicVariableWithValue",
-                    "formattedValue": "(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@55a2ca5e, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6abca7a6, Fri Dec 06 22:41:59 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@12bb8943, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@45f4c27c, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@64710a6, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@949165f, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@47f677a4, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@2472ba04, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 06 22:41:59 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@1a0e5c0c, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@5bb45afc, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@2f0b5d79, {Twelve\u003dFri Dec 06 22:41:59 CET 2019, Eleven\u003dFri Dec 06 22:41:59 CET 2019})"
+                    "argumentName": "variableWithValue",
+                    "formattedValue": "(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@59043128, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@642334d6, Tue Dec 10 22:56:59 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6f2b608e, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@7c55e559, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@420068a, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@79d8075c, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@4d4337f9, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1e6f7c25, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dTue Dec 10 22:56:59 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@1a7f2d34, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@23243bc0, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@770c3ca2, {Twelve\u003dTue Dec 10 22:56:59 CET 2019, Eleven\u003dTue Dec 10 22:56:59 CET 2019})"
                   }
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 451866
+              "durationInNanos": 620282
             }
           ],
           "explicitArguments": [],
           "derivedArguments": [],
           "status": "SUCCESS",
           "success": true,
-          "durationInNanos": 84033057
+          "durationInNanos": 71275916
         }
       ],
-      "durationInNanos": 84033057,
+      "durationInNanos": 71275916,
       "executionStatus": "SUCCESS"
     }
   ],

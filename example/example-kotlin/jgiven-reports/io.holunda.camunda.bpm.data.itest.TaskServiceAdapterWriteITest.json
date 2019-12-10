@@ -1,0 +1,367 @@
+{
+  "className": "io.holunda.camunda.bpm.data.itest.TaskServiceAdapterWriteITest",
+  "name": "Task Service Adapter Write I",
+  "scenarios": [
+    {
+      "className": "io.holunda.camunda.bpm.data.itest.TaskServiceAdapterWriteITest",
+      "testMethodName": "should remove on task service adapter",
+      "description": "should remove on task service adapter",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "casesAsTable": false,
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "process with user task and delegate is deployed",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "process with user task and delegate is deployed"
+                },
+                {
+                  "value": "process_with_user_task",
+                  "argumentInfo": {
+                    "argumentName": "processDefinitionKey",
+                    "formattedValue": "process_with_user_task"
+                  }
+                },
+                {
+                  "value": "user_task",
+                  "argumentInfo": {
+                    "argumentName": "taskDefinitionKey",
+                    "formattedValue": "user_task"
+                  }
+                },
+                {
+                  "value": "${OptionalValueStoringUsingAdapterVariableScopeServiceDelegate}",
+                  "argumentInfo": {
+                    "argumentName": "delegateExpression",
+                    "formattedValue": "${OptionalValueStoringUsingAdapterVariableScopeServiceDelegate}"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 74190
+            },
+            {
+              "name": "get process definition",
+              "words": [
+                {
+                  "value": "and",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "get process definition"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 353855
+            },
+            {
+              "name": "process is started with variables",
+              "words": [
+                {
+                  "value": "process is started with variables"
+                },
+                {
+                  "value": "process_with_user_task",
+                  "argumentInfo": {
+                    "argumentName": "processDefinitionKey",
+                    "formattedValue": "process_with_user_task"
+                  }
+                },
+                {
+                  "value": "{\n  String Variable \u003d\u003e Value \u0027string\u0027 of type \u0027PrimitiveValueType[string]\u0027, isTransient\u003dfalse\n}",
+                  "argumentInfo": {
+                    "argumentName": "variables",
+                    "formattedValue": "{\n  String Variable \u003d\u003e Value \u0027string\u0027 of type \u0027PrimitiveValueType[string]\u0027, isTransient\u003dfalse\n}"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 28306
+            },
+            {
+              "name": "process waits in task",
+              "words": [
+                {
+                  "value": "and",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "process waits in task"
+                },
+                {
+                  "value": "user_task",
+                  "argumentInfo": {
+                    "argumentName": "taskDefinitionKey",
+                    "formattedValue": "user_task"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 3013161
+            },
+            {
+              "name": "variable are modified in task",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "variable are modified in task"
+                },
+                {
+                  "value": "(org.camunda.bpm.engine.TaskService, kotlin.String) -\u003e kotlin.Unit",
+                  "argumentInfo": {
+                    "argumentName": "taskWritingAdapter",
+                    "formattedValue": "(org.camunda.bpm.engine.TaskService, kotlin.String) -\u003e kotlin.Unit"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 22233
+            },
+            {
+              "name": "task is completed",
+              "words": [
+                {
+                  "value": "and",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "task is completed"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 10328149
+            },
+            {
+              "name": "variables had not value",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "variables had not value"
+                },
+                {
+                  "value": "{Double Variable\u003dOptional.empty, Complex Variable\u003dOptional.empty, List Of String Variable\u003dOptional.empty, Short Variable\u003dOptional.empty, Map Of String to Date Variable\u003dOptional.empty, Date Variable\u003dOptional.empty, Long Variable\u003dOptional.empty, Set Of String Variable\u003dOptional.empty, Int Variable\u003dOptional.empty, String Variable\u003dOptional.empty, Boolean Variable\u003dOptional.empty}",
+                  "argumentInfo": {
+                    "argumentName": "readValues",
+                    "formattedValue": "{Double Variable\u003dOptional.empty, Complex Variable\u003dOptional.empty, List Of String Variable\u003dOptional.empty, Short Variable\u003dOptional.empty, Map Of String to Date Variable\u003dOptional.empty, Date Variable\u003dOptional.empty, Long Variable\u003dOptional.empty, Set Of String Variable\u003dOptional.empty, Int Variable\u003dOptional.empty, String Variable\u003dOptional.empty, Boolean Variable\u003dOptional.empty}"
+                  }
+                },
+                {
+                  "value": "io.holunda.camunda.bpm.data.factory.BasicVariableFactory@59043128",
+                  "argumentInfo": {
+                    "argumentName": "variableWithValue",
+                    "formattedValue": "io.holunda.camunda.bpm.data.factory.BasicVariableFactory@59043128"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 920726
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "success": true,
+          "durationInNanos": 92459364
+        }
+      ],
+      "durationInNanos": 92459364,
+      "executionStatus": "SUCCESS"
+    },
+    {
+      "className": "io.holunda.camunda.bpm.data.itest.TaskServiceAdapterWriteITest",
+      "testMethodName": "should write to task service adapter",
+      "description": "should write to task service adapter",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "casesAsTable": false,
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "process with user task and delegate is deployed",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "process with user task and delegate is deployed"
+                },
+                {
+                  "value": "process_with_user_task",
+                  "argumentInfo": {
+                    "argumentName": "processDefinitionKey",
+                    "formattedValue": "process_with_user_task"
+                  }
+                },
+                {
+                  "value": "user_task",
+                  "argumentInfo": {
+                    "argumentName": "taskDefinitionKey",
+                    "formattedValue": "user_task"
+                  }
+                },
+                {
+                  "value": "${ValueStoringUsingAdapterVariableScopeServiceDelegate}",
+                  "argumentInfo": {
+                    "argumentName": "delegateExpression",
+                    "formattedValue": "${ValueStoringUsingAdapterVariableScopeServiceDelegate}"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 38339
+            },
+            {
+              "name": "get process definition",
+              "words": [
+                {
+                  "value": "and",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "get process definition"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 111701
+            },
+            {
+              "name": "process is started with variables",
+              "words": [
+                {
+                  "value": "process is started with variables"
+                },
+                {
+                  "value": "process_with_user_task",
+                  "argumentInfo": {
+                    "argumentName": "processDefinitionKey",
+                    "formattedValue": "process_with_user_task"
+                  }
+                },
+                {
+                  "value": "{\n}",
+                  "argumentInfo": {
+                    "argumentName": "variables",
+                    "formattedValue": "{\n}"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 22701
+            },
+            {
+              "name": "process waits in task",
+              "words": [
+                {
+                  "value": "and",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "process waits in task"
+                },
+                {
+                  "value": "user_task",
+                  "argumentInfo": {
+                    "argumentName": "taskDefinitionKey",
+                    "formattedValue": "user_task"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 2651414
+            },
+            {
+              "name": "variable are modified in task",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "variable are modified in task"
+                },
+                {
+                  "value": "(org.camunda.bpm.engine.TaskService, kotlin.String) -\u003e kotlin.Unit",
+                  "argumentInfo": {
+                    "argumentName": "taskWritingAdapter",
+                    "formattedValue": "(org.camunda.bpm.engine.TaskService, kotlin.String) -\u003e kotlin.Unit"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 24829
+            },
+            {
+              "name": "task is completed",
+              "words": [
+                {
+                  "value": "and",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "task is completed"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 17980109
+            },
+            {
+              "name": "variables had value",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "variables had value"
+                },
+                {
+                  "value": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dTue Dec 10 22:56:59 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dTue Dec 10 22:56:59 CET 2019, Eleven\u003dTue Dec 10 22:56:59 CET 2019}, Date Variable\u003dTue Dec 10 22:56:59 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}",
+                  "argumentInfo": {
+                    "argumentName": "readValues",
+                    "formattedValue": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dTue Dec 10 22:56:59 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dTue Dec 10 22:56:59 CET 2019, Eleven\u003dTue Dec 10 22:56:59 CET 2019}, Date Variable\u003dTue Dec 10 22:56:59 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}"
+                  }
+                },
+                {
+                  "value": "(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@59043128, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@642334d6, Tue Dec 10 22:56:59 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6f2b608e, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@7c55e559, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@420068a, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@79d8075c, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@4d4337f9, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1e6f7c25, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dTue Dec 10 22:56:59 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@1a7f2d34, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@23243bc0, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@770c3ca2, {Twelve\u003dTue Dec 10 22:56:59 CET 2019, Eleven\u003dTue Dec 10 22:56:59 CET 2019})",
+                  "argumentInfo": {
+                    "argumentName": "variableWithValue",
+                    "formattedValue": "(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@59043128, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@642334d6, Tue Dec 10 22:56:59 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6f2b608e, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@7c55e559, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@420068a, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@79d8075c, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@4d4337f9, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1e6f7c25, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dTue Dec 10 22:56:59 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@1a7f2d34, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@23243bc0, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@770c3ca2, {Twelve\u003dTue Dec 10 22:56:59 CET 2019, Eleven\u003dTue Dec 10 22:56:59 CET 2019})"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 1638661
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "success": true,
+          "durationInNanos": 139324293
+        }
+      ],
+      "durationInNanos": 139324293,
+      "executionStatus": "SUCCESS"
+    }
+  ],
+  "tagMap": {}
+}
