@@ -31,4 +31,14 @@ public interface WriteAdapter<T> {
    * @param isTransient allows to specify if the variable is transient.
    */
   void setLocal(T value, boolean isTransient);
+
+  /**
+   * Removes a variable from the scope.
+   */
+  void remove();
+
+  /**
+   * Removes a local variable from the scope.
+   */
+  void removeLocal();
 }

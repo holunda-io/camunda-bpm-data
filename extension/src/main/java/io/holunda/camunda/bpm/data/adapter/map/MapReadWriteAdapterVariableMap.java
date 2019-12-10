@@ -42,4 +42,15 @@ public class MapReadWriteAdapterVariableMap<K, V> extends AbstractMapReadWriteAd
   public void setLocal(Map<K, V> value, boolean isTransient) {
     throw new UnsupportedOperationException("Can't set a local variable on a variable map");
   }
+
+  @Override
+  public void remove() {
+    variableMap.remove(variableName);
+  }
+
+  @Override
+  public void removeLocal() {
+    throw new UnsupportedOperationException("Can't set a local variable on a variable map");
+  }
+
 }

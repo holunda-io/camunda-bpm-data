@@ -43,5 +43,14 @@ public class ListReadWriteAdapterTaskService<T> extends AbstractListReadWriteAda
   public void setLocal(List<T> value, boolean isTransient) {
     taskService.setVariableLocal(taskId, variableName, getTypedValue(value, isTransient));
   }
+  @Override
+  public void remove() {
+    taskService.removeVariable(taskId, variableName);
+  }
+
+  @Override
+  public void removeLocal() {
+    taskService.removeVariableLocal(taskId, variableName);
+  }
 
 }

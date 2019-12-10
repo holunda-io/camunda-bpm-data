@@ -41,4 +41,14 @@ public class SetReadWriteAdapterVariableScope<T> extends AbstractSetReadWriteAda
     variableScope.setVariableLocal(variableName, getTypedValue(value, isTransient));
   }
 
+  @Override
+  public void remove() {
+    variableScope.removeVariable(variableName);
+  }
+
+  @Override
+  public void removeLocal() {
+    variableScope.removeVariableLocal(variableName);
+  }
+
 }

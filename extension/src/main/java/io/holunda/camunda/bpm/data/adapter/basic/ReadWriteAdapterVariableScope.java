@@ -40,4 +40,13 @@ public class ReadWriteAdapterVariableScope<T> extends AbstractBasicReadWriteAdap
     return Optional.ofNullable(getOrNull(variableScope.getVariable(variableName)));
   }
 
+  @Override
+  public void remove() {
+    variableScope.removeVariable(variableName);
+  }
+
+  @Override
+  public void removeLocal() {
+    variableScope.removeVariableLocal(variableName);
+  }
 }

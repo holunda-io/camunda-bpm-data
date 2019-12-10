@@ -42,4 +42,14 @@ public class ReadWriteAdapterTaskService<T> extends AbstractBasicReadWriteAdapte
   public void setLocal(T value, boolean isTransient) {
     taskService.setVariableLocal(taskId, variableName, getTypedValue(value, isTransient));
   }
+
+  @Override
+  public void remove() {
+    taskService.removeVariable(taskId, variableName);
+  }
+
+  @Override
+  public void removeLocal() {
+    taskService.removeVariableLocal(taskId, variableName);
+  }
 }

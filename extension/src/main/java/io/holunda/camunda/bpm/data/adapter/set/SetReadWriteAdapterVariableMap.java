@@ -40,4 +40,15 @@ public class SetReadWriteAdapterVariableMap<T> extends AbstractSetReadWriteAdapt
   public void setLocal(Set<T> value, boolean isTransient) {
     throw new UnsupportedOperationException("Can't set a local variable on a variable map");
   }
+
+  @Override
+  public void remove() {
+    variableMap.remove(variableName);
+  }
+
+  @Override
+  public void removeLocal() {
+    throw new UnsupportedOperationException("Can't set a local variable on a variable map");
+  }
+
 }

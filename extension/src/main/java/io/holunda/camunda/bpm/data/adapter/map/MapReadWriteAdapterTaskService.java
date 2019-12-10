@@ -46,5 +46,14 @@ public class MapReadWriteAdapterTaskService<K, V> extends AbstractMapReadWriteAd
   public void setLocal(Map<K, V> value, boolean isTransient) {
     taskService.setVariableLocal(taskId, variableName, getTypedValue(value, isTransient));
   }
+  @Override
+  public void remove() {
+    taskService.removeVariable(taskId, variableName);
+  }
+
+  @Override
+  public void removeLocal() {
+    taskService.removeVariableLocal(taskId, variableName);
+  }
 
 }

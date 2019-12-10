@@ -43,5 +43,14 @@ public class SetReadWriteAdapterTaskService<T> extends AbstractSetReadWriteAdapt
   public void setLocal(Set<T> value, boolean isTransient) {
     taskService.setVariableLocal(taskId, variableName, getTypedValue(value, isTransient));
   }
+  @Override
+  public void remove() {
+    taskService.removeVariable(taskId, variableName);
+  }
+
+  @Override
+  public void removeLocal() {
+    taskService.removeVariableLocal(taskId, variableName);
+  }
 
 }

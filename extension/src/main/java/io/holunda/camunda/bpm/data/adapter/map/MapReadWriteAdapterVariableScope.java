@@ -42,5 +42,14 @@ public class MapReadWriteAdapterVariableScope<K, V> extends AbstractMapReadWrite
   public void setLocal(Map<K, V> value, boolean isTransient) {
     variableScope.setVariableLocal(variableName, getTypedValue(value, isTransient));
   }
+  @Override
+  public void remove() {
+    variableScope.removeVariable(variableName);
+  }
+
+  @Override
+  public void removeLocal() {
+    variableScope.removeVariableLocal(variableName);
+  }
 
 }

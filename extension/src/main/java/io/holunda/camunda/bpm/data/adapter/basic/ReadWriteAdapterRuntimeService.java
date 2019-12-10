@@ -44,4 +44,13 @@ public class ReadWriteAdapterRuntimeService<T> extends AbstractBasicReadWriteAda
     runtimeService.setVariableLocal(executionId, variableName, getTypedValue(value, isTransient));
   }
 
+  @Override
+  public void remove() {
+    runtimeService.removeVariable(executionId, variableName);
+  }
+
+  @Override
+  public void removeLocal() {
+    runtimeService.removeVariableLocal(executionId, variableName);
+  }
 }

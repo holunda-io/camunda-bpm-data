@@ -40,4 +40,13 @@ public class ReadWriteAdapterVariableMap<T> extends AbstractBasicReadWriteAdapte
     throw new UnsupportedOperationException("Can't set a local variable on a variable map");
   }
 
+  @Override
+  public void remove() {
+    variableMap.remove(variableName);
+  }
+
+  @Override
+  public void removeLocal() {
+    throw new UnsupportedOperationException("Can't set a local variable on a variable map");
+  }
 }

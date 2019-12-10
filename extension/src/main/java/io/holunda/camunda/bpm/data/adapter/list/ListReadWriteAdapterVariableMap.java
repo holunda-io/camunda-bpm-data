@@ -40,4 +40,15 @@ public class ListReadWriteAdapterVariableMap<T> extends AbstractListReadWriteAda
   public void setLocal(List<T> value, boolean isTransient) {
     throw new UnsupportedOperationException("Can't set a local variable on a variable map");
   }
+
+  @Override
+  public void remove() {
+    variableMap.remove(variableName);
+  }
+
+  @Override
+  public void removeLocal() {
+    throw new UnsupportedOperationException("Can't set a local variable on a variable map");
+  }
+
 }

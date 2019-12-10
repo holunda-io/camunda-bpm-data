@@ -43,4 +43,13 @@ public class ListReadWriteAdapterRuntimeService<T> extends AbstractListReadWrite
   public void setLocal(List<T> value, boolean isTransient) {
     runtimeService.setVariableLocal(executionId, variableName, getTypedValue(value, isTransient));
   }
+  @Override
+  public void remove() {
+    runtimeService.removeVariable(executionId, variableName);
+  }
+
+  @Override
+  public void removeLocal() {
+    runtimeService.removeVariableLocal(executionId, variableName);
+  }
 }
