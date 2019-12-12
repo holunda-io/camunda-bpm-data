@@ -2,6 +2,7 @@ package io.holunda.camunda.bpm.data.adapter.basic;
 
 import io.holunda.camunda.bpm.data.adapter.AbstractReadWriteAdapter;
 import io.holunda.camunda.bpm.data.adapter.ValueWrapperUtil;
+import io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException;
 import org.camunda.bpm.engine.variable.value.TypedValue;
 
 /**
@@ -39,7 +40,7 @@ public abstract class AbstractBasicReadWriteAdapter<T> extends AbstractReadWrite
     if (clazz.isAssignableFrom(value.getClass())) {
       return (T) value;
     }
-    throw new IllegalStateException("Error reading " + variableName + ": Couldn't read value of " + clazz + " from " + value);
+    throw new WrongVariableTypeException("Error reading " + variableName + ": Couldn't read value of " + clazz + " from " + value);
   }
 
   /**

@@ -2,6 +2,7 @@ package io.holunda.camunda.bpm.data.adapter.set;
 
 import io.holunda.camunda.bpm.data.adapter.AbstractReadWriteAdapter;
 import io.holunda.camunda.bpm.data.adapter.ValueWrapperUtil;
+import io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException;
 import org.camunda.bpm.engine.variable.value.TypedValue;
 
 import java.util.Collections;
@@ -47,12 +48,12 @@ public abstract class AbstractSetReadWriteAdapter<T> extends AbstractReadWriteAd
         if (memberClazz.isAssignableFrom(valueAsList.iterator().next().getClass())) {
           return (Set<T>) valueAsList;
         } else {
-          throw new IllegalStateException("Error reading " + variableName + ": Wrong set type detected, expected " + memberClazz.getName() + ", but was not found in " + valueAsList);
+          throw new WrongVariableTypeException("Error reading " + variableName + ": Wrong set type detected, expected " + memberClazz.getName() + ", but was not found in " + valueAsList);
         }
       }
     }
 
-    throw new IllegalStateException("Error reading " + variableName + ": Couldn't read value of type Set from " + value);
+    throw new WrongVariableTypeException("Error reading " + variableName + ": Couldn't read value of type Set from " + value);
   }
 
   /**

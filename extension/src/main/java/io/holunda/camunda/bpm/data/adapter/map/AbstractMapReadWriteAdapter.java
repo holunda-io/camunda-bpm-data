@@ -2,6 +2,7 @@ package io.holunda.camunda.bpm.data.adapter.map;
 
 import io.holunda.camunda.bpm.data.adapter.AbstractReadWriteAdapter;
 import io.holunda.camunda.bpm.data.adapter.ValueWrapperUtil;
+import io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException;
 import org.camunda.bpm.engine.variable.value.TypedValue;
 
 import java.util.Collections;
@@ -59,14 +60,14 @@ public abstract class AbstractMapReadWriteAdapter<K, V> extends AbstractReadWrit
         if (keyClazz.isAssignableFrom(entry.getKey().getClass()) && valueClazz.isAssignableFrom(entry.getValue().getClass())) {
           return (Map<K, V>) valueAsMap;
         } else {
-          throw new IllegalStateException("Error reading " + variableName + ": Wrong map type detected, expected Map<"
+          throw new WrongVariableTypeException("Error reading " + variableName + ": Wrong map type detected, expected Map<"
                                             + keyClazz.getName() + "," + valueClazz.getName()
                                             + ", but was not found in " + valueAsMap);
         }
       }
     }
 
-    throw new IllegalStateException("Error reading " + variableName + ": Couldn't read value of type Map from " + value);
+    throw new WrongVariableTypeException("Error reading " + variableName + ": Couldn't read value of type Map from " + value);
   }
 
   /**

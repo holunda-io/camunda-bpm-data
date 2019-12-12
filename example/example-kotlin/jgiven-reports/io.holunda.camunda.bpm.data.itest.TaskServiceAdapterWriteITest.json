@@ -39,15 +39,15 @@
                   }
                 },
                 {
-                  "value": "${OptionalValueStoringUsingAdapterVariableScopeServiceDelegate}",
+                  "value": "${readOptionalFromVariableScope}",
                   "argumentInfo": {
                     "argumentName": "delegateExpression",
-                    "formattedValue": "${OptionalValueStoringUsingAdapterVariableScopeServiceDelegate}"
+                    "formattedValue": "${readOptionalFromVariableScope}"
                   }
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 74190
+              "durationInNanos": 67195
             },
             {
               "name": "get process definition",
@@ -61,7 +61,7 @@
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 353855
+              "durationInNanos": 249336
             },
             {
               "name": "process is started with variables",
@@ -77,15 +77,15 @@
                   }
                 },
                 {
-                  "value": "{\n  String Variable \u003d\u003e Value \u0027string\u0027 of type \u0027PrimitiveValueType[string]\u0027, isTransient\u003dfalse\n}",
+                  "value": "{\n  String Variable \u003d\u003e Untyped value \u0027value\u0027, isTransient \u003d false\n}",
                   "argumentInfo": {
                     "argumentName": "variables",
-                    "formattedValue": "{\n  String Variable \u003d\u003e Value \u0027string\u0027 of type \u0027PrimitiveValueType[string]\u0027, isTransient\u003dfalse\n}"
+                    "formattedValue": "{\n  String Variable \u003d\u003e Untyped value \u0027value\u0027, isTransient \u003d false\n}"
                   }
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 28306
+              "durationInNanos": 67422
             },
             {
               "name": "process waits in task",
@@ -106,28 +106,28 @@
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 3013161
+              "durationInNanos": 23784492
             },
             {
-              "name": "variable are modified in task",
+              "name": "task is accessed in user task",
               "words": [
                 {
                   "value": "When",
                   "isIntroWord": true
                 },
                 {
-                  "value": "variable are modified in task"
+                  "value": "task is accessed in user task"
                 },
                 {
                   "value": "(org.camunda.bpm.engine.TaskService, kotlin.String) -\u003e kotlin.Unit",
                   "argumentInfo": {
-                    "argumentName": "taskWritingAdapter",
+                    "argumentName": "taskServiceTaskCallback",
                     "formattedValue": "(org.camunda.bpm.engine.TaskService, kotlin.String) -\u003e kotlin.Unit"
                   }
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 22233
+              "durationInNanos": 58553
             },
             {
               "name": "task is completed",
@@ -141,7 +141,7 @@
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 10328149
+              "durationInNanos": 32818097
             },
             {
               "name": "variables had not value",
@@ -161,25 +161,25 @@
                   }
                 },
                 {
-                  "value": "io.holunda.camunda.bpm.data.factory.BasicVariableFactory@59043128",
+                  "value": "io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6c851821",
                   "argumentInfo": {
                     "argumentName": "variableWithValue",
-                    "formattedValue": "io.holunda.camunda.bpm.data.factory.BasicVariableFactory@59043128"
+                    "formattedValue": "io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6c851821"
                   }
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 920726
+              "durationInNanos": 867164
             }
           ],
           "explicitArguments": [],
           "derivedArguments": [],
           "status": "SUCCESS",
           "success": true,
-          "durationInNanos": 92459364
+          "durationInNanos": 193179833
         }
       ],
-      "durationInNanos": 92459364,
+      "durationInNanos": 193179833,
       "executionStatus": "SUCCESS"
     },
     {
@@ -219,15 +219,15 @@
                   }
                 },
                 {
-                  "value": "${ValueStoringUsingAdapterVariableScopeServiceDelegate}",
+                  "value": "${readFromVariableScope}",
                   "argumentInfo": {
                     "argumentName": "delegateExpression",
-                    "formattedValue": "${ValueStoringUsingAdapterVariableScopeServiceDelegate}"
+                    "formattedValue": "${readFromVariableScope}"
                   }
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 38339
+              "durationInNanos": 84686
             },
             {
               "name": "get process definition",
@@ -241,7 +241,7 @@
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 111701
+              "durationInNanos": 222484
             },
             {
               "name": "process is started with variables",
@@ -265,7 +265,7 @@
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 22701
+              "durationInNanos": 48435
             },
             {
               "name": "process waits in task",
@@ -286,28 +286,28 @@
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 2651414
+              "durationInNanos": 12295778
             },
             {
-              "name": "variable are modified in task",
+              "name": "task is accessed in user task",
               "words": [
                 {
                   "value": "When",
                   "isIntroWord": true
                 },
                 {
-                  "value": "variable are modified in task"
+                  "value": "task is accessed in user task"
                 },
                 {
                   "value": "(org.camunda.bpm.engine.TaskService, kotlin.String) -\u003e kotlin.Unit",
                   "argumentInfo": {
-                    "argumentName": "taskWritingAdapter",
+                    "argumentName": "taskServiceTaskCallback",
                     "formattedValue": "(org.camunda.bpm.engine.TaskService, kotlin.String) -\u003e kotlin.Unit"
                   }
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 24829
+              "durationInNanos": 39111
             },
             {
               "name": "task is completed",
@@ -321,7 +321,7 @@
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 17980109
+              "durationInNanos": 43051388
             },
             {
               "name": "variables had value",
@@ -334,32 +334,32 @@
                   "value": "variables had value"
                 },
                 {
-                  "value": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dTue Dec 10 22:56:59 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dTue Dec 10 22:56:59 CET 2019, Eleven\u003dTue Dec 10 22:56:59 CET 2019}, Date Variable\u003dTue Dec 10 22:56:59 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}",
+                  "value": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 15:39:30 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dThu Dec 12 15:39:30 CET 2019, Eleven\u003dThu Dec 12 15:39:30 CET 2019}, Date Variable\u003dThu Dec 12 15:39:30 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}",
                   "argumentInfo": {
                     "argumentName": "readValues",
-                    "formattedValue": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dTue Dec 10 22:56:59 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dTue Dec 10 22:56:59 CET 2019, Eleven\u003dTue Dec 10 22:56:59 CET 2019}, Date Variable\u003dTue Dec 10 22:56:59 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}"
+                    "formattedValue": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 15:39:30 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dThu Dec 12 15:39:30 CET 2019, Eleven\u003dThu Dec 12 15:39:30 CET 2019}, Date Variable\u003dThu Dec 12 15:39:30 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}"
                   }
                 },
                 {
-                  "value": "(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@59043128, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@642334d6, Tue Dec 10 22:56:59 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6f2b608e, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@7c55e559, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@420068a, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@79d8075c, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@4d4337f9, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1e6f7c25, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dTue Dec 10 22:56:59 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@1a7f2d34, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@23243bc0, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@770c3ca2, {Twelve\u003dTue Dec 10 22:56:59 CET 2019, Eleven\u003dTue Dec 10 22:56:59 CET 2019})",
+                  "value": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6c851821, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@4c0930c4, Thu Dec 12 15:39:30 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@75c0cd39, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@7cf66cf9, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@38f63756, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@3d7caf9c, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@4e26040f, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1782896, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 15:39:30 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@8bde368, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@5065bdac, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@2e9dcdd3, {Twelve\u003dThu Dec 12 15:39:30 CET 2019, Eleven\u003dThu Dec 12 15:39:30 CET 2019})]",
                   "argumentInfo": {
-                    "argumentName": "variableWithValue",
-                    "formattedValue": "(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@59043128, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@642334d6, Tue Dec 10 22:56:59 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6f2b608e, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@7c55e559, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@420068a, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@79d8075c, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@4d4337f9, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1e6f7c25, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dTue Dec 10 22:56:59 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@1a7f2d34, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@23243bc0, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@770c3ca2, {Twelve\u003dTue Dec 10 22:56:59 CET 2019, Eleven\u003dTue Dec 10 22:56:59 CET 2019})"
+                    "argumentName": "variablesWithValue",
+                    "formattedValue": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6c851821, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@4c0930c4, Thu Dec 12 15:39:30 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@75c0cd39, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@7cf66cf9, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@38f63756, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@3d7caf9c, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@4e26040f, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1782896, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 15:39:30 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@8bde368, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@5065bdac, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@2e9dcdd3, {Twelve\u003dThu Dec 12 15:39:30 CET 2019, Eleven\u003dThu Dec 12 15:39:30 CET 2019})]"
                   }
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 1638661
+              "durationInNanos": 679176
             }
           ],
           "explicitArguments": [],
           "derivedArguments": [],
           "status": "SUCCESS",
           "success": true,
-          "durationInNanos": 139324293
+          "durationInNanos": 247570515
         }
       ],
-      "durationInNanos": 139324293,
+      "durationInNanos": 247570515,
       "executionStatus": "SUCCESS"
     }
   ],

@@ -2,6 +2,7 @@ package io.holunda.camunda.bpm.data.adapter.list;
 
 import io.holunda.camunda.bpm.data.adapter.AbstractReadWriteAdapter;
 import io.holunda.camunda.bpm.data.adapter.ValueWrapperUtil;
+import io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException;
 import org.camunda.bpm.engine.variable.value.TypedValue;
 
 import java.util.Collections;
@@ -51,12 +52,12 @@ public abstract class AbstractListReadWriteAdapter<T> extends AbstractReadWriteA
         if (memberClazz.isAssignableFrom(valueAsList.iterator().next().getClass())) {
           return (List<T>) valueAsList;
         } else {
-          throw new IllegalStateException("Error reading " + variableName + ": Wrong list type detected, expected " + memberClazz.getName() + ", but was not found in " + valueAsList);
+          throw new WrongVariableTypeException("Error reading " + variableName + ": Wrong list type detected, expected " + memberClazz.getName() + ", but was not found in " + valueAsList);
         }
       }
     }
 
-    throw new IllegalStateException("Error reading " + variableName + ": Couldn't read value of type List from " + value);
+    throw new WrongVariableTypeException("Error reading " + variableName + ": Couldn't read value of type List from " + value);
   }
 
   /**
