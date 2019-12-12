@@ -1,4 +1,4 @@
-package io.holunda.camunda.bpm.data.spin
+package io.holunda.camunda.bpm.data.example.spin
 
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.KotlinModule

@@ -1,0 +1,17 @@
+server:
+  port: 8087
+spring:
+  application:
+    name: Camunda BPM Data Kotlin Example
+  jpa:
+    open-in-view: true
+camunda:
+  bpm:
+    filter:
+      create: All Tasks
+    admin-user:
+      id: admin
+      email: admin@localhost.local
+      first-name: Administrat
+      last-name: Administratius
+

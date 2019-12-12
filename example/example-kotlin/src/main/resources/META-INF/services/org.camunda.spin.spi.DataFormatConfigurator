@@ -1,1 +1,1 @@
-io.holunda.camunda.bpm.data.spin.JacksonDataFormatConfigurator
+io.holunda.camunda.bpm.data.example.spin.JacksonDataFormatConfigurator

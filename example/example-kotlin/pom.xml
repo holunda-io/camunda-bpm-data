@@ -17,6 +17,12 @@
     <jacoco.skip>false</jacoco.skip>
   </properties>
 
-
+  <dependencies>
+    <dependency>
+      <groupId>io.toolisticon.springboot</groupId>
+      <artifactId>springboot-swagger-starter</artifactId>
+      <version>0.0.4</version>
+    </dependency>
+  </dependencies>
 
 </project>
