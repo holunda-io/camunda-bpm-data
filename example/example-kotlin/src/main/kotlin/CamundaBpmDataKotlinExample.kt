@@ -1,6 +1,6 @@
-package io.holunda.camunda.bpm.data.example
+package io.holunda.camunda.bpm.data.example.kotlin
 
-import io.holunda.camunda.bpm.data.example.process.OrderDeliveryInstanceFactory
+import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApprovalInstanceFactory
 import mu.KLogging
 import org.camunda.bpm.engine.RepositoryService
 import org.camunda.bpm.spring.boot.starter.annotation.EnableProcessApplication
@@ -19,13 +19,10 @@ class CamundaBpmDataKotlinExampleApplication {
   companion object : KLogging()
 
   @Autowired
-  lateinit var orderDeliveryInstanceFactory: OrderDeliveryInstanceFactory
-
-  @Autowired
-  lateinit var repositoryService: RepositoryService
+  lateinit var orderApprovalInstanceFactory: OrderApprovalInstanceFactory
 
   @EventListener
   fun onDeploy(event: PostDeployEvent) {
-    orderDeliveryInstanceFactory.start()
+    orderApprovalInstanceFactory.start()
   }
 }

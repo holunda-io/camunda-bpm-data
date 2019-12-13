@@ -1,4 +1,10 @@
-spring.jpa.open-in-view: true
+server:
+  port: 8087
+spring:
+  application:
+    name: Camunda BPM Data Java Example
+  jpa:
+    open-in-view: true
 camunda:
   bpm:
     admin-user:

@@ -1,9 +1,8 @@
-package io.holunda.camunda.bpm.data.example.rest
+package io.holunda.camunda.bpm.data.example.kotlin.rest
 
-import io.holunda.camunda.bpm.data.example.domain.Order
-import io.holunda.camunda.bpm.data.example.process.OrderDelivery.Variables.ORDER
-import io.holunda.camunda.bpm.data.example.process.OrderDelivery.Variables.ORDER_APPROVED
-import io.holunda.camunda.bpm.data.example.process.OrderDeliveryInstanceFactory
+import io.holunda.camunda.bpm.data.example.kotlin.domain.Order
+import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER
+import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_APPROVED
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.variable.Variables.createVariables
 import org.springframework.http.ResponseEntity

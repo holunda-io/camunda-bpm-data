@@ -1,13 +1,13 @@
-package io.holunda.camunda.bpm.data.example.process
+package io.holunda.camunda.bpm.data.example.kotlin.process
 
 import io.holunda.camunda.bpm.data.CamundaBpmData.*
-import io.holunda.camunda.bpm.data.example.domain.Order
-import io.holunda.camunda.bpm.data.example.domain.OrderPosition
-import io.holunda.camunda.bpm.data.example.process.OrderDelivery.Variables.ORDER
-import io.holunda.camunda.bpm.data.example.process.OrderDelivery.Variables.ORDER_ID
-import io.holunda.camunda.bpm.data.example.process.OrderDelivery.Variables.ORDER_POSITION
-import io.holunda.camunda.bpm.data.example.process.OrderDelivery.Variables.ORDER_TOTAL
-import io.holunda.camunda.bpm.data.example.service.OrderRepository
+import io.holunda.camunda.bpm.data.example.kotlin.domain.Order
+import io.holunda.camunda.bpm.data.example.kotlin.domain.OrderPosition
+import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER
+import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_ID
+import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_POSITION
+import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_TOTAL
+import io.holunda.camunda.bpm.data.example.kotlin.service.OrderRepository
 import mu.KLogging
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.DelegateTask
@@ -20,13 +20,13 @@ import org.springframework.context.event.EventListener
 import java.math.BigDecimal
 
 @Configuration
-class OrderDelivery {
+class OrderApproval {
 
   @Autowired
   lateinit var orderRepository: OrderRepository
 
   companion object : KLogging() {
-    const val KEY = "order-delivery"
+    const val KEY = "order-approval"
   }
 
   object Variables {
@@ -41,30 +41,30 @@ class OrderDelivery {
    * Load a primitive variable by id (string) and store a complex variable (order).
    */
   @Bean
-  fun loadOrder() = JavaDelegate { delegateExpression ->
-    val orderId = ORDER_ID.from(delegateExpression).get()
+  fun loadOrder() = JavaDelegate { execution ->
+    val orderId = ORDER_ID.from(execution).get()
     val order = orderRepository.loadOrder(orderId)
-    ORDER.on(delegateExpression).set(order)
+    ORDER.on(execution).set(order)
   }
 
   /**
    * Load a local order position, write a local variable.
    */
   @Bean
-  fun deliverOrderPositions() = JavaDelegate { delegateExpression ->
-    val orderPosition = ORDER_POSITION.from(delegateExpression).get()
-    val oldTotal = ORDER_TOTAL.from(delegateExpression).optional.orElse(BigDecimal.ZERO)
+  fun calculateOrderPositions() = JavaDelegate { execution ->
+    val orderPosition = ORDER_POSITION.from(execution).get()
+    val oldTotal = ORDER_TOTAL.from(execution).optional.orElse(BigDecimal.ZERO)
     val newTotal = oldTotal.plus(orderPosition.netCost.times(BigDecimal.valueOf(orderPosition.amount)))
-    ORDER_TOTAL.on(delegateExpression).setLocal(newTotal)
+    ORDER_TOTAL.on(execution).setLocal(newTotal)
   }
 
   /**
    * Read a local variable and store it in global variable.
    */
   @Bean
-  fun writeOrderTotal() = ExecutionListener { delegateExecution ->
-    val total = ORDER_TOTAL.from(delegateExecution).get()
-    ORDER_TOTAL.on(delegateExecution).set(total)
+  fun writeOrderTotal() = ExecutionListener { execution ->
+    val total = ORDER_TOTAL.from(execution).get()
+    ORDER_TOTAL.on(execution).set(total)
   }
 
   /**

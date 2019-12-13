@@ -1,7 +1,7 @@
-package io.holunda.camunda.bpm.data.example.service
+package io.holunda.camunda.bpm.data.example.kotlin.service
 
-import io.holunda.camunda.bpm.data.example.domain.Order
-import io.holunda.camunda.bpm.data.example.domain.OrderPosition
+import io.holunda.camunda.bpm.data.example.kotlin.domain.Order
+import io.holunda.camunda.bpm.data.example.kotlin.domain.OrderPosition
 import org.springframework.stereotype.Component
 import java.math.BigDecimal
 import java.sql.Date

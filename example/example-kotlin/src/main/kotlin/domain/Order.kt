@@ -1,4 +1,4 @@
-package io.holunda.camunda.bpm.data.example.domain
+package io.holunda.camunda.bpm.data.example.kotlin.domain
 
 import java.util.*
 
