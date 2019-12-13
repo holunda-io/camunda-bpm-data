@@ -78,6 +78,20 @@ class VariableScopeAdapterITest : CamundaBpmDataITestBase() {
       .process_is_started_with_variables(variables = createVariableMapUntyped())
   }
 
+  @Test
+  fun `should write to local variable scope and read`() {
+
+    given()
+      .process_with_modifying_delegate_is_deployed(
+        modifyingDelegateExpression = "\${${DelegateConfiguration::writeVariablesToScopeAndLocal.name}}",
+        delegateExpression = "\${${DelegateConfiguration::readFromVariableScope.name}}"
+      )
+    whenever()
+      .process_is_started_with_variables(variables = createVariables())
+    then()
+      .variables_had_value(readValues = delegateConfiguration.vars, variablesWithValue = createKeyLocalValuePairs())
+  }
+
 }
 
 

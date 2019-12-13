@@ -11,21 +11,31 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest
 import io.holunda.camunda.bpm.data.CamundaBpmData.*
 import io.holunda.camunda.bpm.data.factory.VariableFactory
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.BOOLEAN
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.BOOLEAN_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.DATE
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.DATE_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.DOUBLE
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.DOUBLE_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.INT
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.INT_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LIST_STRING
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LIST_STRING_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LONG
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LONG_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.MAP_STRING_DATE
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.MAP_STRING_DATE_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SET_STRING
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SET_STRING_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SHORT
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SHORT_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.STRING
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.STRING_LOCAL
 import org.assertj.core.api.Assertions.assertThat
 import org.camunda.bpm.engine.RepositoryService
 import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
-import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.JavaDelegate
 import org.camunda.bpm.engine.repository.ProcessDefinition
 import org.camunda.bpm.engine.runtime.ProcessInstance
@@ -45,6 +55,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.junit4.SpringRunner
 import java.time.Instant
+import java.time.temporal.ChronoUnit
 import java.util.*
 
 /**
@@ -76,6 +87,7 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
 
     object Values {
       private val now = Date.from(Instant.now())
+      private val yesterday = Date.from(Instant.now().minus(1, ChronoUnit.DAYS))
 
       val STRING = VariableValue(STRING_VAR, "value")
       val DATE = VariableValue(DATE_VAR, now)
@@ -88,6 +100,18 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       val LIST_STRING = VariableValue(LIST_STRING_VAR, listOf("Hello", "World"))
       val SET_STRING = VariableValue(SET_STRING_VAR, setOf("Kermit", "Piggy"))
       val MAP_STRING_DATE = VariableValue(MAP_STRING_DATE_VAR, mapOf("Twelve" to now, "Eleven" to now))
+
+      val STRING_LOCAL = VariableValue(STRING_VAR, "localValue")
+      val DATE_LOCAL = VariableValue(DATE_VAR, yesterday)
+      val SHORT_LOCAL = VariableValue(SHORT_VAR, 12.toShort())
+      val INT_LOCAL = VariableValue(INT_VAR, 124)
+      val LONG_LOCAL = VariableValue(LONG_VAR, 815L)
+      val DOUBLE_LOCAL = VariableValue(DOUBLE_VAR, 14.0)
+      val BOOLEAN_LOCAL = VariableValue(BOOLEAN_VAR, false)
+      val COMPLEX_LOCAL = VariableValue(COMPLEX_VAR, ComplexDataStructure("foobar", 12, yesterday))
+      val LIST_STRING_LOCAL = VariableValue(LIST_STRING_VAR, listOf("Foo", "Bar"))
+      val SET_STRING_LOCAL = VariableValue(SET_STRING_VAR, setOf("Homer", "Marge"))
+      val MAP_STRING_DATE_LOCAL = VariableValue(MAP_STRING_DATE_VAR, mapOf("Ten" to yesterday, "Nine" to yesterday))
     }
 
     private val allValues = mapOf(
@@ -104,6 +128,20 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       MAP_STRING_DATE_VAR to MAP_STRING_DATE
     )
 
+    private val allLocalValues = mapOf(
+      STRING_VAR to STRING_LOCAL,
+      DATE_VAR to DATE_LOCAL,
+      SHORT_VAR to SHORT_LOCAL,
+      INT_VAR to INT_LOCAL,
+      LONG_VAR to LONG_LOCAL,
+      DOUBLE_VAR to DOUBLE_LOCAL,
+      BOOLEAN_VAR to BOOLEAN_LOCAL,
+      COMPLEX_VAR to COMPLEX_LOCAL,
+      LIST_STRING_VAR to LIST_STRING_LOCAL,
+      SET_STRING_VAR to SET_STRING_LOCAL,
+      MAP_STRING_DATE_VAR to MAP_STRING_DATE_LOCAL
+    )
+
     fun createVariableMapUntyped(): VariableMap {
       val variables = createVariables();
       allValues.values.forEach {
@@ -114,6 +152,10 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
 
     fun createKeyValuePairs(): Set<Pair<VariableFactory<out Any>, Any>> {
       return allValues.entries.map { Pair(it.key, it.value.value) }.toSet()
+    }
+
+    fun createKeyLocalValuePairs(): Set<Pair<VariableFactory<out Any>, Any>> {
+      return allLocalValues.entries.map { Pair(it.key, it.value.value) }.toSet()
     }
   }
 
@@ -196,6 +238,33 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       LIST_STRING_VAR.on(delegateExecution).set(LIST_STRING.value)
       SET_STRING_VAR.on(delegateExecution).set(SET_STRING.value)
       MAP_STRING_DATE_VAR.on(delegateExecution).set(MAP_STRING_DATE.value)
+    }
+
+    @Bean
+    fun writeVariablesToScopeAndLocal() = JavaDelegate { delegateExecution ->
+      STRING_VAR.on(delegateExecution).set(STRING.value)
+      DATE_VAR.on(delegateExecution).set(DATE.value)
+      SHORT_VAR.on(delegateExecution).set(SHORT.value)
+      INT_VAR.on(delegateExecution).set(INT.value)
+      LONG_VAR.on(delegateExecution).set(LONG.value)
+      DOUBLE_VAR.on(delegateExecution).set(DOUBLE.value)
+      BOOLEAN_VAR.on(delegateExecution).set(BOOLEAN.value)
+      COMPLEX_VAR.on(delegateExecution).set(COMPLEX.value)
+      LIST_STRING_VAR.on(delegateExecution).set(LIST_STRING.value)
+      SET_STRING_VAR.on(delegateExecution).set(SET_STRING.value)
+      MAP_STRING_DATE_VAR.on(delegateExecution).set(MAP_STRING_DATE.value)
+
+      STRING_VAR.on(delegateExecution).set(STRING_LOCAL.value)
+      DATE_VAR.on(delegateExecution).set(DATE_LOCAL.value)
+      SHORT_VAR.on(delegateExecution).set(SHORT_LOCAL.value)
+      INT_VAR.on(delegateExecution).set(INT_LOCAL.value)
+      LONG_VAR.on(delegateExecution).set(LONG_LOCAL.value)
+      DOUBLE_VAR.on(delegateExecution).set(DOUBLE_LOCAL.value)
+      BOOLEAN_VAR.on(delegateExecution).set(BOOLEAN_LOCAL.value)
+      COMPLEX_VAR.on(delegateExecution).set(COMPLEX_LOCAL.value)
+      LIST_STRING_VAR.on(delegateExecution).set(LIST_STRING_LOCAL.value)
+      SET_STRING_VAR.on(delegateExecution).set(SET_STRING_LOCAL.value)
+      MAP_STRING_DATE_VAR.on(delegateExecution).set(MAP_STRING_DATE_LOCAL.value)
     }
 
     @Bean
