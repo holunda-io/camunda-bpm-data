@@ -150,6 +150,53 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
     thrown.expect(UnsupportedOperationException::class.java)
     MAP_STRING_DATE_VAR.on(createVariableMapUntyped()).removeLocal()
   }
+  @Test
+  fun `should throw correct NSO on basic getLocal exception`() {
+    thrown.expect(UnsupportedOperationException::class.java)
+    STRING_VAR.from(createVariableMapUntyped()).local
+  }
+
+  @Test
+  fun `should throw correct NSO on list getLocal exception`() {
+    thrown.expect(UnsupportedOperationException::class.java)
+    LIST_STRING_VAR.from(createVariableMapUntyped()).local
+  }
+
+  @Test
+  fun `should throw correct NSO on set getLocal exception`() {
+    thrown.expect(UnsupportedOperationException::class.java)
+    SET_STRING_VAR.from(createVariableMapUntyped()).local
+  }
+
+  @Test
+  fun `should throw correct NSO on map getLocal exception`() {
+    thrown.expect(UnsupportedOperationException::class.java)
+    MAP_STRING_DATE_VAR.from(createVariableMapUntyped()).local
+  }
+
+  @Test
+  fun `should throw correct NSO on basic getLocalOptional exception`() {
+    thrown.expect(UnsupportedOperationException::class.java)
+    STRING_VAR.from(createVariableMapUntyped()).localOptional
+  }
+
+  @Test
+  fun `should throw correct NSO on list getLocalOptional exception`() {
+    thrown.expect(UnsupportedOperationException::class.java)
+    LIST_STRING_VAR.from(createVariableMapUntyped()).localOptional
+  }
+
+  @Test
+  fun `should throw correct NSO on set getLocalOptional exception`() {
+    thrown.expect(UnsupportedOperationException::class.java)
+    SET_STRING_VAR.from(createVariableMapUntyped()).localOptional
+  }
+
+  @Test
+  fun `should throw correct NSO on map getLocalOptional exception`() {
+    thrown.expect(UnsupportedOperationException::class.java)
+    MAP_STRING_DATE_VAR.from(createVariableMapUntyped()).localOptional
+  }
 
   @Test
   fun `should throw correct WVT exception on basic`() {
