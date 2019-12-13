@@ -38,6 +38,7 @@ import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.delegate.JavaDelegate
 import org.camunda.bpm.engine.delegate.TaskListener
+import org.camunda.bpm.engine.delegate.VariableScope
 import org.camunda.bpm.engine.repository.ProcessDefinition
 import org.camunda.bpm.engine.runtime.ProcessInstance
 import org.camunda.bpm.engine.task.Task
@@ -204,32 +205,29 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
 
     @Bean
     fun readLocalFromVariableScope() = JavaDelegate { delegateExecution ->
-      vars[STRING_VAR.name] = STRING_VAR.from(delegateExecution).local
-      vars[DATE_VAR.name] = DATE_VAR.from(delegateExecution).local
-      vars[SHORT_VAR.name] = SHORT_VAR.from(delegateExecution).local
-      vars[INT_VAR.name] = INT_VAR.from(delegateExecution).local
-      vars[LONG_VAR.name] = LONG_VAR.from(delegateExecution).local
-      vars[DOUBLE_VAR.name] = DOUBLE_VAR.from(delegateExecution).local
-      vars[BOOLEAN_VAR.name] = BOOLEAN_VAR.from(delegateExecution).local
-      vars[COMPLEX_VAR.name] = COMPLEX_VAR.from(delegateExecution).local
-      vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(delegateExecution).local
-      vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(delegateExecution).local
-      vars[MAP_STRING_DATE_VAR.name] = MAP_STRING_DATE_VAR.from(delegateExecution).local
+      readLocalVarsFromVariableScope(variableScope = delegateExecution)
     }
 
     @Bean
     fun readLocalFromDelegateTask() = TaskListener { delegateTask ->
-      vars[STRING_VAR.name] = STRING_VAR.from(delegateTask).local
-      vars[DATE_VAR.name] = DATE_VAR.from(delegateTask).local
-      vars[SHORT_VAR.name] = SHORT_VAR.from(delegateTask).local
-      vars[INT_VAR.name] = INT_VAR.from(delegateTask).local
-      vars[LONG_VAR.name] = LONG_VAR.from(delegateTask).local
-      vars[DOUBLE_VAR.name] = DOUBLE_VAR.from(delegateTask).local
-      vars[BOOLEAN_VAR.name] = BOOLEAN_VAR.from(delegateTask).local
-      vars[COMPLEX_VAR.name] = COMPLEX_VAR.from(delegateTask).local
-      vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(delegateTask).local
-      vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(delegateTask).local
-      vars[MAP_STRING_DATE_VAR.name] = MAP_STRING_DATE_VAR.from(delegateTask).local
+      readLocalVarsFromVariableScope(variableScope = delegateTask)
+    }
+
+    /**
+     * Writes local properties from variable scope.
+     */
+    private fun readLocalVarsFromVariableScope(variableScope: VariableScope) {
+      vars[STRING_VAR.name] = STRING_VAR.from(variableScope).local
+      vars[DATE_VAR.name] = DATE_VAR.from(variableScope).local
+      vars[SHORT_VAR.name] = SHORT_VAR.from(variableScope).local
+      vars[INT_VAR.name] = INT_VAR.from(variableScope).local
+      vars[LONG_VAR.name] = LONG_VAR.from(variableScope).local
+      vars[DOUBLE_VAR.name] = DOUBLE_VAR.from(variableScope).local
+      vars[BOOLEAN_VAR.name] = BOOLEAN_VAR.from(variableScope).local
+      vars[COMPLEX_VAR.name] = COMPLEX_VAR.from(variableScope).local
+      vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(variableScope).local
+      vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(variableScope).local
+      vars[MAP_STRING_DATE_VAR.name] = MAP_STRING_DATE_VAR.from(variableScope).local
     }
 
     @Bean
@@ -332,10 +330,7 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
   @ComponentScan
   @SpringBootConfiguration
   @EnableAutoConfiguration
-  class TestApplication {
-
-  }
-
+  class TestApplication
 }
 
 
