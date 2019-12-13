@@ -22,4 +22,18 @@ public interface ReadAdapter<T> {
    */
   Optional<T> getOptional();
 
+  /**
+   * Reads a local variable.
+   * @return value.
+   * @exception IllegalStateException if the required variable is missing or can't be read.
+   */
+  T getLocal();
+
+  /**
+   * Reads a local variable and returns a value if exists or an empty.
+   * @return optional.
+   * @exception IllegalStateException if the required variable can't be read.
+   */
+  Optional<T> getLocalOptional();
+
 }

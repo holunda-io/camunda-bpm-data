@@ -37,6 +37,11 @@ public class ListReadWriteAdapterVariableScope<T> extends AbstractListReadWriteA
   }
 
   @Override
+  public Optional<List<T>> getLocalOptional() {
+    return Optional.ofNullable(getOrNull(variableScope.getVariableLocal(variableName)));
+  }
+
+  @Override
   public void setLocal(List<T> value, boolean isTransient) {
     variableScope.setVariableLocal(variableName, getTypedValue(value, isTransient));
   }

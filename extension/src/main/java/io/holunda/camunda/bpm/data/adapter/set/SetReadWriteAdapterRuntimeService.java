@@ -1,7 +1,6 @@
 package io.holunda.camunda.bpm.data.adapter.set;
 
 import org.camunda.bpm.engine.RuntimeService;
-import org.camunda.bpm.engine.variable.VariableMap;
 
 import java.util.Optional;
 import java.util.Set;
@@ -38,6 +37,11 @@ public class SetReadWriteAdapterRuntimeService<T> extends AbstractSetReadWriteAd
   @Override
   public void set(Set<T> value, boolean isTransient) {
     runtimeService.setVariable(executionId, variableName, getTypedValue(value, isTransient));
+  }
+
+  @Override
+  public Optional<Set<T>> getLocalOptional() {
+    return Optional.ofNullable(getOrNull(runtimeService.getVariableLocal(executionId, variableName)));
   }
 
   @Override

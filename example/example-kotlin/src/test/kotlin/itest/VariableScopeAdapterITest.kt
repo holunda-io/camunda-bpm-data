@@ -84,7 +84,7 @@ class VariableScopeAdapterITest : CamundaBpmDataITestBase() {
     given()
       .process_with_modifying_delegate_is_deployed(
         modifyingDelegateExpression = "\${${DelegateConfiguration::writeVariablesToScopeAndLocal.name}}",
-        delegateExpression = "\${${DelegateConfiguration::readFromVariableScope.name}}"
+        delegateExpression = "\${${DelegateConfiguration::readLocalFromVariableScope.name}}"
       )
     whenever()
       .process_is_started_with_variables(variables = createVariables())

@@ -43,6 +43,11 @@ public class MapReadWriteAdapterTaskService<K, V> extends AbstractMapReadWriteAd
   }
 
   @Override
+  public Optional<Map<K, V>> getLocalOptional() {
+    return Optional.ofNullable(getOrNull(taskService.getVariableLocal(taskId, variableName)));
+  }
+
+  @Override
   public void setLocal(Map<K, V> value, boolean isTransient) {
     taskService.setVariableLocal(taskId, variableName, getTypedValue(value, isTransient));
   }

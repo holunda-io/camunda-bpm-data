@@ -39,6 +39,11 @@ public class MapReadWriteAdapterVariableMap<K, V> extends AbstractMapReadWriteAd
   }
 
   @Override
+  public Optional<Map<K, V>> getLocalOptional() {
+    throw new UnsupportedOperationException("Can't get a local variable on a variable map");
+  }
+
+  @Override
   public void setLocal(Map<K, V> value, boolean isTransient) {
     throw new UnsupportedOperationException("Can't set a local variable on a variable map");
   }

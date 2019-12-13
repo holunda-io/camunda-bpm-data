@@ -37,6 +37,11 @@ public class SetReadWriteAdapterVariableScope<T> extends AbstractSetReadWriteAda
   }
 
   @Override
+  public Optional<Set<T>> getLocalOptional() {
+    return Optional.ofNullable(getOrNull(variableScope.getVariableLocal(variableName)));
+  }
+
+  @Override
   public void setLocal(Set<T> value, boolean isTransient) {
     variableScope.setVariableLocal(variableName, getTypedValue(value, isTransient));
   }

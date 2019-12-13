@@ -40,6 +40,11 @@ public class SetReadWriteAdapterTaskService<T> extends AbstractSetReadWriteAdapt
   }
 
   @Override
+  public Optional<Set<T>> getLocalOptional() {
+    return Optional.ofNullable(getOrNull(taskService.getVariableLocal(taskId, variableName)));
+  }
+
+  @Override
   public void setLocal(Set<T> value, boolean isTransient) {
     taskService.setVariableLocal(taskId, variableName, getTypedValue(value, isTransient));
   }

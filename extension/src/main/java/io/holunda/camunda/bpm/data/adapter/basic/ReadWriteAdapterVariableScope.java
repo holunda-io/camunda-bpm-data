@@ -31,6 +31,11 @@ public class ReadWriteAdapterVariableScope<T> extends AbstractBasicReadWriteAdap
   }
 
   @Override
+  public Optional<T> getLocalOptional() {
+    return Optional.ofNullable(getOrNull(variableScope.getVariableLocal(variableName)));
+  }
+
+  @Override
   public void setLocal(T value, boolean isTransient) {
     variableScope.setVariableLocal(variableName, getTypedValue(value, isTransient));
   }

@@ -4,158 +4,6 @@
   "scenarios": [
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableScopeAdapterITest",
-      "testMethodName": "should remove to variable scope and read",
-      "description": "should remove to variable scope and read",
-      "tagIds": [],
-      "explicitParameters": [],
-      "derivedParameters": [],
-      "casesAsTable": false,
-      "scenarioCases": [
-        {
-          "caseNr": 1,
-          "steps": [
-            {
-              "name": "process with modifying delegate is deployed",
-              "words": [
-                {
-                  "value": "Given",
-                  "isIntroWord": true
-                },
-                {
-                  "value": "process with modifying delegate is deployed"
-                },
-                {
-                  "value": "process_with_delegate",
-                  "argumentInfo": {
-                    "argumentName": "processDefinitionKey",
-                    "formattedValue": "process_with_delegate"
-                  }
-                },
-                {
-                  "value": "${deleteVariablesFromScope}",
-                  "argumentInfo": {
-                    "argumentName": "modifyingDelegateExpression",
-                    "formattedValue": "${deleteVariablesFromScope}"
-                  }
-                },
-                {
-                  "value": "${readOptionalFromVariableScope}",
-                  "argumentInfo": {
-                    "argumentName": "delegateExpression",
-                    "formattedValue": "${readOptionalFromVariableScope}"
-                  }
-                }
-              ],
-              "status": "PASSED",
-              "durationInNanos": 489243100
-            },
-            {
-              "name": "get process definition",
-              "words": [
-                {
-                  "value": "When",
-                  "isIntroWord": true
-                },
-                {
-                  "value": "get process definition"
-                }
-              ],
-              "status": "PASSED",
-              "durationInNanos": 3688500
-            },
-            {
-              "name": "process is started with variables",
-              "words": [
-                {
-                  "value": "process is started with variables"
-                },
-                {
-                  "value": "process_with_delegate",
-                  "argumentInfo": {
-                    "argumentName": "processDefinitionKey",
-                    "formattedValue": "process_with_delegate"
-                  }
-                },
-                {
-                  "value": "{\n  Double Variable \u003d\u003e Untyped value \u002712.0\u0027, isTransient \u003d false\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:03:30 CET 2019)\u0027, isTransient \u003d false\n  List Of String Variable \u003d\u003e Untyped value \u0027[Hello, World]\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Untyped value \u002711\u0027, isTransient \u003d false\n  Map Of String to Date Variable \u003d\u003e Untyped value \u0027{Twelve\u003dFri Dec 13 15:03:30 CET 2019, Eleven\u003dFri Dec 13 15:03:30 CET 2019}\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Untyped value \u0027Fri Dec 13 15:03:30 CET 2019\u0027, isTransient \u003d false\n  Long Variable \u003d\u003e Untyped value \u0027812\u0027, isTransient \u003d false\n  Set Of String Variable \u003d\u003e Untyped value \u0027[Kermit, Piggy]\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Untyped value \u0027123\u0027, isTransient \u003d false\n  String Variable \u003d\u003e Untyped value \u0027value\u0027, isTransient \u003d false\n  Boolean Variable \u003d\u003e Untyped value \u0027true\u0027, isTransient \u003d false\n}",
-                  "argumentInfo": {
-                    "argumentName": "variables",
-                    "formattedValue": "{\n  Double Variable \u003d\u003e Untyped value \u002712.0\u0027, isTransient \u003d false\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:03:30 CET 2019)\u0027, isTransient \u003d false\n  List Of String Variable \u003d\u003e Untyped value \u0027[Hello, World]\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Untyped value \u002711\u0027, isTransient \u003d false\n  Map Of String to Date Variable \u003d\u003e Untyped value \u0027{Twelve\u003dFri Dec 13 15:03:30 CET 2019, Eleven\u003dFri Dec 13 15:03:30 CET 2019}\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Untyped value \u0027Fri Dec 13 15:03:30 CET 2019\u0027, isTransient \u003d false\n  Long Variable \u003d\u003e Untyped value \u0027812\u0027, isTransient \u003d false\n  Set Of String Variable \u003d\u003e Untyped value \u0027[Kermit, Piggy]\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Untyped value \u0027123\u0027, isTransient \u003d false\n  String Variable \u003d\u003e Untyped value \u0027value\u0027, isTransient \u003d false\n  Boolean Variable \u003d\u003e Untyped value \u0027true\u0027, isTransient \u003d false\n}"
-                  }
-                }
-              ],
-              "status": "PASSED",
-              "durationInNanos": 141454800
-            },
-            {
-              "name": "variables had not value",
-              "words": [
-                {
-                  "value": "Then",
-                  "isIntroWord": true
-                },
-                {
-                  "value": "variables had not value"
-                },
-                {
-                  "value": "{Double Variable\u003dOptional[12.0], Complex Variable\u003dOptional[ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:03:30 CET 2019)], List Of String Variable\u003dOptional.empty, Short Variable\u003dOptional[11], Map Of String to Date Variable\u003dOptional.empty, Date Variable\u003dOptional[Fri Dec 13 15:03:30 CET 2019], Long Variable\u003dOptional[812], Set Of String Variable\u003dOptional.empty, Int Variable\u003dOptional[123], String Variable\u003dOptional.empty, Boolean Variable\u003dOptional[true]}",
-                  "argumentInfo": {
-                    "argumentName": "readValues",
-                    "formattedValue": "{Double Variable\u003dOptional[12.0], Complex Variable\u003dOptional[ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:03:30 CET 2019)], List Of String Variable\u003dOptional.empty, Short Variable\u003dOptional[11], Map Of String to Date Variable\u003dOptional.empty, Date Variable\u003dOptional[Fri Dec 13 15:03:30 CET 2019], Long Variable\u003dOptional[812], Set Of String Variable\u003dOptional.empty, Int Variable\u003dOptional[123], String Variable\u003dOptional.empty, Boolean Variable\u003dOptional[true]}"
-                  }
-                },
-                {
-                  "value": "io.holunda.camunda.bpm.data.factory.BasicVariableFactory@50ad3bc1, io.holunda.camunda.bpm.data.factory.ListVariableFactory@d29f28, io.holunda.camunda.bpm.data.factory.SetVariableFactory@2fd1433e, io.holunda.camunda.bpm.data.factory.MapVariableFactory@29d89d5d",
-                  "argumentInfo": {
-                    "argumentName": "variableWithValue",
-                    "formattedValue": "io.holunda.camunda.bpm.data.factory.BasicVariableFactory@50ad3bc1, io.holunda.camunda.bpm.data.factory.ListVariableFactory@d29f28, io.holunda.camunda.bpm.data.factory.SetVariableFactory@2fd1433e, io.holunda.camunda.bpm.data.factory.MapVariableFactory@29d89d5d"
-                  }
-                }
-              ],
-              "status": "PASSED",
-              "durationInNanos": 71400
-            },
-            {
-              "name": "variables had value",
-              "words": [
-                {
-                  "value": "and",
-                  "isIntroWord": true
-                },
-                {
-                  "value": "variables had value"
-                },
-                {
-                  "value": "{Double Variable\u003dOptional[12.0], Complex Variable\u003dOptional[ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:03:30 CET 2019)], List Of String Variable\u003dOptional.empty, Short Variable\u003dOptional[11], Map Of String to Date Variable\u003dOptional.empty, Date Variable\u003dOptional[Fri Dec 13 15:03:30 CET 2019], Long Variable\u003dOptional[812], Set Of String Variable\u003dOptional.empty, Int Variable\u003dOptional[123], String Variable\u003dOptional.empty, Boolean Variable\u003dOptional[true]}",
-                  "argumentInfo": {
-                    "argumentName": "readValues",
-                    "formattedValue": "{Double Variable\u003dOptional[12.0], Complex Variable\u003dOptional[ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:03:30 CET 2019)], List Of String Variable\u003dOptional.empty, Short Variable\u003dOptional[11], Map Of String to Date Variable\u003dOptional.empty, Date Variable\u003dOptional[Fri Dec 13 15:03:30 CET 2019], Long Variable\u003dOptional[812], Set Of String Variable\u003dOptional.empty, Int Variable\u003dOptional[123], String Variable\u003dOptional.empty, Boolean Variable\u003dOptional[true]}"
-                  }
-                },
-                {
-                  "value": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@20f5239f, Optional[812])]",
-                  "argumentInfo": {
-                    "argumentName": "variablesWithValue",
-                    "formattedValue": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@20f5239f, Optional[812])]"
-                  }
-                }
-              ],
-              "status": "PASSED",
-              "durationInNanos": 800800
-            }
-          ],
-          "explicitArguments": [],
-          "derivedArguments": [],
-          "status": "SUCCESS",
-          "success": true,
-          "durationInNanos": 786975300
-        }
-      ],
-      "durationInNanos": 786975300,
-      "executionStatus": "SUCCESS"
-    },
-    {
-      "className": "io.holunda.camunda.bpm.data.itest.VariableScopeAdapterITest",
       "testMethodName": "should write to local variable scope and read",
       "description": "should write to local variable scope and read",
       "tagIds": [],
@@ -191,15 +39,15 @@
                   }
                 },
                 {
-                  "value": "${readFromVariableScope}",
+                  "value": "${readLocalFromVariableScope}",
                   "argumentInfo": {
                     "argumentName": "delegateExpression",
-                    "formattedValue": "${readFromVariableScope}"
+                    "formattedValue": "${readLocalFromVariableScope}"
                   }
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 57262600
+              "durationInNanos": 663699800
             },
             {
               "name": "get process definition",
@@ -213,7 +61,7 @@
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 153100
+              "durationInNanos": 5688800
             },
             {
               "name": "process is started with variables",
@@ -237,7 +85,7 @@
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 31647600
+              "durationInNanos": 209726200
             },
             {
               "name": "variables had value",
@@ -250,488 +98,33 @@
                   "value": "variables had value"
                 },
                 {
-                  "value": "{Double Variable\u003d14.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dfoobar, intValue\u003d12, dateValue\u003dThu Dec 12 15:03:30 CET 2019), List Of String Variable\u003d[Foo, Bar], Short Variable\u003d12, Map Of String to Date Variable\u003d{Ten\u003dThu Dec 12 15:03:30 CET 2019, Nine\u003dThu Dec 12 15:03:30 CET 2019}, Date Variable\u003dThu Dec 12 15:03:30 CET 2019, Long Variable\u003d815, Set Of String Variable\u003d[Homer, Marge], Int Variable\u003d124, String Variable\u003dlocalValue, Boolean Variable\u003dfalse}",
+                  "value": "{Double Variable\u003d14.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dfoobar, intValue\u003d12, dateValue\u003dThu Dec 12 15:55:54 CET 2019), List Of String Variable\u003d[Foo, Bar], Short Variable\u003d12, Map Of String to Date Variable\u003d{Ten\u003dThu Dec 12 15:55:54 CET 2019, Nine\u003dThu Dec 12 15:55:54 CET 2019}, Date Variable\u003dThu Dec 12 15:55:54 CET 2019, Long Variable\u003d815, Set Of String Variable\u003d[Homer, Marge], Int Variable\u003d124, String Variable\u003dlocalValue, Boolean Variable\u003dfalse}",
                   "argumentInfo": {
                     "argumentName": "readValues",
-                    "formattedValue": "{Double Variable\u003d14.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dfoobar, intValue\u003d12, dateValue\u003dThu Dec 12 15:03:30 CET 2019), List Of String Variable\u003d[Foo, Bar], Short Variable\u003d12, Map Of String to Date Variable\u003d{Ten\u003dThu Dec 12 15:03:30 CET 2019, Nine\u003dThu Dec 12 15:03:30 CET 2019}, Date Variable\u003dThu Dec 12 15:03:30 CET 2019, Long Variable\u003d815, Set Of String Variable\u003d[Homer, Marge], Int Variable\u003d124, String Variable\u003dlocalValue, Boolean Variable\u003dfalse}"
+                    "formattedValue": "{Double Variable\u003d14.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dfoobar, intValue\u003d12, dateValue\u003dThu Dec 12 15:55:54 CET 2019), List Of String Variable\u003d[Foo, Bar], Short Variable\u003d12, Map Of String to Date Variable\u003d{Ten\u003dThu Dec 12 15:55:54 CET 2019, Nine\u003dThu Dec 12 15:55:54 CET 2019}, Date Variable\u003dThu Dec 12 15:55:54 CET 2019, Long Variable\u003d815, Set Of String Variable\u003d[Homer, Marge], Int Variable\u003d124, String Variable\u003dlocalValue, Boolean Variable\u003dfalse}"
                   }
                 },
                 {
-                  "value": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@50ad3bc1, localValue), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@223aa2f7, Thu Dec 12 15:03:30 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6d3a388c, 12), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@193f604a, 124), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@20f5239f, 815), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@57af006c, 14.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6bedbc4d, false), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@932bc4a, ComplexDataStructure(stringValue\u003dfoobar, intValue\u003d12, dateValue\u003dThu Dec 12 15:03:30 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@d29f28, [Foo, Bar]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@2fd1433e, [Homer, Marge]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@29d89d5d, {Ten\u003dThu Dec 12 15:03:30 CET 2019, Nine\u003dThu Dec 12 15:03:30 CET 2019})]",
+                  "value": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@2df9b86, localValue), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@37654521, Thu Dec 12 15:55:54 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@15aab8c6, 12), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@33990a0c, 124), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@4de4b452, 815), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@50b5ac82, 14.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@101952da, false), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6babf3bf, ComplexDataStructure(stringValue\u003dfoobar, intValue\u003d12, dateValue\u003dThu Dec 12 15:55:54 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@3059cbc, [Foo, Bar]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@7ea9e1e2, [Homer, Marge]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@24fcf36f, {Ten\u003dThu Dec 12 15:55:54 CET 2019, Nine\u003dThu Dec 12 15:55:54 CET 2019})]",
                   "argumentInfo": {
                     "argumentName": "variablesWithValue",
-                    "formattedValue": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@50ad3bc1, localValue), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@223aa2f7, Thu Dec 12 15:03:30 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6d3a388c, 12), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@193f604a, 124), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@20f5239f, 815), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@57af006c, 14.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6bedbc4d, false), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@932bc4a, ComplexDataStructure(stringValue\u003dfoobar, intValue\u003d12, dateValue\u003dThu Dec 12 15:03:30 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@d29f28, [Foo, Bar]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@2fd1433e, [Homer, Marge]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@29d89d5d, {Ten\u003dThu Dec 12 15:03:30 CET 2019, Nine\u003dThu Dec 12 15:03:30 CET 2019})]"
+                    "formattedValue": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@2df9b86, localValue), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@37654521, Thu Dec 12 15:55:54 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@15aab8c6, 12), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@33990a0c, 124), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@4de4b452, 815), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@50b5ac82, 14.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@101952da, false), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6babf3bf, ComplexDataStructure(stringValue\u003dfoobar, intValue\u003d12, dateValue\u003dThu Dec 12 15:55:54 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@3059cbc, [Foo, Bar]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@7ea9e1e2, [Homer, Marge]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@24fcf36f, {Ten\u003dThu Dec 12 15:55:54 CET 2019, Nine\u003dThu Dec 12 15:55:54 CET 2019})]"
                   }
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 931000
+              "durationInNanos": 97786200
             }
           ],
           "explicitArguments": [],
           "derivedArguments": [],
           "status": "SUCCESS",
           "success": true,
-          "durationInNanos": 95018300
+          "durationInNanos": 1080737000
         }
       ],
-      "durationInNanos": 95018300,
+      "durationInNanos": 1080737000,
       "executionStatus": "SUCCESS"
-    },
-    {
-      "className": "io.holunda.camunda.bpm.data.itest.VariableScopeAdapterITest",
-      "testMethodName": "should write to variable scope and read",
-      "description": "should write to variable scope and read",
-      "tagIds": [],
-      "explicitParameters": [],
-      "derivedParameters": [],
-      "casesAsTable": false,
-      "scenarioCases": [
-        {
-          "caseNr": 1,
-          "steps": [
-            {
-              "name": "process with modifying delegate is deployed",
-              "words": [
-                {
-                  "value": "Given",
-                  "isIntroWord": true
-                },
-                {
-                  "value": "process with modifying delegate is deployed"
-                },
-                {
-                  "value": "process_with_delegate",
-                  "argumentInfo": {
-                    "argumentName": "processDefinitionKey",
-                    "formattedValue": "process_with_delegate"
-                  }
-                },
-                {
-                  "value": "${writeVariablesToScope}",
-                  "argumentInfo": {
-                    "argumentName": "modifyingDelegateExpression",
-                    "formattedValue": "${writeVariablesToScope}"
-                  }
-                },
-                {
-                  "value": "${readFromVariableScope}",
-                  "argumentInfo": {
-                    "argumentName": "delegateExpression",
-                    "formattedValue": "${readFromVariableScope}"
-                  }
-                }
-              ],
-              "status": "PASSED",
-              "durationInNanos": 41853200
-            },
-            {
-              "name": "get process definition",
-              "words": [
-                {
-                  "value": "When",
-                  "isIntroWord": true
-                },
-                {
-                  "value": "get process definition"
-                }
-              ],
-              "status": "PASSED",
-              "durationInNanos": 230400
-            },
-            {
-              "name": "process is started with variables",
-              "words": [
-                {
-                  "value": "process is started with variables"
-                },
-                {
-                  "value": "process_with_delegate",
-                  "argumentInfo": {
-                    "argumentName": "processDefinitionKey",
-                    "formattedValue": "process_with_delegate"
-                  }
-                },
-                {
-                  "value": "{\n}",
-                  "argumentInfo": {
-                    "argumentName": "variables",
-                    "formattedValue": "{\n}"
-                  }
-                }
-              ],
-              "status": "PASSED",
-              "durationInNanos": 15537400
-            },
-            {
-              "name": "variables had value",
-              "words": [
-                {
-                  "value": "Then",
-                  "isIntroWord": true
-                },
-                {
-                  "value": "variables had value"
-                },
-                {
-                  "value": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:03:30 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dFri Dec 13 15:03:30 CET 2019, Eleven\u003dFri Dec 13 15:03:30 CET 2019}, Date Variable\u003dFri Dec 13 15:03:30 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}",
-                  "argumentInfo": {
-                    "argumentName": "readValues",
-                    "formattedValue": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:03:30 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dFri Dec 13 15:03:30 CET 2019, Eleven\u003dFri Dec 13 15:03:30 CET 2019}, Date Variable\u003dFri Dec 13 15:03:30 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}"
-                  }
-                },
-                {
-                  "value": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@50ad3bc1, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@223aa2f7, Fri Dec 13 15:03:30 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6d3a388c, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@193f604a, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@20f5239f, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@57af006c, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6bedbc4d, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@932bc4a, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:03:30 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@d29f28, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@2fd1433e, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@29d89d5d, {Twelve\u003dFri Dec 13 15:03:30 CET 2019, Eleven\u003dFri Dec 13 15:03:30 CET 2019})]",
-                  "argumentInfo": {
-                    "argumentName": "variablesWithValue",
-                    "formattedValue": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@50ad3bc1, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@223aa2f7, Fri Dec 13 15:03:30 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6d3a388c, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@193f604a, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@20f5239f, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@57af006c, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6bedbc4d, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@932bc4a, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:03:30 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@d29f28, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@2fd1433e, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@29d89d5d, {Twelve\u003dFri Dec 13 15:03:30 CET 2019, Eleven\u003dFri Dec 13 15:03:30 CET 2019})]"
-                  }
-                }
-              ],
-              "status": "PASSED",
-              "durationInNanos": 987400
-            }
-          ],
-          "explicitArguments": [],
-          "derivedArguments": [],
-          "status": "SUCCESS",
-          "success": true,
-          "durationInNanos": 64076500
-        }
-      ],
-      "durationInNanos": 64076500,
-      "executionStatus": "SUCCESS"
-    },
-    {
-      "className": "io.holunda.camunda.bpm.data.itest.VariableScopeAdapterITest",
-      "testMethodName": "should write to variables-map and read using adapter",
-      "description": "should write to variables-map and read using adapter",
-      "tagIds": [],
-      "explicitParameters": [],
-      "derivedParameters": [],
-      "casesAsTable": false,
-      "scenarioCases": [
-        {
-          "caseNr": 1,
-          "steps": [
-            {
-              "name": "process with delegate is deployed",
-              "words": [
-                {
-                  "value": "Given",
-                  "isIntroWord": true
-                },
-                {
-                  "value": "process with delegate is deployed"
-                },
-                {
-                  "value": "process_with_delegate",
-                  "argumentInfo": {
-                    "argumentName": "processDefinitionKey",
-                    "formattedValue": "process_with_delegate"
-                  }
-                },
-                {
-                  "value": "${readFromVariableScope}",
-                  "argumentInfo": {
-                    "argumentName": "delegateExpression",
-                    "formattedValue": "${readFromVariableScope}"
-                  }
-                }
-              ],
-              "status": "PASSED",
-              "durationInNanos": 38811900
-            },
-            {
-              "name": "get process definition",
-              "words": [
-                {
-                  "value": "When",
-                  "isIntroWord": true
-                },
-                {
-                  "value": "get process definition"
-                }
-              ],
-              "status": "PASSED",
-              "durationInNanos": 100900
-            },
-            {
-              "name": "process is started with variables",
-              "words": [
-                {
-                  "value": "process is started with variables"
-                },
-                {
-                  "value": "process_with_delegate",
-                  "argumentInfo": {
-                    "argumentName": "processDefinitionKey",
-                    "formattedValue": "process_with_delegate"
-                  }
-                },
-                {
-                  "value": "{\n  Double Variable \u003d\u003e Untyped value \u002712.0\u0027, isTransient \u003d false\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:03:30 CET 2019)\u0027, isTransient \u003d false\n  List Of String Variable \u003d\u003e Untyped value \u0027[Hello, World]\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Untyped value \u002711\u0027, isTransient \u003d false\n  Map Of String to Date Variable \u003d\u003e Untyped value \u0027{Twelve\u003dFri Dec 13 15:03:30 CET 2019, Eleven\u003dFri Dec 13 15:03:30 CET 2019}\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Untyped value \u0027Fri Dec 13 15:03:30 CET 2019\u0027, isTransient \u003d false\n  Long Variable \u003d\u003e Untyped value \u0027812\u0027, isTransient \u003d false\n  Set Of String Variable \u003d\u003e Untyped value \u0027[Kermit, Piggy]\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Untyped value \u0027123\u0027, isTransient \u003d false\n  String Variable \u003d\u003e Untyped value \u0027value\u0027, isTransient \u003d false\n  Boolean Variable \u003d\u003e Untyped value \u0027true\u0027, isTransient \u003d false\n}",
-                  "argumentInfo": {
-                    "argumentName": "variables",
-                    "formattedValue": "{\n  Double Variable \u003d\u003e Untyped value \u002712.0\u0027, isTransient \u003d false\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:03:30 CET 2019)\u0027, isTransient \u003d false\n  List Of String Variable \u003d\u003e Untyped value \u0027[Hello, World]\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Untyped value \u002711\u0027, isTransient \u003d false\n  Map Of String to Date Variable \u003d\u003e Untyped value \u0027{Twelve\u003dFri Dec 13 15:03:30 CET 2019, Eleven\u003dFri Dec 13 15:03:30 CET 2019}\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Untyped value \u0027Fri Dec 13 15:03:30 CET 2019\u0027, isTransient \u003d false\n  Long Variable \u003d\u003e Untyped value \u0027812\u0027, isTransient \u003d false\n  Set Of String Variable \u003d\u003e Untyped value \u0027[Kermit, Piggy]\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Untyped value \u0027123\u0027, isTransient \u003d false\n  String Variable \u003d\u003e Untyped value \u0027value\u0027, isTransient \u003d false\n  Boolean Variable \u003d\u003e Untyped value \u0027true\u0027, isTransient \u003d false\n}"
-                  }
-                }
-              ],
-              "status": "PASSED",
-              "durationInNanos": 13677900
-            },
-            {
-              "name": "variables had value",
-              "words": [
-                {
-                  "value": "Then",
-                  "isIntroWord": true
-                },
-                {
-                  "value": "variables had value"
-                },
-                {
-                  "value": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:03:30 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dFri Dec 13 15:03:30 CET 2019, Eleven\u003dFri Dec 13 15:03:30 CET 2019}, Date Variable\u003dFri Dec 13 15:03:30 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}",
-                  "argumentInfo": {
-                    "argumentName": "readValues",
-                    "formattedValue": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:03:30 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dFri Dec 13 15:03:30 CET 2019, Eleven\u003dFri Dec 13 15:03:30 CET 2019}, Date Variable\u003dFri Dec 13 15:03:30 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}"
-                  }
-                },
-                {
-                  "value": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@50ad3bc1, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@223aa2f7, Fri Dec 13 15:03:30 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6d3a388c, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@193f604a, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@20f5239f, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@57af006c, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6bedbc4d, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@932bc4a, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:03:30 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@d29f28, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@2fd1433e, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@29d89d5d, {Twelve\u003dFri Dec 13 15:03:30 CET 2019, Eleven\u003dFri Dec 13 15:03:30 CET 2019})]",
-                  "argumentInfo": {
-                    "argumentName": "variablesWithValue",
-                    "formattedValue": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@50ad3bc1, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@223aa2f7, Fri Dec 13 15:03:30 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6d3a388c, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@193f604a, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@20f5239f, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@57af006c, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6bedbc4d, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@932bc4a, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:03:30 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@d29f28, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@2fd1433e, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@29d89d5d, {Twelve\u003dFri Dec 13 15:03:30 CET 2019, Eleven\u003dFri Dec 13 15:03:30 CET 2019})]"
-                  }
-                }
-              ],
-              "status": "PASSED",
-              "durationInNanos": 1130500
-            }
-          ],
-          "explicitArguments": [],
-          "derivedArguments": [],
-          "status": "SUCCESS",
-          "success": true,
-          "durationInNanos": 59301500
-        }
-      ],
-      "durationInNanos": 59301500,
-      "executionStatus": "SUCCESS"
-    },
-    {
-      "className": "io.holunda.camunda.bpm.data.itest.VariableScopeAdapterITest",
-      "testMethodName": "Should throw correct exceptions",
-      "description": "Should throw correct exceptions",
-      "tagIds": [],
-      "explicitParameters": [],
-      "derivedParameters": [],
-      "casesAsTable": false,
-      "scenarioCases": [
-        {
-          "caseNr": 1,
-          "steps": [
-            {
-              "name": "process with delegate is deployed",
-              "words": [
-                {
-                  "value": "Given",
-                  "isIntroWord": true
-                },
-                {
-                  "value": "process with delegate is deployed"
-                },
-                {
-                  "value": "process_with_delegate",
-                  "argumentInfo": {
-                    "argumentName": "processDefinitionKey",
-                    "formattedValue": "process_with_delegate"
-                  }
-                },
-                {
-                  "value": "${readNonExisting}",
-                  "argumentInfo": {
-                    "argumentName": "delegateExpression",
-                    "formattedValue": "${readNonExisting}"
-                  }
-                }
-              ],
-              "status": "PASSED",
-              "durationInNanos": 40017700
-            },
-            {
-              "name": "get process definition",
-              "words": [
-                {
-                  "value": "When",
-                  "isIntroWord": true
-                },
-                {
-                  "value": "get process definition"
-                }
-              ],
-              "status": "PASSED",
-              "durationInNanos": 142300
-            },
-            {
-              "name": "process is started with variables",
-              "words": [
-                {
-                  "value": "process is started with variables"
-                },
-                {
-                  "value": "process_with_delegate",
-                  "argumentInfo": {
-                    "argumentName": "processDefinitionKey",
-                    "formattedValue": "process_with_delegate"
-                  }
-                },
-                {
-                  "value": "{\n  Double Variable \u003d\u003e Untyped value \u002712.0\u0027, isTransient \u003d false\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:03:30 CET 2019)\u0027, isTransient \u003d false\n  List Of String Variable \u003d\u003e Untyped value \u0027[Hello, World]\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Untyped value \u002711\u0027, isTransient \u003d false\n  Map Of String to Date Variable \u003d\u003e Untyped value \u0027{Twelve\u003dFri Dec 13 15:03:30 CET 2019, Eleven\u003dFri Dec 13 15:03:30 CET 2019}\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Untyped value \u0027Fri Dec 13 15:03:30 CET 2019\u0027, isTransient \u003d false\n  Long Variable \u003d\u003e Untyped value \u0027812\u0027, isTransient \u003d false\n  Set Of String Variable \u003d\u003e Untyped value \u0027[Kermit, Piggy]\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Untyped value \u0027123\u0027, isTransient \u003d false\n  String Variable \u003d\u003e Untyped value \u0027value\u0027, isTransient \u003d false\n  Boolean Variable \u003d\u003e Untyped value \u0027true\u0027, isTransient \u003d false\n}",
-                  "argumentInfo": {
-                    "argumentName": "variables",
-                    "formattedValue": "{\n  Double Variable \u003d\u003e Untyped value \u002712.0\u0027, isTransient \u003d false\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:03:30 CET 2019)\u0027, isTransient \u003d false\n  List Of String Variable \u003d\u003e Untyped value \u0027[Hello, World]\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Untyped value \u002711\u0027, isTransient \u003d false\n  Map Of String to Date Variable \u003d\u003e Untyped value \u0027{Twelve\u003dFri Dec 13 15:03:30 CET 2019, Eleven\u003dFri Dec 13 15:03:30 CET 2019}\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Untyped value \u0027Fri Dec 13 15:03:30 CET 2019\u0027, isTransient \u003d false\n  Long Variable \u003d\u003e Untyped value \u0027812\u0027, isTransient \u003d false\n  Set Of String Variable \u003d\u003e Untyped value \u0027[Kermit, Piggy]\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Untyped value \u0027123\u0027, isTransient \u003d false\n  String Variable \u003d\u003e Untyped value \u0027value\u0027, isTransient \u003d false\n  Boolean Variable \u003d\u003e Untyped value \u0027true\u0027, isTransient \u003d false\n}"
-                  }
-                }
-              ],
-              "status": "FAILED",
-              "durationInNanos": 35197600
-            }
-          ],
-          "explicitArguments": [],
-          "derivedArguments": [],
-          "status": "FAILED",
-          "success": false,
-          "errorMessage": "io.holunda.camunda.bpm.data.adapter.VariableNotFoundException: Couldn\u0027t find required variable non-existing",
-          "stackTrace": [
-            "io.holunda.camunda.bpm.data.adapter.AbstractReadWriteAdapter.lambda$get$0(AbstractReadWriteAdapter.java:32)",
-            "java.util.Optional.orElseThrow(Optional.java:290)",
-            "io.holunda.camunda.bpm.data.adapter.AbstractReadWriteAdapter.get(AbstractReadWriteAdapter.java:32)",
-            "io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase$DelegateConfiguration$readNonExisting$1.execute(CamundaBpmDataITestBase.kt:207)",
-            "org.camunda.bpm.engine.impl.bpmn.delegate.JavaDelegateInvocation.invoke(JavaDelegateInvocation.java:40)",
-            "org.camunda.bpm.engine.impl.delegate.DelegateInvocation.proceed(DelegateInvocation.java:58)",
-            "org.camunda.bpm.engine.impl.delegate.DefaultDelegateInterceptor.handleInvocationInContext(DefaultDelegateInterceptor.java:92)",
-            "org.camunda.bpm.engine.impl.delegate.DefaultDelegateInterceptor.handleInvocation(DefaultDelegateInterceptor.java:63)",
-            "org.camunda.bpm.engine.impl.bpmn.behavior.ServiceTaskDelegateExpressionActivityBehavior$3.call(ServiceTaskDelegateExpressionActivityBehavior.java:118)",
-            "org.camunda.bpm.engine.impl.bpmn.behavior.ServiceTaskDelegateExpressionActivityBehavior$3.call(ServiceTaskDelegateExpressionActivityBehavior.java:102)",
-            "org.camunda.bpm.engine.impl.bpmn.behavior.AbstractBpmnActivityBehavior.executeWithErrorPropagation(AbstractBpmnActivityBehavior.java:90)",
-            "org.camunda.bpm.engine.impl.bpmn.behavior.ServiceTaskDelegateExpressionActivityBehavior.performExecution(ServiceTaskDelegateExpressionActivityBehavior.java:127)",
-            "org.camunda.bpm.engine.impl.bpmn.behavior.TaskActivityBehavior.execute(TaskActivityBehavior.java:69)",
-            "org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationActivityExecute$2.callback(PvmAtomicOperationActivityExecute.java:61)",
-            "org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationActivityExecute$2.callback(PvmAtomicOperationActivityExecute.java:50)",
-            "org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl.continueIfExecutionDoesNotAffectNextOperation(PvmExecutionImpl.java:2002)",
-            "org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationActivityExecute.execute(PvmAtomicOperationActivityExecute.java:42)",
-            "org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationActivityExecute.execute(PvmAtomicOperationActivityExecute.java:31)",
-            "org.camunda.bpm.engine.impl.interceptor.AtomicOperationInvocation.execute(AtomicOperationInvocation.java:99)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.invokeNext(CommandInvocationContext.java:131)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performNext(CommandInvocationContext.java:111)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:86)",
-            "org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperation(ExecutionEntity.java:646)",
-            "org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperation(ExecutionEntity.java:620)",
-            "org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl$6.callback(PvmExecutionImpl.java:1941)",
-            "org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl$6.callback(PvmExecutionImpl.java:1938)",
-            "org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl.continueExecutionIfNotCanceled(PvmExecutionImpl.java:2008)",
-            "org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl.dispatchDelayedEventsAndPerformOperation(PvmExecutionImpl.java:1957)",
-            "org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl.dispatchDelayedEventsAndPerformOperation(PvmExecutionImpl.java:1938)",
-            "org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationTransitionNotifyListenerStart.eventNotificationsCompleted(PvmAtomicOperationTransitionNotifyListenerStart.java:60)",
-            "org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationTransitionNotifyListenerStart.eventNotificationsCompleted(PvmAtomicOperationTransitionNotifyListenerStart.java:30)",
-            "org.camunda.bpm.engine.impl.core.operation.AbstractEventAtomicOperation.execute(AbstractEventAtomicOperation.java:66)",
-            "org.camunda.bpm.engine.impl.interceptor.AtomicOperationInvocation.execute(AtomicOperationInvocation.java:99)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.invokeNext(CommandInvocationContext.java:131)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performNext(CommandInvocationContext.java:111)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:86)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:76)",
-            "org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperationSync(ExecutionEntity.java:655)",
-            "org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperationSync(ExecutionEntity.java:630)",
-            "org.camunda.bpm.engine.impl.core.operation.AbstractEventAtomicOperation.execute(AbstractEventAtomicOperation.java:62)",
-            "org.camunda.bpm.engine.impl.interceptor.AtomicOperationInvocation.execute(AtomicOperationInvocation.java:99)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.invokeNext(CommandInvocationContext.java:131)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performNext(CommandInvocationContext.java:111)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:86)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:76)",
-            "org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperationSync(ExecutionEntity.java:655)",
-            "org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperationSync(ExecutionEntity.java:630)",
-            "org.camunda.bpm.engine.impl.core.operation.AbstractEventAtomicOperation.execute(AbstractEventAtomicOperation.java:62)",
-            "org.camunda.bpm.engine.impl.interceptor.AtomicOperationInvocation.execute(AtomicOperationInvocation.java:99)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.invokeNext(CommandInvocationContext.java:131)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performNext(CommandInvocationContext.java:111)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:86)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:76)",
-            "org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperationSync(ExecutionEntity.java:655)",
-            "org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperationSync(ExecutionEntity.java:630)",
-            "org.camunda.bpm.engine.impl.core.operation.AbstractEventAtomicOperation.execute(AbstractEventAtomicOperation.java:62)",
-            "org.camunda.bpm.engine.impl.interceptor.AtomicOperationInvocation.execute(AtomicOperationInvocation.java:99)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.invokeNext(CommandInvocationContext.java:131)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performNext(CommandInvocationContext.java:111)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:86)",
-            "org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperation(ExecutionEntity.java:646)",
-            "org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperation(ExecutionEntity.java:620)",
-            "org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationTransitionCreateScope.scopeCreated(PvmAtomicOperationTransitionCreateScope.java:38)",
-            "org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationCreateScope.execute(PvmAtomicOperationCreateScope.java:54)",
-            "org.camunda.bpm.engine.impl.pvm.runtime.operation.PvmAtomicOperationCreateScope.execute(PvmAtomicOperationCreateScope.java:28)",
-            "org.camunda.bpm.engine.impl.interceptor.AtomicOperationInvocation.execute(AtomicOperationInvocation.java:99)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.invokeNext(CommandInvocationContext.java:131)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performNext(CommandInvocationContext.java:118)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandInvocationContext.performOperation(CommandInvocationContext.java:86)",
-            "org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperation(ExecutionEntity.java:646)",
-            "org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.performOperation(ExecutionEntity.java:620)",
-            "org.camunda.bpm.engine.impl.pvm.runtime.PvmExecutionImpl.start(PvmExecutionImpl.java:249)",
-            "org.camunda.bpm.engine.impl.persistence.entity.ExecutionEntity.start(ExecutionEntity.java:455)",
-            "org.camunda.bpm.engine.impl.cmd.StartProcessInstanceCmd.execute(StartProcessInstanceCmd.java:66)",
-            "org.camunda.bpm.engine.impl.cmd.StartProcessInstanceCmd.execute(StartProcessInstanceCmd.java:38)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandExecutorImpl.execute(CommandExecutorImpl.java:28)",
-            "org.camunda.bpm.engine.impl.interceptor.CommandContextInterceptor.execute(CommandContextInterceptor.java:110)",
-            "org.camunda.bpm.engine.spring.SpringTransactionInterceptor$1.doInTransaction(SpringTransactionInterceptor.java:46)",
-            "org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140)",
-            "org.camunda.bpm.engine.spring.SpringTransactionInterceptor.execute(SpringTransactionInterceptor.java:44)",
-            "org.camunda.bpm.engine.impl.interceptor.ProcessApplicationContextInterceptor.execute(ProcessApplicationContextInterceptor.java:70)",
-            "org.camunda.bpm.engine.impl.interceptor.LogInterceptor.execute(LogInterceptor.java:33)",
-            "org.camunda.bpm.engine.impl.ProcessInstantiationBuilderImpl.executeWithVariablesInReturn(ProcessInstantiationBuilderImpl.java:166)",
-            "org.camunda.bpm.engine.impl.ProcessInstantiationBuilderImpl.execute(ProcessInstantiationBuilderImpl.java:132)",
-            "org.camunda.bpm.engine.impl.ProcessInstantiationBuilderImpl.execute(ProcessInstantiationBuilderImpl.java:128)",
-            "org.camunda.bpm.engine.impl.RuntimeServiceImpl.startProcessInstanceByKey(RuntimeServiceImpl.java:107)",
-            "io.holunda.camunda.bpm.data.itest.ActionStage.process_is_started_with_variables(CamundaBpmDataITestBase.kt:431)",
-            "io.holunda.camunda.bpm.data.itest.ActionStage$ByteBuddy$qaqhCqVJ.process_is_started_with_variables$accessor$m1Z5WviL(Unknown Source)",
-            "io.holunda.camunda.bpm.data.itest.ActionStage$ByteBuddy$qaqhCqVJ$auxiliary$PLAlZ5is.call(Unknown Source)",
-            "io.holunda.camunda.bpm.data.itest.ActionStage$ByteBuddy$qaqhCqVJ.process_is_started_with_variables(Unknown Source)",
-            "io.holunda.camunda.bpm.data.itest.ActionStage.process_is_started_with_variables$default(CamundaBpmDataITestBase.kt:426)",
-            "io.holunda.camunda.bpm.data.itest.VariableScopeAdapterITest.Should throw correct exceptions(VariableScopeAdapterITest.kt:78)",
-            "org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)",
-            "org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)",
-            "org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)",
-            "org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)",
-            "org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)",
-            "org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)",
-            "org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)",
-            "org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)",
-            "com.tngtech.jgiven.junit.JGivenMethodRule$1.evaluate(JGivenMethodRule.java:73)",
-            "org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)",
-            "org.junit.rules.RunRules.evaluate(RunRules.java:20)",
-            "org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)",
-            "org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)",
-            "org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)",
-            "org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)",
-            "org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)",
-            "org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)",
-            "org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)",
-            "org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)",
-            "org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)",
-            "org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)",
-            "org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)",
-            "org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)",
-            "org.junit.rules.RunRules.evaluate(RunRules.java:20)",
-            "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
-            "org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)",
-            "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
-            "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
-            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
-            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
-          ],
-          "durationInNanos": 81584900
-        }
-      ],
-      "durationInNanos": 81584900
     }
   ],
   "tagMap": {}

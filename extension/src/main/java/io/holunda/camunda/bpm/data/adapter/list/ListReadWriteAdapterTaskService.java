@@ -40,6 +40,11 @@ public class ListReadWriteAdapterTaskService<T> extends AbstractListReadWriteAda
   }
 
   @Override
+  public Optional<List<T>> getLocalOptional() {
+    return Optional.ofNullable(getOrNull(taskService.getVariableLocal(taskId, variableName)));
+  }
+
+  @Override
   public void setLocal(List<T> value, boolean isTransient) {
     taskService.setVariableLocal(taskId, variableName, getTypedValue(value, isTransient));
   }

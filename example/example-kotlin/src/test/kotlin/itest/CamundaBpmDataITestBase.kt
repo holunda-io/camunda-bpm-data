@@ -37,6 +37,7 @@ import org.camunda.bpm.engine.RepositoryService
 import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.delegate.JavaDelegate
+import org.camunda.bpm.engine.delegate.TaskListener
 import org.camunda.bpm.engine.repository.ProcessDefinition
 import org.camunda.bpm.engine.runtime.ProcessInstance
 import org.camunda.bpm.engine.task.Task
@@ -202,6 +203,36 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
     }
 
     @Bean
+    fun readLocalFromVariableScope() = JavaDelegate { delegateExecution ->
+      vars[STRING_VAR.name] = STRING_VAR.from(delegateExecution).local
+      vars[DATE_VAR.name] = DATE_VAR.from(delegateExecution).local
+      vars[SHORT_VAR.name] = SHORT_VAR.from(delegateExecution).local
+      vars[INT_VAR.name] = INT_VAR.from(delegateExecution).local
+      vars[LONG_VAR.name] = LONG_VAR.from(delegateExecution).local
+      vars[DOUBLE_VAR.name] = DOUBLE_VAR.from(delegateExecution).local
+      vars[BOOLEAN_VAR.name] = BOOLEAN_VAR.from(delegateExecution).local
+      vars[COMPLEX_VAR.name] = COMPLEX_VAR.from(delegateExecution).local
+      vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(delegateExecution).local
+      vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(delegateExecution).local
+      vars[MAP_STRING_DATE_VAR.name] = MAP_STRING_DATE_VAR.from(delegateExecution).local
+    }
+
+    @Bean
+    fun readLocalFromDelegateTask() = TaskListener { delegateTask ->
+      vars[STRING_VAR.name] = STRING_VAR.from(delegateTask).local
+      vars[DATE_VAR.name] = DATE_VAR.from(delegateTask).local
+      vars[SHORT_VAR.name] = SHORT_VAR.from(delegateTask).local
+      vars[INT_VAR.name] = INT_VAR.from(delegateTask).local
+      vars[LONG_VAR.name] = LONG_VAR.from(delegateTask).local
+      vars[DOUBLE_VAR.name] = DOUBLE_VAR.from(delegateTask).local
+      vars[BOOLEAN_VAR.name] = BOOLEAN_VAR.from(delegateTask).local
+      vars[COMPLEX_VAR.name] = COMPLEX_VAR.from(delegateTask).local
+      vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(delegateTask).local
+      vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(delegateTask).local
+      vars[MAP_STRING_DATE_VAR.name] = MAP_STRING_DATE_VAR.from(delegateTask).local
+    }
+
+    @Bean
     fun readNonExisting() = JavaDelegate { delegateExecution ->
       val nonExisting = stringVariable("non-existing")
       nonExisting.from(delegateExecution).get()
@@ -254,17 +285,17 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       SET_STRING_VAR.on(delegateExecution).set(SET_STRING.value)
       MAP_STRING_DATE_VAR.on(delegateExecution).set(MAP_STRING_DATE.value)
 
-      STRING_VAR.on(delegateExecution).set(STRING_LOCAL.value)
-      DATE_VAR.on(delegateExecution).set(DATE_LOCAL.value)
-      SHORT_VAR.on(delegateExecution).set(SHORT_LOCAL.value)
-      INT_VAR.on(delegateExecution).set(INT_LOCAL.value)
-      LONG_VAR.on(delegateExecution).set(LONG_LOCAL.value)
-      DOUBLE_VAR.on(delegateExecution).set(DOUBLE_LOCAL.value)
-      BOOLEAN_VAR.on(delegateExecution).set(BOOLEAN_LOCAL.value)
-      COMPLEX_VAR.on(delegateExecution).set(COMPLEX_LOCAL.value)
-      LIST_STRING_VAR.on(delegateExecution).set(LIST_STRING_LOCAL.value)
-      SET_STRING_VAR.on(delegateExecution).set(SET_STRING_LOCAL.value)
-      MAP_STRING_DATE_VAR.on(delegateExecution).set(MAP_STRING_DATE_LOCAL.value)
+      STRING_VAR.on(delegateExecution).setLocal(STRING_LOCAL.value)
+      DATE_VAR.on(delegateExecution).setLocal(DATE_LOCAL.value)
+      SHORT_VAR.on(delegateExecution).setLocal(SHORT_LOCAL.value)
+      INT_VAR.on(delegateExecution).setLocal(INT_LOCAL.value)
+      LONG_VAR.on(delegateExecution).setLocal(LONG_LOCAL.value)
+      DOUBLE_VAR.on(delegateExecution).setLocal(DOUBLE_LOCAL.value)
+      BOOLEAN_VAR.on(delegateExecution).setLocal(BOOLEAN_LOCAL.value)
+      COMPLEX_VAR.on(delegateExecution).setLocal(COMPLEX_LOCAL.value)
+      LIST_STRING_VAR.on(delegateExecution).setLocal(LIST_STRING_LOCAL.value)
+      SET_STRING_VAR.on(delegateExecution).setLocal(SET_STRING_LOCAL.value)
+      MAP_STRING_DATE_VAR.on(delegateExecution).setLocal(MAP_STRING_DATE_LOCAL.value)
     }
 
     @Bean
@@ -392,6 +423,24 @@ class ActionStage : Stage<ActionStage>() {
       .userTask(taskDefinitionKey)
       .serviceTask("service_task")
       .camundaDelegateExpression(delegateExpression)
+      .endEvent("end")
+      .done()
+    deploy(processDefinitionKey, instance)
+
+    return self()
+  }
+
+  fun process_with_user_task_and_listener_is_deployed(
+    processDefinitionKey: String = "process_with_user_task_and_listener",
+    taskDefinitionKey: String = "user_task",
+    delegateExpression: String = "\${listenerDelegate}"
+  ): ActionStage {
+
+    val instance = Bpmn
+      .createExecutableProcess(processDefinitionKey)
+      .startEvent("start")
+      .userTask(taskDefinitionKey)
+      .camundaTaskListenerDelegateExpression("complete", delegateExpression)
       .endEvent("end")
       .done()
     deploy(processDefinitionKey, instance)

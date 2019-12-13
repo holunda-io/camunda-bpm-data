@@ -31,4 +31,9 @@ public abstract class AbstractReadWriteAdapter<T> implements ReadAdapter<T>, Wri
   public T get() {
     return getOptional().orElseThrow(() -> new VariableNotFoundException("Couldn't find required variable " + variableName));
   }
+
+  @Override
+  public T getLocal() {
+    return getLocalOptional().orElseThrow(() -> new VariableNotFoundException("Couldn't find required local variable " + variableName));
+  }
 }

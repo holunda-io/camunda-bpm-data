@@ -1,16 +1,27 @@
 package io.holunda.camunda.bpm.data.itest
 
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.BOOLEAN
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.BOOLEAN_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.DATE
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.DATE_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.DOUBLE
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.DOUBLE_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.INT
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.INT_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LIST_STRING
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LIST_STRING_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LONG
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LONG_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.MAP_STRING_DATE
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.MAP_STRING_DATE_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SET_STRING
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SET_STRING_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SHORT
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SHORT_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.STRING
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.STRING_LOCAL
 import org.camunda.bpm.engine.variable.Variables.createVariables
 import org.junit.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -116,6 +127,37 @@ class TaskServiceAdapterITest : CamundaBpmDataITestBase() {
 
     then()
       .variables_had_value(readValues = vars, variablesWithValue = createKeyValuePairs())
+  }
+
+  @Test
+  fun `should write local variables to task service adapter`() {
+
+    given()
+      .process_with_user_task_and_listener_is_deployed(delegateExpression = "\${${DelegateConfiguration::readLocalFromDelegateTask.name}}")
+      .and()
+      .process_is_started_with_variables(variables = createVariables())
+      .and()
+      .process_waits_in_task()
+
+    whenever()
+      .task_is_accessed_in_user_task { taskService, taskId ->
+        STRING_VAR.on(taskService, taskId).setLocal(STRING_LOCAL.value)
+        DATE_VAR.on(taskService, taskId).setLocal(DATE_LOCAL.value)
+        SHORT_VAR.on(taskService, taskId).setLocal(SHORT_LOCAL.value)
+        INT_VAR.on(taskService, taskId).setLocal(INT_LOCAL.value)
+        LONG_VAR.on(taskService, taskId).setLocal(LONG_LOCAL.value)
+        DOUBLE_VAR.on(taskService, taskId).setLocal(DOUBLE_LOCAL.value)
+        BOOLEAN_VAR.on(taskService, taskId).setLocal(BOOLEAN_LOCAL.value)
+        COMPLEX_VAR.on(taskService, taskId).setLocal(COMPLEX_LOCAL.value)
+        LIST_STRING_VAR.on(taskService, taskId).setLocal(LIST_STRING_LOCAL.value)
+        SET_STRING_VAR.on(taskService, taskId).setLocal(SET_STRING_LOCAL.value)
+        MAP_STRING_DATE_VAR.on(taskService, taskId).setLocal(MAP_STRING_DATE_LOCAL.value)
+      }
+      .and()
+      .task_is_completed()
+
+    then()
+      .variables_had_value(readValues = delegateConfiguration.vars, variablesWithValue = createKeyLocalValuePairs())
   }
 
 }

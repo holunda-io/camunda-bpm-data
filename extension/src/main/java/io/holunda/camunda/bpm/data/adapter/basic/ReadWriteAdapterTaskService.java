@@ -39,6 +39,11 @@ public class ReadWriteAdapterTaskService<T> extends AbstractBasicReadWriteAdapte
   }
 
   @Override
+  public Optional<T> getLocalOptional() {
+    return Optional.ofNullable(getOrNull(taskService.getVariableLocal(taskId, variableName)));
+  }
+
+  @Override
   public void setLocal(T value, boolean isTransient) {
     taskService.setVariableLocal(taskId, variableName, getTypedValue(value, isTransient));
   }

@@ -39,6 +39,11 @@ public class MapReadWriteAdapterVariableScope<K, V> extends AbstractMapReadWrite
   }
 
   @Override
+  public Optional<Map<K, V>> getLocalOptional() {
+    return Optional.ofNullable(getOrNull(variableScope.getVariableLocal(variableName)));
+  }
+
+  @Override
   public void setLocal(Map<K, V> value, boolean isTransient) {
     variableScope.setVariableLocal(variableName, getTypedValue(value, isTransient));
   }

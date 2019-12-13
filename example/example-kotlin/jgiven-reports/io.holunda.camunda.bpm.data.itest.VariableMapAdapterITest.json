@@ -40,7 +40,7 @@
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 61873007
+              "durationInNanos": 45779600
             },
             {
               "name": "get process definition",
@@ -54,7 +54,7 @@
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 275098
+              "durationInNanos": 159700
             },
             {
               "name": "process is started with variables",
@@ -70,15 +70,15 @@
                   }
                 },
                 {
-                  "value": "{\n  Double Variable \u003d\u003e Untyped value \u002712.0\u0027, isTransient \u003d false\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 17:42:18 CET 2019)\u0027, isTransient \u003d false\n  List Of String Variable \u003d\u003e Untyped value \u0027[Hello, World]\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Untyped value \u002711\u0027, isTransient \u003d false\n  Map Of String to Date Variable \u003d\u003e Untyped value \u0027{Twelve\u003dThu Dec 12 17:42:18 CET 2019, Eleven\u003dThu Dec 12 17:42:18 CET 2019}\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Untyped value \u0027Thu Dec 12 17:42:18 CET 2019\u0027, isTransient \u003d false\n  Long Variable \u003d\u003e Untyped value \u0027812\u0027, isTransient \u003d false\n  Set Of String Variable \u003d\u003e Untyped value \u0027[Kermit, Piggy]\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Untyped value \u0027123\u0027, isTransient \u003d false\n  String Variable \u003d\u003e Untyped value \u0027value\u0027, isTransient \u003d false\n  Boolean Variable \u003d\u003e Untyped value \u0027true\u0027, isTransient \u003d false\n}",
+                  "value": "{\n  Double Variable \u003d\u003e Untyped value \u002712.0\u0027, isTransient \u003d false\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:36:48 CET 2019)\u0027, isTransient \u003d false\n  List Of String Variable \u003d\u003e Untyped value \u0027[Hello, World]\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Untyped value \u002711\u0027, isTransient \u003d false\n  Map Of String to Date Variable \u003d\u003e Untyped value \u0027{Twelve\u003dFri Dec 13 15:36:48 CET 2019, Eleven\u003dFri Dec 13 15:36:48 CET 2019}\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Untyped value \u0027Fri Dec 13 15:36:48 CET 2019\u0027, isTransient \u003d false\n  Long Variable \u003d\u003e Untyped value \u0027812\u0027, isTransient \u003d false\n  Set Of String Variable \u003d\u003e Untyped value \u0027[Kermit, Piggy]\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Untyped value \u0027123\u0027, isTransient \u003d false\n  String Variable \u003d\u003e Untyped value \u0027value\u0027, isTransient \u003d false\n  Boolean Variable \u003d\u003e Untyped value \u0027true\u0027, isTransient \u003d false\n}",
                   "argumentInfo": {
                     "argumentName": "variables",
-                    "formattedValue": "{\n  Double Variable \u003d\u003e Untyped value \u002712.0\u0027, isTransient \u003d false\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 17:42:18 CET 2019)\u0027, isTransient \u003d false\n  List Of String Variable \u003d\u003e Untyped value \u0027[Hello, World]\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Untyped value \u002711\u0027, isTransient \u003d false\n  Map Of String to Date Variable \u003d\u003e Untyped value \u0027{Twelve\u003dThu Dec 12 17:42:18 CET 2019, Eleven\u003dThu Dec 12 17:42:18 CET 2019}\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Untyped value \u0027Thu Dec 12 17:42:18 CET 2019\u0027, isTransient \u003d false\n  Long Variable \u003d\u003e Untyped value \u0027812\u0027, isTransient \u003d false\n  Set Of String Variable \u003d\u003e Untyped value \u0027[Kermit, Piggy]\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Untyped value \u0027123\u0027, isTransient \u003d false\n  String Variable \u003d\u003e Untyped value \u0027value\u0027, isTransient \u003d false\n  Boolean Variable \u003d\u003e Untyped value \u0027true\u0027, isTransient \u003d false\n}"
+                    "formattedValue": "{\n  Double Variable \u003d\u003e Untyped value \u002712.0\u0027, isTransient \u003d false\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:36:48 CET 2019)\u0027, isTransient \u003d false\n  List Of String Variable \u003d\u003e Untyped value \u0027[Hello, World]\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Untyped value \u002711\u0027, isTransient \u003d false\n  Map Of String to Date Variable \u003d\u003e Untyped value \u0027{Twelve\u003dFri Dec 13 15:36:48 CET 2019, Eleven\u003dFri Dec 13 15:36:48 CET 2019}\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Untyped value \u0027Fri Dec 13 15:36:48 CET 2019\u0027, isTransient \u003d false\n  Long Variable \u003d\u003e Untyped value \u0027812\u0027, isTransient \u003d false\n  Set Of String Variable \u003d\u003e Untyped value \u0027[Kermit, Piggy]\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Untyped value \u0027123\u0027, isTransient \u003d false\n  String Variable \u003d\u003e Untyped value \u0027value\u0027, isTransient \u003d false\n  Boolean Variable \u003d\u003e Untyped value \u0027true\u0027, isTransient \u003d false\n}"
                   }
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 36359915
+              "durationInNanos": 35058200
             },
             {
               "name": "variables had value",
@@ -91,32 +91,32 @@
                   "value": "variables had value"
                 },
                 {
-                  "value": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 17:42:18 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dThu Dec 12 17:42:18 CET 2019, Eleven\u003dThu Dec 12 17:42:18 CET 2019}, Date Variable\u003dThu Dec 12 17:42:18 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}",
+                  "value": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:36:48 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dFri Dec 13 15:36:48 CET 2019, Eleven\u003dFri Dec 13 15:36:48 CET 2019}, Date Variable\u003dFri Dec 13 15:36:48 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}",
                   "argumentInfo": {
                     "argumentName": "readValues",
-                    "formattedValue": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 17:42:18 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dThu Dec 12 17:42:18 CET 2019, Eleven\u003dThu Dec 12 17:42:18 CET 2019}, Date Variable\u003dThu Dec 12 17:42:18 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}"
+                    "formattedValue": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:36:48 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dFri Dec 13 15:36:48 CET 2019, Eleven\u003dFri Dec 13 15:36:48 CET 2019}, Date Variable\u003dFri Dec 13 15:36:48 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}"
                   }
                 },
                 {
-                  "value": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@30ed2a26, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1bf10539, Thu Dec 12 17:42:18 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1e406cbe, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@141a10bf, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@4dffa400, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@5e34a84b, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@438c0aaf, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@7577589, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 17:42:18 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@37b80ec7, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@4cb58e8b, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@6f4f2cc0, {Twelve\u003dThu Dec 12 17:42:18 CET 2019, Eleven\u003dThu Dec 12 17:42:18 CET 2019})]",
+                  "value": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1ab21633, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@59aa1d1c, Fri Dec 13 15:36:48 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@169d4aba, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@612bb755, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6ba226cd, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@62e99458, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1eddca25, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@22f057b4, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:36:48 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@581e8969, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@767b9d66, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@687fd6e, {Twelve\u003dFri Dec 13 15:36:48 CET 2019, Eleven\u003dFri Dec 13 15:36:48 CET 2019})]",
                   "argumentInfo": {
                     "argumentName": "variablesWithValue",
-                    "formattedValue": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@30ed2a26, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1bf10539, Thu Dec 12 17:42:18 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1e406cbe, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@141a10bf, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@4dffa400, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@5e34a84b, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@438c0aaf, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@7577589, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 17:42:18 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@37b80ec7, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@4cb58e8b, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@6f4f2cc0, {Twelve\u003dThu Dec 12 17:42:18 CET 2019, Eleven\u003dThu Dec 12 17:42:18 CET 2019})]"
+                    "formattedValue": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1ab21633, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@59aa1d1c, Fri Dec 13 15:36:48 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@169d4aba, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@612bb755, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6ba226cd, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@62e99458, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1eddca25, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@22f057b4, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:36:48 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@581e8969, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@767b9d66, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@687fd6e, {Twelve\u003dFri Dec 13 15:36:48 CET 2019, Eleven\u003dFri Dec 13 15:36:48 CET 2019})]"
                   }
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 668624
+              "durationInNanos": 983800
             }
           ],
           "explicitArguments": [],
           "derivedArguments": [],
           "status": "SUCCESS",
           "success": true,
-          "durationInNanos": 104848727
+          "durationInNanos": 88278100
         }
       ],
-      "durationInNanos": 104848727,
+      "durationInNanos": 88278100,
       "executionStatus": "SUCCESS"
     },
     {
@@ -137,7 +137,7 @@
           "success": false,
           "errorMessage": "java.lang.UnsupportedOperationException: Can\u0027t set a local variable on a variable map",
           "stackTrace": [
-            "io.holunda.camunda.bpm.data.adapter.set.SetReadWriteAdapterVariableMap.removeLocal(SetReadWriteAdapterVariableMap.java:51)",
+            "io.holunda.camunda.bpm.data.adapter.set.SetReadWriteAdapterVariableMap.removeLocal(SetReadWriteAdapterVariableMap.java:56)",
             "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest.should throw correct NSO on set removeLocal exception(VariableMapAdapterITest.kt:145)",
             "org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)",
             "org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)",
@@ -175,14 +175,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 5588960
+          "durationInNanos": 8447700
         }
       ],
-      "durationInNanos": 5588960
+      "durationInNanos": 8447700
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -242,14 +242,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 3863433
+          "durationInNanos": 6992600
         }
       ],
-      "durationInNanos": 3863433
+      "durationInNanos": 6992600
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -308,14 +308,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 5811601
+          "durationInNanos": 8255200
         }
       ],
-      "durationInNanos": 5811601
+      "durationInNanos": 8255200
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -374,14 +374,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 4931584
+          "durationInNanos": 5150700
         }
       ],
-      "durationInNanos": 4931584
+      "durationInNanos": 5150700
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -421,7 +421,7 @@
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 48141085
+              "durationInNanos": 53123900
             },
             {
               "name": "get process definition",
@@ -435,7 +435,7 @@
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 203153
+              "durationInNanos": 266000
             },
             {
               "name": "process is started with variables",
@@ -451,15 +451,15 @@
                   }
                 },
                 {
-                  "value": "{\n  Double Variable \u003d\u003e Untyped value \u002712.0\u0027, isTransient \u003d false\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 17:42:18 CET 2019)\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Untyped value \u002711\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Untyped value \u0027Thu Dec 12 17:42:18 CET 2019\u0027, isTransient \u003d false\n  Long Variable \u003d\u003e Untyped value \u0027812\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Untyped value \u0027123\u0027, isTransient \u003d false\n  Boolean Variable \u003d\u003e Untyped value \u0027true\u0027, isTransient \u003d false\n}",
+                  "value": "{\n  Double Variable \u003d\u003e Untyped value \u002712.0\u0027, isTransient \u003d false\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:36:48 CET 2019)\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Untyped value \u002711\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Untyped value \u0027Fri Dec 13 15:36:48 CET 2019\u0027, isTransient \u003d false\n  Long Variable \u003d\u003e Untyped value \u0027812\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Untyped value \u0027123\u0027, isTransient \u003d false\n  Boolean Variable \u003d\u003e Untyped value \u0027true\u0027, isTransient \u003d false\n}",
                   "argumentInfo": {
                     "argumentName": "variables",
-                    "formattedValue": "{\n  Double Variable \u003d\u003e Untyped value \u002712.0\u0027, isTransient \u003d false\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 17:42:18 CET 2019)\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Untyped value \u002711\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Untyped value \u0027Thu Dec 12 17:42:18 CET 2019\u0027, isTransient \u003d false\n  Long Variable \u003d\u003e Untyped value \u0027812\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Untyped value \u0027123\u0027, isTransient \u003d false\n  Boolean Variable \u003d\u003e Untyped value \u0027true\u0027, isTransient \u003d false\n}"
+                    "formattedValue": "{\n  Double Variable \u003d\u003e Untyped value \u002712.0\u0027, isTransient \u003d false\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:36:48 CET 2019)\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Untyped value \u002711\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Untyped value \u0027Fri Dec 13 15:36:48 CET 2019\u0027, isTransient \u003d false\n  Long Variable \u003d\u003e Untyped value \u0027812\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Untyped value \u0027123\u0027, isTransient \u003d false\n  Boolean Variable \u003d\u003e Untyped value \u0027true\u0027, isTransient \u003d false\n}"
                   }
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 18639775
+              "durationInNanos": 23509800
             },
             {
               "name": "variables had not value",
@@ -472,22 +472,22 @@
                   "value": "variables had not value"
                 },
                 {
-                  "value": "{Double Variable\u003dOptional[12.0], Complex Variable\u003dOptional[ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 17:42:18 CET 2019)], List Of String Variable\u003dOptional.empty, Short Variable\u003dOptional[11], Map Of String to Date Variable\u003dOptional.empty, Date Variable\u003dOptional[Thu Dec 12 17:42:18 CET 2019], Long Variable\u003dOptional[812], Set Of String Variable\u003dOptional.empty, Int Variable\u003dOptional[123], String Variable\u003dOptional.empty, Boolean Variable\u003dOptional[true]}",
+                  "value": "{Double Variable\u003dOptional[12.0], Complex Variable\u003dOptional[ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:36:48 CET 2019)], List Of String Variable\u003dOptional.empty, Short Variable\u003dOptional[11], Map Of String to Date Variable\u003dOptional.empty, Date Variable\u003dOptional[Fri Dec 13 15:36:48 CET 2019], Long Variable\u003dOptional[812], Set Of String Variable\u003dOptional.empty, Int Variable\u003dOptional[123], String Variable\u003dOptional.empty, Boolean Variable\u003dOptional[true]}",
                   "argumentInfo": {
                     "argumentName": "readValues",
-                    "formattedValue": "{Double Variable\u003dOptional[12.0], Complex Variable\u003dOptional[ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 17:42:18 CET 2019)], List Of String Variable\u003dOptional.empty, Short Variable\u003dOptional[11], Map Of String to Date Variable\u003dOptional.empty, Date Variable\u003dOptional[Thu Dec 12 17:42:18 CET 2019], Long Variable\u003dOptional[812], Set Of String Variable\u003dOptional.empty, Int Variable\u003dOptional[123], String Variable\u003dOptional.empty, Boolean Variable\u003dOptional[true]}"
+                    "formattedValue": "{Double Variable\u003dOptional[12.0], Complex Variable\u003dOptional[ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:36:48 CET 2019)], List Of String Variable\u003dOptional.empty, Short Variable\u003dOptional[11], Map Of String to Date Variable\u003dOptional.empty, Date Variable\u003dOptional[Fri Dec 13 15:36:48 CET 2019], Long Variable\u003dOptional[812], Set Of String Variable\u003dOptional.empty, Int Variable\u003dOptional[123], String Variable\u003dOptional.empty, Boolean Variable\u003dOptional[true]}"
                   }
                 },
                 {
-                  "value": "io.holunda.camunda.bpm.data.factory.BasicVariableFactory@30ed2a26, io.holunda.camunda.bpm.data.factory.ListVariableFactory@37b80ec7, io.holunda.camunda.bpm.data.factory.SetVariableFactory@4cb58e8b, io.holunda.camunda.bpm.data.factory.MapVariableFactory@6f4f2cc0",
+                  "value": "io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1ab21633, io.holunda.camunda.bpm.data.factory.ListVariableFactory@581e8969, io.holunda.camunda.bpm.data.factory.SetVariableFactory@767b9d66, io.holunda.camunda.bpm.data.factory.MapVariableFactory@687fd6e",
                   "argumentInfo": {
                     "argumentName": "variableWithValue",
-                    "formattedValue": "io.holunda.camunda.bpm.data.factory.BasicVariableFactory@30ed2a26, io.holunda.camunda.bpm.data.factory.ListVariableFactory@37b80ec7, io.holunda.camunda.bpm.data.factory.SetVariableFactory@4cb58e8b, io.holunda.camunda.bpm.data.factory.MapVariableFactory@6f4f2cc0"
+                    "formattedValue": "io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1ab21633, io.holunda.camunda.bpm.data.factory.ListVariableFactory@581e8969, io.holunda.camunda.bpm.data.factory.SetVariableFactory@767b9d66, io.holunda.camunda.bpm.data.factory.MapVariableFactory@687fd6e"
                   }
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 30746
+              "durationInNanos": 82000
             },
             {
               "name": "variables had value",
@@ -500,32 +500,32 @@
                   "value": "variables had value"
                 },
                 {
-                  "value": "{Double Variable\u003dOptional[12.0], Complex Variable\u003dOptional[ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 17:42:18 CET 2019)], List Of String Variable\u003dOptional.empty, Short Variable\u003dOptional[11], Map Of String to Date Variable\u003dOptional.empty, Date Variable\u003dOptional[Thu Dec 12 17:42:18 CET 2019], Long Variable\u003dOptional[812], Set Of String Variable\u003dOptional.empty, Int Variable\u003dOptional[123], String Variable\u003dOptional.empty, Boolean Variable\u003dOptional[true]}",
+                  "value": "{Double Variable\u003dOptional[12.0], Complex Variable\u003dOptional[ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:36:48 CET 2019)], List Of String Variable\u003dOptional.empty, Short Variable\u003dOptional[11], Map Of String to Date Variable\u003dOptional.empty, Date Variable\u003dOptional[Fri Dec 13 15:36:48 CET 2019], Long Variable\u003dOptional[812], Set Of String Variable\u003dOptional.empty, Int Variable\u003dOptional[123], String Variable\u003dOptional.empty, Boolean Variable\u003dOptional[true]}",
                   "argumentInfo": {
                     "argumentName": "readValues",
-                    "formattedValue": "{Double Variable\u003dOptional[12.0], Complex Variable\u003dOptional[ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 17:42:18 CET 2019)], List Of String Variable\u003dOptional.empty, Short Variable\u003dOptional[11], Map Of String to Date Variable\u003dOptional.empty, Date Variable\u003dOptional[Thu Dec 12 17:42:18 CET 2019], Long Variable\u003dOptional[812], Set Of String Variable\u003dOptional.empty, Int Variable\u003dOptional[123], String Variable\u003dOptional.empty, Boolean Variable\u003dOptional[true]}"
+                    "formattedValue": "{Double Variable\u003dOptional[12.0], Complex Variable\u003dOptional[ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:36:48 CET 2019)], List Of String Variable\u003dOptional.empty, Short Variable\u003dOptional[11], Map Of String to Date Variable\u003dOptional.empty, Date Variable\u003dOptional[Fri Dec 13 15:36:48 CET 2019], Long Variable\u003dOptional[812], Set Of String Variable\u003dOptional.empty, Int Variable\u003dOptional[123], String Variable\u003dOptional.empty, Boolean Variable\u003dOptional[true]}"
                   }
                 },
                 {
-                  "value": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@4dffa400, Optional[812])]",
+                  "value": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6ba226cd, Optional[812])]",
                   "argumentInfo": {
                     "argumentName": "variablesWithValue",
-                    "formattedValue": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@4dffa400, Optional[812])]"
+                    "formattedValue": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6ba226cd, Optional[812])]"
                   }
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 689944
+              "durationInNanos": 1003500
             }
           ],
           "explicitArguments": [],
           "derivedArguments": [],
           "status": "SUCCESS",
           "success": true,
-          "durationInNanos": 73217996
+          "durationInNanos": 87038100
         }
       ],
-      "durationInNanos": 73217996,
+      "durationInNanos": 87038100,
       "executionStatus": "SUCCESS"
     },
     {
@@ -585,14 +585,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 3647597
+          "durationInNanos": 5533600
         }
       ],
-      "durationInNanos": 3647597
+      "durationInNanos": 5533600
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -612,7 +612,7 @@
           "success": false,
           "errorMessage": "java.lang.UnsupportedOperationException: Can\u0027t set a local variable on a variable map",
           "stackTrace": [
-            "io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterVariableMap.removeLocal(ListReadWriteAdapterVariableMap.java:51)",
+            "io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterVariableMap.removeLocal(ListReadWriteAdapterVariableMap.java:56)",
             "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest.should throw correct NSO on list removeLocal exception(VariableMapAdapterITest.kt:139)",
             "org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)",
             "org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)",
@@ -650,14 +650,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 3633549
+          "durationInNanos": 5866600
         }
       ],
-      "durationInNanos": 3633549
+      "durationInNanos": 5866600
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -697,7 +697,7 @@
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 47492527
+              "durationInNanos": 46266200
             },
             {
               "name": "get process definition",
@@ -711,7 +711,7 @@
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 172691
+              "durationInNanos": 166200
             },
             {
               "name": "process is started with variables",
@@ -727,15 +727,15 @@
                   }
                 },
                 {
-                  "value": "{\n  Double Variable \u003d\u003e Value \u002712.0\u0027 of type \u0027PrimitiveValueType[double]\u0027, isTransient\u003dfalse\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 17:42:18 CET 2019)\u0027, isTransient \u003d false\n  List Of String Variable \u003d\u003e Untyped value \u0027[Hello, World]\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Value \u002711\u0027 of type \u0027PrimitiveValueType[short]\u0027, isTransient\u003dfalse\n  Map Of String to Date Variable \u003d\u003e Untyped value \u0027{Twelve\u003dThu Dec 12 17:42:18 CET 2019, Eleven\u003dThu Dec 12 17:42:18 CET 2019}\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Value \u0027Thu Dec 12 17:42:18 CET 2019\u0027 of type \u0027PrimitiveValueType[date]\u0027, isTransient\u003dfalse\n  Long Variable \u003d\u003e Value \u0027812\u0027 of type \u0027PrimitiveValueType[long]\u0027, isTransient\u003dfalse\n  Set Of String Variable \u003d\u003e Untyped value \u0027[Kermit, Piggy]\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Value \u0027123\u0027 of type \u0027PrimitiveValueType[integer]\u0027, isTransient\u003dfalse\n  String Variable \u003d\u003e Value \u0027value\u0027 of type \u0027PrimitiveValueType[string]\u0027, isTransient\u003dfalse\n  Boolean Variable \u003d\u003e Value \u0027true\u0027 of type \u0027PrimitiveValueType[boolean]\u0027, isTransient\u003dfalse\n}",
+                  "value": "{\n  Double Variable \u003d\u003e Value \u002712.0\u0027 of type \u0027PrimitiveValueType[double]\u0027, isTransient\u003dfalse\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:36:48 CET 2019)\u0027, isTransient \u003d false\n  List Of String Variable \u003d\u003e Untyped value \u0027[Hello, World]\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Value \u002711\u0027 of type \u0027PrimitiveValueType[short]\u0027, isTransient\u003dfalse\n  Map Of String to Date Variable \u003d\u003e Untyped value \u0027{Twelve\u003dFri Dec 13 15:36:48 CET 2019, Eleven\u003dFri Dec 13 15:36:48 CET 2019}\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Value \u0027Fri Dec 13 15:36:48 CET 2019\u0027 of type \u0027PrimitiveValueType[date]\u0027, isTransient\u003dfalse\n  Long Variable \u003d\u003e Value \u0027812\u0027 of type \u0027PrimitiveValueType[long]\u0027, isTransient\u003dfalse\n  Set Of String Variable \u003d\u003e Untyped value \u0027[Kermit, Piggy]\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Value \u0027123\u0027 of type \u0027PrimitiveValueType[integer]\u0027, isTransient\u003dfalse\n  String Variable \u003d\u003e Value \u0027value\u0027 of type \u0027PrimitiveValueType[string]\u0027, isTransient\u003dfalse\n  Boolean Variable \u003d\u003e Value \u0027true\u0027 of type \u0027PrimitiveValueType[boolean]\u0027, isTransient\u003dfalse\n}",
                   "argumentInfo": {
                     "argumentName": "variables",
-                    "formattedValue": "{\n  Double Variable \u003d\u003e Value \u002712.0\u0027 of type \u0027PrimitiveValueType[double]\u0027, isTransient\u003dfalse\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 17:42:18 CET 2019)\u0027, isTransient \u003d false\n  List Of String Variable \u003d\u003e Untyped value \u0027[Hello, World]\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Value \u002711\u0027 of type \u0027PrimitiveValueType[short]\u0027, isTransient\u003dfalse\n  Map Of String to Date Variable \u003d\u003e Untyped value \u0027{Twelve\u003dThu Dec 12 17:42:18 CET 2019, Eleven\u003dThu Dec 12 17:42:18 CET 2019}\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Value \u0027Thu Dec 12 17:42:18 CET 2019\u0027 of type \u0027PrimitiveValueType[date]\u0027, isTransient\u003dfalse\n  Long Variable \u003d\u003e Value \u0027812\u0027 of type \u0027PrimitiveValueType[long]\u0027, isTransient\u003dfalse\n  Set Of String Variable \u003d\u003e Untyped value \u0027[Kermit, Piggy]\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Value \u0027123\u0027 of type \u0027PrimitiveValueType[integer]\u0027, isTransient\u003dfalse\n  String Variable \u003d\u003e Value \u0027value\u0027 of type \u0027PrimitiveValueType[string]\u0027, isTransient\u003dfalse\n  Boolean Variable \u003d\u003e Value \u0027true\u0027 of type \u0027PrimitiveValueType[boolean]\u0027, isTransient\u003dfalse\n}"
+                    "formattedValue": "{\n  Double Variable \u003d\u003e Value \u002712.0\u0027 of type \u0027PrimitiveValueType[double]\u0027, isTransient\u003dfalse\n  Complex Variable \u003d\u003e Untyped value \u0027ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:36:48 CET 2019)\u0027, isTransient \u003d false\n  List Of String Variable \u003d\u003e Untyped value \u0027[Hello, World]\u0027, isTransient \u003d false\n  Short Variable \u003d\u003e Value \u002711\u0027 of type \u0027PrimitiveValueType[short]\u0027, isTransient\u003dfalse\n  Map Of String to Date Variable \u003d\u003e Untyped value \u0027{Twelve\u003dFri Dec 13 15:36:48 CET 2019, Eleven\u003dFri Dec 13 15:36:48 CET 2019}\u0027, isTransient \u003d false\n  Date Variable \u003d\u003e Value \u0027Fri Dec 13 15:36:48 CET 2019\u0027 of type \u0027PrimitiveValueType[date]\u0027, isTransient\u003dfalse\n  Long Variable \u003d\u003e Value \u0027812\u0027 of type \u0027PrimitiveValueType[long]\u0027, isTransient\u003dfalse\n  Set Of String Variable \u003d\u003e Untyped value \u0027[Kermit, Piggy]\u0027, isTransient \u003d false\n  Int Variable \u003d\u003e Value \u0027123\u0027 of type \u0027PrimitiveValueType[integer]\u0027, isTransient\u003dfalse\n  String Variable \u003d\u003e Value \u0027value\u0027 of type \u0027PrimitiveValueType[string]\u0027, isTransient\u003dfalse\n  Boolean Variable \u003d\u003e Value \u0027true\u0027 of type \u0027PrimitiveValueType[boolean]\u0027, isTransient\u003dfalse\n}"
                   }
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 35921969
+              "durationInNanos": 33267700
             },
             {
               "name": "variables had value",
@@ -748,32 +748,32 @@
                   "value": "variables had value"
                 },
                 {
-                  "value": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 17:42:18 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dThu Dec 12 17:42:18 CET 2019, Eleven\u003dThu Dec 12 17:42:18 CET 2019}, Date Variable\u003dThu Dec 12 17:42:18 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}",
+                  "value": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:36:48 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dFri Dec 13 15:36:48 CET 2019, Eleven\u003dFri Dec 13 15:36:48 CET 2019}, Date Variable\u003dFri Dec 13 15:36:48 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}",
                   "argumentInfo": {
                     "argumentName": "readValues",
-                    "formattedValue": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 17:42:18 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dThu Dec 12 17:42:18 CET 2019, Eleven\u003dThu Dec 12 17:42:18 CET 2019}, Date Variable\u003dThu Dec 12 17:42:18 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}"
+                    "formattedValue": "{Double Variable\u003d12.0, Complex Variable\u003dComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:36:48 CET 2019), List Of String Variable\u003d[Hello, World], Short Variable\u003d11, Map Of String to Date Variable\u003d{Twelve\u003dFri Dec 13 15:36:48 CET 2019, Eleven\u003dFri Dec 13 15:36:48 CET 2019}, Date Variable\u003dFri Dec 13 15:36:48 CET 2019, Long Variable\u003d812, Set Of String Variable\u003d[Kermit, Piggy], Int Variable\u003d123, String Variable\u003dvalue, Boolean Variable\u003dtrue}"
                   }
                 },
                 {
-                  "value": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@30ed2a26, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1bf10539, Thu Dec 12 17:42:18 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1e406cbe, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@141a10bf, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@4dffa400, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@5e34a84b, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@438c0aaf, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@7577589, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 17:42:18 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@37b80ec7, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@4cb58e8b, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@6f4f2cc0, {Twelve\u003dThu Dec 12 17:42:18 CET 2019, Eleven\u003dThu Dec 12 17:42:18 CET 2019})]",
+                  "value": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1ab21633, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@59aa1d1c, Fri Dec 13 15:36:48 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@169d4aba, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@612bb755, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6ba226cd, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@62e99458, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1eddca25, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@22f057b4, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:36:48 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@581e8969, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@767b9d66, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@687fd6e, {Twelve\u003dFri Dec 13 15:36:48 CET 2019, Eleven\u003dFri Dec 13 15:36:48 CET 2019})]",
                   "argumentInfo": {
                     "argumentName": "variablesWithValue",
-                    "formattedValue": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@30ed2a26, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1bf10539, Thu Dec 12 17:42:18 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1e406cbe, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@141a10bf, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@4dffa400, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@5e34a84b, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@438c0aaf, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@7577589, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dThu Dec 12 17:42:18 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@37b80ec7, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@4cb58e8b, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@6f4f2cc0, {Twelve\u003dThu Dec 12 17:42:18 CET 2019, Eleven\u003dThu Dec 12 17:42:18 CET 2019})]"
+                    "formattedValue": "[(io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1ab21633, value), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@59aa1d1c, Fri Dec 13 15:36:48 CET 2019), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@169d4aba, 11), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@612bb755, 123), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@6ba226cd, 812), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@62e99458, 12.0), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@1eddca25, true), (io.holunda.camunda.bpm.data.factory.BasicVariableFactory@22f057b4, ComplexDataStructure(stringValue\u003dstring, intValue\u003d17, dateValue\u003dFri Dec 13 15:36:48 CET 2019)), (io.holunda.camunda.bpm.data.factory.ListVariableFactory@581e8969, [Hello, World]), (io.holunda.camunda.bpm.data.factory.SetVariableFactory@767b9d66, [Kermit, Piggy]), (io.holunda.camunda.bpm.data.factory.MapVariableFactory@687fd6e, {Twelve\u003dFri Dec 13 15:36:48 CET 2019, Eleven\u003dFri Dec 13 15:36:48 CET 2019})]"
                   }
                 }
               ],
               "status": "PASSED",
-              "durationInNanos": 711047
+              "durationInNanos": 1110000
             }
           ],
           "explicitArguments": [],
           "derivedArguments": [],
           "status": "SUCCESS",
           "success": true,
-          "durationInNanos": 89182095
+          "durationInNanos": 87231700
         }
       ],
-      "durationInNanos": 89182095,
+      "durationInNanos": 87231700,
       "executionStatus": "SUCCESS"
     },
     {
@@ -794,7 +794,7 @@
           "success": false,
           "errorMessage": "java.lang.UnsupportedOperationException: Can\u0027t set a local variable on a variable map",
           "stackTrace": [
-            "io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterVariableMap.setLocal(ListReadWriteAdapterVariableMap.java:41)",
+            "io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterVariableMap.setLocal(ListReadWriteAdapterVariableMap.java:46)",
             "io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterVariableMap.setLocal(ListReadWriteAdapterVariableMap.java:13)",
             "io.holunda.camunda.bpm.data.adapter.AbstractReadWriteAdapter.setLocal(AbstractReadWriteAdapter.java:27)",
             "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest.should throw correct NSO on list setLocal exception(VariableMapAdapterITest.kt:115)",
@@ -834,14 +834,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 4304593
+          "durationInNanos": 6297000
         }
       ],
-      "durationInNanos": 4304593
+      "durationInNanos": 6297000
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -859,7 +859,7 @@
           "derivedArguments": [],
           "status": "FAILED",
           "success": false,
-          "errorMessage": "io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException: Error reading Map Of String to Date Variable: Wrong map type detected, expected Map\u003cjava.lang.String,java.lang.String, but was not found in {Twelve\u003dThu Dec 12 17:42:18 CET 2019, Eleven\u003dThu Dec 12 17:42:18 CET 2019}",
+          "errorMessage": "io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException: Error reading Map Of String to Date Variable: Wrong map type detected, expected Map\u003cjava.lang.String,java.lang.String, but was not found in {Twelve\u003dFri Dec 13 15:36:48 CET 2019, Eleven\u003dFri Dec 13 15:36:48 CET 2019}",
           "stackTrace": [
             "io.holunda.camunda.bpm.data.adapter.map.AbstractMapReadWriteAdapter.getOrNull(AbstractMapReadWriteAdapter.java:64)",
             "io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterVariableMap.getOptional(MapReadWriteAdapterVariableMap.java:33)",
@@ -900,14 +900,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 3875814
+          "durationInNanos": 5566300
         }
       ],
-      "durationInNanos": 3875814
+      "durationInNanos": 5566300
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -966,14 +966,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 4280115
+          "durationInNanos": 5707100
         }
       ],
-      "durationInNanos": 4280115
+      "durationInNanos": 5707100
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -1032,14 +1032,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 4159947
+          "durationInNanos": 5153300
         }
       ],
-      "durationInNanos": 4159947
+      "durationInNanos": 5153300
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -1057,7 +1057,7 @@
           "derivedArguments": [],
           "status": "FAILED",
           "success": false,
-          "errorMessage": "io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException: Error reading Map Of String to Date Variable: Wrong map type detected, expected Map\u003cjava.util.Date,java.util.Date, but was not found in {Twelve\u003dThu Dec 12 17:42:18 CET 2019, Eleven\u003dThu Dec 12 17:42:18 CET 2019}",
+          "errorMessage": "io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException: Error reading Map Of String to Date Variable: Wrong map type detected, expected Map\u003cjava.util.Date,java.util.Date, but was not found in {Twelve\u003dFri Dec 13 15:36:48 CET 2019, Eleven\u003dFri Dec 13 15:36:48 CET 2019}",
           "stackTrace": [
             "io.holunda.camunda.bpm.data.adapter.map.AbstractMapReadWriteAdapter.getOrNull(AbstractMapReadWriteAdapter.java:64)",
             "io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterVariableMap.getOptional(MapReadWriteAdapterVariableMap.java:33)",
@@ -1099,14 +1099,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 4780058
+          "durationInNanos": 5277300
         }
       ],
-      "durationInNanos": 4780058
+      "durationInNanos": 5277300
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -1126,7 +1126,7 @@
           "success": false,
           "errorMessage": "java.lang.UnsupportedOperationException: Can\u0027t set a local variable on a variable map",
           "stackTrace": [
-            "io.holunda.camunda.bpm.data.adapter.basic.ReadWriteAdapterVariableMap.removeLocal(ReadWriteAdapterVariableMap.java:50)",
+            "io.holunda.camunda.bpm.data.adapter.basic.ReadWriteAdapterVariableMap.removeLocal(ReadWriteAdapterVariableMap.java:55)",
             "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest.should throw correct NSO on basic removeLocal exception(VariableMapAdapterITest.kt:133)",
             "org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)",
             "org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)",
@@ -1164,14 +1164,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 3505569
+          "durationInNanos": 5778500
         }
       ],
-      "durationInNanos": 3505569
+      "durationInNanos": 5778500
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -1191,7 +1191,7 @@
           "success": false,
           "errorMessage": "java.lang.UnsupportedOperationException: Can\u0027t set a local variable on a variable map",
           "stackTrace": [
-            "io.holunda.camunda.bpm.data.adapter.set.SetReadWriteAdapterVariableMap.setLocal(SetReadWriteAdapterVariableMap.java:41)",
+            "io.holunda.camunda.bpm.data.adapter.set.SetReadWriteAdapterVariableMap.setLocal(SetReadWriteAdapterVariableMap.java:46)",
             "io.holunda.camunda.bpm.data.adapter.set.SetReadWriteAdapterVariableMap.setLocal(SetReadWriteAdapterVariableMap.java:13)",
             "io.holunda.camunda.bpm.data.adapter.AbstractReadWriteAdapter.setLocal(AbstractReadWriteAdapter.java:27)",
             "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest.should throw correct NSO on set setLocal exception(VariableMapAdapterITest.kt:121)",
@@ -1231,14 +1231,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 3730911
+          "durationInNanos": 5714000
         }
       ],
-      "durationInNanos": 3730911
+      "durationInNanos": 5714000
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -1298,14 +1298,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 4835675
+          "durationInNanos": 6002400
         }
       ],
-      "durationInNanos": 4835675
+      "durationInNanos": 6002400
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -1325,7 +1325,7 @@
           "success": false,
           "errorMessage": "java.lang.UnsupportedOperationException: Can\u0027t set a local variable on a variable map",
           "stackTrace": [
-            "io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterVariableMap.setLocal(MapReadWriteAdapterVariableMap.java:43)",
+            "io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterVariableMap.setLocal(MapReadWriteAdapterVariableMap.java:48)",
             "io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterVariableMap.setLocal(MapReadWriteAdapterVariableMap.java:14)",
             "io.holunda.camunda.bpm.data.adapter.AbstractReadWriteAdapter.setLocal(AbstractReadWriteAdapter.java:27)",
             "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest.should throw correct NSO on map setLocal exception(VariableMapAdapterITest.kt:127)",
@@ -1365,14 +1365,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 4806682
+          "durationInNanos": 5029500
         }
       ],
-      "durationInNanos": 4806682
+      "durationInNanos": 5029500
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -1390,7 +1390,7 @@
           "derivedArguments": [],
           "status": "FAILED",
           "success": false,
-          "errorMessage": "io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException: Error reading Map Of String to Date Variable: Wrong map type detected, expected Map\u003cjava.lang.String,java.lang.String, but was not found in {Twelve\u003dThu Dec 12 17:42:18 CET 2019, Eleven\u003dThu Dec 12 17:42:18 CET 2019}",
+          "errorMessage": "io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException: Error reading Map Of String to Date Variable: Wrong map type detected, expected Map\u003cjava.lang.String,java.lang.String, but was not found in {Twelve\u003dFri Dec 13 15:36:48 CET 2019, Eleven\u003dFri Dec 13 15:36:48 CET 2019}",
           "stackTrace": [
             "io.holunda.camunda.bpm.data.adapter.map.AbstractMapReadWriteAdapter.getOrNull(AbstractMapReadWriteAdapter.java:64)",
             "io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterVariableMap.getOptional(MapReadWriteAdapterVariableMap.java:33)",
@@ -1432,14 +1432,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 4648471
+          "durationInNanos": 5366200
         }
       ],
-      "durationInNanos": 4648471
+      "durationInNanos": 5366200
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -1499,14 +1499,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 4667560
+          "durationInNanos": 5296600
         }
       ],
-      "durationInNanos": 4667560
+      "durationInNanos": 5296600
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -1566,14 +1566,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 4869949
+          "durationInNanos": 5625600
         }
       ],
-      "durationInNanos": 4869949
+      "durationInNanos": 5625600
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -1591,7 +1591,7 @@
           "derivedArguments": [],
           "status": "FAILED",
           "success": false,
-          "errorMessage": "io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException: Error reading Map Of String to Date Variable: Wrong map type detected, expected Map\u003cjava.util.Date,java.util.Date, but was not found in {Twelve\u003dThu Dec 12 17:42:18 CET 2019, Eleven\u003dThu Dec 12 17:42:18 CET 2019}",
+          "errorMessage": "io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException: Error reading Map Of String to Date Variable: Wrong map type detected, expected Map\u003cjava.util.Date,java.util.Date, but was not found in {Twelve\u003dFri Dec 13 15:36:48 CET 2019, Eleven\u003dFri Dec 13 15:36:48 CET 2019}",
           "stackTrace": [
             "io.holunda.camunda.bpm.data.adapter.map.AbstractMapReadWriteAdapter.getOrNull(AbstractMapReadWriteAdapter.java:64)",
             "io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterVariableMap.getOptional(MapReadWriteAdapterVariableMap.java:33)",
@@ -1632,14 +1632,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 5036042
+          "durationInNanos": 6357300
         }
       ],
-      "durationInNanos": 5036042
+      "durationInNanos": 6357300
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -1659,7 +1659,7 @@
           "success": false,
           "errorMessage": "java.lang.UnsupportedOperationException: Can\u0027t set a local variable on a variable map",
           "stackTrace": [
-            "io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterVariableMap.removeLocal(MapReadWriteAdapterVariableMap.java:53)",
+            "io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterVariableMap.removeLocal(MapReadWriteAdapterVariableMap.java:58)",
             "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest.should throw correct NSO on map removeLocal exception(VariableMapAdapterITest.kt:151)",
             "org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)",
             "org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)",
@@ -1697,14 +1697,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 5201371
+          "durationInNanos": 5086200
         }
       ],
-      "durationInNanos": 5201371
+      "durationInNanos": 5086200
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -1764,14 +1764,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 3804591
+          "durationInNanos": 5182900
         }
       ],
-      "durationInNanos": 3804591
+      "durationInNanos": 5182900
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -1831,14 +1831,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 4009617
+          "durationInNanos": 5055000
         }
       ],
-      "durationInNanos": 4009617
+      "durationInNanos": 5055000
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -1898,14 +1898,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 5780529
+          "durationInNanos": 4728700
         }
       ],
-      "durationInNanos": 5780529
+      "durationInNanos": 4728700
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -1964,14 +1964,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 5185917
+          "durationInNanos": 5185500
         }
       ],
-      "durationInNanos": 5185917
+      "durationInNanos": 5185500
     },
     {
       "className": "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest",
@@ -1991,7 +1991,7 @@
           "success": false,
           "errorMessage": "java.lang.UnsupportedOperationException: Can\u0027t set a local variable on a variable map",
           "stackTrace": [
-            "io.holunda.camunda.bpm.data.adapter.basic.ReadWriteAdapterVariableMap.setLocal(ReadWriteAdapterVariableMap.java:40)",
+            "io.holunda.camunda.bpm.data.adapter.basic.ReadWriteAdapterVariableMap.setLocal(ReadWriteAdapterVariableMap.java:45)",
             "io.holunda.camunda.bpm.data.adapter.AbstractReadWriteAdapter.setLocal(AbstractReadWriteAdapter.java:27)",
             "io.holunda.camunda.bpm.data.itest.VariableMapAdapterITest.should throw correct NSO on basic setLocal exception(VariableMapAdapterITest.kt:109)",
             "org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)",
@@ -2030,14 +2030,14 @@
             "org.junit.runners.ParentRunner.run(ParentRunner.java:363)",
             "org.junit.runner.JUnitCore.run(JUnitCore.java:137)",
             "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)",
-            "com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)",
-            "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)",
-            "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)"
+            "com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)",
+            "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:230)",
+            "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)"
           ],
-          "durationInNanos": 4822312
+          "durationInNanos": 5154400
         }
       ],
-      "durationInNanos": 4822312
+      "durationInNanos": 5154400
     }
   ],
   "tagMap": {}

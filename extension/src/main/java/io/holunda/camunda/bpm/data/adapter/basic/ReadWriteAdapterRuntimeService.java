@@ -38,6 +38,10 @@ public class ReadWriteAdapterRuntimeService<T> extends AbstractBasicReadWriteAda
     runtimeService.setVariable(executionId, variableName, getTypedValue(value, isTransient));
   }
 
+  @Override
+  public Optional<T> getLocalOptional() {
+    return Optional.ofNullable(getOrNull(runtimeService.getVariableLocal(executionId, variableName)));
+  }
 
   @Override
   public void setLocal(T value, boolean isTransient) {
