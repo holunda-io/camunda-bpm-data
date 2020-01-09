@@ -47,5 +47,5 @@ jobs:
       env:
         GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
         GPG_KEYNAME: ${{secrets.GPG_KEYNAME}}
-      run: ./mvnw clean deploy -B -DskipTests -Prelease -DdryRun
+      run: mvn clean deploy -B -DskipTests -Prelease -DdryRun
 
