@@ -33,7 +33,7 @@ jobs:
     - name: Create settings.xml
       uses: s4u/maven-settings-action@v1
       with:
-        servers: '[{"id": "ossrh", "username": "${{secrets.SONATYPE_USERNAME}}", "password": "${{sonatype.SONATYPE_PASSWORD}}"}]'
+        servers: '[{"id": "ossrh", "username": "${{secrets.SONATYPE_USERNAME}}", "password": "${{secrets.SONATYPE_PASSWORD}}"}]'
 
     - name: Deploy a new version to central
       env:
