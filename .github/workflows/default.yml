@@ -23,14 +23,17 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
 
+    - name: Prepare mvnw
+      run: chmod +x ./mvnw
+
     - name: Build
-      run: mvn clean package
+      run: ./mvnw clean package
 
     - name: Run integration tests
-      run: mvn -Pitest
+      run: ./mvnw -Pitest
 
     - name: Create reports
-      run: mvn -DskipTests verify
+      run: ./mvnw -DskipTests verify
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1.0.2
@@ -47,5 +50,4 @@ jobs:
       env:
         GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
         GPG_KEYNAME: ${{secrets.GPG_KEYNAME}}
-      run: mvn clean deploy -B -DskipTests -Prelease -DdryRun
-
+      run: ./mvnw clean deploy -B -DskipTests -Prelease -DdryRun
