@@ -1,7 +1,9 @@
 name: default
 
-on: [push]
-
+on:
+  push:
+    branches:
+    - master
 jobs:
   build:
 
@@ -40,4 +42,3 @@ jobs:
         GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
         GPG_KEYNAME: ${{secrets.GPG_KEYNAME}}
       run: ./mvnw clean deploy -B -DskipTests -Prelease -DdryRun
-
