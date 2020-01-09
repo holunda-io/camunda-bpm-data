@@ -16,10 +16,10 @@ jobs:
         java-version: 1.8
 
     - name: Build
-      run: mvn clean package -T4
+      run: mvn clean package
 
     - name: Run integration tests
-      run: mvn -Pitest -T4
+      run: mvn -Pitest
 
     - name: Create reports
       run: mvn -DskipTests verify
