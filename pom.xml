@@ -293,6 +293,7 @@
           <version>3.0.0-M4</version>
           <configuration>
             <useSystemClassLoader>false</useSystemClassLoader>
+            <shutdown>kill</shutdown>
             <runOrder>random</runOrder>
             <excludes>
               <exclude>${pattern.class.itest}</exclude>
