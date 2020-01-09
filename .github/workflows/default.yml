@@ -41,13 +41,13 @@ jobs:
         token: ${{secrets.CODECOV_TOKEN}}
         file: example/example-kotlin/target/site/jacoco-aggregate/jacoco.xml
 
-    - name: Create settings.xml
-      uses: s4u/maven-settings-action@v1
-      with:
-        servers: '[{"id": "ossrh", "username": "${{secrets.SONATYPE_USERNAME}}", "password": "${{secrets.SONATYPE_PASSWORD}}"}]'
+#    - name: Create settings.xml
+#      uses: s4u/maven-settings-action@v1
+#      with:
+#        servers: '[{"id": "ossrh", "username": "${{secrets.SONATYPE_USERNAME}}", "password": "${{secrets.SONATYPE_PASSWORD}}"}]'
 
-    - name: Deploy a new version to central
-      env:
-        GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-        GPG_KEYNAME: ${{secrets.GPG_KEYNAME}}
-      run: ./mvnw clean deploy -B -DskipTests -Prelease -DdryRun
+#    - name: Deploy a new version to central
+#      env:
+#        GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
+#        GPG_KEYNAME: ${{secrets.GPG_KEYNAME}}
+#      run: ./mvnw clean deploy -B -DskipTests -DskipExamples -Prelease -Dgpg.passphrase=${{secrets.GPG_PASSPHRASE}}
