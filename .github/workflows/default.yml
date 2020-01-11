@@ -15,14 +15,25 @@ jobs:
       with:
         java-version: 1.8
 
+    - name: Cache .m2
+      uses: actions/cache@v1
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven
+
+    - name: Prepare mvnw
+      run: chmod +x ./mvnw
+
     - name: Build
-      run: mvn clean package
+      run: ./mvnw clean package
 
     - name: Run integration tests
-      run: mvn -Pitest
+      run: ./mvnw -Pitest
 
     - name: Create reports
-      run: mvn -DskipTests verify
+      run: ./mvnw -DskipTests verify
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1.0.2

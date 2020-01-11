@@ -4,9 +4,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>io.holunda</groupId>
+    <groupId>io.holunda.data</groupId>
     <artifactId>camunda-bpm-data-example-parent</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
   </parent>
 
   <artifactId>camunda-bpm-data-example-java</artifactId>
