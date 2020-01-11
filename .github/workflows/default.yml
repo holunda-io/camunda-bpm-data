@@ -24,10 +24,10 @@ jobs:
           ${{ runner.os }}-maven
 
     - name: Import GPG key
-      run echo ${{secrets.GPG_SECRET_KEYS}} | base64 --decode | gpg --import
+      run: echo ${{secrets.GPG_SECRET_KEYS}} | base64 --decode | gpg --import
 
     - name: Import GPG Owner Trust
-      run echo ${{secrets.GPG_OWNERTRUST}} | base64 --decode | gpg --import-ownertrust
+      run: echo ${{secrets.GPG_OWNERTRUST}} | base64 --decode | gpg --import-ownertrust
 
     - name: Prepare mvnw
       run: chmod +x ./mvnw
