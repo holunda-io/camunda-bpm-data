@@ -9,7 +9,7 @@
     <relativePath/>
   </parent>
 
-  <groupId>io.holunda</groupId>
+  <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data-parent</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>${project.artifactId}</name>

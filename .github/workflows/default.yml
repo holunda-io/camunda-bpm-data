@@ -21,7 +21,13 @@ jobs:
         path: ~/.m2/repository
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
-          ${{ runner.os }}-maven-
+          ${{ runner.os }}-maven
+
+    - name: Import GPG key
+      run echo ${{secrets.GPG_SECRET_KEYS}} | base64 --decode | gpg --import
+
+    - name: Import GPG Owner Trust
+      run echo ${{secrets.GPG_OWNERTRUST}} | base64 --decode | gpg --import-ownertrust
 
     - name: Prepare mvnw
       run: chmod +x ./mvnw
@@ -41,13 +47,10 @@ jobs:
         token: ${{secrets.CODECOV_TOKEN}}
         file: example/example-kotlin/target/site/jacoco-aggregate/jacoco.xml
 
-#    - name: Create settings.xml
-#      uses: s4u/maven-settings-action@v1
-#      with:
-#        servers: '[{"id": "ossrh", "username": "${{secrets.SONATYPE_USERNAME}}", "password": "${{secrets.SONATYPE_PASSWORD}}"}]'
+    - name: Create settings.xml
+      uses: s4u/maven-settings-action@v1
+      with:
+        servers: '[{"id": "ossrh", "username": "${{secrets.SONATYPE_USERNAME}}", "password": "${{secrets.SONATYPE_PASSWORD}}"}]'
 
-#    - name: Deploy a new version to central
-#      env:
-#        GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
-#        GPG_KEYNAME: ${{secrets.GPG_KEYNAME}}
-#      run: ./mvnw clean deploy -B -DskipTests -DskipExamples -Prelease -Dgpg.passphrase=${{secrets.GPG_PASSPHRASE}}
+    - name: Deploy a new version to central
+      run: ./mvnw clean deploy -B -DskipTests -DskipExamples -Prelease -Dgpg.passphrase=${{secrets.GPG_PASSPHRASE}}
