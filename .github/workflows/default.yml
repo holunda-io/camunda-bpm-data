@@ -48,7 +48,7 @@ jobs:
       run: echo ${{secrets.GPG_SECRET_KEYS}} | base64 --decode | gpg --import --no-tty --batch --yes
 
     - name: Clean settings.xml
-      run: em -rf ~/.m2/settings.xml
+      run: rm -rf ~/.m2/settings.xml
 
     - name: Create settings.xml
       uses: s4u/maven-settings-action@v1
