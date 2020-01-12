@@ -5,7 +5,7 @@ on:
     branches:
       - '*'
       - '**/*'
-      - !master
+      - '!master'
 
 jobs:
   build:
