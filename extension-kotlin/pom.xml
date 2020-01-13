@@ -5,11 +5,11 @@
 
   <parent>
     <groupId>io.holunda.data</groupId>
-    <artifactId>camunda-bpm-data-example-parent</artifactId>
+    <artifactId>camunda-bpm-data-parent</artifactId>
     <version>0.0.3-SNAPSHOT</version>
   </parent>
 
-  <artifactId>camunda-bpm-data-example-kotlin</artifactId>
+  <artifactId>camunda-bpm-data-kotlin</artifactId>
   <name>${project.artifactId}</name>
   <packaging>jar</packaging>
 
@@ -17,10 +17,13 @@
     <jacoco.skip>false</jacoco.skip>
   </properties>
 
+
   <dependencies>
+
     <dependency>
       <groupId>io.holunda.data</groupId>
-      <artifactId>camunda-bpm-data-kotlin</artifactId>
+      <artifactId>camunda-bpm-data</artifactId>
+      <version>${project.version}</version>
     </dependency>
 
     <!-- Kotlin -->
@@ -56,12 +59,8 @@
         </exclusion>
       </exclusions>
     </dependency>
-    <dependency>
-      <groupId>io.toolisticon.springboot</groupId>
-      <artifactId>springboot-swagger-starter</artifactId>
-      <version>0.0.4</version>
-    </dependency>
   </dependencies>
+
   <build>
     <plugins>
       <plugin>
@@ -70,5 +69,28 @@
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>release</id>
+      <activation>
+        <property>
+          <name>release</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.jetbrains.dokka</groupId>
+            <artifactId>dokka-maven-plugin</artifactId>
+          </plugin>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 
 </project>
