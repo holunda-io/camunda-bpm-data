@@ -57,6 +57,9 @@ public class OrderApproval {
       BigDecimal oldTotal = ORDER_TOTAL.from(execution).getOptional().orElse(BigDecimal.ZERO);
       BigDecimal newTotal = oldTotal.add(orderPosition.getNetCost().multiply(BigDecimal.valueOf(orderPosition.getAmount())));
       ORDER_TOTAL.on(execution).setLocal(newTotal);
+
+      // alternative
+      // ORDER_TOTAL.on(execution).updateLocal(amount -> amount.add(orderPosition.getNetCost().multiply(BigDecimal.valueOf(orderPosition.getAmount()))));
     };
   }
 

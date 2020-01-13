@@ -121,6 +121,15 @@
   </dependencyManagement>
 
   <dependencies>
+
+    <!-- Nullable / NotNull -->
+    <dependency>
+      <groupId>org.jetbrains</groupId>
+      <artifactId>annotations</artifactId>
+      <version>18.0.0</version>
+    </dependency>
+
+    <!-- Engine -->
     <dependency>
       <groupId>org.camunda.bpm</groupId>
       <artifactId>camunda-engine</artifactId>

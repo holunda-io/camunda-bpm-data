@@ -5,6 +5,7 @@ import io.holunda.camunda.bpm.data.factory.ListVariableFactory;
 import io.holunda.camunda.bpm.data.factory.MapVariableFactory;
 import io.holunda.camunda.bpm.data.factory.SetVariableFactory;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
 import java.util.List;
@@ -27,7 +28,8 @@ public class CamundaBpmData {
    *
    * @return variable factory for string.
    */
-  public static VariableFactory<String> stringVariable(String variableName) {
+  @NotNull
+  public static VariableFactory<String> stringVariable(@NotNull String variableName) {
     return new BasicVariableFactory<>(variableName, String.class);
   }
 
@@ -38,7 +40,8 @@ public class CamundaBpmData {
    *
    * @return variable factory for date.
    */
-  public static VariableFactory<Date> dateVariable(String variableName) {
+  @NotNull
+  public static VariableFactory<Date> dateVariable(@NotNull String variableName) {
     return new BasicVariableFactory<>(variableName, Date.class);
   }
 
@@ -49,7 +52,8 @@ public class CamundaBpmData {
    *
    * @return variable factory for integer.
    */
-  public static VariableFactory<Integer> intVariable(String variableName) {
+  @NotNull
+  public static VariableFactory<Integer> intVariable(@NotNull String variableName) {
     return new BasicVariableFactory<>(variableName, Integer.class);
   }
 
@@ -60,7 +64,8 @@ public class CamundaBpmData {
    *
    * @return variable factory for long.
    */
-  public static VariableFactory<Long> longVariable(String variableName) {
+  @NotNull
+  public static VariableFactory<Long> longVariable(@NotNull String variableName) {
     return new BasicVariableFactory<>(variableName, Long.class);
   }
 
@@ -71,7 +76,8 @@ public class CamundaBpmData {
    *
    * @return variable factory for short.
    */
-  public static VariableFactory<Short> shortVariable(String variableName) {
+  @NotNull
+  public static VariableFactory<Short> shortVariable(@NotNull String variableName) {
     return new BasicVariableFactory<>(variableName, Short.class);
   }
 
@@ -82,7 +88,8 @@ public class CamundaBpmData {
    *
    * @return variable factory for double.
    */
-  public static VariableFactory<Double> doubleVariable(String variableName) {
+  @NotNull
+  public static VariableFactory<Double> doubleVariable(@NotNull String variableName) {
     return new BasicVariableFactory<>(variableName, Double.class);
   }
 
@@ -93,7 +100,8 @@ public class CamundaBpmData {
    *
    * @return variable factory for boolean.
    */
-  public static VariableFactory<Boolean> booleanVariable(String variableName) {
+  @NotNull
+  public static VariableFactory<Boolean> booleanVariable(@NotNull String variableName) {
     return new BasicVariableFactory<>(variableName, Boolean.class);
   }
 
@@ -106,7 +114,8 @@ public class CamundaBpmData {
    *
    * @return variable factory for given type.
    */
-  public static <T> VariableFactory<T> customVariable(String variableName, Class<T> clazz) {
+  @NotNull
+  public static <T> VariableFactory<T> customVariable(@NotNull String variableName, @NotNull Class<T> clazz) {
     return new BasicVariableFactory<>(variableName, clazz);
   }
 
@@ -119,7 +128,8 @@ public class CamundaBpmData {
    *
    * @return variable factory for given type.
    */
-  public static <T> VariableFactory<List<T>> listVariable(String variableName, Class<T> clazz) {
+  @NotNull
+  public static <T> VariableFactory<List<T>> listVariable(@NotNull String variableName, @NotNull Class<T> clazz) {
     return new ListVariableFactory<>(variableName, clazz);
   }
 
@@ -132,7 +142,8 @@ public class CamundaBpmData {
    *
    * @return variable factory for given type.
    */
-  public static <T> VariableFactory<Set<T>> setVariable(String variableName, Class<T> clazz) {
+  @NotNull
+  public static <T> VariableFactory<Set<T>> setVariable(@NotNull String variableName, @NotNull Class<T> clazz) {
     return new SetVariableFactory<>(variableName, clazz);
   }
 
@@ -147,7 +158,8 @@ public class CamundaBpmData {
    *
    * @return variable factory for given type.
    */
-  public static <K, V> VariableFactory<Map<K, V>> mapVariable(String variableName, Class<K> keyClazz, Class<V> valueClazz) {
+  @NotNull
+  public static <K, V> VariableFactory<Map<K, V>> mapVariable(@NotNull String variableName, @NotNull Class<K> keyClazz, @NotNull Class<V> valueClazz) {
     return new MapVariableFactory<>(variableName, keyClazz, valueClazz);
   }
 }
