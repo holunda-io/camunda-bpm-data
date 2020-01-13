@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data</groupId>
     <artifactId>camunda-bpm-data-parent</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
   </parent>
 
   <artifactId>camunda-bpm-data-docs</artifactId>
@@ -16,8 +16,8 @@
 
   <properties>
     <maven.deploy.skip>true</maven.deploy.skip>
-    <orchid.version>0.17.2</orchid.version>
-    <baseUrl>http://localhost:8080/</baseUrl>
+    <orchid.version>0.18.1</orchid.version>
+    <baseUrl>http://localhost:8080</baseUrl>
     <jacoco.skip>true</jacoco.skip>
     <maven.javadoc.skip>true</maven.javadoc.skip>
     <maven.sources.skip>true</maven.sources.skip>
@@ -25,7 +25,7 @@
   </properties>
 
   <build>
-    <defaultGoal>orchid:build</defaultGoal>
+    <defaultGoal>clean orchid:build</defaultGoal>
     <pluginManagement>
       <plugins>
         <plugin>
@@ -76,6 +76,21 @@
             </dependency>
             <dependency>
               <groupId>io.github.javaeden.orchid</groupId>
+              <artifactId>OrchidSourceDoc</artifactId>
+              <version>${orchid.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>io.github.javaeden.orchid</groupId>
+              <artifactId>OrchidJavadoc</artifactId>
+              <version>${orchid.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>io.github.javaeden.orchid</groupId>
+              <artifactId>OrchidKotlindoc</artifactId>
+              <version>${orchid.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>io.github.javaeden.orchid</groupId>
               <artifactId>OrchidSearch</artifactId>
               <version>${orchid.version}</version>
             </dependency>
@@ -102,32 +117,28 @@
           <githubToken>${githubToken}</githubToken>
           <baseUrl>${baseUrl}</baseUrl>
           <version>${project.version}</version>
+          <args>--experimentalSourceDoc</args>
         </configuration>
       </plugin>
     </plugins>
   </build>
 
-  <pluginRepositories>
-    <pluginRepository>
-      <id>jcenter</id>
-      <name>bintray-plugins</name>
-      <url>http://jcenter.bintray.com</url>
-    </pluginRepository>
-  </pluginRepositories>
-
   <profiles>
+    <!-- Deploys docs to github pages -->
     <profile>
       <id>deploy-docs</id>
       <activation>
         <activeByDefault>false</activeByDefault>
       </activation>
       <properties>
-        <baseUrl>https://www.holunda.io/camunda-bpm-feign/</baseUrl>
+        <baseUrl>https://www.holunda.io/camunda-bpm-data</baseUrl>
       </properties>
       <build>
         <defaultGoal>orchid:deploy</defaultGoal>
       </build>
     </profile>
+
+    <!-- Start web server, serving the latest built version and watches the changes -->
     <profile>
       <id>serve-docs</id>
       <activation>

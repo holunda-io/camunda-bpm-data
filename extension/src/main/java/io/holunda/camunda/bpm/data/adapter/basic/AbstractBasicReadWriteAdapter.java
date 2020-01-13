@@ -5,6 +5,8 @@ import io.holunda.camunda.bpm.data.adapter.ValueWrapperUtil;
 import io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException;
 import org.camunda.bpm.engine.variable.value.TypedValue;
 
+import java.util.function.Function;
+
 /**
  * Base class for all basic read-write-adapter.
  * @param <T> variable type.
@@ -52,4 +54,5 @@ public abstract class AbstractBasicReadWriteAdapter<T> extends AbstractReadWrite
   protected TypedValue getTypedValue(Object value, boolean isTransient) {
     return ValueWrapperUtil.getTypedValue(clazz, value, isTransient);
   }
+
 }

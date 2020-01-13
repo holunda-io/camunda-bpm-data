@@ -1,9 +1,9 @@
 [cols="a,a,a,a,a,a"]
 |===
-| // travis
+| // ci
 image::https://github.com/holunda-io/camunda-bpm-data/workflows/default/badge.svg[caption="Build Status", link=https://github.com/holunda-io/camunda-bpm-data/actions]
 | // maven central
-image::https://maven-badges.herokuapp.com/maven-central/io.holunda.taskpool/camunda-bpm-data/badge.svg[caption="Maven Central", link=https://maven-badges.herokuapp.com/maven-central/io.holunda.taskpool/camunda-bpm-data]
+image::https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data/badge.svg[caption="Maven Central", link=https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data]
 | // codecov
 image::https://codecov.io/gh/holunda-io/camunda-bpm-data/branch/master/graph/badge.svg[caption="codecov", link=https://codecov.io/gh/holunda-io/camunda-bpm-data]
 | // codacy

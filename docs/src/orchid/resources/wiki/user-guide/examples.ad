@@ -5,3 +5,92 @@ title: Examples
 ---
 
 == {{ page.title }}
+
+=== Define variable
+
+[source, java]
+----
+public class OrderApproval {
+  public static final VariableFactory<String> ORDER_ID = stringVariable("orderId");
+  public static final VariableFactory<Order> ORDER = customVariable("order", Order.class);
+  public static final VariableFactory<Boolean> ORDER_APPROVED = booleanVariable("orderApproved");
+  public static final VariableFactory<OrderPosition> ORDER_POSITION = customVariable("orderPosition", OrderPosition.class);
+  public static final VariableFactory<BigDecimal> ORDER_TOTAL = customVariable("orderTotal", BigDecimal.class);
+}
+----
+
+=== Read variable from Java delegate
+
+[source, java]
+----
+@Configuration
+class JavaDelegates {
+
+  @Bean
+  public JavaDelegate calculateOrderPositions() {
+    return execution -> {
+      OrderPosition orderPosition = ORDER_POSITION.from(execution).get();
+      Boolean orderApproved = ORDER_APPROVED.from(execution).getLocal();
+      Optional<BigDecimal> orderTotal = ORDER_TOTAL.from(execution).getOptional();
+    };
+  }
+}
+----
+
+=== Write variable from Java delegate
+
+[source,java]
+----
+import java.math.BigDecimal;@Configuration
+class JavaDelegates {
+
+  @Bean
+  public JavaDelegate calculateOrderPositions() {
+    return execution -> {
+      OrderPosition orderPosition = new OrderPosition("Pencil", BigDecimal.valueOf(1.5), 1);
+      ORDER_POSITION.on(execution).set(orderPosition);
+    };
+  }
+}
+----
+
+=== Remove variable from Java delegate
+
+[source,java]
+----
+import java.math.BigDecimal;@Configuration
+class JavaDelegates {
+
+  @Bean
+  public JavaDelegate calculateOrderPositions() {
+    return execution -> {
+      ORDER_APPROVED.on(execution).removeLocal();
+    };
+  }
+}
+----
+
+=== Update variable from Java delegate
+
+[source,java]
+----
+import java.math.BigDecimal;@Configuration
+class JavaDelegates {
+
+  @Bean
+  public JavaDelegate calculateOrderPositions() {
+    return execution -> {
+      OrderPosition orderPosition = ORDER_POSITION.from(execution).get();
+      ORDER_TOTAL.on(execution).updateLocal(amount -> amount.add(orderPosition.getNetCost().multiply(BigDecimal.valueOf(orderPosition.getAmount()))));
+    };
+  }
+}
+----
+
+
+=== Example projects
+
+We provide two examples:
+
+- Java Example, see link:https://github.com/holunda-io/camunda-bpm-data/tree/develop/example/example-java[Github]
+- Kotlin Example, see link:https://github.com/holunda-io/camunda-bpm-data/tree/develop/example/kotlin-java[Github]

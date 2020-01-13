@@ -7,3 +7,110 @@ pageId: 'quick-start'
 
 == {{ page.title }}
 
+=== Add dependency
+
+In Apache Maven add to your `pom.xml`:
+
+[source,xml]
+----
+<dependency>
+  <groupId>io.holunda.data</groupId>
+  <artifactId>camunda-bpm-data</artifactId>
+  <version>0.0.2</version>
+</dependency>
+----
+
+For Gradle Kotlin DSL add to your `build.gradle`:
+[source,kotlin]
+----
+implementation("io.holunda.data:camunda-bpm-data:0.0.2")
+----
+
+For Gradle Groovy DSL add to your `build.gradle`:
+[source,groovy]
+----
+implementation 'io.holunda.data:camunda-bpm-data:0.0.2'
+----
+
+=== Declare process variable factories
+
+First you have to define your process variables, by providing the variable name and type. For providing the type,
+different convenience methods exist:
+
+Here is a example in Java:
+
+[source,java]
+----
+
+import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.*;
+
+public class OrderApproval {
+  public static final VariableFactory<String> ORDER_ID = stringVariable("orderId");
+  public static final VariableFactory<Order> ORDER = customVariable("order", Order.class);
+  public static final VariableFactory<Boolean> ORDER_APPROVED = booleanVariable("orderApproved");
+  public static final VariableFactory<OrderPosition> ORDER_POSITION = customVariable("orderPosition", OrderPosition.class);
+  public static final VariableFactory<BigDecimal> ORDER_TOTAL = customVariable("orderTotal", BigDecimal.class);
+}
+----
+
+Here is how it looks like in Kotlin, using Java library:
+
+[source,kotlin]
+----
+
+import io.holunda.camunda.bpm.data.CamundaBpmData.*
+
+object Variables {
+  val ORDER_ID = stringVariable("orderId")
+  val ORDER = customVariable("order", Order::class.java)
+  val ORDER_APPROVED = booleanVariable("orderApproved")
+  val ORDER_POSITION = customVariable("orderPosition", OrderPosition::class.java)
+  val ORDER_TOTAL = customVariable("orderTotal", BigDecimal::class.java)
+}
+
+----
+
+=== Access process variables
+
+If you want to access the process variable, call methods on the `ProcessVariableFactory` to configure the usage context,
+and then invoke the variable access methods.
+
+Here is an example, how it looks like to access variable from `JavaDelegate` implemented in Java. In this example,
+the total amount is calculated from the amounts of order positions and stored in the process variable.
+
+[source, java]
+----
+
+@Configuration
+class JavaDelegates {
+
+  @Bean
+  public JavaDelegate calculateOrderPositions() {
+    return execution -> {
+      OrderPosition orderPosition = ORDER_POSITION.from(execution).get();
+      BigDecimal oldTotal = ORDER_TOTAL.from(execution).getOptional().orElse(BigDecimal.ZERO);
+      BigDecimal newTotal = oldTotal.add(orderPosition.getNetCost().multiply(BigDecimal.valueOf(orderPosition.getAmount())));
+      ORDER_TOTAL.on(execution).setLocal(newTotal);
+    };
+  }
+}
+----
+
+
+The following example demonstrates usage in the context of `ExecutionListener` implemented in Kotlin, which is
+reading a local variable and writes a global one:
+
+[source,kotlin]
+----
+
+@Configuration
+class ExecutionListeners {
+
+  @Bean
+  fun writeOrderTotal() = ExecutionListener { execution ->
+    val total = ORDER_TOTAL.from(execution).local
+    ORDER_TOTAL.on(execution).set(total)
+  }
+}
+----

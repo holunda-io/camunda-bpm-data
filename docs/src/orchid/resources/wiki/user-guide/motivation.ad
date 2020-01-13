@@ -1,0 +1,35 @@
+---
+title: Motivation
+---
+
+== Motivation
+
+=== Typed access to process variables
+
+Camunda BPM engine provide Java API to access the process variables.
+This consists of:
+
+* `RuntimeService` methods
+* `TaskService` methods
+* Methods on `DelegateExecution`
+* Methods on `DelegateTask`
+* `VariableMap`
+
+All those methods requires the user of the API to know the variable type.
+Here is a usage example:
+
+[source,java]
+----
+
+List<OrderPosition> orderPositions = (List<OrderPosition>) runtimeService
+  .getVariable("myExecutionIn", "orderPositions");
+
+----
+
+This leads to problems during refactoring and makes variable access more complicated than it is.
+More details can be found in:
+
+* link:https://medium.com/holisticon-consultants/data-in-process-part-1-2620bf9abd76[Data in Process (Part 1)]
+* link:https://medium.com/holisticon-consultants/data-in-process-part-2-7c6a109e6ee2[Data in Process (Part 2)]
+
+This library addresses this issue and allows for more convenient type-safe process variable access.

@@ -1,6 +1,8 @@
 package io.holunda.camunda.bpm.data.example.kotlin.process
 
-import io.holunda.camunda.bpm.data.CamundaBpmData.*
+import io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable
+import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.customVariable
 import io.holunda.camunda.bpm.data.example.kotlin.domain.Order
 import io.holunda.camunda.bpm.data.example.kotlin.domain.OrderPosition
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER
@@ -8,6 +10,7 @@ import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variable
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_POSITION
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_TOTAL
 import io.holunda.camunda.bpm.data.example.kotlin.service.OrderRepository
+import io.holunda.camunda.bpm.data.factory.VariableFactory
 import mu.KLogging
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.DelegateTask
@@ -31,10 +34,10 @@ class OrderApproval {
 
   object Variables {
     val ORDER_ID = stringVariable("orderId")
-    val ORDER = customVariable("order", Order::class.java)
+    val ORDER: VariableFactory<Order> = customVariable("order")
     val ORDER_APPROVED = booleanVariable("orderApproved")
-    val ORDER_POSITION = customVariable("orderPosition", OrderPosition::class.java)
-    val ORDER_TOTAL = customVariable("orderTotal", BigDecimal::class.java)
+    val ORDER_POSITION: VariableFactory<OrderPosition> = customVariable("orderPosition")
+    val ORDER_TOTAL: VariableFactory<BigDecimal> = customVariable("orderTotal")
   }
 
   /**
@@ -45,6 +48,7 @@ class OrderApproval {
     val orderId = ORDER_ID.from(execution).get()
     val order = orderRepository.loadOrder(orderId)
     ORDER.on(execution).set(order)
+    ORDER_TOTAL.on(execution).set(BigDecimal.ZERO)
   }
 
   /**
@@ -53,9 +57,8 @@ class OrderApproval {
   @Bean
   fun calculateOrderPositions() = JavaDelegate { execution ->
     val orderPosition = ORDER_POSITION.from(execution).get()
-    val oldTotal = ORDER_TOTAL.from(execution).optional.orElse(BigDecimal.ZERO)
-    val newTotal = oldTotal.plus(orderPosition.netCost.times(BigDecimal.valueOf(orderPosition.amount)))
-    ORDER_TOTAL.on(execution).setLocal(newTotal)
+
+    ORDER_TOTAL.on(execution).update { it.plus(orderPosition.netCost.times(BigDecimal.valueOf(orderPosition.amount))) }
   }
 
   /**

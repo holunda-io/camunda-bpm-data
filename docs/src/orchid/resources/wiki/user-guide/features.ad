@@ -1,0 +1,16 @@
+---
+title: Features
+---
+
+== {{ page.title }}
+
+The library Camunda BPM Data provides the following functionality:
+
+* The library provide a way to construct generic adapter for every process variable.
+* The adapter contains variable name.
+* The adapter contains variable type.
+* The adapter can be applied in any context (`RuntimeService`, `TaskService`, `DelegateExecution`, `DelegateTask`, `VariableMap`).
+* The adapter offers methods to read, write and remove variable values.
+* The adapter works for all types supported by Camunda BPM. This includes primitive types, object and container types ( List<T>, Set<T>, Map<K,V> ).
+* The adapter supports global / local variables.
+* The adapter support transient variables.

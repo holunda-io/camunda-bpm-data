@@ -1,0 +1,21 @@
+---
+version: 0.0.2
+---
+
+== Features
+
+* Provides process variable factory #1
+* Read/write adapter for DelegateTask context #2
+* Read/write adapter for DelegateExecution context #3
+* Read/write adapter for TaskService context #4
+* Read/write adapter for RuntimeService context #5
+* Read/write adapter for VariableMap context #6
+* Example application #7
+* Support for Lists #13, Sets #15, Maps #16 as variable container type
+* Support local variables (get, set, remove)
+
+== Chore
+
+* Initial github actions setup
+* Release with github actions
+* Codacy support

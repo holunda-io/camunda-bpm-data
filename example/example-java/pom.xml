@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data</groupId>
     <artifactId>camunda-bpm-data-example-parent</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
   </parent>
 
   <artifactId>camunda-bpm-data-example-java</artifactId>
@@ -18,6 +18,10 @@
       <groupId>io.toolisticon.springboot</groupId>
       <artifactId>springboot-swagger-starter</artifactId>
       <version>0.0.4</version>
+    </dependency>
+    <dependency>
+      <groupId>io.holunda.data</groupId>
+      <artifactId>camunda-bpm-data</artifactId>
     </dependency>
   </dependencies>
 
