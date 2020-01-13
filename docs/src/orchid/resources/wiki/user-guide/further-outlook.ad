@@ -1,0 +1,12 @@
+---
+
+title: Further outlook
+
+---
+
+== {{ page.title }}
+
+Planned or featured features:
+
+* Native Kotlin support including extension functions
+* Process variable guards for better testing

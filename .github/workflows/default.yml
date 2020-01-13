@@ -45,3 +45,6 @@ jobs:
       with:
         token: ${{secrets.CODECOV_TOKEN}}
         file: example/example-kotlin/target/site/jacoco-aggregate/jacoco.xml
+
+    - name: Build and deploy site docs
+      run ./mvnw -Pdeploy-docs -f docs -DgithubToken=${{secrets.GH_TOKEN}}

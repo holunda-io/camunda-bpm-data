@@ -63,7 +63,7 @@ class OrderApproval {
    */
   @Bean
   fun writeOrderTotal() = ExecutionListener { execution ->
-    val total = ORDER_TOTAL.from(execution).get()
+    val total = ORDER_TOTAL.from(execution).local
     ORDER_TOTAL.on(execution).set(total)
   }
 

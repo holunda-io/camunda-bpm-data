@@ -9,7 +9,7 @@ If you are interested in developing and building the project please follow the f
 
 === Version control
 
-To get sources of the project, please execute:
+To checkout sources of the project, please execute from your command line:
 
 [source,bash]
 ----
@@ -32,13 +32,13 @@ Perform the following steps to get a development setup up and running.
 
 === Integration Tests
 
-By default, the build command will ignore the run of `failsafe` Maven plugin executing the integration tests
-(usual JUnit tests with class names ending with ITest). In order to run integration tests, please
+The default build command above will NOT run `failsafe` Maven plugin executing the integration tests
+(These are JUnit tests with class names ending with ITest). In order to run integration tests, please
 call from your command line:
 
 [source,bash]
 ----
-./mvnw integration-test failsafe:verify
+./mvnw -Pitest
 ----
 
 === Project build modes and profiles
@@ -50,9 +50,13 @@ version is a Community Edition. Specify `-Pcamunda-ee` to switch to Camunda Ente
 require a valid Camunda license. You can put it into a file `~/.camunda/license.txt` and it will be detected
 automatically.
 
+==== Examples
+
+If you want to skip the build of examples, please specify the `-DskipExamples` switch in your command line.
+
 ==== Documentation
 
-We are using Orchid for generation of a static site documentation and rely on AsciiDoc as much as possible.
+We are using https://github.com/orchidhq/Orchid[JavaEden Orchid] for generation of a static site documentation and rely on AsciiDoc as much as possible.
 
 TIP: If you want to develop your docs in 'live' mode, run `./mvnw -f docs -Pdocs-serve` and access
 the http://localhost:8080/ from your browser.
@@ -61,7 +65,7 @@ For creation of documentation, please run:
 
 [source,bash]
 ----
-./mvnw -f docs orchid:build
+./mvnw -f docs
 ----
 
 WARNING: This operation requires special permissions. You need to replace `GITHUB_TOKEN` by the token of
@@ -76,37 +80,34 @@ In order to publish documentation to github pages, please run from command line
 
 ==== Starting example application
 
-To start applications, either use your IDE and create
-run configuration for the class:
+To start applications, either use your IDE and create run configuration for the classes:
 
-* `org.camunda.bpm.extension.feign.example.CamundaBpmFeignExampleApplication`
+* `io.holunda.camunda.bpm.data.example.CamundaBpmDataProcessApplication`
+* `io.holunda.camunda.bpm.data.example.kotlin.CamundaBpmDataKotlinExampleApplication`
 
 Alternatively, you can run them from the command line:
 
 [source,bash]
 ----
-./mvn spring-boot:run -f example
+./mvn spring-boot:run -f example/example-java
+./mvn spring-boot:run -f example/example-kotlin
 ----
 
 === Continuous Integration
 
-Travis CI is building all branches on commit hook. In addition, a private-hosted Jenkins CI
-is used to build the releases.
+Github Actions is building all branches on commit hook. In addition, a special action
+is building releases from master branch.
 
 === Release Management
 
-Release management has been set-up for use of Sonatype Nexus (= Maven Central)
+Release management has been set-up for use of Sonatype Nexus (= Maven Central).
 
 ==== What modules get deployed to repository
 
-Every module is enabled by default. If you want to change this, please provide the property
+Currently, the following modules are released to OSS Maven Central:
 
-[source,xml]
-----
-<maven.deploy.skip>true</maven.deploy.skip>
-----
-
-inside the corresponding `pom.xml`. Currently, all examples are _EXCLUDED_ from publication into Maven Central.
+* camunda-bpm-data-parent
+* camunda-bpm-data
 
 ==== Trigger new release
 
@@ -133,21 +134,15 @@ and update the `develop` branch for the new development version.
 
 WARNING: This operation requires special permissions.
 
-Currently, CI allows for deployment of artifacts to Maven Central and is executed on Holisticon Jenkins.
+Currently, CI allows for deployment of artifacts to Maven Central and is executed via Github Actions.
 This means, that a push to `master` branch will start the corresponding build job, and if successful the
-artifacts will get into `Staging Repositories` of OSS Sonatype without manual intervention.
+artifacts will get into `Staging Repositories` of OSS Sonatype without manual intervention. The repository
+gets automatically closed and released on successful upload.
 
 If you still want to execute the the deployment from your local machine, you need to execute the
 following command on the `master` branch:
 
 [source,sh]
 ----
-./mvnw clean deploy -B -DskipTests -Prelease
+./mvnw clean deploy -B -DskipTests -DskipExamples -Prelease
 ----
-
-==== Release to public repositories
-
-WARNING: This operation requires special permissions.
-
-The deploy job will publish the artifacts to Nexus OSS staging repositories. Don't forget to close and release the
-repository to enable it's sync with Maven Central.

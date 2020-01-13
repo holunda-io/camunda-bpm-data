@@ -29,3 +29,31 @@ services:
       - type: 'githubPages'
         username: 'zambrovski'
         repo: 'holunda-io/camunda-bpm-data'
+
+#
+# FIXME: move to separate file after 0.19 release of orchid
+#
+javadoc:
+  modules:
+    - name: Camunda BPM Data
+      sourceDirs:
+        - '../../../../extension/src/main/java'
+  pages:
+    menu:
+      - type: 'sourcedocPageLinks'
+        moduleType: 'javadoc'
+        itemTitleType: 'SIGNATURE'
+        includeItems: true
+
+kotlindoc:
+  modules:
+    - name: Camunda BPM Data Kotlin
+      sourceDirs:
+        - '../../../../extension-kotlin/src/main/kotlin'
+  pages:
+    menu:
+      - type: 'sourcedocPageLinks'
+        moduleType: 'kotlindoc'
+        includeItems: true
+        itemTitleType: 'NAME'
+

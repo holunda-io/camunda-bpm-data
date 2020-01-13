@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Factory methods for creating variable factories.
+ * Provides a collection of factory methods for creating variable factories.
  */
 public class CamundaBpmData {
   /**

@@ -5,3 +5,8 @@ title: Examples
 ---
 
 == {{ page.title }}
+
+We provide two examples:
+
+- Java Example, see link:https://github.com/holunda-io/camunda-bpm-data/tree/develop/example/example-java[Github]
+- Kotlin Example, see link:https://github.com/holunda-io/camunda-bpm-data/tree/develop/example/kotlin-java[Github]

@@ -1,4 +1,5 @@
 useSidebarSearch: true
+legacySearch: false
 showVersion: true
 primaryColor: '#B10000'
 trianglifyOptions:
@@ -12,35 +13,37 @@ social:
     - link: 'https://www.holunda.io/camunda-bpm-data/'
       label: 'Home'
       icon: 'fas fa-home'
+metaComponents:
+  - type: 'orchidSearch'
 menu:
   - type: 'page'
-    itemId: 'Quick Start'
     title: 'Quick Start'
-
-  - type: 'submenu'
-    title: 'Introduction'
-    menu:
-      - type: 'wiki'
-        section: 'introduction'
+    itemId: 'Quick Start'
 
   - type: 'submenu'
     title: 'User Guide'
     menu:
       - type: 'wiki'
         section: 'user-guide'
+      - type: 'page'
+        title: 'Changelog'
+        itemId: 'Changelog'
 
   - type: 'submenu'
     title: 'Developer Guide'
     menu:
       - type: 'wiki'
         section: 'developer-guide'
-
-  - type: 'submenu'
-    title: 'Explore'
-    menu:
       - type: 'page'
-        title: 'Changelog'
-        itemId: 'Changelog'
+        title: 'Readme'
+        itemId: 'Readme'
       - type: 'page'
         title: 'License'
         itemId: 'License'
+
+  - type: 'sourcedocPages'
+    submenuTitle: 'JavaDoc All Packages'
+    moduleType: 'javadoc'
+    node: 'packages'
+    asSubmenu: true
+
