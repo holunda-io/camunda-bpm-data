@@ -26,7 +26,7 @@ class VariableValueOneOfGuardCondition<T>(
         GuardViolation(
           condition = this,
           option = option,
-          message = "Expecting$localLabel variable '${variableFactory.name}' to have on of [${values.joinToString("', '", "'", "'")}], but it was '${option.get()}'."
+          message = "Expecting$localLabel variable '${variableFactory.name}' to be one of [${values.joinToString("', '", "'", "'")}], but it was '${option.get()}'."
         )
       )
     }

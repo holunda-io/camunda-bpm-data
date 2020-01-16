@@ -63,7 +63,7 @@ class VariableGuardConditionTest {
     val result = guard.evaluate(vars)
 
     assertThat(result.size).isEqualTo(1)
-    assertThat(result.first().message).isEqualTo("Expecting variable 'stringVariable' to have on of ['expected', 'another expected'], but it was 'some'.")
+    assertThat(result.first().message).isEqualTo("Expecting variable 'stringVariable' to be one of ['expected', 'another expected'], but it was 'some'.")
   }
 
 }
