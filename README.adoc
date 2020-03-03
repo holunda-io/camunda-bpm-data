@@ -22,7 +22,7 @@ guide.
 
 == User Guide
 
-If you have any questions regarding configuration of Camunda BPM Feign please
+If you have any questions regarding configuration of Camunda BPM Data please
 have a look to our primary documentation - the link:https://www.holunda.io/camunda-bpm-data/wiki/user-guide[User Guide].
 
 == Working Example

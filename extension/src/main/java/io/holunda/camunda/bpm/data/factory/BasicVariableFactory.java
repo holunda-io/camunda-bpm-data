@@ -10,6 +10,9 @@ import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.delegate.VariableScope;
 import org.camunda.bpm.engine.variable.VariableMap;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 /**
  * Variable factory of a base type(non parametrized).
@@ -18,7 +21,10 @@ import org.camunda.bpm.engine.variable.VariableMap;
  */
 public class BasicVariableFactory<T> implements VariableFactory<T> {
 
+  @NotNull
   private final String name;
+
+  @NotNull
   private final Class<T> clazz;
 
   /**
@@ -27,7 +33,7 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
    * @param name  name of the variable.
    * @param clazz class of the type.
    */
-  public BasicVariableFactory(String name, Class<T> clazz) {
+  public BasicVariableFactory(@NotNull String name, @NotNull Class<T> clazz) {
     this.name = name;
     this.clazz = clazz;
   }
@@ -95,6 +101,7 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
   }
 
   @Override
+  @NotNull
   public String getName() {
     return this.name;
   }
@@ -104,7 +111,22 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
    *
    * @return class of the variable.
    */
+  @NotNull
   public Class<T> getVariableClass() {
     return clazz;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (o == null || getClass() != o.getClass())
+      return false;
+    BasicVariableFactory<?> that = (BasicVariableFactory<?>) o;
+    return name.equals(that.name) &&
+      clazz.equals(that.clazz);
+  }
+
+  @Override public int hashCode() {
+    return Objects.hash(name, clazz);
   }
 }

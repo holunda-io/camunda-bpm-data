@@ -10,8 +10,10 @@ import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.delegate.VariableScope;
 import org.camunda.bpm.engine.variable.VariableMap;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Variable factory of a base parametrized map type.
@@ -21,11 +23,16 @@ import java.util.Map;
  */
 public class MapVariableFactory<K, V> implements VariableFactory<Map<K, V>> {
 
+  @NotNull
   private final String name;
+
+  @NotNull
   private final Class<K> keyClazz;
+
+  @NotNull
   private final Class<V> valueClazz;
 
-  public MapVariableFactory(String name, Class<K> keyClazz, Class<V> valueClazz) {
+  public MapVariableFactory(@NotNull String name, @NotNull Class<K> keyClazz, @NotNull Class<V> valueClazz) {
     this.name = name;
     this.keyClazz = keyClazz;
     this.valueClazz = valueClazz;
@@ -33,7 +40,7 @@ public class MapVariableFactory<K, V> implements VariableFactory<Map<K, V>> {
 
   @Override
   public WriteAdapter<Map<K, V>> on(VariableScope variableScope) {
-    return new MapReadWriteAdapterVariableScope<K, V>(variableScope, name, keyClazz, valueClazz);
+    return new MapReadWriteAdapterVariableScope<>(variableScope, name, keyClazz, valueClazz);
   }
 
   @Override
@@ -72,6 +79,7 @@ public class MapVariableFactory<K, V> implements VariableFactory<Map<K, V>> {
   }
 
   @Override
+  @NotNull
   public String getName() {
     return name;
   }
@@ -81,6 +89,7 @@ public class MapVariableFactory<K, V> implements VariableFactory<Map<K, V>> {
    *
    * @return key type.
    */
+  @NotNull
   public Class<K> getKeyClass() {
     return keyClazz;
   }
@@ -90,7 +99,23 @@ public class MapVariableFactory<K, V> implements VariableFactory<Map<K, V>> {
    *
    * @return value type.
    */
+  @NotNull
   public Class<V> getValueClass() {
     return valueClazz;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (o == null || getClass() != o.getClass())
+      return false;
+    MapVariableFactory<?, ?> that = (MapVariableFactory<?, ?>) o;
+    return name.equals(that.name) &&
+      keyClazz.equals(that.keyClazz) &&
+      valueClazz.equals(that.valueClazz);
+  }
+
+  @Override public int hashCode() {
+    return Objects.hash(name, keyClazz, valueClazz);
   }
 }
