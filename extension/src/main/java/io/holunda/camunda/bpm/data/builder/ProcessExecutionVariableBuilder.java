@@ -9,16 +9,15 @@ import java.util.function.Function;
 /**
  * Process execution builder allowing for fluent variable setting.
  */
-public class VariableRuntimeServiceContextBuilder {
+public class ProcessExecutionVariableBuilder {
 
     private final RuntimeService runtimeService;
     private final String executionId;
 
     /**
-     * Creates a builder with provided variable map.
-     * <p>The provided execution is modified by reference.</p>
+     * Creates a builder working on task.
      */
-    public VariableRuntimeServiceContextBuilder(RuntimeService runtimeService, String executionId) {
+    public ProcessExecutionVariableBuilder(RuntimeService runtimeService, String executionId) {
         this.runtimeService = runtimeService;
         this.executionId = executionId;
     }
@@ -46,7 +45,7 @@ public class VariableRuntimeServiceContextBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> VariableRuntimeServiceContextBuilder set(VariableFactory<T> factory, T value) {
+    public <T> ProcessExecutionVariableBuilder set(VariableFactory<T> factory, T value) {
         return this.set(factory, value, false);
     }
 
@@ -58,7 +57,7 @@ public class VariableRuntimeServiceContextBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> VariableRuntimeServiceContextBuilder set(VariableFactory<T> factory, T value, boolean isTransient) {
+    public <T> ProcessExecutionVariableBuilder set(VariableFactory<T> factory, T value, boolean isTransient) {
         factory.on(this.runtimeService, this.executionId).set(value, isTransient);
         return this;
     }
@@ -70,7 +69,7 @@ public class VariableRuntimeServiceContextBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> VariableRuntimeServiceContextBuilder setLocal(VariableFactory<T> factory, T value) {
+    public <T> ProcessExecutionVariableBuilder setLocal(VariableFactory<T> factory, T value) {
         return this.setLocal(factory, value, false);
     }
 
@@ -82,7 +81,7 @@ public class VariableRuntimeServiceContextBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> VariableRuntimeServiceContextBuilder setLocal(VariableFactory<T> factory, T value, boolean isTransient) {
+    public <T> ProcessExecutionVariableBuilder setLocal(VariableFactory<T> factory, T value, boolean isTransient) {
         factory.on(this.runtimeService, this.executionId).setLocal(value, isTransient);
         return this;
     }
@@ -93,7 +92,7 @@ public class VariableRuntimeServiceContextBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> VariableRuntimeServiceContextBuilder remove(VariableFactory<T> factory) {
+    public <T> ProcessExecutionVariableBuilder remove(VariableFactory<T> factory) {
         factory.on(this.runtimeService, this.executionId).remove();
         return this;
     }
@@ -104,7 +103,7 @@ public class VariableRuntimeServiceContextBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> VariableRuntimeServiceContextBuilder removeLocal(VariableFactory<T> factory) {
+    public <T> ProcessExecutionVariableBuilder removeLocal(VariableFactory<T> factory) {
         factory.on(this.runtimeService, this.executionId).removeLocal();
         return this;
     }
@@ -117,7 +116,7 @@ public class VariableRuntimeServiceContextBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> VariableRuntimeServiceContextBuilder update(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+    public <T> ProcessExecutionVariableBuilder update(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
         factory.on(this.runtimeService, this.executionId).update(valueProcessor, isTransient);
         return this;
     }
@@ -130,8 +129,8 @@ public class VariableRuntimeServiceContextBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> VariableRuntimeServiceContextBuilder updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
-        factory.on(this.runtimeService, this.executionId).update(valueProcessor, isTransient);
+    public <T> ProcessExecutionVariableBuilder updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+        factory.on(this.runtimeService, this.executionId).updateLocal(valueProcessor, isTransient);
         return this;
     }
 
@@ -142,7 +141,7 @@ public class VariableRuntimeServiceContextBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> VariableRuntimeServiceContextBuilder update(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+    public <T> ProcessExecutionVariableBuilder update(VariableFactory<T> factory, Function<T, T> valueProcessor) {
         return this.update(factory, valueProcessor, false);
     }
 
@@ -153,7 +152,7 @@ public class VariableRuntimeServiceContextBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> VariableRuntimeServiceContextBuilder updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+    public <T> ProcessExecutionVariableBuilder updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor) {
         return this.updateLocal(factory, valueProcessor, false);
     }
 

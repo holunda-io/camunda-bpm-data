@@ -2,72 +2,82 @@ package io.holunda.camunda.bpm.data.builder;
 
 import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import org.camunda.bpm.engine.delegate.VariableScope;
 import org.camunda.bpm.engine.variable.VariableMap;
+import org.camunda.bpm.extension.mockito.delegate.DelegateExecutionFake;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.camunda.bpm.engine.variable.Variables.createVariables;
 import static org.camunda.bpm.engine.variable.Variables.stringValue;
 
-public class VariableMapBuilderTest {
+public class VariableScopeBuilderTest {
 
     private static final VariableFactory<String> STRING = CamundaBpmData.stringVariable("myString");
-    private static final VariableFactory<String> STRING_2 = CamundaBpmData.stringVariable("myString2");
-    private static final VariableFactory<String> STRING_3 = CamundaBpmData.stringVariable("myString3");
+
 
     @Test
     public void testSet() {
-        VariableMap newVariables = CamundaBpmData
-            .variableMapBuilder()
+        DelegateExecutionFake execution = DelegateExecutionFake.of().withId("4711");
+        VariableScope newVariables = CamundaBpmData
+            .builder(execution)
             .set(STRING, "value")
             .build();
-        assertThat(newVariables.get(STRING.getName())).isEqualTo("value");
+        assertThat(newVariables.getVariable(STRING.getName())).isEqualTo("value");
+    }
+
+    @Test
+    public void testSetLocal() {
+        DelegateExecutionFake execution = DelegateExecutionFake.of().withId("4711");
+        VariableScope newVariables = CamundaBpmData
+            .builder(execution)
+            .setLocal(STRING, "value")
+            .build();
+        assertThat(newVariables.getVariableLocal(STRING.getName())).isEqualTo("value");
     }
 
     @Test
     public void testRemove() {
-        VariableMap variables = createVariables();
-        STRING.on(variables).set("value");
-        VariableMap newVariables = CamundaBpmData
-            .variableMapBuilder(variables)
+        DelegateExecutionFake execution = DelegateExecutionFake.of().withId("4711");
+        STRING.on(execution).set("value");
+        VariableScope newVariables = CamundaBpmData
+            .builder(execution)
             .remove(STRING)
             .build();
-        assertThat(newVariables).isEmpty();
+        assertThat(newVariables.getVariableNames()).isEmpty();
+    }
+
+    @Test
+    public void testRemoveLocal() {
+        DelegateExecutionFake execution = DelegateExecutionFake.of().withId("4711");
+        STRING.on(execution).setLocal("value");
+        VariableScope newVariables = CamundaBpmData
+            .builder(execution)
+            .removeLocal(STRING)
+            .build();
+        assertThat(newVariables.getVariableNames()).isEmpty();
     }
 
     @Test
     public void testUpdate() {
-        VariableMap variables = createVariables();
-        STRING.on(variables).set("value");
-        VariableMap newVariables = CamundaBpmData
-            .variableMapBuilder(variables)
-            .remove(STRING)
+        DelegateExecutionFake execution = DelegateExecutionFake.of().withId("4711");
+        STRING.on(execution).set("value");
+        VariableScope newVariables = CamundaBpmData
+            .builder(execution)
+            .update(STRING, String::toUpperCase)
             .build();
-        assertThat(newVariables).isEmpty();
+        assertThat(newVariables.getVariable(STRING.getName())).isEqualTo("VALUE");
     }
-
 
     @Test
-    public void testNoSideEffects() {
-        // initial map
-        VariableMap variables = createVariables()
-            .putValueTyped("myString", stringValue("value"))
-            .putValueTyped("myString3", stringValue("value3"));
-
-
-        VariableMap newVariables = CamundaBpmData
-            .variableMapBuilder(variables)
-            .set(STRING_2, "anotherString")
-            .update(STRING, String::toUpperCase)
-            .remove(STRING_3)
+    public void testUpdateLocal() {
+        DelegateExecutionFake execution = DelegateExecutionFake.of().withId("4711");
+        STRING.on(execution).setLocal("value");
+        VariableScope newVariables = CamundaBpmData
+            .builder(execution)
+            .updateLocal(STRING, String::toUpperCase)
             .build();
-
-        assertThat(variables).containsOnlyKeys(STRING.getName(), STRING_3.getName());
-        assertThat(variables.get(STRING.getName())).isEqualTo("value");
-
-        assertThat(newVariables).containsOnlyKeys(STRING.getName(), STRING_2.getName());
-        assertThat(newVariables.get(STRING.getName())).isEqualTo("VALUE");
-        assertThat(newVariables.get(STRING_2.getName())).isEqualTo("anotherString");
-
+        assertThat(newVariables.getVariable(STRING.getName())).isEqualTo("VALUE");
     }
+
 }

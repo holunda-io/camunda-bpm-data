@@ -17,4 +17,12 @@
     <jacoco.skip>false</jacoco.skip>
   </properties>
 
+  <dependencies>
+    <dependency>
+      <groupId>org.camunda.bpm.extension.mockito</groupId>
+      <artifactId>camunda-bpm-mockito</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
 </project>

@@ -1,40 +1,33 @@
 package io.holunda.camunda.bpm.data.builder;
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import org.camunda.bpm.engine.delegate.VariableScope;
 import org.camunda.bpm.engine.variable.VariableMap;
 
 import java.util.function.Function;
 
-import static org.camunda.bpm.engine.variable.Variables.createVariables;
-
 /**
- * Variable map builder allowing for fluent variable setting.
+ * Variable scope builder allowing for fluent variable setting.
  */
-public class VariableMapBuilder {
+public class VariableScopeBuilder {
 
-    private final VariableMap variables = createVariables();
-
-    /**
-     * Creates a builder with empty variables.
-     */
-    public VariableMapBuilder() {
-    }
+    private final VariableScope scope;
 
     /**
      * Creates a builder with provided variable map.
-     * <p>The provided variables are not modified by refererence to avoid side effects, but copied.</p>
+     * <p>The provided variables are modified by reference.</p>
      * @param variables variables to work on.
      */
-    public VariableMapBuilder(VariableMap variables) {
-        this.variables.putAll(variables);
+    public VariableScopeBuilder(VariableScope variables) {
+        this.scope = variables;
     }
 
     /**
      * Returns the resulting variables.
      * @return variables.
      */
-    public VariableMap build() {
-        return this.variables;
+    public VariableScope build() {
+        return this.scope;
     }
 
     /**
@@ -44,7 +37,7 @@ public class VariableMapBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> VariableMapBuilder set(VariableFactory<T> factory, T value) {
+    public <T> VariableScopeBuilder set(VariableFactory<T> factory, T value) {
         return this.set(factory, value, false);
     }
 
@@ -56,8 +49,8 @@ public class VariableMapBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> VariableMapBuilder set(VariableFactory<T> factory, T value, boolean isTransient) {
-        factory.on(this.variables).set(value, isTransient);
+    public <T> VariableScopeBuilder set(VariableFactory<T> factory, T value, boolean isTransient) {
+        factory.on(this.scope).set(value, isTransient);
         return this;
     }
 
@@ -68,7 +61,7 @@ public class VariableMapBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> VariableMapBuilder setLocal(VariableFactory<T> factory, T value) {
+    public <T> VariableScopeBuilder setLocal(VariableFactory<T> factory, T value) {
         return this.setLocal(factory, value, false);
     }
 
@@ -80,8 +73,8 @@ public class VariableMapBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> VariableMapBuilder setLocal(VariableFactory<T> factory, T value, boolean isTransient) {
-        factory.on(this.variables).setLocal(value, isTransient);
+    public <T> VariableScopeBuilder setLocal(VariableFactory<T> factory, T value, boolean isTransient) {
+        factory.on(this.scope).setLocal(value, isTransient);
         return this;
     }
 
@@ -91,8 +84,8 @@ public class VariableMapBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> VariableMapBuilder remove(VariableFactory<T> factory) {
-        factory.on(this.variables).remove();
+    public <T> VariableScopeBuilder remove(VariableFactory<T> factory) {
+        factory.on(this.scope).remove();
         return this;
     }
 
@@ -102,8 +95,8 @@ public class VariableMapBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> VariableMapBuilder removeLocal(VariableFactory<T> factory) {
-        factory.on(this.variables).removeLocal();
+    public <T> VariableScopeBuilder removeLocal(VariableFactory<T> factory) {
+        factory.on(this.scope).removeLocal();
         return this;
     }
 
@@ -115,8 +108,8 @@ public class VariableMapBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> VariableMapBuilder update(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
-        factory.on(this.variables).update(valueProcessor, isTransient);
+    public <T> VariableScopeBuilder update(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+        factory.on(this.scope).update(valueProcessor, isTransient);
         return this;
     }
 
@@ -128,8 +121,8 @@ public class VariableMapBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> VariableMapBuilder updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
-        factory.on(this.variables).update(valueProcessor, isTransient);
+    public <T> VariableScopeBuilder updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+        factory.on(this.scope).update(valueProcessor, isTransient);
         return this;
     }
 
@@ -140,7 +133,7 @@ public class VariableMapBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> VariableMapBuilder update(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+    public <T> VariableScopeBuilder update(VariableFactory<T> factory, Function<T, T> valueProcessor) {
         return this.update(factory, valueProcessor, false);
     }
 
@@ -151,7 +144,7 @@ public class VariableMapBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> VariableMapBuilder updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+    public <T> VariableScopeBuilder updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor) {
         return this.updateLocal(factory, valueProcessor, false);
     }
 

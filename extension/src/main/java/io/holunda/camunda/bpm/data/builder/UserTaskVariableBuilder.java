@@ -1,7 +1,7 @@
 package io.holunda.camunda.bpm.data.builder;
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
-import org.camunda.bpm.engine.RuntimeService;
+import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.variable.VariableMap;
 
 import java.util.function.Function;
@@ -9,18 +9,17 @@ import java.util.function.Function;
 /**
  * User task builder allowing for fluent variable setting.
  */
-public class TaskVariableBuilder {
+public class UserTaskVariableBuilder {
 
-    private final RuntimeService runtimeService;
-    private final String executionId;
+    private final TaskService taskService;
+    private final String taskId;
 
     /**
-     * Creates a builder with provided variable map.
-     * <p>The provided execution is modified by reference.</p>
+     * Creates a builder working on a user task.
      */
-    public TaskVariableBuilder(RuntimeService runtimeService, String executionId) {
-        this.runtimeService = runtimeService;
-        this.executionId = executionId;
+    public UserTaskVariableBuilder(TaskService taskService, String taskId) {
+        this.taskService = taskService;
+        this.taskId = taskId;
     }
 
     /**
@@ -28,7 +27,7 @@ public class TaskVariableBuilder {
      * @return variables.
      */
     public VariableMap variables() {
-        return this.runtimeService.getVariablesTyped(this.executionId);
+        return this.taskService.getVariablesTyped(this.taskId);
     }
 
     /**
@@ -36,7 +35,7 @@ public class TaskVariableBuilder {
      * @return local variables.
      */
     public VariableMap variablesLocal() {
-        return this.runtimeService.getVariablesLocalTyped(this.executionId);
+        return this.taskService.getVariablesLocalTyped(this.taskId);
     }
 
     /**
@@ -46,7 +45,7 @@ public class TaskVariableBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> TaskVariableBuilder set(VariableFactory<T> factory, T value) {
+    public <T> UserTaskVariableBuilder set(VariableFactory<T> factory, T value) {
         return this.set(factory, value, false);
     }
 
@@ -58,8 +57,8 @@ public class TaskVariableBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> TaskVariableBuilder set(VariableFactory<T> factory, T value, boolean isTransient) {
-        factory.on(this.runtimeService, this.executionId).set(value, isTransient);
+    public <T> UserTaskVariableBuilder set(VariableFactory<T> factory, T value, boolean isTransient) {
+        factory.on(this.taskService, this.taskId).set(value, isTransient);
         return this;
     }
 
@@ -70,7 +69,7 @@ public class TaskVariableBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> TaskVariableBuilder setLocal(VariableFactory<T> factory, T value) {
+    public <T> UserTaskVariableBuilder setLocal(VariableFactory<T> factory, T value) {
         return this.setLocal(factory, value, false);
     }
 
@@ -82,8 +81,8 @@ public class TaskVariableBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> TaskVariableBuilder setLocal(VariableFactory<T> factory, T value, boolean isTransient) {
-        factory.on(this.runtimeService, this.executionId).setLocal(value, isTransient);
+    public <T> UserTaskVariableBuilder setLocal(VariableFactory<T> factory, T value, boolean isTransient) {
+        factory.on(this.taskService, this.taskId).setLocal(value, isTransient);
         return this;
     }
 
@@ -93,8 +92,8 @@ public class TaskVariableBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> TaskVariableBuilder remove(VariableFactory<T> factory) {
-        factory.on(this.runtimeService, this.executionId).remove();
+    public <T> UserTaskVariableBuilder remove(VariableFactory<T> factory) {
+        factory.on(this.taskService, this.taskId).remove();
         return this;
     }
 
@@ -104,8 +103,8 @@ public class TaskVariableBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> TaskVariableBuilder removeLocal(VariableFactory<T> factory) {
-        factory.on(this.runtimeService, this.executionId).removeLocal();
+    public <T> UserTaskVariableBuilder removeLocal(VariableFactory<T> factory) {
+        factory.on(this.taskService, this.taskId).removeLocal();
         return this;
     }
 
@@ -117,8 +116,8 @@ public class TaskVariableBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> TaskVariableBuilder update(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
-        factory.on(this.runtimeService, this.executionId).update(valueProcessor, isTransient);
+    public <T> UserTaskVariableBuilder update(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+        factory.on(this.taskService, this.taskId).update(valueProcessor, isTransient);
         return this;
     }
 
@@ -130,8 +129,8 @@ public class TaskVariableBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> TaskVariableBuilder updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
-        factory.on(this.runtimeService, this.executionId).updateLocal(valueProcessor, isTransient);
+    public <T> UserTaskVariableBuilder updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+        factory.on(this.taskService, this.taskId).updateLocal(valueProcessor, isTransient);
         return this;
     }
 
@@ -142,7 +141,7 @@ public class TaskVariableBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> TaskVariableBuilder update(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+    public <T> UserTaskVariableBuilder update(VariableFactory<T> factory, Function<T, T> valueProcessor) {
         return this.update(factory, valueProcessor, false);
     }
 
@@ -153,7 +152,7 @@ public class TaskVariableBuilder {
      * @param <T> value type.
      * @return fluent builder.
      */
-    public <T> TaskVariableBuilder updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+    public <T> UserTaskVariableBuilder updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor) {
         return this.updateLocal(factory, valueProcessor, false);
     }
 
