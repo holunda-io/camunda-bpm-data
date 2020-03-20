@@ -1,10 +1,8 @@
 package io.holunda.camunda.bpm.data.guard
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory
-import io.holunda.camunda.bpm.data.guard.condition.exists
-import io.holunda.camunda.bpm.data.guard.condition.hasOneOfValues
-import io.holunda.camunda.bpm.data.guard.condition.hasValue
-import io.holunda.camunda.bpm.data.guard.condition.notExists
+import io.holunda.camunda.bpm.data.guard.condition.*
+import java.util.function.Function
 
 /**
  * Guard creation methods.
@@ -31,6 +29,13 @@ object CamundaBpmDataGuards {
    * Creates has value condition.
    */
   fun <T> hasOneOfValues(variableFactory: VariableFactory<T>, values: Set<T>, local: Boolean = false) = variableFactory.hasOneOfValues(values, local)
+
+  /**
+   * Creates matches condition.
+   */
+  fun <T> matches(variableFactory: VariableFactory<T>,
+                  matcher: Function<T, Boolean>,
+                  local: Boolean = false) = variableFactory.matches(local) { matcher.apply(it) }
 }
 
 

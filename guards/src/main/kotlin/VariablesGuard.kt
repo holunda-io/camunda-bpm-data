@@ -13,7 +13,7 @@ class VariablesGuard(
   /**
    * List of conditions.
    */
-  val variableConditions: List<VariableGuardCondition<*>>
+  private val variableConditions: List<VariableGuardCondition<*>>
 ) {
 
   /**
