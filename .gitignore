@@ -1,3 +1,4 @@
+.attach_*
 *.iml
 .idea/
 .classpath
