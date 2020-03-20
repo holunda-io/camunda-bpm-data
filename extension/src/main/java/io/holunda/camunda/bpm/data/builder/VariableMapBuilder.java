@@ -9,27 +9,24 @@ import static org.camunda.bpm.engine.variable.Variables.createVariables;
 
 /**
  * Variable map builder allowing for fluent variable setting.
- * <p>
- * Since variable map does not support notion of "local" the corresponding methods are not provided in the builder.
- * </p>
  */
 public class VariableMapBuilder {
 
-    private final VariableMap variables = createVariables();
+    private final VariableMap variables;
 
     /**
      * Creates a builder with empty variables.
      */
     public VariableMapBuilder() {
+        this(createVariables());
     }
 
     /**
      * Creates a builder with provided variable map.
-     * <p>The provided variables are not modified by refererence to avoid side effects, but copied.</p>
      * @param variables variables to work on.
      */
     public VariableMapBuilder(VariableMap variables) {
-        this.variables.putAll(variables);
+        this.variables = variables;
     }
 
     /**

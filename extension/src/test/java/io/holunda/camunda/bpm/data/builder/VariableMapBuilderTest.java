@@ -7,13 +7,10 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.camunda.bpm.engine.variable.Variables.createVariables;
-import static org.camunda.bpm.engine.variable.Variables.stringValue;
 
 public class VariableMapBuilderTest {
 
     private static final VariableFactory<String> STRING = CamundaBpmData.stringVariable("myString");
-    private static final VariableFactory<String> STRING_2 = CamundaBpmData.stringVariable("myString2");
-    private static final VariableFactory<String> STRING_3 = CamundaBpmData.stringVariable("myString3");
 
     @Test
     public void testSet() {
@@ -46,28 +43,4 @@ public class VariableMapBuilderTest {
         assertThat(newVariables.get(STRING.getName())).isEqualTo("VALUE");
     }
 
-
-    @Test
-    public void testNoSideEffects() {
-        // initial map
-        VariableMap variables = createVariables()
-            .putValueTyped("myString", stringValue("value"))
-            .putValueTyped("myString3", stringValue("value3"));
-
-
-        VariableMap newVariables = CamundaBpmData
-            .builder(variables)
-            .set(STRING_2, "anotherString")
-            .update(STRING, String::toUpperCase)
-            .remove(STRING_3)
-            .build();
-
-        assertThat(variables).containsOnlyKeys(STRING.getName(), STRING_3.getName());
-        assertThat(variables.get(STRING.getName())).isEqualTo("value");
-
-        assertThat(newVariables).containsOnlyKeys(STRING.getName(), STRING_2.getName());
-        assertThat(newVariables.get(STRING.getName())).isEqualTo("VALUE");
-        assertThat(newVariables.get(STRING_2.getName())).isEqualTo("anotherString");
-
-    }
 }
