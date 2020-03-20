@@ -41,7 +41,8 @@ class JavaDelegates {
 
 [source,java]
 ----
-import java.math.BigDecimal;@Configuration
+import java.math.BigDecimal
+;@Configuration
 class JavaDelegates {
 
   @Bean
@@ -58,7 +59,8 @@ class JavaDelegates {
 
 [source,java]
 ----
-import java.math.BigDecimal;@Configuration
+import java.math.BigDecimal
+;@Configuration
 class JavaDelegates {
 
   @Bean
@@ -74,7 +76,8 @@ class JavaDelegates {
 
 [source,java]
 ----
-import java.math.BigDecimal;@Configuration
+import java.math.BigDecimal;
+@Configuration
 class JavaDelegates {
 
   @Bean
@@ -83,6 +86,63 @@ class JavaDelegates {
       OrderPosition orderPosition = ORDER_POSITION.from(execution).get();
       ORDER_TOTAL.on(execution).updateLocal(amount -> amount.add(orderPosition.getNetCost().multiply(BigDecimal.valueOf(orderPosition.getAmount()))));
     };
+  }
+}
+----
+
+=== Fluent API to remove several variables
+
+[source,java]
+----
+@Configuration
+class JavaDelegates {
+
+  @Bean
+  public ExecutionListener removeProcessVariables() {
+    return execution ->
+    {
+      CamundaBpmData.builder(execution)
+          .remove(ORDER_ID)
+          .remove(ORDER)
+          .remove(ORDER_APPROVED)
+          .remove(ORDER_TOTAL)
+          .removeLocal(ORDER_POSITIONS);
+    };
+  }
+}
+----
+
+=== Fluent API to set several variables
+
+[source,java]
+----
+@Component
+class SomeService {
+
+  @Autowired
+  private RuntimeService runtimeService;
+  @Autowired
+  private TaskService taskService;
+
+  public void setNewValuesForExecution(String executionId, String orderId, Boolean orderApproved) {
+      CamundaBpmData.builder(runtimeService, executionId)
+          .set(ORDER_ID, orderId)
+          .set(ORDER_APPROVED, orderApproved)
+          .update(ORDER_TOTAL, amount -> amount.add(10));
+  }
+
+  public void setNewValuesForTask(String taskId, String orderId, Boolean orderApproved) {
+      CamundaBpmData.builder(taskService, taskId)
+          .set(ORDER_ID, orderId)
+          .set(ORDER_APPROVED, orderApproved);
+  }
+
+  public void start() {
+      VariableMap variables = CamundaBpmData.builder()
+          .set(ORDER_ID, "4711")
+          .set(ORDER_APPROVED, false)
+          .build();
+      runtimeService.startProcessInstanceById("myId", "businessKey", variables);
   }
 }
 ----
