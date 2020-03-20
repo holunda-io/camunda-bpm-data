@@ -96,10 +96,12 @@ fun <T> VariableScope.updateLocal(factory: VariableFactory<T>, valueProcessor: (
 
 /**
  * Helper to access runtime service builder.
+ * @param executionId id of the execution.
  */
 fun RuntimeService.builder(executionId: String) = ProcessExecutionVariableBuilder(this, executionId)
 
 /**
  * Helper to access task service builder.
+ * @param taskId id of the task.
  */
 fun TaskService.builder(taskId: String) = UserTaskVariableBuilder(this, taskId)

@@ -182,6 +182,7 @@ public class CamundaBpmData {
 
   /**
    * Creates a new variable map builder.
+   * @param variables pre-filled variables.
    * @return new builder with a variable map containing a copy of provided variables.
    */
   @NotNull
@@ -191,6 +192,7 @@ public class CamundaBpmData {
 
   /**
    * Creates a new variable scope builder.
+   * @param variableScope scope to work on (delegate execution or delegate task).
    * @return new builder working on provided variable scope.
    */
   @NotNull
@@ -200,6 +202,8 @@ public class CamundaBpmData {
 
   /**
    * Creates a new execution variable builder.
+   * @param runtimeService runtime service to use.
+   * @param executionId id of the execution.
    * @return new builder working on provided process execution.
    */
   @NotNull
@@ -209,11 +213,13 @@ public class CamundaBpmData {
 
   /**
    * Creates a new task variable builder.
+   * @param taskService task service to use.
+   * @param taskId task id.
    * @return new builder working on provided user task.
    */
   @NotNull
-  public static UserTaskVariableBuilder builder(TaskService taskService, String executionId) {
-    return new UserTaskVariableBuilder(taskService, executionId);
+  public static UserTaskVariableBuilder builder(TaskService taskService, String taskId) {
+    return new UserTaskVariableBuilder(taskService, taskId);
   }
 
 }
