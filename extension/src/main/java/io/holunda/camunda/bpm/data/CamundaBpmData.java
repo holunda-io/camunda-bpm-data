@@ -1,10 +1,18 @@
 package io.holunda.camunda.bpm.data;
 
+import io.holunda.camunda.bpm.data.builder.ProcessExecutionVariableBuilder;
+import io.holunda.camunda.bpm.data.builder.UserTaskVariableBuilder;
+import io.holunda.camunda.bpm.data.builder.VariableMapBuilder;
+import io.holunda.camunda.bpm.data.builder.VariableScopeBuilder;
 import io.holunda.camunda.bpm.data.factory.BasicVariableFactory;
 import io.holunda.camunda.bpm.data.factory.ListVariableFactory;
 import io.holunda.camunda.bpm.data.factory.MapVariableFactory;
 import io.holunda.camunda.bpm.data.factory.SetVariableFactory;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import org.camunda.bpm.engine.RuntimeService;
+import org.camunda.bpm.engine.TaskService;
+import org.camunda.bpm.engine.delegate.VariableScope;
+import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
@@ -162,4 +170,56 @@ public class CamundaBpmData {
   public static <K, V> VariableFactory<Map<K, V>> mapVariable(@NotNull String variableName, @NotNull Class<K> keyClazz, @NotNull Class<V> valueClazz) {
     return new MapVariableFactory<>(variableName, keyClazz, valueClazz);
   }
+
+  /**
+   * Creates a new variable map builder.
+   * @return new builder with empty variable map.
+   */
+  @NotNull
+  public static VariableMapBuilder builder() {
+    return new VariableMapBuilder();
+  }
+
+  /**
+   * Creates a new variable map builder.
+   * @param variables pre-filled variables.
+   * @return new builder with a variable map containing a copy of provided variables.
+   */
+  @NotNull
+  public static VariableMapBuilder builder(VariableMap variables) {
+    return new VariableMapBuilder(variables);
+  }
+
+  /**
+   * Creates a new variable scope builder.
+   * @param variableScope scope to work on (delegate execution or delegate task).
+   * @return new builder working on provided variable scope.
+   */
+  @NotNull
+  public static VariableScopeBuilder builder(VariableScope variableScope) {
+    return new VariableScopeBuilder(variableScope);
+  }
+
+  /**
+   * Creates a new execution variable builder.
+   * @param runtimeService runtime service to use.
+   * @param executionId id of the execution.
+   * @return new builder working on provided process execution.
+   */
+  @NotNull
+  public static ProcessExecutionVariableBuilder builder(RuntimeService runtimeService, String executionId) {
+    return new ProcessExecutionVariableBuilder(runtimeService, executionId);
+  }
+
+  /**
+   * Creates a new task variable builder.
+   * @param taskService task service to use.
+   * @param taskId task id.
+   * @return new builder working on provided user task.
+   */
+  @NotNull
+  public static UserTaskVariableBuilder builder(TaskService taskService, String taskId) {
+    return new UserTaskVariableBuilder(taskService, taskId);
+  }
+
 }

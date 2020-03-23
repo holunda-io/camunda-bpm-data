@@ -17,7 +17,9 @@ import org.springframework.context.event.EventListener;
 
 import java.math.BigDecimal;
 
-import static io.holunda.camunda.bpm.data.CamundaBpmData.*;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.customVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable;
 
 @Configuration
 public class OrderApproval {
