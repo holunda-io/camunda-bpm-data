@@ -53,7 +53,7 @@ public class GuardProcessTest {
     }
 
     @Test
-    public void should_fire_exception_if_order_id_is_missing() {
+    public void shouldFireExceptionIfOrderIdIsMissing() {
 
         thrown.expectMessage("Guard violated by execution '6' in activity 'Order created'");
 
@@ -63,7 +63,7 @@ public class GuardProcessTest {
     }
 
     @Test
-    public void should_fire_exception_approve_decision_is_missing() {
+    public void shouldFireExceptionApproveDecisionIsMissing() {
 
         thrown.expectMessage("Guard violated in task 'Approve order' (taskId: '21')");
 

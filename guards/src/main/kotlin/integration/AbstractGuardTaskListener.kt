@@ -33,6 +33,9 @@ abstract class AbstractGuardTaskListener(
         }
     }
 
+    /**
+     * Removes new lines from the task name.
+     */
     fun String.removeNewLines() = this
         .replace("\n", " ")
 }
