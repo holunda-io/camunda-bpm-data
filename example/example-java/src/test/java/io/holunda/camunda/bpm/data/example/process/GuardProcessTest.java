@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import io.holunda.camunda.bpm.data.example.domain.Order;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.engine.runtime.Job;
-import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.task.Task;
 import org.camunda.bpm.engine.test.Deployment;
 import org.camunda.bpm.engine.test.ProcessEngineRule;
@@ -58,7 +57,7 @@ public class GuardProcessTest {
         thrown.expectMessage("Guard violated by execution '6' in activity 'Order created'");
 
         // manual start by-passing the factory
-        ProcessInstance instance = rule.getRuntimeService().startProcessInstanceByKey(OrderApproval.KEY);
+        rule.getRuntimeService().startProcessInstanceByKey(OrderApproval.KEY);
         fail("Should not get here");
     }
 
@@ -71,8 +70,8 @@ public class GuardProcessTest {
         factory.start();
 
         // async after start
-        Job asynStart = rule.getManagementService().createJobQuery().singleResult();
-        rule.getManagementService().executeJob(asynStart.getId());
+        Job asyncStart = rule.getManagementService().createJobQuery().singleResult();
+        rule.getManagementService().executeJob(asyncStart.getId());
 
         Task task = rule.getTaskService().createTaskQuery().singleResult();
         rule.getTaskService().complete(task.getId());
