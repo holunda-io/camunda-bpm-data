@@ -8,5 +8,5 @@ title: Further outlook
 
 Planned or featured features:
 
-* Native Kotlin support including extension functions
-* Process variable guards for better testing
+* Process variable guards for better testing (#21)
+* Better support for mocking and verification in process tests
