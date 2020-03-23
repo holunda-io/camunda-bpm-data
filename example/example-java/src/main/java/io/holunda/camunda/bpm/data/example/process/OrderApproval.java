@@ -4,10 +4,13 @@ import io.holunda.camunda.bpm.data.example.domain.Order;
 import io.holunda.camunda.bpm.data.example.domain.OrderPosition;
 import io.holunda.camunda.bpm.data.example.service.OrderRepository;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import io.holunda.camunda.bpm.data.guard.integration.AbstractGuardExecutionListener;
+import io.holunda.camunda.bpm.data.guard.integration.AbstractGuardTaskListener;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.DelegateTask;
 import org.camunda.bpm.engine.delegate.ExecutionListener;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
+import org.camunda.bpm.engine.delegate.TaskListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +20,9 @@ import org.springframework.context.event.EventListener;
 
 import java.math.BigDecimal;
 
-import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.customVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable;
+import static com.google.common.collect.Lists.newArrayList;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.*;
+import static io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.exists;
 
 @Configuration
 public class OrderApproval {
@@ -47,6 +50,16 @@ public class OrderApproval {
       Order order = orderRepository.loadOrder(orderId);
       ORDER.on(execution).set(order);
     };
+  }
+
+  @Bean
+  public ExecutionListener guardExecutionListener()  {
+    return new AbstractGuardExecutionListener(newArrayList(exists(ORDER_ID)), true) {};
+  }
+
+  @Bean
+  public TaskListener guardTaskListener()  {
+    return new AbstractGuardTaskListener(newArrayList(exists(ORDER_APPROVED)), true) {};
   }
 
   /**

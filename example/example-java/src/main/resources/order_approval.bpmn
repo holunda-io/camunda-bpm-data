@@ -5,6 +5,9 @@
   </bpmn:collaboration>
   <bpmn:process id="order-approval" name="Order Approval" isExecutable="true" camunda:historyTimeToLive="P1D">
     <bpmn:startEvent id="start_order_created" name="Order created" camunda:asyncAfter="true">
+      <bpmn:extensionElements>
+        <camunda:executionListener delegateExpression="${ guardExecutionListener }" event="start" />
+      </bpmn:extensionElements>
       <bpmn:outgoing>SequenceFlow_0yomyfk</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:serviceTask id="service_load_order" name="Load&#10;order" camunda:delegateExpression="${ orderApproval.loadOrder() }">
@@ -30,6 +33,7 @@
         <camunda:formData>
           <camunda:formField id="orderApproved" label="Order Approved" type="boolean" defaultValue="true" />
         </camunda:formData>
+        <camunda:taskListener delegateExpression="${ guardTaskListener }" event="complete" />
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_19r0xpo</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0bu7jj9</bpmn:outgoing>
@@ -52,7 +56,7 @@
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0gyaggx">
       <bpmndi:BPMNShape id="Participant_15rnb5t_di" bpmnElement="order_approval" isHorizontal="true">
-        <dc:Bounds x="129" y="80" width="1041" height="410" />
+        <dc:Bounds x="129" y="120" width="1041" height="370" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="start_order_created">
         <dc:Bounds x="209" y="259" width="36" height="36" />

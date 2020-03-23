@@ -4,7 +4,17 @@ import io.holunda.camunda.bpm.data.factory.VariableFactory
 import io.holunda.camunda.bpm.data.guard.GuardViolation
 import java.util.*
 
+/**
+ * Guard for testing a condition passed by a matcher-function.
+ * @param T variable type.
+ * @param variableFactory Factory to work with.
+ * @param local flag indicating the variable scope (global/local). Defaults to global.
+ * @param matcher matcher function, specifying the condition.
+ */
 class VariableMatchesGuardCondition<T>(
+    /**
+     * Variable factory to work with.
+     */
     variableFactory: VariableFactory<T>,
     local: Boolean = false,
     private val matcher: (value: T) -> Boolean

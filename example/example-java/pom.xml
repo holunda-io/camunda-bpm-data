@@ -27,6 +27,13 @@
       <groupId>io.holunda.data</groupId>
       <artifactId>camunda-bpm-data-guards</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>org.camunda.bpm.springboot</groupId>
+      <artifactId>camunda-bpm-spring-boot-starter-test</artifactId>
+      <version>${camunda-spring-boot.version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
 </project>

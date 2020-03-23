@@ -4,7 +4,7 @@ import io.holunda.camunda.bpm.data.guard.condition.VariableGuardCondition
 import java.util.*
 
 /**
- * Represents a violation of one guard.
+ * Represents a violation of a guard.
  */
 data class GuardViolation<T>(
     /**
