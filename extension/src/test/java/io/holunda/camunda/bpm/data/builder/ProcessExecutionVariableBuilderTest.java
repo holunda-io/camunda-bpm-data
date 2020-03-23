@@ -3,23 +3,17 @@ package io.holunda.camunda.bpm.data.builder;
 import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.RuntimeService;
-import org.camunda.bpm.engine.delegate.VariableScope;
-import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.Variables;
-import org.camunda.bpm.extension.mockito.delegate.DelegateExecutionFake;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 
 import java.util.UUID;
 
 import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class ProcessExecutionVariableBuilderTest {
 

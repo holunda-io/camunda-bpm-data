@@ -2,7 +2,6 @@ package io.holunda.camunda.bpm.data.builder;
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.delegate.VariableScope;
-import org.camunda.bpm.engine.variable.VariableMap;
 
 import java.util.function.Function;
 
@@ -16,6 +15,7 @@ public class VariableScopeBuilder {
     /**
      * Creates a builder with provided variable map.
      * <p>The provided variables are modified by reference.</p>
+     *
      * @param variables variables to work on.
      */
     public VariableScopeBuilder(VariableScope variables) {
@@ -24,6 +24,7 @@ public class VariableScopeBuilder {
 
     /**
      * Returns the resulting variables.
+     *
      * @return variables.
      */
     public VariableScope build() {
@@ -32,9 +33,11 @@ public class VariableScopeBuilder {
 
     /**
      * Sets the value for the provided variable and returns the builder (fluently).
+     *
      * @param factory variable factory.
-     * @param value value to set.
-     * @param <T> value type.
+     * @param value   value to set.
+     * @param <T>     value type.
+     *
      * @return fluent builder.
      */
     public <T> VariableScopeBuilder set(VariableFactory<T> factory, T value) {
@@ -43,10 +46,12 @@ public class VariableScopeBuilder {
 
     /**
      * Sets the value for the provided variable and returns the builder (fluently).
-     * @param factory variable factory.
-     * @param value value to set.
+     *
+     * @param factory     variable factory.
+     * @param value       value to set.
      * @param isTransient transient flag.
-     * @param <T> value type.
+     * @param <T>         value type.
+     *
      * @return fluent builder.
      */
     public <T> VariableScopeBuilder set(VariableFactory<T> factory, T value, boolean isTransient) {
@@ -56,9 +61,11 @@ public class VariableScopeBuilder {
 
     /**
      * Sets the local value for the provided variable and returns the builder (fluently).
+     *
      * @param factory variable factory.
-     * @param value value to set.
-     * @param <T> value type.
+     * @param value   value to set.
+     * @param <T>     value type.
+     *
      * @return fluent builder.
      */
     public <T> VariableScopeBuilder setLocal(VariableFactory<T> factory, T value) {
@@ -67,10 +74,12 @@ public class VariableScopeBuilder {
 
     /**
      * Sets the local value for the provided variable and returns the builder (fluently).
-     * @param factory variable factory.
-     * @param value value to set.
+     *
+     * @param factory     variable factory.
+     * @param value       value to set.
      * @param isTransient transient flag.
-     * @param <T> value type.
+     * @param <T>         value type.
+     *
      * @return fluent builder.
      */
     public <T> VariableScopeBuilder setLocal(VariableFactory<T> factory, T value, boolean isTransient) {
@@ -80,8 +89,10 @@ public class VariableScopeBuilder {
 
     /**
      * Removes the local value for the provided variable and returns the builder (fluently).
+     *
      * @param factory variable factory.
-     * @param <T> value type.
+     * @param <T>     value type.
+     *
      * @return fluent builder.
      */
     public <T> VariableScopeBuilder remove(VariableFactory<T> factory) {
@@ -91,8 +102,10 @@ public class VariableScopeBuilder {
 
     /**
      * Removes the local value for the provided variable and returns the builder (fluently).
+     *
      * @param factory variable factory.
-     * @param <T> value type.
+     * @param <T>     value type.
+     *
      * @return fluent builder.
      */
     public <T> VariableScopeBuilder removeLocal(VariableFactory<T> factory) {
@@ -102,10 +115,12 @@ public class VariableScopeBuilder {
 
     /**
      * Updates the value for the provided variable and returns the builder (fluently).
-     * @param factory variable factory.
+     *
+     * @param factory        variable factory.
      * @param valueProcessor processor for the value.
-     * @param isTransient transient flag.
-     * @param <T> value type.
+     * @param isTransient    transient flag.
+     * @param <T>            value type.
+     *
      * @return fluent builder.
      */
     public <T> VariableScopeBuilder update(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
@@ -115,10 +130,12 @@ public class VariableScopeBuilder {
 
     /**
      * Update the local value for the provided variable and returns the builder (fluently).
-     * @param factory variable factory.
+     *
+     * @param factory        variable factory.
      * @param valueProcessor processor for the value.
-     * @param isTransient transient flag.
-     * @param <T> value type.
+     * @param isTransient    transient flag.
+     * @param <T>            value type.
+     *
      * @return fluent builder.
      */
     public <T> VariableScopeBuilder updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
@@ -128,9 +145,11 @@ public class VariableScopeBuilder {
 
     /**
      * Updates the value for the provided variable and returns the builder (fluently).
-     * @param factory variable factory.
+     *
+     * @param factory        variable factory.
      * @param valueProcessor processor for the value.
-     * @param <T> value type.
+     * @param <T>            value type.
+     *
      * @return fluent builder.
      */
     public <T> VariableScopeBuilder update(VariableFactory<T> factory, Function<T, T> valueProcessor) {
@@ -139,9 +158,11 @@ public class VariableScopeBuilder {
 
     /**
      * Update the local value for the provided variable and returns the builder (fluently).
-     * @param factory variable factory.
+     *
+     * @param factory        variable factory.
      * @param valueProcessor processor for the value.
-     * @param <T> value type.
+     * @param <T>            value type.
+     *
      * @return fluent builder.
      */
     public <T> VariableScopeBuilder updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor) {
