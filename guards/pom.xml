@@ -63,6 +63,11 @@
       <artifactId>slf4j-simple</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.camunda.bpm.extension.mockito</groupId>
+      <artifactId>camunda-bpm-mockito</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
