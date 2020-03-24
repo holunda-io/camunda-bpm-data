@@ -17,9 +17,7 @@
     <jacoco.skip>false</jacoco.skip>
   </properties>
 
-
   <dependencies>
-
     <dependency>
       <groupId>io.holunda.data</groupId>
       <artifactId>camunda-bpm-data</artifactId>

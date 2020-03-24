@@ -20,6 +20,14 @@
   <dependencies>
     <dependency>
       <groupId>io.holunda.data</groupId>
+      <artifactId>camunda-bpm-data</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.holunda.data</groupId>
+      <artifactId>camunda-bpm-data-guards</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.holunda.data</groupId>
       <artifactId>camunda-bpm-data-kotlin</artifactId>
     </dependency>
 

@@ -13,12 +13,12 @@
   <name>${project.artifactId}</name>
   <packaging>jar</packaging>
 
+  <properties>
+    <jacoco.skip>false</jacoco.skip>
+  </properties>
+
+
   <dependencies>
-    <dependency>
-      <groupId>io.toolisticon.springboot</groupId>
-      <artifactId>springboot-swagger-starter</artifactId>
-      <version>0.0.4</version>
-    </dependency>
     <dependency>
       <groupId>io.holunda.data</groupId>
       <artifactId>camunda-bpm-data</artifactId>
@@ -28,6 +28,11 @@
       <artifactId>camunda-bpm-data-guards</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>io.toolisticon.springboot</groupId>
+      <artifactId>springboot-swagger-starter</artifactId>
+      <version>0.0.4</version>
+    </dependency>
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
       <artifactId>camunda-bpm-spring-boot-starter-test</artifactId>

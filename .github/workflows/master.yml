@@ -27,16 +27,16 @@ jobs:
       run: ./mvnw clean package
 
     - name: Run integration tests
-      run: ./mvnw -Pitest
+      run: ./mvnw -Pitest verify
 
-    - name: Create reports
-      run: ./mvnw -DskipTests verify
+    - name: Create coverage reports
+      run: ./mvnw jacoco:report-aggregate
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1.0.2
       with:
         token: ${{secrets.CODECOV_TOKEN}}
-        file: example/example-kotlin/target/site/jacoco-aggregate/jacoco.xml
+        file: example/example-*/target/site/jacoco-aggregate/jacoco.xml
 
     - name: Import GPG Owner Trust
       run: echo ${{secrets.GPG_OWNERTRUST}} | base64 --decode | gpg --import-ownertrust
