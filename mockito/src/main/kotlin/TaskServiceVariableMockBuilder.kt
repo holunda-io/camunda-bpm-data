@@ -32,24 +32,24 @@ class TaskServiceVariableMockBuilder(
     }
 
     /**
-     * Defines a variable and sets a global value.
+     * Defines a variable and sets an initial global value.
      * @param variableFactory factory to use.
      * @param value initial value.
      * @return fluent builder.
      */
-    fun <T> set(variableFactory: VariableFactory<T>, value: T): TaskServiceVariableMockBuilder {
+    fun <T> inital(variableFactory: VariableFactory<T>, value: T): TaskServiceVariableMockBuilder {
         define(variableFactory)
         variableFactory.on(variables).set(value)
         return this
     }
 
     /**
-     * Defines a variable and sets a local value.
+     * Defines a variable and sets an initial local value.
      * @param variableFactory factory to use.
      * @param value initial value.
      * @return fluent builder.
      */
-    fun <T> setLocal(variableFactory: VariableFactory<T>, value: T): TaskServiceVariableMockBuilder {
+    fun <T> initialLocal(variableFactory: VariableFactory<T>, value: T): TaskServiceVariableMockBuilder {
         factories.add(variableFactory)
         variableFactory.on(localVariables).set(value)
         return this
