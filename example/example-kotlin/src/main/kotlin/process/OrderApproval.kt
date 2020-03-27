@@ -11,6 +11,7 @@ import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variable
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_TOTAL
 import io.holunda.camunda.bpm.data.example.kotlin.service.OrderRepository
 import io.holunda.camunda.bpm.data.factory.VariableFactory
+import io.holunda.camunda.bpm.data.set
 import mu.KLogging
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.DelegateTask

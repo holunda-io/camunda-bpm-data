@@ -1,4 +1,4 @@
-name: default
+name: Development branches
 
 on:
   push:
@@ -45,4 +45,3 @@ jobs:
       uses: codecov/codecov-action@v1.0.2
       with:
         token: ${{secrets.CODECOV_TOKEN}}
-        # file: './example/*/target/site/jacoco-aggregate/jacoco.xml'
