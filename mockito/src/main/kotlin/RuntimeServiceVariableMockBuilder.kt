@@ -37,7 +37,7 @@ class RuntimeServiceVariableMockBuilder(
      * @param value initial value.
      * @return fluent builder.
      */
-    fun <T> set(variableFactory: VariableFactory<T>, value: T): RuntimeServiceVariableMockBuilder {
+    fun <T> intial(variableFactory: VariableFactory<T>, value: T): RuntimeServiceVariableMockBuilder {
         define(variableFactory)
         variableFactory.on(variables).set(value)
         return this
@@ -49,7 +49,7 @@ class RuntimeServiceVariableMockBuilder(
      * @param value initial value.
      * @return fluent builder.
      */
-    fun <T> setLocal(variableFactory: VariableFactory<T>, value: T): RuntimeServiceVariableMockBuilder {
+    fun <T> initalLocal(variableFactory: VariableFactory<T>, value: T): RuntimeServiceVariableMockBuilder {
         factories.add(variableFactory)
         variableFactory.on(localVariables).set(value)
         return this
