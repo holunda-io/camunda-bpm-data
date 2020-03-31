@@ -22,7 +22,7 @@ class RuntimeServiceVariableMockBuilder(
 ) {
 
     /**
-     * Defines a global variable.
+     * Defines a variable.
      * @param variableFactory variable to define.
      * @return fluent builder.
      */
@@ -50,7 +50,7 @@ class RuntimeServiceVariableMockBuilder(
      * @return fluent builder.
      */
     fun <T> initalLocal(variableFactory: VariableFactory<T>, value: T): RuntimeServiceVariableMockBuilder {
-        factories.add(variableFactory)
+        define(variableFactory)
         variableFactory.on(localVariables).set(value)
         return this
     }

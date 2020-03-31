@@ -5,6 +5,7 @@ import java.util.*
 
 /**
  * Represents a violation of a guard.
+ * @param T factory type.
  */
 data class GuardViolation<T>(
     /**

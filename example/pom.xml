@@ -9,6 +9,7 @@
     <version>0.0.6-SNAPSHOT</version>
   </parent>
 
+  <groupId>io.holunda.data.example</groupId>
   <artifactId>camunda-bpm-data-example-parent</artifactId>
   <name>${project.artifactId}</name>
   <packaging>pom</packaging>
@@ -36,11 +37,6 @@
       <dependency>
         <groupId>io.holunda.data</groupId>
         <artifactId>camunda-bpm-data-kotlin</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>io.holunda.data</groupId>
-        <artifactId>camunda-bpm-data-guards</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>

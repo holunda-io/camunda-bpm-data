@@ -1,5 +1,6 @@
 package io.holunda.camunda.bpm.data.example.kotlin.process
 
+import io.holunda.camunda.bpm.data.builder
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_ID
 import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.variable.Variables.createVariables
@@ -16,5 +17,8 @@ class OrderApprovalInstanceFactory(
     ORDER_ID.on(vars).set("1")
     val instance = runtimeService.startProcessInstanceByKey(OrderApproval.KEY, "order-${UUID.randomUUID()}", vars)
     return OrderApprovalInstance(instance)
+  }
+
+  fun setVariables(executionId: String) {
   }
 }

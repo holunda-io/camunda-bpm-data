@@ -9,7 +9,8 @@ pageId: 'user-guide'
 
 * [Motivation](motivation.ad)
 * [Features](features.ad)
-* [Examples](examples.ad)
+* [Java Examples](examples-java.ad)
+* [Kotlin Examples](examples-kotlin.ad)
 * [Further Outlook](further-outlook.ad)
 
 

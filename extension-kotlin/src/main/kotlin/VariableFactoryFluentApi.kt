@@ -2,7 +2,6 @@ package io.holunda.camunda.bpm.data
 
 import io.holunda.camunda.bpm.data.builder.ProcessExecutionVariableBuilder
 import io.holunda.camunda.bpm.data.builder.UserTaskVariableBuilder
-import io.holunda.camunda.bpm.data.factory.RuntimeServiceAdapterBuilder
 import io.holunda.camunda.bpm.data.factory.VariableFactory
 import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService

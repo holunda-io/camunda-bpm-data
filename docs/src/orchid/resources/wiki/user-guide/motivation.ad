@@ -20,16 +20,43 @@ Here is a usage example:
 
 [source,java]
 ----
-
+ProcessInstance processInstance = ...;
 List<OrderPosition> orderPositions = (List<OrderPosition>) runtimeService
-  .getVariable("myExecutionIn", "orderPositions");
-
+  .getVariable(processInstance.id, "orderPositions");
 ----
 
-This leads to problems during refactoring and makes variable access more complicated than it is.
+This leads to problems during refactoring and makes variable access more complicated than it is. This library addresses
+this issue and allows for more convenient type-safe process variable access.
+
+
 More details can be found in:
 
-* link:https://medium.com/holisticon-consultants/data-in-process-part-1-2620bf9abd76[Data in Process (Part 1)]
-* link:https://medium.com/holisticon-consultants/data-in-process-part-2-7c6a109e6ee2[Data in Process (Part 2)]
+*  link:https://medium.com/holisticon-consultants/data-in-process-part-1-2620bf9abd76[Data in Process (Part 1)]
+*  link:https://medium.com/holisticon-consultants/data-in-process-part-2-7c6a109e6ee2[Data in Process (Part 2)]
 
-This library addresses this issue and allows for more convenient type-safe process variable access.
+=== Variable guards
+
+Process automation often follows strict rules defined by the business. On the other hand, the process execution itself
+defines rules in terms of pre- and post-conditions on the process payload (stored as process variables in Camunda BPM).
+Rising complexity of the implemented processes makes the compliance to those rules challenging. In order to fulfill the
+conditions on process variables during the execution of business processes, a concept of `VariableGuard` is provided by
+the library. A guard consists of a set of `VariableConditions` and can be evaluated in all contexts, the variables
+are used in: `DelegateTask`, `DelegateExecution`, `TaskService`, `RuntimeService`, `VariableMap`.
+
+Here is an example of a task listener verifying that a process variable `ORDER_APPROVED` is set, which
+will throw a `GuardViolationException` if the condition is not met.
+
+[source,java]
+----
+
+import static io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.exists;
+
+@Component
+class MyGuardListener extends AbstractGuardTaskListener {
+
+    public MyGuardListener() {
+        super(newArrayList(exists(ORDER_APPROVED)), true);
+    }
+}
+----
+
