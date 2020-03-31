@@ -1,0 +1,3 @@
+(electron) 'getName function' is deprecated and will be removed. Please use 'name property' instead.
+(electron) 'setBadgeCount function' is deprecated and will be removed. Please use 'badgeCount property' instead.
+(electron) 'setZoomLevel function' is deprecated and will be removed. Please use 'zoomLevel property' instead.

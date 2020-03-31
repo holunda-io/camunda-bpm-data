@@ -1,4 +1,4 @@
-name: master
+name: Master branch
 
 on:
   push:
@@ -38,11 +38,6 @@ jobs:
     - name: Create coverage reports
       run: ./mvnw jacoco:report-aggregate
 
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1.0.2
-      with:
-        token: ${{secrets.CODECOV_TOKEN}}
-
     - name: Import GPG Owner Trust
       run: echo ${{secrets.GPG_OWNERTRUST}} | base64 --decode | gpg --import-ownertrust
 
@@ -58,7 +53,12 @@ jobs:
         servers: '[{"id": "ossrh", "username": "${{secrets.SONATYPE_USERNAME}}", "password": "${{secrets.SONATYPE_PASSWORD}}"}]'
 
     - name: Deploy a new version to central
-      run: ./mvnw clean deploy -B -DskipTests -DskipExamples -Prelease -Dgpg.passphrase=${{secrets.GPG_PASSPHRASE}}
+      run: ./mvnw clean deploy -B -DskipTests -DskipExamples -Prelease -Dgpg.keyname=${{secrets.GPG_KEYNAME}} -Dgpg.passphrase=${{secrets.GPG_PASSPHRASE}}
 
     - name: Build and deploy site docs
       run: ./mvnw -Pdeploy-docs -f docs -DgithubToken=${{secrets.GH_TOKEN}}
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1.0.2
+      with:
+        token: ${{secrets.CODECOV_TOKEN}}

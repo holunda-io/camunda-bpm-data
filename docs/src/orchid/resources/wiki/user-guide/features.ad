@@ -4,15 +4,26 @@ title: Features
 
 == {{ page.title }}
 
-The library Camunda BPM Data provides the following functionality:
-
-* The library provides a way to construct generic adapter for every process variable.
-* The adapter contains variable name.
-* The adapter contains variable type.
-* The adapter can be applied in any context (`RuntimeService`, `TaskService`, `DelegateExecution`, `DelegateTask`, `VariableMap`).
-* The adapter offers methods to read, write, update and remove variable values.
-* The adapter works for all types supported by Camunda BPM. This includes primitive types, object and container types ( `List<T>`, `Set<T>`, `Map<K , V>` ).
-* The adapter supports global / local variables.
-* The adapter support transient variables.
-* Fluent builders are available in order to set, remove or update multiple variables in the same context.
+* Process Variables
+- The library provides a way to construct generic adapter for every process variable.
+- The adapter contains variable name.
+- The adapter contains variable type.
+- The adapter can be applied in any context (`RuntimeService`, `TaskService`, `DelegateExecution`, `DelegateTask`, `VariableMap`).
+- The adapter offers methods to read, write, update and remove variable values.
+- The adapter works for all types supported by Camunda BPM. This includes primitive types, object and container types ( `List<T>`, `Set<T>`, `Map<K , V>` ).
+- The adapter supports global / local variables.
+- The adapter support transient variables.
+- Fluent builders are available in order to set, remove or update multiple variables in the same context.
+* Process Variable Guards
+- Generic support for `VariableGuard` for evaluation of a list of `VariableCondition`s
+- Condition to check if variable exists.
+- Condition to check if variable doesn't exist
+- Condition to check if variable has a predefined value.
+- Condition to check if variable has one of predefined values.
+- Condition to check if variable matches condition specified by a custom function.
+- `AbstractGuardTaskListener` to construct variable conditions guards easily.
+- `AbstractGuardExecutionListener` to construct variable conditions guards easily.
+* Testing variable access and mocking `RuntimeService` and `TaskService`.
+- Builder to create Mockito-based behaviour of `RuntimeService` accessing variables.
+- Builder to create Mockito-based behaviour of `TaskServiceService` accessing variables.
 

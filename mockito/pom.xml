@@ -9,7 +9,7 @@
     <version>0.0.6-SNAPSHOT</version>
   </parent>
 
-  <artifactId>camunda-bpm-data-guards</artifactId>
+  <artifactId>camunda-bpm-data-mockito</artifactId>
   <name>${project.artifactId}</name>
   <packaging>jar</packaging>
 
@@ -23,6 +23,17 @@
       <groupId>io.holunda.data</groupId>
       <artifactId>camunda-bpm-data-kotlin</artifactId>
       <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>${mockito.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.nhaarman</groupId>
+      <artifactId>mockito-kotlin</artifactId>
+      <version>1.6.0</version>
     </dependency>
 
     <!-- Kotlin -->

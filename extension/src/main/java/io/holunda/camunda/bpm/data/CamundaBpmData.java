@@ -30,7 +30,7 @@ public class CamundaBpmData {
   private CamundaBpmData() { }
 
   /**
-   * Create string variable factory.
+   * Creates a string variable factory.
    *
    * @param variableName name of the variable.
    *
@@ -42,7 +42,7 @@ public class CamundaBpmData {
   }
 
   /**
-   * Create date variable factory.
+   * Creates a date variable factory.
    *
    * @param variableName name of the variable.
    *
@@ -54,7 +54,7 @@ public class CamundaBpmData {
   }
 
   /**
-   * Create integer variable factory.
+   * Creates an integer variable factory.
    *
    * @param variableName name of the variable.
    *
@@ -66,7 +66,7 @@ public class CamundaBpmData {
   }
 
   /**
-   * Create long variable factory.
+   * Creates a long variable factory.
    *
    * @param variableName name of the variable.
    *
@@ -78,7 +78,7 @@ public class CamundaBpmData {
   }
 
   /**
-   * Create short variable factory.
+   * Creates a short variable factory.
    *
    * @param variableName name of the variable.
    *
@@ -90,7 +90,7 @@ public class CamundaBpmData {
   }
 
   /**
-   * Create double variable factory.
+   * Creates a double variable factory.
    *
    * @param variableName name of the variable.
    *
@@ -102,7 +102,7 @@ public class CamundaBpmData {
   }
 
   /**
-   * Create boolean variable factory.
+   * Creates a boolean variable factory.
    *
    * @param variableName name of the variable.
    *
@@ -114,7 +114,7 @@ public class CamundaBpmData {
   }
 
   /**
-   * Create variable factory for custom type.
+   * Creates a variable factory for custom type.
    *
    * @param variableName name of the variable.
    * @param clazz        class of specifying the type.
@@ -128,7 +128,7 @@ public class CamundaBpmData {
   }
 
   /**
-   * Create variable factory for list of custom type.
+   * Creates a variable factory for list of custom type.
    *
    * @param variableName name of the variable.
    * @param clazz        class of specifying the member type.
@@ -142,7 +142,7 @@ public class CamundaBpmData {
   }
 
   /**
-   * Create variable factory for set of custom type.
+   * Creates a variable factory for set of custom type.
    *
    * @param variableName name of the variable.
    * @param clazz        class of specifying the member type.
@@ -156,7 +156,7 @@ public class CamundaBpmData {
   }
 
   /**
-   * Create variable factory for map of custom key and custom value type.
+   * Creates a variable factory for map of custom key and custom value type.
    *
    * @param variableName name of the variable.
    * @param keyClazz     class of specifying the key member type.

@@ -1,0 +1,10 @@
+---
+version: 0.0.6
+---
+
+== Features
+
+* Not use Camunda parent pom anymore. #26,
+* Provide support for testing variables loaded from `taskService` and `runtimeService` #27
+* Source guards into the extension again, #28
+* Provide better examples for Java and Kotlin on dedicated pages, see #29

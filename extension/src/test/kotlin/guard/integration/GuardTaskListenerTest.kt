@@ -2,7 +2,6 @@ package io.holunda.camunda.bpm.data.guard.integration
 
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
 import io.holunda.camunda.bpm.data.guard.condition.hasValue
-import junit.framework.Assert.assertTrue
 import org.assertj.core.api.Assertions.assertThat
 import org.camunda.bpm.extension.mockito.delegate.DelegateTaskFake
 import org.junit.Rule

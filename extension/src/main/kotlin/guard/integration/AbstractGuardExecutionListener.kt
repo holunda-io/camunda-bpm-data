@@ -2,9 +2,9 @@ package io.holunda.camunda.bpm.data.guard.integration
 
 import io.holunda.camunda.bpm.data.guard.VariablesGuard
 import io.holunda.camunda.bpm.data.guard.condition.VariableGuardCondition
-import mu.KLogging
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.ExecutionListener
+import org.slf4j.LoggerFactory
 
 /**
  * Abstract guard execution listener, evaluating the given guard conditions on the execution.
@@ -16,16 +16,18 @@ abstract class AbstractGuardExecutionListener(
     val throwViolations: Boolean = true
 ) : ExecutionListener {
 
-    companion object: KLogging()
+    companion object {
+        private val logger = LoggerFactory.getLogger(AbstractGuardExecutionListener::class.java)
+    }
 
     private val guard = VariablesGuard(variableConditions)
 
     override fun notify(execution: DelegateExecution) {
-        val violations =  guard.evaluate(execution)
+        val violations = guard.evaluate(execution)
         if (violations.isNotEmpty()) {
             val message = "Guard violated by execution '${execution.id}' in activity '${execution.currentActivityName}'"
             violations.forEach {
-                logger.error { "$message: ${it.message}" }
+                logger.error("$message: ${it.message}")
             }
             if (throwViolations) {
                 throw GuardViolationException(violations = violations, message = message)

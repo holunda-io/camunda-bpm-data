@@ -6,7 +6,9 @@ title: Further outlook
 
 == {{ page.title }}
 
-Planned or featured features:
+* Implement Contracts to be able to check a guards automatically
+* Implement an Anti-Corruption-Layer to protect Message correlation and External Task completion from
+  setting wrong values (unguarded).
 
-* Process variable guards for better testing (#21)
-* Better support for mocking and verification in process tests
+// We implemented all features we could imagine so far, if you are missing something, please
+// open an issue in https://github.com/holunda-io/camunda-bpm-data/issues[Github].

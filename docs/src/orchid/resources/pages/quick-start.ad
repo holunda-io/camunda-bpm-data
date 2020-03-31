@@ -54,23 +54,6 @@ public class OrderApproval {
 }
 ----
 
-Here is how it looks like in Kotlin, using Java library:
-
-[source,kotlin]
-----
-
-import io.holunda.camunda.bpm.data.CamundaBpmData.*
-
-object Variables {
-  val ORDER_ID = stringVariable("orderId")
-  val ORDER = customVariable("order", Order::class.java)
-  val ORDER_APPROVED = booleanVariable("orderApproved")
-  val ORDER_POSITION = customVariable("orderPosition", OrderPosition::class.java)
-  val ORDER_TOTAL = customVariable("orderTotal", BigDecimal::class.java)
-}
-
-----
-
 === Access process variables
 
 If you want to access the process variable, call methods on the `ProcessVariableFactory` to configure the usage context,
@@ -93,24 +76,6 @@ class JavaDelegates {
       BigDecimal newTotal = oldTotal.add(orderPosition.getNetCost().multiply(BigDecimal.valueOf(orderPosition.getAmount())));
       ORDER_TOTAL.on(execution).setLocal(newTotal);
     };
-  }
-}
-----
-
-
-The following example demonstrates usage in the context of `ExecutionListener` implemented in Kotlin, which is
-reading a local variable and writes a global one:
-
-[source,kotlin]
-----
-
-@Configuration
-class ExecutionListeners {
-
-  @Bean
-  fun writeOrderTotal() = ExecutionListener { execution ->
-    val total = ORDER_TOTAL.from(execution).local
-    ORDER_TOTAL.on(execution).set(total)
   }
 }
 ----

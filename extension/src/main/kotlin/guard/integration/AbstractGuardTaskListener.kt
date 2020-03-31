@@ -2,9 +2,9 @@ package io.holunda.camunda.bpm.data.guard.integration
 
 import io.holunda.camunda.bpm.data.guard.VariablesGuard
 import io.holunda.camunda.bpm.data.guard.condition.VariableGuardCondition
-import mu.KLogging
 import org.camunda.bpm.engine.delegate.DelegateTask
 import org.camunda.bpm.engine.delegate.TaskListener
+import org.slf4j.LoggerFactory
 
 /**
  * Abstract guard execution listener, evaluating the given guard conditions on the task.
@@ -16,7 +16,9 @@ abstract class AbstractGuardTaskListener(
     val throwViolations: Boolean = true
 ) : TaskListener {
 
-    companion object : KLogging()
+    companion object {
+        private val logger = LoggerFactory.getLogger(AbstractGuardExecutionListener::class.java)
+    }
 
     private val guard = VariablesGuard(variableConditions)
 
@@ -25,7 +27,7 @@ abstract class AbstractGuardTaskListener(
         if (violations.isNotEmpty()) {
             val message = "Guard violated in task '${task.name.removeNewLines()}' (taskId: '${task.id}')"
             violations.forEach {
-                logger.error { "$message: ${it.message}" }
+                logger.error("$message: ${it.message}")
             }
             if (throwViolations) {
                 throw GuardViolationException(violations = violations, message = message)
@@ -36,6 +38,6 @@ abstract class AbstractGuardTaskListener(
     /**
      * Removes new lines from the task name.
      */
-    fun String.removeNewLines() = this
+    private fun String.removeNewLines() = this
         .replace("\n", " ")
 }
