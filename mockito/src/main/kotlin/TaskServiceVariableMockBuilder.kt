@@ -37,7 +37,7 @@ class TaskServiceVariableMockBuilder(
      * @param value initial value.
      * @return fluent builder.
      */
-    fun <T> inital(variableFactory: VariableFactory<T>, value: T): TaskServiceVariableMockBuilder {
+    fun <T> initial(variableFactory: VariableFactory<T>, value: T): TaskServiceVariableMockBuilder {
         define(variableFactory)
         variableFactory.on(variables).set(value)
         return this
@@ -70,10 +70,7 @@ class TaskServiceVariableMockBuilder(
             doAnswer { invocation ->
                 // Arguments: 0: taskId, 1: variable name, 2: value
                 val value = invocation.getArgument<Any>(2)
-                variables.set(factory.name, value)
-                // FIXME: does this work?
-                // factory.on(variables).set(value)
-                Unit
+                variables[factory.name] = value
             }.whenever(taskService).setVariable(anyString(), eq(factory.name), any())
 
             // local
@@ -84,10 +81,7 @@ class TaskServiceVariableMockBuilder(
             doAnswer { invocation ->
                 // Arguments: 0: taskId, 1: variable name, 2: value
                 val value = invocation.getArgument<Any>(2)
-                localVariables.set(factory.name, value)
-                // FIXME: does this work?
-                // factory.on(variables).set(value)
-                Unit
+                localVariables[factory.name] = value
             }.whenever(taskService).setVariableLocal(anyString(), eq(factory.name), any())
         }
 

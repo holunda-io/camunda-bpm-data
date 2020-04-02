@@ -20,13 +20,14 @@ import static io.holunda.camunda.bpm.data.mockito.CamundaBpmDataMockito.taskServ
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
+/**
+ * Demonstrates the usage of Task Service Variable Mock Builder and Task Service Verifier.
+ */
 public class ApproveOrderTaskControllerTest {
 
     private static Order order = new Order("ORDER-ID-1", new Date(), new ArrayList<>());
     private TaskService taskService = mock(TaskService.class);
-
     private TaskServiceMockVerifier verifier = taskServiceMockVerifier(taskService);
-
     private ApproveOrderTaskController controller = new ApproveOrderTaskController(taskService);
 
     @Test
@@ -34,11 +35,9 @@ public class ApproveOrderTaskControllerTest {
 
         // given
         String taskId = UUID.randomUUID().toString();
-        taskServiceVariableMockBuilder(taskService).inital(ORDER, order).build();
-
+        taskServiceVariableMockBuilder(taskService).initial(ORDER, order).build();
         // when
         ResponseEntity<ApproveTaskDto> responseEntity = controller.loadTask(taskId);
-
         // then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseEntity.getBody()).isEqualTo(new ApproveTaskDto(order));
@@ -51,16 +50,13 @@ public class ApproveOrderTaskControllerTest {
 
         // given
         String taskId = UUID.randomUUID().toString();
-
         // when
         ApproveTaskCompleteDto response = new ApproveTaskCompleteDto(true);
         ResponseEntity<Void> responseEntity = controller.completeTask(taskId, response);
-
         // then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
         VariableMap variables = builder().set(ORDER_APPROVED, response.getApproved()).build();
         verifier.verifyComplete(variables, taskId);
         verifier.verifyNoMoreInteractions();
     }
-
 }

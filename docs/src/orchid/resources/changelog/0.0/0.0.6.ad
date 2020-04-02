@@ -6,5 +6,8 @@ version: 0.0.6
 
 * Not use Camunda parent pom anymore. #26,
 * Provide support for testing variables loaded from `taskService` and `runtimeService` #27
-* Source guards into the extension again, #28
+* Source guards back into the extension, #28
 * Provide better examples for Java and Kotlin on dedicated pages, see #29
+* Implement `TaskServiceVariableMockBuilder` and `TaskServiceVerifier`, see #30 and #31
+* Implement `RuntimeServiceVariableMockBuilder` and `RuntimeServiceVerifier`, see #30 and #32
+* Provide example for usage of `TaskServiceVerifier` and `TaskServiceVariableMockBuilder`

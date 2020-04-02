@@ -27,7 +27,7 @@ class TaskServiceMockingTest {
         val taskId = UUID.randomUUID().toString()
 
         TaskServiceVariableMockBuilder(taskService)
-            .inital(ORDER_ID, "initial-Value")
+            .initial(ORDER_ID, "initial-Value")
             .define(ORDER_FLAG)
             .build()
 

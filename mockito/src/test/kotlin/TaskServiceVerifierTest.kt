@@ -27,7 +27,7 @@ class TaskServiceVerifierTest {
 
     @Test
     fun verifyGetSuccess() {
-        taskServiceVariableMockBuilder(taskService).inital(VAR, "value").build()
+        taskServiceVariableMockBuilder(taskService).initial(VAR, "value").build()
         val verifier = taskServiceMockVerifier(taskService)
         val taskId = UUID.randomUUID().toString()
         VAR.from(taskService, taskId).get()
@@ -67,7 +67,7 @@ class TaskServiceVerifierTest {
 
     @Test
     fun verifyRemoveSuccess() {
-        taskServiceVariableMockBuilder(taskService).inital(VAR, "value").build()
+        taskServiceVariableMockBuilder(taskService).initial(VAR, "value").build()
         val verifier = taskServiceMockVerifier(taskService)
         val taskId = UUID.randomUUID().toString()
         VAR.on(taskService, taskId).remove()
