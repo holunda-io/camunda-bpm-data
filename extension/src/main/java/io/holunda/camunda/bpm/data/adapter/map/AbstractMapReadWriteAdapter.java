@@ -6,6 +6,7 @@ import io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException;
 import org.camunda.bpm.engine.variable.value.TypedValue;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -70,15 +71,9 @@ public abstract class AbstractMapReadWriteAdapter<K, V> extends AbstractReadWrit
     throw new WrongVariableTypeException("Error reading " + variableName + ": Couldn't read value of type Map from " + value);
   }
 
-  /**
-   * Retrieve typed value.
-   *
-   * @param value       raw value.
-   * @param isTransient transient flag.
-   *
-   * @return typed value.
-   */
-  protected TypedValue getTypedValue(Map<K, V> value, boolean isTransient) {
+  @Override
+  public TypedValue getTypedValue(Object value, boolean isTransient) {
     return ValueWrapperUtil.getTypedValue(Map.class, value, isTransient);
   }
+
 }

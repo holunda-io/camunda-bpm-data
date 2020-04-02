@@ -1,5 +1,7 @@
 package io.holunda.camunda.bpm.data.adapter;
 
+import org.camunda.bpm.engine.variable.value.TypedValue;
+
 import java.util.function.Function;
 
 /**
@@ -33,12 +35,12 @@ public abstract class AbstractReadWriteAdapter<T> implements ReadAdapter<T>, Wri
 
   @Override
   public T get() {
-    return getOptional().orElseThrow(() -> new VariableNotFoundException("Couldn't find required variable " + variableName));
+    return getOptional().orElseThrow(() -> new VariableNotFoundException("Couldn't find required variable '" + variableName + "'"));
   }
 
   @Override
   public T getLocal() {
-    return getLocalOptional().orElseThrow(() -> new VariableNotFoundException("Couldn't find required local variable " + variableName));
+    return getLocalOptional().orElseThrow(() -> new VariableNotFoundException("Couldn't find required local variable '" + variableName + "'"));
   }
 
   @Override

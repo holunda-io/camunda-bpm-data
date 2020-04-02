@@ -21,7 +21,6 @@ import static org.camunda.bpm.engine.variable.Variables.createVariables;
 public class ApproveOrderTaskController {
 
   private final TaskService taskService;
-
   public ApproveOrderTaskController(TaskService taskService) {
     this.taskService = taskService;
   }

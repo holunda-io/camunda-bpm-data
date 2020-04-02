@@ -39,6 +39,12 @@
         <artifactId>camunda-bpm-data-kotlin</artifactId>
         <version>${project.version}</version>
       </dependency>
+      <dependency>
+        <groupId>io.holunda.data</groupId>
+        <artifactId>camunda-bpm-data-mockito</artifactId>
+        <scope>test</scope>
+        <version>${project.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 

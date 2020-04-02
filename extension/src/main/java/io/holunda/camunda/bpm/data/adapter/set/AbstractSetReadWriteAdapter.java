@@ -6,6 +6,7 @@ import io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException;
 import org.camunda.bpm.engine.variable.value.TypedValue;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -56,13 +57,8 @@ public abstract class AbstractSetReadWriteAdapter<T> extends AbstractReadWriteAd
     throw new WrongVariableTypeException("Error reading " + variableName + ": Couldn't read value of type Set from " + value);
   }
 
-  /**
-   * Retrieve typed value.
-   * @param value raw value.
-   * @param isTransient transient flag.
-   * @return typed value.
-   */
-  protected TypedValue getTypedValue(Set<T> value, boolean isTransient) {
+  @Override
+  public TypedValue getTypedValue(Object value, boolean isTransient) {
     return ValueWrapperUtil.getTypedValue(Set.class, value, isTransient);
   }
 }

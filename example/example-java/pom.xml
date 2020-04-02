@@ -23,16 +23,26 @@
       <groupId>io.holunda.data</groupId>
       <artifactId>camunda-bpm-data</artifactId>
     </dependency>
-
     <dependency>
       <groupId>io.toolisticon.springboot</groupId>
       <artifactId>springboot-swagger-starter</artifactId>
       <version>0.0.4</version>
     </dependency>
+
+    <dependency>
+      <groupId>io.holunda.data</groupId>
+      <artifactId>camunda-bpm-data-mockito</artifactId>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
       <artifactId>camunda-bpm-spring-boot-starter-test</artifactId>
       <version>${camunda-spring-boot.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.bpm.extension.mockito</groupId>
+      <artifactId>camunda-bpm-mockito</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
