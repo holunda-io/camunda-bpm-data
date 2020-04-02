@@ -27,7 +27,7 @@ class RuntimeServiceMockingTest {
         val executionId = UUID.randomUUID().toString()
 
         RuntimeServiceVariableMockBuilder(runtimeService)
-            .initalLocal(ORDER_ID, "initial-Value")
+            .initialLocal(ORDER_ID, "initial-Value")
             .define(ORDER_FLAG)
             .build()
 
