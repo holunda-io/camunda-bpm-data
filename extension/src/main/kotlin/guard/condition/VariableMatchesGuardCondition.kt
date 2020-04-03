@@ -24,7 +24,7 @@ class VariableMatchesGuardCondition<T>(
 
     override fun evaluate(option: Optional<T>): List<GuardViolation<T>> {
         val violations = existsCondition.evaluate(option).toMutableList()
-        if (!matcher.invoke(option.get())) {
+        if (option.isPresent && !matcher.invoke(option.get())) {
             violations.add(
                 GuardViolation(
                     condition = this,

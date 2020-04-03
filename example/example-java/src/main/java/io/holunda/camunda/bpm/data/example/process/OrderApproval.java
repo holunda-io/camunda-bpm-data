@@ -64,7 +64,7 @@ public class OrderApproval {
      */
     @Bean
     public ExecutionListener guardExecutionListener() {
-        return new DefaultGuardExecutionListener(newArrayList(exists(ORDER_ID), matches(ORDER_ID, it -> it.startsWith("foo"))), true);
+        return new DefaultGuardExecutionListener(newArrayList(exists(ORDER_ID)), true);
     }
 
     /**

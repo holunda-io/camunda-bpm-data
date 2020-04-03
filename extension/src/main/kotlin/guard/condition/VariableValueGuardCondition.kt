@@ -20,14 +20,16 @@ class VariableValueGuardCondition<T>(
 
   override fun evaluate(option: Optional<T>): List<GuardViolation<T>> {
     val violations = existsCondition.evaluate(option).toMutableList()
-    if (option.get() != value) {
-      violations.add(
-        GuardViolation(
-          condition = this,
-          option = option,
-          message = "Expecting$localLabel variable '${variableFactory.name}' to have value '$value', but it was '${option.get()}'."
+    if (option.isPresent) {
+      if (option.get() != value) {
+        violations.add(
+            GuardViolation(
+                condition = this,
+                option = option,
+                message = "Expecting$localLabel variable '${variableFactory.name}' to have value '$value', but it was '${option.get()}'."
+            )
         )
-      )
+      }
     }
     return violations
   }

@@ -21,14 +21,16 @@ class VariableValueOneOfGuardCondition<T>(
 
   override fun evaluate(option: Optional<T>): List<GuardViolation<T>> {
     val violations = existsCondition.evaluate(option).toMutableList()
-    if (valueConditions.none { it.evaluate(option).isEmpty() }) {
-      violations.add(
-        GuardViolation(
-          condition = this,
-          option = option,
-          message = "Expecting$localLabel variable '${variableFactory.name}' to be one of [${values.joinToString("', '", "'", "'")}], but it was '${option.get()}'."
+    if (option.isPresent) {
+      if (valueConditions.none { it.evaluate(option).isEmpty() }) {
+        violations.add(
+            GuardViolation(
+                condition = this,
+                option = option,
+                message = "Expecting$localLabel variable '${variableFactory.name}' to be one of [${values.joinToString("', '", "'", "'")}], but it was '${option.get()}'."
+            )
         )
-      )
+      }
     }
     return violations
   }
