@@ -4,6 +4,7 @@ import io.holunda.camunda.bpm.data.example.domain.Order;
 import io.holunda.camunda.bpm.data.mockito.TaskServiceMockVerifier;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.variable.VariableMap;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
@@ -31,17 +32,17 @@ public class ApproveOrderTaskControllerTest {
     private TaskService taskService = mock(TaskService.class);
     private TaskServiceMockVerifier verifier = taskServiceMockVerifier(taskService);
     private ApproveOrderTaskController controller = new ApproveOrderTaskController(taskService);
+    private String taskId;
 
     @Before
-    public void resetMocks() {
+    public void prepareTest() {
         reset(taskService);
+        taskId = UUID.randomUUID().toString();
     }
 
     @Test
     public void testLoadTask() {
-
         // given
-        String taskId = UUID.randomUUID().toString();
         taskServiceVariableMockBuilder(taskService).initial(ORDER, order).build();
         // when
         ResponseEntity<ApproveTaskDto> responseEntity = controller.loadTask(taskId);
@@ -54,16 +55,13 @@ public class ApproveOrderTaskControllerTest {
 
     @Test
     public void testCompleteTask() {
-
-        // given
-        String taskId = UUID.randomUUID().toString();
         // when
         ApproveTaskCompleteDto response = new ApproveTaskCompleteDto(true);
         ResponseEntity<Void> responseEntity = controller.completeTask(taskId, response);
         // then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
-        VariableMap variables = builder().set(ORDER_APPROVED, response.getApproved()).build();
-        verifier.verifyComplete(variables, taskId);
+        verifier.verifyComplete(builder().set(ORDER_APPROVED, response.getApproved()).build(), taskId);
         verifier.verifyNoMoreInteractions();
     }
+
 }
