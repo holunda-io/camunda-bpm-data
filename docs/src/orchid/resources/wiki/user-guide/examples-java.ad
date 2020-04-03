@@ -1,10 +1,12 @@
 ---
 
-title: Examples
+title: Java Examples
 
 ---
 
 == {{ page.title }}
+
+The following example code demonstrates the usage of the library using Java.
 
 === Define variable
 
@@ -148,9 +150,7 @@ class SomeService {
 ----
 
 
-=== Example projects
+=== Example project
 
-We provide two examples:
-
-- Java Example, see link:https://github.com/holunda-io/camunda-bpm-data/tree/develop/example/example-java[Github]
-- Kotlin Example, see link:https://github.com/holunda-io/camunda-bpm-data/tree/develop/example/kotlin-java[Github]
+For more examples, please check-out the Java Example project, at
+link:https://github.com/holunda-io/camunda-bpm-data/tree/develop/example/example-java[Github]

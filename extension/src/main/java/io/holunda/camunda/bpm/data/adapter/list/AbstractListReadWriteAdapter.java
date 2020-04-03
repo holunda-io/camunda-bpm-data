@@ -60,15 +60,9 @@ public abstract class AbstractListReadWriteAdapter<T> extends AbstractReadWriteA
     throw new WrongVariableTypeException("Error reading " + variableName + ": Couldn't read value of type List from " + value);
   }
 
-  /**
-   * Retrieve typed value.
-   *
-   * @param value       raw value.
-   * @param isTransient transient flag.
-   *
-   * @return typed value.
-   */
-  protected TypedValue getTypedValue(List<T> value, boolean isTransient) {
+  @Override
+  public TypedValue getTypedValue(Object value, boolean isTransient) {
     return ValueWrapperUtil.getTypedValue(List.class, value, isTransient);
   }
+
 }

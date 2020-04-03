@@ -2,7 +2,6 @@ package io.holunda.camunda.bpm.data
 
 import io.holunda.camunda.bpm.data.builder.ProcessExecutionVariableBuilder
 import io.holunda.camunda.bpm.data.builder.UserTaskVariableBuilder
-import io.holunda.camunda.bpm.data.factory.RuntimeServiceAdapterBuilder
 import io.holunda.camunda.bpm.data.factory.VariableFactory
 import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
@@ -96,10 +95,12 @@ fun <T> VariableScope.updateLocal(factory: VariableFactory<T>, valueProcessor: (
 
 /**
  * Helper to access runtime service builder.
+ * @param executionId id of the execution.
  */
 fun RuntimeService.builder(executionId: String) = ProcessExecutionVariableBuilder(this, executionId)
 
 /**
  * Helper to access task service builder.
+ * @param taskId id of the task.
  */
 fun TaskService.builder(taskId: String) = UserTaskVariableBuilder(this, taskId)

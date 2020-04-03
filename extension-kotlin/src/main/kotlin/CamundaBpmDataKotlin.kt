@@ -34,7 +34,8 @@ object CamundaBpmDataKotlin {
   /**
    * Reified version of map variable factory.
    * @param name The name of the variable.
-   * @param T The type of the variable.
+   * @param K The type of the variable key.
+   * @param V The type of the variable value.
    * @return instance of [VariableFactory]
    */
   inline fun <reified K : Any, reified V : Any> mapVariable(name: String): VariableFactory<Map<K, V>> = MapVariableFactory(name, K::class.java, V::class.java)

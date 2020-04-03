@@ -6,9 +6,10 @@
   <parent>
     <groupId>io.holunda.data</groupId>
     <artifactId>camunda-bpm-data-parent</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
   </parent>
 
+  <groupId>io.holunda.data.example</groupId>
   <artifactId>camunda-bpm-data-example-parent</artifactId>
   <name>${project.artifactId}</name>
   <packaging>pom</packaging>
@@ -26,7 +27,6 @@
     <module>example-kotlin</module>
   </modules>
 
-
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -37,6 +37,12 @@
       <dependency>
         <groupId>io.holunda.data</groupId>
         <artifactId>camunda-bpm-data-kotlin</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.holunda.data</groupId>
+        <artifactId>camunda-bpm-data-mockito</artifactId>
+        <scope>test</scope>
         <version>${project.version}</version>
       </dependency>
     </dependencies>
@@ -86,7 +92,6 @@
       <groupId>com.fasterxml.jackson.module</groupId>
       <artifactId>jackson-module-kotlin</artifactId>
     </dependency>
-
 
     <dependency>
       <groupId>org.codehaus.groovy</groupId>

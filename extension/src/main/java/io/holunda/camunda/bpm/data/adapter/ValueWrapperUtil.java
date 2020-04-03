@@ -4,7 +4,15 @@ import org.camunda.bpm.engine.variable.value.TypedValue;
 
 import java.util.Date;
 
-import static org.camunda.bpm.engine.variable.Variables.*;
+import static org.camunda.bpm.engine.variable.Variables.stringValue;
+import static org.camunda.bpm.engine.variable.Variables.integerValue;
+import static org.camunda.bpm.engine.variable.Variables.shortValue;
+import static org.camunda.bpm.engine.variable.Variables.longValue;
+import static org.camunda.bpm.engine.variable.Variables.dateValue;
+import static org.camunda.bpm.engine.variable.Variables.doubleValue;
+import static org.camunda.bpm.engine.variable.Variables.untypedValue;
+import static org.camunda.bpm.engine.variable.Variables.objectValue;
+import static org.camunda.bpm.engine.variable.Variables.booleanValue;
 
 /**
  * Static util methods.

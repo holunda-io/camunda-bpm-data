@@ -30,7 +30,7 @@ public class CamundaBpmData {
   private CamundaBpmData() { }
 
   /**
-   * Create string variable factory.
+   * Creates a string variable factory.
    *
    * @param variableName name of the variable.
    *
@@ -42,7 +42,7 @@ public class CamundaBpmData {
   }
 
   /**
-   * Create date variable factory.
+   * Creates a date variable factory.
    *
    * @param variableName name of the variable.
    *
@@ -54,7 +54,7 @@ public class CamundaBpmData {
   }
 
   /**
-   * Create integer variable factory.
+   * Creates an integer variable factory.
    *
    * @param variableName name of the variable.
    *
@@ -66,7 +66,7 @@ public class CamundaBpmData {
   }
 
   /**
-   * Create long variable factory.
+   * Creates a long variable factory.
    *
    * @param variableName name of the variable.
    *
@@ -78,7 +78,7 @@ public class CamundaBpmData {
   }
 
   /**
-   * Create short variable factory.
+   * Creates a short variable factory.
    *
    * @param variableName name of the variable.
    *
@@ -90,7 +90,7 @@ public class CamundaBpmData {
   }
 
   /**
-   * Create double variable factory.
+   * Creates a double variable factory.
    *
    * @param variableName name of the variable.
    *
@@ -102,7 +102,7 @@ public class CamundaBpmData {
   }
 
   /**
-   * Create boolean variable factory.
+   * Creates a boolean variable factory.
    *
    * @param variableName name of the variable.
    *
@@ -114,7 +114,7 @@ public class CamundaBpmData {
   }
 
   /**
-   * Create variable factory for custom type.
+   * Creates a variable factory for custom type.
    *
    * @param variableName name of the variable.
    * @param clazz        class of specifying the type.
@@ -128,7 +128,7 @@ public class CamundaBpmData {
   }
 
   /**
-   * Create variable factory for list of custom type.
+   * Creates a variable factory for list of custom type.
    *
    * @param variableName name of the variable.
    * @param clazz        class of specifying the member type.
@@ -142,7 +142,7 @@ public class CamundaBpmData {
   }
 
   /**
-   * Create variable factory for set of custom type.
+   * Creates a variable factory for set of custom type.
    *
    * @param variableName name of the variable.
    * @param clazz        class of specifying the member type.
@@ -156,7 +156,7 @@ public class CamundaBpmData {
   }
 
   /**
-   * Create variable factory for map of custom key and custom value type.
+   * Creates a variable factory for map of custom key and custom value type.
    *
    * @param variableName name of the variable.
    * @param keyClazz     class of specifying the key member type.
@@ -182,6 +182,7 @@ public class CamundaBpmData {
 
   /**
    * Creates a new variable map builder.
+   * @param variables pre-filled variables.
    * @return new builder with a variable map containing a copy of provided variables.
    */
   @NotNull
@@ -191,6 +192,7 @@ public class CamundaBpmData {
 
   /**
    * Creates a new variable scope builder.
+   * @param variableScope scope to work on (delegate execution or delegate task).
    * @return new builder working on provided variable scope.
    */
   @NotNull
@@ -200,6 +202,8 @@ public class CamundaBpmData {
 
   /**
    * Creates a new execution variable builder.
+   * @param runtimeService runtime service to use.
+   * @param executionId id of the execution.
    * @return new builder working on provided process execution.
    */
   @NotNull
@@ -209,11 +213,13 @@ public class CamundaBpmData {
 
   /**
    * Creates a new task variable builder.
+   * @param taskService task service to use.
+   * @param taskId task id.
    * @return new builder working on provided user task.
    */
   @NotNull
-  public static UserTaskVariableBuilder builder(TaskService taskService, String executionId) {
-    return new UserTaskVariableBuilder(taskService, executionId);
+  public static UserTaskVariableBuilder builder(TaskService taskService, String taskId) {
+    return new UserTaskVariableBuilder(taskService, taskId);
   }
 
 }

@@ -1,5 +1,7 @@
 package io.holunda.camunda.bpm.data.adapter;
 
+import org.camunda.bpm.engine.variable.value.TypedValue;
+
 import java.util.function.Function;
 
 /**
@@ -79,4 +81,11 @@ public interface WriteAdapter<T> {
    */
   void updateLocal(Function<T, T> valueProcessor, boolean isTransient);
 
+  /**
+   * Constructs typed value.
+   * @param value raw value.
+   * @param isTransient transient flag.
+   * @return typed value.
+   */
+  TypedValue getTypedValue(Object value, boolean isTransient);
 }

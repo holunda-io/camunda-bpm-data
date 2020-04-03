@@ -6,7 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static io.holunda.camunda.bpm.data.CamundaBpmData.*;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.listVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.mapVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.setVariable;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class VariableFactoryTest {

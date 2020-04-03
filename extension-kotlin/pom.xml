@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data</groupId>
     <artifactId>camunda-bpm-data-parent</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
   </parent>
 
   <artifactId>camunda-bpm-data-kotlin</artifactId>
@@ -17,9 +17,7 @@
     <jacoco.skip>false</jacoco.skip>
   </properties>
 
-
   <dependencies>
-
     <dependency>
       <groupId>io.holunda.data</groupId>
       <artifactId>camunda-bpm-data</artifactId>
