@@ -4,7 +4,7 @@
 
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data-parent</artifactId>
-  <version>0.0.6</version>
+  <version>0.0.7-SNAPSHOT</version>
   <name>${project.artifactId}</name>
   <description>Camunda BPM Data</description>
   <url>https://github.com/holunda-io/camunda-bpm-data/</url>
