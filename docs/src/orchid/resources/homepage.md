@@ -11,7 +11,7 @@ them and thereby manipulate the state of the process execution - one of the core
 Unfortunately, as a user of the Camunda API, you have to exactly know the variable type (so the Java class behind it).
 For example, if you store a String in a variable `"orderId"` you must extract it as a String in every piece of code.
 Since there is no code connection between the different code parts, but the BPMN process model orchestrates
-theese snippets to a single process execution, it makes refactoring and testing of process automation projects
+these snippets to a single process execution, it makes refactoring and testing of process automation projects
 error-prone and challenging.
 
 This library helps you to overcome these difficulties and make access, manipulation and testing process variables really

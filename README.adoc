@@ -29,11 +29,17 @@ them and thereby manipulate the state of the process execution - one of the core
 Unfortunately, as a user of the Camunda API, you have to exactly know the variable type (so the Java class behind it).
 For example, if you store a String in a variable `"orderId"` you must extract it as a String in every piece of code.
 Since there is no code connection between the different code parts, but the BPMN process model orchestrates
-theese snippets to a single process execution, it makes refactoring and testing of process automation projects
+these snippets to a single process execution, it makes refactoring and testing of process automation projects
 error-prone and challenging.
 
 This library helps you to overcome these difficulties and make access, manipulation and testing process variables really
 easy and convenient. We leverage the Camunda API and offer you not only a better API but also some link:https://www.holunda.io/camunda-bpm-data/wiki/user-guide/features[additional features].
+
+If you want to read more about data in Camunda processes, have a look on those articles:
+
+- https://medium.com/holisticon-consultants/data-in-process-part-1-2620bf9abd76[Data in Process (Part 1)]
+- https://medium.com/holisticon-consultants/data-in-process-part-2-7c6a109e6ee2[Data in Process (Part 2)]
+
 
 == Quick Introduction
 
@@ -45,20 +51,20 @@ If you just want to start using the library, put the following dependency into y
 <dependency>
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data</artifactId>
-  <version>0.0.6</version>
+  <version>1.0.0</version>
 </dependency>
 ----
 
 If you are using Gradle Kotlin DSL add to your `build.gradle`:
 [source,kotlin]
 ----
-implementation("io.holunda.data:camunda-bpm-data:0.0.6")
+implementation("io.holunda.data:camunda-bpm-data:1.0.0")
 ----
 
 For Gradle Groovy DSL add to your `build.gradle`:
 [source,groovy]
 ----
-implementation 'io.holunda.data:camunda-bpm-data:0.0.6'
+implementation 'io.holunda.data:camunda-bpm-data:1.0.0'
 ----
 
 === Variable declaration
@@ -147,7 +153,7 @@ Please put the following dependency into your `pom.xml`:
 <dependency>
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data-mockito</artifactId>
-  <version>0.0.6</version>
+  <version>1.0.0</version>
   <scope>test</scope>
 </dependency>
 ----

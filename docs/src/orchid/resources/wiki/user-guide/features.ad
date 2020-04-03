@@ -26,4 +26,6 @@ title: Features
 * Testing variable access and mocking `RuntimeService` and `TaskService`.
 - Builder to create Mockito-based behaviour of `RuntimeService` accessing variables.
 - Builder to create Mockito-based behaviour of `TaskServiceService` accessing variables.
+- Verifier to check correct access to variables in  `RuntimeService`
+- Verifier to check correct access to variables in  `TaskService`
 

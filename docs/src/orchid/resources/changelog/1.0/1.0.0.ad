@@ -1,0 +1,14 @@
+---
+version: 1.0.0
+---
+
+== News
+
+* Run through a internal review in Holisticon BPM expert team
+
+== Features
+* Better documentation and a catch README
+
+== Bugfixes
+
+* Evaluation of complex guards fail if exists condition is not fulfilled.
