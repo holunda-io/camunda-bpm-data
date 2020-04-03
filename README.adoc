@@ -20,7 +20,7 @@ image::https://badges.gitter.im/holunda-io/camunda-bpm-data.svg[caption="Gitter"
 
 > Beautiful process data handling for Camunda BPM.
 
-== Why always to use this library in every Camunda project?
+== Why to use this library in every Camunda project?
 
 If you are a software engineer and run process automation projects in your company or on behalf of the customer
 based on Camunda Process Engine, you probably are familiar with process variables. Camunda offers an API to access
