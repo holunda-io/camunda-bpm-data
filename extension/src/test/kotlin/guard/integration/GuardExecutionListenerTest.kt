@@ -20,7 +20,7 @@ class GuardExecutionListenerTest {
         val delegate = DelegateExecutionFake().withId("4711").withCurrentActivityName("some")
         ORDER_REFERENCE.on(delegate).set("1")
 
-        val listener = MyListener2(true)
+        val listener = createListener(true)
         listener.notify(delegate)
 
         // nothing to do here
@@ -32,7 +32,7 @@ class GuardExecutionListenerTest {
         val delegate = DelegateExecutionFake().withId("4711").withCurrentActivityName("some")
         ORDER_REFERENCE.on(delegate).set("2")
 
-        val listener = MyListener2(false)
+        val listener = createListener(false)
         listener.notify(delegate)
 
         // nothing to do here
@@ -46,12 +46,12 @@ class GuardExecutionListenerTest {
 
         thrown.expectMessage("Guard violated by execution '${delegate.id}' in activity '${delegate.currentActivityName}'")
 
-        val listener = MyListener2(true)
+        val listener = createListener(true)
         listener.notify(delegate)
 
         // nothing to do here
         assertThat(true).isTrue()
     }
 
-    class MyListener2(throwE: Boolean = true) : AbstractGuardExecutionListener(listOf(ORDER_REFERENCE.hasValue("1")), throwE)
+    private fun createListener(throwE: Boolean = true) = DefaultGuardExecutionListener(listOf(ORDER_REFERENCE.hasValue("1")), throwE)
 }

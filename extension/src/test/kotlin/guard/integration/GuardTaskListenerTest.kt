@@ -20,7 +20,7 @@ class GuardTaskListenerTest {
         val delegateTask = DelegateTaskFake().withId("4711")
         ORDER_ID.on(delegateTask).set("1")
 
-        val listener = MyListener(true)
+        val listener = createListener(true)
         listener.notify(delegateTask)
 
         // nothing to do here
@@ -32,7 +32,7 @@ class GuardTaskListenerTest {
         val delegateTask = DelegateTaskFake().withId("4711").withName("task name")
         ORDER_ID.on(delegateTask).set("2")
 
-        val listener = MyListener(false)
+        val listener = createListener(false)
         listener.notify(delegateTask)
 
         // nothing to do here
@@ -46,12 +46,12 @@ class GuardTaskListenerTest {
 
         thrown.expectMessage("Guard violated in task '${delegateTask.name}' (taskId: '${delegateTask.id}')")
 
-        val listener = MyListener(true)
+        val listener = createListener(true)
         listener.notify(delegateTask)
 
         // nothing to do here
         assertThat(true).isTrue()
     }
 
-    class MyListener(throwE: Boolean = true) : AbstractGuardTaskListener(listOf(ORDER_ID.hasValue("1")), throwE)
+    private fun createListener(throwE: Boolean = true) = DefaultGuardTaskListener(listOf(ORDER_ID.hasValue("1")), throwE)
 }

@@ -4,6 +4,7 @@ import io.holunda.camunda.bpm.data.example.domain.Order;
 import io.holunda.camunda.bpm.data.mockito.TaskServiceMockVerifier;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.variable.VariableMap;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import static io.holunda.camunda.bpm.data.mockito.CamundaBpmDataMockito.taskServ
 import static io.holunda.camunda.bpm.data.mockito.CamundaBpmDataMockito.taskServiceVariableMockBuilder;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.reset;
 
 /**
  * Demonstrates the usage of Task Service Variable Mock Builder and Task Service Verifier.
@@ -29,6 +31,11 @@ public class ApproveOrderTaskControllerTest {
     private TaskService taskService = mock(TaskService.class);
     private TaskServiceMockVerifier verifier = taskServiceMockVerifier(taskService);
     private ApproveOrderTaskController controller = new ApproveOrderTaskController(taskService);
+
+    @Before
+    public void resetMocks() {
+        reset(taskService);
+    }
 
     @Test
     public void testLoadTask() {

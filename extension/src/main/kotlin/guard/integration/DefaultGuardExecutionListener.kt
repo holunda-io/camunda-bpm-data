@@ -7,17 +7,17 @@ import org.camunda.bpm.engine.delegate.ExecutionListener
 import org.slf4j.LoggerFactory
 
 /**
- * Abstract guard execution listener, evaluating the given guard conditions on the execution.
+ * Default guard execution listener, evaluating the given guard conditions on the execution.
  * @param variableConditions condition to check by the guard.
  * @param throwViolations flag controlling if the violation should lead to an exception.
  */
-abstract class AbstractGuardExecutionListener(
+class DefaultGuardExecutionListener(
     val variableConditions: List<VariableGuardCondition<*>>,
     val throwViolations: Boolean = true
 ) : ExecutionListener {
 
     companion object {
-        private val logger = LoggerFactory.getLogger(AbstractGuardExecutionListener::class.java)
+        private val logger = LoggerFactory.getLogger(DefaultGuardExecutionListener::class.java)
     }
 
     private val guard = VariablesGuard(variableConditions)

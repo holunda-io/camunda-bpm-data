@@ -7,17 +7,17 @@ import org.camunda.bpm.engine.delegate.TaskListener
 import org.slf4j.LoggerFactory
 
 /**
- * Abstract guard execution listener, evaluating the given guard conditions on the task.
+ * Default guard execution listener, evaluating the given guard conditions on the task.
  * @param variableConditions condition to check by the guard.
  * @param throwViolations flag controlling if the violation should lead to an exception.
  */
-abstract class AbstractGuardTaskListener(
+class DefaultGuardTaskListener(
     val variableConditions: List<VariableGuardCondition<*>>,
     val throwViolations: Boolean = true
 ) : TaskListener {
 
     companion object {
-        private val logger = LoggerFactory.getLogger(AbstractGuardExecutionListener::class.java)
+        private val logger = LoggerFactory.getLogger(DefaultGuardExecutionListener::class.java)
     }
 
     private val guard = VariablesGuard(variableConditions)
