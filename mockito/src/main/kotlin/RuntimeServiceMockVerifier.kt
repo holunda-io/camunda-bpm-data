@@ -4,7 +4,6 @@ import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.verifyNoMoreInteractions
 import io.holunda.camunda.bpm.data.factory.VariableFactory
 import org.camunda.bpm.engine.RuntimeService
-import org.camunda.bpm.engine.variable.VariableMap
 
 /**
  * Verifier for a mocked runtime service.

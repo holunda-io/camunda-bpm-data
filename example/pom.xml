@@ -71,7 +71,26 @@
         <version>0.0.5</version>
         <scope>test</scope>
       </dependency>
+      <dependency>
+        <groupId>com.tngtech.jgiven</groupId>
+        <artifactId>jgiven-junit</artifactId>
+        <version>${jgiven.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.tngtech.jgiven</groupId>
+        <artifactId>jgiven-spring</artifactId>
+        <version>${jgiven.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.tngtech.jgiven</groupId>
+        <artifactId>jgiven-html5-report</artifactId>
+        <version>${jgiven.version}</version>
+        <scope>test</scope>
+      </dependency>
     </dependencies>
+
   </dependencyManagement>
 
   <build>

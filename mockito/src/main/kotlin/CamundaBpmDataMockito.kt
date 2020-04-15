@@ -4,7 +4,6 @@ import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.variable.VariableMap
 
-
 /**
  * Collection of fluent mock builder factory methods.
  */
@@ -16,8 +15,7 @@ object CamundaBpmDataMockito {
      * @return fluent builder.
      */
     @JvmStatic
-    fun taskServiceVariableMockBuilder(taskService: TaskService)
-        = TaskServiceVariableMockBuilder(taskService = taskService)
+    fun taskServiceVariableMockBuilder(taskService: TaskService) = TaskServiceVariableMockBuilder(taskService = taskService)
 
     /**
      * Constructs a task service variable mock builder.
@@ -27,8 +25,7 @@ object CamundaBpmDataMockito {
      * @return fluent builder.
      */
     @JvmStatic
-    fun taskServiceVariableMockBuilder(taskService: TaskService, variables: VariableMap, localVariables: VariableMap)
-        = TaskServiceVariableMockBuilder(taskService = taskService, variables = variables, localVariables = localVariables)
+    fun taskServiceVariableMockBuilder(taskService: TaskService, variables: VariableMap, localVariables: VariableMap) = TaskServiceVariableMockBuilder(taskService = taskService, variables = variables, localVariables = localVariables)
 
 
     /**
@@ -37,8 +34,7 @@ object CamundaBpmDataMockito {
      * @return verifier to simplify assertions.
      */
     @JvmStatic
-    fun taskServiceMockVerifier(taskService: TaskService)
-        = TaskServiceMockVerifier(taskService)
+    fun taskServiceMockVerifier(taskService: TaskService) = TaskServiceMockVerifier(taskService)
 
     /**
      * Constructs a runtime service variable mock builder.
@@ -46,8 +42,7 @@ object CamundaBpmDataMockito {
      * @return fluent builder.
      */
     @JvmStatic
-    fun runtimeServiceVariableMockBuilder(runtimeService: RuntimeService)
-        = RuntimeServiceVariableMockBuilder(runtimeService = runtimeService)
+    fun runtimeServiceVariableMockBuilder(runtimeService: RuntimeService) = RuntimeServiceVariableMockBuilder(runtimeService = runtimeService)
 
     /**
      * Constructs a runtime service variable mock builder.
@@ -57,8 +52,7 @@ object CamundaBpmDataMockito {
      * @return fluent builder.
      */
     @JvmStatic
-    fun runtimeServiceVariableMockBuilder(runtimeService: RuntimeService, variables: VariableMap, localVariables: VariableMap)
-        = RuntimeServiceVariableMockBuilder(runtimeService = runtimeService, variables = variables, localVariables = localVariables)
+    fun runtimeServiceVariableMockBuilder(runtimeService: RuntimeService, variables: VariableMap, localVariables: VariableMap) = RuntimeServiceVariableMockBuilder(runtimeService = runtimeService, variables = variables, localVariables = localVariables)
 
     /**
      * Constructs a verifier for runtime service mock.
@@ -66,6 +60,5 @@ object CamundaBpmDataMockito {
      * @return verifier to simplify assertions.
      */
     @JvmStatic
-    fun runtimeServiceMockVerifier(runtimeService: RuntimeService)
-        = RuntimeServiceMockVerifier(runtimeService)
+    fun runtimeServiceMockVerifier(runtimeService: RuntimeService) = RuntimeServiceMockVerifier(runtimeService)
 }

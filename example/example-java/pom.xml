@@ -25,24 +25,6 @@
       <groupId>io.toolisticon.springboot</groupId>
       <artifactId>springboot-swagger-starter</artifactId>
     </dependency>
-
-    <dependency>
-      <groupId>io.holunda.data</groupId>
-      <artifactId>camunda-bpm-data-mockito</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.camunda.bpm.springboot</groupId>
-      <artifactId>camunda-bpm-spring-boot-starter-test</artifactId>
-      <version>${camunda-spring-boot.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.camunda.bpm.extension.mockito</groupId>
-      <artifactId>camunda-bpm-mockito</artifactId>
-      <scope>test</scope>
-    </dependency>
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter</artifactId>
@@ -97,21 +79,19 @@
 
     <!-- Testing -->
     <dependency>
-      <groupId>com.tngtech.jgiven</groupId>
-      <artifactId>jgiven-junit</artifactId>
-      <version>${jgiven.version}</version>
+      <groupId>io.holunda.data</groupId>
+      <artifactId>camunda-bpm-data-mockito</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.camunda.bpm.springboot</groupId>
+      <artifactId>camunda-bpm-spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.tngtech.jgiven</groupId>
-      <artifactId>jgiven-spring</artifactId>
-      <version>${jgiven.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.tngtech.jgiven</groupId>
-      <artifactId>jgiven-html5-report</artifactId>
-      <version>${jgiven.version}</version>
+      <groupId>org.camunda.bpm.extension.mockito</groupId>
+      <artifactId>camunda-bpm-mockito</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -122,7 +102,25 @@
     <dependency>
       <groupId>io.holunda.testing</groupId>
       <artifactId>camunda-bpm-jgiven</artifactId>
+      <scope>test</scope>
     </dependency>
+    <!--
+    <dependency>
+      <groupId>com.tngtech.jgiven</groupId>
+      <artifactId>jgiven-junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.tngtech.jgiven</groupId>
+      <artifactId>jgiven-spring</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.tngtech.jgiven</groupId>
+      <artifactId>jgiven-html5-report</artifactId>
+      <scope>test</scope>
+    </dependency>
+    -->
   </dependencies>
 
 </project>

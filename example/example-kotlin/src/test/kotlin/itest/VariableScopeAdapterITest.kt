@@ -10,6 +10,7 @@ import java.util.*
 
 class VariableScopeAdapterITest : CamundaBpmDataITestBase() {
 
+  @Suppress("RedundantVisibilityModifier")
   @get: Rule
   public val thrown = ExpectedException.none()
 

@@ -63,7 +63,7 @@ import java.util.*
 /**
  * Alias for the when
  */
-fun <G, W, T> ScenarioTestBase<G, W, T>.whenever() = `when`()
+fun <G, W, T> ScenarioTestBase<G, W, T>.whenever(): W = `when`()
 
 /**
  * Base for ITests.
@@ -145,7 +145,7 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
     )
 
     fun createVariableMapUntyped(): VariableMap {
-      val variables = createVariables();
+      val variables = createVariables()
       allValues.values.forEach {
         variables.putValue(it.variable.name, it.value)
       }
