@@ -8,7 +8,17 @@ import com.tngtech.jgiven.base.ScenarioTestBase
 import com.tngtech.jgiven.integration.spring.EnableJGiven
 import com.tngtech.jgiven.integration.spring.JGivenStage
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest
-import io.holunda.camunda.bpm.data.CamundaBpmData.*
+import io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.customVariable
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.dateVariable
+import io.holunda.camunda.bpm.data.CamundaBpmData.doubleVariable
+import io.holunda.camunda.bpm.data.CamundaBpmData.intVariable
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.listVariable
+import io.holunda.camunda.bpm.data.CamundaBpmData.longVariable
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.mapVariable
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.setVariable
+import io.holunda.camunda.bpm.data.CamundaBpmData.shortVariable
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.stringVariable
 import io.holunda.camunda.bpm.data.factory.VariableFactory
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.BOOLEAN
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.BOOLEAN_LOCAL
@@ -24,7 +34,7 @@ import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Value
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LIST_STRING_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LONG
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LONG_LOCAL
-import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.MAP_STRING_DATE
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.MAP_STRING_LONG
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.MAP_STRING_DATE_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SET_STRING
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SET_STRING_LOCAL
@@ -82,14 +92,15 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
     val LONG_VAR: VariableFactory<Long> = longVariable("Long Variable")
     val DOUBLE_VAR: VariableFactory<Double> = doubleVariable("Double Variable")
     val BOOLEAN_VAR: VariableFactory<Boolean> = booleanVariable("Boolean Variable")
-    val COMPLEX_VAR: VariableFactory<ComplexDataStructure> = customVariable("Complex Variable", ComplexDataStructure::class.java)
-    val LIST_STRING_VAR: VariableFactory<List<String>> = listVariable("List Of String Variable", String::class.java)
-    val SET_STRING_VAR: VariableFactory<Set<String>> = setVariable("Set Of String Variable", String::class.java)
-    val MAP_STRING_DATE_VAR: VariableFactory<Map<String, Date>> = mapVariable("Map Of String to Date Variable", String::class.java, Date::class.java)
+    val COMPLEX_VAR: VariableFactory<ComplexDataStructure> = customVariable("Complex Variable")
+    val LIST_STRING_VAR: VariableFactory<List<String>> = listVariable("List Of String Variable")
+    val SET_STRING_VAR: VariableFactory<Set<String>> = setVariable("Set Of String Variable")
+    val MAP_STRING_LONG_VAR: VariableFactory<Map<String, String>> = mapVariable("Map Of String to String Variable")
+    val COMPLEX_SET_VAR: VariableFactory<Set<ComplexDataStructure>> = setVariable("Complex Set", true)
 
     object Values {
-      private val now = Date.from(Instant.now())
-      private val yesterday = Date.from(Instant.now().minus(1, ChronoUnit.DAYS))
+      val now = Date.from(Instant.now())
+      val yesterday = Date.from(Instant.now().minus(1, ChronoUnit.DAYS))
 
       val STRING = VariableValue(STRING_VAR, "value")
       val DATE = VariableValue(DATE_VAR, now)
@@ -101,7 +112,7 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       val COMPLEX = VariableValue(COMPLEX_VAR, ComplexDataStructure("string", 17, now))
       val LIST_STRING = VariableValue(LIST_STRING_VAR, listOf("Hello", "World"))
       val SET_STRING = VariableValue(SET_STRING_VAR, setOf("Kermit", "Piggy"))
-      val MAP_STRING_DATE = VariableValue(MAP_STRING_DATE_VAR, mapOf("Twelve" to now, "Eleven" to now))
+      val MAP_STRING_LONG = VariableValue(MAP_STRING_LONG_VAR, mapOf("Twelve" to now.toString(), "Eleven" to now.toString()))
 
       val STRING_LOCAL = VariableValue(STRING_VAR, "localValue")
       val DATE_LOCAL = VariableValue(DATE_VAR, yesterday)
@@ -113,7 +124,7 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       val COMPLEX_LOCAL = VariableValue(COMPLEX_VAR, ComplexDataStructure("foobar", 12, yesterday))
       val LIST_STRING_LOCAL = VariableValue(LIST_STRING_VAR, listOf("Foo", "Bar"))
       val SET_STRING_LOCAL = VariableValue(SET_STRING_VAR, setOf("Homer", "Marge"))
-      val MAP_STRING_DATE_LOCAL = VariableValue(MAP_STRING_DATE_VAR, mapOf("Ten" to yesterday, "Nine" to yesterday))
+      val MAP_STRING_DATE_LOCAL = VariableValue(MAP_STRING_LONG_VAR, mapOf("Ten" to yesterday.toString(), "Nine" to yesterday.toString()))
     }
 
     private val allValues = mapOf(
@@ -127,7 +138,7 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       COMPLEX_VAR to COMPLEX,
       LIST_STRING_VAR to LIST_STRING,
       SET_STRING_VAR to SET_STRING,
-      MAP_STRING_DATE_VAR to MAP_STRING_DATE
+      MAP_STRING_LONG_VAR to MAP_STRING_LONG
     )
 
     private val allLocalValues = mapOf(
@@ -141,7 +152,7 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       COMPLEX_VAR to COMPLEX_LOCAL,
       LIST_STRING_VAR to LIST_STRING_LOCAL,
       SET_STRING_VAR to SET_STRING_LOCAL,
-      MAP_STRING_DATE_VAR to MAP_STRING_DATE_LOCAL
+      MAP_STRING_LONG_VAR to MAP_STRING_DATE_LOCAL
     )
 
     fun createVariableMapUntyped(): VariableMap {
@@ -185,7 +196,7 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       optionalVars[COMPLEX_VAR.name] = COMPLEX_VAR.from(delegateExecution).optional
       optionalVars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(delegateExecution).optional
       optionalVars[SET_STRING_VAR.name] = SET_STRING_VAR.from(delegateExecution).optional
-      optionalVars[MAP_STRING_DATE_VAR.name] = MAP_STRING_DATE_VAR.from(delegateExecution).optional
+      optionalVars[MAP_STRING_LONG_VAR.name] = MAP_STRING_LONG_VAR.from(delegateExecution).optional
     }
 
     @Bean
@@ -200,7 +211,7 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       vars[COMPLEX_VAR.name] = COMPLEX_VAR.from(delegateExecution).get()
       vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(delegateExecution).get()
       vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(delegateExecution).get()
-      vars[MAP_STRING_DATE_VAR.name] = MAP_STRING_DATE_VAR.from(delegateExecution).get()
+      vars[MAP_STRING_LONG_VAR.name] = MAP_STRING_LONG_VAR.from(delegateExecution).get()
     }
 
     @Bean
@@ -227,7 +238,7 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       vars[COMPLEX_VAR.name] = COMPLEX_VAR.from(variableScope).local
       vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(variableScope).local
       vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(variableScope).local
-      vars[MAP_STRING_DATE_VAR.name] = MAP_STRING_DATE_VAR.from(variableScope).local
+      vars[MAP_STRING_LONG_VAR.name] = MAP_STRING_LONG_VAR.from(variableScope).local
     }
 
     @Bean
@@ -251,7 +262,7 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       vars[COMPLEX_VAR.name] = COMPLEX_VAR.from(variableMap).get()
       vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(variableMap).get()
       vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(variableMap).get()
-      vars[MAP_STRING_DATE_VAR.name] = MAP_STRING_DATE_VAR.from(variableMap).get()
+      vars[MAP_STRING_LONG_VAR.name] = MAP_STRING_LONG_VAR.from(variableMap).get()
     }
 
     @Bean
@@ -266,7 +277,7 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       COMPLEX_VAR.on(delegateExecution).set(COMPLEX.value)
       LIST_STRING_VAR.on(delegateExecution).set(LIST_STRING.value)
       SET_STRING_VAR.on(delegateExecution).set(SET_STRING.value)
-      MAP_STRING_DATE_VAR.on(delegateExecution).set(MAP_STRING_DATE.value)
+      MAP_STRING_LONG_VAR.on(delegateExecution).set(MAP_STRING_LONG.value)
     }
 
     @Bean
@@ -281,7 +292,7 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       COMPLEX_VAR.on(delegateExecution).set(COMPLEX.value)
       LIST_STRING_VAR.on(delegateExecution).set(LIST_STRING.value)
       SET_STRING_VAR.on(delegateExecution).set(SET_STRING.value)
-      MAP_STRING_DATE_VAR.on(delegateExecution).set(MAP_STRING_DATE.value)
+      MAP_STRING_LONG_VAR.on(delegateExecution).set(MAP_STRING_LONG.value)
 
       STRING_VAR.on(delegateExecution).setLocal(STRING_LOCAL.value)
       DATE_VAR.on(delegateExecution).setLocal(DATE_LOCAL.value)
@@ -293,7 +304,7 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       COMPLEX_VAR.on(delegateExecution).setLocal(COMPLEX_LOCAL.value)
       LIST_STRING_VAR.on(delegateExecution).setLocal(LIST_STRING_LOCAL.value)
       SET_STRING_VAR.on(delegateExecution).setLocal(SET_STRING_LOCAL.value)
-      MAP_STRING_DATE_VAR.on(delegateExecution).setLocal(MAP_STRING_DATE_LOCAL.value)
+      MAP_STRING_LONG_VAR.on(delegateExecution).setLocal(MAP_STRING_DATE_LOCAL.value)
     }
 
     @Bean
@@ -301,7 +312,7 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       STRING_VAR.on(delegateExecution).remove()
       LIST_STRING_VAR.on(delegateExecution).remove()
       SET_STRING_VAR.on(delegateExecution).remove()
-      MAP_STRING_DATE_VAR.on(delegateExecution).remove()
+      MAP_STRING_LONG_VAR.on(delegateExecution).remove()
     }
   }
 

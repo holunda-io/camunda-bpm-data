@@ -14,7 +14,7 @@ import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Value
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LIST_STRING_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LONG
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LONG_LOCAL
-import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.MAP_STRING_DATE
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.MAP_STRING_LONG
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.MAP_STRING_DATE_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SET_STRING
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SET_STRING_LOCAL
@@ -55,7 +55,7 @@ class TaskServiceAdapterITest : CamundaBpmDataITestBase() {
         COMPLEX_VAR.on(taskService, taskId).set(COMPLEX.value)
         LIST_STRING_VAR.on(taskService, taskId).set(LIST_STRING.value)
         SET_STRING_VAR.on(taskService, taskId).set(SET_STRING.value)
-        MAP_STRING_DATE_VAR.on(taskService, taskId).set(MAP_STRING_DATE.value)
+        MAP_STRING_LONG_VAR.on(taskService, taskId).set(MAP_STRING_LONG.value)
       }
       .and()
       .task_is_completed()
@@ -79,7 +79,7 @@ class TaskServiceAdapterITest : CamundaBpmDataITestBase() {
         STRING_VAR.on(taskService, taskId).remove()
         LIST_STRING_VAR.on(taskService, taskId).remove()
         SET_STRING_VAR.on(taskService, taskId).remove()
-        MAP_STRING_DATE_VAR.on(taskService, taskId).remove()
+        MAP_STRING_LONG_VAR.on(taskService, taskId).remove()
       }
       .and()
       .task_is_completed()
@@ -89,7 +89,7 @@ class TaskServiceAdapterITest : CamundaBpmDataITestBase() {
         STRING_VAR,
         LIST_STRING_VAR,
         SET_STRING_VAR,
-        MAP_STRING_DATE_VAR
+        MAP_STRING_LONG_VAR
       )
       .and()
       .variables_had_value(delegateConfiguration.optionalVars,
@@ -122,7 +122,7 @@ class TaskServiceAdapterITest : CamundaBpmDataITestBase() {
         vars[COMPLEX_VAR.name] = COMPLEX_VAR.from(taskService, taskId).get()
         vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(taskService, taskId).get()
         vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(taskService, taskId).get()
-        vars[MAP_STRING_DATE_VAR.name] = MAP_STRING_DATE_VAR.from(taskService, taskId).get()
+        vars[MAP_STRING_LONG_VAR.name] = MAP_STRING_LONG_VAR.from(taskService, taskId).get()
       }
 
     then()
@@ -151,7 +151,7 @@ class TaskServiceAdapterITest : CamundaBpmDataITestBase() {
         COMPLEX_VAR.on(taskService, taskId).setLocal(COMPLEX_LOCAL.value)
         LIST_STRING_VAR.on(taskService, taskId).setLocal(LIST_STRING_LOCAL.value)
         SET_STRING_VAR.on(taskService, taskId).setLocal(SET_STRING_LOCAL.value)
-        MAP_STRING_DATE_VAR.on(taskService, taskId).setLocal(MAP_STRING_DATE_LOCAL.value)
+        MAP_STRING_LONG_VAR.on(taskService, taskId).setLocal(MAP_STRING_DATE_LOCAL.value)
       }
       .and()
       .task_is_completed()
