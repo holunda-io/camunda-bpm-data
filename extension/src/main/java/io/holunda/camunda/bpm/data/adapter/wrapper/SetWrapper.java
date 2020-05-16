@@ -2,6 +2,7 @@ package io.holunda.camunda.bpm.data.adapter.wrapper;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class SetWrapper<T> implements WrapperType<T> {
@@ -29,7 +30,24 @@ public class SetWrapper<T> implements WrapperType<T> {
         return (C) set;
     }
 
-    @Override
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    SetWrapper<?> that = (SetWrapper<?>) o;
+    return Objects.equals(set, that.set);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(set);
+  }
+
+  @Override
     public String toString() {
         return "SetWrapper{" +
             "set=" + set +
