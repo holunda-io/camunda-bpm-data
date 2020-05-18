@@ -1,7 +1,10 @@
 package io.holunda.camunda.bpm.data
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import io.holunda.camunda.bpm.data.factory.*
+import io.holunda.camunda.bpm.data.objectmapper.SpinObjectMapperSupplier
 import java.util.*
+import java.util.function.Supplier
 
 /**
  * Provides reified methods for variable factory construction.
@@ -94,9 +97,9 @@ object CamundaBpmDataKotlin {
      * @param wrap a boolean flag controlling if the serializer should wrap a list into a wrapper object. Set this flag to true, if you use complex types as T.
      * @return instance of [VariableFactory]
      */
-    inline fun <reified T : Any> setVariable(name: String, wrap: Boolean = false): VariableFactory<Set<T>> =
+    inline fun <reified T : Any> setVariable(name: String, wrap: Boolean = false, objectMapperSupplier: Supplier<ObjectMapper> = SpinObjectMapperSupplier()): VariableFactory<Set<T>> =
         if (wrap) {
-            WrappedSetVariableFactory(name, T::class.java)
+            WrappedSetVariableFactory(name, T::class.java, objectMapperSupplier.get())
         } else {
             SetVariableFactory(name, T::class.java)
         }

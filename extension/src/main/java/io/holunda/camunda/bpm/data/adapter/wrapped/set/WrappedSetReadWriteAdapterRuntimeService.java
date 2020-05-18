@@ -1,7 +1,9 @@
-package io.holunda.camunda.bpm.data.adapter.wrapper;
+package io.holunda.camunda.bpm.data.adapter.wrapped.set;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
 import io.holunda.camunda.bpm.data.adapter.AbstractReadWriteAdapter;
-import io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException;
+import io.holunda.camunda.bpm.data.adapter.ValueWrapperUtil;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.variable.value.TypedValue;
 
@@ -20,6 +22,8 @@ public class WrappedSetReadWriteAdapterRuntimeService<T> extends AbstractReadWri
     private final RuntimeService runtimeService;
     private final String executionId;
     private final Class<T> memberClazz;
+    private final ObjectMapper objectMapper;
+    private final CollectionType collectionType;
 
     /**
      * Constructs the adapter.
@@ -29,21 +33,23 @@ public class WrappedSetReadWriteAdapterRuntimeService<T> extends AbstractReadWri
      * @param variableName   name of the variable.
      * @param memberClazz    class of the variable.
      */
-    public WrappedSetReadWriteAdapterRuntimeService(RuntimeService runtimeService, String executionId, String variableName, Class<T> memberClazz) {
+    public WrappedSetReadWriteAdapterRuntimeService(RuntimeService runtimeService, String executionId, String variableName, Class<T> memberClazz, ObjectMapper objectMapper) {
         super(variableName);
         this.runtimeService = runtimeService;
         this.executionId = executionId;
         this.memberClazz = memberClazz;
+        this.objectMapper = objectMapper;
+        this.collectionType = objectMapper.getTypeFactory().constructCollectionType(Set.class, memberClazz);
     }
 
     @Override
     public TypedValue getTypedValue(Object value, boolean isTransient) {
-        return untypedValue(new SetWrapper((Set) value), isTransient);
+        return untypedValue(value, isTransient);
     }
 
     @Override
     public Optional<Set<T>> getOptional() {
-        return Optional.ofNullable(getOrNull(runtimeService.getVariable(executionId, variableName)));
+        return Optional.ofNullable(getOrNullFromTypedValue(runtimeService.getVariableTyped(executionId, variableName, false)));
     }
 
     @Override
@@ -53,7 +59,7 @@ public class WrappedSetReadWriteAdapterRuntimeService<T> extends AbstractReadWri
 
     @Override
     public Optional<Set<T>> getLocalOptional() {
-        return Optional.ofNullable(getOrNull(runtimeService.getVariableLocal(executionId, variableName)));
+        return Optional.ofNullable(getOrNullFromTypedValue(runtimeService.getVariableLocalTyped(executionId, variableName, false)));
     }
 
     @Override
@@ -75,29 +81,12 @@ public class WrappedSetReadWriteAdapterRuntimeService<T> extends AbstractReadWri
     /**
      * Retrieves the value or null.
      *
-     * @param value raw value.
+     * @param typedValue raw value.
      *
      * @return set or null.
      */
-    @SuppressWarnings("unchecked")
-    protected Set<T> getOrNull(Object value) {
-        if (value == null) {
-            return null;
-        }
-        if (WrapperType.class.isAssignableFrom(value.getClass())) {
-            WrapperType<T> wrapper = (WrapperType) value;
-            Set<T> valueAsCollection = wrapper.getAsCollection();
-            if (valueAsCollection.isEmpty()) {
-                return valueAsCollection;
-            } else {
-                if (memberClazz.isAssignableFrom(valueAsCollection.iterator().next().getClass())) {
-                    return valueAsCollection;
-                } else {
-                    throw new WrongVariableTypeException("Error reading " + variableName + ": Wrong member type detected, expected " + memberClazz.getName() + ", but was not found in " + valueAsCollection);
-                }
-            }
-        }
-        throw new WrongVariableTypeException("Error reading " + variableName + ": Couldn't read value of wrapper type from " + value);
+    protected Set<T> getOrNullFromTypedValue(TypedValue typedValue) {
+        return ValueWrapperUtil.readFromTypedValue(typedValue, variableName, memberClazz, objectMapper, collectionType);
     }
 
 }
