@@ -47,6 +47,7 @@
   <modules>
     <module>extension</module>
     <module>extension-kotlin</module>
+    <module>spin-type-detector</module>
     <module>mockito</module>
   </modules>
 

@@ -97,4 +97,12 @@ public class ListVariableFactory<T> implements VariableFactory<List<T>> {
   @Override public int hashCode() {
     return Objects.hash(name, memberClazz);
   }
+
+  @Override
+  public String toString() {
+    return "ListVariableFactory{" +
+        "name='" + name + '\'' +
+        ", memberClazz=" + memberClazz +
+        '}';
+  }
 }

@@ -22,6 +22,11 @@
       <artifactId>camunda-bpm-data</artifactId>
     </dependency>
     <dependency>
+      <groupId>io.holunda.data</groupId>
+      <artifactId>camunda-bpm-data-spin-type-detector</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
       <groupId>io.toolisticon.springboot</groupId>
       <artifactId>springboot-swagger-starter</artifactId>
     </dependency>

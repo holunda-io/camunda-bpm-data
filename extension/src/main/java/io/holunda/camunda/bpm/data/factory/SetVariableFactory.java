@@ -97,4 +97,12 @@ public class SetVariableFactory<T> implements VariableFactory<Set<T>> {
   @Override public int hashCode() {
     return Objects.hash(name, memberClazz);
   }
+
+  @Override
+  public String toString() {
+    return "SetVariableFactory{" +
+        "name='" + name + '\'' +
+        ", memberClazz=" + memberClazz +
+        '}';
+  }
 }

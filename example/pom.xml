@@ -46,6 +46,11 @@
         <scope>test</scope>
         <version>${project.version}</version>
       </dependency>
+      <dependency>
+        <groupId>io.holunda.data</groupId>
+        <artifactId>camunda-bpm-data-spin-type-detector</artifactId>
+        <version>${project.version}</version>
+      </dependency>
 
       <!-- CAMUNDA SPRING BOOT -->
       <dependency>

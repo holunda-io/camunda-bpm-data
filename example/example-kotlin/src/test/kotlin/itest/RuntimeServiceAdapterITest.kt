@@ -3,6 +3,9 @@ package io.holunda.camunda.bpm.data.itest
 import com.google.common.util.concurrent.ExecutionList
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.BOOLEAN
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX_LIST
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX_MAP
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX_SET
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.DATE
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.DOUBLE
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.INT
@@ -29,53 +32,6 @@ class RuntimeServiceAdapterITest : CamundaBpmDataITestBase() {
     @Autowired
     lateinit var delegateConfiguration: DelegateConfiguration
 
-    @Autowired
-    lateinit var embeddedDelegates: EmbeddedDelegates
-
-    @Test
-    fun `should write wrapped to runtime service adapter`() {
-
-        val value = setOf(
-            ComplexDataStructure("string1", 23, Companion.Values.now),
-            ComplexDataStructure("string2", 17, Companion.Values.yesterday)
-        )
-
-        val variables = createVariables()
-        given()
-            .process_with_user_task_and_delegate_is_deployed(delegateExpression = "\${${EmbeddedDelegates::readComplexValuesFromExecution.name}}")
-            .and()
-            .process_is_started_with_variables(variables = variables)
-            .and()
-            .process_waits_in_task()
-
-        whenever()
-            .execution_is_accessed_in_wait_state { runtimeService, executionId ->
-                COMPLEX_SET_VAR.on(runtimeService, executionId).set(value)
-            }
-            .and()
-            .task_is_completed()
-
-        then()
-            .variables_had_value(readValues = embeddedDelegates.vars, variablesWithValue = setOf(
-                COMPLEX_SET_VAR to value
-            ))
-
-
-    }
-
-    @Configuration
-    class EmbeddedDelegates {
-
-        val vars = HashMap<String, Any>()
-
-        @Bean
-        fun readComplexValuesFromExecution() = JavaDelegate {
-            vars[COMPLEX_SET_VAR.name] = COMPLEX_SET_VAR.from(it).get()
-        }
-    }
-
-
-
     @Test
     fun `should write to runtime service adapter`() {
 
@@ -101,6 +57,9 @@ class RuntimeServiceAdapterITest : CamundaBpmDataITestBase() {
                 LIST_STRING_VAR.on(runtimeService, executionId).set(LIST_STRING.value)
                 SET_STRING_VAR.on(runtimeService, executionId).set(SET_STRING.value)
                 MAP_STRING_LONG_VAR.on(runtimeService, executionId).set(MAP_STRING_LONG.value)
+                COMPLEX_SET_VAR.on(runtimeService, executionId).set(COMPLEX_SET.value)
+                COMPLEX_LIST_VAR.on(runtimeService, executionId).set(COMPLEX_LIST.value)
+                COMPLEX_MAP_VAR.on(runtimeService, executionId).set(COMPLEX_MAP.value)
             }
             .and()
             .task_is_completed()
@@ -163,6 +122,9 @@ class RuntimeServiceAdapterITest : CamundaBpmDataITestBase() {
                 vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(runtimeService, executionId).get()
                 vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(runtimeService, executionId).get()
                 vars[MAP_STRING_LONG_VAR.name] = MAP_STRING_LONG_VAR.from(runtimeService, executionId).get()
+                vars[COMPLEX_SET_VAR.name] = COMPLEX_SET_VAR.from(runtimeService, executionId).get()
+                vars[COMPLEX_LIST_VAR.name] = COMPLEX_LIST_VAR.from(runtimeService, executionId).get()
+                vars[COMPLEX_MAP_VAR.name] = COMPLEX_MAP_VAR.from(runtimeService, executionId).get()
             }
 
         then()

@@ -47,6 +47,10 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
     LIST_STRING_VAR.on(variables).set(LIST_STRING.value)
     SET_STRING_VAR.on(variables).set(SET_STRING.value)
     MAP_STRING_LONG_VAR.on(variables).set(MAP_STRING_LONG.value)
+    COMPLEX_SET_VAR.on(variables).set(Companion.Values.COMPLEX_SET.value)
+    COMPLEX_LIST_VAR.on(variables).set(Companion.Values.COMPLEX_LIST.value)
+    COMPLEX_MAP_VAR.on(variables).set(Companion.Values.COMPLEX_MAP.value)
+
 
     given()
       .process_with_delegate_is_deployed(delegateExpression = "\${${delegateConfiguration::readFromVariableScope.name}}")
