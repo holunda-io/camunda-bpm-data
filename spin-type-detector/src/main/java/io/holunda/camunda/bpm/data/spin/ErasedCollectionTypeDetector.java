@@ -5,12 +5,11 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import org.camunda.spin.spi.TypeDetector;
 
 import java.lang.reflect.TypeVariable;
-import java.util.List;
+import java.util.Collection;
 import java.util.Map;
-import java.util.Set;
 
 /**
- * Detects erased types of Java collection classes Set, List and Map.
+ * Detects erased types of Java Collection classes and Map.
  */
 public class ErasedCollectionTypeDetector implements TypeDetector {
     /**
@@ -21,9 +20,8 @@ public class ErasedCollectionTypeDetector implements TypeDetector {
 
     @Override
     public boolean canHandle(Object value) {
-        return value instanceof Set<?>
-            || value instanceof Map<?, ?>
-            || value instanceof List<?>;
+        return value instanceof Collection<?>
+            || value instanceof Map<?, ?>;
     }
 
     @Override
@@ -33,8 +31,10 @@ public class ErasedCollectionTypeDetector implements TypeDetector {
 
     /**
      * Checks if the erased type has the correct number of type bindings.
-     * @param erasedType class of the type.
+     *
+     * @param erasedType                  class of the type.
      * @param expectedTypeParametersCount expected number of bindings.
+     *
      * @return true if the number of type binding matches expected value.
      */
     static boolean bindingsArePresent(Class<?> erasedType, int expectedTypeParametersCount) {
@@ -54,22 +54,18 @@ public class ErasedCollectionTypeDetector implements TypeDetector {
 
     /**
      * Constructs Java type based on the content values.
+     *
      * @param value value with values.
+     *
      * @return Java type.
      */
     static JavaType constructType(Object value) {
         final TypeFactory typeFactory = TypeFactory.defaultInstance();
-        if (value instanceof List<?> && !((List<?>) value).isEmpty()) {
-            final Object firstElement = ((List<?>) value).get(0);
+        if (value instanceof Collection<?> && !((Collection<?>) value).isEmpty()) {
+            final Object firstElement = ((Collection<?>) value).iterator().next();
             if (bindingsArePresent(value.getClass(), 1)) {
                 final JavaType elementType = constructType(firstElement);
-                return typeFactory.constructCollectionType(List.class, elementType);
-            }
-        } else if (value instanceof Set<?> && !((Set<?>) value).isEmpty()) {
-            final Object firstElement = ((Set<?>) value).iterator().next();
-            if (bindingsArePresent(value.getClass(), 1)) {
-                final JavaType elementType = constructType(firstElement);
-                return typeFactory.constructCollectionType(Set.class, elementType);
+                return typeFactory.constructCollectionType(guessCollectionType(value), elementType);
             }
         } else if (value instanceof Map<?, ?> && !((Map<?, ?>) value).isEmpty()) {
             final Map.Entry<?, ?> firstEntry = ((Map<?, ?>) value).entrySet().iterator().next();
@@ -80,6 +76,22 @@ public class ErasedCollectionTypeDetector implements TypeDetector {
             }
         }
         return typeFactory.constructType(value.getClass());
+    }
+
+    /**
+     * Guess collection class.
+     *
+     * @param collection collection.
+     *
+     * @return class of th collection implementation.
+     */
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    static Class<? extends Collection> guessCollectionType(Object collection) {
+        if (collection instanceof Collection<?>) {
+            return (Class<? extends Collection>) collection.getClass();
+        } else {
+            throw new IllegalArgumentException("Could not detect class for " + collection + " of type " + collection.getClass().getName());
+        }
     }
 }
 

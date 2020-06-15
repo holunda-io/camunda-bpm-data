@@ -8,7 +8,8 @@ version: 1.0.0
 
 == Features
 * Better documentation and a catch README
+* Provide type collection detector for SPIN/Jackson
 
 == Bugfixes
 
-* Evaluation of complex guards fail if exists condition is not fulfilled.
+* Evaluation of complex guards fail if exists condition isn't fulfilled.
