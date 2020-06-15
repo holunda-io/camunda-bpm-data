@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
+
 import static io.holunda.camunda.bpm.data.CamundaBpmData.builder;
-import static io.holunda.camunda.bpm.data.example.process.OrderApproval.ORDER;
-import static io.holunda.camunda.bpm.data.example.process.OrderApproval.ORDER_APPROVED;
+import static io.holunda.camunda.bpm.data.example.process.OrderApproval.*;
 
 @RestController
 @RequestMapping("/task/approve-order")
@@ -28,8 +29,9 @@ public class ApproveOrderTaskController {
 
     @GetMapping("/{taskId}")
     public ResponseEntity<ApproveTaskDto> loadTask(@PathVariable("taskId") String taskId) {
-        Order order = ORDER.from(taskService, taskId).get();
-        return ResponseEntity.ok(new ApproveTaskDto(order));
+        final Order order = ORDER.from(taskService, taskId).get();
+        final BigDecimal orderTotal = ORDER_TOTAL.from(taskService, taskId).get();
+        return ResponseEntity.ok(new ApproveTaskDto(order, orderTotal));
     }
 
     @PostMapping("/{taskId}")

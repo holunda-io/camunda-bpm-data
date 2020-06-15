@@ -2,8 +2,20 @@ package io.holunda.camunda.bpm.data.example.kotlin.domain
 
 import java.math.BigDecimal
 
+/**
+ * Order position business entity.
+ */
 data class OrderPosition(
-  val title: String,
-  val netCost: BigDecimal,
-  val amount: Long
+    /**
+     * Title.
+     */
+    val title: String,
+    /**
+     * Net cost per unit.
+     */
+    val netCost: BigDecimal,
+    /**
+     * Amount (number of units).
+     */
+    val amount: Long
 )

@@ -9,7 +9,7 @@ import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variable
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_ID
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_POSITION
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_TOTAL
-import io.holunda.camunda.bpm.data.example.kotlin.service.OrderRepository
+import io.holunda.camunda.bpm.data.example.kotlin.domain.OrderRepository
 import io.holunda.camunda.bpm.data.factory.VariableFactory
 import mu.KLogging
 import org.camunda.bpm.engine.delegate.DelegateExecution
@@ -22,6 +22,9 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.context.event.EventListener
 import java.math.BigDecimal
 
+/**
+ * Backing bean.
+ */
 @Configuration
 class OrderApproval {
 

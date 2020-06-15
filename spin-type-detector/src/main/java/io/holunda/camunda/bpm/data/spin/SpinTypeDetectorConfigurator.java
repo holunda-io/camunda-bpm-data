@@ -17,7 +17,6 @@ public class SpinTypeDetectorConfigurator implements DataFormatConfigurator<Jack
 
     @Override
     public void configure(JacksonJsonDataFormat dataFormat) {
-        final ObjectMapper om = dataFormat.getObjectMapper();
         dataFormat.addTypeDetector(ErasedCollectionTypeDetector.INSTANCE);
     }
 }

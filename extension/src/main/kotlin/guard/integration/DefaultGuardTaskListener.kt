@@ -30,7 +30,7 @@ class DefaultGuardTaskListener(
                 logger.error("$message: ${it.message}")
             }
             if (throwViolations) {
-                throw GuardViolationException(violations = violations, message = message)
+                throw GuardViolationException(violations = violations, reason = message)
             }
         }
     }

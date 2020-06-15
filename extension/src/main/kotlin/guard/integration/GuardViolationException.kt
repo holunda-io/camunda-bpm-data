@@ -7,9 +7,9 @@ import org.camunda.bpm.engine.ProcessEngineException
  * Exception indicating a guard violation.
  */
 class GuardViolationException(
-    val violations: List<GuardViolation<*>>,
-    override val message: String
-) : ProcessEngineException(createMessage(message, violations)) {
+    violations: List<GuardViolation<*>>,
+    reason: String
+) : ProcessEngineException(createMessage(reason, violations)) {
     companion object {
         /**
          * Create a message from a provided message prefix and a list of violations.
