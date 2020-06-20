@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_12mu9tl" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.0.0">
+  <bpmn:process id="eventBasedSubprocess_no_transientMapping" name="EVSP No transient Mapping" isExecutable="true" camunda:versionTag="1">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0aasot7</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0aasot7" sourceRef="StartEvent_1" targetRef="event_wait_forever" />
+    <bpmn:endEvent id="Event_0i6u1ff">
+      <bpmn:incoming>Flow_1j6581e</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1j6581e" sourceRef="event_wait_forever" targetRef="Event_0i6u1ff" />
+    <bpmn:intermediateCatchEvent id="event_wait_forever" name="wait forever">
+      <bpmn:incoming>Flow_0aasot7</bpmn:incoming>
+      <bpmn:outgoing>Flow_1j6581e</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1t7o7o0" messageRef="Message_1qhmmon" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:subProcess id="Activity_0jufij2" name="Potentially Multi instance eventbased subprocess" triggeredByEvent="true">
+      <bpmn:startEvent id="start_subprocess" name="subprocess signaled" isInterrupting="false">
+        <bpmn:outgoing>Flow_07p4aup</bpmn:outgoing>
+        <bpmn:signalEventDefinition id="SignalEventDefinition_0fh7hvp" signalRef="Signal_177vawm" />
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="Flow_07p4aup" sourceRef="start_subprocess" targetRef="task" />
+      <bpmn:userTask id="task" name="Task">
+        <bpmn:incoming>Flow_07p4aup</bpmn:incoming>
+        <bpmn:outgoing>Flow_0bscl4e</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:endEvent id="Event_0je4ehq">
+        <bpmn:incoming>Flow_0bscl4e</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_0bscl4e" sourceRef="task" targetRef="Event_0je4ehq" />
+    </bpmn:subProcess>
+    <bpmn:textAnnotation id="TextAnnotation_0thy9n3">
+      <bpmn:text>Signal only in running parent instance</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_06injoa" sourceRef="start_subprocess" targetRef="TextAnnotation_0thy9n3" />
+    <bpmn:textAnnotation id="TextAnnotation_04y8tqp">
+      <bpmn:text>While we are waiting here ... some subprocesses will start</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0pikkxt" sourceRef="event_wait_forever" targetRef="TextAnnotation_04y8tqp" />
+  </bpmn:process>
+  <bpmn:message id="Message_1qhmmon" name="msg_wait_forever" />
+  <bpmn:signal id="Signal_177vawm" name="startSubProcess_${execution.processInstanceId}" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="eventBasedSubprocess_no_transientMapping">
+      <bpmndi:BPMNShape id="TextAnnotation_0thy9n3_di" bpmnElement="TextAnnotation_0thy9n3">
+        <dc:Bounds x="220" y="560" width="100" height="54" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_04y8tqp_di" bpmnElement="TextAnnotation_04y8tqp">
+        <dc:Bounds x="300" y="160" width="100" height="82" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1j6581e_di" bpmnElement="Flow_1j6581e">
+        <di:waypoint x="368" y="100" />
+        <di:waypoint x="502" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0aasot7_di" bpmnElement="Flow_0aasot7">
+        <di:waypoint x="188" y="100" />
+        <di:waypoint x="332" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="82" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0i6u1ff_di" bpmnElement="Event_0i6u1ff">
+        <dc:Bounds x="502" y="82" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_166gefj_di" bpmnElement="event_wait_forever">
+        <dc:Bounds x="332" y="82" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="321" y="58" width="58" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0szs96v_di" bpmnElement="Activity_0jufij2" isExpanded="true">
+        <dc:Bounds x="160" y="260" width="350" height="190" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0bscl4e_di" bpmnElement="Flow_0bscl4e">
+        <di:waypoint x="390" y="350" />
+        <di:waypoint x="452" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_07p4aup_di" bpmnElement="Flow_07p4aup">
+        <di:waypoint x="236" y="350" />
+        <di:waypoint x="290" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0ahqsx8_di" bpmnElement="start_subprocess">
+        <dc:Bounds x="200" y="332" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="190" y="375" width="57" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0tcqt6c_di" bpmnElement="task">
+        <dc:Bounds x="290" y="310" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0je4ehq_di" bpmnElement="Event_0je4ehq">
+        <dc:Bounds x="452" y="332" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_06injoa_di" bpmnElement="Association_06injoa">
+        <di:waypoint x="222" y="367" />
+        <di:waypoint x="267" y="560" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0pikkxt_di" bpmnElement="Association_0pikkxt">
+        <di:waypoint x="350" y="118" />
+        <di:waypoint x="350" y="160" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
