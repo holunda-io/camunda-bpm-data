@@ -19,6 +19,7 @@
     <maven.sources.skip>true</maven.sources.skip>
     <maven.install.skip>true</maven.install.skip>
     <gpg.skip>true</gpg.skip>
+    <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
   </properties>
 
   <dependencies>
