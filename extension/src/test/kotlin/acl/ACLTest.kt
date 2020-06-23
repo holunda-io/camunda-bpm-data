@@ -2,6 +2,7 @@ package acl
 
 import io.holunda.camunda.bpm.data.CamundaBpmData
 import io.holunda.camunda.bpm.data.acl.CamundaBpmDataACL
+import io.holunda.camunda.bpm.data.acl.CamundaBpmDataMapper
 import io.holunda.camunda.bpm.data.acl.transform.VariableMapTransformer
 import io.holunda.camunda.bpm.data.guard.VariablesGuard
 import io.holunda.camunda.bpm.data.guard.condition.*
@@ -109,7 +110,7 @@ class TransientVariableMappingListenerTest {
         private val BAZ = CamundaBpmData.longVariable("baz")
         private val BAZ_INTERNAL = CamundaBpmData.longVariable("baz__int")
 
-        private val ACL_LR = CamundaBpmDataACL.identityLocalReplace("transient")
+        private val ACL_LR = CamundaBpmDataMapper.identityReplace("transient", true)
 
         /**
          * This demonstrates the power of the Anti-Corruption-Layer.
