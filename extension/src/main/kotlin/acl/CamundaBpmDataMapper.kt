@@ -1,6 +1,5 @@
 package io.holunda.camunda.bpm.data.acl
 
-import com.sun.org.apache.xpath.internal.operations.Bool
 import io.holunda.camunda.bpm.data.CamundaBpmData
 import io.holunda.camunda.bpm.data.acl.apply.GlobalScopeReplaceStrategy
 import io.holunda.camunda.bpm.data.acl.apply.LocalScopeReplaceStrategy
@@ -9,6 +8,9 @@ import io.holunda.camunda.bpm.data.acl.transform.VariableMapTransformer
 import io.holunda.camunda.bpm.data.guard.VariablesGuard
 import org.camunda.bpm.engine.variable.VariableMap
 
+/**
+ * Helper methods to create unconditional transient variable mappers.
+ */
 object CamundaBpmDataMapper {
     /**
      * Constructs a mapper, maps variables using transformer and replaces them in a local scope.
@@ -48,6 +50,7 @@ object CamundaBpmDataMapper {
     } else {
         transformingGlobalReplace(variableName, variableMapTransformer)
     }
+
     /**
      * Constructs a mapper, maps variables 1:1 and replaces them in a local scope.
      * @param variableName name of the transient variable to use.
