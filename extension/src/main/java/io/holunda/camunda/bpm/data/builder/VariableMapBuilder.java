@@ -23,6 +23,7 @@ public class VariableMapBuilder {
 
     /**
      * Creates a builder with provided variable map.
+     *
      * @param variables variables to work on.
      */
     public VariableMapBuilder(VariableMap variables) {
@@ -31,6 +32,7 @@ public class VariableMapBuilder {
 
     /**
      * Returns the resulting variables.
+     *
      * @return variables.
      */
     public VariableMap build() {
@@ -39,9 +41,11 @@ public class VariableMapBuilder {
 
     /**
      * Sets the value for the provided variable and returns the builder (fluently).
+     *
      * @param factory variable factory.
-     * @param value value to set.
-     * @param <T> value type.
+     * @param value   value to set.
+     * @param <T>     value type.
+     *
      * @return fluent builder.
      */
     public <T> VariableMapBuilder set(VariableFactory<T> factory, T value) {
@@ -50,10 +54,12 @@ public class VariableMapBuilder {
 
     /**
      * Sets the value for the provided variable and returns the builder (fluently).
-     * @param factory variable factory.
-     * @param value value to set.
+     *
+     * @param factory     variable factory.
+     * @param value       value to set.
      * @param isTransient transient flag.
-     * @param <T> value type.
+     * @param <T>         value type.
+     *
      * @return fluent builder.
      */
     public <T> VariableMapBuilder set(VariableFactory<T> factory, T value, boolean isTransient) {
@@ -63,8 +69,10 @@ public class VariableMapBuilder {
 
     /**
      * Removes the local value for the provided variable and returns the builder (fluently).
+     *
      * @param factory variable factory.
-     * @param <T> value type.
+     * @param <T>     value type.
+     *
      * @return fluent builder.
      */
     public <T> VariableMapBuilder remove(VariableFactory<T> factory) {
@@ -74,10 +82,12 @@ public class VariableMapBuilder {
 
     /**
      * Updates the value for the provided variable and returns the builder (fluently).
-     * @param factory variable factory.
+     *
+     * @param factory        variable factory.
      * @param valueProcessor processor for the value.
-     * @param isTransient transient flag.
-     * @param <T> value type.
+     * @param isTransient    transient flag.
+     * @param <T>            value type.
+     *
      * @return fluent builder.
      */
     public <T> VariableMapBuilder update(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
@@ -87,9 +97,11 @@ public class VariableMapBuilder {
 
     /**
      * Updates the value for the provided variable and returns the builder (fluently).
-     * @param factory variable factory.
+     *
+     * @param factory        variable factory.
      * @param valueProcessor processor for the value.
-     * @param <T> value type.
+     * @param <T>            value type.
+     *
      * @return fluent builder.
      */
     public <T> VariableMapBuilder update(VariableFactory<T> factory, Function<T, T> valueProcessor) {

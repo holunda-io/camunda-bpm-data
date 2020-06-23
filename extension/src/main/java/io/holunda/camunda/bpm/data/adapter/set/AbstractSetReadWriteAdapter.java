@@ -47,7 +47,7 @@ public abstract class AbstractSetReadWriteAdapter<T> extends AbstractReadWriteAd
         if (Set.class.isAssignableFrom(value.getClass())) {
             Set<?> valueAsList = (Set<?>) value;
             if (valueAsList.isEmpty()) {
-                return Collections.<T>emptySet();
+                return Collections.emptySet();
             } else {
                 if (memberClazz.isAssignableFrom(valueAsList.iterator().next().getClass())) {
                     return (Set<T>) valueAsList;

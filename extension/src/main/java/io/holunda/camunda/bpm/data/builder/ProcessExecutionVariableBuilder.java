@@ -24,6 +24,7 @@ public class ProcessExecutionVariableBuilder {
 
     /**
      * Returns the resulting variables.
+     *
      * @return variables.
      */
     public VariableMap variables() {
@@ -32,6 +33,7 @@ public class ProcessExecutionVariableBuilder {
 
     /**
      * Returns the resulting local variables.
+     *
      * @return local variables.
      */
     public VariableMap variablesLocal() {
@@ -40,9 +42,11 @@ public class ProcessExecutionVariableBuilder {
 
     /**
      * Sets the value for the provided variable and returns the builder (fluently).
+     *
      * @param factory variable factory.
-     * @param value value to set.
-     * @param <T> value type.
+     * @param value   value to set.
+     * @param <T>     value type.
+     *
      * @return fluent builder.
      */
     public <T> ProcessExecutionVariableBuilder set(VariableFactory<T> factory, T value) {
@@ -51,10 +55,12 @@ public class ProcessExecutionVariableBuilder {
 
     /**
      * Sets the value for the provided variable and returns the builder (fluently).
-     * @param factory variable factory.
-     * @param value value to set.
+     *
+     * @param factory     variable factory.
+     * @param value       value to set.
      * @param isTransient transient flag.
-     * @param <T> value type.
+     * @param <T>         value type.
+     *
      * @return fluent builder.
      */
     public <T> ProcessExecutionVariableBuilder set(VariableFactory<T> factory, T value, boolean isTransient) {
@@ -64,9 +70,11 @@ public class ProcessExecutionVariableBuilder {
 
     /**
      * Sets the local value for the provided variable and returns the builder (fluently).
+     *
      * @param factory variable factory.
-     * @param value value to set.
-     * @param <T> value type.
+     * @param value   value to set.
+     * @param <T>     value type.
+     *
      * @return fluent builder.
      */
     public <T> ProcessExecutionVariableBuilder setLocal(VariableFactory<T> factory, T value) {
@@ -75,10 +83,12 @@ public class ProcessExecutionVariableBuilder {
 
     /**
      * Sets the local value for the provided variable and returns the builder (fluently).
-     * @param factory variable factory.
-     * @param value value to set.
+     *
+     * @param factory     variable factory.
+     * @param value       value to set.
      * @param isTransient transient flag.
-     * @param <T> value type.
+     * @param <T>         value type.
+     *
      * @return fluent builder.
      */
     public <T> ProcessExecutionVariableBuilder setLocal(VariableFactory<T> factory, T value, boolean isTransient) {
@@ -88,8 +98,10 @@ public class ProcessExecutionVariableBuilder {
 
     /**
      * Removes the local value for the provided variable and returns the builder (fluently).
+     *
      * @param factory variable factory.
-     * @param <T> value type.
+     * @param <T>     value type.
+     *
      * @return fluent builder.
      */
     public <T> ProcessExecutionVariableBuilder remove(VariableFactory<T> factory) {
@@ -99,8 +111,10 @@ public class ProcessExecutionVariableBuilder {
 
     /**
      * Removes the local value for the provided variable and returns the builder (fluently).
+     *
      * @param factory variable factory.
-     * @param <T> value type.
+     * @param <T>     value type.
+     *
      * @return fluent builder.
      */
     public <T> ProcessExecutionVariableBuilder removeLocal(VariableFactory<T> factory) {
@@ -110,10 +124,12 @@ public class ProcessExecutionVariableBuilder {
 
     /**
      * Updates the value for the provided variable and returns the builder (fluently).
-     * @param factory variable factory.
+     *
+     * @param factory        variable factory.
      * @param valueProcessor processor for the value.
-     * @param isTransient transient flag.
-     * @param <T> value type.
+     * @param isTransient    transient flag.
+     * @param <T>            value type.
+     *
      * @return fluent builder.
      */
     public <T> ProcessExecutionVariableBuilder update(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
@@ -123,10 +139,12 @@ public class ProcessExecutionVariableBuilder {
 
     /**
      * Update the local value for the provided variable and returns the builder (fluently).
-     * @param factory variable factory.
+     *
+     * @param factory        variable factory.
      * @param valueProcessor processor for the value.
-     * @param isTransient transient flag.
-     * @param <T> value type.
+     * @param isTransient    transient flag.
+     * @param <T>            value type.
+     *
      * @return fluent builder.
      */
     public <T> ProcessExecutionVariableBuilder updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
@@ -136,9 +154,11 @@ public class ProcessExecutionVariableBuilder {
 
     /**
      * Updates the value for the provided variable and returns the builder (fluently).
-     * @param factory variable factory.
+     *
+     * @param factory        variable factory.
      * @param valueProcessor processor for the value.
-     * @param <T> value type.
+     * @param <T>            value type.
+     *
      * @return fluent builder.
      */
     public <T> ProcessExecutionVariableBuilder update(VariableFactory<T> factory, Function<T, T> valueProcessor) {
@@ -147,9 +167,11 @@ public class ProcessExecutionVariableBuilder {
 
     /**
      * Update the local value for the provided variable and returns the builder (fluently).
-     * @param factory variable factory.
+     *
+     * @param factory        variable factory.
      * @param valueProcessor processor for the value.
-     * @param <T> value type.
+     * @param <T>            value type.
+     *
      * @return fluent builder.
      */
     public <T> ProcessExecutionVariableBuilder updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor) {

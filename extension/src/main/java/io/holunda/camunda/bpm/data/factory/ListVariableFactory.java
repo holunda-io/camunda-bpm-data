@@ -22,79 +22,83 @@ import java.util.Objects;
  */
 public class ListVariableFactory<T> implements VariableFactory<List<T>> {
 
-  @NotNull
-  private final String name;
+    @NotNull
+    private final String name;
 
-  @NotNull
-  private final Class<T> memberClazz;
+    @NotNull
+    private final Class<T> memberClazz;
 
-  public ListVariableFactory(@NotNull String name, @NotNull Class<T> memberClazz) {
-    this.name = name;
-    this.memberClazz = memberClazz;
-  }
+    public ListVariableFactory(@NotNull String name, @NotNull Class<T> memberClazz) {
+        this.name = name;
+        this.memberClazz = memberClazz;
+    }
 
-  @Override
-  public WriteAdapter<List<T>> on(VariableScope variableScope) {
-    return new ListReadWriteAdapterVariableScope<>(variableScope, name, memberClazz);
-  }
+    @Override
+    public WriteAdapter<List<T>> on(VariableScope variableScope) {
+        return new ListReadWriteAdapterVariableScope<>(variableScope, name, memberClazz);
+    }
 
-  @Override
-  public ReadAdapter<List<T>> from(VariableScope variableScope) {
-    return new ListReadWriteAdapterVariableScope<>(variableScope, name, memberClazz);
-  }
+    @Override
+    public ReadAdapter<List<T>> from(VariableScope variableScope) {
+        return new ListReadWriteAdapterVariableScope<>(variableScope, name, memberClazz);
+    }
 
-  @Override
-  public WriteAdapter<List<T>> on(VariableMap variableMap) {
-    return new ListReadWriteAdapterVariableMap<>(variableMap, name, memberClazz);
-  }
+    @Override
+    public WriteAdapter<List<T>> on(VariableMap variableMap) {
+        return new ListReadWriteAdapterVariableMap<>(variableMap, name, memberClazz);
+    }
 
-  @Override
-  public ReadAdapter<List<T>> from(VariableMap variableMap) {
-    return new ListReadWriteAdapterVariableMap<>(variableMap, name, memberClazz);
-  }
+    @Override
+    public ReadAdapter<List<T>> from(VariableMap variableMap) {
+        return new ListReadWriteAdapterVariableMap<>(variableMap, name, memberClazz);
+    }
 
-  @Override
-  public WriteAdapter<List<T>> on(RuntimeService runtimeService, String executionId) {
-    return new ListReadWriteAdapterRuntimeService<>(runtimeService, executionId, name, memberClazz);
-  }
+    @Override
+    public WriteAdapter<List<T>> on(RuntimeService runtimeService, String executionId) {
+        return new ListReadWriteAdapterRuntimeService<>(runtimeService, executionId, name, memberClazz);
+    }
 
-  @Override
-  public ReadAdapter<List<T>> from(RuntimeService runtimeService, String executionId) {
-    return new ListReadWriteAdapterRuntimeService<>(runtimeService, executionId, name, memberClazz);
-  }
+    @Override
+    public ReadAdapter<List<T>> from(RuntimeService runtimeService, String executionId) {
+        return new ListReadWriteAdapterRuntimeService<>(runtimeService, executionId, name, memberClazz);
+    }
 
-  @Override
-  public WriteAdapter<List<T>> on(TaskService taskService, String taskId) {
-    return new ListReadWriteAdapterTaskService<>(taskService, taskId, name, memberClazz);
-  }
+    @Override
+    public WriteAdapter<List<T>> on(TaskService taskService, String taskId) {
+        return new ListReadWriteAdapterTaskService<>(taskService, taskId, name, memberClazz);
+    }
 
-  @Override
-  public ReadAdapter<List<T>> from(TaskService taskService, String taskId) {
-    return new ListReadWriteAdapterTaskService<>(taskService, taskId, name, memberClazz);
-  }
+    @Override
+    public ReadAdapter<List<T>> from(TaskService taskService, String taskId) {
+        return new ListReadWriteAdapterTaskService<>(taskService, taskId, name, memberClazz);
+    }
 
-  @Override
-  @NotNull
-  public String getName() {
-    return name;
-  }
+    @Override
+    @NotNull
+    public String getName() {
+        return name;
+    }
 
-  @NotNull
-  public Class<T> getMemberClass() {
-    return memberClazz;
-  }
+    @NotNull
+    public Class<T> getMemberClass() {
+        return memberClazz;
+    }
 
-  @Override public boolean equals(Object o) {
-    if (this == o)
-      return true;
-    if (o == null || getClass() != o.getClass())
-      return false;
-    ListVariableFactory<?> that = (ListVariableFactory<?>) o;
-    return name.equals(that.name) &&
-      memberClazz.equals(that.memberClazz);
-  }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ListVariableFactory<?> that = (ListVariableFactory<?>) o;
+        return name.equals(that.name) &&
+            memberClazz.equals(that.memberClazz);
+    }
 
-  @Override public int hashCode() {
-    return Objects.hash(name, memberClazz);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, memberClazz);
+    }
 }

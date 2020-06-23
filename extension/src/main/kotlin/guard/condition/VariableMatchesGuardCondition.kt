@@ -35,6 +35,11 @@ class VariableMatchesGuardCondition<T>(
         }
         return violations
     }
+
+    override fun toString(): String {
+        return "Matches condition for$localLabel variable '${super.variableFactory.name}'"
+    }
+
 }
 
 /**
@@ -43,5 +48,4 @@ class VariableMatchesGuardCondition<T>(
  * @param matcher function that must match the value.
  * @return instance of [VariableMatchesGuardCondition] on current factory.
  */
-fun <T> VariableFactory<T>.matches(local: Boolean = false, matcher: (value: T) -> Boolean)
-    = VariableMatchesGuardCondition(this, local, matcher)
+fun <T> VariableFactory<T>.matches(local: Boolean = false, matcher: (value: T) -> Boolean) = VariableMatchesGuardCondition(this, local, matcher)

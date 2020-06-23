@@ -92,7 +92,7 @@ object CamundaBpmDataGuards {
      */
     @JvmStatic
     fun <T> matches(variableFactory: VariableFactory<T>,
-                    matcher: Function<T, Boolean>) = variableFactory.matches() { matcher.apply(it) }
+                    matcher: Function<T, Boolean>) = variableFactory.matches { matcher.apply(it) }
 
 }
 

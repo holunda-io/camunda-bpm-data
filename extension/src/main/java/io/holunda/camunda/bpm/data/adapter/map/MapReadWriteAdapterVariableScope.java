@@ -13,48 +13,49 @@ import java.util.Optional;
  */
 public class MapReadWriteAdapterVariableScope<K, V> extends AbstractMapReadWriteAdapter<K, V> {
 
-  private VariableScope variableScope;
+    private final VariableScope variableScope;
 
-  /**
-   * Constructs the adapter.
-   *
-   * @param variableScope variable scope to access.
-   * @param variableName  variable to access.
-   * @param keyClazz      class of variable key.
-   * @param valueClazz    class of variable value.
-   */
-  public MapReadWriteAdapterVariableScope(VariableScope variableScope, String variableName, Class<K> keyClazz, Class<V> valueClazz) {
-    super(variableName, keyClazz, valueClazz);
-    this.variableScope = variableScope;
-  }
+    /**
+     * Constructs the adapter.
+     *
+     * @param variableScope variable scope to access.
+     * @param variableName  variable to access.
+     * @param keyClazz      class of variable key.
+     * @param valueClazz    class of variable value.
+     */
+    public MapReadWriteAdapterVariableScope(VariableScope variableScope, String variableName, Class<K> keyClazz, Class<V> valueClazz) {
+        super(variableName, keyClazz, valueClazz);
+        this.variableScope = variableScope;
+    }
 
-  @Override
-  public Optional<Map<K, V>> getOptional() {
-    return Optional.ofNullable(getOrNull(variableScope.getVariable(variableName)));
-  }
+    @Override
+    public Optional<Map<K, V>> getOptional() {
+        return Optional.ofNullable(getOrNull(variableScope.getVariable(variableName)));
+    }
 
-  @Override
-  public void set(Map<K, V> value, boolean isTransient) {
-    variableScope.setVariable(variableName, getTypedValue(value, isTransient));
-  }
+    @Override
+    public void set(Map<K, V> value, boolean isTransient) {
+        variableScope.setVariable(variableName, getTypedValue(value, isTransient));
+    }
 
-  @Override
-  public Optional<Map<K, V>> getLocalOptional() {
-    return Optional.ofNullable(getOrNull(variableScope.getVariableLocal(variableName)));
-  }
+    @Override
+    public Optional<Map<K, V>> getLocalOptional() {
+        return Optional.ofNullable(getOrNull(variableScope.getVariableLocal(variableName)));
+    }
 
-  @Override
-  public void setLocal(Map<K, V> value, boolean isTransient) {
-    variableScope.setVariableLocal(variableName, getTypedValue(value, isTransient));
-  }
-  @Override
-  public void remove() {
-    variableScope.removeVariable(variableName);
-  }
+    @Override
+    public void setLocal(Map<K, V> value, boolean isTransient) {
+        variableScope.setVariableLocal(variableName, getTypedValue(value, isTransient));
+    }
 
-  @Override
-  public void removeLocal() {
-    variableScope.removeVariableLocal(variableName);
-  }
+    @Override
+    public void remove() {
+        variableScope.removeVariable(variableName);
+    }
+
+    @Override
+    public void removeLocal() {
+        variableScope.removeVariableLocal(variableName);
+    }
 
 }

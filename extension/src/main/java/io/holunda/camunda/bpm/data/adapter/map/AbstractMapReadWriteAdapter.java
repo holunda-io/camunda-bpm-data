@@ -54,7 +54,7 @@ public abstract class AbstractMapReadWriteAdapter<K, V> extends AbstractReadWrit
         if (Map.class.isAssignableFrom(value.getClass())) {
             Map<?, ?> valueAsMap = (Map<?, ?>) value;
             if (valueAsMap.isEmpty()) {
-                return Collections.<K, V>emptyMap();
+                return Collections.emptyMap();
             } else {
                 Map.Entry<?, ?> entry = valueAsMap.entrySet().iterator().next();
                 if (keyClazz.isAssignableFrom(entry.getKey().getClass()) && valueClazz.isAssignableFrom(entry.getValue().getClass())) {
