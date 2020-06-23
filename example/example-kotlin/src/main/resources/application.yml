@@ -7,6 +7,7 @@ spring:
     open-in-view: true
 camunda:
   bpm:
+    default-serialization-format: application/json
     filter:
       create: All Tasks
     admin-user:

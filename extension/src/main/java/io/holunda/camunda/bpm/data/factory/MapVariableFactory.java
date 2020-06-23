@@ -118,4 +118,13 @@ public class MapVariableFactory<K, V> implements VariableFactory<Map<K, V>> {
   @Override public int hashCode() {
     return Objects.hash(name, keyClazz, valueClazz);
   }
+
+  @Override
+  public String toString() {
+    return "MapVariableFactory{" +
+        "name='" + name + '\'' +
+        ", keyClazz=" + keyClazz +
+        ", valueClazz=" + valueClazz +
+        '}';
+  }
 }

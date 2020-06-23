@@ -17,7 +17,7 @@ public class CamundaBpmDataProcessApplication {
 
   @EventListener
   public void onDeploy(PostDeployEvent event) {
-    orderApprovalInstanceFactory.start();
+    orderApprovalInstanceFactory.start("1");
   }
 
   public static void main(String[] args) {

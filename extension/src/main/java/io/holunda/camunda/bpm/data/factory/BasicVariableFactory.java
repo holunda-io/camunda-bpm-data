@@ -126,7 +126,16 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
       clazz.equals(that.clazz);
   }
 
-  @Override public int hashCode() {
+  @Override
+  public int hashCode() {
     return Objects.hash(name, clazz);
+  }
+
+  @Override
+  public String toString() {
+    return "BasicVariableFactory{" +
+        "name='" + name + '\'' +
+        ", clazz=" + clazz +
+        '}';
   }
 }

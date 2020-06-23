@@ -23,6 +23,6 @@ class CamundaBpmDataKotlinExampleApplication {
 
   @EventListener
   fun onDeploy(event: PostDeployEvent) {
-    orderApprovalInstanceFactory.start()
+    orderApprovalInstanceFactory.start("1")
   }
 }

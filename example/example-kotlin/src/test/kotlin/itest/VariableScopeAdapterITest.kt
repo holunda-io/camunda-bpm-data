@@ -58,7 +58,7 @@ class VariableScopeAdapterITest : CamundaBpmDataITestBase() {
         STRING_VAR,
         LIST_STRING_VAR,
         SET_STRING_VAR,
-        MAP_STRING_DATE_VAR
+        MAP_STRING_LONG_VAR
       )
       .and()
       .variables_had_value(delegateConfiguration.optionalVars,
