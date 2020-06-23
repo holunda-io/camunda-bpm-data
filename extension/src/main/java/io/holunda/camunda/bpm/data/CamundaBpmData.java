@@ -230,5 +230,4 @@ public class CamundaBpmData {
     public static UserTaskVariableBuilder builder(TaskService taskService, String taskId) {
         return new UserTaskVariableBuilder(taskService, taskId);
     }
-
 }

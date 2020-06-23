@@ -2,7 +2,7 @@ package io.holunda.camunda.bpm.data.example.process;
 
 import io.holunda.camunda.bpm.data.example.domain.Order;
 import io.holunda.camunda.bpm.data.example.domain.OrderPosition;
-import io.holunda.camunda.bpm.data.example.service.OrderRepository;
+import io.holunda.camunda.bpm.data.example.domain.OrderRepository;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import io.holunda.camunda.bpm.data.guard.integration.DefaultGuardExecutionListener;
 import io.holunda.camunda.bpm.data.guard.integration.DefaultGuardTaskListener;
@@ -23,12 +23,25 @@ import java.math.BigDecimal;
 import static com.google.common.collect.Lists.newArrayList;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.*;
 import static io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.exists;
-import static io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.matches;
 
+/**
+ * Process backing bean.
+ */
 @Configuration
 public class OrderApproval {
 
     public static final String KEY = "order-approval";
+
+    enum Elements {
+        start_order_created,
+        user_approve_order,
+        end_order_approved,
+        end_order_rejected;
+
+        static String element(Elements element) {
+            return element.name();
+        }
+    }
 
     public static final VariableFactory<String> ORDER_ID = stringVariable("orderId");
     public static final VariableFactory<Order> ORDER = customVariable("order", Order.class);
@@ -54,28 +67,6 @@ public class OrderApproval {
             Order order = orderRepository.loadOrder(orderId);
             ORDER.on(execution).set(order);
         };
-    }
-
-    /**
-     * Checks that the variable "orderId" exists.
-     * Used as execution listener on start event in BPMN ${guardExecutionListener}
-     *
-     * @return execution listener.
-     */
-    @Bean
-    public ExecutionListener guardExecutionListener() {
-        return new DefaultGuardExecutionListener(newArrayList(exists(ORDER_ID)), true);
-    }
-
-    /**
-     * Checks that the variable "orderApproved" exists.
-     * Used as task listener on complete of user task in BPMN ${taskExecutionListener}
-     *
-     * @return task listener.
-     */
-    @Bean
-    public TaskListener guardTaskListener() {
-        return new DefaultGuardTaskListener(newArrayList(exists(ORDER_APPROVED)), true);
     }
 
     /**
@@ -106,6 +97,33 @@ public class OrderApproval {
             ORDER_TOTAL.on(execution).set(total);
         };
     }
+
+    /**
+     * Checks that the variable "orderId" exists.
+     * Used as execution listener on start event in BPMN ${guardExecutionListener}
+     *
+     * @return execution listener.
+     */
+    @Bean
+    public ExecutionListener guardExecutionListener() {
+        return new DefaultGuardExecutionListener(newArrayList(exists(ORDER_ID)), true);
+    }
+
+    /**
+     * Checks that the variable "orderApproved" exists.
+     * Used as task listener on complete of user task in BPMN ${taskExecutionListener}
+     *
+     * @return task listener.
+     */
+    @Bean
+    public TaskListener guardTaskListener() {
+        return new DefaultGuardTaskListener(
+            newArrayList(
+                exists(ORDER_APPROVED)
+            ), true
+        );
+    }
+
 
     /**
      * Logs the task creation.

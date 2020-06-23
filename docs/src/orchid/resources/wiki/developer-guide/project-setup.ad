@@ -109,6 +109,7 @@ Currently, the following modules are released to OSS Maven Central:
 * camunda-bpm-data-parent
 * camunda-bpm-data
 * camunda-bpm-data-kotlin
+* camunda-bpm-data-mockito
 
 ==== Trigger new release
 

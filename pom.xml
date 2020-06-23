@@ -48,6 +48,7 @@
   <modules>
     <module>extension</module>
     <module>extension-kotlin</module>
+    <module>spin-type-detector</module>
     <module>mockito</module>
   </modules>
 
@@ -148,6 +149,17 @@
       <artifactId>camunda-engine</artifactId>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>org.camunda.spin</groupId>
+      <artifactId>camunda-spin-core</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.spin</groupId>
+      <artifactId>camunda-spin-dataformat-json-jackson</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
 
     <!-- Testing -->
     <dependency>

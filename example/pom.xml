@@ -46,6 +46,11 @@
         <scope>test</scope>
         <version>${project.version}</version>
       </dependency>
+      <dependency>
+        <groupId>io.holunda.data</groupId>
+        <artifactId>camunda-bpm-data-spin-type-detector</artifactId>
+        <version>${project.version}</version>
+      </dependency>
 
       <!-- CAMUNDA SPRING BOOT -->
       <dependency>
@@ -69,6 +74,12 @@
         <groupId>io.holunda.testing</groupId>
         <artifactId>camunda-bpm-jgiven</artifactId>
         <version>0.0.5</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.camunda.bpm.assert</groupId>
+        <artifactId>camunda-bpm-assert</artifactId>
+        <version>6.0.0</version>
         <scope>test</scope>
       </dependency>
       <dependency>
