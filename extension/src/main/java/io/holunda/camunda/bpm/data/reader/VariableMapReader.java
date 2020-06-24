@@ -1,6 +1,5 @@
 package io.holunda.camunda.bpm.data.reader;
 
-import io.holunda.camunda.bpm.data.adapter.basic.ReadWriteAdapterVariableMap;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import java.util.Optional;
 import org.camunda.bpm.engine.variable.VariableMap;
