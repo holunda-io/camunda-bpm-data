@@ -30,11 +30,11 @@ class AntiCorruptionLayer(
     /**
      * Factory to use.
      */
-    private val factory: VariableFactory<VariableMap>,
+    internal val factory: VariableFactory<VariableMap>,
     /**
      * Strategy to apply values from transformer to given variable scope.
      */
-    private val valueApplicationStrategy: ValueApplicationStrategy
+    internal val valueApplicationStrategy: ValueApplicationStrategy
 ) {
 
     companion object {

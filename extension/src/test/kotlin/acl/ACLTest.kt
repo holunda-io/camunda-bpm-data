@@ -1,8 +1,6 @@
-package acl
+package io.holunda.camunda.bpm.data.acl
 
 import io.holunda.camunda.bpm.data.CamundaBpmData
-import io.holunda.camunda.bpm.data.acl.CamundaBpmDataACL
-import io.holunda.camunda.bpm.data.acl.CamundaBpmDataMapper
 import io.holunda.camunda.bpm.data.acl.transform.VariableMapTransformer
 import io.holunda.camunda.bpm.data.guard.VariablesGuard
 import io.holunda.camunda.bpm.data.guard.condition.*

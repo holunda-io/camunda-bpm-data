@@ -72,4 +72,23 @@ abstract class VariableGuardCondition<T>(
     fun evaluate(runtimeService: RuntimeService, executionId: String): List<GuardViolation<T>> {
         return evaluate(if (local) variableFactory.from(runtimeService, executionId).localOptional else variableFactory.from(runtimeService, executionId).optional)
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as VariableGuardCondition<*>
+
+        if (variableFactory != other.variableFactory) return false
+        if (local != other.local) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = variableFactory.hashCode()
+        result = 31 * result + local.hashCode()
+        return result
+    }
+
 }

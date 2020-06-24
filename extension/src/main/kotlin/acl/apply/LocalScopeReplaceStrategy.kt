@@ -13,4 +13,8 @@ object LocalScopeReplaceStrategy : ValueApplicationStrategy {
         variableScope.apply {
             this.variablesLocal = variableMap
         }
+
+    override fun toString(): String {
+        return javaClass.canonicalName
+    }
 }

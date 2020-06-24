@@ -75,4 +75,25 @@ class VariablesGuard(
      * @return variable factories extracted from condition with scope global.
      */
     fun getVariables() = variableConditions.filter { !it.local }.map { it.variableFactory }
+
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as VariablesGuard
+
+        if (variableConditions != other.variableConditions) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return variableConditions.hashCode()
+    }
+
+    override fun toString(): String {
+        return "VariablesGuard(variableConditions=$variableConditions)"
+    }
+
 }

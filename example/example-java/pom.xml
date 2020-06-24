@@ -13,7 +13,7 @@
   <name>${project.artifactId}</name>
 
   <properties>
-    <jacoco.skip>false</jacoco.skip>
+    <jacoco.skip>true</jacoco.skip>
   </properties>
 
   <dependencies>
@@ -114,23 +114,14 @@
       <artifactId>camunda-bpm-jgiven</artifactId>
       <scope>test</scope>
     </dependency>
-    <!--
-    <dependency>
-      <groupId>com.tngtech.jgiven</groupId>
-      <artifactId>jgiven-junit</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.tngtech.jgiven</groupId>
-      <artifactId>jgiven-spring</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.tngtech.jgiven</groupId>
-      <artifactId>jgiven-html5-report</artifactId>
-      <scope>test</scope>
-    </dependency>
-    -->
   </dependencies>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 </project>

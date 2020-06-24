@@ -13,4 +13,8 @@ object GlobalScopeReplaceStrategy : ValueApplicationStrategy {
         variableScope.apply {
             this.variables = variableMap
         }
+
+    override fun toString(): String {
+        return javaClass.canonicalName
+    }
 }
