@@ -6,6 +6,10 @@ version: 1.0.0
 
 * Run through a internal review in Holisticon BPM expert team
 
+== Breaking changes
+
+* the `CamundaBpmData.builder(xxx)` methods and implementing classes where renamed to `XxxWriter` since where did't follow the Builder pattern.
+
 == Features
 * Better documentation and a catch README
 * Provide type collection detector for SPIN/Jackson

@@ -21,7 +21,7 @@ public interface WriteAdapter<T> {
   /**
    * Writes a value as a transient variable.
    *
-   * @param value       value to rite.
+   * @param value       value to write.
    * @param isTransient allows to specify if the variable is transient.
    */
   void set(T value, boolean isTransient);
