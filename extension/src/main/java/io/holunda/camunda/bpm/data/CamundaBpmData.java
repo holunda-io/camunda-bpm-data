@@ -9,16 +9,20 @@ import io.holunda.camunda.bpm.data.factory.ListVariableFactory;
 import io.holunda.camunda.bpm.data.factory.MapVariableFactory;
 import io.holunda.camunda.bpm.data.factory.SetVariableFactory;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import io.holunda.camunda.bpm.data.reader.ProcessExecutionVariableReader;
+import io.holunda.camunda.bpm.data.reader.UserTaskVariableReader;
+import io.holunda.camunda.bpm.data.reader.VariableMapReader;
+import io.holunda.camunda.bpm.data.reader.VariableReader;
+import io.holunda.camunda.bpm.data.reader.VariableScopeReader;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.delegate.VariableScope;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Provides a collection of factory methods for creating variable factories.
@@ -229,5 +233,21 @@ public class CamundaBpmData {
     @NotNull
     public static UserTaskVariableBuilder builder(TaskService taskService, String taskId) {
         return new UserTaskVariableBuilder(taskService, taskId);
+    }
+
+    public static VariableReader reader(TaskService taskService, String taskId) {
+      return new UserTaskVariableReader(taskService, taskId);
+    }
+
+    public static VariableReader reader(RuntimeService runtimeService, String executionId) {
+      return new ProcessExecutionVariableReader(runtimeService, executionId);
+    }
+
+    public static VariableReader reader(VariableScope variableScope) {
+      return new VariableScopeReader(variableScope);
+    }
+
+    public static VariableReader reader(VariableMap variableMap) {
+      return new VariableMapReader(variableMap);
     }
 }

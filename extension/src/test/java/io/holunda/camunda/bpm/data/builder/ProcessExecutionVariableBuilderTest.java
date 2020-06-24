@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
 public class ProcessExecutionVariableBuilderTest {
 
     private static final VariableFactory<String> STRING = stringVariable("myString");
-    private RuntimeService runtimeService = Mockito.mock(RuntimeService.class);
+    private final RuntimeService runtimeService = Mockito.mock(RuntimeService.class);
     private String executionId;
     private String value = "value";
 

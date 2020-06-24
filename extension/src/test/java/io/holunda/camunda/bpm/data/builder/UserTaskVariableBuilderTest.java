@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
 public class UserTaskVariableBuilderTest {
 
     private static final VariableFactory<String> STRING = stringVariable("myString");
-    private TaskService taskService = Mockito.mock(TaskService.class);
+    private final TaskService taskService = Mockito.mock(TaskService.class);
     private String taskId;
     private String value = "value";
 
