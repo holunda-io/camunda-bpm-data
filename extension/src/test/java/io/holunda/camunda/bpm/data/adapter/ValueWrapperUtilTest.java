@@ -1,5 +1,10 @@
 package io.holunda.camunda.bpm.data.adapter;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import java.time.Instant;
+import java.util.Date;
 import org.camunda.bpm.engine.variable.type.PrimitiveValueType;
 import org.camunda.bpm.engine.variable.value.BooleanValue;
 import org.camunda.bpm.engine.variable.value.DateValue;
@@ -11,11 +16,6 @@ import org.camunda.bpm.engine.variable.value.ShortValue;
 import org.camunda.bpm.engine.variable.value.StringValue;
 import org.camunda.bpm.engine.variable.value.TypedValue;
 import org.junit.Test;
-
-import java.time.Instant;
-import java.util.Date;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class ValueWrapperUtilTest {
 
@@ -98,19 +98,27 @@ public class ValueWrapperUtilTest {
 
   @Test
   public void shouldReturnStringValue() {
-    TypedValue stringValue = ValueWrapperUtil.getTypedValue(String.class, String.class.getName(), false);
+    TypedValue stringValue = ValueWrapperUtil.getTypedValue(String.class, "foo", false);
     assertThat(stringValue).isInstanceOf(StringValue.class);
     assertThat(stringValue.getType()).isExactlyInstanceOf(PrimitiveValueType.STRING.getClass());
-    assertThat(stringValue.getValue()).isEqualTo(String.class.getName());
+    assertThat(stringValue.getValue()).isEqualTo("foo");
     assertThat(stringValue.isTransient()).isFalse();
 
-    stringValue = ValueWrapperUtil.getTypedValue(String.class, String.class.getName(), true);
+    stringValue = ValueWrapperUtil.getTypedValue(String.class, "foo", true);
     assertThat(stringValue).isInstanceOf(StringValue.class);
     assertThat(stringValue.getType()).isExactlyInstanceOf(PrimitiveValueType.STRING.getClass());
-    assertThat(stringValue.getValue()).isEqualTo(String.class.getName());
+    assertThat(stringValue.getValue()).isEqualTo("foo");
     assertThat(stringValue.isTransient()).isTrue();
   }
 
+  @Test
+  public void shouldReturnStringValueWhenValueIsNull() {
+    TypedValue stringValue = ValueWrapperUtil.getTypedValue(String.class, null, false);
+    assertThat(stringValue).isInstanceOf(StringValue.class);
+    assertThat(stringValue.getType()).isExactlyInstanceOf(PrimitiveValueType.STRING.getClass());
+    assertThat(stringValue.getValue()).isEqualTo(null);
+  }
+  
   @Test
   public void shouldReturnShortValue() {
     TypedValue shortValue = ValueWrapperUtil.getTypedValue(Short.class, Short.MIN_VALUE, false);
@@ -156,9 +164,10 @@ public class ValueWrapperUtilTest {
     assertThat(untypedValue.isTransient()).isTrue();
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void shouldThrowExceptionOnWrongType() {
-    ValueWrapperUtil.getTypedValue(Date.class, Instant.now(), false);
+    assertThatThrownBy(() -> ValueWrapperUtil.getTypedValue(Date.class, Instant.now(), false))
+      .isInstanceOf(IllegalArgumentException.class);
   }
 
 }

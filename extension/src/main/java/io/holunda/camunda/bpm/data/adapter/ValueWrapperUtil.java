@@ -39,7 +39,7 @@ public class ValueWrapperUtil {
      * @throws IllegalArgumentException if value and clazz are incompatible.
      */
     public static <T> TypedValue getTypedValue(Class<T> clazz, Object value, boolean isTransient) {
-        if (!clazz.isAssignableFrom(value.getClass())) {
+        if (value != null && !clazz.isAssignableFrom(value.getClass())) {
             throw new IllegalArgumentException("Couldn't create TypedValue for " + clazz.getSimpleName() + " from value " + value);
         }
 
