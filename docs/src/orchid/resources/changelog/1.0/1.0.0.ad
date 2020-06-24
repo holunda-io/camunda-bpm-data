@@ -8,10 +8,11 @@ version: 1.0.0
 
 == Breaking changes
 
-* the `CamundaBpmData.builder(xxx)` methods and implementing classes where renamed to `XxxWriter` since where did't follow the Builder pattern.
+* the `CamundaBpmData.builder(xxx)` methods and implementing classes where renamed to `XxxWriter` since where did't follow the Builder pattern. #49
 
 == Features
-* Better documentation and a catch README
+* Implementation of Anti-Corruption-Layer #47
+* Better documentation and catchy README
 * Provide type collection detector for SPIN/Jackson
 * VariableReader convenience methods to access multiple variables
 

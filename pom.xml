@@ -4,7 +4,7 @@
 
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data-parent</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0-transient_variable_mapping-SNAPSHOT</version>
   <name>${project.artifactId}</name>
   <description>Camunda BPM Data</description>
   <url>https://github.com/holunda-io/camunda-bpm-data/</url>
@@ -27,6 +27,7 @@
     <camunda-spring-boot.version>3.4.0</camunda-spring-boot.version>
     <groovy.version>2.4.5</groovy.version>
     <spin.version>1.8.0</spin.version>
+    <camunda-assert.version>5.0.0</camunda-assert.version>
 
     <jgiven.version>0.18.2</jgiven.version>
     <kotlin.version>1.3.61</kotlin.version>
@@ -47,7 +48,6 @@
   <modules>
     <module>extension</module>
     <module>extension-kotlin</module>
-    <module>spin-type-detector</module>
     <module>mockito</module>
   </modules>
 
@@ -124,6 +124,12 @@
         <version>${camunda-spring-boot.version}</version>
         <scope>test</scope>
       </dependency>
+      <dependency>
+        <groupId>org.camunda.bpm.assert</groupId>
+        <artifactId>camunda-bpm-assert</artifactId>
+        <version>${camunda-assert.version}</version>
+        <scope>test</scope>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -172,7 +178,6 @@
       <artifactId>assertj-core</artifactId>
       <scope>test</scope>
     </dependency>
-
   </dependencies>
 
   <build>

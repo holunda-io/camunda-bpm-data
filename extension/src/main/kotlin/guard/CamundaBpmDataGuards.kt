@@ -82,8 +82,7 @@ object CamundaBpmDataGuards {
      */
     @JvmStatic
     fun <T> matches(variableFactory: VariableFactory<T>,
-                    local: Boolean = false,
-                    matcher: Function<T, Boolean>) = variableFactory.matches(local) { matcher.apply(it) }
+                    matcher: Function<T, Boolean>, local: Boolean = false) = variableFactory.matches(local) { matcher.apply(it) }
 
     /**
      * Creates matches condition.
@@ -92,7 +91,7 @@ object CamundaBpmDataGuards {
      */
     @JvmStatic
     fun <T> matches(variableFactory: VariableFactory<T>,
-                    matcher: Function<T, Boolean>) = variableFactory.matches() { matcher.apply(it) }
+                    matcher: Function<T, Boolean>) = variableFactory.matches { matcher.apply(it) }
 
 }
 

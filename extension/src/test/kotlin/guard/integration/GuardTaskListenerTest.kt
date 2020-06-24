@@ -12,6 +12,7 @@ val ORDER_ID = stringVariable("orderID")
 
 class GuardTaskListenerTest {
 
+    @Suppress("RedundantVisibilityModifier")
     @get: Rule
     public val thrown = ExpectedException.none()
 

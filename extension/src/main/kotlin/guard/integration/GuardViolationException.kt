@@ -19,7 +19,7 @@ class GuardViolationException(
          */
         @JvmStatic
         fun createMessage(message: String, violations: List<GuardViolation<*>>): String {
-            return "$message\n" + violations.joinToString { "\t${it.message}\n" }
+            return "$message\n" + violations.joinToString(separator = ",\n") { "\t${it.message}" }
         }
     }
 }
