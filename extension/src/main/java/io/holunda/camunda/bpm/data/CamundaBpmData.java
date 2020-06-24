@@ -6,6 +6,11 @@ import io.holunda.camunda.bpm.data.factory.ListVariableFactory;
 import io.holunda.camunda.bpm.data.factory.MapVariableFactory;
 import io.holunda.camunda.bpm.data.factory.SetVariableFactory;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import io.holunda.camunda.bpm.data.reader.ProcessExecutionVariableReader;
+import io.holunda.camunda.bpm.data.reader.UserTaskVariableReader;
+import io.holunda.camunda.bpm.data.reader.VariableMapReader;
+import io.holunda.camunda.bpm.data.reader.VariableReader;
+import io.holunda.camunda.bpm.data.reader.VariableScopeReader;
 import io.holunda.camunda.bpm.data.writer.ProcessExecutionVariableWriter;
 import io.holunda.camunda.bpm.data.writer.UserTaskVariableWriter;
 import io.holunda.camunda.bpm.data.writer.VariableMapWriter;
@@ -216,5 +221,47 @@ public class CamundaBpmData {
   @NotNull
   public static UserTaskVariableWriter writer(TaskService taskService, String taskId) {
     return new UserTaskVariableWriter(taskService, taskId);
+  }
+
+  /**
+   * Creates a new task variable reader.
+   *
+   * @param taskService the camunda taskService
+   * @param taskId the id of the task to use
+   * @return variable reader working on task
+   */
+  @NotNull
+  public static VariableReader reader(TaskService taskService, String taskId) {
+    return new UserTaskVariableReader(taskService, taskId);
+  }
+
+  /**
+   * Creates a new execution variable reader.
+   *
+   * @param runtimeService the camunda runtime service
+   * @param executionId the executionId to use
+   * @return variable reader working on execution
+   */
+  public static VariableReader reader(RuntimeService runtimeService, String executionId) {
+    return new ProcessExecutionVariableReader(runtimeService, executionId);
+  }
+
+  /**
+   * Creates a new variableScope variable reader.
+   *
+   * @param variableScope the variable scope to use (DelegateExecution, DelegateTask)
+   * @return variable reader working on variableScope
+   */
+  public static VariableReader reader(VariableScope variableScope) {
+    return new VariableScopeReader(variableScope);
+  }
+
+  /**
+   * Creates a new variableMap variable reader.
+   * @param variableMap the variableMap to use
+   * @return variable reader working on variableMap
+   */
+  public static VariableReader reader(VariableMap variableMap) {
+    return new VariableMapReader(variableMap);
   }
 }

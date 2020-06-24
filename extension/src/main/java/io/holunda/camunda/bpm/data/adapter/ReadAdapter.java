@@ -18,7 +18,6 @@ public interface ReadAdapter<T> {
   /**
    * Reads a variable and returns a value if exists or an empty.
    * @return optional.
-   * @exception IllegalStateException if the required variable can't be read.
    */
   Optional<T> getOptional();
 
@@ -32,7 +31,6 @@ public interface ReadAdapter<T> {
   /**
    * Reads a local variable and returns a value if exists or an empty.
    * @return optional.
-   * @exception IllegalStateException if the required variable can't be read.
    */
   Optional<T> getLocalOptional();
 

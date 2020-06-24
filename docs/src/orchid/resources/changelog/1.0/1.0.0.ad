@@ -13,6 +13,7 @@ version: 1.0.0
 == Features
 * Better documentation and a catch README
 * Provide type collection detector for SPIN/Jackson
+* VariableReader convenience methods to access multiple variables
 
 == Bugfixes
 
