@@ -60,7 +60,7 @@ public class ValueWrapperUtil {
         } else if (Object.class.equals(clazz)) {
             return objectValue(value, isTransient).create();
         } else {
-            // fallback for null-type
+            // fallback for unknown-type
             return untypedValue(value, isTransient);
         }
     }
