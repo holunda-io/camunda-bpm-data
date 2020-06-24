@@ -13,3 +13,4 @@ version: 1.0.0
 == Bugfixes
 
 * Evaluation of complex guards fail if exists condition isn't fulfilled.
+* NPE passing null to set, see #46
