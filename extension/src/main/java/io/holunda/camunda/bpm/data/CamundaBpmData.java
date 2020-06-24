@@ -6,13 +6,13 @@ import io.holunda.camunda.bpm.data.factory.ListVariableFactory;
 import io.holunda.camunda.bpm.data.factory.MapVariableFactory;
 import io.holunda.camunda.bpm.data.factory.SetVariableFactory;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
-import io.holunda.camunda.bpm.data.reader.ProcessExecutionVariableReader;
-import io.holunda.camunda.bpm.data.reader.UserTaskVariableReader;
+import io.holunda.camunda.bpm.data.reader.RuntimeServiceVariableReader;
+import io.holunda.camunda.bpm.data.reader.TaskServiceVariableReader;
 import io.holunda.camunda.bpm.data.reader.VariableMapReader;
 import io.holunda.camunda.bpm.data.reader.VariableReader;
 import io.holunda.camunda.bpm.data.reader.VariableScopeReader;
-import io.holunda.camunda.bpm.data.writer.ProcessExecutionVariableWriter;
-import io.holunda.camunda.bpm.data.writer.UserTaskVariableWriter;
+import io.holunda.camunda.bpm.data.writer.RuntimeServiceVariableWriter;
+import io.holunda.camunda.bpm.data.writer.TaskServiceVariableWriter;
 import io.holunda.camunda.bpm.data.writer.VariableMapWriter;
 import io.holunda.camunda.bpm.data.writer.VariableScopeWriter;
 import java.util.Date;
@@ -207,8 +207,8 @@ public class CamundaBpmData {
    * @return new writer working on provided process execution.
    */
   @NotNull
-  public static ProcessExecutionVariableWriter writer(RuntimeService runtimeService, String executionId) {
-    return new ProcessExecutionVariableWriter(runtimeService, executionId);
+  public static RuntimeServiceVariableWriter writer(RuntimeService runtimeService, String executionId) {
+    return new RuntimeServiceVariableWriter(runtimeService, executionId);
   }
 
   /**
@@ -219,31 +219,31 @@ public class CamundaBpmData {
    * @return new writer working on provided user task.
    */
   @NotNull
-  public static UserTaskVariableWriter writer(TaskService taskService, String taskId) {
-    return new UserTaskVariableWriter(taskService, taskId);
+  public static TaskServiceVariableWriter writer(TaskService taskService, String taskId) {
+    return new TaskServiceVariableWriter(taskService, taskId);
   }
 
   /**
    * Creates a new task variable reader.
    *
-   * @param taskService the camunda taskService
+   * @param taskService the Camunda task service
    * @param taskId the id of the task to use
    * @return variable reader working on task
    */
   @NotNull
   public static VariableReader reader(TaskService taskService, String taskId) {
-    return new UserTaskVariableReader(taskService, taskId);
+    return new TaskServiceVariableReader(taskService, taskId);
   }
 
   /**
    * Creates a new execution variable reader.
    *
-   * @param runtimeService the camunda runtime service
+   * @param runtimeService the Camunda runtime service
    * @param executionId the executionId to use
    * @return variable reader working on execution
    */
   public static VariableReader reader(RuntimeService runtimeService, String executionId) {
-    return new ProcessExecutionVariableReader(runtimeService, executionId);
+    return new RuntimeServiceVariableReader(runtimeService, executionId);
   }
 
   /**

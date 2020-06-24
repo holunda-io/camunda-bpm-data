@@ -4,7 +4,7 @@
 
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data-parent</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0-module_structure-SNAPSHOT</version>
   <name>${project.artifactId}</name>
   <description>Camunda BPM Data</description>
   <url>https://github.com/holunda-io/camunda-bpm-data/</url>
@@ -47,8 +47,7 @@
 
   <modules>
     <module>extension</module>
-    <module>extension-kotlin</module>
-    <module>mockito</module>
+    <module>test</module>
   </modules>
 
   <dependencyManagement>

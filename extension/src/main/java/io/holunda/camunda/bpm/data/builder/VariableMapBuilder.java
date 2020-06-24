@@ -5,6 +5,7 @@ import io.holunda.camunda.bpm.data.writer.VariableMapWriter;
 import java.util.Collections;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.Variables;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Builder to create {@link VariableMap} using {@link VariableFactory}.
@@ -13,6 +14,9 @@ public class VariableMapBuilder {
 
   private final VariableMapWriter writer;
 
+  /**
+   * Constructs a builder.
+   */
   public VariableMapBuilder() {
     this.writer = new VariableMapWriter(Variables.createVariables());
   }
@@ -25,6 +29,7 @@ public class VariableMapBuilder {
    * @param <T> type of value
    * @return current builder instance
    */
+  @NotNull
   public <T> VariableMapBuilder set(VariableFactory<T> variableFactory, T value) {
     writer.set(variableFactory, value);
     return this;
@@ -39,6 +44,7 @@ public class VariableMapBuilder {
    * @param <T> type of value
    * @return current builder instance
    */
+  @NotNull
   public <T> VariableMapBuilder set(VariableFactory<T> variableFactory, T value, boolean isTransient) {
     writer.set(variableFactory, value, isTransient);
     return this;
@@ -47,6 +53,7 @@ public class VariableMapBuilder {
   /**
    * @return instance of {@link VariableMap} containing set values
    */
+  @NotNull
   public VariableMap build() {
     return Variables.fromMap(Collections.unmodifiableMap(writer.variables()));
   }

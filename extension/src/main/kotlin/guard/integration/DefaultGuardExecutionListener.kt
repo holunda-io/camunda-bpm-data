@@ -8,11 +8,11 @@ import org.slf4j.LoggerFactory
 
 /**
  * Default guard execution listener, evaluating the given guard conditions on the execution.
- * @param variableConditions condition to check by the guard.
+ * @param guard guard to check.
  * @param throwViolations flag controlling if the violation should lead to an exception.
  */
 class DefaultGuardExecutionListener(
-    val variableConditions: List<VariableGuardCondition<*>>,
+    val guard: VariablesGuard,
     val throwViolations: Boolean = true
 ) : ExecutionListener {
 
@@ -20,7 +20,12 @@ class DefaultGuardExecutionListener(
         private val logger = LoggerFactory.getLogger(DefaultGuardExecutionListener::class.java)
     }
 
-    private val guard = VariablesGuard(variableConditions)
+    /**
+     * Constructs an execution listener using the provided conditions.
+     * @param variableConditions condition to check by the guard.
+     * @param throwViolations flag controlling if the violation should lead to an exception.
+     */
+    constructor(variableConditions: List<VariableGuardCondition<*>>, throwViolations: Boolean) : this(VariablesGuard(variableConditions), throwViolations)
 
     override fun notify(execution: DelegateExecution) {
         val violations = guard.evaluate(execution)

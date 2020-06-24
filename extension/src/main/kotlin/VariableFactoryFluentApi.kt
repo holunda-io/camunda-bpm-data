@@ -1,10 +1,10 @@
 package io.holunda.camunda.bpm.data
 
-import io.holunda.camunda.bpm.data.writer.ProcessExecutionVariableWriter
-import io.holunda.camunda.bpm.data.writer.UserTaskVariableWriter
+import io.holunda.camunda.bpm.data.writer.RuntimeServiceVariableWriter
+import io.holunda.camunda.bpm.data.writer.TaskServiceVariableWriter
 import io.holunda.camunda.bpm.data.factory.VariableFactory
-import io.holunda.camunda.bpm.data.reader.ProcessExecutionVariableReader
-import io.holunda.camunda.bpm.data.reader.UserTaskVariableReader
+import io.holunda.camunda.bpm.data.reader.RuntimeServiceVariableReader
+import io.holunda.camunda.bpm.data.reader.TaskServiceVariableReader
 import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.delegate.VariableScope
@@ -99,22 +99,22 @@ fun <T> VariableScope.updateLocal(factory: VariableFactory<T>, valueProcessor: (
  * Helper to access runtime service writer.
  * @param executionId id of the execution.
  */
-fun RuntimeService.writer(executionId: String) = ProcessExecutionVariableWriter(this, executionId)
+fun RuntimeService.writer(executionId: String) = RuntimeServiceVariableWriter(this, executionId)
 
 /**
  * Helper to access task service writer.
  * @param taskId id of the task.
  */
-fun TaskService.writer(taskId: String) = UserTaskVariableWriter(this, taskId)
+fun TaskService.writer(taskId: String) = TaskServiceVariableWriter(this, taskId)
 
 /**
  * Helper to access runtime service reader.
  * @param executionId id of the execution.
  */
-fun RuntimeService.reader(executionId: String) = ProcessExecutionVariableReader(this, executionId)
+fun RuntimeService.reader(executionId: String) = RuntimeServiceVariableReader(this, executionId)
 
 /**
  * Helper to access task service reader.
  * @param taskId id of the task.
  */
-fun TaskService.reader(taskId: String) = UserTaskVariableReader(this, taskId)
+fun TaskService.reader(taskId: String) = TaskServiceVariableReader(this, taskId)

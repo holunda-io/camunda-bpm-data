@@ -149,17 +149,55 @@ class SomeService {
 }
 ----
 
-=== ACL: Wrap variables to correlate
+=== Fluent API to read several variables
 
 [source,java]
 ----
 @Component
 class SomeService {
 
-  private static final AntiCorruptionLayer MESSAGE_ACL = CamundaBpmDataMapper.identityReplace("__transient", true);
+  @Autowired
+  private RuntimeService runtimeService;
+  @Autowired
+  private TaskService taskService;
+
+  public String readValuesFromExecution(String executionId) {
+      VariableReader reader = CamundaBpmData.reader(runtimeService, executionId);
+      String orderId = reader.get(ORDER_ID);
+      Boolean orderApproved = reader.get(ORDER_APPROVED);
+      if (orderApproved) {
+          // ...
+      }
+      return orderId;
+  }
+
+  public String readValuesFromTask(String taskId) {
+      VariableReader reader = CamundaBpmData.reader(taskService, taskId);
+      String orderId = reader.get(ORDER_ID);
+      Boolean orderApproved = reader.get(ORDER_APPROVED);
+      if (orderApproved) {
+          // ...
+      }
+      return orderId;
+  }
+}
+----
+
+
+=== Anti-Corruption-Layer: Wrap variables to correlate
+
+[source,java]
+----
+@Component
+class SomeService {
+
+  private static final AntiCorruptionLayer MESSAGE_ACL = CamundaBpmDataMapper.identityReplace(
+      "__transient",
+      true
+  );
 
   public void correlate() {
-      VariableMap variables = CamundaBpmData.writer()
+      VariableMap variables = CamundaBpmData.builder()
           .set(ORDER_ID, "4711")
           .set(ORDER_APPROVED, false)
           .build();
@@ -168,7 +206,7 @@ class SomeService {
 }
 ----
 
-=== ACL: Check and wrap variables to correlate
+=== Anti-Corruption-Layer: Check and wrap variables to correlate
 
 [source,java]
 ----
@@ -183,7 +221,7 @@ class SomeService {
     );
 
   public void correlate() {
-      VariableMap variables = CamundaBpmData.writer()
+      VariableMap variables = CamundaBpmData.builder()
           .set(ORDER_ID, "4711")
           .set(ORDER_APPROVED, false)
           .build();

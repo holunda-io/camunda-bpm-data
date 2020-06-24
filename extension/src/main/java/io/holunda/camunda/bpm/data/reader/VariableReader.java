@@ -2,6 +2,8 @@ package io.holunda.camunda.bpm.data.reader;
 
 import io.holunda.camunda.bpm.data.adapter.ReadAdapter;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Optional;
 
 /**
@@ -16,6 +18,7 @@ public interface VariableReader {
    * @param <T> type of value
    * @return value of variable or empty()
    */
+  @NotNull
   <T> Optional<T> getOptional(VariableFactory<T> variableFactory);
 
   /**
@@ -26,6 +29,7 @@ public interface VariableReader {
    * @return value of variable
    * @throws IllegalStateException if variable is not set
    */
+  @NotNull
   <T> T get(VariableFactory<T> variableFactory);
 
   /**
@@ -36,6 +40,7 @@ public interface VariableReader {
    * @return value of variable
    * @throws IllegalStateException if variable is not set
    */
+  @NotNull
   <T> T getLocal(VariableFactory<T> variableFactory);
 
   /**
@@ -45,6 +50,7 @@ public interface VariableReader {
    * @param <T> type of value
    * @return value of variable or empty()
    */
+  @NotNull
   <T> Optional<T> getLocalOptional(VariableFactory<T> variableFactory);
 
 }

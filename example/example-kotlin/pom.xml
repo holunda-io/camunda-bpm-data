@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data.example</groupId>
     <artifactId>camunda-bpm-data-example-parent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0-module_structure-SNAPSHOT</version>
   </parent>
 
   <artifactId>camunda-bpm-data-example-kotlin</artifactId>
@@ -20,10 +20,6 @@
     <dependency>
       <groupId>io.holunda.data</groupId>
       <artifactId>camunda-bpm-data</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.holunda.data</groupId>
-      <artifactId>camunda-bpm-data-kotlin</artifactId>
     </dependency>
     <dependency>
       <groupId>io.holunda.data.example</groupId>
@@ -119,7 +115,7 @@
     <!-- Testing -->
     <dependency>
       <groupId>io.holunda.data</groupId>
-      <artifactId>camunda-bpm-data-mockito</artifactId>
+      <artifactId>camunda-bpm-data-test</artifactId>
       <scope>test</scope>
     </dependency>
 
