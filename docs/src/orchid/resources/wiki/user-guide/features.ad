@@ -5,8 +5,7 @@ title: Features
 == {{ page.title }}
 
 * Process Variables
-- The library provides a way to construct generic adapter for every process variable.
-- The adapter contains variable name.
+- The library provides a way to construct a generic adapter for every process variable.
 - The adapter contains variable type.
 - The adapter can be applied in any context (`RuntimeService`, `TaskService`, `DelegateExecution`, `DelegateTask`, `VariableMap`).
 - The adapter offers methods to read, write, update and remove variable values.
@@ -23,9 +22,15 @@ title: Features
 - Condition to check if variable matches condition specified by a custom function.
 - `AbstractGuardTaskListener` to construct variable conditions guards easily.
 - `AbstractGuardExecutionListener` to construct variable conditions guards easily.
+* Anti-Corruption-Layer
+- Generic support for `AntiCorruptionLayer` for protection and influence of variable modification in signalling and message correlation.
+- Provide helper methods for the client to wrap variables in a transient carrier.
+- Provide execution listener to handle `VariableGuard`-based conditions and `VariableMapTransformer`-based modifications.
+- Provide task listener to handle `VariableGuard`-based conditions and `VariableMapTransformer`-based modifications.
+- Provide factory methods to create `AntiCorruptionLayer` with a `VariableGuard` (see `CamundaBpmDataACL`)
+- Provide factory methods to create `AntiCorruptionLayer` without a `VariableGuard` (see `CamundaBpmDataMapper`)
 * Testing variable access and mocking `RuntimeService` and `TaskService`.
 - Builder to create Mockito-based behaviour of `RuntimeService` accessing variables.
 - Builder to create Mockito-based behaviour of `TaskServiceService` accessing variables.
 - Verifier to check correct access to variables in  `RuntimeService`
 - Verifier to check correct access to variables in  `TaskService`
-

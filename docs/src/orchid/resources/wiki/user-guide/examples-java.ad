@@ -149,6 +149,48 @@ class SomeService {
 }
 ----
 
+=== ACL: Wrap variables to correlate
+
+[source,java]
+----
+@Component
+class SomeService {
+
+  private static final AntiCorruptionLayer MESSAGE_ACL = CamundaBpmDataMapper.identityReplace("__transient", true);
+
+  public void correlate() {
+      VariableMap variables = CamundaBpmData.builder()
+          .set(ORDER_ID, "4711")
+          .set(ORDER_APPROVED, false)
+          .build();
+      runtimeService.correlateMessage("message_1", MESSAGE_ACL.wrap(variables));
+  }
+}
+----
+
+=== ACL: Check and wrap variables to correlate
+
+[source,java]
+----
+@Component
+class SomeService {
+
+    private static AntiCorruptionLayer MY_ACL = CamundaBpmDataACL.guardTransformingReplace(
+        "__transient",
+        true,
+        new VariablesGuard(exists(ORDER_ID)),
+        IdentityVariableMapTransformer.INSTANCE
+    );
+
+  public void correlate() {
+      VariableMap variables = CamundaBpmData.builder()
+          .set(ORDER_ID, "4711")
+          .set(ORDER_APPROVED, false)
+          .build();
+      runtimeService.correlateMessage("message_1", MESSAGE_ACL.checkAndWrap(variables));
+  }
+}
+----
 
 === Example project
 

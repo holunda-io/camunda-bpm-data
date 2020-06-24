@@ -40,7 +40,34 @@ class CamundaBpmDataACLTest {
         assertThat(acl.variableMapTransformer).isEqualTo(IdentityVariableMapTransformer)
         assertThat(acl.factory).isEqualTo(TRANSIENT_VAR)
         assertThat(acl.valueApplicationStrategy).isEqualTo(GlobalScopeReplaceStrategy)
+    }
 
+    @Test
+    fun `should create guardTransformingReplace global`() {
+        val acl = CamundaBpmDataACL.guardTransformingReplace(
+            TRANSIENT_VAR.name,
+            false,
+            VariablesGuard(exists(FOO)),
+            IdentityVariableMapTransformer
+        )
+        assertThat(acl.precondition).isEqualTo(VariablesGuard(exists(FOO)))
+        assertThat(acl.variableMapTransformer).isEqualTo(IdentityVariableMapTransformer)
+        assertThat(acl.factory).isEqualTo(TRANSIENT_VAR)
+        assertThat(acl.valueApplicationStrategy).isEqualTo(GlobalScopeReplaceStrategy)
+    }
+
+    @Test
+    fun `should create guardTransformingReplace local`() {
+        val acl = CamundaBpmDataACL.guardTransformingReplace(
+            TRANSIENT_VAR.name,
+            true,
+            VariablesGuard(exists(FOO)),
+            IdentityVariableMapTransformer
+        )
+        assertThat(acl.precondition).isEqualTo(VariablesGuard(exists(FOO)))
+        assertThat(acl.variableMapTransformer).isEqualTo(IdentityVariableMapTransformer)
+        assertThat(acl.factory).isEqualTo(TRANSIENT_VAR)
+        assertThat(acl.valueApplicationStrategy).isEqualTo(LocalScopeReplaceStrategy)
     }
 
 }

@@ -7,8 +7,8 @@ version: 1.0.0
 * Run through a internal review in Holisticon BPM expert team
 
 == Features
+* Implementation of Anti-Corruption-Layer
 * Better documentation and a catch README
-* Provide type collection detector for SPIN/Jackson
 
 == Bugfixes
 
