@@ -11,6 +11,10 @@ public class VariableMapReader implements VariableReader {
 
   private final VariableMap variableMap;
 
+  /**
+   * Constructs the reader using the specified variable map.
+   * @param variableMap map to operate on.
+   */
   public VariableMapReader(VariableMap variableMap) {
     this.variableMap = variableMap;
   }

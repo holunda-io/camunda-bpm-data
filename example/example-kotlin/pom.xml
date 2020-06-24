@@ -22,10 +22,6 @@
       <artifactId>camunda-bpm-data</artifactId>
     </dependency>
     <dependency>
-      <groupId>io.holunda.data</groupId>
-      <artifactId>camunda-bpm-data-kotlin</artifactId>
-    </dependency>
-    <dependency>
       <groupId>io.holunda.data.example</groupId>
       <artifactId>camunda-bpm-data-spin-type-detector</artifactId>
     </dependency>
@@ -119,7 +115,7 @@
     <!-- Testing -->
     <dependency>
       <groupId>io.holunda.data</groupId>
-      <artifactId>camunda-bpm-data-mockito</artifactId>
+      <artifactId>camunda-bpm-data-test</artifactId>
       <scope>test</scope>
     </dependency>
 

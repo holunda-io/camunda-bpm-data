@@ -8,19 +8,24 @@ import org.slf4j.LoggerFactory
 
 /**
  * Default guard execution listener, evaluating the given guard conditions on the task.
- * @param variableConditions condition to check by the guard.
+ * @param guard guard to check.
  * @param throwViolations flag controlling if the violation should lead to an exception.
  */
 class DefaultGuardTaskListener(
-    val variableConditions: List<VariableGuardCondition<*>>,
+    val guard: VariablesGuard,
     val throwViolations: Boolean = true
 ) : TaskListener {
 
     companion object {
-        private val logger = LoggerFactory.getLogger(DefaultGuardExecutionListener::class.java)
+        private val logger = LoggerFactory.getLogger(DefaultGuardTaskListener::class.java)
     }
 
-    private val guard = VariablesGuard(variableConditions)
+    /**
+     * Constructs an execution listener using the provided conditions.
+     * @param variableConditions condition to check by the guard.
+     * @param throwViolations flag controlling if the violation should lead to an exception.
+     */
+    constructor(variableConditions: List<VariableGuardCondition<*>>, throwViolations: Boolean) : this(VariablesGuard(variableConditions), throwViolations)
 
     override fun notify(task: DelegateTask) {
         val violations = guard.evaluate(task)

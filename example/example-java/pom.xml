@@ -26,6 +26,7 @@
       <artifactId>camunda-bpm-data-spin-type-detector</artifactId>
       <version>${project.version}</version>
     </dependency>
+
     <dependency>
       <groupId>io.toolisticon.springboot</groupId>
       <artifactId>springboot-swagger-starter</artifactId>
@@ -85,7 +86,7 @@
     <!-- Testing -->
     <dependency>
       <groupId>io.holunda.data</groupId>
-      <artifactId>camunda-bpm-data-mockito</artifactId>
+      <artifactId>camunda-bpm-data-test</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>

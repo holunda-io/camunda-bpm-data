@@ -5,6 +5,8 @@ import org.camunda.bpm.engine.ProcessEngineException
 
 /**
  * Exception indicating a guard violation.
+ * @param violations list of guard violations.
+ * @param reason reason of failure.
  */
 class GuardViolationException(
     violations: List<GuardViolation<*>>,

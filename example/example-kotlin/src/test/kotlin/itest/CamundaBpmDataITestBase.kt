@@ -58,7 +58,6 @@ import org.camunda.bpm.engine.variable.VariableMap
 import org.camunda.bpm.engine.variable.Variables.createVariables
 import org.camunda.bpm.model.bpmn.Bpmn
 import org.camunda.bpm.model.bpmn.BpmnModelInstance
-import org.camunda.bpm.model.dmn.Dmn
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.SpringBootConfiguration

@@ -9,7 +9,7 @@
     <version>1.0.0-module_structure-SNAPSHOT</version>
   </parent>
 
-  <artifactId>camunda-bpm-data-mockito</artifactId>
+  <artifactId>camunda-bpm-data-test</artifactId>
   <name>${project.artifactId}</name>
   <packaging>jar</packaging>
 
@@ -22,7 +22,7 @@
 
     <dependency>
       <groupId>io.holunda.data</groupId>
-      <artifactId>camunda-bpm-data-kotlin</artifactId>
+      <artifactId>camunda-bpm-data</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>

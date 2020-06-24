@@ -3,6 +3,7 @@ package io.holunda.camunda.bpm.data.writer;
 import io.holunda.camunda.bpm.data.adapter.WriteAdapter;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.variable.VariableMap;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Inverting calls to {@link io.holunda.camunda.bpm.data.adapter.WriteAdapter}.
@@ -20,6 +21,7 @@ public interface VariableWriter<S extends VariableWriter<S>> {
    * @return current writer instance
    * @see io.holunda.camunda.bpm.data.adapter.WriteAdapter#set(Object)
    */
+  @NotNull
   <T> S set(VariableFactory<T> variableFactory, T value);
 
   /**
@@ -32,6 +34,7 @@ public interface VariableWriter<S extends VariableWriter<S>> {
    * @return current writer instance
    * @see io.holunda.camunda.bpm.data.adapter.WriteAdapter#set(Object, boolean)
    */
+  @NotNull
   <T> S set(VariableFactory<T> variableFactory, T value, boolean isTransient);
 
   /**
@@ -42,6 +45,7 @@ public interface VariableWriter<S extends VariableWriter<S>> {
    * @return current writer instance
    * @see WriteAdapter#remove()
    */
+  @NotNull
   <T> S remove(VariableFactory<T> variableFactory);
 
   /**
@@ -49,6 +53,7 @@ public interface VariableWriter<S extends VariableWriter<S>> {
    *
    * @return variables.
    */
+  @NotNull
   VariableMap variables();
 
 }

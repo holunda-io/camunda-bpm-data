@@ -143,7 +143,39 @@ class SomeService(
 }
 ----
 
-=== ACL: Wrap variables to correlate
+=== Fluent API to read several variables
+
+[source,kotlin]
+----
+@Component
+class SomeService(
+  private val runtimeService: RuntimeService,
+  private val taskService: TaskService
+) {
+
+  fun readValuesFromExecution(executionId: String): String {
+      val reader = CamundaBpmData.reader(runtimeService, executionId)
+      val orderId = reader.get(ORDER_ID)
+      val orderApproved = reader.get(ORDER_APPROVED)
+      if (orderApproved) {
+          // ...
+      }
+      return orderId
+  }
+
+  fun readValuesFromTask(taskId: String ): String {
+      val reader = CamundaBpmData.reader(taskService, taskId)
+      val orderId = reader.get(ORDER_ID)
+      val orderApproved = reader.get(ORDER_APPROVED)
+      if (orderApproved) {
+          // ...
+      }
+      return orderId
+  }
+}
+----
+
+=== Anti-Corruption-Layer: Wrap variables to correlate
 
 [source,kotlin]
 ----
@@ -162,7 +194,7 @@ class SomeService {
 }
 ----
 
-=== ACL: Check and wrap variables to correlate
+=== Anti-Corruption-Layer: Check and wrap variables to correlate
 
 [source,kotlin]
 ----
