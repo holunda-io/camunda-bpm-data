@@ -4,6 +4,9 @@ import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import java.util.Optional;
 import org.camunda.bpm.engine.RuntimeService;
 
+/**
+ * Allows reading multiple variable values from {@link RuntimeService#getVariable(String, String)}.
+ */
 public class ProcessExecutionVariableReader implements VariableReader {
 
   private final RuntimeService runtimeService;

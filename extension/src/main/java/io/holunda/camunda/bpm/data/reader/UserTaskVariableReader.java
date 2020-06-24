@@ -4,6 +4,9 @@ import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import java.util.Optional;
 import org.camunda.bpm.engine.TaskService;
 
+/**
+ * Allows reading multiple variable values from {@link TaskService#getVariable(String, String)}.
+ */
 public class UserTaskVariableReader implements VariableReader {
 
   private final TaskService taskService;
