@@ -6,10 +6,17 @@ version: 1.0.0
 
 * Run through a internal review in Holisticon BPM expert team
 
+== Breaking changes
+
+* the `CamundaBpmData.builder(xxx)` methods and implementing classes where renamed to `XxxWriter` since where did't follow the Builder pattern. #49
+
 == Features
-* Implementation of Anti-Corruption-Layer
-* Better documentation and a catch README
+* Implementation of Anti-Corruption-Layer #47
+* Better documentation and catchy README
+* Provide type collection detector for SPIN/Jackson
+* VariableReader convenience methods to access multiple variables
 
 == Bugfixes
 
 * Evaluation of complex guards fail if exists condition isn't fulfilled.
+* NPE passing null to set, see #46

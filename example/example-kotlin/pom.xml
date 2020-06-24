@@ -26,7 +26,7 @@
       <artifactId>camunda-bpm-data-kotlin</artifactId>
     </dependency>
     <dependency>
-      <groupId>io.holunda.data</groupId>
+      <groupId>io.holunda.data.example</groupId>
       <artifactId>camunda-bpm-data-spin-type-detector</artifactId>
     </dependency>
 

@@ -103,7 +103,7 @@ class JavaDelegates {
   public ExecutionListener removeProcessVariables() {
     return execution ->
     {
-      CamundaBpmData.builder(execution)
+      CamundaBpmData.writer(execution)
           .remove(ORDER_ID)
           .remove(ORDER)
           .remove(ORDER_APPROVED)
@@ -127,20 +127,20 @@ class SomeService {
   private TaskService taskService;
 
   public void setNewValuesForExecution(String executionId, String orderId, Boolean orderApproved) {
-      CamundaBpmData.builder(runtimeService, executionId)
+      CamundaBpmData.writer(runtimeService, executionId)
           .set(ORDER_ID, orderId)
           .set(ORDER_APPROVED, orderApproved)
           .update(ORDER_TOTAL, amount -> amount.add(10));
   }
 
   public void setNewValuesForTask(String taskId, String orderId, Boolean orderApproved) {
-      CamundaBpmData.builder(taskService, taskId)
+      CamundaBpmData.writer(taskService, taskId)
           .set(ORDER_ID, orderId)
           .set(ORDER_APPROVED, orderApproved);
   }
 
   public void start() {
-      VariableMap variables = CamundaBpmData.builder()
+      VariableMap variables = CamundaBpmData.writer()
           .set(ORDER_ID, "4711")
           .set(ORDER_APPROVED, false)
           .build();
@@ -159,7 +159,7 @@ class SomeService {
   private static final AntiCorruptionLayer MESSAGE_ACL = CamundaBpmDataMapper.identityReplace("__transient", true);
 
   public void correlate() {
-      VariableMap variables = CamundaBpmData.builder()
+      VariableMap variables = CamundaBpmData.writer()
           .set(ORDER_ID, "4711")
           .set(ORDER_APPROVED, false)
           .build();
@@ -183,7 +183,7 @@ class SomeService {
     );
 
   public void correlate() {
-      VariableMap variables = CamundaBpmData.builder()
+      VariableMap variables = CamundaBpmData.writer()
           .set(ORDER_ID, "4711")
           .set(ORDER_APPROVED, false)
           .build();

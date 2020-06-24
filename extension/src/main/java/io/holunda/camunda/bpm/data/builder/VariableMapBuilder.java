@@ -1,111 +1,53 @@
 package io.holunda.camunda.bpm.data.builder;
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import io.holunda.camunda.bpm.data.writer.VariableMapWriter;
+import java.util.Collections;
 import org.camunda.bpm.engine.variable.VariableMap;
-
-import java.util.function.Function;
-
-import static org.camunda.bpm.engine.variable.Variables.createVariables;
+import org.camunda.bpm.engine.variable.Variables;
 
 /**
- * Variable map builder allowing for fluent variable setting.
+ * Builder to create {@link VariableMap} using {@link VariableFactory}.
  */
 public class VariableMapBuilder {
 
-    private final VariableMap variables;
+  private final VariableMapWriter writer;
 
-    /**
-     * Creates a builder with empty variables.
-     */
-    public VariableMapBuilder() {
-        this(createVariables());
-    }
+  public VariableMapBuilder() {
+    this.writer = new VariableMapWriter(Variables.createVariables());
+  }
 
-    /**
-     * Creates a builder with provided variable map.
-     *
-     * @param variables variables to work on.
-     */
-    public VariableMapBuilder(VariableMap variables) {
-        this.variables = variables;
-    }
+  /**
+   * Sets the value for the provided variable and returns the builder (fluently).
+   *
+   * @param variableFactory the variable
+   * @param value the value
+   * @param <T> type of value
+   * @return current builder instance
+   */
+  public <T> VariableMapBuilder set(VariableFactory<T> variableFactory, T value) {
+    writer.set(variableFactory, value);
+    return this;
+  }
 
-    /**
-     * Returns the resulting variables.
-     *
-     * @return variables.
-     */
-    public VariableMap build() {
-        return this.variables;
-    }
+  /**
+   * Sets the (transient) value for the provided variable and returns the builder (fluently).
+   *
+   * @param variableFactory the variable
+   * @param value the value
+   * @param isTransient if true, the variable is transient, default false.
+   * @param <T> type of value
+   * @return current builder instance
+   */
+  public <T> VariableMapBuilder set(VariableFactory<T> variableFactory, T value, boolean isTransient) {
+    writer.set(variableFactory, value, isTransient);
+    return this;
+  }
 
-    /**
-     * Sets the value for the provided variable and returns the builder (fluently).
-     *
-     * @param factory variable factory.
-     * @param value   value to set.
-     * @param <T>     value type.
-     *
-     * @return fluent builder.
-     */
-    public <T> VariableMapBuilder set(VariableFactory<T> factory, T value) {
-        return this.set(factory, value, false);
-    }
-
-    /**
-     * Sets the value for the provided variable and returns the builder (fluently).
-     *
-     * @param factory     variable factory.
-     * @param value       value to set.
-     * @param isTransient transient flag.
-     * @param <T>         value type.
-     *
-     * @return fluent builder.
-     */
-    public <T> VariableMapBuilder set(VariableFactory<T> factory, T value, boolean isTransient) {
-        factory.on(this.variables).set(value, isTransient);
-        return this;
-    }
-
-    /**
-     * Removes the local value for the provided variable and returns the builder (fluently).
-     *
-     * @param factory variable factory.
-     * @param <T>     value type.
-     *
-     * @return fluent builder.
-     */
-    public <T> VariableMapBuilder remove(VariableFactory<T> factory) {
-        factory.on(this.variables).remove();
-        return this;
-    }
-
-    /**
-     * Updates the value for the provided variable and returns the builder (fluently).
-     *
-     * @param factory        variable factory.
-     * @param valueProcessor processor for the value.
-     * @param isTransient    transient flag.
-     * @param <T>            value type.
-     *
-     * @return fluent builder.
-     */
-    public <T> VariableMapBuilder update(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
-        factory.on(this.variables).update(valueProcessor, isTransient);
-        return this;
-    }
-
-    /**
-     * Updates the value for the provided variable and returns the builder (fluently).
-     *
-     * @param factory        variable factory.
-     * @param valueProcessor processor for the value.
-     * @param <T>            value type.
-     *
-     * @return fluent builder.
-     */
-    public <T> VariableMapBuilder update(VariableFactory<T> factory, Function<T, T> valueProcessor) {
-        return this.update(factory, valueProcessor, false);
-    }
-
+  /**
+   * @return instance of {@link VariableMap} containing set values
+   */
+  public VariableMap build() {
+    return Variables.fromMap(Collections.unmodifiableMap(writer.variables()));
+  }
 }

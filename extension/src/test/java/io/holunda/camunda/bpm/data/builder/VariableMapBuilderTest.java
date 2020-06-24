@@ -1,44 +1,48 @@
 package io.holunda.camunda.bpm.data.builder;
 
+import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.junit.Test;
 
-import static io.holunda.camunda.bpm.data.CamundaBpmData.builder;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.camunda.bpm.engine.variable.Variables.createVariables;
-
 public class VariableMapBuilderTest {
 
-    private static final VariableFactory<String> STRING = CamundaBpmData.stringVariable("myString");
+  private static final VariableFactory<String> FOO = stringVariable("foo");
 
-    @Test
-    public void testSet() {
-        VariableMap newVariables = builder()
-            .set(STRING, "value")
-            .build();
-        assertThat(newVariables.get(STRING.getName())).isEqualTo("value");
-    }
+  @Test
+  public void builderCanCreateEmptyVariableMap() {
+    assertThat(CamundaBpmData.builder().build()).isEmpty();
+  }
 
-    @Test
-    public void testRemove() {
-        VariableMap variables = createVariables();
-        STRING.on(variables).set("value");
-        VariableMap newVariables = builder(variables)
-            .remove(STRING)
-            .build();
-        assertThat(newVariables).isEmpty();
-    }
+  @Test
+  public void builderCanWriteVariable() {
+    VariableMap variables = CamundaBpmData.builder().set(FOO, "bar").build();
 
-    @Test
-    public void testUpdate() {
-        VariableMap variables = createVariables();
-        STRING.on(variables).set("value");
-        VariableMap newVariables = builder(variables)
-            .update(STRING, String::toUpperCase)
-            .build();
-        assertThat(newVariables.get(STRING.getName())).isEqualTo("VALUE");
-    }
+    assertThat(FOO.from(variables).get()).isEqualTo("bar");
+  }
 
+  @Test
+  public void buildCreatesANewInstanceEveryTime() {
+    VariableMapBuilder builder = CamundaBpmData.builder().set(FOO, "bar");
+
+    // build copy with "bar"
+    VariableMap bar = builder.build();
+    assertThat(bar).containsEntry("foo", "bar");
+
+    // modify builder, build copy with "baz"
+    VariableMap baz = builder.set(FOO, "baz").build();
+    assertThat(baz).containsEntry("foo", "baz");
+
+    // "bar" is not changed
+    assertThat(bar).containsEntry("foo", "bar");
+
+    // modify "baz"
+    FOO.on(baz).set("xxx");
+
+    // build again
+    assertThat(builder.build()).containsEntry("foo", "baz");
+  }
 }

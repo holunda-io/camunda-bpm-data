@@ -25,6 +25,7 @@
   <modules>
     <module>example-java</module>
     <module>example-kotlin</module>
+    <module>spin-type-detector</module>
   </modules>
 
   <dependencyManagement>
@@ -47,7 +48,7 @@
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>io.holunda.data</groupId>
+        <groupId>io.holunda.data.example</groupId>
         <artifactId>camunda-bpm-data-spin-type-detector</artifactId>
         <version>${project.version}</version>
       </dependency>

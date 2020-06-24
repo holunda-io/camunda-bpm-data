@@ -93,8 +93,10 @@ And finally, you want to access them from your Java delegates, Execution or Task
 public class MyDelegate implements JavaDelegate {
   @Override
   public void execute(DelegateExecution execution) {
-    OrderPosition orderPosition = ORDER_POSITION.from(execution).get();
-    BigDecimal oldTotal = ORDER_TOTAL.from(execution).getOptional().orElse(BigDecimal.ZERO);
+    VariableReader reader = CamundaBpmData.reader(execution);
+    OrderPosition orderPosition = reader.get(ORDER_POSITION);
+    BigDecimal oldTotal = reader.getOptional(ORDER_TOTAL).orElse(BigDecimal.ZERO);
+
     BigDecimal newTotal = oldTotal.add(calculatePrice(orderPosition));
     ORDER_TOTAL.on(execution).setLocal(newTotal);
   }
