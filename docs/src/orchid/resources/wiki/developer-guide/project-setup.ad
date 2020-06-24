@@ -108,8 +108,7 @@ Currently, the following modules are released to OSS Maven Central:
 
 * camunda-bpm-data-parent
 * camunda-bpm-data
-* camunda-bpm-data-kotlin
-* camunda-bpm-data-mockito
+* camunda-bpm-data-test
 
 ==== Trigger new release
 
@@ -131,6 +130,25 @@ You can build a release with:
 
 This will update the versions in the `pom.xml` s accordingly and push the release tag to the `master` branch
 and update the `develop` branch for the new development version.
+
+
+==== Create feature for development
+
+You can create a feature branch for development using:
+
+[source,sh]
+----
+./mvnw gitflow:feature-start
+----
+
+WARNING: This operation requires special permissions.
+
+After the feature is complete, create a PR. To merge the PR into develop use the command:
+
+[source,sh]
+----
+./mvnw gitflow:feature-finish
+----
 
 ==== Trigger a deploy
 
