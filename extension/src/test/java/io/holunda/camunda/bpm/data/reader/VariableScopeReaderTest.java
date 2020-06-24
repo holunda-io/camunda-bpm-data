@@ -12,7 +12,7 @@ import org.junit.Test;
 // Testing is a bit different here because DelegateExecutionFake does not correctly support local variables.
 public class VariableScopeReaderTest {
 
-  private static final VariableFactory<String> STRING = CamundaBpmData.stringVariable("myString");
+  private static final VariableFactory<String> STRING = stringVariable("myString");
 
   private final String value = "value";
   private final String localValue = "localValue";

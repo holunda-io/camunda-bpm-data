@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public class VariableMapReaderTest {
 
-  private static final VariableFactory<String> STRING = CamundaBpmData.stringVariable("myString");
+  private static final VariableFactory<String> STRING = stringVariable("myString");
 
   private final String value = "value";
 
