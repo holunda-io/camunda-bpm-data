@@ -12,7 +12,7 @@ import java.util.*
  */
 class VariableValueGuardCondition<T>(
     variableFactory: VariableFactory<T>,
-    private val value: T,
+    val value: T,
     local: Boolean = false
 ) : VariableGuardCondition<T>(variableFactory, local) {
 

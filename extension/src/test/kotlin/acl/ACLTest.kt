@@ -22,6 +22,7 @@ import org.junit.Test
 @Deployment(resources = ["eventBasedSubprocess_no_transientMapping.bpmn", "eventBasedSubprocess_with_transientMapping.bpmn"])
 class TransientVariableMappingListenerTest {
 
+    @Suppress("RedundantVisibilityModifier")
     @get: Rule
     public val camunda = camunda()
 

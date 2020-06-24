@@ -88,7 +88,7 @@ class AntiCorruptionLayer(
     fun checkAndWrap(variableMap: VariableMap): VariableMap {
         val violations = precondition.evaluate(variableMap)
         if (violations.isNotEmpty()) {
-            throw GuardViolationException(violations = violations, reason = "ACL Guard Error")
+            throw GuardViolationException(violations = violations, reason = "ACL Guard Error:")
         }
         return wrap(variableMap)
     }

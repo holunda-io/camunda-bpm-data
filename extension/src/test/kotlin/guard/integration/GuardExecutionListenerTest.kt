@@ -12,6 +12,7 @@ val ORDER_REFERENCE = stringVariable("orderReference")
 
 class GuardExecutionListenerTest {
 
+    @Suppress("RedundantVisibilityModifier")
     @get: Rule
     public val thrown = ExpectedException.none()
 

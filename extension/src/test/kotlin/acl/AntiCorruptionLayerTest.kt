@@ -33,8 +33,9 @@ class AntiCorruptionLayerTest {
         IdentityVariableMapTransformer
     )
 
+    @Suppress("RedundantVisibilityModifier")
     @get: Rule
-    val expectedException: ExpectedException = ExpectedException.none()
+    public val expectedException: ExpectedException = ExpectedException.none()
 
 
     @Test
@@ -71,8 +72,7 @@ class AntiCorruptionLayerTest {
 
     @Test
     fun `should fail checking and wrapping variables`() {
-        expectedException.expectMessage("ACL Guard Error\n" +
-            "\tExpecting variable 'baz' to match the condition, but its value 'ba' has not.\n")
+        expectedException.expectMessage("ACL Guard Error:\n\tExpecting variable 'baz' to match the condition, but its value 'ba' has not.")
 
         val vars = CamundaBpmData.builder().set(FOO, "foo1").set(BAZ, "ba").build()
         MY_ACL.checkAndWrap(vars)
