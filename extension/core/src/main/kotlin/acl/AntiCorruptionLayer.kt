@@ -17,23 +17,16 @@ import org.camunda.bpm.engine.variable.Variables
  *     A typical application of an ACL is the protection of external access to the process (signal, message correlation).
  *     To do so, signal / correlate with transient variables only and those got pumped into the execution if the guard is satisfied.
  * </p>
+ * @constructor Creates a new ACL.
+ * @property precondition Precondition to be fulfilled to pass the ACL.
+ * @property variableMapTransformer Mapping to be applied.
+ * @property factory Factory to use.
+ * @property valueApplicationStrategy Strategy to apply values from transformer to given variable scope.
  */
 class AntiCorruptionLayer(
-    /**
-     * Precondition to be fulfilled to pass the ACL.
-     */
     val precondition: VariablesGuard,
-    /**
-     * Mapping to be applied.
-     */
     val variableMapTransformer: VariableMapTransformer,
-    /**
-     * Factory to use.
-     */
     internal val factory: VariableFactory<VariableMap>,
-    /**
-     * Strategy to apply values from transformer to given variable scope.
-     */
     internal val valueApplicationStrategy: ValueApplicationStrategy
 ) {
 
@@ -60,6 +53,7 @@ class AntiCorruptionLayer(
 
     /**
      * Retrieves the ACL in form of an execution listener.
+     * @return Camunda Execution Listener responsible for variable extraction, guard check and modification.
      */
     fun getExecutionListener() = ExecutionListener { execution ->
         val variablesExternal = factory.from(execution).get()
@@ -71,6 +65,7 @@ class AntiCorruptionLayer(
 
     /**
      * Retrieves the ACL in form of a task listener.
+     * @return Camunda Task Listener responsible for variable extraction, guard check and modification.
      */
     fun getTaskListener() = TaskListener { task ->
         val variablesExternal = factory.from(task).get()
@@ -83,7 +78,7 @@ class AntiCorruptionLayer(
     /**
      * Checks if the preconditions are satisfied and constructs a variable map wrapping the variables.
      * @param variableMap variable map containing the variables.
-     * @return new variables
+     * @return new variable map
      */
     fun checkAndWrap(variableMap: VariableMap): VariableMap {
         val violations = precondition.evaluate(variableMap)
@@ -96,7 +91,7 @@ class AntiCorruptionLayer(
     /**
      * Constructs a variable map wrapping the variables.
      * @param variableMap variable map containing the variables.
-     * @return new variables
+     * @return new variable map
      */
     fun wrap(variableMap: VariableMap): VariableMap {
         return wrapAsTypedTransientVariable(variableName = factory.name, variables = variableMap)

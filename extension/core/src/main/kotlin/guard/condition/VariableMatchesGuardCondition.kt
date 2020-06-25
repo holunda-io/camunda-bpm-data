@@ -6,10 +6,11 @@ import java.util.*
 
 /**
  * Guard for testing a condition passed by a matcher-function.
+ * @constructor Creates a condition.
  * @param T variable type.
  * @param variableFactory Factory to work with.
  * @param local flag indicating the variable scope (global/local). Defaults to global.
- * @param matcher matcher function, specifying the condition.
+ * @property matcher matcher function, specifying the condition.
  */
 class VariableMatchesGuardCondition<T>(
     /**

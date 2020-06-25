@@ -5,10 +5,12 @@ import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 /**
  * Process execution builder allowing for fluent variable setting.
  */
-public class RuntimeServiceVariableWriter implements LocalVariableWriter<RuntimeServiceVariableWriter> {
+public class RuntimeServiceVariableWriter implements VariableWriter<RuntimeServiceVariableWriter> {
 
   private final RuntimeService runtimeService;
   private final String executionId;
@@ -71,5 +73,23 @@ public class RuntimeServiceVariableWriter implements LocalVariableWriter<Runtime
   public <T> RuntimeServiceVariableWriter removeLocal(VariableFactory<T> factory) {
     factory.on(this.runtimeService, this.executionId).removeLocal();
     return this;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    RuntimeServiceVariableWriter that = (RuntimeServiceVariableWriter) o;
+
+    if (!Objects.equals(runtimeService, that.runtimeService)) return false;
+    return Objects.equals(executionId, that.executionId);
+  }
+
+  @Override
+  public int hashCode() {
+    int result = runtimeService != null ? runtimeService.hashCode() : 0;
+    result = 31 * result + (executionId != null ? executionId.hashCode() : 0);
+    return result;
   }
 }

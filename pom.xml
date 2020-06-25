@@ -4,7 +4,7 @@
 
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data-parent</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <name>${project.artifactId}</name>
   <description>Camunda BPM Data</description>
   <url>https://github.com/holunda-io/camunda-bpm-data/</url>
@@ -350,16 +350,26 @@
         <plugin>
           <groupId>org.jetbrains.dokka</groupId>
           <artifactId>dokka-maven-plugin</artifactId>
-          <version>0.10.0</version>
+          <version>0.10.1</version>
           <executions>
             <execution>
-              <phase>test</phase>
               <id>attach-javadocs</id>
+              <phase>pre-site</phase>
               <goals>
                 <goal>javadocJar</goal>
               </goals>
             </execution>
           </executions>
+          <configuration>
+            <includes>
+              <include>packages.md</include>
+            </includes>
+            <jdkVersion>8</jdkVersion>
+            <sourceDirectories>
+              <dir>${project.basedir}/src/main/kotlin</dir>
+              <dir>${project.basedir}/src/main/java</dir>
+            </sourceDirectories>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -661,6 +671,14 @@
           <plugin>
             <groupId>org.sonatype.plugins</groupId>
             <artifactId>nexus-staging-maven-plugin</artifactId>
+          </plugin>
+          <plugin>
+            <groupId>org.jetbrains.dokka</groupId>
+            <artifactId>dokka-maven-plugin</artifactId>
+          </plugin>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
           </plugin>
         </plugins>
       </build>

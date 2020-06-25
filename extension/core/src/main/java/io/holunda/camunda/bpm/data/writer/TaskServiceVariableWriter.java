@@ -5,10 +5,12 @@ import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 /**
  * User task builder allowing for fluent variable setting.
  */
-public class TaskServiceVariableWriter implements LocalVariableWriter<TaskServiceVariableWriter> {
+public class TaskServiceVariableWriter implements VariableWriter<TaskServiceVariableWriter> {
 
   private final TaskService taskService;
   private final String taskId;
@@ -73,4 +75,21 @@ public class TaskServiceVariableWriter implements LocalVariableWriter<TaskServic
     return this;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    TaskServiceVariableWriter that = (TaskServiceVariableWriter) o;
+
+    if (!Objects.equals(taskService, that.taskService)) return false;
+    return Objects.equals(taskId, that.taskId);
+  }
+
+  @Override
+  public int hashCode() {
+    int result = taskService != null ? taskService.hashCode() : 0;
+    result = 31 * result + (taskId != null ? taskId.hashCode() : 0);
+    return result;
+  }
 }

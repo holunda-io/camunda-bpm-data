@@ -3,6 +3,8 @@ package io.holunda.camunda.bpm.data.builder;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import io.holunda.camunda.bpm.data.writer.VariableMapWriter;
 import java.util.Collections;
+import java.util.Objects;
+
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.Variables;
 import org.jetbrains.annotations.NotNull;
@@ -51,10 +53,26 @@ public class VariableMapBuilder {
   }
 
   /**
+   * Creates the variable map.
    * @return instance of {@link VariableMap} containing set values
    */
   @NotNull
   public VariableMap build() {
     return Variables.fromMap(Collections.unmodifiableMap(writer.variables()));
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    VariableMapBuilder that = (VariableMapBuilder) o;
+
+    return Objects.equals(writer, that.writer);
+  }
+
+  @Override
+  public int hashCode() {
+    return writer != null ? writer.hashCode() : 0;
   }
 }

@@ -1,6 +1,8 @@
 package io.holunda.camunda.bpm.data.reader;
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+
+import java.util.Objects;
 import java.util.Optional;
 import org.camunda.bpm.engine.delegate.VariableScope;
 import org.jetbrains.annotations.NotNull;
@@ -42,5 +44,20 @@ public class VariableScopeReader implements VariableReader{
   @NotNull
   public <T> Optional<T> getLocalOptional(VariableFactory<T> variableFactory) {
     return variableFactory.from(variableScope).getLocalOptional();
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    VariableScopeReader that = (VariableScopeReader) o;
+
+    return Objects.equals(variableScope, that.variableScope);
+  }
+
+  @Override
+  public int hashCode() {
+    return variableScope != null ? variableScope.hashCode() : 0;
   }
 }

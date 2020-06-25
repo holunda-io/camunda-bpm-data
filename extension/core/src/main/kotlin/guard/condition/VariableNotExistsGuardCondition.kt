@@ -6,6 +6,7 @@ import java.util.*
 
 /**
  * Condition to check if the variable doesn't exist.
+ * @constructor Creates a condition.
  * @param variableFactory factory to work on.
  * @param local flag indicating if local or global scope is required.
  */

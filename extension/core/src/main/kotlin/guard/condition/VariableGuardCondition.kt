@@ -10,13 +10,14 @@ import java.util.*
 
 /**
  * Abstract guard condition.
- * @since 0.0.6
- * @param T variable type.
- * @param variableFactory factory to work on.
- * @param local flag indicating the variable scope (global/local). Defaults to global.
  * <p>
  *     This class is intended to be subclassed by developers of new variable guards.
  * </p>
+ * @constructor Creates a condition.
+ * @since 0.0.6
+ * @param T variable type.
+ * @property variableFactory factory to work on.
+ * @property local flag indicating the variable scope (global/local). Defaults to global.
  */
 abstract class VariableGuardCondition<T>(
     internal val variableFactory: VariableFactory<T>,

@@ -1,6 +1,8 @@
 package io.holunda.camunda.bpm.data.reader;
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+
+import java.util.Objects;
 import java.util.Optional;
 import org.camunda.bpm.engine.variable.VariableMap;
 
@@ -37,5 +39,20 @@ public class VariableMapReader implements VariableReader {
   @Override
   public <T> Optional<T> getLocalOptional(VariableFactory<T> variableFactory) {
     return variableFactory.from(variableMap).getLocalOptional();
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    VariableMapReader that = (VariableMapReader) o;
+
+    return Objects.equals(variableMap, that.variableMap);
+  }
+
+  @Override
+  public int hashCode() {
+    return variableMap != null ? variableMap.hashCode() : 0;
   }
 }

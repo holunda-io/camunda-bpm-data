@@ -47,7 +47,6 @@ public class OrderApprovalProcessTest {
     @Test
     public void shouldDeploy() {
         // empty method body checks deployment
-        assertTrue(true);
     }
 
     @Test
