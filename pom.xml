@@ -46,8 +46,8 @@
   </properties>
 
   <modules>
-    <module>extension</module>
-    <module>test</module>
+      <module>extension/core</module>
+      <module>extension/test</module>
   </modules>
 
   <dependencyManagement>
