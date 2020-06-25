@@ -1,7 +1,6 @@
 package io.holunda.camunda.bpm.data.writer;
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
-import java.util.function.Supplier;
 import org.camunda.bpm.engine.delegate.VariableScope;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;

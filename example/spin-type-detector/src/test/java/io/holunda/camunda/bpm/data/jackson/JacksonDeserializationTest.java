@@ -3,7 +3,6 @@ package io.holunda.camunda.bpm.data.jackson;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;

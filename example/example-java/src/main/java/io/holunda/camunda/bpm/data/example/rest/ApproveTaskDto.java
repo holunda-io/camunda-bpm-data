@@ -3,7 +3,6 @@ package io.holunda.camunda.bpm.data.example.rest;
 import io.holunda.camunda.bpm.data.example.domain.Order;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 
 /**
  * Simple DTO carrying the order and the total.

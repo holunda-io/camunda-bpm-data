@@ -22,6 +22,7 @@ import java.time.Instant;
 import static io.holunda.camunda.bpm.data.example.process.OrderApproval.*;
 import static io.holunda.camunda.bpm.data.example.process.OrderApproval.Elements.*;
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.*;
+import static org.junit.Assert.assertTrue;
 
 @Deployment(resources = "order_approval.bpmn")
 public class OrderApprovalProcessTest {
@@ -44,12 +45,13 @@ public class OrderApprovalProcessTest {
     }
 
     @Test
-    public void should_deploy() {
+    public void shouldDeploy() {
         // empty method body checks deployment
+        assertTrue(true);
     }
 
     @Test
-    public void should_start_async() {
+    public void shouldStartAsync() {
         OrderApprovalInstance instance = factory.start("1");
 
         assertThat(instance.get()).isStarted();
@@ -57,7 +59,7 @@ public class OrderApprovalProcessTest {
     }
 
     @Test
-    public void should_start_and_wait_in_user_task() {
+    public void shouldStartAndWaitInUserTask() {
         OrderApprovalInstance instance = factory.start("1");
 
         assertThat(instance.get()).isStarted();
@@ -69,7 +71,7 @@ public class OrderApprovalProcessTest {
     }
 
     @Test
-    public void should_start_and_wait_in_user_task_and_approve() {
+    public void shouldStartAndWaitInUserTaskAndApprove() {
         OrderApprovalInstance instance = factory.start("1");
 
         assertThat(instance.get()).isStarted();
@@ -87,7 +89,7 @@ public class OrderApprovalProcessTest {
     }
 
     @Test
-    public void should_start_and_wait_in_user_task_and_reject() {
+    public void shouldStartAndWaitInUserTaskAndReject() {
         OrderApprovalInstance instance = factory.start("1");
 
         assertThat(instance.get()).isStarted();

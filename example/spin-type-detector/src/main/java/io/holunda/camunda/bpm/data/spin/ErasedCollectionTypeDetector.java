@@ -37,7 +37,7 @@ public class ErasedCollectionTypeDetector implements TypeDetector {
      *
      * @return true if the number of type binding matches expected value.
      */
-    static boolean bindingsArePresent(Class<?> erasedType, int expectedTypeParametersCount) {
+    private static boolean bindingsArePresent(Class<?> erasedType, int expectedTypeParametersCount) {
         if (erasedType == null) {
             return false;
         }
@@ -59,7 +59,7 @@ public class ErasedCollectionTypeDetector implements TypeDetector {
      *
      * @return Java type.
      */
-    static JavaType constructType(Object value) {
+    private static JavaType constructType(Object value) {
         final TypeFactory typeFactory = TypeFactory.defaultInstance();
         if (value instanceof Collection<?> && !((Collection<?>) value).isEmpty()) {
             final Object firstElement = ((Collection<?>) value).iterator().next();
@@ -86,7 +86,7 @@ public class ErasedCollectionTypeDetector implements TypeDetector {
      * @return class of th collection implementation.
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    static Class<? extends Collection> guessCollectionType(Object collection) {
+    private static Class<? extends Collection> guessCollectionType(Object collection) {
         if (collection instanceof Collection<?>) {
             return (Class<? extends Collection>) collection.getClass();
         } else {
