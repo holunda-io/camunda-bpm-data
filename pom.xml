@@ -350,16 +350,26 @@
         <plugin>
           <groupId>org.jetbrains.dokka</groupId>
           <artifactId>dokka-maven-plugin</artifactId>
-          <version>0.10.0</version>
+          <version>0.10.1</version>
           <executions>
             <execution>
-              <phase>test</phase>
               <id>attach-javadocs</id>
+              <phase>pre-site</phase>
               <goals>
                 <goal>javadocJar</goal>
               </goals>
             </execution>
           </executions>
+          <configuration>
+            <includes>
+              <include>packages.md</include>
+            </includes>
+            <jdkVersion>8</jdkVersion>
+            <sourceDirectories>
+              <dir>${project.basedir}/src/main/kotlin</dir>
+              <dir>${project.basedir}/src/main/java</dir>
+            </sourceDirectories>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>

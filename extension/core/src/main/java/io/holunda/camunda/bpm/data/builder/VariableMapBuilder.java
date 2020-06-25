@@ -53,6 +53,7 @@ public class VariableMapBuilder {
   }
 
   /**
+   * Creates the variable map.
    * @return instance of {@link VariableMap} containing set values
    */
   @NotNull

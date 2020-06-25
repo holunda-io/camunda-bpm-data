@@ -6,6 +6,7 @@ import java.util.*
 
 /**
  * Condition to check if the variable has on of the provided values.
+ * @constructor Creates a condition.
  * @param variableFactory factory to work on.
  * @param values set of values to compare with.
  * @param local flag indicating if local or global scope is required.

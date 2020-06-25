@@ -8,8 +8,9 @@ import org.slf4j.LoggerFactory
 
 /**
  * Default guard execution listener, evaluating the given guard conditions on the task.
- * @param guard guard to check.
- * @param throwViolations flag controlling if the violation should lead to an exception.
+ * @constructor Creates a listener.
+ * @property guard guard to check.
+ * @property throwViolations flag controlling if the violation should lead to an exception.
  */
 class DefaultGuardTaskListener(
     val guard: VariablesGuard,

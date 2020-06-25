@@ -24,6 +24,7 @@
     <dependency>
       <groupId>io.holunda.data.example</groupId>
       <artifactId>camunda-bpm-data-spin-type-detector</artifactId>
+      <version>${project.parent.version}</version>
     </dependency>
 
     <dependency>
