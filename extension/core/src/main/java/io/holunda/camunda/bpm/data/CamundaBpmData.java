@@ -11,10 +11,8 @@ import io.holunda.camunda.bpm.data.reader.TaskServiceVariableReader;
 import io.holunda.camunda.bpm.data.reader.VariableMapReader;
 import io.holunda.camunda.bpm.data.reader.VariableReader;
 import io.holunda.camunda.bpm.data.reader.VariableScopeReader;
-import io.holunda.camunda.bpm.data.writer.RuntimeServiceVariableWriter;
-import io.holunda.camunda.bpm.data.writer.TaskServiceVariableWriter;
-import io.holunda.camunda.bpm.data.writer.VariableMapWriter;
-import io.holunda.camunda.bpm.data.writer.VariableScopeWriter;
+import io.holunda.camunda.bpm.data.writer.*;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -184,7 +182,7 @@ public class CamundaBpmData {
    * @return new writer
    */
   @NotNull
-  public static VariableMapWriter writer(VariableMap variables) {
+  public static GlobalVariableWriter<?> writer(VariableMap variables) {
     return new VariableMapWriter(variables);
   }
 
@@ -195,7 +193,7 @@ public class CamundaBpmData {
    * @return new writer working on provided variable scope.
    */
   @NotNull
-  public static VariableScopeWriter writer(VariableScope variableScope) {
+  public static VariableWriter<?> writer(VariableScope variableScope) {
     return new VariableScopeWriter(variableScope);
   }
 
@@ -207,7 +205,7 @@ public class CamundaBpmData {
    * @return new writer working on provided process execution.
    */
   @NotNull
-  public static RuntimeServiceVariableWriter writer(RuntimeService runtimeService, String executionId) {
+  public static VariableWriter<?> writer(RuntimeService runtimeService, String executionId) {
     return new RuntimeServiceVariableWriter(runtimeService, executionId);
   }
 
@@ -219,7 +217,7 @@ public class CamundaBpmData {
    * @return new writer working on provided user task.
    */
   @NotNull
-  public static TaskServiceVariableWriter writer(TaskService taskService, String taskId) {
+  public static VariableWriter<?> writer(TaskService taskService, String taskId) {
     return new TaskServiceVariableWriter(taskService, taskId);
   }
 

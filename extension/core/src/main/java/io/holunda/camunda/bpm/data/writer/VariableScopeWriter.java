@@ -5,10 +5,12 @@ import org.camunda.bpm.engine.delegate.VariableScope;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 /**
  * Variable scope builder allowing for fluent variable setting.
  */
-public class VariableScopeWriter implements LocalVariableWriter<VariableScopeWriter> {
+public class VariableScopeWriter implements VariableWriter<VariableScopeWriter> {
 
   private final VariableScope scope;
 
@@ -74,4 +76,17 @@ public class VariableScopeWriter implements LocalVariableWriter<VariableScopeWri
     return scope.getVariablesLocalTyped();
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    VariableScopeWriter that = (VariableScopeWriter) o;
+    return Objects.equals(scope, that.scope);
+  }
+
+  @Override
+  public int hashCode() {
+    return scope != null ? scope.hashCode() : 0;
+  }
 }

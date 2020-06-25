@@ -4,10 +4,12 @@ import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 /**
  * Variable map builder allowing for fluent variable setting.
  */
-public class VariableMapWriter implements VariableWriter<VariableMapWriter> {
+public class VariableMapWriter implements GlobalVariableWriter<VariableMapWriter> {
 
   private final VariableMap variables;
 
@@ -44,5 +46,19 @@ public class VariableMapWriter implements VariableWriter<VariableMapWriter> {
   @NotNull
   public VariableMap variables() {
     return variables;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    VariableMapWriter that = (VariableMapWriter) o;
+    return Objects.equals(variables, that.variables);
+  }
+
+  @Override
+  public int hashCode() {
+    return variables != null ? variables.hashCode() : 0;
   }
 }

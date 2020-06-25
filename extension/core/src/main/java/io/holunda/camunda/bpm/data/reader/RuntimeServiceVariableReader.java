@@ -1,6 +1,8 @@
 package io.holunda.camunda.bpm.data.reader;
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+
+import java.util.Objects;
 import java.util.Optional;
 import org.camunda.bpm.engine.RuntimeService;
 import org.jetbrains.annotations.NotNull;
@@ -45,5 +47,23 @@ public class RuntimeServiceVariableReader implements VariableReader {
   @Override
   public <T> Optional<T> getLocalOptional(VariableFactory<T> variableFactory) {
     return variableFactory.from(runtimeService, executionId).getLocalOptional();
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    RuntimeServiceVariableReader that = (RuntimeServiceVariableReader) o;
+
+    if (!Objects.equals(runtimeService, that.runtimeService)) return false;
+    return Objects.equals(executionId, that.executionId);
+  }
+
+  @Override
+  public int hashCode() {
+    int result = runtimeService != null ? runtimeService.hashCode() : 0;
+    result = 31 * result + (executionId != null ? executionId.hashCode() : 0);
+    return result;
   }
 }

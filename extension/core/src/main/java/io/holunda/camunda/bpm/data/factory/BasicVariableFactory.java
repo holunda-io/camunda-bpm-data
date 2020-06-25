@@ -85,8 +85,8 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
    *
    * @return adapter builder.
    */
-  public RuntimeServiceAdapterBuilder<T> using(RuntimeService runtimeService) {
-    return new RuntimeServiceAdapterBuilder<>(this, runtimeService);
+  public BasicRuntimeServiceAdapterBuilder<T> using(RuntimeService runtimeService) {
+    return new BasicRuntimeServiceAdapterBuilder<>(this, runtimeService);
   }
 
   /**
@@ -96,8 +96,8 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
    *
    * @return adapter builder.
    */
-  public TaskServiceAdapterBuilder<T> using(TaskService taskService) {
-    return new TaskServiceAdapterBuilder<>(this, taskService);
+  public BasicTaskServiceAdapterBuilder<T> using(TaskService taskService) {
+    return new BasicTaskServiceAdapterBuilder<>(this, taskService);
   }
 
   @Override
@@ -138,4 +138,95 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
         ", clazz=" + clazz +
         '}';
   }
+
+  /**
+   * Creates a builder to encapsulate the runtime service access.
+   *
+   * @param <T> type of builder.
+   */
+  public static class BasicRuntimeServiceAdapterBuilder<T> {
+
+    private final RuntimeService runtimeService;
+    private final BasicVariableFactory<T> basicVariableFactory;
+
+    /**
+     * Constructs the builder.
+     *
+     * @param basicVariableFactory variable factory to use.
+     * @param runtimeService       task service to build adapter with.
+     */
+    public BasicRuntimeServiceAdapterBuilder(BasicVariableFactory<T> basicVariableFactory, RuntimeService runtimeService) {
+      this.runtimeService = runtimeService;
+      this.basicVariableFactory = basicVariableFactory;
+    }
+
+    /**
+     * Creates a write adapter on execution.
+     *
+     * @param executionId id identifying execution.
+     *
+     * @return write adapter
+     */
+    public WriteAdapter<T> on(String executionId) {
+      return new ReadWriteAdapterRuntimeService<>(runtimeService, executionId, basicVariableFactory.getName(), basicVariableFactory.getVariableClass());
+    }
+
+    /**
+     * Creates a read adapter on execution.
+     *
+     * @param executionId id identifying execution.
+     *
+     * @return read adapter.
+     */
+    public ReadAdapter<T> from(String executionId) {
+      return new ReadWriteAdapterRuntimeService<>(runtimeService, executionId, basicVariableFactory.getName(), basicVariableFactory.getVariableClass());
+    }
+  }
+
+  /**
+   * Creates a builder to encapsulate the task service access.
+   *
+   * @param <T> type of builder.
+   */
+  public static class BasicTaskServiceAdapterBuilder<T> {
+
+    private final TaskService taskService;
+    private final BasicVariableFactory<T> basicVariableFactory;
+
+    /**
+     * Constructs the builder.
+     *
+     * @param basicVariableFactory variable factory to use.
+     * @param taskService          task service to build adapter with.
+     */
+    public BasicTaskServiceAdapterBuilder(BasicVariableFactory<T> basicVariableFactory, TaskService taskService) {
+      this.taskService = taskService;
+      this.basicVariableFactory = basicVariableFactory;
+    }
+
+    /**
+     * Creates a write adapter on task.
+     *
+     * @param taskId id identifying task.
+     *
+     * @return write adapter
+     */
+    public WriteAdapter<T> on(String taskId) {
+      return new ReadWriteAdapterTaskService<>(taskService, taskId, basicVariableFactory.getName(), basicVariableFactory.getVariableClass());
+    }
+
+    /**
+     * Creates a read adapter on task.
+     *
+     * @param taskId id identifying task.
+     *
+     * @return read adapter.
+     */
+    public ReadAdapter<T> from(String taskId) {
+      return new ReadWriteAdapterTaskService<>(taskService, taskId, basicVariableFactory.getName(), basicVariableFactory.getVariableClass());
+    }
+
+  }
+
+
 }
