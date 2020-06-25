@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data</groupId>
     <artifactId>camunda-bpm-data-parent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
   </parent>
 
   <artifactId>camunda-bpm-data-docs</artifactId>
