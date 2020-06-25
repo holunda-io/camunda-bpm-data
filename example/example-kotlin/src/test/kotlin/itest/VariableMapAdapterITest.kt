@@ -11,11 +11,10 @@ import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Value
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.INT
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LIST_STRING
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LONG
-import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.MAP_STRING_DATE
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.MAP_STRING_LONG
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SET_STRING
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SHORT
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.STRING
-import org.assertj.core.api.Assertions.assertThat
 import org.camunda.bpm.engine.variable.Variables.createVariables
 import org.junit.Rule
 import org.junit.Test
@@ -25,8 +24,9 @@ import java.util.*
 
 class VariableMapAdapterITest : CamundaBpmDataITestBase() {
 
+  @Suppress("RedundantVisibilityModifier")
   @get: Rule
-  public val thrown = ExpectedException.none()
+  public val thrown: ExpectedException = ExpectedException.none()
 
   @Autowired
   lateinit var delegateConfiguration: DelegateConfiguration
@@ -46,7 +46,11 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
     COMPLEX_VAR.on(variables).set(COMPLEX.value)
     LIST_STRING_VAR.on(variables).set(LIST_STRING.value)
     SET_STRING_VAR.on(variables).set(SET_STRING.value)
-    MAP_STRING_DATE_VAR.on(variables).set(MAP_STRING_DATE.value)
+    MAP_STRING_LONG_VAR.on(variables).set(MAP_STRING_LONG.value)
+    COMPLEX_SET_VAR.on(variables).set(Companion.Values.COMPLEX_SET.value)
+    COMPLEX_LIST_VAR.on(variables).set(Companion.Values.COMPLEX_LIST.value)
+    COMPLEX_MAP_VAR.on(variables).set(Companion.Values.COMPLEX_MAP.value)
+
 
     given()
       .process_with_delegate_is_deployed(delegateExpression = "\${${delegateConfiguration::readFromVariableScope.name}}")
@@ -75,7 +79,7 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
     STRING_VAR.on(variables).remove()
     LIST_STRING_VAR.on(variables).remove()
     SET_STRING_VAR.on(variables).remove()
-    MAP_STRING_DATE_VAR.on(variables).remove()
+    MAP_STRING_LONG_VAR.on(variables).remove()
 
     given()
       .process_with_delegate_is_deployed(delegateExpression = "\${${DelegateConfiguration::readOptionalFromVariableScope.name}}")
@@ -88,7 +92,7 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
         STRING_VAR,
         LIST_STRING_VAR,
         SET_STRING_VAR,
-        MAP_STRING_DATE_VAR
+        MAP_STRING_LONG_VAR
       )
       .and()
       .variables_had_value(delegateConfiguration.optionalVars,
@@ -104,98 +108,98 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
   }
 
   @Test
-  fun `should throw correct NSO on basic setLocal exception`() {
+  fun `should throw correct UO exception on basic setLocal`() {
     thrown.expect(UnsupportedOperationException::class.java)
     STRING_VAR.on(createVariableMapUntyped()).setLocal(STRING.value)
   }
 
   @Test
-  fun `should throw correct NSO on list setLocal exception`() {
+  fun `should throw correct UO exception on list setLocal`() {
     thrown.expect(UnsupportedOperationException::class.java)
     LIST_STRING_VAR.on(createVariableMapUntyped()).setLocal(LIST_STRING.value)
   }
 
   @Test
-  fun `should throw correct NSO on set setLocal exception`() {
+  fun `should throw correct UO exception on set setLocal`() {
     thrown.expect(UnsupportedOperationException::class.java)
     SET_STRING_VAR.on(createVariableMapUntyped()).setLocal(SET_STRING.value)
   }
 
   @Test
-  fun `should throw correct NSO on map setLocal exception`() {
+  fun `should throw correct UO exception on map setLocal`() {
     thrown.expect(UnsupportedOperationException::class.java)
-    MAP_STRING_DATE_VAR.on(createVariableMapUntyped()).setLocal(MAP_STRING_DATE.value)
+    MAP_STRING_LONG_VAR.on(createVariableMapUntyped()).setLocal(MAP_STRING_LONG.value)
   }
 
   @Test
-  fun `should throw correct NSO on basic removeLocal exception`() {
+  fun `should throw correct UO exception on basic removeLocal`() {
     thrown.expect(UnsupportedOperationException::class.java)
     STRING_VAR.on(createVariableMapUntyped()).removeLocal()
   }
 
   @Test
-  fun `should throw correct NSO on list removeLocal exception`() {
+  fun `should throw correct UO exception on list removeLocal`() {
     thrown.expect(UnsupportedOperationException::class.java)
     LIST_STRING_VAR.on(createVariableMapUntyped()).removeLocal()
   }
 
   @Test
-  fun `should throw correct NSO on set removeLocal exception`() {
+  fun `should throw correct UO exception on set removeLocal`() {
     thrown.expect(UnsupportedOperationException::class.java)
     SET_STRING_VAR.on(createVariableMapUntyped()).removeLocal()
   }
 
   @Test
-  fun `should throw correct NSO on map removeLocal exception`() {
+  fun `should throw correct UO exception on map removeLocal`() {
     thrown.expect(UnsupportedOperationException::class.java)
-    MAP_STRING_DATE_VAR.on(createVariableMapUntyped()).removeLocal()
+    MAP_STRING_LONG_VAR.on(createVariableMapUntyped()).removeLocal()
   }
   @Test
-  fun `should throw correct NSO on basic getLocal exception`() {
+  fun `should throw correct UO exception on basic getLocal`() {
     thrown.expect(UnsupportedOperationException::class.java)
     STRING_VAR.from(createVariableMapUntyped()).local
   }
 
   @Test
-  fun `should throw correct NSO on list getLocal exception`() {
+  fun `should throw correct UO exception on list getLocal`() {
     thrown.expect(UnsupportedOperationException::class.java)
     LIST_STRING_VAR.from(createVariableMapUntyped()).local
   }
 
   @Test
-  fun `should throw correct NSO on set getLocal exception`() {
+  fun `should throw correct UO exception on set getLocal`() {
     thrown.expect(UnsupportedOperationException::class.java)
     SET_STRING_VAR.from(createVariableMapUntyped()).local
   }
 
   @Test
-  fun `should throw correct NSO on map getLocal exception`() {
+  fun `should throw correct UO exception on map getLocal`() {
     thrown.expect(UnsupportedOperationException::class.java)
-    MAP_STRING_DATE_VAR.from(createVariableMapUntyped()).local
+    MAP_STRING_LONG_VAR.from(createVariableMapUntyped()).local
   }
 
   @Test
-  fun `should throw correct NSO on basic getLocalOptional exception`() {
+  fun `should throw correct UO exception on basic getLocalOptional`() {
     thrown.expect(UnsupportedOperationException::class.java)
     STRING_VAR.from(createVariableMapUntyped()).localOptional
   }
 
   @Test
-  fun `should throw correct NSO on list getLocalOptional exception`() {
+  fun `should throw correct UO exception on list getLocalOptional`() {
     thrown.expect(UnsupportedOperationException::class.java)
     LIST_STRING_VAR.from(createVariableMapUntyped()).localOptional
   }
 
   @Test
-  fun `should throw correct NSO on set getLocalOptional exception`() {
+  fun `should throw correct UO exception on set getLocalOptional`() {
     thrown.expect(UnsupportedOperationException::class.java)
     SET_STRING_VAR.from(createVariableMapUntyped()).localOptional
   }
 
   @Test
-  fun `should throw correct NSO on map getLocalOptional exception`() {
+  fun `should throw correct UO exception on map getLocalOptional`() {
     thrown.expect(UnsupportedOperationException::class.java)
-    MAP_STRING_DATE_VAR.from(createVariableMapUntyped()).localOptional
+    MAP_STRING_LONG_VAR.from(createVariableMapUntyped()).localOptional
   }
 
   @Test
@@ -342,7 +346,7 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
     thrown.expect(WrongVariableTypeException::class.java)
 
     val variables = createVariableMapUntyped()
-    val wrongMapKeyType: VariableFactory<Map<Date, Date>> = mapVariable(MAP_STRING_DATE_VAR.name, Date::class.java, Date::class.java)
+    val wrongMapKeyType: VariableFactory<Map<Date, String>> = mapVariable(MAP_STRING_LONG_VAR.name, Date::class.java, String::class.java)
     // wrong key type
     wrongMapKeyType.from(variables).get()
   }
@@ -352,7 +356,7 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
 
     thrown.expect(WrongVariableTypeException::class.java)
     val variables = createVariableMapUntyped()
-    val wrongMapKeyType: VariableFactory<Map<Date, Date>> = mapVariable(MAP_STRING_DATE_VAR.name, Date::class.java, Date::class.java)
+    val wrongMapKeyType: VariableFactory<Map<Date, String>> = mapVariable(MAP_STRING_LONG_VAR.name, Date::class.java, String::class.java)
     // wrong key type
     wrongMapKeyType.from(variables).optional
   }
@@ -362,7 +366,7 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
 
     thrown.expect(WrongVariableTypeException::class.java)
     val variables = createVariableMapUntyped()
-    val wrongMapValueType: VariableFactory<Map<String, String>> = mapVariable(MAP_STRING_DATE_VAR.name, String::class.java, String::class.java)
+    val wrongMapValueType: VariableFactory<Map<String, Date>> = mapVariable(MAP_STRING_LONG_VAR.name, String::class.java, Date::class.java)
 
     // wrong value type
     wrongMapValueType.from(variables).get()
@@ -373,12 +377,10 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
 
     thrown.expect(WrongVariableTypeException::class.java)
     val variables = createVariableMapUntyped()
-    val wrongMapValueType: VariableFactory<Map<String, String>> = mapVariable(MAP_STRING_DATE_VAR.name, String::class.java, String::class.java)
+    val wrongMapValueType: VariableFactory<Map<String, Date>> = mapVariable(MAP_STRING_LONG_VAR.name, String::class.java, Date::class.java)
 
     // wrong value type
     wrongMapValueType.from(variables).optional
   }
-
-
 }
 

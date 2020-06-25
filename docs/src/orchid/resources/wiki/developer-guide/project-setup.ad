@@ -58,7 +58,7 @@ If you want to skip the build of examples, please specify the `-DskipExamples` s
 
 We are using https://github.com/orchidhq/Orchid[JavaEden Orchid] for generation of a static site documentation and rely on AsciiDoc as much as possible.
 
-TIP: If you want to develop your docs in 'live' mode, run `./mvnw -f docs -Pdocs-serve` and access
+TIP: If you want to develop your docs in 'live' mode, run `./mvnw -f docs -Pserve-docs` and access
 the http://localhost:8080/ from your browser.
 
 For creation of documentation, please run:
@@ -108,7 +108,7 @@ Currently, the following modules are released to OSS Maven Central:
 
 * camunda-bpm-data-parent
 * camunda-bpm-data
-* camunda-bpm-data-kotlin
+* camunda-bpm-data-test
 
 ==== Trigger new release
 
@@ -130,6 +130,25 @@ You can build a release with:
 
 This will update the versions in the `pom.xml` s accordingly and push the release tag to the `master` branch
 and update the `develop` branch for the new development version.
+
+
+==== Create feature for development
+
+You can create a feature branch for development using:
+
+[source,sh]
+----
+./mvnw gitflow:feature-start
+----
+
+WARNING: This operation requires special permissions.
+
+After the feature is complete, create a PR. To merge the PR into develop use the command:
+
+[source,sh]
+----
+./mvnw gitflow:feature-finish
+----
 
 ==== Trigger a deploy
 

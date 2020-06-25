@@ -1,0 +1,24 @@
+---
+version: 1.0.0
+---
+
+== News
+
+* Run through a internal review in Holisticon BPM expert team
+
+== Breaking changes
+
+* The `CamundaBpmData.builder(xxx)` methods and implementing classes where renamed to `XxxWriter` since where didn't follow the Builder pattern. #49
+* The `camunda-bpm-data-kotlin` module is removed and its content is now a part of the `camunda-bpm-data` JAR
+* The `camunda-bpm-data-mockito` module is renamed into `camunda-bpm-data-test` and will contain helpers for testing.
+
+== Features
+* Better documentation and catchy README
+* Implementation of Anti-Corruption-Layer #47
+* VariableReader convenience methods to access multiple variables have been implemented, see #46
+* Provided type collection detector for SPIN/Jackson (currently as PR for SPIN and example code)
+
+== Bugfixes
+
+* Evaluation of complex guards fail if exists condition isn't fulfilled.
+* NPE passing null to set, see #46

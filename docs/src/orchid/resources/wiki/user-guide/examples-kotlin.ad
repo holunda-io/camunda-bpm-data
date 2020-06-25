@@ -122,14 +122,14 @@ class SomeService(
 ) {
 
     fun setNewValuesForExecution(executionId: String, rderId: String, orderApproved: Boolean) {
-        runtimeService.builder(executionId)
+        runtimeService.writer(executionId)
             .set(ORDER_ID, orderId)
             .set(ORDER_APPROVED, orderApproved)
             .update(ORDER_TOTAL, { amount -> amount.add(10) })
     }
 
     fun setNewValuesForTask(taskId: String, orderId: String, orderApproved: Boolean) {
-        taskService.builder(taskId)
+        taskService.writer(taskId)
             .set(ORDER_ID, orderId)
             .set(ORDER_APPROVED, orderApproved)
     }
@@ -139,6 +139,81 @@ class SomeService(
           .set(ORDER_ID, "4711")
           .set(ORDER_APPROVED, false)
       runtimeService.startProcessInstanceById("myId", "businessKey", variables)
+  }
+}
+----
+
+=== Fluent API to read several variables
+
+[source,kotlin]
+----
+@Component
+class SomeService(
+  private val runtimeService: RuntimeService,
+  private val taskService: TaskService
+) {
+
+  fun readValuesFromExecution(executionId: String): String {
+      val reader = CamundaBpmData.reader(runtimeService, executionId)
+      val orderId = reader.get(ORDER_ID)
+      val orderApproved = reader.get(ORDER_APPROVED)
+      if (orderApproved) {
+          // ...
+      }
+      return orderId
+  }
+
+  fun readValuesFromTask(taskId: String ): String {
+      val reader = CamundaBpmData.reader(taskService, taskId)
+      val orderId = reader.get(ORDER_ID)
+      val orderApproved = reader.get(ORDER_APPROVED)
+      if (orderApproved) {
+          // ...
+      }
+      return orderId
+  }
+}
+----
+
+=== Anti-Corruption-Layer: Wrap variables to correlate
+
+[source,kotlin]
+----
+@Component
+class SomeService {
+
+  val MESSAGE_ACL = CamundaBpmDataMapper.identityReplace("__transient", true);
+
+  fun correlate() {
+      val variables = CamundaBpmData.builder()
+          .set(ORDER_ID, "4711")
+          .set(ORDER_APPROVED, false)
+          .build();
+      runtimeService.correlateMessage("message_1", MESSAGE_ACL.wrap(variables));
+  }
+}
+----
+
+=== Anti-Corruption-Layer: Check and wrap variables to correlate
+
+[source,kotlin]
+----
+@Component
+class SomeService {
+
+    val MY_ACL = CamundaBpmDataACL.guardTransformingReplace(
+        "__transient",
+        true,
+        VariablesGuard(exists(ORDER_ID)),
+        IdentityVariableMapTransformer
+    );
+
+  fun correlate() {
+      val variables = CamundaBpmData.writer()
+          .set(ORDER_ID, "4711")
+          .set(ORDER_APPROVED, false)
+          .build();
+      runtimeService.correlateMessage("message_1", MESSAGE_ACL.checkAndWrap(variables));
   }
 }
 ----

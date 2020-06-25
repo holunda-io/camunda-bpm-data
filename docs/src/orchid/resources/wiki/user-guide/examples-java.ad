@@ -103,7 +103,7 @@ class JavaDelegates {
   public ExecutionListener removeProcessVariables() {
     return execution ->
     {
-      CamundaBpmData.builder(execution)
+      CamundaBpmData.writer(execution)
           .remove(ORDER_ID)
           .remove(ORDER)
           .remove(ORDER_APPROVED)
@@ -127,20 +127,20 @@ class SomeService {
   private TaskService taskService;
 
   public void setNewValuesForExecution(String executionId, String orderId, Boolean orderApproved) {
-      CamundaBpmData.builder(runtimeService, executionId)
+      CamundaBpmData.writer(runtimeService, executionId)
           .set(ORDER_ID, orderId)
           .set(ORDER_APPROVED, orderApproved)
           .update(ORDER_TOTAL, amount -> amount.add(10));
   }
 
   public void setNewValuesForTask(String taskId, String orderId, Boolean orderApproved) {
-      CamundaBpmData.builder(taskService, taskId)
+      CamundaBpmData.writer(taskService, taskId)
           .set(ORDER_ID, orderId)
           .set(ORDER_APPROVED, orderApproved);
   }
 
   public void start() {
-      VariableMap variables = CamundaBpmData.builder()
+      VariableMap variables = CamundaBpmData.writer()
           .set(ORDER_ID, "4711")
           .set(ORDER_APPROVED, false)
           .build();
@@ -149,6 +149,86 @@ class SomeService {
 }
 ----
 
+=== Fluent API to read several variables
+
+[source,java]
+----
+@Component
+class SomeService {
+
+  @Autowired
+  private RuntimeService runtimeService;
+  @Autowired
+  private TaskService taskService;
+
+  public String readValuesFromExecution(String executionId) {
+      VariableReader reader = CamundaBpmData.reader(runtimeService, executionId);
+      String orderId = reader.get(ORDER_ID);
+      Boolean orderApproved = reader.get(ORDER_APPROVED);
+      if (orderApproved) {
+          // ...
+      }
+      return orderId;
+  }
+
+  public String readValuesFromTask(String taskId) {
+      VariableReader reader = CamundaBpmData.reader(taskService, taskId);
+      String orderId = reader.get(ORDER_ID);
+      Boolean orderApproved = reader.get(ORDER_APPROVED);
+      if (orderApproved) {
+          // ...
+      }
+      return orderId;
+  }
+}
+----
+
+
+=== Anti-Corruption-Layer: Wrap variables to correlate
+
+[source,java]
+----
+@Component
+class SomeService {
+
+  private static final AntiCorruptionLayer MESSAGE_ACL = CamundaBpmDataMapper.identityReplace(
+      "__transient",
+      true
+  );
+
+  public void correlate() {
+      VariableMap variables = CamundaBpmData.builder()
+          .set(ORDER_ID, "4711")
+          .set(ORDER_APPROVED, false)
+          .build();
+      runtimeService.correlateMessage("message_1", MESSAGE_ACL.wrap(variables));
+  }
+}
+----
+
+=== Anti-Corruption-Layer: Check and wrap variables to correlate
+
+[source,java]
+----
+@Component
+class SomeService {
+
+    private static AntiCorruptionLayer MY_ACL = CamundaBpmDataACL.guardTransformingReplace(
+        "__transient",
+        true,
+        new VariablesGuard(exists(ORDER_ID)),
+        IdentityVariableMapTransformer.INSTANCE
+    );
+
+  public void correlate() {
+      VariableMap variables = CamundaBpmData.builder()
+          .set(ORDER_ID, "4711")
+          .set(ORDER_APPROVED, false)
+          .build();
+      runtimeService.correlateMessage("message_1", MESSAGE_ACL.checkAndWrap(variables));
+  }
+}
+----
 
 === Example project
 
