@@ -51,7 +51,7 @@ If you just want to start using the library, put the following dependency into y
 <dependency>
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ----
 
