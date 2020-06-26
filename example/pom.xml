@@ -111,6 +111,7 @@
           <version>${jgiven.version}</version>
           <executions>
             <execution>
+              <phase>verify</phase>
               <goals>
                 <goal>report</goal>
               </goals>

@@ -32,11 +32,8 @@ jobs:
     - name: Build
       run: ./mvnw clean package
 
-    - name: Run integration tests
+    - name: Run integration tests and generate coverage reports
       run: ./mvnw -Pitest verify
-
-    - name: Create coverage reports
-      run: ./mvnw jacoco:report-aggregate
 
     - name: Import GPG Owner Trust
       run: echo ${{secrets.GPG_OWNERTRUST}} | base64 --decode | gpg --import-ownertrust
