@@ -9,11 +9,11 @@
     <version>1.0.2-SNAPSHOT</version>
   </parent>
 
-  <artifactId>camunda-bpm-data-example-java</artifactId>
+  <artifactId>camunda-bpm-data-integration-test</artifactId>
   <name>${project.artifactId}</name>
 
   <properties>
-    <jacoco.skip>true</jacoco.skip>
+    <jacoco.skip>false</jacoco.skip>
   </properties>
 
   <dependencies>
@@ -27,14 +27,6 @@
       <version>${project.parent.version}</version>
     </dependency>
 
-    <dependency>
-      <groupId>io.toolisticon.springboot</groupId>
-      <artifactId>springboot-swagger-starter</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter</artifactId>
-    </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -75,10 +67,6 @@
     </dependency>
 
     <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-    </dependency>
-    <dependency>
       <groupId>org.codehaus.groovy</groupId>
       <artifactId>groovy</artifactId>
     </dependency>
@@ -114,6 +102,48 @@
       <groupId>org.codehaus.groovy</groupId>
       <artifactId>groovy-xml</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+    </dependency>
+
+    <!-- Kotlin -->
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-stdlib</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-stdlib-jdk8</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.jetbrains.kotlin</groupId>
+          <artifactId>kotlin-stdlib-jdk7</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-stdlib-jdk7</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-reflect</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.github.microutils</groupId>
+      <artifactId>kotlin-logging</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.jetbrains.kotlin</groupId>
+          <artifactId>kotlin-stdlib</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>io.toolisticon.springboot</groupId>
+      <artifactId>springboot-swagger-starter</artifactId>
+    </dependency>
 
     <!-- Testing -->
     <dependency>
@@ -121,40 +151,59 @@
       <artifactId>camunda-bpm-data-test</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>org.camunda.bpm.assert</groupId>
-      <artifactId>camunda-bpm-assert</artifactId>
-      <scope>test</scope>
-    </dependency>
 
     <dependency>
-      <groupId>org.camunda.bpm.springboot</groupId>
-      <artifactId>camunda-bpm-spring-boot-starter-test</artifactId>
-      <scope>test</scope>
+      <groupId>io.holunda.testing</groupId>
+      <artifactId>camunda-bpm-jgiven</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.camunda.bpm.extension.mockito</groupId>
-      <artifactId>camunda-bpm-mockito</artifactId>
-      <scope>test</scope>
+      <groupId>com.tngtech.jgiven</groupId>
+      <artifactId>jgiven-junit</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>io.holunda.testing</groupId>
-      <artifactId>camunda-bpm-jgiven</artifactId>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
 
   <build>
+    <defaultGoal>integration-test failsafe:verify</defaultGoal>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>integration-test</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <includes>
+            <include>${pattern.class.itest}</include>
+            <include>${pattern.package.itest}</include>
+          </includes>
+          <!-- Sets the VM argument line used when unit tests are run. -->
+          <!-- prevent the annoying ForkedBooter process from stealing window focus on Mac OS -->
+          <argLine>-Djava.awt.headless=true ${argLine} -XX:+StartAttachListener</argLine>
+          <runOrder>random</runOrder>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.jetbrains.kotlin</groupId>
+        <artifactId>kotlin-maven-plugin</artifactId>
+      </plugin>
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
+      <plugin>
+        <groupId>com.tngtech.jgiven</groupId>
+        <artifactId>jgiven-maven-plugin</artifactId>
+      </plugin>
     </plugins>
   </build>
+
 </project>

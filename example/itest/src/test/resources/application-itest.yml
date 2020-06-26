@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: ITest
+  jpa:
+    open-in-view: true
+camunda:
+  bpm:
+    default-serialization-format: application/json
+server:
+  port: 8084

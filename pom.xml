@@ -4,7 +4,7 @@
 
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data-parent</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2-SNAPSHOT</version>
   <name>${project.artifactId}</name>
   <description>Camunda BPM Data</description>
   <url>https://github.com/holunda-io/camunda-bpm-data/</url>
@@ -46,8 +46,8 @@
   </properties>
 
   <modules>
-      <module>extension/core</module>
-      <module>extension/test</module>
+    <module>extension/core</module>
+    <module>extension/test</module>
   </modules>
 
   <dependencyManagement>
@@ -268,7 +268,6 @@
               <option>all-open:annotation=com.tngtech.jgiven.integration.spring.JGivenStage</option>
             </pluginOptions>
           </configuration>
-
           <executions>
             <execution>
               <id>compile</id>
@@ -605,11 +604,7 @@
       <activation>
         <activeByDefault>false</activeByDefault>
       </activation>
-      <properties>
-        <skipFrontend>true</skipFrontend>
-      </properties>
       <build>
-        <defaultGoal>integration-test failsafe:verify</defaultGoal>
         <plugins>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
@@ -619,32 +614,9 @@
               <skipTests>true</skipTests>
             </configuration>
           </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-failsafe-plugin</artifactId>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>integration-test</goal>
-                </goals>
-              </execution>
-            </executions>
-            <configuration>
-              <includes>
-                <include>${pattern.class.itest}</include>
-                <include>${pattern.package.itest}</include>
-              </includes>
-              <!-- Sets the VM argument line used when unit tests are run. -->
-              <!-- prevent the annoying ForkedBooter process from stealing window focus on Mac OS -->
-              <argLine>-Djava.awt.headless=true ${argLine} -XX:+StartAttachListener</argLine>
-              <runOrder>random</runOrder>
-            </configuration>
-          </plugin>
-
         </plugins>
       </build>
     </profile>
-
     <!--
       Profile creating all artifacts: JARs, POMs, Sources, JavaDoc and all signatures.
     -->
@@ -696,7 +668,7 @@
 
     <profile>
       <!--
-      Profile for building examples
+      Profile for building examples and metering coverage
       -->
       <id>examples</id>
       <activation>
@@ -708,7 +680,6 @@
         <module>example</module>
       </modules>
     </profile>
-
   </profiles>
 
   <licenses>
