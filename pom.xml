@@ -4,7 +4,7 @@
 
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data-parent</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2-SNAPSHOT</version>
   <name>${project.artifactId}</name>
   <description>Camunda BPM Data</description>
   <url>https://github.com/holunda-io/camunda-bpm-data/</url>
@@ -354,7 +354,7 @@
           <executions>
             <execution>
               <id>attach-javadocs</id>
-              <phase>pre-site</phase>
+              <phase>package</phase>
               <goals>
                 <goal>javadocJar</goal>
               </goals>
@@ -378,6 +378,7 @@
           <executions>
             <execution>
               <id>attach-javadocs</id>
+              <phase>package</phase>
               <goals>
                 <goal>jar</goal>
               </goals>
@@ -656,10 +657,6 @@
       </activation>
       <build>
         <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-          </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-source-plugin</artifactId>
