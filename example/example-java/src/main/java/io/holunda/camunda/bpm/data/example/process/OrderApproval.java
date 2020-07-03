@@ -6,6 +6,7 @@ import static io.holunda.camunda.bpm.data.CamundaBpmData.customVariable;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
 import static io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.exists;
 
+import io.holunda.camunda.bpm.data.delegate.VariableAwareExecutionListener;
 import io.holunda.camunda.bpm.data.delegate.VariableAwareJavaDelegate;
 import io.holunda.camunda.bpm.data.example.domain.Order;
 import io.holunda.camunda.bpm.data.example.domain.OrderPosition;
@@ -91,11 +92,12 @@ public class OrderApproval {
    * Read a local variable and store it in global variable.
    */
   @Bean
-  public ExecutionListener writeOrderTotal() {
+  public VariableAwareExecutionListener writeOrderTotal() {
     return execution ->
     {
-      BigDecimal total = ORDER_TOTAL.from(execution).get();
-      ORDER_TOTAL.on(execution).set(total);
+      BigDecimal total = execution.get(ORDER_TOTAL);
+
+      execution.set(ORDER_TOTAL, total);
     };
   }
 
