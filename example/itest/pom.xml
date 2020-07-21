@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data.example</groupId>
     <artifactId>camunda-bpm-data-example-parent</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2-59_case_variables-SNAPSHOT</version>
   </parent>
 
   <artifactId>camunda-bpm-data-integration-test</artifactId>
