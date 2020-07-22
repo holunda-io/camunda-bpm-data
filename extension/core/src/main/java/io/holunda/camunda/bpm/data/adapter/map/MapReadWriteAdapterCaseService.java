@@ -1,7 +1,6 @@
 package io.holunda.camunda.bpm.data.adapter.map;
 
 import org.camunda.bpm.engine.CaseService;
-import org.camunda.bpm.engine.RuntimeService;
 
 import java.util.Map;
 import java.util.Optional;

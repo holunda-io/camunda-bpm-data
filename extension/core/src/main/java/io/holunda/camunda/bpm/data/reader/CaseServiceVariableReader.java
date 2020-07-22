@@ -2,7 +2,6 @@ package io.holunda.camunda.bpm.data.reader;
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.CaseService;
-import org.camunda.bpm.engine.RuntimeService;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
