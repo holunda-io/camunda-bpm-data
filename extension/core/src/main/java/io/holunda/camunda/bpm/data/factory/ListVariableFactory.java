@@ -96,7 +96,8 @@ public class ListVariableFactory<T> implements VariableFactory<List<T>> {
     return memberClazz;
   }
 
-  @Override public boolean equals(Object o) {
+  @Override
+  public boolean equals(Object o) {
     if (this == o)
       return true;
     if (o == null || getClass() != o.getClass())
@@ -106,15 +107,16 @@ public class ListVariableFactory<T> implements VariableFactory<List<T>> {
       memberClazz.equals(that.memberClazz);
   }
 
-  @Override public int hashCode() {
+  @Override
+  public int hashCode() {
     return Objects.hash(name, memberClazz);
   }
 
   @Override
   public String toString() {
     return "ListVariableFactory{" +
-        "name='" + name + '\'' +
-        ", memberClazz=" + memberClazz +
-        '}';
+      "name='" + name + '\'' +
+      ", memberClazz=" + memberClazz +
+      '}';
   }
 }

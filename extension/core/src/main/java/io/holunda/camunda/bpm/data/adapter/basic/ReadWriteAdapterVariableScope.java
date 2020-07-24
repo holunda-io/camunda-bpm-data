@@ -2,6 +2,7 @@ package io.holunda.camunda.bpm.data.adapter.basic;
 
 import org.camunda.bpm.engine.delegate.VariableScope;
 
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -54,4 +55,5 @@ public class ReadWriteAdapterVariableScope<T> extends AbstractBasicReadWriteAdap
     public void removeLocal() {
         variableScope.removeVariableLocal(variableName);
     }
+
 }
