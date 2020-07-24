@@ -55,7 +55,7 @@ If you just want to start using the library, put the following dependency into y
 </dependency>
 ----
 
-If you are using Gradle Kotlin DSL add to your `build.gradle`:
+If you are using Gradle Kotlin DSL add to your `build.gradle.kts`:
 [source,kotlin]
 ----
 implementation("io.holunda.data:camunda-bpm-data:1.0.1")
