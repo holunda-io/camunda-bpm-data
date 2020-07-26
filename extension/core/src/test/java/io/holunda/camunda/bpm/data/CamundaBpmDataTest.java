@@ -5,6 +5,7 @@ import io.holunda.camunda.bpm.data.builder.VariableMapBuilder;
 import io.holunda.camunda.bpm.data.factory.*;
 import io.holunda.camunda.bpm.data.reader.*;
 import io.holunda.camunda.bpm.data.writer.*;
+import org.camunda.bpm.engine.CaseService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.extension.mockito.delegate.DelegateExecutionFake;
@@ -25,6 +26,7 @@ public class CamundaBpmDataTest {
   private final String VAR_NAME = "foo";
   private final RuntimeService runtimeService = mock(RuntimeService.class);
   private final TaskService taskService = mock(TaskService.class);
+  private final CaseService caseService = mock(CaseService.class);
 
 
   @Before
@@ -34,6 +36,10 @@ public class CamundaBpmDataTest {
 
     when(taskService.getVariablesLocalTyped(any())).thenReturn(createVariables());
     when(taskService.getVariablesTyped(any())).thenReturn(createVariables());
+
+    when(caseService.getVariablesLocalTyped(any())).thenReturn(createVariables());
+    when(caseService.getVariablesTyped(any())).thenReturn(createVariables());
+
   }
 
   @Test
@@ -189,6 +195,19 @@ public class CamundaBpmDataTest {
     assertThat(writer).isNotSameAs(writer2);
     assertThat(writer).isEqualTo(writer2);
     assertThat(writer).isInstanceOf(TaskServiceVariableWriter.class);
+    assertThat(writer.variablesLocal()).isNotNull();
+    assertThat(writer.variables()).isNotNull();
+  }
+
+
+  @Test
+  public void shouldCreateWriterCaseService() {
+
+    VariableWriter<?> writer = writer(caseService, "4711");
+    VariableWriter<?> writer2 = writer(caseService, "4711");
+    assertThat(writer).isNotSameAs(writer2);
+    assertThat(writer).isEqualTo(writer2);
+    assertThat(writer).isInstanceOf(CaseServiceVariableWriter.class);
     assertThat(writer.variablesLocal()).isNotNull();
     assertThat(writer.variables()).isNotNull();
   }

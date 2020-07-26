@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>io.holunda.data.example</groupId>
+    <artifactId>camunda-bpm-data-example-parent</artifactId>
+    <version>1.0.2</version>
+  </parent>
+
+  <artifactId>camunda-bpm-data-coverage-report</artifactId>
+  <name>${project.artifactId}</name>
+  <packaging>pom</packaging>
+
+  <properties>
+    <jacoco.skip>false</jacoco.skip>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>io.holunda.data</groupId>
+      <artifactId>camunda-bpm-data</artifactId>
+      <version>${project.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.holunda.data</groupId>
+      <artifactId>camunda-bpm-data-test</artifactId>
+      <version>${project.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.holunda.data.example</groupId>
+      <artifactId>camunda-bpm-data-integration-test</artifactId>
+      <version>${project.version}</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>report-aggregate</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>report-aggregate</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

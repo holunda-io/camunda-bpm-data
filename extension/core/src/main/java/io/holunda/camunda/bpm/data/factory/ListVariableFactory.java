@@ -2,10 +2,12 @@ package io.holunda.camunda.bpm.data.factory;
 
 import io.holunda.camunda.bpm.data.adapter.ReadAdapter;
 import io.holunda.camunda.bpm.data.adapter.WriteAdapter;
+import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterCaseService;
 import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterRuntimeService;
 import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterTaskService;
 import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterVariableMap;
 import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterVariableScope;
+import org.camunda.bpm.engine.CaseService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.delegate.VariableScope;
@@ -74,6 +76,16 @@ public class ListVariableFactory<T> implements VariableFactory<List<T>> {
   }
 
   @Override
+  public WriteAdapter<List<T>> on(CaseService caseService, String caseExecutionId) {
+    return new ListReadWriteAdapterCaseService<>(caseService, caseExecutionId, name, memberClazz);
+  }
+
+  @Override
+  public ReadAdapter<List<T>> from(CaseService caseService, String caseExecutionId) {
+    return new ListReadWriteAdapterCaseService<>(caseService, caseExecutionId, name, memberClazz);
+  }
+
+  @Override
   @NotNull
   public String getName() {
     return name;
@@ -84,7 +96,8 @@ public class ListVariableFactory<T> implements VariableFactory<List<T>> {
     return memberClazz;
   }
 
-  @Override public boolean equals(Object o) {
+  @Override
+  public boolean equals(Object o) {
     if (this == o)
       return true;
     if (o == null || getClass() != o.getClass())
@@ -94,15 +107,16 @@ public class ListVariableFactory<T> implements VariableFactory<List<T>> {
       memberClazz.equals(that.memberClazz);
   }
 
-  @Override public int hashCode() {
+  @Override
+  public int hashCode() {
     return Objects.hash(name, memberClazz);
   }
 
   @Override
   public String toString() {
     return "ListVariableFactory{" +
-        "name='" + name + '\'' +
-        ", memberClazz=" + memberClazz +
-        '}';
+      "name='" + name + '\'' +
+      ", memberClazz=" + memberClazz +
+      '}';
   }
 }

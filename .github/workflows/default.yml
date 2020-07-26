@@ -35,11 +35,8 @@ jobs:
     - name: Build
       run: ./mvnw clean package
 
-    - name: Run integration tests
+    - name: Run integration tests and generate coverage reports
       run: ./mvnw -Pitest verify
-
-    - name: Create coverage reports
-      run: ./mvnw jacoco:report-aggregate
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1.0.2

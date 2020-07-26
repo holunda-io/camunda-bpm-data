@@ -6,22 +6,30 @@ import io.holunda.camunda.bpm.data.factory.ListVariableFactory;
 import io.holunda.camunda.bpm.data.factory.MapVariableFactory;
 import io.holunda.camunda.bpm.data.factory.SetVariableFactory;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import io.holunda.camunda.bpm.data.reader.CaseServiceVariableReader;
 import io.holunda.camunda.bpm.data.reader.RuntimeServiceVariableReader;
 import io.holunda.camunda.bpm.data.reader.TaskServiceVariableReader;
 import io.holunda.camunda.bpm.data.reader.VariableMapReader;
 import io.holunda.camunda.bpm.data.reader.VariableReader;
 import io.holunda.camunda.bpm.data.reader.VariableScopeReader;
-import io.holunda.camunda.bpm.data.writer.*;
-
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import io.holunda.camunda.bpm.data.writer.CaseServiceVariableWriter;
+import io.holunda.camunda.bpm.data.writer.GlobalVariableWriter;
+import io.holunda.camunda.bpm.data.writer.RuntimeServiceVariableWriter;
+import io.holunda.camunda.bpm.data.writer.TaskServiceVariableWriter;
+import io.holunda.camunda.bpm.data.writer.VariableMapWriter;
+import io.holunda.camunda.bpm.data.writer.VariableScopeWriter;
+import io.holunda.camunda.bpm.data.writer.VariableWriter;
+import org.camunda.bpm.engine.CaseService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.delegate.VariableScope;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Provides a collection of factory methods for creating variable factories.
@@ -222,6 +230,18 @@ public class CamundaBpmData {
   }
 
   /**
+   * Creates a new caseExecution variable writer.
+   *
+   * @param caseService task service to use.
+   * @param caseExecutionId caseExecution id.
+   * @return new writer working on provided user task.
+   */
+  @NotNull
+  public static VariableWriter<?> writer(CaseService caseService, String caseExecutionId) {
+    return new CaseServiceVariableWriter(caseService, caseExecutionId);
+  }
+
+  /**
    * Creates a new task variable reader.
    *
    * @param taskService the Camunda task service
@@ -242,6 +262,17 @@ public class CamundaBpmData {
    */
   public static VariableReader reader(RuntimeService runtimeService, String executionId) {
     return new RuntimeServiceVariableReader(runtimeService, executionId);
+  }
+
+  /**
+   * Creates a new execution variable reader.
+   *
+   * @param caseService the Camunda case service
+   * @param caseExecutionId the caseExecutionId to use
+   * @return variable reader working on execution
+   */
+  public static VariableReader reader(CaseService caseService, String caseExecutionId) {
+    return new CaseServiceVariableReader(caseService, caseExecutionId);
   }
 
   /**
