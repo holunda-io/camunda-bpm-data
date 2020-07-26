@@ -54,4 +54,5 @@ public class ReadWriteAdapterVariableScope<T> extends AbstractBasicReadWriteAdap
     public void removeLocal() {
         variableScope.removeVariableLocal(variableName);
     }
+
 }

@@ -16,20 +16,20 @@ In Apache Maven add to your `pom.xml`:
 <dependency>
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data</artifactId>
-  <version>1.0.1</version>
+  <version>{{ site:version }}</version>
 </dependency>
 ----
 
-For Gradle Kotlin DSL add to your `build.gradle`:
+For Gradle Kotlin DSL add to your `build.gradle.kts`:
 [source,kotlin]
 ----
-implementation("io.holunda.data:camunda-bpm-data:1.0.1")
+implementation("io.holunda.data:camunda-bpm-data:{{ site:version }}")
 ----
 
 For Gradle Groovy DSL add to your `build.gradle`:
 [source,groovy]
 ----
-implementation 'io.holunda.data:camunda-bpm-data:1.0.1'
+implementation 'io.holunda.data:camunda-bpm-data:{{ site:version }}'
 ----
 
 === Declare process variable factories
@@ -128,7 +128,7 @@ Please put the following dependency into your `pom.xml`:
 <dependency>
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data-test</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.2</version>
   <scope>test</scope>
 </dependency>
 ----

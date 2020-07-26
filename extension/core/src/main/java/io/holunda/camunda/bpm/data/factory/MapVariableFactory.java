@@ -2,10 +2,12 @@ package io.holunda.camunda.bpm.data.factory;
 
 import io.holunda.camunda.bpm.data.adapter.ReadAdapter;
 import io.holunda.camunda.bpm.data.adapter.WriteAdapter;
+import io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterCaseService;
 import io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterRuntimeService;
 import io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterTaskService;
 import io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterVariableMap;
 import io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterVariableScope;
+import org.camunda.bpm.engine.CaseService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.delegate.VariableScope;
@@ -79,6 +81,16 @@ public class MapVariableFactory<K, V> implements VariableFactory<Map<K, V>> {
   }
 
   @Override
+  public WriteAdapter<Map<K, V>> on(CaseService caseService, String caseExecutionId) {
+    return new MapReadWriteAdapterCaseService<>(caseService, caseExecutionId, name, keyClazz, valueClazz);
+  }
+
+  @Override
+  public ReadAdapter<Map<K, V>> from(CaseService caseService, String caseExecutionId) {
+    return new MapReadWriteAdapterCaseService<>(caseService, caseExecutionId, name, keyClazz, valueClazz);
+  }
+
+  @Override
   @NotNull
   public String getName() {
     return name;
@@ -104,7 +116,8 @@ public class MapVariableFactory<K, V> implements VariableFactory<Map<K, V>> {
     return valueClazz;
   }
 
-  @Override public boolean equals(Object o) {
+  @Override
+  public boolean equals(Object o) {
     if (this == o)
       return true;
     if (o == null || getClass() != o.getClass())
@@ -115,16 +128,17 @@ public class MapVariableFactory<K, V> implements VariableFactory<Map<K, V>> {
       valueClazz.equals(that.valueClazz);
   }
 
-  @Override public int hashCode() {
+  @Override
+  public int hashCode() {
     return Objects.hash(name, keyClazz, valueClazz);
   }
 
   @Override
   public String toString() {
     return "MapVariableFactory{" +
-        "name='" + name + '\'' +
-        ", keyClazz=" + keyClazz +
-        ", valueClazz=" + valueClazz +
-        '}';
+      "name='" + name + '\'' +
+      ", keyClazz=" + keyClazz +
+      ", valueClazz=" + valueClazz +
+      '}';
   }
 }

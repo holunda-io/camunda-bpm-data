@@ -1,19 +1,20 @@
 package io.holunda.camunda.bpm.data.reader;
 
-import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
-
 import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
-import java.util.UUID;
 import org.camunda.bpm.engine.TaskService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-public class UserTaskVariableReaderTest {
+import java.util.UUID;
+
+import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
+
+public class UserServiceVariableReaderTest {
 
   private static final VariableFactory<String> STRING = stringVariable("myString");
   private final TaskService taskService = Mockito.mock(TaskService.class);
