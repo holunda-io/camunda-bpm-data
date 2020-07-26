@@ -7,10 +7,10 @@ import org.camunda.bpm.engine.variable.VariableMap
  */
 @FunctionalInterface
 interface VariableMapTransformer {
-    /**
-     * Performs transformation on variable map.
-     * @param variableMap containing the values.
-     * @return new variable map
-     */
-    fun transform(variableMap: VariableMap): VariableMap
+  /**
+   * Performs transformation on variable map.
+   * @param variableMap containing the values.
+   * @return new variable map
+   */
+  fun transform(variableMap: VariableMap): VariableMap
 }

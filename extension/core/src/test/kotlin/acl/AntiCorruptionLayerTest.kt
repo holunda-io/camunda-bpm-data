@@ -22,119 +22,118 @@ import org.junit.rules.ExpectedException
 
 class AntiCorruptionLayerTest {
 
-    val FOO = stringVariable("foo")
-    val BAZ = stringVariable("baz")
+  val FOO = stringVariable("foo")
+  val BAZ = stringVariable("baz")
 
-    val TRANSIENT = customVariable("__transient", VariableMap::class.java)
+  val TRANSIENT = customVariable("__transient", VariableMap::class.java)
 
-    val MY_ACL = CamundaBpmDataACL.guardTransformingLocalReplace(
-        TRANSIENT.name,
-        VariablesGuard(listOf(exists(FOO), BAZ.matches { it.length > 2 })),
-        IdentityVariableMapTransformer
+  val MY_ACL = CamundaBpmDataACL.guardTransformingLocalReplace(
+    TRANSIENT.name,
+    VariablesGuard(listOf(exists(FOO), BAZ.matches { it.length > 2 })),
+    IdentityVariableMapTransformer
+  )
+
+  @Suppress("RedundantVisibilityModifier")
+  @get: Rule
+  public val expectedException: ExpectedException = ExpectedException.none()
+
+
+  @Test
+  fun `should wrap variables directly`() {
+
+    val vars = CamundaBpmData.builder().set(FOO, "foo1").set(BAZ, "baz2").build()
+
+    val wrapped = AntiCorruptionLayer.wrapAsTypedTransientVariable(TRANSIENT.name, vars)
+    assertThat(wrapped).containsOnlyKeys(TRANSIENT.name)
+    assertThat(wrapped.getValueTyped<ObjectValue>(TRANSIENT.name).isTransient).isTrue()
+    assertThat(TRANSIENT.from(wrapped).get()).isEqualTo(vars)
+  }
+
+  @Test
+  fun `should wrap variables using ACL`() {
+
+    val vars = CamundaBpmData.builder().set(FOO, "foo1").set(BAZ, "baz2").build()
+
+    val wrapped = MY_ACL.wrap(vars)
+    assertThat(wrapped).containsOnlyKeys(TRANSIENT.name)
+    assertThat(wrapped.getValueTyped<ObjectValue>(TRANSIENT.name).isTransient).isTrue()
+    assertThat(TRANSIENT.from(wrapped).get()).isEqualTo(vars)
+  }
+
+  @Test
+  fun `should check and wrap variables`() {
+    val vars = CamundaBpmData.builder().set(FOO, "foo1").set(BAZ, "baz2").build()
+    val wrapped = MY_ACL.checkAndWrap(vars)
+
+    assertThat(wrapped).containsOnlyKeys(TRANSIENT.name)
+    assertThat(wrapped.getValueTyped<ObjectValue>(TRANSIENT.name).isTransient).isTrue()
+    assertThat(TRANSIENT.from(wrapped).get()).isEqualTo(vars)
+  }
+
+  @Test
+  fun `should fail checking and wrapping variables`() {
+    expectedException.expectMessage("ACL Guard Error:\n\tExpecting variable 'baz' to match the condition, but its value 'ba' has not.")
+
+    val vars = CamundaBpmData.builder().set(FOO, "foo1").set(BAZ, "ba").build()
+    MY_ACL.checkAndWrap(vars)
+  }
+
+  @Test
+  fun `should act as execution listener`() {
+
+    setupEngineConfiguration()
+
+    val listener = MY_ACL.getExecutionListener()
+    val wrappedVars = MY_ACL.checkAndWrap(
+      CamundaBpmData
+        .builder()
+        .set(FOO, "foo1")
+        .set(BAZ, "baz2")
+        .build()
     )
 
-    @Suppress("RedundantVisibilityModifier")
-    @get: Rule
-    public val expectedException: ExpectedException = ExpectedException.none()
+    val fake = DelegateExecutionFake().withVariables(wrappedVars)
+    listener.notify(fake)
+
+    assertThat(fake.hasVariableLocal(FOO.name)).isTrue()
+    assertThat(fake.hasVariableLocal(BAZ.name)).isTrue()
+
+  }
+
+  @Test
+  fun `should act as task listener`() {
+
+    setupEngineConfiguration()
+
+    val listener = MY_ACL.getTaskListener()
+    val wrappedVars = MY_ACL.checkAndWrap(
+      CamundaBpmData
+        .builder()
+        .set(FOO, "foo1")
+        .set(BAZ, "baz2")
+        .build()
+    )
+
+    val fake = DelegateTaskFake().withVariables(wrappedVars)
+    listener.notify(fake)
+
+    assertThat(fake.hasVariableLocal(FOO.name)).isTrue()
+    assertThat(fake.hasVariableLocal(BAZ.name)).isTrue()
+
+  }
 
 
-    @Test
-    fun `should wrap variables directly`() {
-
-        val vars = CamundaBpmData.builder().set(FOO, "foo1").set(BAZ, "baz2").build()
-
-        val wrapped = AntiCorruptionLayer.wrapAsTypedTransientVariable(TRANSIENT.name, vars)
-        assertThat(wrapped).containsOnlyKeys(TRANSIENT.name)
-        assertThat(wrapped.getValueTyped<ObjectValue>(TRANSIENT.name).isTransient).isTrue()
-        assertThat(TRANSIENT.from(wrapped).get()).isEqualTo(vars)
+  private fun setupEngineConfiguration() {
+    val config = object : StandaloneInMemProcessEngineConfiguration() {
+      init {
+        history = ProcessEngineConfiguration.HISTORY_FULL
+        databaseSchemaUpdate = ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE
+        jobExecutorActivate = false
+        expressionManager = MockExpressionManager()
+        javaSerializationFormatEnabled = true
+      }
     }
 
-    @Test
-    fun `should wrap variables using ACL`() {
-
-        val vars = CamundaBpmData.builder().set(FOO, "foo1").set(BAZ, "baz2").build()
-
-        val wrapped = MY_ACL.wrap(vars)
-        assertThat(wrapped).containsOnlyKeys(TRANSIENT.name)
-        assertThat(wrapped.getValueTyped<ObjectValue>(TRANSIENT.name).isTransient).isTrue()
-        assertThat(TRANSIENT.from(wrapped).get()).isEqualTo(vars)
-    }
-
-    @Test
-    fun `should check and wrap variables`() {
-        val vars = CamundaBpmData.builder().set(FOO, "foo1").set(BAZ, "baz2").build()
-        val wrapped = MY_ACL.checkAndWrap(vars)
-
-        assertThat(wrapped).containsOnlyKeys(TRANSIENT.name)
-        assertThat(wrapped.getValueTyped<ObjectValue>(TRANSIENT.name).isTransient).isTrue()
-        assertThat(TRANSIENT.from(wrapped).get()).isEqualTo(vars)
-    }
-
-    @Test
-    fun `should fail checking and wrapping variables`() {
-        expectedException.expectMessage("ACL Guard Error:\n\tExpecting variable 'baz' to match the condition, but its value 'ba' has not.")
-
-        val vars = CamundaBpmData.builder().set(FOO, "foo1").set(BAZ, "ba").build()
-        MY_ACL.checkAndWrap(vars)
-    }
-
-    @Test
-    fun `should act as execution listener`() {
-
-        setupEngineConfiguration()
-
-        val listener = MY_ACL.getExecutionListener()
-        val wrappedVars = MY_ACL.checkAndWrap(
-            CamundaBpmData
-                .builder()
-                .set(FOO, "foo1")
-                .set(BAZ, "baz2")
-                .build()
-        )
-
-        val fake = DelegateExecutionFake().withVariables(wrappedVars)
-        listener.notify(fake)
-
-        assertThat(fake.hasVariableLocal(FOO.name)).isTrue()
-        assertThat(fake.hasVariableLocal(BAZ.name)).isTrue()
-
-    }
-
-    @Test
-    fun `should act as task listener`() {
-
-        setupEngineConfiguration()
-
-        val listener = MY_ACL.getTaskListener()
-        val wrappedVars = MY_ACL.checkAndWrap(
-            CamundaBpmData
-                .builder()
-                .set(FOO, "foo1")
-                .set(BAZ, "baz2")
-                .build()
-        )
-
-        val fake = DelegateTaskFake().withVariables(wrappedVars)
-        listener.notify(fake)
-
-        assertThat(fake.hasVariableLocal(FOO.name)).isTrue()
-        assertThat(fake.hasVariableLocal(BAZ.name)).isTrue()
-
-    }
-
-
-    private fun setupEngineConfiguration() {
-        val config = object : StandaloneInMemProcessEngineConfiguration() {
-            init {
-                history = ProcessEngineConfiguration.HISTORY_FULL
-                databaseSchemaUpdate = ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE
-                jobExecutorActivate = false
-                expressionManager = MockExpressionManager()
-                javaSerializationFormatEnabled = true
-            }
-        }
-
-        Context.setProcessEngineConfiguration(config)
-    }
-
+    Context.setProcessEngineConfiguration(config)
+  }
 }

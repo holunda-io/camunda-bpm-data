@@ -83,7 +83,8 @@ public interface WriteAdapter<T> {
 
   /**
    * Constructs typed value.
-   * @param value raw value.
+   *
+   * @param value       raw value.
    * @param isTransient transient flag.
    * @return typed value.
    */

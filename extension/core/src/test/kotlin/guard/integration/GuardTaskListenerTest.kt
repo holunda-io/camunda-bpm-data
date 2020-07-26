@@ -12,47 +12,47 @@ val ORDER_ID = stringVariable("orderID")
 
 class GuardTaskListenerTest {
 
-    @Suppress("RedundantVisibilityModifier")
-    @get: Rule
-    public val thrown = ExpectedException.none()
+  @Suppress("RedundantVisibilityModifier")
+  @get: Rule
+  public val thrown = ExpectedException.none()
 
-    @Test
-    fun `should do nothing`() {
-        val delegateTask = DelegateTaskFake().withId("4711")
-        ORDER_ID.on(delegateTask).set("1")
+  @Test
+  fun `should do nothing`() {
+    val delegateTask = DelegateTaskFake().withId("4711")
+    ORDER_ID.on(delegateTask).set("1")
 
-        val listener = createListener(true)
-        listener.notify(delegateTask)
+    val listener = createListener(true)
+    listener.notify(delegateTask)
 
-        // nothing to do here
-        assertThat(true).isTrue()
-    }
+    // nothing to do here
+    assertThat(true).isTrue()
+  }
 
-    @Test
-    fun `should not throw exception if disabled `() {
-        val delegateTask = DelegateTaskFake().withId("4711").withName("task name")
-        ORDER_ID.on(delegateTask).set("2")
+  @Test
+  fun `should not throw exception if disabled `() {
+    val delegateTask = DelegateTaskFake().withId("4711").withName("task name")
+    ORDER_ID.on(delegateTask).set("2")
 
-        val listener = createListener(false)
-        listener.notify(delegateTask)
+    val listener = createListener(false)
+    listener.notify(delegateTask)
 
-        // nothing to do here
-        assertThat(true).isTrue()
-    }
+    // nothing to do here
+    assertThat(true).isTrue()
+  }
 
-    @Test
-    fun `should throw exception if enabled `() {
-        val delegateTask = DelegateTaskFake().withId("4711").withName("task name")
-        ORDER_ID.on(delegateTask).set("2")
+  @Test
+  fun `should throw exception if enabled `() {
+    val delegateTask = DelegateTaskFake().withId("4711").withName("task name")
+    ORDER_ID.on(delegateTask).set("2")
 
-        thrown.expectMessage("Guard violated in task '${delegateTask.name}' (taskId: '${delegateTask.id}')")
+    thrown.expectMessage("Guard violated in task '${delegateTask.name}' (taskId: '${delegateTask.id}')")
 
-        val listener = createListener(true)
-        listener.notify(delegateTask)
+    val listener = createListener(true)
+    listener.notify(delegateTask)
 
-        // nothing to do here
-        assertThat(true).isTrue()
-    }
+    // nothing to do here
+    assertThat(true).isTrue()
+  }
 
-    private fun createListener(throwE: Boolean = true) = DefaultGuardTaskListener(listOf(ORDER_ID.hasValue("1")), throwE)
+  private fun createListener(throwE: Boolean = true) = DefaultGuardTaskListener(listOf(ORDER_ID.hasValue("1")), throwE)
 }

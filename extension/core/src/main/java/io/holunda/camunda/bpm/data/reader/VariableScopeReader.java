@@ -4,18 +4,20 @@ import io.holunda.camunda.bpm.data.factory.VariableFactory;
 
 import java.util.Objects;
 import java.util.Optional;
+
 import org.camunda.bpm.engine.delegate.VariableScope;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * Allows reading multiple variable values from {@link VariableScope} (such as {@link org.camunda.bpm.engine.delegate.DelegateExecution} and {@link org.camunda.bpm.engine.delegate.DelegateTask}).
  */
-public class VariableScopeReader implements VariableReader{
+public class VariableScopeReader implements VariableReader {
 
   private final VariableScope variableScope;
 
   /**
    * Constructs a reader operating on variable scope (e.g. DelegateExecution or DelegateTask).
+   *
    * @param variableScope scope to operate on.
    */
   public VariableScopeReader(VariableScope variableScope) {

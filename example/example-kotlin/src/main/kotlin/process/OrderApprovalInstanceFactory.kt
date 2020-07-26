@@ -12,16 +12,16 @@ import java.util.*
  */
 @Component
 class OrderApprovalInstanceFactory(
-    private val runtimeService: RuntimeService
+  private val runtimeService: RuntimeService
 ) {
 
-    /**
-     * Starts the approval process.
-     */
-    fun start(id: String): OrderApprovalInstance {
-        val vars = VariableMapBuilder().set(ORDER_ID, id).build()
-        val instance = runtimeService.startProcessInstanceByKey(OrderApproval.KEY, "order-${UUID.randomUUID()}", vars)
-        return OrderApprovalInstance(instance)
-    }
+  /**
+   * Starts the approval process.
+   */
+  fun start(id: String): OrderApprovalInstance {
+    val vars = VariableMapBuilder().set(ORDER_ID, id).build()
+    val instance = runtimeService.startProcessInstanceByKey(OrderApproval.KEY, "order-${UUID.randomUUID()}", vars)
+    return OrderApprovalInstance(instance)
+  }
 
 }

@@ -4,6 +4,7 @@ import io.holunda.camunda.bpm.data.factory.VariableFactory;
 
 import java.util.Objects;
 import java.util.Optional;
+
 import org.camunda.bpm.engine.TaskService;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,8 +18,9 @@ public class TaskServiceVariableReader implements VariableReader {
 
   /**
    * Constructs a reader operating on task service.
+   *
    * @param taskService task service to operate on.
-   * @param taskId task id.
+   * @param taskId      task id.
    */
   public TaskServiceVariableReader(TaskService taskService, String taskId) {
     this.taskService = taskService;

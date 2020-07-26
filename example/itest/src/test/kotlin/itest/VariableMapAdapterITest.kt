@@ -154,6 +154,7 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
     thrown.expect(UnsupportedOperationException::class.java)
     MAP_STRING_LONG_VAR.on(createVariableMapUntyped()).removeLocal()
   }
+
   @Test
   fun `should throw correct UO exception on basic getLocal`() {
     thrown.expect(UnsupportedOperationException::class.java)

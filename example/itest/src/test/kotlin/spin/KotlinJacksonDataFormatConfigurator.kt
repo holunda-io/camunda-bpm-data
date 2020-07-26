@@ -7,11 +7,11 @@ import org.camunda.spin.spi.DataFormatConfigurator
 
 class KotlinJacksonDataFormatConfigurator : DataFormatConfigurator<JacksonJsonDataFormat> {
 
-    override fun configure(dataFormat: JacksonJsonDataFormat) {
-        val objectMapper = dataFormat.objectMapper
-        objectMapper.registerModule(KotlinModule())
-        objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
-    }
+  override fun configure(dataFormat: JacksonJsonDataFormat) {
+    val objectMapper = dataFormat.objectMapper
+    objectMapper.registerModule(KotlinModule())
+    objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
+  }
 
-    override fun getDataFormatClass(): Class<JacksonJsonDataFormat> = JacksonJsonDataFormat::class.java
+  override fun getDataFormatClass(): Class<JacksonJsonDataFormat> = JacksonJsonDataFormat::class.java
 }

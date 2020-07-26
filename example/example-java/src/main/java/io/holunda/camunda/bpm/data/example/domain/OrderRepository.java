@@ -16,26 +16,27 @@ import java.util.Map;
 @Component
 public class OrderRepository {
 
-    /**
-     * Internal representation for storage.
-     */
-    private final Map<String, Order> orders = new HashMap<>();
+  /**
+   * Internal representation for storage.
+   */
+  private final Map<String, Order> orders = new HashMap<>();
 
-    public OrderRepository() {
-        final List<OrderPosition> positions = new ArrayList<>();
-        positions.add(new OrderPosition("Pencil", BigDecimal.valueOf(1.50), 2L));
-        positions.add(new OrderPosition("Pen", BigDecimal.valueOf(2.10), 2L));
-        orders.put("1", new Order("1", Date.from(Instant.now()), positions));
-    }
+  public OrderRepository() {
+    final List<OrderPosition> positions = new ArrayList<>();
+    positions.add(new OrderPosition("Pencil", BigDecimal.valueOf(1.50), 2L));
+    positions.add(new OrderPosition("Pen", BigDecimal.valueOf(2.10), 2L));
+    orders.put("1", new Order("1", Date.from(Instant.now()), positions));
+  }
 
 
-    /**
-     * Loads order by id.
-     * @param orderId order id to load the order for.
-     * @return order or null.
-     */
-    public Order loadOrder(String orderId) {
-        return orders.get(orderId);
-    }
+  /**
+   * Loads order by id.
+   *
+   * @param orderId order id to load the order for.
+   * @return order or null.
+   */
+  public Order loadOrder(String orderId) {
+    return orders.get(orderId);
+  }
 
 }

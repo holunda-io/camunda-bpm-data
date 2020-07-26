@@ -4,6 +4,7 @@ import io.holunda.camunda.bpm.data.factory.VariableFactory;
 
 import java.util.Objects;
 import java.util.Optional;
+
 import org.camunda.bpm.engine.variable.VariableMap;
 
 /**
@@ -15,6 +16,7 @@ public class VariableMapReader implements VariableReader {
 
   /**
    * Constructs the reader using the specified variable map.
+   *
    * @param variableMap map to operate on.
    */
   public VariableMapReader(VariableMap variableMap) {

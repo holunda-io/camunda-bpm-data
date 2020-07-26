@@ -9,12 +9,12 @@ import org.camunda.bpm.engine.variable.VariableMap
  */
 object LocalScopeReplaceStrategy : ValueApplicationStrategy {
 
-    override fun apply(variableMap: VariableMap, variableScope: VariableScope): VariableScope =
-        variableScope.apply {
-            this.variablesLocal = variableMap
-        }
-
-    override fun toString(): String {
-        return javaClass.canonicalName
+  override fun apply(variableMap: VariableMap, variableScope: VariableScope): VariableScope =
+    variableScope.apply {
+      this.variablesLocal = variableMap
     }
+
+  override fun toString(): String {
+    return javaClass.canonicalName
+  }
 }
