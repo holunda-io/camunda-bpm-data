@@ -11,7 +11,7 @@ public interface ReadAdapter<T> {
   /**
    * Reads a variable.
    * @return value.
-   * @exception IllegalStateException if the required variable is missing or can't be read.
+   * @exception VariableNotFoundException if the required variable is missing or can't be read.
    */
   T get();
 
@@ -24,7 +24,7 @@ public interface ReadAdapter<T> {
   /**
    * Reads a local variable.
    * @return value.
-   * @exception IllegalStateException if the required variable is missing or can't be read.
+   * @exception VariableNotFoundException if the required variable is missing or can't be read.
    */
   T getLocal();
 
