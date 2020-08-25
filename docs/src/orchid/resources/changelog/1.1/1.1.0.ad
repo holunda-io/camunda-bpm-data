@@ -6,6 +6,8 @@ version: 1.1.0
 
 * Improve Kotlin API with extension functions on `VariableMap` and `VariableScope`, see #58
 * Provides Kotlin operators for read/write from/on `VariableMap` and `VariableScope`, see #65
+* Support smart update (set variable only if the value changed), see #65
+* Provide `update` and `updateLocal` methods in `Writer` interface, see #70
 
 == Breaking Changes
 

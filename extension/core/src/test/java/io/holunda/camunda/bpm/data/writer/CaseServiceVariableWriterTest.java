@@ -3,7 +3,6 @@ package io.holunda.camunda.bpm.data.writer;
 import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.CaseService;
-import org.camunda.bpm.engine.variable.Variables;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +11,7 @@ import org.mockito.Mockito;
 import java.util.UUID;
 
 import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
+import static org.camunda.bpm.engine.variable.Variables.stringValue;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -39,14 +39,14 @@ public class CaseServiceVariableWriterTest {
   public void testSet() {
     CamundaBpmData.writer(caseService, CASE_EXECUTION_ID)
       .set(STRING, "value");
-    verify(caseService).setVariable(CASE_EXECUTION_ID, STRING.getName(), Variables.stringValue("value"));
+    verify(caseService).setVariable(CASE_EXECUTION_ID, STRING.getName(), stringValue("value"));
   }
 
   @Test
   public void testSetLocal() {
     CamundaBpmData.writer(caseService, CASE_EXECUTION_ID)
       .setLocal(STRING, "value");
-    verify(caseService).setVariableLocal(CASE_EXECUTION_ID, STRING.getName(), Variables.stringValue("value"));
+    verify(caseService).setVariableLocal(CASE_EXECUTION_ID, STRING.getName(), stringValue("value"));
   }
 
   @Test
@@ -61,6 +61,22 @@ public class CaseServiceVariableWriterTest {
     CamundaBpmData.writer(caseService, CASE_EXECUTION_ID)
       .removeLocal(STRING);
     verify(caseService).removeVariableLocal(CASE_EXECUTION_ID, STRING.getName());
+  }
+
+  @Test
+  public void testUpdate() {
+    CamundaBpmData.writer(caseService, CASE_EXECUTION_ID)
+      .update(STRING, (old) -> "new value");
+    verify(caseService).getVariable(CASE_EXECUTION_ID, STRING.getName());
+    verify(caseService).setVariable(CASE_EXECUTION_ID, STRING.getName(), stringValue("new value"));
+  }
+
+  @Test
+  public void testUpdateLocal() {
+    CamundaBpmData.writer(caseService, CASE_EXECUTION_ID)
+      .updateLocal(STRING, (old) -> "new value");
+    verify(caseService).getVariableLocal(CASE_EXECUTION_ID, STRING.getName());
+    verify(caseService).setVariableLocal(CASE_EXECUTION_ID, STRING.getName(), stringValue("new value"));
   }
 
 }

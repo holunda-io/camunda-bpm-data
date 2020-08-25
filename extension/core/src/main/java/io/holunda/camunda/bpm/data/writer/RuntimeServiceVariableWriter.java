@@ -6,6 +6,7 @@ import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
+import java.util.function.Function;
 
 /**
  * Process execution builder allowing for fluent variable setting.
@@ -72,6 +73,30 @@ public class RuntimeServiceVariableWriter implements VariableWriter<RuntimeServi
   @NotNull
   public <T> RuntimeServiceVariableWriter removeLocal(VariableFactory<T> factory) {
     factory.on(this.runtimeService, this.executionId).removeLocal();
+    return this;
+  }
+
+  @Override
+  public @NotNull <T> RuntimeServiceVariableWriter update(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+    factory.on(this.runtimeService, this.executionId).update(valueProcessor);
+    return this;
+  }
+
+  @Override
+  public @NotNull <T> RuntimeServiceVariableWriter update(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+    factory.on(this.runtimeService, this.executionId).update(valueProcessor, isTransient);
+    return this;
+  }
+
+  @Override
+  public @NotNull <T> RuntimeServiceVariableWriter updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+    factory.on(this.runtimeService, this.executionId).updateLocal(valueProcessor);
+    return this;
+  }
+
+  @Override
+  public @NotNull <T> RuntimeServiceVariableWriter updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+    factory.on(this.runtimeService, this.executionId).updateLocal(valueProcessor, isTransient);
     return this;
   }
 
