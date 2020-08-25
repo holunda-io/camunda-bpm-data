@@ -17,8 +17,8 @@ class LocalScopeReplaceStrategyTest {
 
     LocalScopeReplaceStrategy.apply(variables, executionMock)
 
-    verify(executionMock, never()).setVariables(any())
-    verify(executionMock).setVariablesLocal(variables)
+    verify(executionMock, never()).variables = any()
+    verify(executionMock).variablesLocal = variables
     verifyNoMoreInteractions(executionMock)
   }
 }

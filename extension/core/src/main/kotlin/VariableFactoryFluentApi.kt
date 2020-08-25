@@ -1,14 +1,24 @@
 package io.holunda.camunda.bpm.data
 
-import io.holunda.camunda.bpm.data.writer.RuntimeServiceVariableWriter
-import io.holunda.camunda.bpm.data.writer.TaskServiceVariableWriter
 import io.holunda.camunda.bpm.data.factory.VariableFactory
+import io.holunda.camunda.bpm.data.reader.CaseServiceVariableReader
 import io.holunda.camunda.bpm.data.reader.RuntimeServiceVariableReader
 import io.holunda.camunda.bpm.data.reader.TaskServiceVariableReader
+import io.holunda.camunda.bpm.data.writer.CaseServiceVariableWriter
+import io.holunda.camunda.bpm.data.writer.RuntimeServiceVariableWriter
+import io.holunda.camunda.bpm.data.writer.TaskServiceVariableWriter
+import org.camunda.bpm.engine.CaseService
 import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.delegate.VariableScope
 import org.camunda.bpm.engine.variable.VariableMap
+import java.util.*
+
+/**
+ * Getter from local scope.
+ * @param factory factory defining the variable.
+ */
+fun <T> VariableMap.getOptional(factory: VariableFactory<T>): Optional<T> = factory.from(this).optional
 
 /**
  * Fluent setter.
@@ -38,6 +48,23 @@ fun <T> VariableMap.update(factory: VariableFactory<T>, valueProcessor: (T) -> T
   factory.on(this).update(valueProcessor, isTransient)
 }
 
+/**
+ * Getter from local scope.
+ * @param factory factory defining the variable.
+ */
+fun <T> VariableScope.getOptional(factory: VariableFactory<T>): Optional<T> = factory.from(this).optional
+
+/**
+ * Getter from local scope.
+ * @param factory factory defining the variable.
+ */
+fun <T> VariableScope.getLocal(factory: VariableFactory<T>): T = factory.from(this).local
+
+/**
+ * Getter from local scope.
+ * @param factory factory defining the variable.
+ */
+fun <T> VariableScope.getLocalOptional(factory: VariableFactory<T>): Optional<T> = factory.from(this).localOptional
 
 /**
  * Fluent setter.
@@ -96,6 +123,12 @@ fun <T> VariableScope.updateLocal(factory: VariableFactory<T>, valueProcessor: (
 }
 
 /**
+ * Helper to access case service writer.
+ * @param caseExecutionId id of the execution.
+ */
+fun CaseService.writer(caseExecutionId: String) = CaseServiceVariableWriter(this, caseExecutionId)
+
+/**
  * Helper to access runtime service writer.
  * @param executionId id of the execution.
  */
@@ -106,6 +139,12 @@ fun RuntimeService.writer(executionId: String) = RuntimeServiceVariableWriter(th
  * @param taskId id of the task.
  */
 fun TaskService.writer(taskId: String) = TaskServiceVariableWriter(this, taskId)
+
+/**
+ * Helper to access case service reader.
+ * @param caseExecutionId id of the execution.
+ */
+fun CaseService.reader(caseExecutionId: String) = CaseServiceVariableReader(this, caseExecutionId)
 
 /**
  * Helper to access runtime service reader.

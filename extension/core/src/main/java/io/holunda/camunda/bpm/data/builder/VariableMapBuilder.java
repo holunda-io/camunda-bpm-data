@@ -2,13 +2,12 @@ package io.holunda.camunda.bpm.data.builder;
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import io.holunda.camunda.bpm.data.writer.VariableMapWriter;
-
-import java.util.Collections;
-import java.util.Objects;
-
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.Variables;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Collections;
+import java.util.Objects;
 
 /**
  * Builder to create {@link VariableMap} using {@link VariableFactory}.

@@ -19,8 +19,8 @@ class GlobalScopeReplaceStrategyTest {
 
     GlobalScopeReplaceStrategy.apply(variables, executionMock)
 
-    verify(executionMock, Mockito.never()).setVariablesLocal(Mockito.any())
-    verify(executionMock).setVariables(variables)
+    verify(executionMock, Mockito.never()).variablesLocal = Mockito.any()
+    verify(executionMock).variables = variables
     verifyNoMoreInteractions(executionMock)
   }
 }

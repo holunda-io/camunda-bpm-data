@@ -25,7 +25,7 @@ class GuardExecutionListenerTest {
     listener.notify(delegate)
 
     // nothing to do here
-    assertThat(true).isTrue()
+    assertThat(true).isTrue
   }
 
   @Test
@@ -37,7 +37,7 @@ class GuardExecutionListenerTest {
     listener.notify(delegate)
 
     // nothing to do here
-    assertThat(true).isTrue()
+    assertThat(true).isTrue
   }
 
   @Test
@@ -51,7 +51,7 @@ class GuardExecutionListenerTest {
     listener.notify(delegate)
 
     // nothing to do here
-    assertThat(true).isTrue()
+    assertThat(true).isTrue
   }
 
   private fun createListener(throwE: Boolean = true) = DefaultGuardExecutionListener(listOf(ORDER_REFERENCE.hasValue("1")), throwE)

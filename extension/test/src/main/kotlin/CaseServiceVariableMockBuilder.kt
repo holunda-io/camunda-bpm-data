@@ -6,7 +6,6 @@ import com.nhaarman.mockito_kotlin.eq
 import com.nhaarman.mockito_kotlin.whenever
 import io.holunda.camunda.bpm.data.factory.VariableFactory
 import org.camunda.bpm.engine.CaseService
-import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.variable.VariableMap
 import org.camunda.bpm.engine.variable.Variables.createVariables
 import org.mockito.ArgumentMatchers.anyList

@@ -34,9 +34,9 @@ class CaseServiceMockingTest {
     testService.writeLocalOrderId(executionId, "4712")
     val orderId = testService.readLocalOrderId(executionId)
 
-    assertThat(testService.flagExists(executionId)).isFalse()
+    assertThat(testService.flagExists(executionId)).isFalse
     testService.writeFlag(executionId, true)
-    assertThat(testService.flagExists(executionId)).isTrue()
+    assertThat(testService.flagExists(executionId)).isTrue
     val orderFlag = testService.readFlag(executionId)
 
     assertThat(orderId).isEqualTo("4712")

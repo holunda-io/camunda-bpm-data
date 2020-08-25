@@ -25,7 +25,7 @@ class GuardTaskListenerTest {
     listener.notify(delegateTask)
 
     // nothing to do here
-    assertThat(true).isTrue()
+    assertThat(true).isTrue
   }
 
   @Test
@@ -37,7 +37,7 @@ class GuardTaskListenerTest {
     listener.notify(delegateTask)
 
     // nothing to do here
-    assertThat(true).isTrue()
+    assertThat(true).isTrue
   }
 
   @Test
@@ -51,7 +51,7 @@ class GuardTaskListenerTest {
     listener.notify(delegateTask)
 
     // nothing to do here
-    assertThat(true).isTrue()
+    assertThat(true).isTrue
   }
 
   private fun createListener(throwE: Boolean = true) = DefaultGuardTaskListener(listOf(ORDER_ID.hasValue("1")), throwE)

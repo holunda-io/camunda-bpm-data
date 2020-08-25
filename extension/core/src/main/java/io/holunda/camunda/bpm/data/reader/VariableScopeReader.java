@@ -1,12 +1,11 @@
 package io.holunda.camunda.bpm.data.reader;
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import org.camunda.bpm.engine.delegate.VariableScope;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 import java.util.Optional;
-
-import org.camunda.bpm.engine.delegate.VariableScope;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Allows reading multiple variable values from {@link VariableScope} (such as {@link org.camunda.bpm.engine.delegate.DelegateExecution} and {@link org.camunda.bpm.engine.delegate.DelegateTask}).

@@ -34,9 +34,9 @@ class TaskServiceMockingTest {
     testService.writeOrderId(taskId, "4712")
     val orderId = testService.readOrderId(taskId)
 
-    assertThat(testService.localFlagExists(taskId)).isFalse()
+    assertThat(testService.localFlagExists(taskId)).isFalse
     testService.writeLocalFlag(taskId, true)
-    assertThat(testService.localFlagExists(taskId)).isTrue()
+    assertThat(testService.localFlagExists(taskId)).isTrue
     val orderFlag = testService.readLocalFlag(taskId)
 
     assertThat(orderId).isEqualTo("4712")

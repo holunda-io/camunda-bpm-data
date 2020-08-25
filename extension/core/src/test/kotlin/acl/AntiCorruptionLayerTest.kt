@@ -45,7 +45,7 @@ class AntiCorruptionLayerTest {
 
     val wrapped = AntiCorruptionLayer.wrapAsTypedTransientVariable(TRANSIENT.name, vars)
     assertThat(wrapped).containsOnlyKeys(TRANSIENT.name)
-    assertThat(wrapped.getValueTyped<ObjectValue>(TRANSIENT.name).isTransient).isTrue()
+    assertThat(wrapped.getValueTyped<ObjectValue>(TRANSIENT.name).isTransient).isTrue
     assertThat(TRANSIENT.from(wrapped).get()).isEqualTo(vars)
   }
 
@@ -56,7 +56,7 @@ class AntiCorruptionLayerTest {
 
     val wrapped = MY_ACL.wrap(vars)
     assertThat(wrapped).containsOnlyKeys(TRANSIENT.name)
-    assertThat(wrapped.getValueTyped<ObjectValue>(TRANSIENT.name).isTransient).isTrue()
+    assertThat(wrapped.getValueTyped<ObjectValue>(TRANSIENT.name).isTransient).isTrue
     assertThat(TRANSIENT.from(wrapped).get()).isEqualTo(vars)
   }
 
@@ -66,7 +66,7 @@ class AntiCorruptionLayerTest {
     val wrapped = MY_ACL.checkAndWrap(vars)
 
     assertThat(wrapped).containsOnlyKeys(TRANSIENT.name)
-    assertThat(wrapped.getValueTyped<ObjectValue>(TRANSIENT.name).isTransient).isTrue()
+    assertThat(wrapped.getValueTyped<ObjectValue>(TRANSIENT.name).isTransient).isTrue
     assertThat(TRANSIENT.from(wrapped).get()).isEqualTo(vars)
   }
 
@@ -95,8 +95,8 @@ class AntiCorruptionLayerTest {
     val fake = DelegateExecutionFake().withVariables(wrappedVars)
     listener.notify(fake)
 
-    assertThat(fake.hasVariableLocal(FOO.name)).isTrue()
-    assertThat(fake.hasVariableLocal(BAZ.name)).isTrue()
+    assertThat(fake.hasVariableLocal(FOO.name)).isTrue
+    assertThat(fake.hasVariableLocal(BAZ.name)).isTrue
 
   }
 
@@ -117,8 +117,8 @@ class AntiCorruptionLayerTest {
     val fake = DelegateTaskFake().withVariables(wrappedVars)
     listener.notify(fake)
 
-    assertThat(fake.hasVariableLocal(FOO.name)).isTrue()
-    assertThat(fake.hasVariableLocal(BAZ.name)).isTrue()
+    assertThat(fake.hasVariableLocal(FOO.name)).isTrue
+    assertThat(fake.hasVariableLocal(BAZ.name)).isTrue
 
   }
 

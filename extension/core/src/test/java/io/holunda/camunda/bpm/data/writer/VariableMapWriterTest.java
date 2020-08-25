@@ -1,12 +1,12 @@
 package io.holunda.camunda.bpm.data.writer;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.Variables;
 import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class VariableMapWriterTest {
 

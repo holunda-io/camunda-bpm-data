@@ -1,12 +1,12 @@
 package io.holunda.camunda.bpm.data.builder;
 
-import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
-import static org.assertj.core.api.Assertions.assertThat;
-
 import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.junit.Test;
+
+import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class VariableMapBuilderTest {
 
@@ -26,7 +26,9 @@ public class VariableMapBuilderTest {
 
   @Test
   public void buildCreatesANewInstanceEveryTime() {
-    VariableMapBuilder builder = CamundaBpmData.builder().set(FOO, "bar");
+
+    VariableMapBuilder builder = CamundaBpmData.builder()
+      .set(FOO, "bar");
 
     // build copy with "bar"
     VariableMap bar = builder.build();

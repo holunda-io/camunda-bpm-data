@@ -2,7 +2,6 @@ package io.holunda.camunda.bpm.data.acl
 
 import io.holunda.camunda.bpm.data.CamundaBpmData
 import io.holunda.camunda.bpm.data.acl.apply.GlobalScopeReplaceStrategy
-import io.holunda.camunda.bpm.data.acl.apply.GlobalScopeReplaceStrategyTest
 import io.holunda.camunda.bpm.data.acl.apply.LocalScopeReplaceStrategy
 import io.holunda.camunda.bpm.data.acl.transform.IdentityVariableMapTransformer
 import io.holunda.camunda.bpm.data.guard.VariablesGuard

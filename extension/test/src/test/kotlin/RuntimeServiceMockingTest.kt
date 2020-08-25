@@ -22,7 +22,7 @@ class RuntimeServiceMockingTest {
   private val testService = RuntimeServiceAwareService(runtimeService)
 
   @Test
-  fun should_mock_task_service() {
+  fun should_mock_runtime_service() {
 
     val executionId = UUID.randomUUID().toString()
 
@@ -34,9 +34,9 @@ class RuntimeServiceMockingTest {
     testService.writeLocalOrderId(executionId, "4712")
     val orderId = testService.readLocalOrderId(executionId)
 
-    assertThat(testService.flagExists(executionId)).isFalse()
+    assertThat(testService.flagExists(executionId)).isFalse
     testService.writeFlag(executionId, true)
-    assertThat(testService.flagExists(executionId)).isTrue()
+    assertThat(testService.flagExists(executionId)).isTrue
     val orderFlag = testService.readFlag(executionId)
 
     assertThat(orderId).isEqualTo("4712")
