@@ -52,5 +52,7 @@ public class ProcessExecutionVariableReaderTest {
   @Test
   public void shouldDelegateGetLocal() {
     assertThat(CamundaBpmData.reader(runtimeService, executionId).getLocal(STRING)).isEqualTo(valueLocal);
+
+    VariableReader reader = CamundaBpmData.reader(runtimeService, executionId);
   }
 }

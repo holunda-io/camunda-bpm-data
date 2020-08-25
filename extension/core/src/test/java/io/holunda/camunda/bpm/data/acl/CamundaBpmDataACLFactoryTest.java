@@ -19,8 +19,12 @@ public class CamundaBpmDataACLFactoryTest {
                                                                                            IdentityVariableMapTransformer.INSTANCE
     );
 
-    public void testCallFromJava(String value) {
-        VariableMap variableMap = MY_ACL.checkAndWrap(CamundaBpmData.builder().set(FOO, value).build());
-        runtimeService.correlateMessage("message", variableMap);
+
+  public void testCallFromJava(String value) {
+        VariableMap variableMap = CamundaBpmData.builder().set(FOO, value).build();
+
+        runtimeService.correlateMessage("message", MY_ACL.checkAndWrap(variableMap));
+
+
     }
 }

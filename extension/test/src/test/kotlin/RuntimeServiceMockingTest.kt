@@ -22,7 +22,7 @@ class RuntimeServiceMockingTest {
     private val testService = RuntimeServiceAwareService(runtimeService)
 
     @Test
-    fun should_mock_task_service() {
+    fun should_mock_runtime_service() {
 
         val executionId = UUID.randomUUID().toString()
 
