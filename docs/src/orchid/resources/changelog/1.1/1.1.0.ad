@@ -4,8 +4,8 @@ version: 1.1.0
 
 == Features
 
-* `noneExcept` and `noneExceptLocal` conditions implemented, see #68
-* Improve Kotlin API with extension functions on `VariableMap` and `VariableScope`
+* Improve Kotlin API with extension functions on `VariableMap` and `VariableScope`, see #58
+* Provides Kotlin operators for read/write from/on `VariableMap` and `VariableScope`, see #65
 
 == Breaking Changes
 

@@ -12,22 +12,13 @@ import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.delegate.VariableScope
 import org.camunda.bpm.engine.variable.VariableMap
-
-/**
- * Getter from global scope.
- * @param factory factory defining the variable.
- */
-fun <T> VariableMap.get(factory: VariableFactory<T>) = this.apply {
-  factory.from(this).get()
-}
+import java.util.*
 
 /**
  * Getter from local scope.
  * @param factory factory defining the variable.
  */
-fun <T> VariableMap.getLocal(factory: VariableFactory<T>) = this.apply {
-  factory.from(this).local
-}
+fun <T> VariableMap.getOptional(factory: VariableFactory<T>): Optional<T> = factory.from(this).optional
 
 /**
  * Fluent setter.
@@ -40,29 +31,11 @@ fun <T> VariableMap.set(factory: VariableFactory<T>, value: T, isTransient: Bool
 }
 
 /**
- * Fluent local setter.
- * @param factory factory defining the variable.
- * @param value new value.
- * @param isTransient flag for transient access, <code>false</code> by default.
- */
-fun <T> VariableMap.setLocal(factory: VariableFactory<T>, value: T, isTransient: Boolean = false) = this.apply {
-  factory.on(this).setLocal(value, isTransient)
-}
-
-/**
  * Fluent remover.
  * @param factory factory defining the variable.
  */
 fun <T> VariableMap.remove(factory: VariableFactory<T>) = this.apply {
     factory.on(this).remove()
-}
-
-/**
- * Fluent local remover.
- * @param factory factory defining the variable.
- */
-fun <T> VariableMap.removeLocal(factory: VariableFactory<T>) = this.apply {
-  factory.on(this).removeLocal()
 }
 
 /**
@@ -76,15 +49,22 @@ fun <T> VariableMap.update(factory: VariableFactory<T>, valueProcessor: (T) -> T
 }
 
 /**
- * Fluent updater.
+ * Getter from local scope.
  * @param factory factory defining the variable.
- * @param valueProcessor update function.
- * @param isTransient flag for transient access, <code>false</code> by default.
  */
-fun <T> VariableMap.updateLocal(factory: VariableFactory<T>, valueProcessor: (T) -> T, isTransient: Boolean = false) = this.apply {
-  factory.on(this).updateLocal(valueProcessor, isTransient)
-}
+fun <T> VariableScope.getOptional(factory: VariableFactory<T>): Optional<T> = factory.from(this).optional
 
+/**
+ * Getter from local scope.
+ * @param factory factory defining the variable.
+ */
+fun <T> VariableScope.getLocal(factory: VariableFactory<T>): T = factory.from(this).local
+
+/**
+ * Getter from local scope.
+ * @param factory factory defining the variable.
+ */
+fun <T> VariableScope.getLocalOptional(factory: VariableFactory<T>): Optional<T> = factory.from(this).localOptional
 
 /**
  * Fluent setter.
@@ -131,7 +111,6 @@ fun <T> VariableScope.setLocal(factory: VariableFactory<T>, value: T, isTransien
 fun <T> VariableScope.removeLocal(factory: VariableFactory<T>) = this.apply {
     factory.on(this).removeLocal()
 }
-
 /**
  * Fluent local updater.
  * @param factory factory defining the variable.

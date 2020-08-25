@@ -1,17 +1,18 @@
 package io.holunda.camunda.bpm.data.reader;
 
-import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
-
 import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
-import java.util.UUID;
 import org.camunda.bpm.engine.RuntimeService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+
+import java.util.UUID;
+
+import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
 
 public class ProcessExecutionVariableReaderTest {
 
