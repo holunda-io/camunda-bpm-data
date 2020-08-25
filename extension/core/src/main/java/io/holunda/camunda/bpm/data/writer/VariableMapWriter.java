@@ -1,10 +1,12 @@
 package io.holunda.camunda.bpm.data.writer;
 
+import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
+import java.util.function.Function;
 
 /**
  * Variable map builder allowing for fluent variable setting.
@@ -39,6 +41,18 @@ public class VariableMapWriter implements GlobalVariableWriter<VariableMapWriter
   @NotNull
   public <T> VariableMapWriter remove(VariableFactory<T> factory) {
     factory.on(this.variables).remove();
+    return this;
+  }
+
+  @Override
+  public @NotNull <T> VariableMapWriter update(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+    factory.on(this.variables).update(valueProcessor);
+    return this;
+  }
+
+  @Override
+  public @NotNull <T> VariableMapWriter update(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+    factory.on(this.variables).update(valueProcessor, isTransient);
     return this;
   }
 

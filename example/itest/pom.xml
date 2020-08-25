@@ -169,6 +169,10 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.camunda.bpm.extension.mockito</groupId>
+      <artifactId>camunda-bpm-mockito</artifactId>
+    </dependency>
   </dependencies>
 
   <build>

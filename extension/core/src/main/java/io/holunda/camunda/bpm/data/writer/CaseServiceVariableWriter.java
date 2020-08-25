@@ -6,6 +6,7 @@ import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
+import java.util.function.Function;
 
 /**
  * Process execution builder allowing for fluent variable setting.
@@ -62,6 +63,17 @@ public class CaseServiceVariableWriter implements VariableWriter<CaseServiceVari
   }
 
   @Override
+  public @NotNull <T> CaseServiceVariableWriter updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+    return updateLocal(factory, valueProcessor, false);
+  }
+
+  @Override
+  public @NotNull <T> CaseServiceVariableWriter updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+    factory.on(this.caseService, this.caseExecutionId).updateLocal(valueProcessor, isTransient);
+    return this;
+  }
+
+  @Override
   @NotNull
   public <T> CaseServiceVariableWriter remove(VariableFactory<T> factory) {
     factory.on(this.caseService, this.caseExecutionId).remove();
@@ -72,6 +84,18 @@ public class CaseServiceVariableWriter implements VariableWriter<CaseServiceVari
   @NotNull
   public <T> CaseServiceVariableWriter removeLocal(VariableFactory<T> factory) {
     factory.on(this.caseService, this.caseExecutionId).removeLocal();
+    return this;
+  }
+
+  @Override
+  public @NotNull <T> CaseServiceVariableWriter update(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+    factory.on(this.caseService, this.caseExecutionId).update(valueProcessor);
+    return this;
+  }
+
+  @Override
+  public @NotNull <T> CaseServiceVariableWriter update(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+    factory.on(this.caseService, this.caseExecutionId).updateLocal(valueProcessor, isTransient);
     return this;
   }
 

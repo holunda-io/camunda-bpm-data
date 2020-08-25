@@ -45,12 +45,22 @@ public abstract class AbstractReadWriteAdapter<T> implements ReadAdapter<T>, Wri
 
   @Override
   public void update(Function<T, T> valueProcessor, boolean isTransient) {
-    set(valueProcessor.apply(get()), isTransient);
+    T oldValue = get();
+    T newValue = valueProcessor.apply(oldValue);
+    if (!oldValue.equals(newValue)) {
+      // touch only if the value changes
+      set(newValue, isTransient);
+    }
   }
 
   @Override
   public void updateLocal(Function<T, T> valueProcessor, boolean isTransient) {
-    setLocal(valueProcessor.apply(getLocal()), isTransient);
+    T oldValue = getLocal();
+    T newValue = valueProcessor.apply(oldValue);
+    if (!oldValue.equals(newValue)) {
+      // touch only if the value changes
+      setLocal(newValue, isTransient);
+    }
   }
 
   @Override
