@@ -1,6 +1,5 @@
 package io.holunda.camunda.bpm.data.itest
 
-import com.google.common.util.concurrent.ExecutionList
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.BOOLEAN
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX_LIST
@@ -15,16 +14,9 @@ import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Value
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SET_STRING
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SHORT
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.STRING
-import org.camunda.bpm.engine.delegate.DelegateExecution
-import org.camunda.bpm.engine.delegate.ExecutionListener
-import org.camunda.bpm.engine.delegate.JavaDelegate
 import org.camunda.bpm.engine.variable.Variables.createVariables
 import org.junit.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.beans.factory.annotation.Configurable
-import org.springframework.context.annotation.Bean
-import org.springframework.context.annotation.Configuration
-import java.time.OffsetDateTime
 import java.util.*
 
 class RuntimeServiceAdapterITest : CamundaBpmDataITestBase() {
