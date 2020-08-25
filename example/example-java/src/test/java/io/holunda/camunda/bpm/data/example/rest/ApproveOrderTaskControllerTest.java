@@ -14,7 +14,9 @@ import java.util.Date;
 import java.util.UUID;
 
 import static io.holunda.camunda.bpm.data.CamundaBpmData.builder;
-import static io.holunda.camunda.bpm.data.example.process.OrderApproval.*;
+import static io.holunda.camunda.bpm.data.example.process.OrderApproval.ORDER;
+import static io.holunda.camunda.bpm.data.example.process.OrderApproval.ORDER_APPROVED;
+import static io.holunda.camunda.bpm.data.example.process.OrderApproval.ORDER_TOTAL;
 import static io.holunda.camunda.bpm.data.mockito.CamundaBpmDataMockito.taskServiceMockVerifier;
 import static io.holunda.camunda.bpm.data.mockito.CamundaBpmDataMockito.taskServiceVariableMockBuilder;
 import static org.assertj.core.api.Assertions.assertThat;

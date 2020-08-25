@@ -21,7 +21,9 @@ import org.springframework.context.event.EventListener;
 import java.math.BigDecimal;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.*;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.customVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
 import static io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.exists;
 
 /**

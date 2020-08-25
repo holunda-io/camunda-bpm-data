@@ -8,11 +8,23 @@ import org.camunda.bpm.engine.variable.impl.value.ObjectValueImpl;
 import org.camunda.bpm.engine.variable.value.ObjectValue;
 import org.camunda.bpm.engine.variable.value.TypedValue;
 
+import java.io.File;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
 
-import static org.camunda.bpm.engine.variable.Variables.*;
+import static org.camunda.bpm.engine.variable.Variables.booleanValue;
+import static org.camunda.bpm.engine.variable.Variables.dateValue;
+import static org.camunda.bpm.engine.variable.Variables.doubleValue;
+import static org.camunda.bpm.engine.variable.Variables.fileValue;
+import static org.camunda.bpm.engine.variable.Variables.integerValue;
+import static org.camunda.bpm.engine.variable.Variables.longValue;
+import static org.camunda.bpm.engine.variable.Variables.objectValue;
+import static org.camunda.bpm.engine.variable.Variables.shortValue;
+import static org.camunda.bpm.engine.variable.Variables.stringValue;
+import static org.camunda.bpm.engine.variable.Variables.untypedNullValue;
+import static org.camunda.bpm.engine.variable.Variables.untypedValue;
+
 
 /**
  * Static util methods.
@@ -27,7 +39,8 @@ public class ValueWrapperUtil {
   }
 
   /**
-   * Delivers typed value for a given type and value.
+   * Delivers typed value for a given type and value.<br />
+   * Supports every type except byteArray.
    *
    * @param clazz       class of value.
    * @param value       value to encapsulate.
@@ -55,9 +68,14 @@ public class ValueWrapperUtil {
       return dateValue((Date) value, isTransient);
     } else if (Double.class.equals(clazz)) {
       return doubleValue((Double) value, isTransient);
+    } else if (File.class.equals(clazz)) {
+      return fileValue((File)value, isTransient);
     } else if (Object.class.equals(clazz)) {
       return objectValue(value, isTransient).create();
     } else {
+      if (value == null) {
+        return untypedNullValue(isTransient);
+      }
       // fallback for unknown-type
       return untypedValue(value, isTransient);
     }
