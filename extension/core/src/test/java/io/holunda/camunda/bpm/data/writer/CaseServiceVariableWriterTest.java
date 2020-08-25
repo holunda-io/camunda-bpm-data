@@ -3,7 +3,6 @@ package io.holunda.camunda.bpm.data.writer;
 import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.CaseService;
-import org.camunda.bpm.engine.variable.Variables;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +12,8 @@ import java.util.UUID;
 
 import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
 import static org.camunda.bpm.engine.variable.Variables.stringValue;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class CaseServiceVariableWriterTest {
 
