@@ -2,6 +2,7 @@ package io.holunda.camunda.bpm.data.acl.apply
 
 import io.holunda.camunda.bpm.data.CamundaBpmData
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
+import org.assertj.core.api.Assertions.assertThat
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.junit.Test
 import org.mockito.Mockito
@@ -10,7 +11,7 @@ import org.mockito.Mockito.verifyNoMoreInteractions
 
 class GlobalScopeReplaceStrategyTest {
 
-  val FOO = stringVariable("foo")
+  private val FOO = stringVariable("foo")
 
   @Test
   fun `should apply global`() {
@@ -22,5 +23,7 @@ class GlobalScopeReplaceStrategyTest {
     verify(executionMock, Mockito.never()).variablesLocal = Mockito.any()
     verify(executionMock).variables = variables
     verifyNoMoreInteractions(executionMock)
+
+    assertThat(GlobalScopeReplaceStrategy.toString()).isEqualTo(GlobalScopeReplaceStrategy::class.java.canonicalName)
   }
 }
