@@ -5,11 +5,11 @@ import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.customVariable
 import io.holunda.camunda.bpm.data.example.kotlin.domain.Order
 import io.holunda.camunda.bpm.data.example.kotlin.domain.OrderPosition
+import io.holunda.camunda.bpm.data.example.kotlin.domain.OrderRepository
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_ID
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_POSITION
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_TOTAL
-import io.holunda.camunda.bpm.data.example.kotlin.domain.OrderRepository
 import io.holunda.camunda.bpm.data.factory.VariableFactory
 import mu.KLogging
 import org.camunda.bpm.engine.delegate.DelegateExecution
