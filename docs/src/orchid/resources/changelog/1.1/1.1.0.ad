@@ -1,0 +1,19 @@
+---
+version: 1.1.0
+---
+
+== Features
+
+* `noneExcept` and `noneExceptLocal` conditions implemented
+
+== Breaking Changes
+
+* Guard API follows conventions of VariableFactory API (adding `Local` to method name for local scope), #67
+
+== Chore
+
+* Upgrade to Kotlin 1.4.0, see #69
+* Upgrade to Camunda BPM 7.13, see #69
+* Upgrade to SpringBoot 2.3.2, see #69
+
+
