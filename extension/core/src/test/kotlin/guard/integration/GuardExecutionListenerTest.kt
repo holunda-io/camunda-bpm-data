@@ -12,47 +12,47 @@ val ORDER_REFERENCE = stringVariable("orderReference")
 
 class GuardExecutionListenerTest {
 
-    @Suppress("RedundantVisibilityModifier")
-    @get: Rule
-    public val thrown = ExpectedException.none()
+  @Suppress("RedundantVisibilityModifier")
+  @get: Rule
+  public val thrown = ExpectedException.none()
 
-    @Test
-    fun `should do nothing`() {
-        val delegate = DelegateExecutionFake().withId("4711").withCurrentActivityName("some")
-        ORDER_REFERENCE.on(delegate).set("1")
+  @Test
+  fun `should do nothing`() {
+    val delegate = DelegateExecutionFake().withId("4711").withCurrentActivityName("some")
+    ORDER_REFERENCE.on(delegate).set("1")
 
-        val listener = createListener(true)
-        listener.notify(delegate)
+    val listener = createListener(true)
+    listener.notify(delegate)
 
-        // nothing to do here
-        assertThat(true).isTrue()
-    }
+    // nothing to do here
+    assertThat(true).isTrue
+  }
 
-    @Test
-    fun `should not throw exception if disabled `() {
-        val delegate = DelegateExecutionFake().withId("4711").withCurrentActivityName("some")
-        ORDER_REFERENCE.on(delegate).set("2")
+  @Test
+  fun `should not throw exception if disabled `() {
+    val delegate = DelegateExecutionFake().withId("4711").withCurrentActivityName("some")
+    ORDER_REFERENCE.on(delegate).set("2")
 
-        val listener = createListener(false)
-        listener.notify(delegate)
+    val listener = createListener(false)
+    listener.notify(delegate)
 
-        // nothing to do here
-        assertThat(true).isTrue()
-    }
+    // nothing to do here
+    assertThat(true).isTrue
+  }
 
-    @Test
-    fun `should throw exception if enabled `() {
-        val delegate = DelegateExecutionFake().withId("4711").withCurrentActivityName("some")
-        ORDER_REFERENCE.on(delegate).set("2")
+  @Test
+  fun `should throw exception if enabled `() {
+    val delegate = DelegateExecutionFake().withId("4711").withCurrentActivityName("some")
+    ORDER_REFERENCE.on(delegate).set("2")
 
-        thrown.expectMessage("Guard violated by execution '${delegate.id}' in activity '${delegate.currentActivityName}'")
+    thrown.expectMessage("Guard violated by execution '${delegate.id}' in activity '${delegate.currentActivityName}'")
 
-        val listener = createListener(true)
-        listener.notify(delegate)
+    val listener = createListener(true)
+    listener.notify(delegate)
 
-        // nothing to do here
-        assertThat(true).isTrue()
-    }
+    // nothing to do here
+    assertThat(true).isTrue
+  }
 
-    private fun createListener(throwE: Boolean = true) = DefaultGuardExecutionListener(listOf(ORDER_REFERENCE.hasValue("1")), throwE)
+  private fun createListener(throwE: Boolean = true) = DefaultGuardExecutionListener(listOf(ORDER_REFERENCE.hasValue("1")), throwE)
 }

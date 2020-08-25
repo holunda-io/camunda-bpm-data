@@ -16,6 +16,7 @@ public class OrderApprovalInstance implements Supplier<ProcessInstance> {
 
   /**
    * Creates the supplier.
+   *
    * @param instance instance.
    */
   public OrderApprovalInstance(ProcessInstance instance) {
@@ -24,6 +25,7 @@ public class OrderApprovalInstance implements Supplier<ProcessInstance> {
 
   /**
    * Retrieval of the instance.
+   *
    * @return instance.
    */
   public ProcessInstance get() {

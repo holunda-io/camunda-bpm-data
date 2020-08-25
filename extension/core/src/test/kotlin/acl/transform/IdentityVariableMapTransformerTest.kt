@@ -6,13 +6,13 @@ import org.junit.Test
 
 class IdentityVariableMapTransformerTest {
 
-    @Test
-    fun `should pass the input to output`() {
+  @Test
+  fun `should pass the input to output`() {
 
-        val vars = CamundaBpmData.builder().build()
+    val vars = CamundaBpmData.builder().build()
 
-        assertThat(IdentityVariableMapTransformer.transform(vars))
-            .isEqualTo(vars) // equals comparison
-            .isSameAs(vars) // == comparison
-    }
+    assertThat(IdentityVariableMapTransformer.transform(vars))
+      .isEqualTo(vars) // equals comparison
+      .isSameAs(vars) // == comparison
+  }
 }

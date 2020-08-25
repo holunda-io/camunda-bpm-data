@@ -9,13 +9,13 @@ import org.camunda.spin.spi.DataFormatConfigurator;
  */
 public class SpinTypeDetectorConfigurator implements DataFormatConfigurator<JacksonJsonDataFormat> {
 
-    @Override
-    public Class<JacksonJsonDataFormat> getDataFormatClass() {
-        return JacksonJsonDataFormat.class;
-    }
+  @Override
+  public Class<JacksonJsonDataFormat> getDataFormatClass() {
+    return JacksonJsonDataFormat.class;
+  }
 
-    @Override
-    public void configure(JacksonJsonDataFormat dataFormat) {
-        dataFormat.addTypeDetector(ErasedCollectionTypeDetector.INSTANCE);
-    }
+  @Override
+  public void configure(JacksonJsonDataFormat dataFormat) {
+    dataFormat.addTypeDetector(ErasedCollectionTypeDetector.INSTANCE);
+  }
 }

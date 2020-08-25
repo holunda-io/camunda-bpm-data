@@ -13,31 +13,31 @@ import org.slf4j.LoggerFactory
  * @property throwViolations flag controlling if the violation should lead to an exception.
  */
 class DefaultGuardExecutionListener(
-    val guard: VariablesGuard,
-    val throwViolations: Boolean = true
+  val guard: VariablesGuard,
+  val throwViolations: Boolean = true
 ) : ExecutionListener {
 
-    companion object {
-        private val logger = LoggerFactory.getLogger(DefaultGuardExecutionListener::class.java)
-    }
+  companion object {
+    private val logger = LoggerFactory.getLogger(DefaultGuardExecutionListener::class.java)
+  }
 
-    /**
-     * Constructs an execution listener using the provided conditions.
-     * @param variableConditions condition to check by the guard.
-     * @param throwViolations flag controlling if the violation should lead to an exception.
-     */
-    constructor(variableConditions: List<VariableGuardCondition<*>>, throwViolations: Boolean) : this(VariablesGuard(variableConditions), throwViolations)
+  /**
+   * Constructs an execution listener using the provided conditions.
+   * @param variableConditions condition to check by the guard.
+   * @param throwViolations flag controlling if the violation should lead to an exception.
+   */
+  constructor(variableConditions: List<VariableGuardCondition<*>>, throwViolations: Boolean) : this(VariablesGuard(variableConditions), throwViolations)
 
-    override fun notify(execution: DelegateExecution) {
-        val violations = guard.evaluate(execution)
-        if (violations.isNotEmpty()) {
-            val message = "Guard violated by execution '${execution.id}' in activity '${execution.currentActivityName}'"
-            violations.forEach {
-                logger.error("$message: ${it.message}")
-            }
-            if (throwViolations) {
-                throw GuardViolationException(violations = violations, reason = message)
-            }
-        }
+  override fun notify(execution: DelegateExecution) {
+    val violations = guard.evaluate(execution)
+    if (violations.isNotEmpty()) {
+      val message = "Guard violated by execution '${execution.id}' in activity '${execution.currentActivityName}'"
+      violations.forEach {
+        logger.error("$message: ${it.message}")
+      }
+      if (throwViolations) {
+        throw GuardViolationException(violations = violations, reason = message)
+      }
     }
+  }
 }

@@ -17,7 +17,8 @@ public class CaseServiceVariableReader implements VariableReader {
 
   /**
    * Constructs a reader operating on execution.
-   * @param caseService runtime service to use.
+   *
+   * @param caseService     runtime service to use.
    * @param caseExecutionId execution id.
    */
   public CaseServiceVariableReader(CaseService caseService, String caseExecutionId) {

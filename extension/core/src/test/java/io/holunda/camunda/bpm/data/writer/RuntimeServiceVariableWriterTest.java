@@ -53,14 +53,14 @@ public class RuntimeServiceVariableWriterTest {
   public void testRemove() {
     CamundaBpmData.writer(runtimeService, EXECUTION_ID)
       .remove(STRING);
-    verify(runtimeService).removeVariable(this.EXECUTION_ID, STRING.getName());
+    verify(runtimeService).removeVariable(EXECUTION_ID, STRING.getName());
   }
 
   @Test
   public void testRemoveLocal() {
     CamundaBpmData.writer(runtimeService, EXECUTION_ID)
       .removeLocal(STRING);
-    verify(runtimeService).removeVariableLocal(this.EXECUTION_ID, STRING.getName());
+    verify(runtimeService).removeVariableLocal(EXECUTION_ID, STRING.getName());
   }
 
 }

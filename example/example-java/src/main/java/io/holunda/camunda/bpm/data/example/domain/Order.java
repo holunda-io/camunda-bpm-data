@@ -30,8 +30,9 @@ public class Order {
 
   /**
    * Constructor to pass all member attributes.
-   * @param orderId order id
-   * @param created creation date
+   *
+   * @param orderId   order id
+   * @param created   creation date
    * @param positions list of positions.
    */
   public Order(String orderId, Date created, List<OrderPosition> positions) {
@@ -42,6 +43,7 @@ public class Order {
 
   /**
    * Sets the order id.
+   *
    * @param orderId order id to set.
    */
   public void setOrderId(String orderId) {
@@ -50,6 +52,7 @@ public class Order {
 
   /**
    * Sets the created date.
+   *
    * @param created created date to set.
    */
   public void setCreated(Date created) {
@@ -58,6 +61,7 @@ public class Order {
 
   /**
    * Sets the order positions.
+   *
    * @param positions list of positions to set.
    */
   public void setPositions(List<OrderPosition> positions) {
@@ -66,6 +70,7 @@ public class Order {
 
   /**
    * Retrieves the order id.
+   *
    * @return order id.
    */
   public String getOrderId() {
@@ -74,6 +79,7 @@ public class Order {
 
   /**
    * Retrieves the created date.
+   *
    * @return date of create.
    */
   public Date getCreated() {
@@ -82,6 +88,7 @@ public class Order {
 
   /**
    * Retrieves the list of positions.
+   *
    * @return list of positions.
    */
   public List<OrderPosition> getPositions() {
@@ -119,9 +126,9 @@ public class Order {
   @Override
   public String toString() {
     return "Order{" +
-        "orderId='" + orderId + '\'' +
-        ", created=" + created +
-        ", positions=" + positions +
-        '}';
+      "orderId='" + orderId + '\'' +
+      ", created=" + created +
+      ", positions=" + positions +
+      '}';
   }
 }

@@ -1,12 +1,12 @@
 package io.holunda.camunda.bpm.data
 
-import io.holunda.camunda.bpm.data.writer.RuntimeServiceVariableWriter
-import io.holunda.camunda.bpm.data.writer.TaskServiceVariableWriter
 import io.holunda.camunda.bpm.data.factory.VariableFactory
 import io.holunda.camunda.bpm.data.reader.CaseServiceVariableReader
 import io.holunda.camunda.bpm.data.reader.RuntimeServiceVariableReader
 import io.holunda.camunda.bpm.data.reader.TaskServiceVariableReader
 import io.holunda.camunda.bpm.data.writer.CaseServiceVariableWriter
+import io.holunda.camunda.bpm.data.writer.RuntimeServiceVariableWriter
+import io.holunda.camunda.bpm.data.writer.TaskServiceVariableWriter
 import org.camunda.bpm.engine.CaseService
 import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
@@ -27,7 +27,7 @@ fun <T> VariableMap.getOptional(factory: VariableFactory<T>): Optional<T> = fact
  * @param isTransient flag for transient access, <code>false</code> by default.
  */
 fun <T> VariableMap.set(factory: VariableFactory<T>, value: T, isTransient: Boolean = false) = this.apply {
-    factory.on(this).set(value, isTransient)
+  factory.on(this).set(value, isTransient)
 }
 
 /**
@@ -35,7 +35,7 @@ fun <T> VariableMap.set(factory: VariableFactory<T>, value: T, isTransient: Bool
  * @param factory factory defining the variable.
  */
 fun <T> VariableMap.remove(factory: VariableFactory<T>) = this.apply {
-    factory.on(this).remove()
+  factory.on(this).remove()
 }
 
 /**
@@ -45,7 +45,7 @@ fun <T> VariableMap.remove(factory: VariableFactory<T>) = this.apply {
  * @param isTransient flag for transient access, <code>false</code> by default.
  */
 fun <T> VariableMap.update(factory: VariableFactory<T>, valueProcessor: (T) -> T, isTransient: Boolean = false) = this.apply {
-    factory.on(this).update(valueProcessor, isTransient)
+  factory.on(this).update(valueProcessor, isTransient)
 }
 
 /**
@@ -73,7 +73,7 @@ fun <T> VariableScope.getLocalOptional(factory: VariableFactory<T>): Optional<T>
  * @param isTransient flag for transient access, <code>false</code> by default.
  */
 fun <T> VariableScope.set(factory: VariableFactory<T>, value: T, isTransient: Boolean = false) = this.apply {
-    factory.on(this).set(value, isTransient)
+  factory.on(this).set(value, isTransient)
 }
 
 /**
@@ -81,7 +81,7 @@ fun <T> VariableScope.set(factory: VariableFactory<T>, value: T, isTransient: Bo
  * @param factory factory defining the variable.
  */
 fun <T> VariableScope.remove(factory: VariableFactory<T>) = this.apply {
-    factory.on(this).remove()
+  factory.on(this).remove()
 }
 
 /**
@@ -91,7 +91,7 @@ fun <T> VariableScope.remove(factory: VariableFactory<T>) = this.apply {
  * @param isTransient flag for transient access, <code>false</code> by default.
  */
 fun <T> VariableScope.update(factory: VariableFactory<T>, valueProcessor: (T) -> T, isTransient: Boolean = false) = this.apply {
-    factory.on(this).update(valueProcessor, isTransient)
+  factory.on(this).update(valueProcessor, isTransient)
 }
 
 /**
@@ -101,7 +101,7 @@ fun <T> VariableScope.update(factory: VariableFactory<T>, valueProcessor: (T) ->
  * @param isTransient flag for transient access, <code>false</code> by default.
  */
 fun <T> VariableScope.setLocal(factory: VariableFactory<T>, value: T, isTransient: Boolean = false) = this.apply {
-    factory.on(this).setLocal(value, isTransient)
+  factory.on(this).setLocal(value, isTransient)
 }
 
 /**
@@ -109,8 +109,9 @@ fun <T> VariableScope.setLocal(factory: VariableFactory<T>, value: T, isTransien
  * @param factory factory defining the variable.
  */
 fun <T> VariableScope.removeLocal(factory: VariableFactory<T>) = this.apply {
-    factory.on(this).removeLocal()
+  factory.on(this).removeLocal()
 }
+
 /**
  * Fluent local updater.
  * @param factory factory defining the variable.
@@ -118,7 +119,7 @@ fun <T> VariableScope.removeLocal(factory: VariableFactory<T>) = this.apply {
  * @param isTransient flag for transient access, <code>false</code> by default.
  */
 fun <T> VariableScope.updateLocal(factory: VariableFactory<T>, valueProcessor: (T) -> T, isTransient: Boolean = false) = this.apply {
-    factory.on(this).updateLocal(valueProcessor, isTransient)
+  factory.on(this).updateLocal(valueProcessor, isTransient)
 }
 
 /**

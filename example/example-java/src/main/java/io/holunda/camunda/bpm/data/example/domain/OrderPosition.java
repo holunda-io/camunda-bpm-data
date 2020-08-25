@@ -28,9 +28,10 @@ public class OrderPosition {
 
   /**
    * Constructor setting fields.
-   * @param title title of position.
+   *
+   * @param title   title of position.
    * @param netCost net cost per unit.
-   * @param amount amount of units.
+   * @param amount  amount of units.
    */
   public OrderPosition(String title, BigDecimal netCost, Long amount) {
     this.title = title;
@@ -40,6 +41,7 @@ public class OrderPosition {
 
   /**
    * Retrieves title.
+   *
    * @return position title.
    */
   public String getTitle() {
@@ -48,6 +50,7 @@ public class OrderPosition {
 
   /**
    * Retrieves net cost per unit.
+   *
    * @return net cost per unit.
    */
   public BigDecimal getNetCost() {
@@ -56,6 +59,7 @@ public class OrderPosition {
 
   /**
    * Retrieves amount of units.
+   *
    * @return amount of units.
    */
   public Long getAmount() {
@@ -64,6 +68,7 @@ public class OrderPosition {
 
   /**
    * Sets the title.
+   *
    * @param title title to set.
    */
   public void setTitle(String title) {
@@ -72,6 +77,7 @@ public class OrderPosition {
 
   /**
    * Sets net cost per unit.
+   *
    * @param netCost net cost to set.
    */
   public void setNetCost(BigDecimal netCost) {
@@ -80,6 +86,7 @@ public class OrderPosition {
 
   /**
    * Sets amount of units.
+   *
    * @param amount amount to set.
    */
   public void setAmount(Long amount) {
@@ -117,9 +124,9 @@ public class OrderPosition {
   @Override
   public String toString() {
     return "OrderPosition{" +
-        "title='" + title + '\'' +
-        ", netCost=" + netCost +
-        ", amount=" + amount +
-        '}';
+      "title='" + title + '\'' +
+      ", netCost=" + netCost +
+      ", amount=" + amount +
+      '}';
   }
 }

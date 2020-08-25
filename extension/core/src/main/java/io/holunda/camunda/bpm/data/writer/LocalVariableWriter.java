@@ -16,37 +16,34 @@ public interface LocalVariableWriter<S extends LocalVariableWriter<S>> {
    * Sets the local value for the provided variable and returns the builder (fluently).
    *
    * @param variableFactory the variable
-   * @param value the value
-   * @param <T> type of value
+   * @param value           the value
+   * @param <T>             type of value
    * @return current writer instance
    * @see WriteAdapter#setLocal(Object)
    */
-  @NotNull
-  <T> S setLocal(VariableFactory<T> variableFactory, T value);
+  @NotNull <T> S setLocal(VariableFactory<T> variableFactory, T value);
 
   /**
    * Sets the local (transient) value for the provided variable and returns the builder (fluently).
    *
    * @param variableFactory the variable
-   * @param value the value
-   * @param isTransient if true, the variable is transient
-   * @param <T> type of value
+   * @param value           the value
+   * @param isTransient     if true, the variable is transient
+   * @param <T>             type of value
    * @return current writer instance
    * @see WriteAdapter#setLocal(Object, boolean)
    */
-  @NotNull
-  <T> S setLocal(VariableFactory<T> variableFactory, T value, boolean isTransient);
+  @NotNull <T> S setLocal(VariableFactory<T> variableFactory, T value, boolean isTransient);
 
   /**
    * Removes the local value for the provided variable and returns the builder (fluently).
    *
    * @param variableFactory the variable
-   * @param <T> type of value
+   * @param <T>             type of value
    * @return current writer instance
    * @see WriteAdapter#removeLocal()
    */
-  @NotNull
-  <T> S removeLocal(VariableFactory<T> variableFactory);
+  @NotNull <T> S removeLocal(VariableFactory<T> variableFactory);
 
   /**
    * Returns the resulting local variables.

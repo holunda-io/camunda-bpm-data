@@ -12,19 +12,19 @@ import static io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.exists;
 
 public class CamundaBpmDataACLFactoryTest {
 
-    private RuntimeService runtimeService;
-    private static VariableFactory<String> FOO = stringVariable("foo");
-    private static AntiCorruptionLayer MY_ACL = CamundaBpmDataACL.guardTransformingReplace("__transient", true,
-                                                                                           new VariablesGuard(exists(FOO)),
-                                                                                           IdentityVariableMapTransformer.INSTANCE
-    );
+  private RuntimeService runtimeService;
+  private static final VariableFactory<String> FOO = stringVariable("foo");
+  private static final AntiCorruptionLayer MY_ACL = CamundaBpmDataACL.guardTransformingReplace("__transient", true,
+    new VariablesGuard(exists(FOO)),
+    IdentityVariableMapTransformer.INSTANCE
+  );
 
 
   public void testCallFromJava(String value) {
-        VariableMap variableMap = CamundaBpmData.builder().set(FOO, value).build();
+    VariableMap variableMap = CamundaBpmData.builder().set(FOO, value).build();
 
-        runtimeService.correlateMessage("message", MY_ACL.checkAndWrap(variableMap));
+    runtimeService.correlateMessage("message", MY_ACL.checkAndWrap(variableMap));
 
 
-    }
+  }
 }

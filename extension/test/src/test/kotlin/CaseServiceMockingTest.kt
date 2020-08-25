@@ -13,56 +13,56 @@ import java.util.*
  */
 class CaseServiceMockingTest {
 
-    companion object {
-        val ORDER_ID = stringVariable("orderId")
-        val ORDER_FLAG = booleanVariable("orderFlag")
-    }
+  companion object {
+    val ORDER_ID = stringVariable("orderId")
+    val ORDER_FLAG = booleanVariable("orderFlag")
+  }
 
-    private val caseService = mock<CaseService>()
-    private val testService = CaseServiceAwareService(caseService)
+  private val caseService = mock<CaseService>()
+  private val testService = CaseServiceAwareService(caseService)
 
-    @Test
-    fun should_mock_task_service() {
+  @Test
+  fun should_mock_task_service() {
 
-        val executionId = UUID.randomUUID().toString()
+    val executionId = UUID.randomUUID().toString()
 
-        CaseServiceVariableMockBuilder(caseService)
-            .initialLocal(ORDER_ID, "initial-Value")
-            .define(ORDER_FLAG)
-            .build()
+    CaseServiceVariableMockBuilder(caseService)
+      .initialLocal(ORDER_ID, "initial-Value")
+      .define(ORDER_FLAG)
+      .build()
 
-        testService.writeLocalOrderId(executionId, "4712")
-        val orderId = testService.readLocalOrderId(executionId)
+    testService.writeLocalOrderId(executionId, "4712")
+    val orderId = testService.readLocalOrderId(executionId)
 
-        assertThat(testService.flagExists(executionId)).isFalse()
-        testService.writeFlag(executionId, true)
-        assertThat(testService.flagExists(executionId)).isTrue()
-        val orderFlag = testService.readFlag(executionId)
+    assertThat(testService.flagExists(executionId)).isFalse
+    testService.writeFlag(executionId, true)
+    assertThat(testService.flagExists(executionId)).isTrue
+    val orderFlag = testService.readFlag(executionId)
 
-        assertThat(orderId).isEqualTo("4712")
-        assertThat(orderFlag).isEqualTo(true)
-    }
+    assertThat(orderId).isEqualTo("4712")
+    assertThat(orderFlag).isEqualTo(true)
+  }
 
 
-    /**
-     * Test service.
-     * @param runtimeService task service to work on.
-     */
-    class CaseServiceAwareService(val caseService: CaseService) {
+  /**
+   * Test service.
+   * @param runtimeService task service to work on.
+   */
+  class CaseServiceAwareService(val caseService: CaseService) {
 
-        fun readLocalOrderId(executionId: String): String =
-            ORDER_ID.from(caseService, executionId).local
+    fun readLocalOrderId(executionId: String): String =
+      ORDER_ID.from(caseService, executionId).local
 
-        fun writeLocalOrderId(executionId: String, value: String) =
-            ORDER_ID.on(caseService, executionId).setLocal(value)
+    fun writeLocalOrderId(executionId: String, value: String) =
+      ORDER_ID.on(caseService, executionId).setLocal(value)
 
-        fun flagExists(executionId: String) =
-          caseService.getVariables(executionId).containsKey(ORDER_FLAG.name)
+    fun flagExists(executionId: String) =
+      caseService.getVariables(executionId).containsKey(ORDER_FLAG.name)
 
-        fun writeFlag(executionId: String, flag: Boolean) =
-            ORDER_FLAG.on(caseService, executionId).set(flag)
+    fun writeFlag(executionId: String, flag: Boolean) =
+      ORDER_FLAG.on(caseService, executionId).set(flag)
 
-        fun readFlag(executionId: String): Boolean =
-            ORDER_FLAG.from(caseService, executionId).get()
-    }
+    fun readFlag(executionId: String): Boolean =
+      ORDER_FLAG.from(caseService, executionId).get()
+  }
 }

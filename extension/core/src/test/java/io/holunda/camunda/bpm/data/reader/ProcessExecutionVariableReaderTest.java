@@ -19,8 +19,8 @@ public class ProcessExecutionVariableReaderTest {
   private static final VariableFactory<String> STRING = stringVariable("myString");
   private final RuntimeService runtimeService = Mockito.mock(RuntimeService.class);
   private final String executionId = UUID.randomUUID().toString();
-  private String value = "value";
-  private String valueLocal = "valueLocal";
+  private final String value = "value";
+  private final String valueLocal = "valueLocal";
 
   @Before
   public void mockExecution() {

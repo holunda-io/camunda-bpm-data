@@ -10,17 +10,17 @@ import org.mockito.Mockito.verifyNoMoreInteractions
 
 class GlobalScopeReplaceStrategyTest {
 
-    val FOO = stringVariable("foo")
+  val FOO = stringVariable("foo")
 
-    @Test
-    fun `should apply global`() {
-        val variables = CamundaBpmData.builder().set(FOO, "bar").build()
-        val executionMock = Mockito.mock(DelegateExecution::class.java)
+  @Test
+  fun `should apply global`() {
+    val variables = CamundaBpmData.builder().set(FOO, "bar").build()
+    val executionMock = Mockito.mock(DelegateExecution::class.java)
 
-        GlobalScopeReplaceStrategy.apply(variables, executionMock)
+    GlobalScopeReplaceStrategy.apply(variables, executionMock)
 
-        verify(executionMock, Mockito.never()).setVariablesLocal(Mockito.any())
-        verify(executionMock).setVariables(variables)
-        verifyNoMoreInteractions(executionMock)
-    }
+    verify(executionMock, Mockito.never()).variablesLocal = Mockito.any()
+    verify(executionMock).variables = variables
+    verifyNoMoreInteractions(executionMock)
+  }
 }
