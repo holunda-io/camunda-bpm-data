@@ -21,7 +21,7 @@ class CamundaBpmDataGuardsTest {
 
   @Test
   fun `should construct exists local condition`() {
-    val condition = CamundaBpmDataGuards.exists(FOO, true)
+    val condition = CamundaBpmDataGuards.existsLocal(FOO)
     assertThat(condition).isInstanceOf(VariableExistsGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(true)
@@ -37,7 +37,7 @@ class CamundaBpmDataGuardsTest {
 
   @Test
   fun `should construct notExists local condition`() {
-    val condition = CamundaBpmDataGuards.notExists(FOO, true)
+    val condition = CamundaBpmDataGuards.notExistsLocal(FOO)
     assertThat(condition).isInstanceOf(VariableNotExistsGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(true)
@@ -54,7 +54,7 @@ class CamundaBpmDataGuardsTest {
 
   @Test
   fun `should construct hasValue local condition`() {
-    val condition = CamundaBpmDataGuards.hasValue(FOO, "valLocal", true)
+    val condition = CamundaBpmDataGuards.hasValueLocal(FOO, "valLocal")
     assertThat(condition).isInstanceOf(VariableValueGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(true)
@@ -72,7 +72,7 @@ class CamundaBpmDataGuardsTest {
 
   @Test
   fun `should construct hasOneOfValues local condition`() {
-    val condition = CamundaBpmDataGuards.hasOneOfValues(FOO, setOf("valLocal1", "valLocal2"), true)
+    val condition = CamundaBpmDataGuards.hasOneOfValuesLocal(FOO, setOf("valLocal1", "valLocal2"))
     assertThat(condition).isInstanceOf(VariableValueOneOfGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(true)
@@ -90,7 +90,7 @@ class CamundaBpmDataGuardsTest {
 
   @Test
   fun `should construct matches local condition`() {
-    val condition = CamundaBpmDataGuards.matches(FOO, Function<String, Boolean> { it == "special_val_local" }, true)
+    val condition = CamundaBpmDataGuards.matchesLocal(FOO, Function<String, Boolean> { it == "special_val_local" })
     assertThat(condition).isInstanceOf(VariableMatchesGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(true)
@@ -107,7 +107,7 @@ class CamundaBpmDataGuardsTest {
 
   @Test
   fun `kotlin should construct exists local condition`() {
-    val condition = FOO.exists(true)
+    val condition = FOO.existsLocal()
     assertThat(condition).isInstanceOf(VariableExistsGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(true)
@@ -123,7 +123,7 @@ class CamundaBpmDataGuardsTest {
 
   @Test
   fun `kotlin should construct notExists local condition`() {
-    val condition = FOO.notExists(true)
+    val condition = FOO.notExistsLocal()
     assertThat(condition).isInstanceOf(VariableNotExistsGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(true)
@@ -140,7 +140,7 @@ class CamundaBpmDataGuardsTest {
 
   @Test
   fun `kotlin should construct hasValue local condition`() {
-    val condition = FOO.hasValue("valLocal", true)
+    val condition = FOO.hasValueLocal("valLocal")
     assertThat(condition).isInstanceOf(VariableValueGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(true)
@@ -158,7 +158,7 @@ class CamundaBpmDataGuardsTest {
 
   @Test
   fun `kotlin should construct hasOneOfValues local condition`() {
-    val condition = FOO.hasOneOfValues(setOf("valLocal1", "valLocal2"), true)
+    val condition = FOO.hasOneOfValuesLocal(setOf("valLocal1", "valLocal2"))
     assertThat(condition).isInstanceOf(VariableValueOneOfGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(true)
@@ -176,7 +176,7 @@ class CamundaBpmDataGuardsTest {
 
   @Test
   fun `kotlin should construct matches local condition`() {
-    val condition = FOO.matches(true) { it == "special_val_local" }
+    val condition = FOO.matchesLocal { it == "special_val_local" }
     assertThat(condition).isInstanceOf(VariableMatchesGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(true)

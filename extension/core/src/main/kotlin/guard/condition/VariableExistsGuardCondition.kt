@@ -32,8 +32,13 @@ class VariableExistsGuardCondition<T>(
 }
 
 /**
- * Creation extension for the condition.
- * @param local is the variable should be local.
+ * Creates extension for the condition.
  * @return instance of [VariableExistsGuardCondition] on current factory.
  */
-fun <T> VariableFactory<T>.exists(local: Boolean = false) = VariableExistsGuardCondition(this, local)
+fun <T> VariableFactory<T>.exists() = VariableExistsGuardCondition(this, false)
+
+/**
+ * Creates extension for the local condition.
+ * @return instance of [VariableExistsGuardCondition] on current factory.
+ */
+fun <T> VariableFactory<T>.existsLocal() = VariableExistsGuardCondition(this, true)

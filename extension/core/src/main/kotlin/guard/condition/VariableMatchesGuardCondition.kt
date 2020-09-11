@@ -45,8 +45,14 @@ class VariableMatchesGuardCondition<T>(
 
 /**
  * Creation extension for the condition.
- * @param local is the variable should be local.
  * @param matcher function that must match the value.
  * @return instance of [VariableMatchesGuardCondition] on current factory.
  */
-fun <T> VariableFactory<T>.matches(local: Boolean = false, matcher: (value: T) -> Boolean) = VariableMatchesGuardCondition(this, local, matcher)
+fun <T> VariableFactory<T>.matches(matcher: (value: T) -> Boolean) = VariableMatchesGuardCondition(this, false, matcher)
+
+/**
+ * Creation extension for the condition.
+ * @param matcher function that must match the value.
+ * @return instance of [VariableMatchesGuardCondition] on current factory.
+ */
+fun <T> VariableFactory<T>.matchesLocal(matcher: (value: T) -> Boolean) = VariableMatchesGuardCondition(this, true, matcher)

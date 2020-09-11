@@ -44,8 +44,14 @@ class VariableValueOneOfGuardCondition<T>(
 
 /**
  * Creation extension for the condition.
- * @param local is the variable should be local.
  * @param values set of values which are allowed.
  * @return instance of [VariableValueOneOfGuardCondition] on current factory.
  */
-fun <T> VariableFactory<T>.hasOneOfValues(values: Set<T>, local: Boolean = false) = VariableValueOneOfGuardCondition(this, values, local)
+fun <T> VariableFactory<T>.hasOneOfValues(values: Set<T>) = VariableValueOneOfGuardCondition(this, values, false)
+
+/**
+ * Creation extension for the local condition.
+ * @param values set of values which are allowed.
+ * @return instance of [VariableValueOneOfGuardCondition] on current factory.
+ */
+fun <T> VariableFactory<T>.hasOneOfValuesLocal(values: Set<T>) = VariableValueOneOfGuardCondition(this, values, true)

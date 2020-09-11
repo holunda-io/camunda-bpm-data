@@ -44,8 +44,14 @@ class VariableValueGuardCondition<T>(
 /**
  * Creation extension for the condition.
  * @param value value to check for.
- * @param local if the variable should be local.
  * @return instance of [VariableValueGuardCondition] on current factory.
  */
-fun <T> VariableFactory<T>.hasValue(value: T, local: Boolean = false) = VariableValueGuardCondition(this, value, local)
+fun <T> VariableFactory<T>.hasValue(value: T) = VariableValueGuardCondition(this, value, false)
+
+/**
+ * Creation extension for the condition.
+ * @param value value to check for.
+ * @return instance of [VariableValueGuardCondition] on current factory.
+ */
+fun <T> VariableFactory<T>.hasValueLocal(value: T) = VariableValueGuardCondition(this, value, true)
 

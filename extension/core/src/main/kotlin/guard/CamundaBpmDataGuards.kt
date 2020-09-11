@@ -16,22 +16,22 @@ object CamundaBpmDataGuards {
    * @param local flag indicating scope (global/local).
    */
   @JvmStatic
-  fun <T> exists(variableFactory: VariableFactory<T>, local: Boolean = false) = variableFactory.exists(local)
-
-  /**
-   * Creates exists condition.
-   * @param variableFactory factory to work on.
-   */
-  @JvmStatic
   fun <T> exists(variableFactory: VariableFactory<T>) = variableFactory.exists()
 
   /**
-   * Creates not exists condition.
+   * Creates exists local condition.
    * @param variableFactory factory to work on.
    * @param local flag indicating scope (global/local).
    */
   @JvmStatic
-  fun <T> notExists(variableFactory: VariableFactory<T>, local: Boolean = false) = variableFactory.notExists(local)
+  fun <T> existsLocal(variableFactory: VariableFactory<T>) = variableFactory.existsLocal()
+
+  /**
+   * Creates not exists local condition.
+   * @param variableFactory factory to work on.
+   */
+  @JvmStatic
+  fun <T> notExistsLocal(variableFactory: VariableFactory<T>) = variableFactory.notExistsLocal()
 
   /**
    * Creates not exists condition.
@@ -41,13 +41,12 @@ object CamundaBpmDataGuards {
   fun <T> notExists(variableFactory: VariableFactory<T>) = variableFactory.notExists()
 
   /**
-   * Creates has value condition.
+   * Creates has value local condition.
    * @param variableFactory factory to work on.
-   * @param local flag indicating scope (global/local).
    * @param value value that the variable must have.
    */
   @JvmStatic
-  fun <T> hasValue(variableFactory: VariableFactory<T>, value: T, local: Boolean = false) = variableFactory.hasValue(value, local)
+  fun <T> hasValueLocal(variableFactory: VariableFactory<T>, value: T) = variableFactory.hasValueLocal(value)
 
   /**
    * Creates has value condition.
@@ -58,13 +57,12 @@ object CamundaBpmDataGuards {
   fun <T> hasValue(variableFactory: VariableFactory<T>, value: T) = variableFactory.hasValue(value)
 
   /**
-   * Creates has value condition.
+   * Creates has value local condition.
    * @param variableFactory factory to work on.
-   * @param local flag indicating scope (global/local).
    * @param values set of values to compare with the variable value.
    */
   @JvmStatic
-  fun <T> hasOneOfValues(variableFactory: VariableFactory<T>, values: Set<T>, local: Boolean = false) = variableFactory.hasOneOfValues(values, local)
+  fun <T> hasOneOfValuesLocal(variableFactory: VariableFactory<T>, values: Set<T>) = variableFactory.hasOneOfValuesLocal(values)
 
   /**
    * Creates has value condition.
@@ -75,14 +73,13 @@ object CamundaBpmDataGuards {
   fun <T> hasOneOfValues(variableFactory: VariableFactory<T>, values: Set<T>) = variableFactory.hasOneOfValues(values)
 
   /**
-   * Creates matches condition.
+   * Creates matches local condition.
    * @param variableFactory factory to work on.
-   * @param local flag indicating scope (global/local).
    * @param matcher a matcher function to check the variable value.
    */
   @JvmStatic
-  fun <T> matches(variableFactory: VariableFactory<T>,
-                  matcher: Function<T, Boolean>, local: Boolean = false) = variableFactory.matches(local) { matcher.apply(it) }
+  fun <T> matchesLocal(variableFactory: VariableFactory<T>,
+                  matcher: Function<T, Boolean>) = variableFactory.matchesLocal { matcher.apply(it) }
 
   /**
    * Creates matches condition.

@@ -34,8 +34,12 @@ class VariableNotExistsGuardCondition<T>(
 
 /**
  * Creation extension for the condition.
- * @param local is the variable should be local.
  * @return instance of [VariableNotExistsGuardCondition] on current factory.
  */
-fun <T> VariableFactory<T>.notExists(local: Boolean = false) = VariableNotExistsGuardCondition(this, local)
+fun <T> VariableFactory<T>.notExists() = VariableNotExistsGuardCondition(this, false)
 
+/**
+ * Creation extension for the local condition.
+ * @return instance of [VariableNotExistsGuardCondition] on current factory.
+ */
+fun <T> VariableFactory<T>.notExistsLocal() = VariableNotExistsGuardCondition(this, true)
