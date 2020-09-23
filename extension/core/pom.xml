@@ -16,6 +16,7 @@
 
   <properties>
     <jacoco.skip>false</jacoco.skip>
+    <dokka.skip>false</dokka.skip>
   </properties>
 
   <dependencies>

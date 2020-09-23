@@ -1,8 +1,6 @@
 ---
-
 title: Quick Start
 pageId: 'quick-start'
-
 ---
 
 == {{ page.title }}
@@ -16,20 +14,20 @@ In Apache Maven add to your `pom.xml`:
 <dependency>
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data</artifactId>
-  <version>{{ site:version }}</version>
+  <version>${camunda-bpm-data.version}</version>
 </dependency>
 ----
 
 For Gradle Kotlin DSL add to your `build.gradle.kts`:
 [source,kotlin]
 ----
-implementation("io.holunda.data:camunda-bpm-data:{{ site:version }}")
+implementation("io.holunda.data:camunda-bpm-data:${camunda-bpm-data.version}")
 ----
 
 For Gradle Groovy DSL add to your `build.gradle`:
 [source,groovy]
 ----
-implementation 'io.holunda.data:camunda-bpm-data:{{ site:version }}'
+implementation 'io.holunda.data:camunda-bpm-data:${camunda-bpm-data.version}'
 ----
 
 === Declare process variable factories

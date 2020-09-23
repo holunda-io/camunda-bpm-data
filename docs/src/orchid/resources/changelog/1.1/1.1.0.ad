@@ -13,8 +13,18 @@ version: 1.1.0
 
 * Guard API follows conventions of VariableFactory API (adding `Local` to method name for local scope), #67
 
+== Bugfix
+
+* Fix docs generation of quickstart, see #73
+
+== Documentation
+
+* Include JavaDocs and KDocs into site, see #75
+
 == Chore
 
+* Switch to JDK 11
+* Upgrade to Kotlin 1.4.10 and Dokka 1.4.10, see #74
 * Upgrade to Kotlin 1.4.0, see #69
 * Upgrade to Camunda BPM 7.13, see #69
 * Upgrade to SpringBoot 2.3.2, see #69

@@ -16,6 +16,7 @@
 
   <properties>
     <jacoco.skip>false</jacoco.skip>
+    <dokka.skip>false</dokka.skip>
     <mockito-kotlin.version>1.6.0</mockito-kotlin.version>
   </properties>
 
