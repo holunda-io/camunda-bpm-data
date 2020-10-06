@@ -12,16 +12,21 @@ public class ApproveTaskCompleteDto {
   /**
    * Empty constructor.
    */
-  public ApproveTaskCompleteDto() {  }
+  public ApproveTaskCompleteDto() {
+  }
 
   /**
    * Constructs DTO with response.
+   *
    * @param approved response value.
    */
-  public ApproveTaskCompleteDto(Boolean approved) {this.approved = approved;}
+  public ApproveTaskCompleteDto(Boolean approved) {
+    this.approved = approved;
+  }
 
   /**
    * Retrieves response value.
+   *
    * @return response value.
    */
   public Boolean getApproved() {
@@ -30,6 +35,7 @@ public class ApproveTaskCompleteDto {
 
   /**
    * Sets response value.
+   *
    * @param approved response value to set.
    */
   public void setApproved(Boolean approved) {

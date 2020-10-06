@@ -53,6 +53,7 @@ public interface WriteAdapter<T> {
 
   /**
    * Updates a variable using provided value processor.
+   * <br>If the value is unchanged, the variable is not touched.
    *
    * @param valueProcessor function updating the value based on the old value.
    */
@@ -60,6 +61,7 @@ public interface WriteAdapter<T> {
 
   /**
    * Updates a local variable using provided value processor.
+   * <br>If the value is unchanged, the variable is not touched.
    *
    * @param valueProcessor function updating the value based on the old value.
    */
@@ -67,6 +69,7 @@ public interface WriteAdapter<T> {
 
   /**
    * Updates a variable using provided value processor.
+   * <br>If the value is unchanged, the variable is not touched.
    *
    * @param valueProcessor function updating the value based on the old value.
    * @param isTransient    transient flag.
@@ -75,6 +78,7 @@ public interface WriteAdapter<T> {
 
   /**
    * Updates a local variable using provided value processor.
+   * <br>If the value is unchanged, the variable is not touched.
    *
    * @param valueProcessor function updating the value based on the old value.
    * @param isTransient    transient flag.
@@ -83,7 +87,8 @@ public interface WriteAdapter<T> {
 
   /**
    * Constructs typed value.
-   * @param value raw value.
+   *
+   * @param value       raw value.
    * @param isTransient transient flag.
    * @return typed value.
    */

@@ -1,10 +1,10 @@
 package io.holunda.camunda.bpm.data.reader;
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import org.camunda.bpm.engine.variable.VariableMap;
 
 import java.util.Objects;
 import java.util.Optional;
-import org.camunda.bpm.engine.variable.VariableMap;
 
 /**
  * Allows reading multiple variable values from {@link VariableMap#getValue(String, Class)}.
@@ -15,6 +15,7 @@ public class VariableMapReader implements VariableReader {
 
   /**
    * Constructs the reader using the specified variable map.
+   *
    * @param variableMap map to operate on.
    */
   public VariableMapReader(VariableMap variableMap) {

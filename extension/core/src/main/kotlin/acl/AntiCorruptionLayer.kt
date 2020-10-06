@@ -24,76 +24,76 @@ import org.camunda.bpm.engine.variable.Variables
  * @property valueApplicationStrategy Strategy to apply values from transformer to given variable scope.
  */
 class AntiCorruptionLayer(
-    val precondition: VariablesGuard,
-    val variableMapTransformer: VariableMapTransformer,
-    internal val factory: VariableFactory<VariableMap>,
-    internal val valueApplicationStrategy: ValueApplicationStrategy
+  val precondition: VariablesGuard,
+  val variableMapTransformer: VariableMapTransformer,
+  internal val factory: VariableFactory<VariableMap>,
+  internal val valueApplicationStrategy: ValueApplicationStrategy
 ) {
 
-    companion object {
-        const val DEFAULT = "_transient"
-
-        /**
-         * Helper to create a Map containing transient variables hidden in the given map under the given key.
-         *
-         * @param variableName the variable name to use for the additional variables
-         * @param variables    the variables to store
-         *
-         * @return a newly created map containing the given variables as transient objectTypedValue.
-         */
-        fun wrapAsTypedTransientVariable(variableName: String, variables: VariableMap): VariableMap {
-            return Variables.createVariables()
-                .putValueTyped(variableName, Variables
-                    .objectValue(variables, true)
-                    .serializationDataFormat(Variables.SerializationDataFormats.JAVA)
-                    .create()
-                )
-        }
-    }
+  companion object {
+    const val DEFAULT = "_transient"
 
     /**
-     * Retrieves the ACL in form of an execution listener.
-     * @return Camunda Execution Listener responsible for variable extraction, guard check and modification.
+     * Helper to create a Map containing transient variables hidden in the given map under the given key.
+     *
+     * @param variableName the variable name to use for the additional variables
+     * @param variables    the variables to store
+     *
+     * @return a newly created map containing the given variables as transient objectTypedValue.
      */
-    fun getExecutionListener() = ExecutionListener { execution ->
-        val variablesExternal = factory.from(execution).get()
-        if (precondition.evaluate(variablesExternal).isEmpty()) {
-            val variableInternal = variableMapTransformer.transform(variablesExternal)
-            valueApplicationStrategy.apply(variableInternal, execution)
-        }
+    fun wrapAsTypedTransientVariable(variableName: String, variables: VariableMap): VariableMap {
+      return Variables.createVariables()
+        .putValueTyped(variableName, Variables
+          .objectValue(variables, true)
+          .serializationDataFormat(Variables.SerializationDataFormats.JAVA)
+          .create()
+        )
     }
+  }
 
-    /**
-     * Retrieves the ACL in form of a task listener.
-     * @return Camunda Task Listener responsible for variable extraction, guard check and modification.
-     */
-    fun getTaskListener() = TaskListener { task ->
-        val variablesExternal = factory.from(task).get()
-        if (precondition.evaluate(variablesExternal).isEmpty()) {
-            val variableInternal = variableMapTransformer.transform(variablesExternal)
-            valueApplicationStrategy.apply(variableInternal, task)
-        }
+  /**
+   * Retrieves the ACL in form of an execution listener.
+   * @return Camunda Execution Listener responsible for variable extraction, guard check and modification.
+   */
+  fun getExecutionListener() = ExecutionListener { execution ->
+    val variablesExternal = factory.from(execution).get()
+    if (precondition.evaluate(variablesExternal).isEmpty()) {
+      val variableInternal = variableMapTransformer.transform(variablesExternal)
+      valueApplicationStrategy.apply(variableInternal, execution)
     }
+  }
 
-    /**
-     * Checks if the preconditions are satisfied and constructs a variable map wrapping the variables.
-     * @param variableMap variable map containing the variables.
-     * @return new variable map
-     */
-    fun checkAndWrap(variableMap: VariableMap): VariableMap {
-        val violations = precondition.evaluate(variableMap)
-        if (violations.isNotEmpty()) {
-            throw GuardViolationException(violations = violations, reason = "ACL Guard Error:")
-        }
-        return wrap(variableMap)
+  /**
+   * Retrieves the ACL in form of a task listener.
+   * @return Camunda Task Listener responsible for variable extraction, guard check and modification.
+   */
+  fun getTaskListener() = TaskListener { task ->
+    val variablesExternal = factory.from(task).get()
+    if (precondition.evaluate(variablesExternal).isEmpty()) {
+      val variableInternal = variableMapTransformer.transform(variablesExternal)
+      valueApplicationStrategy.apply(variableInternal, task)
     }
+  }
 
-    /**
-     * Constructs a variable map wrapping the variables.
-     * @param variableMap variable map containing the variables.
-     * @return new variable map
-     */
-    fun wrap(variableMap: VariableMap): VariableMap {
-        return wrapAsTypedTransientVariable(variableName = factory.name, variables = variableMap)
+  /**
+   * Checks if the preconditions are satisfied and constructs a variable map wrapping the variables.
+   * @param variableMap variable map containing the variables.
+   * @return new variable map
+   */
+  fun checkAndWrap(variableMap: VariableMap): VariableMap {
+    val violations = precondition.evaluate(variableMap)
+    if (violations.isNotEmpty()) {
+      throw GuardViolationException(violations = violations, reason = "ACL Guard Error:")
     }
+    return wrap(variableMap)
+  }
+
+  /**
+   * Constructs a variable map wrapping the variables.
+   * @param variableMap variable map containing the variables.
+   * @return new variable map
+   */
+  fun wrap(variableMap: VariableMap): VariableMap {
+    return wrapAsTypedTransientVariable(variableName = factory.name, variables = variableMap)
+  }
 }

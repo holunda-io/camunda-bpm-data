@@ -25,58 +25,58 @@ import static org.mockito.Mockito.mock;
 
 @Deployment(resources = "order_approval.bpmn")
 public class GuardProcessTest {
-    @Rule
-    public final ProcessEngineRule rule = new StandaloneInMemoryTestConfiguration(
-        Lists.newArrayList(new SpinProcessEnginePlugin())
-    ).rule();
+  @Rule
+  public final ProcessEngineRule rule = new StandaloneInMemoryTestConfiguration(
+    Lists.newArrayList(new SpinProcessEnginePlugin())
+  ).rule();
 
-    @Before
-    public void register() {
-        OrderApproval config = new OrderApproval();
-        Mocks.register("guardExecutionListener", config.guardExecutionListener());
-        Mocks.register("guardTaskListener", config.guardTaskListener());
-        Mocks.register("orderApproval", new MockOrderApproval());
+  @Before
+  public void register() {
+    OrderApproval config = new OrderApproval();
+    Mocks.register("guardExecutionListener", config.guardExecutionListener());
+    Mocks.register("guardTaskListener", config.guardTaskListener());
+    Mocks.register("orderApproval", new MockOrderApproval());
+  }
+
+  static class MockOrderApproval {
+    public JavaDelegate loadOrder() {
+      return execution -> {
+        OrderApproval.ORDER.on(execution).set(new Order("1", Date.from(Instant.now()), new ArrayList<>()));
+      };
     }
 
-    static class MockOrderApproval {
-        public JavaDelegate loadOrder() {
-            return execution -> {
-                OrderApproval.ORDER.on(execution).set(new Order("1", Date.from(Instant.now()), new ArrayList<>()));
-            };
-        }
-
-        public JavaDelegate calculateOrderPositions() {
-            return mock(JavaDelegate.class);
-        }
+    public JavaDelegate calculateOrderPositions() {
+      return mock(JavaDelegate.class);
     }
+  }
 
-    @Test
-    public void shouldFireExceptionIfOrderIdIsMissing() {
+  @Test
+  public void shouldFireExceptionIfOrderIdIsMissing() {
 
-        assertThrows(
-            GuardViolationException.class,
-            // manual start by-passing the factory
-            () -> rule.getRuntimeService().startProcessInstanceByKey(OrderApproval.KEY),
-            "Guard violated by execution '6' in activity 'Order created'\nExpecting variable 'orderId' to be set, but it was not found.\n");
+    assertThrows(
+      GuardViolationException.class,
+      // manual start by-passing the factory
+      () -> rule.getRuntimeService().startProcessInstanceByKey(OrderApproval.KEY),
+      "Guard violated by execution '6' in activity 'Order created'\nExpecting variable 'orderId' to be set, but it was not found.\n");
 
-    }
+  }
 
-    @Test
-    public void shouldFireExceptionApproveDecisionIsMissing() {
+  @Test
+  public void shouldFireExceptionApproveDecisionIsMissing() {
 
-        OrderApprovalInstanceFactory factory = new OrderApprovalInstanceFactory(rule.getRuntimeService());
-        factory.start("1");
+    OrderApprovalInstanceFactory factory = new OrderApprovalInstanceFactory(rule.getRuntimeService());
+    factory.start("1");
 
-        // async after start
-        Job asyncStart = rule.getManagementService().createJobQuery().singleResult();
-        rule.getManagementService().executeJob(asyncStart.getId());
-        Task task = rule.getTaskService().createTaskQuery().singleResult();
+    // async after start
+    Job asyncStart = rule.getManagementService().createJobQuery().singleResult();
+    rule.getManagementService().executeJob(asyncStart.getId());
+    Task task = rule.getTaskService().createTaskQuery().singleResult();
 
-        assertThrows(
-            ProcessEngineException.class,
-            () -> rule.getTaskService().complete(task.getId()),
-            "Guard violated in task 'Approve order' (taskId: '21')\nExpecting variable 'orderApproved' to be set, but it was not found.\n"
-        );
-    }
+    assertThrows(
+      ProcessEngineException.class,
+      () -> rule.getTaskService().complete(task.getId()),
+      "Guard violated in task 'Approve order' (taskId: '21')\nExpecting variable 'orderApproved' to be set, but it was not found.\n"
+    );
+  }
 
 }

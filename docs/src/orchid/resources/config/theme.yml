@@ -40,9 +40,19 @@ menu:
       - type: 'page'
         title: 'License'
         itemId: 'License'
-
   - type: 'sourcedocPages'
-    submenuTitle: 'JavaDoc All Packages'
     moduleType: 'javadoc'
     node: 'packages'
     asSubmenu: true
+    submenuTitle: 'Java Packages'
+  - type: 'sourcedocPages'
+    moduleType: 'kotlindoc'
+    node: 'packages'
+    asSubmenu: true
+    submenuTitle: 'Kotlin Packages'
+
+#  - type: 'sourcedocModules'
+#    submenuTitle: 'JavaDoc All Packages'
+#    moduleType: 'javadoc'
+#    node: 'packages'
+

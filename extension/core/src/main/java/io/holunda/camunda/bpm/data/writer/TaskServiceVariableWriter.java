@@ -6,6 +6,7 @@ import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
+import java.util.function.Function;
 
 /**
  * User task builder allowing for fluent variable setting.
@@ -72,6 +73,30 @@ public class TaskServiceVariableWriter implements VariableWriter<TaskServiceVari
   @NotNull
   public <T> TaskServiceVariableWriter removeLocal(VariableFactory<T> factory) {
     factory.on(this.taskService, this.taskId).removeLocal();
+    return this;
+  }
+
+  @Override
+  public @NotNull <T> TaskServiceVariableWriter update(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+    factory.on(this.taskService, this.taskId).update(valueProcessor);
+    return this;
+  }
+
+  @Override
+  public @NotNull <T> TaskServiceVariableWriter update(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+    factory.on(this.taskService, this.taskId).update(valueProcessor, isTransient);
+    return this;
+  }
+
+  @Override
+  public @NotNull <T> TaskServiceVariableWriter updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+    factory.on(this.taskService, this.taskId).updateLocal(valueProcessor);
+    return this;
+  }
+
+  @Override
+  public @NotNull <T> TaskServiceVariableWriter updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+    factory.on(this.taskService, this.taskId).updateLocal(valueProcessor, isTransient);
     return this;
   }
 

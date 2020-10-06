@@ -9,19 +9,19 @@ import java.util.*
 
 class GuardViolationExceptionTest {
 
-    val FOO = CamundaBpmData.stringVariable("foo")
-    val c1 = CamundaBpmDataGuards.exists(FOO)
-    val c2 = CamundaBpmDataGuards.hasValue(FOO, "bar")
+  val FOO = CamundaBpmData.stringVariable("foo")
+  val c1 = CamundaBpmDataGuards.exists(FOO)
+  val c2 = CamundaBpmDataGuards.hasValue(FOO, "bar")
 
-    @Test
-    fun buildMessage() {
+  @Test
+  fun buildMessage() {
 
-        val expected = "reason\n\tnot exists,\n\twrong VAL"
-        val ex = GuardViolationException(reason = "reason", violations = listOf(
-            GuardViolation(c1, Optional.empty(), "not exists"),
-            GuardViolation(c2, Optional.of("VAL"), "wrong VAL")
-        ))
+    val expected = "reason\n\tnot exists,\n\twrong VAL"
+    val ex = GuardViolationException(reason = "reason", violations = listOf(
+      GuardViolation(c1, Optional.empty(), "not exists"),
+      GuardViolation(c2, Optional.of("VAL"), "wrong VAL")
+    ))
 
-        assertThat(ex.message).isEqualTo(expected)
-    }
+    assertThat(ex.message).isEqualTo(expected)
+  }
 }

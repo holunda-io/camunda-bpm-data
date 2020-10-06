@@ -94,7 +94,6 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
    * Creates a reusable adapter builder using a runtime service.
    *
    * @param runtimeService runtime service to operate on.
-   *
    * @return adapter builder.
    */
   public BasicRuntimeServiceAdapterBuilder<T> using(RuntimeService runtimeService) {
@@ -105,7 +104,6 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
    * Creates a reusable adapter builder using a task service.
    *
    * @param taskService task service to operate on.
-   *
    * @return adapter builder.
    */
   public BasicTaskServiceAdapterBuilder<T> using(TaskService taskService) {
@@ -116,7 +114,6 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
    * Creates a reusable adapter builder using a case service.
    *
    * @param caseService case service to operate on.
-   *
    * @return adapter builder.
    */
   public BasicCaseServiceAdapterBuilder<T> using(CaseService caseService) {
@@ -139,7 +136,8 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
     return clazz;
   }
 
-  @Override public boolean equals(Object o) {
+  @Override
+  public boolean equals(Object o) {
     if (this == o)
       return true;
     if (o == null || getClass() != o.getClass())
@@ -157,9 +155,9 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
   @Override
   public String toString() {
     return "BasicVariableFactory{" +
-        "name='" + name + '\'' +
-        ", clazz=" + clazz +
-        '}';
+      "name='" + name + '\'' +
+      ", clazz=" + clazz +
+      '}';
   }
 
   /**
@@ -196,7 +194,6 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
      * Creates a write adapter on execution.
      *
      * @param executionId id identifying execution.
-     *
      * @return write adapter
      */
     public WriteAdapter<T> on(String executionId) {
@@ -207,7 +204,6 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
      * Creates a read adapter on execution.
      *
      * @param executionId id identifying execution.
-     *
      * @return read adapter.
      */
     public ReadAdapter<T> from(String executionId) {
@@ -249,7 +245,6 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
      * Creates a write adapter on task.
      *
      * @param taskId id identifying task.
-     *
      * @return write adapter
      */
     public WriteAdapter<T> on(String taskId) {
@@ -260,7 +255,6 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
      * Creates a read adapter on task.
      *
      * @param taskId id identifying task.
-     *
      * @return read adapter.
      */
     public ReadAdapter<T> from(String taskId) {
@@ -303,7 +297,6 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
      * Creates a write adapter on caseExecution.
      *
      * @param caseExecutionId id identifying caseExecution.
-     *
      * @return write adapter
      */
     public WriteAdapter<T> on(String caseExecutionId) {
@@ -314,7 +307,6 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
      * Creates a read adapter on caseExecution.
      *
      * @param caseExecutionId id identifying caseExecution.
-     *
      * @return read adapter.
      */
     public ReadAdapter<T> from(String caseExecutionId) {

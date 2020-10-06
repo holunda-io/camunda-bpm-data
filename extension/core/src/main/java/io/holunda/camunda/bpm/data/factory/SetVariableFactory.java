@@ -96,7 +96,8 @@ public class SetVariableFactory<T> implements VariableFactory<Set<T>> {
     return memberClazz;
   }
 
-  @Override public boolean equals(Object o) {
+  @Override
+  public boolean equals(Object o) {
     if (this == o)
       return true;
     if (o == null || getClass() != o.getClass())
@@ -106,15 +107,16 @@ public class SetVariableFactory<T> implements VariableFactory<Set<T>> {
       memberClazz.equals(that.memberClazz);
   }
 
-  @Override public int hashCode() {
+  @Override
+  public int hashCode() {
     return Objects.hash(name, memberClazz);
   }
 
   @Override
   public String toString() {
     return "SetVariableFactory{" +
-        "name='" + name + '\'' +
-        ", memberClazz=" + memberClazz +
-        '}';
+      "name='" + name + '\'' +
+      ", memberClazz=" + memberClazz +
+      '}';
   }
 }

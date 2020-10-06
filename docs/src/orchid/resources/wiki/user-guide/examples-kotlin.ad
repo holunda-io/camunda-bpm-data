@@ -209,7 +209,7 @@ class SomeService {
     );
 
   fun correlate() {
-      val variables = CamundaBpmData.writer()
+      val variables = CamundaBpmData.builder()
           .set(ORDER_ID, "4711")
           .set(ORDER_APPROVED, false)
           .build();

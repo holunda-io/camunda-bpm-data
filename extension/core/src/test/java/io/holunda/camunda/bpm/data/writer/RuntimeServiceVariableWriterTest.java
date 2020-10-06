@@ -12,6 +12,7 @@ import org.mockito.Mockito;
 import java.util.UUID;
 
 import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
+import static org.camunda.bpm.engine.variable.Variables.stringValue;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -53,14 +54,30 @@ public class RuntimeServiceVariableWriterTest {
   public void testRemove() {
     CamundaBpmData.writer(runtimeService, EXECUTION_ID)
       .remove(STRING);
-    verify(runtimeService).removeVariable(this.EXECUTION_ID, STRING.getName());
+    verify(runtimeService).removeVariable(EXECUTION_ID, STRING.getName());
   }
 
   @Test
   public void testRemoveLocal() {
     CamundaBpmData.writer(runtimeService, EXECUTION_ID)
       .removeLocal(STRING);
-    verify(runtimeService).removeVariableLocal(this.EXECUTION_ID, STRING.getName());
+    verify(runtimeService).removeVariableLocal(EXECUTION_ID, STRING.getName());
+  }
+
+  @Test
+  public void testUpdate() {
+    CamundaBpmData.writer(runtimeService, EXECUTION_ID)
+      .update(STRING, (old) -> "new value");
+    verify(runtimeService).getVariable(EXECUTION_ID, STRING.getName());
+    verify(runtimeService).setVariable(EXECUTION_ID, STRING.getName(), stringValue("new value"));
+  }
+
+  @Test
+  public void testUpdateLocal() {
+    CamundaBpmData.writer(runtimeService, EXECUTION_ID)
+      .updateLocal(STRING, (old) -> "new value");
+    verify(runtimeService).getVariableLocal(EXECUTION_ID, STRING.getName());
+    verify(runtimeService).setVariableLocal(EXECUTION_ID, STRING.getName(), stringValue("new value"));
   }
 
 }

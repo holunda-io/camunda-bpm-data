@@ -2,12 +2,12 @@ package io.holunda.camunda.bpm.data.builder;
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import io.holunda.camunda.bpm.data.writer.VariableMapWriter;
-import java.util.Collections;
-import java.util.Objects;
-
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.Variables;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Collections;
+import java.util.Objects;
 
 /**
  * Builder to create {@link VariableMap} using {@link VariableFactory}.
@@ -27,8 +27,8 @@ public class VariableMapBuilder {
    * Sets the value for the provided variable and returns the builder (fluently).
    *
    * @param variableFactory the variable
-   * @param value the value
-   * @param <T> type of value
+   * @param value           the value
+   * @param <T>             type of value
    * @return current builder instance
    */
   @NotNull
@@ -41,9 +41,9 @@ public class VariableMapBuilder {
    * Sets the (transient) value for the provided variable and returns the builder (fluently).
    *
    * @param variableFactory the variable
-   * @param value the value
-   * @param isTransient if true, the variable is transient, default false.
-   * @param <T> type of value
+   * @param value           the value
+   * @param isTransient     if true, the variable is transient, default false.
+   * @param <T>             type of value
    * @return current builder instance
    */
   @NotNull
@@ -54,6 +54,7 @@ public class VariableMapBuilder {
 
   /**
    * Creates the variable map.
+   *
    * @return instance of {@link VariableMap} containing set values
    */
   @NotNull

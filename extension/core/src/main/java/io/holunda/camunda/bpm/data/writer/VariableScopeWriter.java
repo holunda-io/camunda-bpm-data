@@ -6,6 +6,7 @@ import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
+import java.util.function.Function;
 
 /**
  * Variable scope builder allowing for fluent variable setting.
@@ -47,6 +48,30 @@ public class VariableScopeWriter implements VariableWriter<VariableScopeWriter> 
   @NotNull
   public <T> VariableScopeWriter setLocal(VariableFactory<T> factory, T value, boolean isTransient) {
     factory.on(this.scope).setLocal(value, isTransient);
+    return this;
+  }
+
+  @Override
+  public @NotNull <T> VariableScopeWriter update(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+    factory.on(this.scope).update(valueProcessor);
+    return this;
+  }
+
+  @Override
+  public @NotNull <T> VariableScopeWriter update(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+    factory.on(this.scope).update(valueProcessor, isTransient);
+    return this;
+  }
+
+  @Override
+  public @NotNull <T> VariableScopeWriter updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+    factory.on(this.scope).updateLocal(valueProcessor);
+    return this;
+  }
+
+  @Override
+  public @NotNull <T> VariableScopeWriter updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+    factory.on(this.scope).updateLocal(valueProcessor, isTransient);
     return this;
   }
 

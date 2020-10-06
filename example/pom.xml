@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data</groupId>
     <artifactId>camunda-bpm-data-parent</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.1.0</version>
   </parent>
 
   <groupId>io.holunda.data.example</groupId>
@@ -150,7 +150,7 @@
       <dependencies>
         <dependency>
           <groupId>org.camunda.bpm.springboot</groupId>
-          <artifactId>camunda-bpm-spring-boot-starter-webapp-ee</artifactId>
+          <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
         </dependency>
       </dependencies>
     </profile>

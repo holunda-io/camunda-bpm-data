@@ -24,21 +24,21 @@ allPages:
         - 'show-language'
         - 'copy-to-clipboard'
 
-services:
-  publications:
-    stages:
-      - type: 'githubPages'
-        username: 'zambrovski'
-        repo: 'holunda-io/camunda-bpm-data'
+kotlindoc:
+  sourceDirs:
+    - './../../../../extension/core/src/main/kotlin'
+    - './../../../../extension/test/src/main/kotlin'
+  homePageOnly: false
+  pages:
+    menu:
+      - type: 'sourcedocPageLinks'
+        moduleType: 'kotlindoc'
+        itemTitleType: 'SIGNATURE'
+        includeItems: true
 
-#
-# FIXME: move to separate file after 0.19 release of orchid
-#
 javadoc:
-  modules:
-    - name: Camunda BPM Data
-      sourceDirs:
-        - '../../../../extension/src/main/java'
+  sourceDirs:
+    - './../../../../extension/core/src/main/java'
   pages:
     menu:
       - type: 'sourcedocPageLinks'
@@ -46,15 +46,10 @@ javadoc:
         itemTitleType: 'SIGNATURE'
         includeItems: true
 
-kotlindoc:
-  modules:
-    - name: Camunda BPM Data Kotlin
-      sourceDirs:
-        - '../../../../extension-kotlin/src/main/kotlin'
-  pages:
-    menu:
-      - type: 'sourcedocPageLinks'
-        moduleType: 'kotlindoc'
-        includeItems: true
-        itemTitleType: 'NAME'
 
+services:
+  publications:
+    stages:
+      - type: 'githubPages'
+        username: 'holunda-io'
+        repo: 'holunda-io/camunda-bpm-data'
