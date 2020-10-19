@@ -16,17 +16,12 @@ import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Value
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SHORT
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.STRING
 import org.camunda.bpm.engine.variable.Variables.createVariables
-import org.junit.Rule
+import org.junit.Assert.assertThrows
 import org.junit.Test
-import org.junit.rules.ExpectedException
 import org.springframework.beans.factory.annotation.Autowired
 import java.util.*
 
 class VariableMapAdapterITest : CamundaBpmDataITestBase() {
-
-  @Suppress("RedundantVisibilityModifier")
-  @get: Rule
-  public val thrown: ExpectedException = ExpectedException.none()
 
   @Autowired
   lateinit var delegateConfiguration: DelegateConfiguration
@@ -102,286 +97,319 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
 
   @Test
   fun `should throw correct VNF exception`() {
-    thrown.expect(VariableNotFoundException::class.java)
     val nonExistent: VariableFactory<String> = stringVariable("non-existent")
-    nonExistent.from(createVariableMapUntyped()).get()
+    assertThrows(VariableNotFoundException::class.java) {
+      nonExistent.from(createVariableMapUntyped()).get()
+    }
   }
 
   @Test
   fun `should throw correct UO exception on basic setLocal`() {
-    thrown.expect(UnsupportedOperationException::class.java)
-    STRING_VAR.on(createVariableMapUntyped()).setLocal(STRING.value)
+    assertThrows(UnsupportedOperationException::class.java) {
+      STRING_VAR.on(createVariableMapUntyped()).setLocal(STRING.value)
+    }
   }
 
   @Test
   fun `should throw correct UO exception on list setLocal`() {
-    thrown.expect(UnsupportedOperationException::class.java)
-    LIST_STRING_VAR.on(createVariableMapUntyped()).setLocal(LIST_STRING.value)
+    assertThrows(UnsupportedOperationException::class.java) {
+      LIST_STRING_VAR.on(createVariableMapUntyped()).setLocal(LIST_STRING.value)
+    }
   }
 
   @Test
   fun `should throw correct UO exception on set setLocal`() {
-    thrown.expect(UnsupportedOperationException::class.java)
-    SET_STRING_VAR.on(createVariableMapUntyped()).setLocal(SET_STRING.value)
+    assertThrows(UnsupportedOperationException::class.java) {
+      SET_STRING_VAR.on(createVariableMapUntyped()).setLocal(SET_STRING.value)
+    }
   }
 
   @Test
   fun `should throw correct UO exception on map setLocal`() {
-    thrown.expect(UnsupportedOperationException::class.java)
-    MAP_STRING_LONG_VAR.on(createVariableMapUntyped()).setLocal(MAP_STRING_LONG.value)
+    assertThrows(UnsupportedOperationException::class.java) {
+      MAP_STRING_LONG_VAR.on(createVariableMapUntyped()).setLocal(MAP_STRING_LONG.value)
+    }
   }
 
   @Test
   fun `should throw correct UO exception on basic removeLocal`() {
-    thrown.expect(UnsupportedOperationException::class.java)
-    STRING_VAR.on(createVariableMapUntyped()).removeLocal()
+    assertThrows(UnsupportedOperationException::class.java) {
+      STRING_VAR.on(createVariableMapUntyped()).removeLocal()
+    }
   }
 
   @Test
   fun `should throw correct UO exception on list removeLocal`() {
-    thrown.expect(UnsupportedOperationException::class.java)
-    LIST_STRING_VAR.on(createVariableMapUntyped()).removeLocal()
+    assertThrows(UnsupportedOperationException::class.java) {
+      LIST_STRING_VAR.on(createVariableMapUntyped()).removeLocal()
+    }
   }
 
   @Test
   fun `should throw correct UO exception on set removeLocal`() {
-    thrown.expect(UnsupportedOperationException::class.java)
-    SET_STRING_VAR.on(createVariableMapUntyped()).removeLocal()
+    assertThrows(UnsupportedOperationException::class.java) {
+      SET_STRING_VAR.on(createVariableMapUntyped()).removeLocal()
+    }
   }
 
   @Test
   fun `should throw correct UO exception on map removeLocal`() {
-    thrown.expect(UnsupportedOperationException::class.java)
-    MAP_STRING_LONG_VAR.on(createVariableMapUntyped()).removeLocal()
+    assertThrows(UnsupportedOperationException::class.java) {
+      MAP_STRING_LONG_VAR.on(createVariableMapUntyped()).removeLocal()
+    }
   }
 
   @Test
   fun `should throw correct UO exception on basic getLocal`() {
-    thrown.expect(UnsupportedOperationException::class.java)
-    STRING_VAR.from(createVariableMapUntyped()).local
+    assertThrows(UnsupportedOperationException::class.java) {
+      STRING_VAR.from(createVariableMapUntyped()).local
+    }
   }
 
   @Test
   fun `should throw correct UO exception on list getLocal`() {
-    thrown.expect(UnsupportedOperationException::class.java)
-    LIST_STRING_VAR.from(createVariableMapUntyped()).local
+    assertThrows(UnsupportedOperationException::class.java) {
+      LIST_STRING_VAR.from(createVariableMapUntyped()).local
+    }
   }
 
   @Test
   fun `should throw correct UO exception on set getLocal`() {
-    thrown.expect(UnsupportedOperationException::class.java)
-    SET_STRING_VAR.from(createVariableMapUntyped()).local
+    assertThrows(UnsupportedOperationException::class.java) {
+      SET_STRING_VAR.from(createVariableMapUntyped()).local
+    }
   }
 
   @Test
   fun `should throw correct UO exception on map getLocal`() {
-    thrown.expect(UnsupportedOperationException::class.java)
-    MAP_STRING_LONG_VAR.from(createVariableMapUntyped()).local
+    assertThrows(UnsupportedOperationException::class.java) {
+      MAP_STRING_LONG_VAR.from(createVariableMapUntyped()).local
+    }
   }
 
   @Test
   fun `should throw correct UO exception on basic getLocalOptional`() {
-    thrown.expect(UnsupportedOperationException::class.java)
-    STRING_VAR.from(createVariableMapUntyped()).localOptional
+    assertThrows(UnsupportedOperationException::class.java) {
+      STRING_VAR.from(createVariableMapUntyped()).localOptional
+    }
   }
 
   @Test
   fun `should throw correct UO exception on list getLocalOptional`() {
-    thrown.expect(UnsupportedOperationException::class.java)
-    LIST_STRING_VAR.from(createVariableMapUntyped()).localOptional
+    assertThrows(UnsupportedOperationException::class.java) {
+      LIST_STRING_VAR.from(createVariableMapUntyped()).localOptional
+    }
   }
 
   @Test
   fun `should throw correct UO exception on set getLocalOptional`() {
-    thrown.expect(UnsupportedOperationException::class.java)
-    SET_STRING_VAR.from(createVariableMapUntyped()).localOptional
+    assertThrows(UnsupportedOperationException::class.java) {
+      SET_STRING_VAR.from(createVariableMapUntyped()).localOptional
+    }
   }
 
   @Test
   fun `should throw correct UO exception on map getLocalOptional`() {
-    thrown.expect(UnsupportedOperationException::class.java)
-    MAP_STRING_LONG_VAR.from(createVariableMapUntyped()).localOptional
+    assertThrows(UnsupportedOperationException::class.java) {
+      MAP_STRING_LONG_VAR.from(createVariableMapUntyped()).localOptional
+    }
   }
 
   @Test
   fun `should throw correct WVT exception on basic`() {
 
-    thrown.expect(WrongVariableTypeException::class.java)
 
     val variables = createVariableMapUntyped()
     val wrongBasicType: VariableFactory<Int> = intVariable(STRING_VAR.name)
 
     // wrong type
-    wrongBasicType.from(variables).get()
+    assertThrows(WrongVariableTypeException::class.java) {
+      wrongBasicType.from(variables).get()
+    }
   }
 
   @Test
   fun `should throw correct WVT exception on basic optional`() {
 
-    thrown.expect(WrongVariableTypeException::class.java)
 
     val variables = createVariableMapUntyped()
     val wrongBasicType: VariableFactory<Int> = intVariable(STRING_VAR.name)
 
-    // wrong type
-    wrongBasicType.from(variables).optional
+    assertThrows(WrongVariableTypeException::class.java) {
+      // wrong type
+      wrongBasicType.from(variables).optional
+    }
   }
 
   @Test
   fun `should throw correct WVT exception on list `() {
 
-    thrown.expect(WrongVariableTypeException::class.java)
 
     val variables = createVariableMapUntyped()
     val wrongListType: VariableFactory<List<Date>> = listVariable(STRING_VAR.name, Date::class.java)
 
-    // not a list
-    wrongListType.from(variables).get()
+    assertThrows(WrongVariableTypeException::class.java) {
+      // not a list
+      wrongListType.from(variables).get()
+    }
   }
 
   @Test
   fun `should throw correct WVT exception on list optional`() {
 
-    thrown.expect(WrongVariableTypeException::class.java)
 
     val variables = createVariableMapUntyped()
     val wrongListType: VariableFactory<List<Date>> = listVariable(STRING_VAR.name, Date::class.java)
 
-    // not a list
-    wrongListType.from(variables).optional
+    assertThrows(WrongVariableTypeException::class.java) {
+      // not a list
+      wrongListType.from(variables).optional
+    }
   }
 
   @Test
   fun `should throw correct WVT exception on list target`() {
 
-    thrown.expect(WrongVariableTypeException::class.java)
 
     val variables = createVariableMapUntyped()
     val wrongListTargetType: VariableFactory<List<Date>> = listVariable(LIST_STRING_VAR.name, Date::class.java)
 
-    // wrong type of the list
-    wrongListTargetType.from(variables).get()
+    assertThrows(WrongVariableTypeException::class.java) {
+      // wrong type of the list
+      wrongListTargetType.from(variables).get()
+    }
   }
 
   @Test
   fun `should throw correct WVT exception on list target optional`() {
 
-    thrown.expect(WrongVariableTypeException::class.java)
 
     val variables = createVariableMapUntyped()
     val wrongListTargetType: VariableFactory<List<Date>> = listVariable(LIST_STRING_VAR.name, Date::class.java)
-    wrongListTargetType.from(variables).optional
+    assertThrows(WrongVariableTypeException::class.java) {
+      wrongListTargetType.from(variables).optional
+    }
   }
 
   @Test
   fun `should throw correct WVT exception on set `() {
 
-    thrown.expect(WrongVariableTypeException::class.java)
     val variables = createVariableMapUntyped()
     val wrongSetType: VariableFactory<Set<Date>> = setVariable(STRING_VAR.name, Date::class.java)
 
-    // not a set
-    wrongSetType.from(variables).get()
+    assertThrows(WrongVariableTypeException::class.java) {
+      // not a set
+      wrongSetType.from(variables).get()
+    }
   }
 
   @Test
   fun `should throw correct WVT exception on set optional`() {
 
-    thrown.expect(WrongVariableTypeException::class.java)
     val variables = createVariableMapUntyped()
     val wrongSetType: VariableFactory<Set<Date>> = setVariable(STRING_VAR.name, Date::class.java)
 
-    // not a set
-    wrongSetType.from(variables).optional
+    assertThrows(WrongVariableTypeException::class.java) {
+      // not a set
+      wrongSetType.from(variables).optional
+    }
   }
 
   @Test
   fun `should throw correct WVT exception on set target`() {
 
-    thrown.expect(WrongVariableTypeException::class.java)
     val variables = createVariableMapUntyped()
     val wrongSetTargetType: VariableFactory<Set<Date>> = setVariable(SET_STRING_VAR.name, Date::class.java)
 
-    // wrong type of the set
-    wrongSetTargetType.from(variables).get()
+    assertThrows(WrongVariableTypeException::class.java) {
+      // wrong type of the set
+      wrongSetTargetType.from(variables).get()
+    }
   }
 
   @Test
   fun `should throw correct WVT exception on set target optional`() {
 
-    thrown.expect(WrongVariableTypeException::class.java)
     val variables = createVariableMapUntyped()
     val wrongSetTargetType: VariableFactory<Set<Date>> = setVariable(SET_STRING_VAR.name, Date::class.java)
 
-    // wrong type of the set
-    wrongSetTargetType.from(variables).optional
+    assertThrows(WrongVariableTypeException::class.java) {
+      // wrong type of the set
+      wrongSetTargetType.from(variables).optional
+    }
   }
 
   @Test
   fun `should throw correct WVT exception on map`() {
 
-    thrown.expect(WrongVariableTypeException::class.java)
 
     val variables = createVariableMapUntyped()
     val wrongMapType: VariableFactory<Map<Date, Date>> = mapVariable(STRING_VAR.name, Date::class.java, Date::class.java)
 
-    // not a map
-    wrongMapType.from(variables).get()
+    assertThrows(WrongVariableTypeException::class.java) {
+      // not a map
+      wrongMapType.from(variables).get()
+    }
   }
 
   @Test
   fun `should throw correct WVT exception on map optional`() {
 
-    thrown.expect(WrongVariableTypeException::class.java)
 
     val variables = createVariableMapUntyped()
     val wrongMapType: VariableFactory<Map<Date, Date>> = mapVariable(STRING_VAR.name, Date::class.java, Date::class.java)
 
-    // not a map
-    wrongMapType.from(variables).optional
+    assertThrows(WrongVariableTypeException::class.java) {
+      // not a map
+      wrongMapType.from(variables).optional
+    }
   }
 
   @Test
   fun `should throw correct WVT exception on key map`() {
 
-    thrown.expect(WrongVariableTypeException::class.java)
 
     val variables = createVariableMapUntyped()
     val wrongMapKeyType: VariableFactory<Map<Date, String>> = mapVariable(MAP_STRING_LONG_VAR.name, Date::class.java, String::class.java)
-    // wrong key type
-    wrongMapKeyType.from(variables).get()
+    assertThrows(WrongVariableTypeException::class.java) {
+      // wrong key type
+      wrongMapKeyType.from(variables).get()
+    }
   }
 
   @Test
   fun `should throw correct WVT exception on map key optional`() {
 
-    thrown.expect(WrongVariableTypeException::class.java)
     val variables = createVariableMapUntyped()
     val wrongMapKeyType: VariableFactory<Map<Date, String>> = mapVariable(MAP_STRING_LONG_VAR.name, Date::class.java, String::class.java)
-    // wrong key type
-    wrongMapKeyType.from(variables).optional
+    assertThrows(WrongVariableTypeException::class.java) {
+      // wrong key type
+      wrongMapKeyType.from(variables).optional
+    }
   }
 
   @Test
   fun `should throw correct WVT exception on value map`() {
 
-    thrown.expect(WrongVariableTypeException::class.java)
     val variables = createVariableMapUntyped()
     val wrongMapValueType: VariableFactory<Map<String, Date>> = mapVariable(MAP_STRING_LONG_VAR.name, String::class.java, Date::class.java)
 
-    // wrong value type
-    wrongMapValueType.from(variables).get()
+    assertThrows(WrongVariableTypeException::class.java) {
+      // wrong value type
+      wrongMapValueType.from(variables).get()
+    }
   }
 
   @Test
   fun `should throw correct WVT exception on map value optional`() {
 
-    thrown.expect(WrongVariableTypeException::class.java)
     val variables = createVariableMapUntyped()
     val wrongMapValueType: VariableFactory<Map<String, Date>> = mapVariable(MAP_STRING_LONG_VAR.name, String::class.java, Date::class.java)
 
-    // wrong value type
-    wrongMapValueType.from(variables).optional
+    assertThrows(WrongVariableTypeException::class.java) {
+      // wrong value type
+      wrongMapValueType.from(variables).optional
+    }
   }
 }
 

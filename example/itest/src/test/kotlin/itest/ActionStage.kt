@@ -15,6 +15,7 @@ import org.camunda.bpm.engine.variable.VariableMap
 import org.camunda.bpm.engine.variable.Variables
 import org.camunda.bpm.model.bpmn.Bpmn
 import org.camunda.bpm.model.bpmn.BpmnModelInstance
+import org.junit.Assert.assertThrows
 import org.springframework.beans.factory.annotation.Autowired
 
 /**
@@ -146,11 +147,19 @@ class ActionStage : Stage<ActionStage>() {
    */
   fun process_is_started_with_variables(
     processDefinitionKey: String = this.processDefinition.key,
-    variables: VariableMap
+    variables: VariableMap,
+    expectedException: Class<out java.lang.Exception>? = null
   ): ActionStage {
 
-    processInstance = runtimeService
-      .startProcessInstanceByKey(processDefinitionKey, variables)
+    if (expectedException == null) {
+      processInstance = runtimeService
+        .startProcessInstanceByKey(processDefinitionKey, variables)
+    } else {
+      assertThrows(expectedException) {
+        runtimeService
+          .startProcessInstanceByKey(processDefinitionKey, variables)
+      }
+    }
 
     return self()
   }
