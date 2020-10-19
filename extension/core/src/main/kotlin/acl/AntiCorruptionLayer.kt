@@ -43,9 +43,7 @@ class AntiCorruptionLayer(
      */
     fun wrapAsTypedTransientVariable(variableName: String, variables: VariableMap): VariableMap {
       return Variables.createVariables()
-        .putValueTyped(variableName, Variables
-          .objectValue(variables, true)
-          .serializationDataFormat(Variables.SerializationDataFormats.JAVA)
+        .putValueTyped(variableName, Variables.objectValue(variables, true)
           .create()
         )
     }
@@ -86,6 +84,19 @@ class AntiCorruptionLayer(
       throw GuardViolationException(violations = violations, reason = "ACL Guard Error:")
     }
     return wrap(variableMap)
+  }
+
+  /**
+   * Checks if the preconditions are satisfied and constructs a variable map transforming and wrapping the variables.
+   * @param variableMap variable map containing the variables.
+   * @return new variable map
+   */
+  fun checkAndTransformAndWrap(variableMap: VariableMap): VariableMap {
+    val violations = precondition.evaluate(variableMap)
+    if (violations.isNotEmpty()) {
+      throw GuardViolationException(violations = violations, reason = "ACL Guard Error:")
+    }
+    return wrap(variableMapTransformer.transform(variableMap))
   }
 
   /**

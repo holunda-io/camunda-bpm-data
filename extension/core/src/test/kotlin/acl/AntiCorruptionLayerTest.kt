@@ -1,12 +1,12 @@
 package io.holunda.camunda.bpm.data.acl
 
-import io.holunda.camunda.bpm.data.CamundaBpmData
-import io.holunda.camunda.bpm.data.CamundaBpmData.customVariable
-import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
+import io.holunda.camunda.bpm.data.CamundaBpmData.*
 import io.holunda.camunda.bpm.data.acl.transform.IdentityVariableMapTransformer
+import io.holunda.camunda.bpm.data.acl.transform.VariableMapTransformer
 import io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.exists
 import io.holunda.camunda.bpm.data.guard.VariablesGuard
 import io.holunda.camunda.bpm.data.guard.condition.matches
+import io.holunda.camunda.bpm.data.guard.integration.GuardViolationException
 import org.assertj.core.api.Assertions.assertThat
 import org.camunda.bpm.engine.ProcessEngineConfiguration
 import org.camunda.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration
@@ -16,9 +16,8 @@ import org.camunda.bpm.engine.variable.VariableMap
 import org.camunda.bpm.engine.variable.value.ObjectValue
 import org.camunda.bpm.extension.mockito.delegate.DelegateExecutionFake
 import org.camunda.bpm.extension.mockito.delegate.DelegateTaskFake
-import org.junit.Rule
+import org.junit.Assert.assertThrows
 import org.junit.Test
-import org.junit.rules.ExpectedException
 
 class AntiCorruptionLayerTest {
 
@@ -33,15 +32,23 @@ class AntiCorruptionLayerTest {
     IdentityVariableMapTransformer
   )
 
-  @Suppress("RedundantVisibilityModifier")
-  @get: Rule
-  public val expectedException: ExpectedException = ExpectedException.none()
+  val mapper = object : VariableMapTransformer {
+    override fun transform(variableMap: VariableMap): VariableMap = builder()
+      .set(FOO, FOO.from(variableMap).get())
+      .set(BAZ, BAZ.from(variableMap).get().substring(1))
+      .build()
 
+  }
+
+  val MY_ACL2 = CamundaBpmDataACL.guardTransformingLocalReplace(
+    TRANSIENT.name,
+    VariablesGuard(listOf(exists(FOO), BAZ.matches { it.length > 2 })), mapper
+  )
 
   @Test
   fun `should wrap variables directly`() {
 
-    val vars = CamundaBpmData.builder().set(FOO, "foo1").set(BAZ, "baz2").build()
+    val vars = builder().set(FOO, "foo1").set(BAZ, "baz2").build()
 
     val wrapped = AntiCorruptionLayer.wrapAsTypedTransientVariable(TRANSIENT.name, vars)
     assertThat(wrapped).containsOnlyKeys(TRANSIENT.name)
@@ -52,7 +59,7 @@ class AntiCorruptionLayerTest {
   @Test
   fun `should wrap variables using ACL`() {
 
-    val vars = CamundaBpmData.builder().set(FOO, "foo1").set(BAZ, "baz2").build()
+    val vars = builder().set(FOO, "foo1").set(BAZ, "baz2").build()
 
     val wrapped = MY_ACL.wrap(vars)
     assertThat(wrapped).containsOnlyKeys(TRANSIENT.name)
@@ -62,7 +69,7 @@ class AntiCorruptionLayerTest {
 
   @Test
   fun `should check and wrap variables`() {
-    val vars = CamundaBpmData.builder().set(FOO, "foo1").set(BAZ, "baz2").build()
+    val vars = builder().set(FOO, "foo1").set(BAZ, "baz2").build()
     val wrapped = MY_ACL.checkAndWrap(vars)
 
     assertThat(wrapped).containsOnlyKeys(TRANSIENT.name)
@@ -71,11 +78,24 @@ class AntiCorruptionLayerTest {
   }
 
   @Test
-  fun `should fail checking and wrapping variables`() {
-    expectedException.expectMessage("ACL Guard Error:\n\tExpecting variable 'baz' to match the condition, but its value 'ba' has not.")
+  fun `should check transform and wrap variables`() {
+    val vars = builder().set(FOO, "foo1").set(BAZ, "baz2").build()
 
-    val vars = CamundaBpmData.builder().set(FOO, "foo1").set(BAZ, "ba").build()
-    MY_ACL.checkAndWrap(vars)
+    val wrapped = MY_ACL2.checkAndTransformAndWrap(vars)
+    assertThat(wrapped).containsOnlyKeys(TRANSIENT.name)
+    assertThat(wrapped.getValueTyped<ObjectValue>(TRANSIENT.name).isTransient).isTrue
+
+    assertThat(TRANSIENT.from(wrapped).get()).isEqualTo(mapper.transform(vars))
+  }
+
+
+  @Test
+  fun `should fail checking and wrapping variables`() {
+    val vars = builder().set(FOO, "foo1").set(BAZ, "ba").build()
+
+    assertThrows("ACL Guard Error:\n\tExpecting variable 'baz' to match the condition, but its value 'ba' has not.", GuardViolationException::class.java) {
+      MY_ACL.checkAndWrap(vars)
+    }
   }
 
   @Test
@@ -85,8 +105,7 @@ class AntiCorruptionLayerTest {
 
     val listener = MY_ACL.getExecutionListener()
     val wrappedVars = MY_ACL.checkAndWrap(
-      CamundaBpmData
-        .builder()
+      builder()
         .set(FOO, "foo1")
         .set(BAZ, "baz2")
         .build()
@@ -107,8 +126,7 @@ class AntiCorruptionLayerTest {
 
     val listener = MY_ACL.getTaskListener()
     val wrappedVars = MY_ACL.checkAndWrap(
-      CamundaBpmData
-        .builder()
+      builder()
         .set(FOO, "foo1")
         .set(BAZ, "baz2")
         .build()
