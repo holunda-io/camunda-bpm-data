@@ -2,17 +2,15 @@ package io.holunda.camunda.bpm.data.itest
 
 import io.holunda.camunda.bpm.data.adapter.VariableNotFoundException
 import org.camunda.bpm.engine.variable.Variables.createVariables
+import org.junit.Assert.assertThrows
 import org.junit.Rule
 import org.junit.Test
+import org.junit.function.ThrowingRunnable
 import org.junit.rules.ExpectedException
 import org.springframework.beans.factory.annotation.Autowired
 import java.util.*
 
 class VariableScopeAdapterITest : CamundaBpmDataITestBase() {
-
-  @Suppress("RedundantVisibilityModifier")
-  @get: Rule
-  public val thrown = ExpectedException.none()
 
   @Autowired
   lateinit var delegateConfiguration: DelegateConfiguration
@@ -69,14 +67,14 @@ class VariableScopeAdapterITest : CamundaBpmDataITestBase() {
 
 
   @Test
-  fun `Should throw correct exceptions`() {
-
-    thrown.expect(VariableNotFoundException::class.java)
+  fun `should throw correct exceptions`() {
 
     given()
       .process_with_delegate_is_deployed(delegateExpression = "\${${DelegateConfiguration::readNonExisting.name}}")
+
     whenever()
-      .process_is_started_with_variables(variables = createVariableMapUntyped())
+        .process_is_started_with_variables(variables = createVariableMapUntyped(), expectedException = VariableNotFoundException::class.java)
+
   }
 
   @Test
