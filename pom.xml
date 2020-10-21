@@ -19,18 +19,17 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <version.java>${java.version}</version.java>
 
-    <camunda.version.ce>7.13.0</camunda.version.ce>
-    <camunda.version.ee>7.13.1-ee</camunda.version.ee>
-    <camunda-spring-boot.version>7.13.0</camunda-spring-boot.version>
+    <camunda.version.ce>7.14.0</camunda.version.ce>
+    <camunda.version.ee>7.14.0-ee</camunda.version.ee>
 
     <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
     <groovy.version>2.4.5</groovy.version>
     <spin.version>1.9.0</spin.version>
-    <camunda-assert.version>5.0.0</camunda-assert.version>
+    <camunda-assert.version>8.0.0</camunda-assert.version>
 
     <jgiven.version>0.18.2</jgiven.version>
     <kotlin.version>1.4.10</kotlin.version>
-    <kotlin-logging.version>1.7.6</kotlin-logging.version>
+    <kotlin-logging.version>2.0.2</kotlin-logging.version>
     <mockito-kotlin.version>2.2.0</mockito-kotlin.version>
     <camunda-bpm-mockito.version>4.12.0</camunda-bpm-mockito.version>
     <mockito.version>2.23.4</mockito.version>
@@ -51,6 +50,26 @@
 
   <dependencyManagement>
     <dependencies>
+      <!-- Kotlin -->
+      <dependency>
+        <groupId>org.jetbrains.kotlin</groupId>
+        <artifactId>kotlin-bom</artifactId>
+        <version>${kotlin.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.github.microutils</groupId>
+        <artifactId>kotlin-logging-jvm</artifactId>
+        <version>${kotlin-logging.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+
       <dependency>
         <groupId>org.camunda.bpm</groupId>
         <artifactId>camunda-bom</artifactId>
@@ -78,59 +97,10 @@
         <type>pom</type>
         <version>${spin.version}</version>
       </dependency>
-      <!-- Kotlin -->
-      <dependency>
-        <groupId>org.jetbrains.kotlin</groupId>
-        <artifactId>kotlin-stdlib</artifactId>
-        <version>${kotlin.version}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib-common</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-      <dependency>
-        <groupId>org.jetbrains.kotlin</groupId>
-        <artifactId>kotlin-stdlib-common</artifactId>
-        <version>${kotlin.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jetbrains.kotlin</groupId>
-        <artifactId>kotlin-stdlib-jdk8</artifactId>
-        <version>${kotlin.version}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib-jdk7</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-      <dependency>
-        <groupId>org.jetbrains.kotlin</groupId>
-        <artifactId>kotlin-stdlib-jdk7</artifactId>
-        <version>${kotlin.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jetbrains.kotlin</groupId>
-        <artifactId>kotlin-reflect</artifactId>
-        <version>${kotlin.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>io.github.microutils</groupId>
-        <artifactId>kotlin-logging</artifactId>
-        <version>${kotlin-logging.version}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
       <dependency>
         <groupId>org.camunda.bpm.springboot</groupId>
         <artifactId>camunda-bpm-spring-boot-starter-test</artifactId>
-        <version>${camunda-spring-boot.version}</version>
+        <version>${camunda.version}</version>
         <scope>test</scope>
       </dependency>
       <dependency>
@@ -211,7 +181,7 @@
         <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
-          <version>0.8.5</version>
+          <version>0.8.6</version>
           <executions>
             <execution>
               <id>pre-unit-test</id>
@@ -365,7 +335,7 @@
         <plugin>
           <groupId>org.jetbrains.dokka</groupId>
           <artifactId>dokka-maven-plugin</artifactId>
-          <version>1.4.10</version>
+          <version>1.4.10.2</version>
           <executions>
             <execution>
               <id>attach-javadocs</id>
@@ -388,7 +358,7 @@
                 <lineSuffix>#L</lineSuffix>
               </link>
             </sourceLinks>
-            <jdkVersion>8</jdkVersion>
+            <jdkVersion>11</jdkVersion>
             <sourceDirectories>
               <dir>${project.basedir}/src/main/kotlin</dir>
               <dir>${project.basedir}/src/main/java</dir>
@@ -570,16 +540,16 @@
         <property>
           <name>!camunda-ee</name>
         </property>
-    </activation>
-    <properties>
+      </activation>
+      <properties>
         <camunda.version>${camunda.version.ce}</camunda.version>
-    </properties>
+      </properties>
       <dependencyManagement>
         <dependencies>
           <dependency>
             <groupId>org.camunda.bpm.springboot</groupId>
             <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
-            <version>${camunda-spring-boot.version}</version>
+            <version>${camunda.version}</version>
           </dependency>
         </dependencies>
       </dependencyManagement>
@@ -606,7 +576,7 @@
           <dependency>
             <groupId>org.camunda.bpm.springboot</groupId>
             <artifactId>camunda-bpm-spring-boot-starter-webapp-ee</artifactId>
-            <version>${camunda-spring-boot.version}</version>
+            <version>${camunda.version}</version>
           </dependency>
         </dependencies>
       </dependencyManagement>

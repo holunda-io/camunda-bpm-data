@@ -45,13 +45,6 @@
         <version>${project.version}</version>
       </dependency>
 
-      <!-- CAMUNDA SPRING BOOT -->
-      <dependency>
-        <groupId>org.camunda.bpm.springboot</groupId>
-        <artifactId>camunda-bpm-spring-boot-starter-rest</artifactId>
-        <version>${camunda-spring-boot.version}</version>
-      </dependency>
-
       <!-- TOOLS -->
       <dependency>
         <groupId>org.codehaus.groovy</groupId>
@@ -150,7 +143,7 @@
       <dependencies>
         <dependency>
           <groupId>org.camunda.bpm.springboot</groupId>
-          <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
+          <artifactId>camunda-bpm-spring-boot-starter-webapp-ee</artifactId>
         </dependency>
       </dependencies>
     </profile>
