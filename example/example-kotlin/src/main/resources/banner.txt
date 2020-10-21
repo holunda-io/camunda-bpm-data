@@ -12,6 +12,6 @@ ${Ansi.GREEN}
 ██╔═██╗ ██║   ██║   ██║   ██║     ██║██║╚██╗██║    ██╔══╝   ██╔██╗ ██╔══██║██║╚██╔╝██║██╔═══╝ ██║     ██╔══╝
 ██║  ██╗╚██████╔╝   ██║   ███████╗██║██║ ╚████║    ███████╗██╔╝ ██╗██║  ██║██║ ╚═╝ ██║██║     ███████╗███████╗
 ╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚══════╝╚═╝╚═╝  ╚═══╝    ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝     ╚══════╝╚══════╝
-${Ansi.BLACK}
-Application: ${application.name} ${application.application.formatted-version}
+
 SpringBoot: ${spring-boot.application.formatted-version}
+Camunda BPM: ${camunda.bpm.formatted-version}
