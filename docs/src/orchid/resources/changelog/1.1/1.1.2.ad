@@ -1,0 +1,20 @@
+---
+version: 1.1.2
+---
+
+== Features
+
+== Bugfixes
+
+* Remove usage of JUnit deprecated API
+
+== Chore
+
+* Restore usage of Camunda BPM CE/EE via profiles
+* Version upgrade:
+  * Camunda BPM 7.14
+  * Dokka 1.4.10.2
+  * Mockito Kotlin -> Mockito Kotlin 2 2.2.0 (↯)
+
+
+
