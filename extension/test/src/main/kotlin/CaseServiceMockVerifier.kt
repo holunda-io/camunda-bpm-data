@@ -6,7 +6,7 @@ import io.holunda.camunda.bpm.data.factory.VariableFactory
 import org.camunda.bpm.engine.CaseService
 
 /**
- * Verifier for a mocked runtime service.
+ * Verifier for a mocked case service.
  * Provides methods for easy verification.
  */
 class CaseServiceMockVerifier(
