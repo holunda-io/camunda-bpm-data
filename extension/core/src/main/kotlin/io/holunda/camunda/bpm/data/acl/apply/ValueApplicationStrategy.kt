@@ -1,4 +1,4 @@
-package io.holunda.camunda.bpm.data.acl.assign
+package io.holunda.camunda.bpm.data.acl.apply
 
 import org.camunda.bpm.engine.delegate.VariableScope
 import org.camunda.bpm.engine.variable.VariableMap

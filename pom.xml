@@ -29,6 +29,8 @@
 
     <jgiven.version>0.18.2</jgiven.version>
     <kotlin.version>1.4.10</kotlin.version>
+    <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
+
     <kotlin-logging.version>2.0.2</kotlin-logging.version>
     <mockito-kotlin.version>2.2.0</mockito-kotlin.version>
     <camunda-bpm-mockito.version>4.12.0</camunda-bpm-mockito.version>
@@ -199,6 +201,65 @@
         </plugin>
 
         <plugin>
+          <!-- Kotlin compiler -->
+          <artifactId>kotlin-maven-plugin</artifactId>
+          <groupId>org.jetbrains.kotlin</groupId>
+          <version>${kotlin.version}</version>
+          <configuration>
+            <jvmTarget>${java.version}</jvmTarget>
+            <compilerPlugins>
+              <plugin>spring</plugin>
+              <plugin>jpa</plugin>
+              <plugin>no-arg</plugin>
+              <plugin>all-open</plugin>
+            </compilerPlugins>
+            <pluginOptions>
+              <!-- Each annotation is placed on its own line -->
+              <option>all-open:annotation=com.tngtech.jgiven.integration.spring.JGivenStage</option>
+            </pluginOptions>
+          </configuration>
+          <executions>
+            <execution>
+              <id>compile</id>
+              <goals>
+                <goal>compile</goal>
+              </goals>
+              <configuration>
+                <sourceDirs>
+                  <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
+                  <sourceDir>${project.basedir}/src/main/java</sourceDir>
+                </sourceDirs>
+              </configuration>
+            </execution>
+            <execution>
+              <id>test-compile</id>
+              <goals>
+                <goal>test-compile</goal>
+              </goals>
+              <configuration>
+                <sourceDirs>
+                  <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
+                  <sourceDir>${project.basedir}/src/test/java</sourceDir>
+                </sourceDirs>
+              </configuration>
+            </execution>
+          </executions>
+
+          <dependencies>
+            <dependency>
+              <groupId>org.jetbrains.kotlin</groupId>
+              <artifactId>kotlin-maven-allopen</artifactId>
+              <version>${kotlin.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>org.jetbrains.kotlin</groupId>
+              <artifactId>kotlin-maven-noarg</artifactId>
+              <version>${kotlin.version}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+
+        <plugin>
           <!-- Java compiler -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
@@ -232,65 +293,11 @@
               <goals>
                 <goal>testCompile</goal>
               </goals>
-            </execution>
-          </executions>
-        </plugin>
-
-        <plugin>
-          <!-- Kotlin compiler -->
-          <artifactId>kotlin-maven-plugin</artifactId>
-          <groupId>org.jetbrains.kotlin</groupId>
-          <version>${kotlin.version}</version>
-          <configuration>
-            <jvmTarget>${java.version}</jvmTarget>
-            <compilerPlugins>
-              <plugin>spring</plugin>
-              <plugin>jpa</plugin>
-              <plugin>no-arg</plugin>
-              <plugin>all-open</plugin>
-            </compilerPlugins>
-            <pluginOptions>
-              <!-- Each annotation is placed on its own line -->
-              <option>all-open:annotation=com.tngtech.jgiven.integration.spring.JGivenStage</option>
-            </pluginOptions>
-          </configuration>
-          <executions>
-            <execution>
-              <id>compile</id>
-              <goals>
-                <goal>compile</goal>
-              </goals>
               <configuration>
-                <sourceDirs>
-                  <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
-                </sourceDirs>
-              </configuration>
-            </execution>
-            <execution>
-              <id>test-compile</id>
-              <goals>
-                <goal>test-compile</goal>
-              </goals>
-              <configuration>
-                <sourceDirs>
-                  <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
-                </sourceDirs>
+                <skip>${maven.test.skip}</skip>
               </configuration>
             </execution>
           </executions>
-
-          <dependencies>
-            <dependency>
-              <groupId>org.jetbrains.kotlin</groupId>
-              <artifactId>kotlin-maven-allopen</artifactId>
-              <version>${kotlin.version}</version>
-            </dependency>
-            <dependency>
-              <groupId>org.jetbrains.kotlin</groupId>
-              <artifactId>kotlin-maven-noarg</artifactId>
-              <version>${kotlin.version}</version>
-            </dependency>
-          </dependencies>
         </plugin>
 
         <plugin>
@@ -299,7 +306,7 @@
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.1.0</version>
           <configuration>
-            <encoding>UTF-8</encoding>
+            <encoding>${project.build.sourceEncoding}</encoding>
           </configuration>
         </plugin>
 
@@ -331,7 +338,7 @@
           <version>2.22.2</version>
         </plugin>
 
-        <!-- JavaDoc for kotlin and java -->
+        <!-- JavaDoc for Java and KDoc for Kotlin -->
         <plugin>
           <groupId>org.jetbrains.dokka</groupId>
           <artifactId>dokka-maven-plugin</artifactId>
@@ -515,10 +522,6 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

@@ -2,7 +2,7 @@
 
 Top-level package of the library.
 
-check [io.holunda.camunda.bpm.data.CamundaBpmDataKotlin] as entry point for variable factory definition.
+check [io.holunda.camunda.bpm.data.io.holunda.camunda.bpm.data.CamundaBpmDataKotlin] as entry point for variable factory definition.
 @since 0.0.2
 
 

@@ -8,79 +8,20 @@ import org.camunda.bpm.engine.variable.impl.value.ObjectValueImpl;
 import org.camunda.bpm.engine.variable.value.ObjectValue;
 import org.camunda.bpm.engine.variable.value.TypedValue;
 
-import java.io.File;
 import java.util.Collection;
-import java.util.Date;
 import java.util.Map;
 
-import static org.camunda.bpm.engine.variable.Variables.booleanValue;
-import static org.camunda.bpm.engine.variable.Variables.dateValue;
-import static org.camunda.bpm.engine.variable.Variables.doubleValue;
-import static org.camunda.bpm.engine.variable.Variables.fileValue;
-import static org.camunda.bpm.engine.variable.Variables.integerValue;
-import static org.camunda.bpm.engine.variable.Variables.longValue;
-import static org.camunda.bpm.engine.variable.Variables.objectValue;
-import static org.camunda.bpm.engine.variable.Variables.shortValue;
-import static org.camunda.bpm.engine.variable.Variables.stringValue;
-import static org.camunda.bpm.engine.variable.Variables.untypedNullValue;
-import static org.camunda.bpm.engine.variable.Variables.untypedValue;
-
-
 /**
- * Static util methods.
+ * Helper class to read values from collections.
  */
-public class ValueWrapperUtil {
+public class CollectionTypedValueUtil {
 
   /**
-   * Hide instantiation.
+   * Avoid instantiations.
    */
-  private ValueWrapperUtil() {
+  private CollectionTypedValueUtil() {
 
   }
-
-  /**
-   * Delivers typed value for a given type and value.<br />
-   * Supports every type except byteArray.
-   *
-   * @param clazz       class of value.
-   * @param value       value to encapsulate.
-   * @param isTransient transient flag.
-   * @param <T>         type of value.
-   * @return typed value.
-   * @throws IllegalArgumentException if value and clazz are incompatible.
-   */
-  public static <T> TypedValue getTypedValue(Class<T> clazz, Object value, boolean isTransient) {
-    if (value != null && !clazz.isAssignableFrom(value.getClass())) {
-      throw new IllegalArgumentException("Couldn't create TypedValue for " + clazz.getSimpleName() + " from value " + value);
-    }
-
-    if (String.class.equals(clazz)) {
-      return stringValue((String) value, isTransient);
-    } else if (Boolean.class.equals(clazz)) {
-      return booleanValue((Boolean) value, isTransient);
-    } else if (Integer.class.equals(clazz)) {
-      return integerValue((Integer) value, isTransient);
-    } else if (Short.class.equals(clazz)) {
-      return shortValue((Short) value, isTransient);
-    } else if (Long.class.equals(clazz)) {
-      return longValue((Long) value, isTransient);
-    } else if (Date.class.equals(clazz)) {
-      return dateValue((Date) value, isTransient);
-    } else if (Double.class.equals(clazz)) {
-      return doubleValue((Double) value, isTransient);
-    } else if (File.class.equals(clazz)) {
-      return fileValue((File)value, isTransient);
-    } else if (Object.class.equals(clazz)) {
-      return objectValue(value, isTransient).create();
-    } else {
-      if (value == null) {
-        return untypedNullValue(isTransient);
-      }
-      // fallback for unknown-type
-      return untypedValue(value, isTransient);
-    }
-  }
-
   /**
    * Tries to read a collection type from a typed value containing the serialized json.
    *
