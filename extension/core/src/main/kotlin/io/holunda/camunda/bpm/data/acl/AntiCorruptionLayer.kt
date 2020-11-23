@@ -1,6 +1,6 @@
 package io.holunda.camunda.bpm.data.acl
 
-import io.holunda.camunda.bpm.data.acl.assign.ValueApplicationStrategy
+import io.holunda.camunda.bpm.data.acl.apply.ValueApplicationStrategy
 import io.holunda.camunda.bpm.data.acl.transform.VariableMapTransformer
 import io.holunda.camunda.bpm.data.factory.VariableFactory
 import io.holunda.camunda.bpm.data.guard.VariablesGuard

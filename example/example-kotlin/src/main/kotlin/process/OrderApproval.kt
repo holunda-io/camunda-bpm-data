@@ -61,7 +61,7 @@ class OrderApproval {
   fun calculateOrderPositions() = JavaDelegate { execution ->
     val orderPosition = ORDER_POSITION.from(execution).get()
 
-    ORDER_TOTAL.on(execution).update { it.plus(orderPosition.netCost.times(BigDecimal.valueOf(orderPosition.amount))) }
+    ORDER_TOTAL.on(execution).update { total -> total.plus(orderPosition.netCost.times(BigDecimal.valueOf(orderPosition.amount))) }
   }
 
   /**
