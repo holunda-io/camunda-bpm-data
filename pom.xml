@@ -28,7 +28,7 @@
     <camunda-assert.version>6.0.0</camunda-assert.version>
 
     <jgiven.version>0.18.2</jgiven.version>
-    <kotlin.version>1.4.10</kotlin.version>
+    <kotlin.version>1.4.20</kotlin.version>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
 
     <kotlin-logging.version>2.0.2</kotlin-logging.version>

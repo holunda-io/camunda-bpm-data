@@ -3,7 +3,7 @@ name: 'Feature request'
 about: 'Suggest a feature for camunda-bpm-data'
 title:
 labels: 'type: enhancement'
-assignees: zambrovski
+assignees: 
 
 ---
 
