@@ -10,3 +10,5 @@
 target/
 pom.xml.versionsBackup
 
+Snap.*.trc
+javacore.*.txt
