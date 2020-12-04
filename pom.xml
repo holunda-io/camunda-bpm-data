@@ -10,7 +10,6 @@
   <url>https://github.com/holunda-io/camunda-bpm-data/</url>
   <packaging>pom</packaging>
 
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>

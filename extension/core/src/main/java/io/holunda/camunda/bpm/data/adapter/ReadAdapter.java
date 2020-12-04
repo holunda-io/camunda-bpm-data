@@ -39,4 +39,41 @@ public interface ReadAdapter<T> {
    */
   Optional<T> getLocalOptional();
 
+  /**
+   * Reads a variable and returns a value if exists or default.
+   *
+   * @param defaultValue the default value if the variable is not set
+   * @return value or default
+   */
+  default T getOrDefault(T defaultValue) {
+    return getOptional().orElse(defaultValue);
+  }
+
+  /**
+   * Reads a local variable and returns a value if exists or default.
+   *
+   * @param defaultValue the default value if the variable is not set
+   * @return value or default
+   */
+  default T getLocalOrDefault(T defaultValue) {
+    return getLocalOptional().orElse(defaultValue);
+  }
+
+  /**
+   * Reads a variable and returns a value if exists or null.
+   *
+   * @return value or <code>null</code>>
+   */
+  default T getOrNull() {
+    return getOptional().orElse(null);
+  }
+
+  /**
+   * Reads a local variable and returns a value if exists or null.
+   *
+   * @return value or <code>null</code>>
+   */
+  default T getLocalOrNull() {
+    return getLocalOptional().orElse(null);
+  }
 }
