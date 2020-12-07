@@ -5,6 +5,10 @@ spring:
     name: Camunda BPM Data Kotlin Example
   jpa:
     open-in-view: true
+  groovy:
+    template:
+      check-template-location: false
+
 camunda:
   bpm:
     default-serialization-format: application/json
@@ -15,4 +19,7 @@ camunda:
       email: admin@localhost.local
       first-name: Administrat
       last-name: Administratius
+    generic-properties:
+      properties:
+        telemetry-reporter-activate: false
 

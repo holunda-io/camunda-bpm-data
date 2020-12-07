@@ -5,6 +5,10 @@ spring:
     name: Camunda BPM Data Java Example
   jpa:
     open-in-view: true
+  groovy:
+    template:
+      check-template-location: false
+
 camunda:
   bpm:
     default-serialization-format: application/json
@@ -16,3 +20,6 @@ camunda:
       password: admin
     filter:
       create: all
+    generic-properties:
+      properties:
+        telemetry-reporter-activate: false

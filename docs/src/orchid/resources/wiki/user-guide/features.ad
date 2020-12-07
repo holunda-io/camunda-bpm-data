@@ -11,6 +11,7 @@ title: Features
 - The adapter offers methods to read, write, update and remove variable values.
 - The adapter works for all types supported by Camunda BPM. This includes primitive types, object and container types ( `List<T>`, `Set<T>`, `Map<K , V>` ).
 - The adapter supports global / local variables.
+- The adapter allows a default value or null in case a variable is not set.
 - The adapter support transient variables.
 - Fluent API helper are available in order to set, remove or update multiple variables in the same context (`VariableMapBuilder`, `VariableReader` and `GlobalVariableWriter`).
 

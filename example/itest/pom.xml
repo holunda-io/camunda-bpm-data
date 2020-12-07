@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data.example</groupId>
     <artifactId>camunda-bpm-data-example-parent</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
   </parent>
 
   <artifactId>camunda-bpm-data-integration-test</artifactId>
@@ -136,7 +136,7 @@
     </dependency>
     <dependency>
       <groupId>io.github.microutils</groupId>
-      <artifactId>kotlin-logging</artifactId>
+      <artifactId>kotlin-logging-jvm</artifactId>
       <exclusions>
         <exclusion>
           <groupId>org.jetbrains.kotlin</groupId>
@@ -155,7 +155,11 @@
       <artifactId>camunda-bpm-data-test</artifactId>
       <scope>test</scope>
     </dependency>
-
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>io.holunda.testing</groupId>
       <artifactId>camunda-bpm-jgiven</artifactId>
@@ -163,11 +167,6 @@
     <dependency>
       <groupId>com.tngtech.jgiven</groupId>
       <artifactId>jgiven-junit</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.camunda.bpm.extension.mockito</groupId>
@@ -202,10 +201,6 @@
       <plugin>
         <groupId>org.jetbrains.kotlin</groupId>
         <artifactId>kotlin-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
       <plugin>
         <groupId>com.tngtech.jgiven</groupId>

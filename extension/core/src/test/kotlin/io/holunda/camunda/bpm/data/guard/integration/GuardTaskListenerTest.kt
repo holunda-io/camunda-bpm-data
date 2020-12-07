@@ -4,20 +4,18 @@ import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
 import io.holunda.camunda.bpm.data.guard.condition.hasValue
 import org.assertj.core.api.Assertions.assertThat
 import org.camunda.bpm.extension.mockito.delegate.DelegateTaskFake
-import org.junit.Rule
+import org.junit.Assert.assertThrows
 import org.junit.Test
-import org.junit.rules.ExpectedException
 
 val ORDER_ID = stringVariable("orderID")
 
+/**
+ * Test of listener behavior.
+ */
 class GuardTaskListenerTest {
 
-  @Suppress("RedundantVisibilityModifier")
-  @get: Rule
-  public val thrown = ExpectedException.none()
-
   @Test
-  fun `should do nothing`() {
+  fun `should do nothing because no guard violation`() {
     val delegateTask = DelegateTaskFake().withId("4711")
     ORDER_ID.on(delegateTask).set("1")
 
@@ -29,7 +27,7 @@ class GuardTaskListenerTest {
   }
 
   @Test
-  fun `should not throw exception if disabled `() {
+  fun `should not throw exception on violation if disabled `() {
     val delegateTask = DelegateTaskFake().withId("4711").withName("task name")
     ORDER_ID.on(delegateTask).set("2")
 
@@ -41,17 +39,14 @@ class GuardTaskListenerTest {
   }
 
   @Test
-  fun `should throw exception if enabled `() {
+  fun `should throw exception on violation if enabled `() {
     val delegateTask = DelegateTaskFake().withId("4711").withName("task name")
     ORDER_ID.on(delegateTask).set("2")
-
-    thrown.expectMessage("Guard violated in task '${delegateTask.name}' (taskId: '${delegateTask.id}')")
-
     val listener = createListener(true)
-    listener.notify(delegateTask)
 
-    // nothing to do here
-    assertThat(true).isTrue
+    assertThrows("Guard violated in task '${delegateTask.name}' (taskId: '${delegateTask.id}')", GuardViolationException::class.java) {
+      listener.notify(delegateTask)
+    }
   }
 
   private fun createListener(throwE: Boolean = true) = DefaultGuardTaskListener(listOf(ORDER_ID.hasValue("1")), throwE)

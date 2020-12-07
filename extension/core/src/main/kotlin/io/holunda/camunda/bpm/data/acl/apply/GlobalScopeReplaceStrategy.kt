@@ -1,17 +1,16 @@
 package io.holunda.camunda.bpm.data.acl.apply
 
-import io.holunda.camunda.bpm.data.acl.assign.ValueApplicationStrategy
 import org.camunda.bpm.engine.delegate.VariableScope
 import org.camunda.bpm.engine.variable.VariableMap
 
 /**
- * Replaces variables of local scope with given variable map.
+ * Replaces variables of (global) scope with given variable map.
  */
-object LocalScopeReplaceStrategy : ValueApplicationStrategy {
+object GlobalScopeReplaceStrategy : ValueApplicationStrategy {
 
   override fun apply(variableMap: VariableMap, variableScope: VariableScope): VariableScope =
     variableScope.apply {
-      this.variablesLocal = variableMap
+      this.variables = variableMap
     }
 
   override fun toString(): String {

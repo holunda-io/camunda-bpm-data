@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data</groupId>
     <artifactId>camunda-bpm-data-parent</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
   </parent>
 
   <groupId>io.holunda.data.example</groupId>
@@ -43,13 +43,6 @@
         <artifactId>camunda-bpm-data-test</artifactId>
         <scope>test</scope>
         <version>${project.version}</version>
-      </dependency>
-
-      <!-- CAMUNDA SPRING BOOT -->
-      <dependency>
-        <groupId>org.camunda.bpm.springboot</groupId>
-        <artifactId>camunda-bpm-spring-boot-starter-rest</artifactId>
-        <version>${camunda-spring-boot.version}</version>
       </dependency>
 
       <!-- TOOLS -->
@@ -103,6 +96,16 @@
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
           <version>${spring-boot.version}</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>repackage</goal>
+              </goals>
+              <configuration>
+                <classifier>spring-boot</classifier>
+              </configuration>
+            </execution>
+          </executions>
         </plugin>
         <!-- JGiven Reports -->
         <plugin>
@@ -124,36 +127,5 @@
       </plugins>
     </pluginManagement>
   </build>
-
-  <profiles>
-    <profile>
-      <id>camunda-ce</id>
-      <activation>
-        <property>
-          <name>!camunda-ee</name>
-        </property>
-      </activation>
-      <dependencies>
-        <dependency>
-          <groupId>org.camunda.bpm.springboot</groupId>
-          <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
-        </dependency>
-      </dependencies>
-    </profile>
-    <profile>
-      <id>camunda-ee</id>
-      <activation>
-        <property>
-          <name>camunda-ee</name>
-        </property>
-      </activation>
-      <dependencies>
-        <dependency>
-          <groupId>org.camunda.bpm.springboot</groupId>
-          <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
-        </dependency>
-      </dependencies>
-    </profile>
-  </profiles>
 
 </project>
