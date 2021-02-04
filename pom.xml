@@ -21,13 +21,13 @@
     <camunda.version.ce>7.14.0</camunda.version.ce>
     <camunda.version.ee>7.14.0-ee</camunda.version.ee>
 
-    <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
+    <spring-boot.version>2.4.0</spring-boot.version>
     <groovy.version>2.4.5</groovy.version>
     <spin.version>1.9.0</spin.version>
     <camunda-assert.version>6.0.0</camunda-assert.version>
 
     <jgiven.version>0.18.2</jgiven.version>
-    <kotlin.version>1.4.20</kotlin.version>
+    <kotlin.version>1.4.30</kotlin.version>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
 
     <kotlin-logging.version>2.0.2</kotlin-logging.version>
@@ -205,6 +205,11 @@
           <groupId>org.jetbrains.kotlin</groupId>
           <version>${kotlin.version}</version>
           <configuration>
+            <languageVersion>1.5</languageVersion>
+            <apiVersion>1.5</apiVersion>
+            <args>
+              <arg>-Xinline-classes</arg>
+            </args>
             <jvmTarget>${java.version}</jvmTarget>
             <compilerPlugins>
               <plugin>spring</plugin>
