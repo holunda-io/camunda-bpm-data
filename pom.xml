@@ -21,7 +21,7 @@
     <camunda.version.ce>7.14.0</camunda.version.ce>
     <camunda.version.ee>7.14.0-ee</camunda.version.ee>
 
-    <spring-boot.version>2.4.0</spring-boot.version>
+    <spring-boot.version>2.4.3</spring-boot.version>
     <groovy.version>2.4.5</groovy.version>
     <spin.version>1.9.0</spin.version>
     <camunda-assert.version>6.0.0</camunda-assert.version>
@@ -205,8 +205,8 @@
           <groupId>org.jetbrains.kotlin</groupId>
           <version>${kotlin.version}</version>
           <configuration>
-            <languageVersion>1.5</languageVersion>
-            <apiVersion>1.5</apiVersion>
+            <languageVersion>1.4</languageVersion>
+            <apiVersion>1.4</apiVersion>
             <args>
               <arg>-Xinline-classes</arg>
             </args>
@@ -241,6 +241,7 @@
                 <goal>test-compile</goal>
               </goals>
               <configuration>
+                <skip>${maven.test.skip}</skip>
                 <sourceDirs>
                   <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
                   <sourceDir>${project.basedir}/src/test/java</sourceDir>

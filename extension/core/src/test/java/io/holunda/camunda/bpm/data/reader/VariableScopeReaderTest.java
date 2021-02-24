@@ -47,4 +47,38 @@ public class VariableScopeReaderTest {
     STRING.on(execution).setLocal(localValue);
     assertThat(CamundaBpmData.reader(execution).getLocal(STRING)).isEqualTo(localValue);
   }
+
+  @Test
+  public void shouldDelegateGetOrNull() {
+    DelegateExecution execution = new DelegateExecutionFake();
+    STRING.on(execution).set(value);
+    assertThat(CamundaBpmData.reader(execution).getOrNull(STRING)).isEqualTo(value);
+    assertThat(CamundaBpmData.reader(execution).getOrNull(stringVariable("xxx"))).isNull();
+  }
+
+  @Test
+  public void shouldDelegateGetLocalOrNull() {
+    DelegateExecution execution = new DelegateExecutionFake();
+    STRING.on(execution).setLocal(localValue);
+    assertThat(CamundaBpmData.reader(execution).getLocalOrNull(STRING)).isEqualTo(localValue);
+    assertThat(CamundaBpmData.reader(execution).getLocalOrNull(stringVariable("xxx"))).isNull();
+  }
+
+  @Test
+  public void shouldDelegateGetOrDefault() {
+    DelegateExecution execution = new DelegateExecutionFake();
+    STRING.on(execution).set(value);
+    assertThat(CamundaBpmData.reader(execution).getOrDefault(STRING, "default")).isEqualTo(value);
+    assertThat(CamundaBpmData.reader(execution).getOrDefault(stringVariable("xxx"), "default")).isEqualTo("default");
+
+  }
+
+  @Test
+  public void shouldDelegateGetLocalOrDefault() {
+    DelegateExecution execution = new DelegateExecutionFake();
+    STRING.on(execution).setLocal(localValue);
+    assertThat(CamundaBpmData.reader(execution).getLocalOrDefault(STRING, "localDefault")).isEqualTo(localValue);
+    assertThat(CamundaBpmData.reader(execution).getLocalOrDefault(stringVariable("xxx"), "localDefault")).isEqualTo("localDefault");
+  }
+
 }
