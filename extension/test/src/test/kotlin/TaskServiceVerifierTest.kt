@@ -2,6 +2,7 @@ package io.holunda.camunda.bpm.data.mockito
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.reset
+import com.nhaarman.mockitokotlin2.times
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
 import io.holunda.camunda.bpm.data.mockito.CamundaBpmDataMockito.taskServiceMockVerifier
 import io.holunda.camunda.bpm.data.mockito.CamundaBpmDataMockito.taskServiceVariableMockBuilder
@@ -11,6 +12,7 @@ import org.camunda.bpm.engine.variable.Variables.createVariables
 import org.junit.Before
 import org.junit.Test
 import java.util.*
+import kotlin.concurrent.timer
 
 class TaskServiceVerifierTest {
 
@@ -26,7 +28,7 @@ class TaskServiceVerifierTest {
   }
 
   @Test
-  fun verifyGetSuccess() {
+  fun verifyGet() {
     taskServiceVariableMockBuilder(taskService).initial(VAR, "value").build()
     val verifier = taskServiceMockVerifier(taskService)
     val taskId = UUID.randomUUID().toString()
@@ -36,7 +38,7 @@ class TaskServiceVerifierTest {
   }
 
   @Test
-  fun testVerifyGetLocal() {
+  fun verifyGetLocal() {
     taskServiceVariableMockBuilder(taskService).initialLocal(VAR, "value").build()
     val verifier = taskServiceMockVerifier(taskService)
     val taskId = UUID.randomUUID().toString()
@@ -46,7 +48,7 @@ class TaskServiceVerifierTest {
   }
 
   @Test
-  fun verifySetSuccess() {
+  fun verifySet() {
     taskServiceVariableMockBuilder(taskService).define(VAR).build()
     val verifier = taskServiceMockVerifier(taskService)
     val taskId = UUID.randomUUID().toString()
@@ -56,7 +58,7 @@ class TaskServiceVerifierTest {
   }
 
   @Test
-  fun testVerifySetLocal() {
+  fun verifySetLocal() {
     taskServiceVariableMockBuilder(taskService).define(VAR).build()
     val verifier = taskServiceMockVerifier(taskService)
     val taskId = UUID.randomUUID().toString()
@@ -66,7 +68,7 @@ class TaskServiceVerifierTest {
   }
 
   @Test
-  fun verifyRemoveSuccess() {
+  fun verifyRemove() {
     taskServiceVariableMockBuilder(taskService).initial(VAR, "value").build()
     val verifier = taskServiceMockVerifier(taskService)
     val taskId = UUID.randomUUID().toString()
@@ -76,7 +78,7 @@ class TaskServiceVerifierTest {
   }
 
   @Test
-  fun testVerifyRemoveLocal() {
+  fun verifyRemoveLocal() {
     taskServiceVariableMockBuilder(taskService).initialLocal(VAR, "localValue").build()
     val verifier = taskServiceMockVerifier(taskService)
     val taskId = UUID.randomUUID().toString()
@@ -86,7 +88,74 @@ class TaskServiceVerifierTest {
   }
 
   @Test
-  fun testVerifyComplete() {
+  fun verifyGetTimes() {
+    taskServiceVariableMockBuilder(taskService).initial(VAR, "value").build()
+    val verifier = taskServiceMockVerifier(taskService)
+    val taskId = UUID.randomUUID().toString()
+    VAR.from(taskService, taskId).get()
+    VAR.from(taskService, taskId).get()
+    verifier.verifyGet(VAR, taskId, times(2))
+    verifier.verifyNoMoreInteractions()
+  }
+
+  @Test
+  fun verifyGetLocalTimes() {
+    taskServiceVariableMockBuilder(taskService).initialLocal(VAR, "value").build()
+    val verifier = taskServiceMockVerifier(taskService)
+    val taskId = UUID.randomUUID().toString()
+    VAR.from(taskService, taskId).local
+    VAR.from(taskService, taskId).local
+    verifier.verifyGetLocal(VAR, taskId, times(2))
+    verifier.verifyNoMoreInteractions()
+  }
+
+  @Test
+  fun verifySetTimes() {
+    taskServiceVariableMockBuilder(taskService).define(VAR).build()
+    val verifier = taskServiceMockVerifier(taskService)
+    val taskId = UUID.randomUUID().toString()
+    VAR.on(taskService, taskId).set("value")
+    VAR.on(taskService, taskId).set("value")
+    verifier.verifySet(VAR, "value", taskId, times(2))
+    verifier.verifyNoMoreInteractions()
+  }
+
+  @Test
+  fun verifySetLocalTimes() {
+    taskServiceVariableMockBuilder(taskService).define(VAR).build()
+    val verifier = taskServiceMockVerifier(taskService)
+    val taskId = UUID.randomUUID().toString()
+    VAR.on(taskService, taskId).setLocal("valueLocal")
+    VAR.on(taskService, taskId).setLocal("valueLocal")
+    verifier.verifySetLocal(VAR, "valueLocal", taskId, times(2))
+    verifier.verifyNoMoreInteractions()
+  }
+
+  @Test
+  fun verifyRemoveTimes() {
+    taskServiceVariableMockBuilder(taskService).initial(VAR, "value").build()
+    val verifier = taskServiceMockVerifier(taskService)
+    val taskId = UUID.randomUUID().toString()
+    VAR.on(taskService, taskId).remove()
+    VAR.on(taskService, taskId).remove()
+    verifier.verifyRemove(VAR, taskId, times(2))
+    verifier.verifyNoMoreInteractions()
+  }
+
+  @Test
+  fun verifyRemoveLocalTimes() {
+    taskServiceVariableMockBuilder(taskService).initialLocal(VAR, "localValue").build()
+    val verifier = taskServiceMockVerifier(taskService)
+    val taskId = UUID.randomUUID().toString()
+    VAR.on(taskService, taskId).remove()
+    VAR.on(taskService, taskId).remove()
+    verifier.verifyRemoveLocal(VAR, taskId, times(2))
+    verifier.verifyNoMoreInteractions()
+  }
+
+
+  @Test
+  fun verifyComplete() {
     val verifier = taskServiceMockVerifier(taskService)
     val taskId = UUID.randomUUID().toString()
     taskService.complete(taskId)
@@ -95,7 +164,7 @@ class TaskServiceVerifierTest {
   }
 
   @Test
-  fun testVerifyCompleteWithVars() {
+  fun verifyCompleteWithVars() {
     val verifier = taskServiceMockVerifier(taskService)
     val taskId = UUID.randomUUID().toString()
     val vars = createVariables()
