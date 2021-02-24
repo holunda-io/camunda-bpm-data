@@ -2,6 +2,7 @@ package io.holunda.camunda.bpm.data.mockito
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.reset
+import com.nhaarman.mockitokotlin2.times
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
 import org.camunda.bpm.engine.CaseService
 import org.junit.Before
@@ -22,7 +23,7 @@ class CaseServiceVerifierTest {
   }
 
   @Test
-  fun verifyGetSuccess() {
+  fun verifyGet() {
     CamundaBpmDataMockito.caseServiceVariableMockBuilder(caseService).initial(VAR, "value").build()
     val verifier = CamundaBpmDataMockito.caseServiceMockVerifier(caseService)
     val executionId = UUID.randomUUID().toString()
@@ -32,7 +33,21 @@ class CaseServiceVerifierTest {
   }
 
   @Test
-  fun testVerifyGetLocal() {
+  fun verifyGetTimes() {
+    CamundaBpmDataMockito.caseServiceVariableMockBuilder(caseService).initial(VAR, "value").build()
+    val verifier = CamundaBpmDataMockito.caseServiceMockVerifier(caseService)
+    val executionId = UUID.randomUUID().toString()
+
+    VAR.from(caseService, executionId).get()
+    VAR.from(caseService, executionId).get()
+
+    verifier.verifyGet(VAR, executionId, times(2))
+    verifier.verifyNoMoreInteractions()
+  }
+
+
+  @Test
+  fun verifyGetLocal() {
     CamundaBpmDataMockito.caseServiceVariableMockBuilder(caseService).initialLocal(VAR, "value").build()
     val verifier = CamundaBpmDataMockito.caseServiceMockVerifier(caseService)
     val executionId = UUID.randomUUID().toString()
@@ -42,7 +57,18 @@ class CaseServiceVerifierTest {
   }
 
   @Test
-  fun verifySetSuccess() {
+  fun verifyGetLocalTimes() {
+    CamundaBpmDataMockito.caseServiceVariableMockBuilder(caseService).initialLocal(VAR, "value").build()
+    val verifier = CamundaBpmDataMockito.caseServiceMockVerifier(caseService)
+    val executionId = UUID.randomUUID().toString()
+    VAR.from(caseService, executionId).local
+    VAR.from(caseService, executionId).local
+    verifier.verifyGetLocal(VAR, executionId, times(2))
+    verifier.verifyNoMoreInteractions()
+  }
+
+  @Test
+  fun verifySet() {
     CamundaBpmDataMockito.caseServiceVariableMockBuilder(caseService).define(VAR).build()
     val verifier = CamundaBpmDataMockito.caseServiceMockVerifier(caseService)
     val executionId = UUID.randomUUID().toString()
@@ -52,7 +78,18 @@ class CaseServiceVerifierTest {
   }
 
   @Test
-  fun testVerifySetLocal() {
+  fun verifySetTimes() {
+    CamundaBpmDataMockito.caseServiceVariableMockBuilder(caseService).define(VAR).build()
+    val verifier = CamundaBpmDataMockito.caseServiceMockVerifier(caseService)
+    val executionId = UUID.randomUUID().toString()
+    VAR.on(caseService, executionId).set("value")
+    VAR.on(caseService, executionId).set("value")
+    verifier.verifySet(VAR, "value", executionId, times(2))
+    verifier.verifyNoMoreInteractions()
+  }
+
+  @Test
+  fun verifySetLocal() {
     CamundaBpmDataMockito.caseServiceVariableMockBuilder(caseService).define(VAR).build()
     val verifier = CamundaBpmDataMockito.caseServiceMockVerifier(caseService)
     val executionId = UUID.randomUUID().toString()
@@ -62,7 +99,18 @@ class CaseServiceVerifierTest {
   }
 
   @Test
-  fun verifyRemoveSuccess() {
+  fun verifySetLocalTimes() {
+    CamundaBpmDataMockito.caseServiceVariableMockBuilder(caseService).define(VAR).build()
+    val verifier = CamundaBpmDataMockito.caseServiceMockVerifier(caseService)
+    val executionId = UUID.randomUUID().toString()
+    VAR.on(caseService, executionId).setLocal("valueLocal")
+    VAR.on(caseService, executionId).setLocal("valueLocal")
+    verifier.verifySetLocal(VAR, "valueLocal", executionId, times(2))
+    verifier.verifyNoMoreInteractions()
+  }
+
+  @Test
+  fun verifyRemove() {
     CamundaBpmDataMockito.caseServiceVariableMockBuilder(caseService).initial(VAR, "value").build()
     val verifier = CamundaBpmDataMockito.caseServiceMockVerifier(caseService)
     val executionId = UUID.randomUUID().toString()
@@ -72,12 +120,34 @@ class CaseServiceVerifierTest {
   }
 
   @Test
-  fun testVerifyRemoveLocal() {
+  fun verifyRemoveTimes() {
+    CamundaBpmDataMockito.caseServiceVariableMockBuilder(caseService).initial(VAR, "value").build()
+    val verifier = CamundaBpmDataMockito.caseServiceMockVerifier(caseService)
+    val executionId = UUID.randomUUID().toString()
+    VAR.on(caseService, executionId).remove()
+    VAR.on(caseService, executionId).remove()
+    verifier.verifyRemove(VAR, executionId, times(2))
+    verifier.verifyNoMoreInteractions()
+  }
+
+  @Test
+  fun verifyRemoveLocal() {
     CamundaBpmDataMockito.caseServiceVariableMockBuilder(caseService).initialLocal(VAR, "localValue").build()
     val verifier = CamundaBpmDataMockito.caseServiceMockVerifier(caseService)
     val executionId = UUID.randomUUID().toString()
     VAR.on(caseService, executionId).remove()
     verifier.verifyRemoveLocal(VAR, executionId)
+    verifier.verifyNoMoreInteractions()
+  }
+
+  @Test
+  fun verifyRemoveLocalTimes() {
+    CamundaBpmDataMockito.caseServiceVariableMockBuilder(caseService).initialLocal(VAR, "localValue").build()
+    val verifier = CamundaBpmDataMockito.caseServiceMockVerifier(caseService)
+    val executionId = UUID.randomUUID().toString()
+    VAR.on(caseService, executionId).remove()
+    VAR.on(caseService, executionId).remove()
+    verifier.verifyRemoveLocal(VAR, executionId, times(2))
     verifier.verifyNoMoreInteractions()
   }
 }
