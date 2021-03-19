@@ -229,3 +229,4 @@ If you want to contribute to this project, feel free to do so. Start with link:h
 * link:https://gihub.com/zambrovski[Simon Zambrovski]
 * link:https://github.com/christian-maschmann[Christian Maschmann]
 * link:https://github.com/jangalinski[Jan Galinski]
+* link:https://github.com/stefanzilske[Stefan Zilske]

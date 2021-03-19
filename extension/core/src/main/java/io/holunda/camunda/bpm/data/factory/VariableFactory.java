@@ -6,6 +6,7 @@ import org.camunda.bpm.engine.CaseService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.delegate.VariableScope;
+import org.camunda.bpm.engine.externaltask.LockedExternalTask;
 import org.camunda.bpm.engine.variable.VariableMap;
 
 /**
@@ -99,6 +100,14 @@ public interface VariableFactory<T> {
    * @return read adapter.
    */
   ReadAdapter<T> from(CaseService caseService, String caseExecutionId);
+
+  /**
+   * Creates a read adapter on external task.
+   *
+   * @param lockedExternalTask underlying external task to work on.
+   * @return read adapter.
+   */
+  ReadAdapter<T> from(LockedExternalTask lockedExternalTask);
 
   /**
    * Retrieves the variable name.

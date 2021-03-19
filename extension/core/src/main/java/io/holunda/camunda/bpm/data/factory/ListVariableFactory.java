@@ -2,15 +2,12 @@ package io.holunda.camunda.bpm.data.factory;
 
 import io.holunda.camunda.bpm.data.adapter.ReadAdapter;
 import io.holunda.camunda.bpm.data.adapter.WriteAdapter;
-import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterCaseService;
-import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterRuntimeService;
-import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterTaskService;
-import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterVariableMap;
-import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterVariableScope;
+import io.holunda.camunda.bpm.data.adapter.list.*;
 import org.camunda.bpm.engine.CaseService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.delegate.VariableScope;
+import org.camunda.bpm.engine.externaltask.LockedExternalTask;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
@@ -83,6 +80,11 @@ public class ListVariableFactory<T> implements VariableFactory<List<T>> {
   @Override
   public ReadAdapter<List<T>> from(CaseService caseService, String caseExecutionId) {
     return new ListReadWriteAdapterCaseService<>(caseService, caseExecutionId, name, memberClazz);
+  }
+
+  @Override
+  public ReadAdapter<List<T>> from(LockedExternalTask lockedExternalTask) {
+    return new ListReadAdapterLockedExternalTask<>(lockedExternalTask, name, memberClazz);
   }
 
   @Override

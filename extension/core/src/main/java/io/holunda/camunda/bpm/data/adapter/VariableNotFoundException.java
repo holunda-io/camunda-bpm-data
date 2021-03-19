@@ -9,7 +9,7 @@ public class VariableNotFoundException extends RuntimeException {
    *
    * @param reason reason.
    */
-  VariableNotFoundException(String reason) {
+  public VariableNotFoundException(String reason) {
     super(reason);
   }
 

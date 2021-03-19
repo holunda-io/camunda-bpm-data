@@ -2,15 +2,12 @@ package io.holunda.camunda.bpm.data.factory;
 
 import io.holunda.camunda.bpm.data.adapter.ReadAdapter;
 import io.holunda.camunda.bpm.data.adapter.WriteAdapter;
-import io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterCaseService;
-import io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterRuntimeService;
-import io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterTaskService;
-import io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterVariableMap;
-import io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterVariableScope;
+import io.holunda.camunda.bpm.data.adapter.map.*;
 import org.camunda.bpm.engine.CaseService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.delegate.VariableScope;
+import org.camunda.bpm.engine.externaltask.LockedExternalTask;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
@@ -88,6 +85,11 @@ public class MapVariableFactory<K, V> implements VariableFactory<Map<K, V>> {
   @Override
   public ReadAdapter<Map<K, V>> from(CaseService caseService, String caseExecutionId) {
     return new MapReadWriteAdapterCaseService<>(caseService, caseExecutionId, name, keyClazz, valueClazz);
+  }
+
+  @Override
+  public ReadAdapter<Map<K, V>> from(LockedExternalTask lockedExternalTask) {
+    return new MapReadAdapterLockedExternalTask<>(lockedExternalTask, name, keyClazz, valueClazz);
   }
 
   @Override
