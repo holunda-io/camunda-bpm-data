@@ -2,6 +2,7 @@ package io.holunda.camunda.bpm.data.factory;
 
 import io.holunda.camunda.bpm.data.adapter.ReadAdapter;
 import io.holunda.camunda.bpm.data.adapter.WriteAdapter;
+import io.holunda.camunda.bpm.data.adapter.basic.ReadAdapterLockedExternalTask;
 import io.holunda.camunda.bpm.data.adapter.basic.ReadWriteAdapterCaseService;
 import io.holunda.camunda.bpm.data.adapter.basic.ReadWriteAdapterRuntimeService;
 import io.holunda.camunda.bpm.data.adapter.basic.ReadWriteAdapterTaskService;
@@ -11,6 +12,7 @@ import org.camunda.bpm.engine.CaseService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.delegate.VariableScope;
+import org.camunda.bpm.engine.externaltask.LockedExternalTask;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
@@ -88,6 +90,11 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
   @Override
   public ReadAdapter<T> from(CaseService caseService, String caseExecutionId) {
     return new ReadWriteAdapterCaseService<>(caseService, caseExecutionId, name, clazz);
+  }
+
+  @Override
+  public ReadAdapter<T> from(LockedExternalTask lockedExternalTask) {
+    return new ReadAdapterLockedExternalTask<>(lockedExternalTask, name);
   }
 
   /**
