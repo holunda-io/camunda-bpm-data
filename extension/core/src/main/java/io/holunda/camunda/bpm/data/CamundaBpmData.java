@@ -6,12 +6,7 @@ import io.holunda.camunda.bpm.data.factory.ListVariableFactory;
 import io.holunda.camunda.bpm.data.factory.MapVariableFactory;
 import io.holunda.camunda.bpm.data.factory.SetVariableFactory;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
-import io.holunda.camunda.bpm.data.reader.CaseServiceVariableReader;
-import io.holunda.camunda.bpm.data.reader.RuntimeServiceVariableReader;
-import io.holunda.camunda.bpm.data.reader.TaskServiceVariableReader;
-import io.holunda.camunda.bpm.data.reader.VariableMapReader;
-import io.holunda.camunda.bpm.data.reader.VariableReader;
-import io.holunda.camunda.bpm.data.reader.VariableScopeReader;
+import io.holunda.camunda.bpm.data.reader.*;
 import io.holunda.camunda.bpm.data.writer.CaseServiceVariableWriter;
 import io.holunda.camunda.bpm.data.writer.GlobalVariableWriter;
 import io.holunda.camunda.bpm.data.writer.RuntimeServiceVariableWriter;
@@ -23,6 +18,7 @@ import org.camunda.bpm.engine.CaseService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.delegate.VariableScope;
+import org.camunda.bpm.engine.externaltask.LockedExternalTask;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
@@ -293,5 +289,15 @@ public class CamundaBpmData {
    */
   public static VariableReader reader(VariableMap variableMap) {
     return new VariableMapReader(variableMap);
+  }
+
+  /**
+   * Creates a new extern variable reader.
+   *
+   * @param lockedExternalTask the external tasks to use
+   * @return variable reader working on external task
+   */
+  public static VariableReader reader(LockedExternalTask lockedExternalTask) {
+    return new LockedExternalTaskReader(lockedExternalTask);
   }
 }

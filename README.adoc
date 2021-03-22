@@ -51,24 +51,24 @@ If you just want to start using the library, put the following dependency into y
 <dependency>
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data</artifactId>
-  <version>1.2.0</version>
+  <version>1.2.1</version>
 </dependency>
 ----
 
 If you are using Gradle Kotlin DSL add to your `build.gradle.kts`:
 [source,kotlin]
 ----
-implementation("io.holunda.data:camunda-bpm-data:1.2.0")
+implementation("io.holunda.data:camunda-bpm-data:1.2.1")
 ----
 
 For Gradle Groovy DSL add to your `build.gradle`:
 [source,groovy]
 ----
-implementation 'io.holunda.data:camunda-bpm-data:1.2.0'
+implementation 'io.holunda.data:camunda-bpm-data:1.2.1'
 ----
 
 === Variable declaration
-Now your setup is completed and you can declare your variables like this:
+Now your setup is completed, and you can declare your variables like this:
 
 [source,java]
 ----
@@ -86,7 +86,7 @@ public class OrderApproval {
 ----
 
 === Variable access from Java Delegate
-And finally, you want to access them from your Java delegates, Execution or Task Listeners or simple Java components:
+Finally, you want to access them from your Java delegates, Execution or Task Listeners or simple Java components:
 
 [source,java]
 ----
@@ -155,7 +155,7 @@ Please put the following dependency into your `pom.xml`:
 <dependency>
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data-test</artifactId>
-  <version>1.0.1</version>
+  <version>1.2.1</version>
   <scope>test</scope>
 </dependency>
 ----
@@ -229,3 +229,4 @@ If you want to contribute to this project, feel free to do so. Start with link:h
 * link:https://gihub.com/zambrovski[Simon Zambrovski]
 * link:https://github.com/christian-maschmann[Christian Maschmann]
 * link:https://github.com/jangalinski[Jan Galinski]
+* link:https://github.com/stefanzilske[Stefan Zilske]
