@@ -7,7 +7,7 @@ title: Features
 * Process Variables
 - The library provides a way to construct a generic adapter for every process variable.
 - The adapter contains variable type.
-- The adapter can be applied in any context (`RuntimeService`, `TaskService`, `CaseService`, `DelegateExecution`, `DelegateTask`, `DelegateCaseExecution`, `VariableMap`).
+- The adapter can be applied in any context (`RuntimeService`, `TaskService`, `CaseService`, `DelegateExecution`, `DelegateTask`, `DelegateCaseExecution`, `VariableMap`, `LockedExternalTask`).
 - The adapter offers methods to read, write, update and remove variable values.
 - The adapter works for all types supported by Camunda BPM. This includes primitive types, object and container types ( `List<T>`, `Set<T>`, `Map<K , V>` ).
 - The adapter supports global / local variables.
