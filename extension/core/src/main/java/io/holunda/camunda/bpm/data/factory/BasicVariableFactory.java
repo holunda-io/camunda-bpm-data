@@ -2,7 +2,12 @@ package io.holunda.camunda.bpm.data.factory;
 
 import io.holunda.camunda.bpm.data.adapter.ReadAdapter;
 import io.holunda.camunda.bpm.data.adapter.WriteAdapter;
-import io.holunda.camunda.bpm.data.adapter.basic.*;
+import io.holunda.camunda.bpm.data.adapter.basic.ReadAdapterLockedExternalTask;
+import io.holunda.camunda.bpm.data.adapter.basic.ReadWriteAdapterCaseService;
+import io.holunda.camunda.bpm.data.adapter.basic.ReadWriteAdapterRuntimeService;
+import io.holunda.camunda.bpm.data.adapter.basic.ReadWriteAdapterTaskService;
+import io.holunda.camunda.bpm.data.adapter.basic.ReadWriteAdapterVariableMap;
+import io.holunda.camunda.bpm.data.adapter.basic.ReadWriteAdapterVariableScope;
 import org.camunda.bpm.engine.CaseService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
