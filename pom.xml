@@ -18,13 +18,13 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <version.java>${java.version}</version.java>
 
-    <camunda.version.ce>7.14.0</camunda.version.ce>
-    <camunda.version.ee>7.14.0-ee</camunda.version.ee>
+    <camunda.version.ce>7.15.0</camunda.version.ce>
+    <camunda.version.ee>7.15.0-ee</camunda.version.ee>
 
-    <spring-boot.version>2.4.3</spring-boot.version>
+    <spring-boot.version>2.4.4</spring-boot.version>
     <groovy.version>2.4.5</groovy.version>
-    <spin.version>1.9.0</spin.version>
-    <camunda-assert.version>6.0.0</camunda-assert.version>
+    <spin.version>1.10.1</spin.version>
+    <camunda-assert.version>10.0.0</camunda-assert.version>
 
     <jgiven.version>0.18.2</jgiven.version>
     <kotlin.version>1.4.21</kotlin.version>

@@ -1,0 +1,10 @@
+---
+version: 1.2.4
+---
+
+== Chore
+
+* Upgrade to Camunda BPM 7.15, fix #89
+
+
+
