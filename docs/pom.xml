@@ -16,7 +16,7 @@
 
   <properties>
     <maven.deploy.skip>true</maven.deploy.skip>
-    <orchid.version>0.18.1</orchid.version>
+    <orchid.version>0.21.1</orchid.version>
     <baseUrl>http://localhost:8080</baseUrl>
     <jacoco.skip>true</jacoco.skip>
     <maven.javadoc.skip>true</maven.javadoc.skip>
