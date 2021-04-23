@@ -6,7 +6,6 @@ import org.camunda.bpm.engine.externaltask.LockedExternalTask;
 import org.camunda.bpm.engine.variable.Variables;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
