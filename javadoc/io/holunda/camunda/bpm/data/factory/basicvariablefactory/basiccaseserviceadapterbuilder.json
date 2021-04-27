@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "javadoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/factory/basicvariablefactory/basiccaseserviceadapterbuilder",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/basicvariablefactory/basiccaseserviceadapterbuilder"
+  },
+  "data": {},
+  "description": "",
+  "title": "BasicVariableFactory.BasicCaseServiceAdapterBuilder",
+  "content": "<p>CommentComponent(kind=Text, text=Creates a builder to encapsulate the case service access., value=)<\/p>\n"
+}

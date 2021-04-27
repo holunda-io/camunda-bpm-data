@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "kotlindoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data"
+  },
+  "data": {},
+  "description": "",
+  "title": "io.holunda.camunda.bpm.data",
+  "content": "<p>CommentComponent(kind=text, text=, value=null)<\/p>\n"
+}

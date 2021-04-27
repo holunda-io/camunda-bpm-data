@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "kotlindoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/guard/condition/variablevalueguardcondition",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/condition/variablevalueguardcondition"
+  },
+  "data": {},
+  "description": "",
+  "title": "VariableValueGuardCondition",
+  "content": "<p>CommentComponent(kind=text, text=Condition to check if the variable has provided value., value=null)<\/p>\n"
+}

@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "javadoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/reader/variablemapreader",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader/variablemapreader"
+  },
+  "data": {},
+  "description": "",
+  "title": "VariableMapReader",
+  "content": "<p>CommentComponent(kind=Text, text=Allows reading multiple variable values from, value=) CommentComponent(kind=see, text=VariableMap#getValue(String, Class), value=) CommentComponent(kind=Text, text=., value=)<\/p>\n"
+}

@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "javadoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/writer/variablemapwriter",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/writer/variablemapwriter"
+  },
+  "data": {},
+  "description": "",
+  "title": "VariableMapWriter",
+  "content": "<p>CommentComponent(kind=Text, text=Variable map builder allowing for fluent variable setting., value=)<\/p>\n"
+}

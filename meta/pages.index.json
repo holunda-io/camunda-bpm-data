@@ -1,0 +1,69 @@
+{
+  "ownKey": "pages",
+  "childrenPages": {
+    "license": {
+      "ownKey": "license",
+      "ownPages": [{
+        "reference": {
+          "path": "",
+          "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+          "fileName": "license",
+          "extension": "html",
+          "usePrettyUrl": true,
+          "link": "https://www.holunda.io/camunda-bpm-data/license"
+        },
+        "description": "",
+        "title": "License",
+        "content": ""
+      }]
+    },
+    "changelog": {
+      "ownKey": "changelog",
+      "ownPages": [{
+        "reference": {
+          "path": "",
+          "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+          "fileName": "changelog",
+          "extension": "html",
+          "usePrettyUrl": true,
+          "link": "https://www.holunda.io/camunda-bpm-data/changelog"
+        },
+        "description": "",
+        "title": "Changelog",
+        "content": ""
+      }]
+    },
+    "quick-start": {
+      "ownKey": "quick-start",
+      "ownPages": [{
+        "reference": {
+          "path": "",
+          "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+          "fileName": "quick-start",
+          "extension": "html",
+          "usePrettyUrl": true,
+          "link": "https://www.holunda.io/camunda-bpm-data/quick-start"
+        },
+        "description": "",
+        "title": "Quick Start",
+        "content": "<div class=\"sect1\">\n<h2 id=\"_quick_start\">Quick Start<\/h2>\n<div class=\"sectionbody\">\n<div class=\"sect2\">\n<h3 id=\"_add_dependency\">Add dependency<\/h3>\n<div class=\"paragraph\">\n<p>In Apache Maven add to your <code>pom.xml<\/code>:<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-xml\" data-lang=\"xml\">&lt;dependency&gt;\n  &lt;groupId&gt;io.holunda.data&lt;/groupId&gt;\n  &lt;artifactId&gt;camunda-bpm-data&lt;/artifactId&gt;\n  &lt;version&gt;${camunda-bpm-data.version}&lt;/version&gt;\n&lt;/dependency&gt;<\/code><\/pre>\n<\/div>\n<\/div>\n<div class=\"paragraph\">\n<p>For Gradle Kotlin DSL add to your <code>build.gradle.kts<\/code>:<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-kotlin\" data-lang=\"kotlin\">implementation(\"io.holunda.data:camunda-bpm-data:${camunda-bpm-data.version}\")<\/code><\/pre>\n<\/div>\n<\/div>\n<div class=\"paragraph\">\n<p>For Gradle Groovy DSL add to your <code>build.gradle<\/code>:<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-groovy\" data-lang=\"groovy\">implementation 'io.holunda.data:camunda-bpm-data:${camunda-bpm-data.version}'<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_declare_process_variable_factories\">Declare process variable factories<\/h3>\n<div class=\"paragraph\">\n<p>First you have to define your process variables, by providing the variable name and type. For providing the type,\ndifferent convenience methods exist:<\/p>\n<\/div>\n<div class=\"paragraph\">\n<p>Here is a example in Java:<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-java\" data-lang=\"java\">import io.holunda.camunda.bpm.data.factory.VariableFactory;\nimport static io.holunda.camunda.bpm.data.CamundaBpmData.*;\n\npublic class OrderApproval {\n  public static final VariableFactory&lt;String&gt; ORDER_ID = stringVariable(\"orderId\");\n  public static final VariableFactory&lt;Order&gt; ORDER = customVariable(\"order\", Order.class);\n  public static final VariableFactory&lt;Boolean&gt; ORDER_APPROVED = booleanVariable(\"orderApproved\");\n  public static final VariableFactory&lt;OrderPosition&gt; ORDER_POSITION = customVariable(\"orderPosition\", OrderPosition.class);\n  public static final VariableFactory&lt;BigDecimal&gt; ORDER_TOTAL = customVariable(\"orderTotal\", BigDecimal.class);\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_access_process_variables_from_java_delegate\">Access process variables from Java Delegate<\/h3>\n<div class=\"paragraph\">\n<p>If you want to access the process variable, call methods on the <code>ProcessVariableFactory<\/code> to configure the usage context,\nand then invoke the variable access methods.<\/p>\n<\/div>\n<div class=\"paragraph\">\n<p>Here is an example, how it looks like to access variable from <code>JavaDelegate<\/code> implemented in Java. In this example,\nthe total amount is calculated from the amounts of order positions and stored in the process variable.<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-java\" data-lang=\"java\">@Configuration\nclass JavaDelegates {\n\n  @Bean\n  public JavaDelegate calculateOrderPositions() {\n    return execution -&gt; {\n      OrderPosition orderPosition = ORDER_POSITION.from(execution).get();\n      BigDecimal oldTotal = ORDER_TOTAL.from(execution).getOptional().orElse(BigDecimal.ZERO);\n      BigDecimal newTotal = oldTotal.add(orderPosition.getNetCost().multiply(BigDecimal.valueOf(orderPosition.getAmount())));\n      ORDER_TOTAL.on(execution).setLocal(newTotal);\n    };\n  }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_variable_access_from_rest_controller\">Variable access from REST Controller<\/h3>\n<div class=\"paragraph\">\n<p>Now imagine you are implementing a REST controller for a user task form which\nloads data from the process application, displays it, captures some input and\nsends that back to the process application to complete the user task. By doing so,\nyou will usually need to access process variables. Here is an example:<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-java\" data-lang=\"java\">@RestController\n@RequestMapping(\"/task/approve-order\")\npublic class ApproveOrderTaskController {\n\n    private final TaskService taskService;\n\n    public ApproveOrderTaskController(TaskService taskService) {\n        this.taskService = taskService;\n    }\n\n    @GetMapping(\"/{taskId}\")\n    public ResponseEntity&lt;ApproveTaskDto&gt; loadTask(@PathVariable(\"taskId\") String taskId) {\n        Order order = ORDER.from(taskService, taskId).get();\n        return ResponseEntity.ok(new ApproveTaskDto(order));\n    }\n\n    @PostMapping(\"/{taskId}\")\n    public ResponseEntity&lt;Void&gt; completeTask(@PathVariable(\"taskId\") String taskId, @RequestBody ApproveTaskCompleteDto userInput) {\n        VariableMap vars = builder()\n            .set(ORDER_APPROVED, userInput.getApproved())\n            .build();\n        taskService.complete(taskId, vars);\n        return ResponseEntity.noContent().build();\n    }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_testing_correct_variable_access\">Testing correct variable access<\/h3>\n<div class=\"paragraph\">\n<p>If you want to write the test for the REST controller, you will need to stub\nthe task service and verify that the correct variables has been set. To simplify\nthese tests, we created an additional library module <code>camunda-bpm-data-test<\/code>.\nPlease put the following dependency into your <code>pom.xml<\/code>:<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-xml\" data-lang=\"xml\">&lt;dependency&gt;\n  &lt;groupId&gt;io.holunda.data&lt;/groupId&gt;\n  &lt;artifactId&gt;camunda-bpm-data-test&lt;/artifactId&gt;\n  &lt;version&gt;1.0.2&lt;/version&gt;\n  &lt;scope&gt;test&lt;/scope&gt;\n&lt;/dependency&gt;<\/code><\/pre>\n<\/div>\n<\/div>\n<div class=\"paragraph\">\n<p>Now you can use <code>TaskServiceVariableMockBuilder<\/code> to stub correct behavior of Camunda Task Service\nand <code>TaskServiceVerifier<\/code> to verify the correct access to variables easily. Here is the JUnit\ntest of the REST controller above, making use of <code>camunda-bpm-data-test<\/code>.<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-java\" data-lang=\"java\">public class ApproveOrderTaskControllerTest {\n\n    private static Order order = new Order(\"ORDER-ID-1\", new Date(), new ArrayList&lt;&gt;());\n    private TaskService taskService = mock(TaskService.class);\n    private TaskServiceMockVerifier verifier = taskServiceMockVerifier(taskService);\n    private ApproveOrderTaskController controller = new ApproveOrderTaskController(taskService);\n    private String taskId;\n\n    @Before\n    public void prepareTest() {\n        reset(taskService);\n        taskId = UUID.randomUUID().toString();\n    }\n\n    @Test\n    public void testLoadTask() {\n        // given\n        taskServiceVariableMockBuilder(taskService).initial(ORDER, order).build();\n        // when\n        ResponseEntity&lt;ApproveTaskDto&gt; responseEntity = controller.loadTask(taskId);\n        // then\n        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);\n        assertThat(responseEntity.getBody()).isEqualTo(new ApproveTaskDto(order));\n        verifier.verifyGet(ORDER, taskId);\n        verifier.verifyNoMoreInteractions();\n    }\n\n    @Test\n    public void testCompleteTask() {\n        // when\n        ApproveTaskCompleteDto response = new ApproveTaskCompleteDto(true);\n        ResponseEntity&lt;Void&gt; responseEntity = controller.completeTask(taskId, response);\n        // then\n        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);\n        verifier.verifyComplete(builder().set(ORDER_APPROVED, response.getApproved()).build(), taskId);\n        verifier.verifyNoMoreInteractions();\n    }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>"
+      }]
+    },
+    "readme": {
+      "ownKey": "readme",
+      "ownPages": [{
+        "reference": {
+          "path": "",
+          "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+          "fileName": "readme",
+          "extension": "html",
+          "usePrettyUrl": true,
+          "link": "https://www.holunda.io/camunda-bpm-data/readme"
+        },
+        "description": "",
+        "title": "Readme",
+        "content": ""
+      }]
+    }
+  }
+}

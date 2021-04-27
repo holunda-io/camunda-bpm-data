@@ -1,0 +1,30 @@
+{
+  "reference": {
+    "path": "wiki/user-guide",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "features",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/wiki/user-guide/features"
+  },
+  "next": {
+    "path": "wiki/user-guide",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "examples-java",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-java"
+  },
+  "previous": {
+    "path": "wiki/user-guide",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "motivation",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/wiki/user-guide/motivation"
+  },
+  "data": {"title": "Features"},
+  "description": "",
+  "title": "Features",
+  "content": "<div class=\"sect1\">\n<h2 id=\"_features\">Features<\/h2>\n<div class=\"sectionbody\">\n<div class=\"ulist\">\n<ul>\n<li>\n<p>Process Variables<\/p>\n<div class=\"ulist\">\n<ul>\n<li>\n<p>The library provides a way to construct a generic adapter for every process variable.<\/p>\n<\/li>\n<li>\n<p>The adapter contains variable type.<\/p>\n<\/li>\n<li>\n<p>The adapter can be applied in any context (<code>RuntimeService<\/code>, <code>TaskService<\/code>, <code>CaseService<\/code>, <code>DelegateExecution<\/code>, <code>DelegateTask<\/code>, <code>DelegateCaseExecution<\/code>, <code>VariableMap<\/code>, <code>LockedExternalTask<\/code>).<\/p>\n<\/li>\n<li>\n<p>The adapter offers methods to read, write, update and remove variable values.<\/p>\n<\/li>\n<li>\n<p>The adapter works for all types supported by Camunda BPM. This includes primitive types, object and container types ( <code>List&lt;T&gt;<\/code>, <code>Set&lt;T&gt;<\/code>, <code>Map&lt;K , V&gt;<\/code> ).<\/p>\n<\/li>\n<li>\n<p>The adapter supports global / local variables.<\/p>\n<\/li>\n<li>\n<p>The adapter allows a default value or null in case a variable is not set.<\/p>\n<\/li>\n<li>\n<p>The adapter support transient variables.<\/p>\n<\/li>\n<li>\n<p>Fluent API helper are available in order to set, remove or update multiple variables in the same context (<code>VariableMapBuilder<\/code>, <code>VariableReader<\/code> and <code>GlobalVariableWriter<\/code>).<\/p>\n<\/li>\n<\/ul>\n<\/div>\n<\/li>\n<li>\n<p>Process Variable Guards<\/p>\n<div class=\"ulist\">\n<ul>\n<li>\n<p>Generic support for <code>VariableGuard<\/code> for evaluation of a list of `VariableCondition`s<\/p>\n<\/li>\n<li>\n<p>Condition to check if variable exists.<\/p>\n<\/li>\n<li>\n<p>Condition to check if variable doesn&#8217;t exist<\/p>\n<\/li>\n<li>\n<p>Condition to check if variable has a predefined value.<\/p>\n<\/li>\n<li>\n<p>Condition to check if variable has one of predefined values.<\/p>\n<\/li>\n<li>\n<p>Condition to check if variable matches condition specified by a custom function.<\/p>\n<\/li>\n<li>\n<p><code>DefaultGuardTaskListener<\/code> to construct variable conditions guards easily.<\/p>\n<\/li>\n<li>\n<p><code>DefaultGuardExecutionListener<\/code> to construct variable conditions guards easily.<\/p>\n<\/li>\n<\/ul>\n<\/div>\n<\/li>\n<li>\n<p>Anti-Corruption-Layer<\/p>\n<div class=\"ulist\">\n<ul>\n<li>\n<p>Generic support for <code>AntiCorruptionLayer<\/code> for protection and influence of variable modification in signalling and message correlation.<\/p>\n<\/li>\n<li>\n<p>Helper methods for the client to wrap variables in a transient carrier.<\/p>\n<\/li>\n<li>\n<p>Execution listener to handle <code>VariableGuard<\/code>-based conditions and <code>VariableMapTransformer<\/code>-based modifications.<\/p>\n<\/li>\n<li>\n<p>Task listener to handle <code>VariableGuard<\/code>-based conditions and <code>VariableMapTransformer<\/code>-based modifications.<\/p>\n<\/li>\n<li>\n<p>Factory methods to create <code>AntiCorruptionLayer<\/code> with a <code>VariableGuard<\/code> (see <code>CamundaBpmDataACL<\/code>)<\/p>\n<\/li>\n<li>\n<p>Factory methods to create <code>AntiCorruptionLayer<\/code> without a <code>VariableGuard<\/code> (see <code>CamundaBpmDataMapper<\/code>)<\/p>\n<\/li>\n<\/ul>\n<\/div>\n<\/li>\n<li>\n<p>Testing variable access and mocking <code>RuntimeService<\/code>, <code>TaskService<\/code> and <code>CaseService<\/code>.<\/p>\n<div class=\"ulist\">\n<ul>\n<li>\n<p>Builder to create Mockito-based behaviour of <code>RuntimeService<\/code> accessing variables.<\/p>\n<\/li>\n<li>\n<p>Builder to create Mockito-based behaviour of <code>TaskServiceService<\/code> accessing variables.<\/p>\n<\/li>\n<li>\n<p>Builder to create Mockito-based behaviour of <code>CaseServiceService<\/code> accessing variables.<\/p>\n<\/li>\n<li>\n<p>Verifier to check correct access to variables in  <code>RuntimeService<\/code><\/p>\n<\/li>\n<li>\n<p>Verifier to check correct access to variables in  <code>TaskService<\/code><\/p>\n<\/li>\n<li>\n<p>Verifier to check correct access to variables in  <code>CaseService<\/code><\/p>\n<\/li>\n<\/ul>\n<\/div>\n<\/li>\n<\/ul>\n<\/div>\n<\/div>\n<\/div>"
+}

@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "javadoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/factory",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory"
+  },
+  "data": {},
+  "description": "",
+  "title": "io.holunda.camunda.bpm.data.factory",
+  "content": "<p>CommentComponent(kind=Text, text=Process Variable Factories are used to define process variables., value=)<\/p>\n"
+}

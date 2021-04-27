@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "kotlindoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/acl/apply/localscopereplacestrategy",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/acl/apply/localscopereplacestrategy"
+  },
+  "data": {},
+  "description": "",
+  "title": "LocalScopeReplaceStrategy",
+  "content": "<p>CommentComponent(kind=text, text=Replaces variables of local scope with given variable map., value=null)<\/p>\n"
+}

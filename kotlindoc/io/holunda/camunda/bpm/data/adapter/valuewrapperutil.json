@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "kotlindoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/adapter/valuewrapperutil",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/adapter/valuewrapperutil"
+  },
+  "data": {},
+  "description": "",
+  "title": "ValueWrapperUtil",
+  "content": "<p>CommentComponent(kind=text, text=Static util methods to detect Camunda's value type best fitting to the requested class., value=null)<\/p>\n"
+}

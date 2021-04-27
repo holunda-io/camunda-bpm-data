@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "wiki",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "developer-guide",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/wiki/developer-guide"
+  },
+  "data": {"title": "Developer Guide"},
+  "description": "",
+  "title": "Developer Guide",
+  "content": "<html>\n <head><\/head>\n <body>\n  <h2><a href=\"#\" class=\"anchor\"><\/a><\/h2> \n  <p><a href=\"https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/contribution\">Contribution<\/a><\/p> \n  <p><a href=\"https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/project-setup\">Project Setup<\/a><\/p> \n <\/body>\n<\/html>\n"
+}

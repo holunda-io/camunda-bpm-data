@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "javadoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/writer",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/writer"
+  },
+  "data": {},
+  "description": "",
+  "title": "io.holunda.camunda.bpm.data.writer",
+  "content": "<p>CommentComponent(kind=Text, text=Writers are used to interact with multiple variables in the same context., value=)<\/p>\n"
+}

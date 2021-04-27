@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "kotlindoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/acl/anticorruptionlayer",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/acl/anticorruptionlayer"
+  },
+  "data": {},
+  "description": "",
+  "title": "AntiCorruptionLayer",
+  "content": "<p>CommentComponent(kind=text, text=Defines the ACL (Anti-Corruption-Layer)., value=null)<\/p>\n"
+}

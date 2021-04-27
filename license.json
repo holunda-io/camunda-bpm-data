@@ -1,0 +1,17 @@
+{
+  "reference": {
+    "path": "",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "license",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/license"
+  },
+  "data": {
+    "title": "License",
+    "components": [{"type": "license"}]
+  },
+  "description": "",
+  "title": "License",
+  "content": ""
+}

@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "javadoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/adapter/map",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/map"
+  },
+  "data": {},
+  "description": "",
+  "title": "io.holunda.camunda.bpm.data.adapter.map",
+  "content": "<p>CommentComponent(kind=Text, text=Read/Write adapters for map variable factory., value=)<\/p>\n"
+}

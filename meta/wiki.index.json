@@ -1,0 +1,279 @@
+{
+  "ownKey": "wiki",
+  "childrenPages": {"wiki": {
+    "ownKey": "wiki",
+    "childrenPages": {
+      "developer-guide": {
+        "ownKey": "developer-guide",
+        "childrenPages": {
+          "contribution": {
+            "ownKey": "contribution",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/developer-guide",
+                "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+                "fileName": "contribution",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/contribution"
+              },
+              "next": {
+                "path": "wiki/developer-guide",
+                "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+                "fileName": "project-setup",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/project-setup"
+              },
+              "description": "",
+              "title": "Contribution",
+              "content": "<div class=\"sect1\">\n<h2 id=\"_contribution\">Contribution<\/h2>\n<div class=\"sectionbody\">\n<div class=\"paragraph\">\n<p>There are several ways in which you may contribute to this project.<\/p>\n<\/div>\n<div class=\"ulist\">\n<ul>\n<li>\n<p>File new issues if you found a bug or missing feature<\/p>\n<\/li>\n<li>\n<p>Submit a pull request, if you have a solution for on of the issues<\/p>\n<\/li>\n<\/ul>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_found_a_bug_or_missing_feature\">Found a bug or missing feature?<\/h3>\n<div class=\"paragraph\">\n<p>Please <a href=\"https://github.com/holuda-io/camunda-bpm-data/issues\">file an issue<\/a> in our\nissue tracking system.<\/p>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_submit_a_pull_request\">Submit a Pull Request<\/h3>\n<div class=\"paragraph\">\n<p>If you found a solution to an <a href=\"https://github.com/holuda-io/camunda-bpm-data/issues\">open issue<\/a>\nand implemented it, we would be happy to add your contribution in the code base. For doing so,\nplease create a pull request. Prior to that, please make sure you<\/p>\n<\/div>\n<div class=\"ulist\">\n<ul>\n<li>\n<p>rebased against the <code>develop<\/code> branch<\/p>\n<\/li>\n<li>\n<p>sticked to project coding conventions<\/p>\n<\/li>\n<li>\n<p>added test cases for the problem you are solving<\/p>\n<\/li>\n<li>\n<p>added docs, describing the change<\/p>\n<\/li>\n<li>\n<p>generally complied with codeacy report<\/p>\n<\/li>\n<\/ul>\n<\/div>\n<\/div>\n<\/div>\n<\/div>"
+            }]
+          },
+          "project-setup": {
+            "ownKey": "project-setup",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/developer-guide",
+                "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+                "fileName": "project-setup",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/project-setup"
+              },
+              "previous": {
+                "path": "wiki/developer-guide",
+                "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+                "fileName": "contribution",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/contribution"
+              },
+              "description": "",
+              "title": "Project Setup",
+              "content": "<div class=\"sect1\">\n<h2 id=\"_project_setup\">Project Setup<\/h2>\n<div class=\"sectionbody\">\n<div class=\"paragraph\">\n<p>If you are interested in developing and building the project please follow the following instruction.<\/p>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_version_control\">Version control<\/h3>\n<div class=\"paragraph\">\n<p>To checkout sources of the project, please execute from your command line:<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-bash\" data-lang=\"bash\">git clone https://github.com/holunda-io/camunda-bpm-data.git\ncd camunda-bpm-data<\/code><\/pre>\n<\/div>\n<\/div>\n<div class=\"paragraph\">\n<p>We are using gitflow in our git SCM. That means that you should start from <code>develop<\/code> branch,\ncreate a <code>feature/&lt;name&gt;<\/code> out of it and once it is completed create a pull request containing\nit. Please squash your commits before submitting and use semantic commit messages, if possible.<\/p>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_project_build\">Project Build<\/h3>\n<div class=\"paragraph\">\n<p>Perform the following steps to get a development setup up and running.<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-bash\" data-lang=\"bash\">./mvnw clean install<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_integration_tests\">Integration Tests<\/h3>\n<div class=\"paragraph\">\n<p>The default build command above will NOT run <code>failsafe<\/code> Maven plugin executing the integration tests\n(These are JUnit tests with class names ending with ITest). In order to run integration tests, please\ncall from your command line:<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-bash\" data-lang=\"bash\">./mvnw -Pitest<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_project_build_modes_and_profiles\">Project build modes and profiles<\/h3>\n<div class=\"sect3\">\n<h4 id=\"_camunda_version\">Camunda Version<\/h4>\n<div class=\"paragraph\">\n<p>You can choose the used Camunda version by specifying the profile <code>camunda-ee<\/code> or <code>camunda-ce<\/code>. The default\nversion is a Community Edition. Specify <code>-Pcamunda-ee<\/code> to switch to Camunda Enterprise edition. This will\nrequire a valid Camunda license. You can put it into a file <code>~/.camunda/license.txt<\/code> and it will be detected\nautomatically.<\/p>\n<\/div>\n<\/div>\n<div class=\"sect3\">\n<h4 id=\"_examples\">Examples<\/h4>\n<div class=\"paragraph\">\n<p>If you want to skip the build of examples, please specify the <code>-DskipExamples<\/code> switch in your command line.<\/p>\n<\/div>\n<\/div>\n<div class=\"sect3\">\n<h4 id=\"_documentation\">Documentation<\/h4>\n<div class=\"paragraph\">\n<p>We are using <a href=\"https://github.com/orchidhq/Orchid\">JavaEden Orchid<\/a> for generation of a static site documentation and rely on AsciiDoc as much as possible.<\/p>\n<\/div>\n<div class=\"admonitionblock tip\">\n<table>\n<tr>\n<td class=\"icon\">\n<div class=\"title\">Tip<\/div>\n<\/td>\n<td class=\"content\">\nIf you want to develop your docs in 'live' mode, run <code>./mvnw -f docs -Pserve-docs<\/code> and access\nthe <a href=\"http://localhost:8080/\" class=\"bare\">http://localhost:8080/<\/a> from your browser.\n<\/td>\n<\/tr>\n<\/table>\n<\/div>\n<div class=\"paragraph\">\n<p>For creation of documentation, please run:<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-bash\" data-lang=\"bash\">./mvnw -f docs<\/code><\/pre>\n<\/div>\n<\/div>\n<div class=\"admonitionblock warning\">\n<table>\n<tr>\n<td class=\"icon\">\n<div class=\"title\">Warning<\/div>\n<\/td>\n<td class=\"content\">\nThis operation requires special permissions. You need to replace <code>GITHUB_TOKEN<\/code> by the token of\nthe github pages repository, allowing to publish the pages.\n<\/td>\n<\/tr>\n<\/table>\n<\/div>\n<div class=\"paragraph\">\n<p>In order to publish documentation to github pages, please run from command line<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-bash\" data-lang=\"bash\">./mvnw -f docs -Pdeploy-docs -DgithubToken=GITHUB_TOKEN<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect3\">\n<h4 id=\"_starting_example_application\">Starting example application<\/h4>\n<div class=\"paragraph\">\n<p>To start applications, either use your IDE and create run configuration for the classes:<\/p>\n<\/div>\n<div class=\"ulist\">\n<ul>\n<li>\n<p><code>io.holunda.camunda.bpm.data.example.CamundaBpmDataProcessApplication<\/code><\/p>\n<\/li>\n<li>\n<p><code>io.holunda.camunda.bpm.data.example.kotlin.CamundaBpmDataKotlinExampleApplication<\/code><\/p>\n<\/li>\n<\/ul>\n<\/div>\n<div class=\"paragraph\">\n<p>Alternatively, you can run them from the command line:<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-bash\" data-lang=\"bash\">./mvn spring-boot:run -f example/example-java\n./mvn spring-boot:run -f example/example-kotlin<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_continuous_integration\">Continuous Integration<\/h3>\n<div class=\"paragraph\">\n<p>Github Actions is building all branches on commit hook. In addition, a special action\nis building releases from master branch.<\/p>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_release_management\">Release Management<\/h3>\n<div class=\"paragraph\">\n<p>Release management has been set-up for use of Sonatype Nexus (= Maven Central).<\/p>\n<\/div>\n<div class=\"sect3\">\n<h4 id=\"_what_modules_get_deployed_to_repository\">What modules get deployed to repository<\/h4>\n<div class=\"paragraph\">\n<p>Currently, the following modules are released to OSS Maven Central:<\/p>\n<\/div>\n<div class=\"ulist\">\n<ul>\n<li>\n<p>camunda-bpm-data-parent<\/p>\n<\/li>\n<li>\n<p>camunda-bpm-data<\/p>\n<\/li>\n<li>\n<p>camunda-bpm-data-test<\/p>\n<\/li>\n<\/ul>\n<\/div>\n<\/div>\n<div class=\"sect3\">\n<h4 id=\"_trigger_new_release\">Trigger new release<\/h4>\n<div class=\"admonitionblock warning\">\n<table>\n<tr>\n<td class=\"icon\">\n<div class=\"title\">Warning<\/div>\n<\/td>\n<td class=\"content\">\nThis operation requires special permissions.\n<\/td>\n<\/tr>\n<\/table>\n<\/div>\n<div class=\"paragraph\">\n<p>We use gitflow for development (see <a href=\"http://nvie.com/posts/a-successful-git-branching-model/\">A successful git branching model<\/a>\nfor more details). You could use gitflow with native git commands, but then you would have\nto change the versions in the poms manually. Therefore we use the\n<a href=\"https://github.com/aleksandr-m/gitflow-maven-plugin/\">mvn gitflow plugin<\/a>, which handles this and other\nthings nicely.<\/p>\n<\/div>\n<div class=\"paragraph\">\n<p>You can build a release with:<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-sh\" data-lang=\"sh\">./mvnw gitflow:release-start\n./mvnw gitflow:release-finish<\/code><\/pre>\n<\/div>\n<\/div>\n<div class=\"paragraph\">\n<p>This will update the versions in the <code>pom.xml<\/code> s accordingly and push the release tag to the <code>master<\/code> branch\nand update the <code>develop<\/code> branch for the new development version.<\/p>\n<\/div>\n<\/div>\n<div class=\"sect3\">\n<h4 id=\"_create_feature_for_development\">Create feature for development<\/h4>\n<div class=\"paragraph\">\n<p>You can create a feature branch for development using:<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-sh\" data-lang=\"sh\">./mvnw gitflow:feature-start<\/code><\/pre>\n<\/div>\n<\/div>\n<div class=\"admonitionblock warning\">\n<table>\n<tr>\n<td class=\"icon\">\n<div class=\"title\">Warning<\/div>\n<\/td>\n<td class=\"content\">\nThis operation requires special permissions.\n<\/td>\n<\/tr>\n<\/table>\n<\/div>\n<div class=\"paragraph\">\n<p>After the feature is complete, create a PR. To merge the PR into develop use the command:<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-sh\" data-lang=\"sh\">./mvnw gitflow:feature-finish<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect3\">\n<h4 id=\"_trigger_a_deploy\">Trigger a deploy<\/h4>\n<div class=\"admonitionblock warning\">\n<table>\n<tr>\n<td class=\"icon\">\n<div class=\"title\">Warning<\/div>\n<\/td>\n<td class=\"content\">\nThis operation requires special permissions.\n<\/td>\n<\/tr>\n<\/table>\n<\/div>\n<div class=\"paragraph\">\n<p>Currently, CI allows for deployment of artifacts to Maven Central and is executed via Github Actions.\nThis means, that a push to <code>master<\/code> branch will start the corresponding build job, and if successful the\nartifacts will get into <code>Staging Repositories<\/code> of OSS Sonatype without manual intervention. The repository\ngets automatically closed and released on successful upload.<\/p>\n<\/div>\n<div class=\"paragraph\">\n<p>If you still want to execute the the deployment from your local machine, you need to execute the\nfollowing command on the <code>master<\/code> branch:<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-sh\" data-lang=\"sh\">./mvnw clean deploy -B -DskipTests -DskipExamples -Prelease<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>"
+            }]
+          }
+        },
+        "ownPages": [
+          {
+            "reference": {
+              "path": "wiki",
+              "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+              "fileName": "developer-guide",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://www.holunda.io/camunda-bpm-data/wiki/developer-guide"
+            },
+            "description": "",
+            "title": "Developer Guide",
+            "content": "<html>\n <head><\/head>\n <body>\n  <h2><a href=\"#\" class=\"anchor\"><\/a><\/h2> \n  <p><a href=\"https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/contribution\">Contribution<\/a><\/p> \n  <p><a href=\"https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/project-setup\">Project Setup<\/a><\/p> \n <\/body>\n<\/html>\n"
+          },
+          {
+            "reference": {
+              "path": "wiki/developer-guide",
+              "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+              "fileName": "book",
+              "extension": "pdf",
+              "usePrettyUrl": false,
+              "link": "https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/book.pdf"
+            },
+            "description": "",
+            "title": "Developer Guide Book",
+            "content": ""
+          }
+        ]
+      },
+      "user-guide": {
+        "ownKey": "user-guide",
+        "childrenPages": {
+          "features": {
+            "ownKey": "features",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/user-guide",
+                "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+                "fileName": "features",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://www.holunda.io/camunda-bpm-data/wiki/user-guide/features"
+              },
+              "next": {
+                "path": "wiki/user-guide",
+                "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+                "fileName": "examples-java",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-java"
+              },
+              "previous": {
+                "path": "wiki/user-guide",
+                "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+                "fileName": "motivation",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://www.holunda.io/camunda-bpm-data/wiki/user-guide/motivation"
+              },
+              "description": "",
+              "title": "Features",
+              "content": "<div class=\"sect1\">\n<h2 id=\"_features\">Features<\/h2>\n<div class=\"sectionbody\">\n<div class=\"ulist\">\n<ul>\n<li>\n<p>Process Variables<\/p>\n<div class=\"ulist\">\n<ul>\n<li>\n<p>The library provides a way to construct a generic adapter for every process variable.<\/p>\n<\/li>\n<li>\n<p>The adapter contains variable type.<\/p>\n<\/li>\n<li>\n<p>The adapter can be applied in any context (<code>RuntimeService<\/code>, <code>TaskService<\/code>, <code>CaseService<\/code>, <code>DelegateExecution<\/code>, <code>DelegateTask<\/code>, <code>DelegateCaseExecution<\/code>, <code>VariableMap<\/code>, <code>LockedExternalTask<\/code>).<\/p>\n<\/li>\n<li>\n<p>The adapter offers methods to read, write, update and remove variable values.<\/p>\n<\/li>\n<li>\n<p>The adapter works for all types supported by Camunda BPM. This includes primitive types, object and container types ( <code>List&lt;T&gt;<\/code>, <code>Set&lt;T&gt;<\/code>, <code>Map&lt;K , V&gt;<\/code> ).<\/p>\n<\/li>\n<li>\n<p>The adapter supports global / local variables.<\/p>\n<\/li>\n<li>\n<p>The adapter allows a default value or null in case a variable is not set.<\/p>\n<\/li>\n<li>\n<p>The adapter support transient variables.<\/p>\n<\/li>\n<li>\n<p>Fluent API helper are available in order to set, remove or update multiple variables in the same context (<code>VariableMapBuilder<\/code>, <code>VariableReader<\/code> and <code>GlobalVariableWriter<\/code>).<\/p>\n<\/li>\n<\/ul>\n<\/div>\n<\/li>\n<li>\n<p>Process Variable Guards<\/p>\n<div class=\"ulist\">\n<ul>\n<li>\n<p>Generic support for <code>VariableGuard<\/code> for evaluation of a list of `VariableCondition`s<\/p>\n<\/li>\n<li>\n<p>Condition to check if variable exists.<\/p>\n<\/li>\n<li>\n<p>Condition to check if variable doesn&#8217;t exist<\/p>\n<\/li>\n<li>\n<p>Condition to check if variable has a predefined value.<\/p>\n<\/li>\n<li>\n<p>Condition to check if variable has one of predefined values.<\/p>\n<\/li>\n<li>\n<p>Condition to check if variable matches condition specified by a custom function.<\/p>\n<\/li>\n<li>\n<p><code>DefaultGuardTaskListener<\/code> to construct variable conditions guards easily.<\/p>\n<\/li>\n<li>\n<p><code>DefaultGuardExecutionListener<\/code> to construct variable conditions guards easily.<\/p>\n<\/li>\n<\/ul>\n<\/div>\n<\/li>\n<li>\n<p>Anti-Corruption-Layer<\/p>\n<div class=\"ulist\">\n<ul>\n<li>\n<p>Generic support for <code>AntiCorruptionLayer<\/code> for protection and influence of variable modification in signalling and message correlation.<\/p>\n<\/li>\n<li>\n<p>Helper methods for the client to wrap variables in a transient carrier.<\/p>\n<\/li>\n<li>\n<p>Execution listener to handle <code>VariableGuard<\/code>-based conditions and <code>VariableMapTransformer<\/code>-based modifications.<\/p>\n<\/li>\n<li>\n<p>Task listener to handle <code>VariableGuard<\/code>-based conditions and <code>VariableMapTransformer<\/code>-based modifications.<\/p>\n<\/li>\n<li>\n<p>Factory methods to create <code>AntiCorruptionLayer<\/code> with a <code>VariableGuard<\/code> (see <code>CamundaBpmDataACL<\/code>)<\/p>\n<\/li>\n<li>\n<p>Factory methods to create <code>AntiCorruptionLayer<\/code> without a <code>VariableGuard<\/code> (see <code>CamundaBpmDataMapper<\/code>)<\/p>\n<\/li>\n<\/ul>\n<\/div>\n<\/li>\n<li>\n<p>Testing variable access and mocking <code>RuntimeService<\/code>, <code>TaskService<\/code> and <code>CaseService<\/code>.<\/p>\n<div class=\"ulist\">\n<ul>\n<li>\n<p>Builder to create Mockito-based behaviour of <code>RuntimeService<\/code> accessing variables.<\/p>\n<\/li>\n<li>\n<p>Builder to create Mockito-based behaviour of <code>TaskServiceService<\/code> accessing variables.<\/p>\n<\/li>\n<li>\n<p>Builder to create Mockito-based behaviour of <code>CaseServiceService<\/code> accessing variables.<\/p>\n<\/li>\n<li>\n<p>Verifier to check correct access to variables in  <code>RuntimeService<\/code><\/p>\n<\/li>\n<li>\n<p>Verifier to check correct access to variables in  <code>TaskService<\/code><\/p>\n<\/li>\n<li>\n<p>Verifier to check correct access to variables in  <code>CaseService<\/code><\/p>\n<\/li>\n<\/ul>\n<\/div>\n<\/li>\n<\/ul>\n<\/div>\n<\/div>\n<\/div>"
+            }]
+          },
+          "further-outlook": {
+            "ownKey": "further-outlook",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/user-guide",
+                "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+                "fileName": "further-outlook",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://www.holunda.io/camunda-bpm-data/wiki/user-guide/further-outlook"
+              },
+              "previous": {
+                "path": "wiki/user-guide",
+                "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+                "fileName": "examples-kotlin",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-kotlin"
+              },
+              "description": "",
+              "title": "Further outlook",
+              "content": "<div class=\"sect1\">\n<h2 id=\"_further_outlook\">Further outlook<\/h2>\n<div class=\"sectionbody\">\n<div class=\"ulist\">\n<ul>\n<li>\n<p>Implement Contracts to be able to check guards automatically<\/p>\n<\/li>\n<\/ul>\n<\/div>\n<\/div>\n<\/div>"
+            }]
+          },
+          "motivation": {
+            "ownKey": "motivation",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/user-guide",
+                "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+                "fileName": "motivation",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://www.holunda.io/camunda-bpm-data/wiki/user-guide/motivation"
+              },
+              "next": {
+                "path": "wiki/user-guide",
+                "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+                "fileName": "features",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://www.holunda.io/camunda-bpm-data/wiki/user-guide/features"
+              },
+              "description": "",
+              "title": "Motivation",
+              "content": "<div class=\"sect1\">\n<h2 id=\"_motivation\">Motivation<\/h2>\n<div class=\"sectionbody\">\n<div class=\"sect2\">\n<h3 id=\"_typed_access_to_process_variables\">Typed access to process variables<\/h3>\n<div class=\"paragraph\">\n<p>Camunda BPM engine provide Java API to access the process variables.\nThis consists of:<\/p>\n<\/div>\n<div class=\"ulist\">\n<ul>\n<li>\n<p><code>RuntimeService<\/code> methods<\/p>\n<\/li>\n<li>\n<p><code>TaskService<\/code> methods<\/p>\n<\/li>\n<li>\n<p>Methods on <code>DelegateExecution<\/code><\/p>\n<\/li>\n<li>\n<p>Methods on <code>DelegateTask<\/code><\/p>\n<\/li>\n<li>\n<p><code>VariableMap<\/code><\/p>\n<\/li>\n<\/ul>\n<\/div>\n<div class=\"paragraph\">\n<p>All those methods requires the user of the API to know the variable type.\nHere is a usage example:<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-java\" data-lang=\"java\">ProcessInstance processInstance = ...;\nList&lt;OrderPosition&gt; orderPositions = (List&lt;OrderPosition&gt;) runtimeService\n  .getVariable(processInstance.id, \"orderPositions\");<\/code><\/pre>\n<\/div>\n<\/div>\n<div class=\"paragraph\">\n<p>This leads to problems during refactoring and makes variable access more complicated than it is. This library addresses\nthis issue and allows for more convenient type-safe process variable access.<\/p>\n<\/div>\n<div class=\"paragraph\">\n<p>More details can be found in:<\/p>\n<\/div>\n<div class=\"ulist\">\n<ul>\n<li>\n<p><a href=\"https://medium.com/holisticon-consultants/data-in-process-part-1-2620bf9abd76\">Data in Process (Part 1)<\/a><\/p>\n<\/li>\n<li>\n<p><a href=\"https://medium.com/holisticon-consultants/data-in-process-part-2-7c6a109e6ee2\">Data in Process (Part 2)<\/a><\/p>\n<\/li>\n<\/ul>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_variable_guards\">Variable guards<\/h3>\n<div class=\"paragraph\">\n<p>Process automation often follows strict rules defined by the business. On the other hand, the process execution itself\ndefines rules in terms of pre- and post-conditions on the process payload (stored as process variables in Camunda BPM).\nRising complexity of the implemented processes makes the compliance to those rules challenging. In order to fulfill the\nconditions on process variables during the execution of business processes, a concept of <code>VariableGuard<\/code> is provided by\nthe library. A guard consists of a set of <code>VariableConditions<\/code> and can be evaluated in all contexts, the variables\nare used in: <code>DelegateTask<\/code>, <code>DelegateExecution<\/code>, <code>TaskService<\/code>, <code>RuntimeService<\/code>, <code>VariableMap<\/code>.<\/p>\n<\/div>\n<div class=\"paragraph\">\n<p>Here is an example of a task listener verifying that a process variable <code>ORDER_APPROVED<\/code> is set, which\nwill throw a <code>GuardViolationException<\/code> if the condition is not met.<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-java\" data-lang=\"java\">import static io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.exists;\n\n@Component\nclass MyGuardListener extends DefaultGuardTaskListener {\n\n    public MyGuardListener() {\n        super(newArrayList(exists(ORDER_APPROVED)), true);\n    }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_anti_corruption_layer\">Anti-Corruption-Layer<\/h3>\n<div class=\"paragraph\">\n<p>If a process is signalled or hit by a correlated message, there is no way to check if the transported variables are set correctly.\nIn addition, the variables are written directly to the execution of the correlated process instance. In case of a multi-instance\nevent-base sub-process this will eventually overwrite the values of the main execution.<\/p>\n<\/div>\n<div class=\"paragraph\">\n<p>To prevent all this, a feature called Anti-Corruption-Layer (ACL) is implemented. An ACL is there to protect the execution\nfrom bad modifications and influence the way, the modification is executed. For the protection, an ACL relies on a Variables Guards,\ndefining conditions to be satisfied. For the influencing of modification, the <code>VariableMapTransformer<\/code> can be used.<\/p>\n<\/div>\n<div class=\"paragraph\">\n<p>To use the ACL layer you will need to change the way you correlate messages (or signal the execution). Instead of supplying the variables\ndirectly to the <code>correlate<\/code> method of the <code>RuntimeService<\/code>, the client is wrapping all variables into a map hold by a single transient variable\nand correlate this variable with the process (we call this procedure variable wrapping). On the process side, an execution listener placed\non the end of the catch event is responsible to extract the variable map from the transient variable, check it by passing through the <code>VariablesGuard<\/code>\nand finally pass over to the <code>VariableMapTransformer<\/code> to map from external to internal representation.<\/p>\n<\/div>\n<div class=\"paragraph\">\n<p>Here is the code, required on the client side to correlate the message.<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-java\" data-lang=\"java\">@Component\nclass SomeService {\n\n    private static AntiCorruptionLayer MY_ACL = CamundaBpmDataACL.guardTransformingReplace(\n        \"__transient\", // name of the transient variable for wrapping\n        true, // if passes the guard, write to local scope\n        new VariablesGuard(exists(ORDER_ID)), // guard defining condition on ORDER_ID\n        IdentityVariableMapTransformer.INSTANCE // use 1:1 transformer\n                                                // write the variables without modifications\n    );\n\n    public void correlate() {\n        VariableMap variables = CamundaBpmData.builder()\n          .set(ORDER_ID, \"4711\")\n          .set(ORDER_APPROVED, false)\n          .build();\n        runtimeService.correlateMessage(\"message_1\", MESSAGE_ACL.checkAndWrap(variables));\n    }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<div class=\"paragraph\">\n<p>On the process side, the BPMN message catch event should have an <code>End<\/code> listener responsible for unwrapping the values. If the listener is\nimplemented as a Spring Bean bounded via delegate expression <code>${messageAclListener}<\/code> then the following code is responsible for providing such a listener:<\/p>\n<\/div>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-java\" data-lang=\"java\">@Configuration\nclass SomeConfiguration {\n\n    private static AntiCorruptionLayer MY_ACL = CamundaBpmDataACL.guardTransformingReplace(\n        \"__transient\", // name of the transient variable for wrapping\n        true, // if passes the guard, write to local scope\n        new VariablesGuard(exists(ORDER_ID)), // guard defining condition on ORDER_ID\n        IdentityVariableMapTransformer.INSTANCE // use 1:1 transformer\n                                                // write the variables without modifications\n    );\n\n    @Bean(\"messageAclListener\")\n    public ExecutionListener messageAclListener() {\n        return MY_ACL.getExecutionListener();\n    }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<div class=\"paragraph\">\n<p>Such a setup will only allow to correlate messages, if the variables provided include a value for the <code>ORDER_ID<\/code>. It will write all\nvariables provided (<code>ORDER_ID<\/code> and <code>ORDER_APPROVED<\/code>) into a local scope of the execution.<\/p>\n<\/div>\n<\/div>\n<\/div>\n<\/div>"
+            }]
+          },
+          "examples-java": {
+            "ownKey": "examples-java",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/user-guide",
+                "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+                "fileName": "examples-java",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-java"
+              },
+              "next": {
+                "path": "wiki/user-guide",
+                "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+                "fileName": "examples-kotlin",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-kotlin"
+              },
+              "previous": {
+                "path": "wiki/user-guide",
+                "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+                "fileName": "features",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://www.holunda.io/camunda-bpm-data/wiki/user-guide/features"
+              },
+              "description": "",
+              "title": "Java Examples",
+              "content": "<div class=\"sect1\">\n<h2 id=\"_java_examples\">Java Examples<\/h2>\n<div class=\"sectionbody\">\n<div class=\"paragraph\">\n<p>The following example code demonstrates the usage of the library using Java.<\/p>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_define_variable\">Define variable<\/h3>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-java\" data-lang=\"java\">public class OrderApproval {\n  public static final VariableFactory&lt;String&gt; ORDER_ID = stringVariable(\"orderId\");\n  public static final VariableFactory&lt;Order&gt; ORDER = customVariable(\"order\", Order.class);\n  public static final VariableFactory&lt;Boolean&gt; ORDER_APPROVED = booleanVariable(\"orderApproved\");\n  public static final VariableFactory&lt;OrderPosition&gt; ORDER_POSITION = customVariable(\"orderPosition\", OrderPosition.class);\n  public static final VariableFactory&lt;BigDecimal&gt; ORDER_TOTAL = customVariable(\"orderTotal\", BigDecimal.class);\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_read_variable_from_java_delegate\">Read variable from Java delegate<\/h3>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-java\" data-lang=\"java\">@Configuration\nclass JavaDelegates {\n\n  @Bean\n  public JavaDelegate calculateOrderPositions() {\n    return execution -&gt; {\n      OrderPosition orderPosition = ORDER_POSITION.from(execution).get();\n      Boolean orderApproved = ORDER_APPROVED.from(execution).getLocal();\n      Optional&lt;BigDecimal&gt; orderTotal = ORDER_TOTAL.from(execution).getOptional();\n    };\n  }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_write_variable_from_java_delegate\">Write variable from Java delegate<\/h3>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-java\" data-lang=\"java\">import java.math.BigDecimal\n;@Configuration\nclass JavaDelegates {\n\n  @Bean\n  public JavaDelegate calculateOrderPositions() {\n    return execution -&gt; {\n      OrderPosition orderPosition = new OrderPosition(\"Pencil\", BigDecimal.valueOf(1.5), 1);\n      ORDER_POSITION.on(execution).set(orderPosition);\n    };\n  }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_remove_variable_from_java_delegate\">Remove variable from Java delegate<\/h3>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-java\" data-lang=\"java\">import java.math.BigDecimal\n;@Configuration\nclass JavaDelegates {\n\n  @Bean\n  public JavaDelegate calculateOrderPositions() {\n    return execution -&gt; {\n      ORDER_APPROVED.on(execution).removeLocal();\n    };\n  }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_update_variable_from_java_delegate\">Update variable from Java delegate<\/h3>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-java\" data-lang=\"java\">import java.math.BigDecimal;\n@Configuration\nclass JavaDelegates {\n\n  @Bean\n  public JavaDelegate calculateOrderPositions() {\n    return execution -&gt; {\n      OrderPosition orderPosition = ORDER_POSITION.from(execution).get();\n      ORDER_TOTAL.on(execution).updateLocal(amount -&gt; amount.add(orderPosition.getNetCost().multiply(BigDecimal.valueOf(orderPosition.getAmount()))));\n    };\n  }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_fluent_api_to_remove_several_variables\">Fluent API to remove several variables<\/h3>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-java\" data-lang=\"java\">@Configuration\nclass JavaDelegates {\n\n  @Bean\n  public ExecutionListener removeProcessVariables() {\n    return execution -&gt;\n    {\n      CamundaBpmData.writer(execution)\n          .remove(ORDER_ID)\n          .remove(ORDER)\n          .remove(ORDER_APPROVED)\n          .remove(ORDER_TOTAL)\n          .removeLocal(ORDER_POSITIONS);\n    };\n  }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_fluent_api_to_set_several_variables\">Fluent API to set several variables<\/h3>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-java\" data-lang=\"java\">@Component\nclass SomeService {\n\n  @Autowired\n  private RuntimeService runtimeService;\n  @Autowired\n  private TaskService taskService;\n\n  public void setNewValuesForExecution(String executionId, String orderId, Boolean orderApproved) {\n      CamundaBpmData.writer(runtimeService, executionId)\n          .set(ORDER_ID, orderId)\n          .set(ORDER_APPROVED, orderApproved)\n          .update(ORDER_TOTAL, amount -&gt; amount.add(10));\n  }\n\n  public void setNewValuesForTask(String taskId, String orderId, Boolean orderApproved) {\n      CamundaBpmData.writer(taskService, taskId)\n          .set(ORDER_ID, orderId)\n          .set(ORDER_APPROVED, orderApproved);\n  }\n\n  public void start() {\n      VariableMap variables = CamundaBpmData.writer()\n          .set(ORDER_ID, \"4711\")\n          .set(ORDER_APPROVED, false)\n          .build();\n      runtimeService.startProcessInstanceById(\"myId\", \"businessKey\", variables);\n  }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_fluent_api_to_read_several_variables\">Fluent API to read several variables<\/h3>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-java\" data-lang=\"java\">@Component\nclass SomeService {\n\n  @Autowired\n  private RuntimeService runtimeService;\n  @Autowired\n  private TaskService taskService;\n\n  public String readValuesFromExecution(String executionId) {\n      VariableReader reader = CamundaBpmData.reader(runtimeService, executionId);\n      String orderId = reader.get(ORDER_ID);\n      Boolean orderApproved = reader.get(ORDER_APPROVED);\n      if (orderApproved) {\n          // ...\n      }\n      return orderId;\n  }\n\n  public String readValuesFromTask(String taskId) {\n      VariableReader reader = CamundaBpmData.reader(taskService, taskId);\n      String orderId = reader.get(ORDER_ID);\n      Boolean orderApproved = reader.get(ORDER_APPROVED);\n      if (orderApproved) {\n          // ...\n      }\n      return orderId;\n  }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_anti_corruption_layer_wrap_variables_to_correlate\">Anti-Corruption-Layer: Wrap variables to correlate<\/h3>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-java\" data-lang=\"java\">@Component\nclass SomeService {\n\n  private static final AntiCorruptionLayer MESSAGE_ACL = CamundaBpmDataMapper.identityReplace(\n      \"__transient\",\n      true\n  );\n\n  public void correlate() {\n      VariableMap variables = CamundaBpmData.builder()\n          .set(ORDER_ID, \"4711\")\n          .set(ORDER_APPROVED, false)\n          .build();\n      runtimeService.correlateMessage(\"message_1\", MESSAGE_ACL.wrap(variables));\n  }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_anti_corruption_layer_check_and_wrap_variables_to_correlate\">Anti-Corruption-Layer: Check and wrap variables to correlate<\/h3>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-java\" data-lang=\"java\">@Component\nclass SomeService {\n\n    private static AntiCorruptionLayer MY_ACL = CamundaBpmDataACL.guardTransformingReplace(\n        \"__transient\",\n        true,\n        new VariablesGuard(exists(ORDER_ID)),\n        IdentityVariableMapTransformer.INSTANCE\n    );\n\n  public void correlate() {\n      VariableMap variables = CamundaBpmData.builder()\n          .set(ORDER_ID, \"4711\")\n          .set(ORDER_APPROVED, false)\n          .build();\n      runtimeService.correlateMessage(\"message_1\", MESSAGE_ACL.checkAndWrap(variables));\n  }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_example_project\">Example project<\/h3>\n<div class=\"paragraph\">\n<p>For more examples, please check-out the Java Example project, at\n<a href=\"https://github.com/holunda-io/camunda-bpm-data/tree/develop/example/example-java\">Github<\/a><\/p>\n<\/div>\n<\/div>\n<\/div>\n<\/div>"
+            }]
+          },
+          "examples-kotlin": {
+            "ownKey": "examples-kotlin",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/user-guide",
+                "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+                "fileName": "examples-kotlin",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-kotlin"
+              },
+              "next": {
+                "path": "wiki/user-guide",
+                "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+                "fileName": "further-outlook",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://www.holunda.io/camunda-bpm-data/wiki/user-guide/further-outlook"
+              },
+              "previous": {
+                "path": "wiki/user-guide",
+                "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+                "fileName": "examples-java",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-java"
+              },
+              "description": "",
+              "title": "Kotlin Examples",
+              "content": "<div class=\"sect1\">\n<h2 id=\"_kotlin_examples\">Kotlin Examples<\/h2>\n<div class=\"sectionbody\">\n<div class=\"paragraph\">\n<p>The following snippets demonstrate the usage of the library from Kotlin<\/p>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_define_variable\">Define variable<\/h3>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-kotlin\" data-lang=\"kotlin\">import io.holunda.data.CamundaBpmDataKotlin\n\nobject Variables {\n    val ORDER_ID = stringVariable(\"orderId\")\n    val ORDER: VariableFactory&lt;Order&gt; = customVariable(\"order\")\n    val ORDER_APPROVED = booleanVariable(\"orderApproved\")\n    val ORDER_POSITION: VariableFactory&lt;OrderPosition&gt; = customVariable(\"orderPosition\")\n    val ORDER_TOTAL: VariableFactory&lt;BigDecimal&gt; = customVariable(\"orderTotal\")\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_read_variable_from_java_delegate\">Read variable from Java delegate<\/h3>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-kotlin\" data-lang=\"kotlin\">@Configuration\nclass JavaDelegates {\n\n    @Bean\n    fun calculateOrderPositions() = JavaDelegate { execution -&gt;\n        val orderPosition = ORDER_POSITION.from(execution).get()\n        // order position is of type OrderPosition\n    }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_write_variable_from_java_delegate\">Write variable from Java delegate<\/h3>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-kotlin\" data-lang=\"kotlin\">import java.math.BigDecimal\n\n@Configuration\nclass JavaDelegates {\n\n    @Bean\n    fun calculateOrderPositions() = JavaDelegate { execution -&gt;\n        val orderPosition = ORDER_POSITION.from(execution).get()\n        ORDER_TOTAL.on(execution).set {\n            orderPosition.netCost.times(BigDecimal.valueOf(orderPosition.amount))\n        }\n    }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_remove_variable_from_java_delegate\">Remove variable from Java delegate<\/h3>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-kotlin\" data-lang=\"kotlin\">@Configuration\nclass JavaDelegates {\n\n    @Bean\n    fun removeTotal() = JavaDelegate { execution -&gt;\n        ORDER_TOTAL.on(execution).remove()\n    }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_update_variable_from_java_delegate\">Update variable from Java delegate<\/h3>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-kotlin\" data-lang=\"kotlin\">import java.math.BigDecimal\n@Configuration\nclass JavaDelegates {\n\n    @Bean\n    fun calculateOrderPositions() = JavaDelegate { execution -&gt;\n        val orderPosition = ORDER_POSITION.from(execution).get()\n        ORDER_TOTAL.on(execution).update {\n            it.plus(orderPosition.netCost.times(BigDecimal.valueOf(orderPosition.amount)))\n        }\n    }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_fluent_api_to_remove_several_variables\">Fluent API to remove several variables<\/h3>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-kotlin\" data-lang=\"kotlin\">import io.holunda.camunda.bpm.data.remove\n\n@Configuration\nclass JavaDelegates {\n\n    @Bean\n    fun removeProcessVariables() = JavaDelegate { execution -&gt;\n        execution\n            .remove(ORDER_ID)\n            .remove(ORDER)\n            .remove(ORDER_APPROVED)\n            .remove(ORDER_TOTAL)\n            .removeLocal(ORDER_POSITIONS)\n    }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_fluent_api_to_set_several_variables\">Fluent API to set several variables<\/h3>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-kotlin\" data-lang=\"kotlin\">@Component\nclass SomeService(\n    private val runtimeService: RuntimeService,\n    private val taskService: TaskService\n) {\n\n    fun setNewValuesForExecution(executionId: String, rderId: String, orderApproved: Boolean) {\n        runtimeService.writer(executionId)\n            .set(ORDER_ID, orderId)\n            .set(ORDER_APPROVED, orderApproved)\n            .update(ORDER_TOTAL, { amount -&gt; amount.add(10) })\n    }\n\n    fun setNewValuesForTask(taskId: String, orderId: String, orderApproved: Boolean) {\n        taskService.writer(taskId)\n            .set(ORDER_ID, orderId)\n            .set(ORDER_APPROVED, orderApproved)\n    }\n\n  fun start() {\n      val variables = createProcessVariables()\n          .set(ORDER_ID, \"4711\")\n          .set(ORDER_APPROVED, false)\n      runtimeService.startProcessInstanceById(\"myId\", \"businessKey\", variables)\n  }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_fluent_api_to_read_several_variables\">Fluent API to read several variables<\/h3>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-kotlin\" data-lang=\"kotlin\">@Component\nclass SomeService(\n  private val runtimeService: RuntimeService,\n  private val taskService: TaskService\n) {\n\n  fun readValuesFromExecution(executionId: String): String {\n      val reader = CamundaBpmData.reader(runtimeService, executionId)\n      val orderId = reader.get(ORDER_ID)\n      val orderApproved = reader.get(ORDER_APPROVED)\n      if (orderApproved) {\n          // ...\n      }\n      return orderId\n  }\n\n  fun readValuesFromTask(taskId: String ): String {\n      val reader = CamundaBpmData.reader(taskService, taskId)\n      val orderId = reader.get(ORDER_ID)\n      val orderApproved = reader.get(ORDER_APPROVED)\n      if (orderApproved) {\n          // ...\n      }\n      return orderId\n  }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_anti_corruption_layer_wrap_variables_to_correlate\">Anti-Corruption-Layer: Wrap variables to correlate<\/h3>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-kotlin\" data-lang=\"kotlin\">@Component\nclass SomeService {\n\n  val MESSAGE_ACL = CamundaBpmDataMapper.identityReplace(\"__transient\", true);\n\n  fun correlate() {\n      val variables = CamundaBpmData.builder()\n          .set(ORDER_ID, \"4711\")\n          .set(ORDER_APPROVED, false)\n          .build();\n      runtimeService.correlateMessage(\"message_1\", MESSAGE_ACL.wrap(variables));\n  }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_anti_corruption_layer_check_and_wrap_variables_to_correlate\">Anti-Corruption-Layer: Check and wrap variables to correlate<\/h3>\n<div class=\"listingblock\">\n<div class=\"content\">\n<pre class=\"highlight\"><code class=\"language-kotlin\" data-lang=\"kotlin\">@Component\nclass SomeService {\n\n    val MY_ACL = CamundaBpmDataACL.guardTransformingReplace(\n        \"__transient\",\n        true,\n        VariablesGuard(exists(ORDER_ID)),\n        IdentityVariableMapTransformer\n    );\n\n  fun correlate() {\n      val variables = CamundaBpmData.builder()\n          .set(ORDER_ID, \"4711\")\n          .set(ORDER_APPROVED, false)\n          .build();\n      runtimeService.correlateMessage(\"message_1\", MESSAGE_ACL.checkAndWrap(variables));\n  }\n}<\/code><\/pre>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"sect2\">\n<h3 id=\"_example_project\">Example project<\/h3>\n<div class=\"paragraph\">\n<p>For more examples, please check-out the Kotlin Example project, at\n<a href=\"https://github.com/holunda-io/camunda-bpm-data/tree/develop/example/example-kotlin\">Github<\/a>.<\/p>\n<\/div>\n<\/div>\n<\/div>\n<\/div>"
+            }]
+          }
+        },
+        "ownPages": [
+          {
+            "reference": {
+              "path": "wiki",
+              "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+              "fileName": "user-guide",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://www.holunda.io/camunda-bpm-data/wiki/user-guide"
+            },
+            "description": "",
+            "title": "User Guide",
+            "content": "<html>\n <head><\/head>\n <body>\n  <h2><a href=\"#\" class=\"anchor\"><\/a><\/h2> \n  <ul> \n   <li><a href=\"https://www.holunda.io/camunda-bpm-data/wiki/user-guide/motivation\">Motivation<\/a><\/li> \n   <li><a href=\"https://www.holunda.io/camunda-bpm-data/wiki/user-guide/features\">Features<\/a><\/li> \n   <li><a href=\"https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-java\">Java Examples<\/a><\/li> \n   <li><a href=\"https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-kotlin\">Kotlin Examples<\/a><\/li> \n   <li><a href=\"https://www.holunda.io/camunda-bpm-data/wiki/user-guide/further-outlook\">Further Outlook<\/a><\/li> \n  <\/ul> \n <\/body>\n<\/html>\n"
+          },
+          {
+            "reference": {
+              "path": "wiki/user-guide",
+              "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+              "fileName": "book",
+              "extension": "pdf",
+              "usePrettyUrl": false,
+              "link": "https://www.holunda.io/camunda-bpm-data/wiki/user-guide/book.pdf"
+            },
+            "description": "",
+            "title": "User Guide Book",
+            "content": ""
+          }
+        ]
+      }
+    },
+    "ownPages": [{
+      "reference": {
+        "path": "",
+        "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+        "fileName": "wiki",
+        "extension": "html",
+        "usePrettyUrl": true,
+        "link": "https://www.holunda.io/camunda-bpm-data/wiki"
+      },
+      "description": "",
+      "title": "Wiki",
+      "content": ""
+    }]
+  }}
+}

@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "wiki/developer-guide",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "book",
+    "extension": "pdf",
+    "usePrettyUrl": false,
+    "link": "https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/book.pdf"
+  },
+  "data": {},
+  "description": "",
+  "title": "Developer Guide Book",
+  "content": ""
+}
