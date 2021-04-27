@@ -3,9 +3,9 @@ package io.holunda.camunda.bpm.data.adapter.set;
 import io.holunda.camunda.bpm.data.adapter.ReadAdapter;
 import io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException;
 import org.camunda.bpm.engine.externaltask.LockedExternalTask;
+import org.camunda.bpm.engine.variable.Variables;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -29,7 +29,7 @@ public class SetReadAdapterLockedExternalTask<T> implements ReadAdapter<Set<T>> 
 
   @Override
   public Set<T> get() {
-    return null;
+    return getOptional().get();
   }
 
   @Override
@@ -74,8 +74,8 @@ public class SetReadAdapterLockedExternalTask<T> implements ReadAdapter<Set<T>> 
       return null;
     }
 
-    if (List.class.isAssignableFrom(value.getClass())) {
-      List<?> valueAsSet = (List<?>) value;
+    if (Set.class.isAssignableFrom(value.getClass())) {
+      Set<?> valueAsSet = (Set<?>) value;
       if (valueAsSet.isEmpty()) {
         return Collections.emptySet();
       } else {
@@ -91,6 +91,8 @@ public class SetReadAdapterLockedExternalTask<T> implements ReadAdapter<Set<T>> 
   }
 
   private T getValue() {
-    return (T) Optional.ofNullable(lockedExternalTask.getVariables()).map(it -> it.get(variableName)).get();
+    return (T) Optional.ofNullable(lockedExternalTask.getVariables())
+      .orElse(Variables.createVariables())
+      .get(variableName);
   }
 }

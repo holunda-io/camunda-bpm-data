@@ -3,6 +3,7 @@ package io.holunda.camunda.bpm.data.adapter.list;
 import io.holunda.camunda.bpm.data.adapter.ReadAdapter;
 import io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException;
 import org.camunda.bpm.engine.externaltask.LockedExternalTask;
+import org.camunda.bpm.engine.variable.Variables;
 
 import java.util.Collections;
 import java.util.List;
@@ -28,7 +29,7 @@ public class ListReadAdapterLockedExternalTask<T> implements ReadAdapter<List<T>
 
   @Override
   public List<T> get() {
-    return null;
+    return getOptional().get();
   }
 
   @Override
@@ -90,6 +91,8 @@ public class ListReadAdapterLockedExternalTask<T> implements ReadAdapter<List<T>
   }
 
   private T getValue() {
-    return (T) Optional.ofNullable(lockedExternalTask.getVariables()).map(it -> it.get(variableName)).get();
+    return (T) Optional.ofNullable(lockedExternalTask.getVariables())
+      .orElse(Variables.createVariables())
+      .get(variableName);
   }
 }
