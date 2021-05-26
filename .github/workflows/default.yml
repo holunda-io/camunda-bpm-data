@@ -1,6 +1,7 @@
 name: Development branches
 
 on:
+  pull_request:
   push:
     branches:
       - '*'
@@ -39,6 +40,7 @@ jobs:
       run: ./mvnw -Pitest verify
 
     - name: Upload coverage to Codecov
+      if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
       uses: codecov/codecov-action@v1.0.2
       with:
         token: ${{secrets.CODECOV_TOKEN}}
