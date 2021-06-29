@@ -52,6 +52,7 @@ class VariableAwareComponent {
       .set(ORDER, Order("4711", Date.from(now()), listOf(position)))
       .build()
 
+    ORDER_ID.from(vars).get()
 
     val reader = reader(vars)
     val order = reader.get(ORDER)
