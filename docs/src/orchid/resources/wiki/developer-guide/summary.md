@@ -1,13 +1,11 @@
 ---
-
 title: Developer Guide
-
 ---
 
-## {{ page.title }}
+## Developer Guide
 
-[Contribution](contribution.ad)
+[Contribution](contribution.md)
 
-[Project Setup](project-setup.ad)
+[Project Setup](project-setup.md)
 
 

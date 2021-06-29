@@ -1,0 +1,135 @@
+executing mvnw instead of mvn
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for io.holunda.data.example:camunda-bpm-data-example-no-engine:jar:1.2.4-SNAPSHOT
+[WARNING] 'dependencies.dependency.scope' for org.camunda.bpm:camunda-engine:jar must be one of [provided, compile, runtime, test, system] but is 'none'. @ line 40, column 14
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] -----< io.holunda.data.example:camunda-bpm-data-example-no-engine >-----
+[INFO] Building camunda-bpm-data-example-no-engine 1.2.4-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ camunda-bpm-data-example-no-engine ---
+[INFO] io.holunda.data.example:camunda-bpm-data-example-no-engine:jar:1.2.4-SNAPSHOT
+[INFO] +- io.holunda.data:camunda-bpm-data:jar:1.2.4-SNAPSHOT:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.30:compile
+[INFO] |  +- com.fasterxml.jackson.core:jackson-annotations:jar:2.11.4:compile
+[INFO] |  \- com.fasterxml.jackson.core:jackson-databind:jar:2.11.4:compile
+[INFO] +- org.camunda.commons:camunda-commons-typed-values:jar:7.15.0:compile
+[INFO] |  +- org.camunda.commons:camunda-commons-utils:jar:1.10.0:compile
+[INFO] |  \- org.camunda.commons:camunda-commons-logging:jar:1.10.0:compile
+[INFO] +- org.camunda.bpm:camunda-engine:jar:7.15.0:none
+[INFO] |  +- org.camunda.bpm.model:camunda-bpmn-model:jar:7.15.0:runtime
+[INFO] |  |  \- org.camunda.bpm.model:camunda-xml-model:jar:7.15.0:runtime
+[INFO] |  +- org.camunda.bpm.model:camunda-cmmn-model:jar:7.15.0:runtime
+[INFO] |  +- org.camunda.bpm.dmn:camunda-engine-dmn:jar:7.15.0:runtime
+[INFO] |  |  +- org.camunda.bpm.model:camunda-dmn-model:jar:7.15.0:runtime
+[INFO] |  |  +- org.camunda.bpm.dmn:camunda-engine-feel-api:jar:7.15.0:runtime
+[INFO] |  |  +- org.camunda.bpm.dmn:camunda-engine-feel-juel:jar:7.15.0:runtime
+[INFO] |  |  +- org.camunda.bpm.dmn:camunda-engine-feel-scala:jar:7.15.0:runtime
+[INFO] |  |  \- org.camunda.feel:feel-engine:jar:scala-shaded:1.13.1:runtime
+[INFO] |  +- org.mybatis:mybatis:jar:3.5.6:runtime
+[INFO] |  +- org.springframework:spring-beans:jar:5.3.6:compile
+[INFO] |  +- joda-time:joda-time:jar:2.1:runtime
+[INFO] |  +- org.camunda.connect:camunda-connect-core:jar:1.5.2:runtime
+[INFO] |  \- org.camunda.connect:camunda-connect-connectors-all:jar:1.5.2:runtime
+[INFO] +- io.holunda.data.example:camunda-bpm-data-spin-type-detector:jar:1.2.4-SNAPSHOT:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-web:jar:2.4.5:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter:jar:2.4.5:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot:jar:2.4.5:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-autoconfigure:jar:2.4.5:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-starter-logging:jar:2.4.5:compile
+[INFO] |  |  |  +- ch.qos.logback:logback-classic:jar:1.2.3:compile
+[INFO] |  |  |  |  \- ch.qos.logback:logback-core:jar:1.2.3:compile
+[INFO] |  |  |  +- org.apache.logging.log4j:log4j-to-slf4j:jar:2.13.3:compile
+[INFO] |  |  |  |  \- org.apache.logging.log4j:log4j-api:jar:2.13.3:compile
+[INFO] |  |  |  \- org.slf4j:jul-to-slf4j:jar:1.7.30:compile
+[INFO] |  |  +- jakarta.annotation:jakarta.annotation-api:jar:1.3.5:compile
+[INFO] |  |  \- org.yaml:snakeyaml:jar:1.27:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-json:jar:2.4.5:compile
+[INFO] |  |  \- com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.11.4:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-tomcat:jar:2.4.5:compile
+[INFO] |  |  +- org.apache.tomcat.embed:tomcat-embed-core:jar:9.0.45:compile
+[INFO] |  |  +- org.glassfish:jakarta.el:jar:3.0.3:compile
+[INFO] |  |  \- org.apache.tomcat.embed:tomcat-embed-websocket:jar:9.0.45:compile
+[INFO] |  +- org.springframework:spring-web:jar:5.3.6:compile
+[INFO] |  \- org.springframework:spring-webmvc:jar:5.3.6:compile
+[INFO] |     +- org.springframework:spring-aop:jar:5.3.6:compile
+[INFO] |     +- org.springframework:spring-context:jar:5.3.6:compile
+[INFO] |     \- org.springframework:spring-expression:jar:5.3.6:compile
+[INFO] +- org.camunda.spin:camunda-spin-core:jar:1.10.1:compile
+[INFO] +- org.camunda.spin:camunda-spin-dataformat-json-jackson:jar:1.10.1:compile
+[INFO] |  +- com.fasterxml.jackson.core:jackson-core:jar:2.11.4:compile
+[INFO] |  \- com.jayway.jsonpath:json-path:jar:2.4.0:compile
+[INFO] |     \- net.minidev:json-smart:jar:2.3:compile
+[INFO] |        \- net.minidev:accessors-smart:jar:1.2:compile
+[INFO] +- com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.11.4:compile
+[INFO] +- com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.11.4:compile
+[INFO] +- com.fasterxml.jackson.module:jackson-module-kotlin:jar:2.11.4:compile
+[INFO] +- org.jetbrains.kotlin:kotlin-stdlib:jar:1.5.10:compile
+[INFO] +- org.jetbrains.kotlin:kotlin-stdlib-common:jar:1.5.10:compile
+[INFO] +- org.jetbrains.kotlin:kotlin-stdlib-jdk8:jar:1.5.10:compile
+[INFO] +- org.jetbrains.kotlin:kotlin-stdlib-jdk7:jar:1.5.10:compile
+[INFO] +- org.jetbrains.kotlin:kotlin-reflect:jar:1.5.10:compile
+[INFO] +- io.github.microutils:kotlin-logging-jvm:jar:2.0.6:compile
+[INFO] +- io.holunda.data:camunda-bpm-data-test:jar:1.2.4-SNAPSHOT:test
+[INFO] |  \- com.nhaarman.mockitokotlin2:mockito-kotlin:jar:2.2.0:test
+[INFO] +- io.holunda.testing:camunda-bpm-jgiven:jar:0.0.8:test
+[INFO] |  +- com.tngtech.jgiven:jgiven-spring:jar:1.0.0:test
+[INFO] |  +- com.tngtech.jgiven:jgiven-html5-report:jar:1.0.0:test
+[INFO] |  |  \- com.tngtech.jgiven:jgiven-html-app:jar:1.0.0:test
+[INFO] |  \- io.toolisticon.testing:jgiven-kotlin:jar:1.0.0:test
+[INFO] +- com.tngtech.jgiven:jgiven-junit:jar:1.0.0:test
+[INFO] |  \- com.tngtech.jgiven:jgiven-core:jar:1.0.0:test
+[INFO] |     +- com.google.guava:guava:jar:28.1-jre:test
+[INFO] |     |  +- com.google.guava:failureaccess:jar:1.0.1:test
+[INFO] |     |  +- com.google.guava:listenablefuture:jar:9999.0-empty-to-avoid-conflict-with-guava:test
+[INFO] |     |  +- org.checkerframework:checker-qual:jar:2.8.1:test
+[INFO] |     |  +- com.google.errorprone:error_prone_annotations:jar:2.3.2:test
+[INFO] |     |  +- com.google.j2objc:j2objc-annotations:jar:1.3:test
+[INFO] |     |  \- org.codehaus.mojo:animal-sniffer-annotations:jar:1.18:test
+[INFO] |     +- com.google.code.gson:gson:jar:2.8.6:test
+[INFO] |     +- com.thoughtworks.paranamer:paranamer:jar:2.8:test
+[INFO] |     \- org.fusesource.jansi:jansi:jar:1.15:test
+[INFO] +- org.springframework.boot:spring-boot-starter-test:jar:2.4.5:test
+[INFO] |  +- org.springframework.boot:spring-boot-test:jar:2.4.5:test
+[INFO] |  +- org.springframework.boot:spring-boot-test-autoconfigure:jar:2.4.5:test
+[INFO] |  +- jakarta.xml.bind:jakarta.xml.bind-api:jar:2.3.3:test
+[INFO] |  |  \- jakarta.activation:jakarta.activation-api:jar:1.2.2:test
+[INFO] |  +- org.hamcrest:hamcrest:jar:2.2:test
+[INFO] |  +- org.junit.jupiter:junit-jupiter:jar:5.7.1:test
+[INFO] |  |  +- org.junit.jupiter:junit-jupiter-api:jar:5.7.1:test
+[INFO] |  |  |  +- org.apiguardian:apiguardian-api:jar:1.1.0:test
+[INFO] |  |  |  +- org.opentest4j:opentest4j:jar:1.2.0:test
+[INFO] |  |  |  \- org.junit.platform:junit-platform-commons:jar:1.7.1:test
+[INFO] |  |  +- org.junit.jupiter:junit-jupiter-params:jar:5.7.1:test
+[INFO] |  |  \- org.junit.jupiter:junit-jupiter-engine:jar:5.7.1:test
+[INFO] |  |     \- org.junit.platform:junit-platform-engine:jar:1.7.1:test
+[INFO] |  +- org.mockito:mockito-junit-jupiter:jar:3.6.28:test
+[INFO] |  +- org.skyscreamer:jsonassert:jar:1.5.0:test
+[INFO] |  |  \- com.vaadin.external.google:android-json:jar:0.0.20131108.vaadin1:test
+[INFO] |  +- org.springframework:spring-core:jar:5.3.6:compile
+[INFO] |  |  \- org.springframework:spring-jcl:jar:5.3.6:compile
+[INFO] |  +- org.springframework:spring-test:jar:5.3.6:test
+[INFO] |  \- org.xmlunit:xmlunit-core:jar:2.7.0:test
+[INFO] +- org.camunda.bpm.extension.mockito:camunda-bpm-mockito:jar:5.15.0:test
+[INFO] |  +- com.google.code.findbugs:jsr305:jar:3.0.2:test
+[INFO] |  \- org.apache.commons:commons-lang3:jar:3.11:test
+[INFO] +- org.jetbrains:annotations:jar:21.0.1:compile
+[INFO] +- org.mockito:mockito-core:jar:3.6.28:test
+[INFO] |  +- net.bytebuddy:byte-buddy:jar:1.10.22:test
+[INFO] |  +- net.bytebuddy:byte-buddy-agent:jar:1.10.22:test
+[INFO] |  \- org.objenesis:objenesis:jar:3.1:test
+[INFO] +- junit:junit:jar:4.13.2:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:2.2:test
+[INFO] \- org.assertj:assertj-core:jar:3.18.1:test
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.904 s
+[INFO] Finished at: 2021-06-29T15:49:19+02:00
+[INFO] ------------------------------------------------------------------------

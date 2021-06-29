@@ -1,8 +1,8 @@
 package io.holunda.camunda.bpm.data.mockito
 
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.reset
-import com.nhaarman.mockitokotlin2.times
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.reset
+import org.mockito.kotlin.times
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
 import io.holunda.camunda.bpm.data.mockito.CamundaBpmDataMockito.runtimeServiceMockVerifier
 import io.holunda.camunda.bpm.data.mockito.CamundaBpmDataMockito.runtimeServiceVariableMockBuilder

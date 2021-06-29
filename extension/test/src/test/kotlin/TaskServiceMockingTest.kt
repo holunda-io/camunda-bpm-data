@@ -1,6 +1,6 @@
 package io.holunda.camunda.bpm.data.mockito
 
-import com.nhaarman.mockitokotlin2.mock
+import org.mockito.kotlin.mock
 import io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
 import org.assertj.core.api.Assertions.assertThat
