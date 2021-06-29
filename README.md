@@ -147,7 +147,6 @@ Now you can use `TaskServiceVariableMockBuilder` to stub correct behavior of Cam
 and `TaskServiceVerifier` to verify the correct access to variables easily. Here is the JUnit
 test of the REST controller above, making use of `camunda-bpm-data-test`.
 
-
 ``` java
 public class ApproveOrderTaskControllerTest {
 
