@@ -34,12 +34,6 @@
     </dependency>
 
     <dependency>
-      <groupId>io.holunda.data.example</groupId>
-      <artifactId>camunda-bpm-data-spin-type-detector</artifactId>
-      <version>${project.parent.version}</version>
-    </dependency>
-
-    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
@@ -122,10 +116,6 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>com.tngtech.jgiven</groupId>
-        <artifactId>jgiven-maven-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
