@@ -26,9 +26,8 @@ easy and convenient. We leverage the Camunda API and offer you not only a better
 
 If you want to read more about data in Camunda processes, have a look on those articles:
 
-- [Data in Process (Part 1)](https://medium.com/holisticon-consultants/data-in-process-part-1-2620bf9abd76)
-- [Data in Process (Part 2)](https://medium.com/holisticon-consultants/data-in-process-part-2-7c6a109e6ee2)
-
+  - [Data in Process (Part 1)](https://medium.com/holisticon-consultants/data-in-process-part-1-2620bf9abd76)
+  - [Data in Process (Part 2)](https://medium.com/holisticon-consultants/data-in-process-part-2-7c6a109e6ee2)
 
 ## Quick Introduction
 
@@ -59,7 +58,6 @@ implementation 'io.holunda.data:camunda-bpm-data:1.2.4'
 ### Variable declaration
 Now your setup is completed, and you can declare your variables like this:
 
-
 ``` java
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.*;
@@ -72,7 +70,6 @@ public class OrderApproval {
   public static final VariableFactory<OrderPosition> ORDER_POSITION = customVariable("orderPosition", OrderPosition.class);
 }
 ```
-
 ### Variable access from Java Delegate
 
 Finally, you want to access them from your Java delegates, Execution or Task Listeners or simple Java components:
@@ -209,14 +206,12 @@ See our [Examples](https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examp
 
 This library is developed under Apache 2.0 License.
 
-
 ## Contribution
 
 If you want to contribute to this project, feel free to do so. Start with [Contributing guide](http://holunda.io/camunda-bpm-data/wiki/developer-guide/contribution).
 
 ## Maintainer
 
-* [Simon Zambrovski](https://gihub.com/zambrovski)
-* [Christian Maschmann](https://github.com/christian-maschmann)
-* [Jan Galinski](https://github.com/jangalinski)
-* [Stefan Zilske](https://github.com/stefanzilske)
+[<img alt="zambrovski" src="https://avatars.githubusercontent.com/u/673128?v=4&s=117 width=117">](https://github.com/zambrovski) |[<img alt="jangalinski" src="https://avatars.githubusercontent.com/u/814032?v=4&s=117 width=117">](https://github.com/jangalinski) |[<img alt="dependabot-preview[bot]" src="https://avatars.githubusercontent.com/in/2141?v=4&s=117 width=117">](https://github.com/apps/dependabot-preview) |[<img alt="christian-maschmann" src="https://avatars.githubusercontent.com/u/44058891?v=4&s=117 width=117">](https://github.com/christian-maschmann) |[<img alt="stefanzilske" src="https://avatars.githubusercontent.com/u/10954564?v=4&s=117 width=117">](https://github.com/stefanzilske) |[<img alt="dependabot[bot]" src="https://avatars.githubusercontent.com/in/29110?v=4&s=117 width=117">](https://github.com/apps/dependabot) |[<img alt="nernsting" src="https://avatars.githubusercontent.com/u/1822388?v=4&s=117 width=117">](https://github.com/nernsting) |[<img alt="pschalk" src="https://avatars.githubusercontent.com/u/8512329?v=4&s=117 width=117">](https://github.com/pschalk) |[<img alt="srsp" src="https://avatars.githubusercontent.com/u/1210541?v=4&s=117 width=117">](https://github.com/srsp) |
+:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+[zambrovski](https://github.com/zambrovski)|[jangalinski](https://github.com/jangalinski)|[dependabot-preview[bot]](https://github.com/apps/dependabot-preview)|[christian-maschmann](https://github.com/christian-maschmann)|[stefanzilske](https://github.com/stefanzilske)|[dependabot[bot]](https://github.com/apps/dependabot)|[nernsting](https://github.com/nernsting)|[pschalk](https://github.com/pschalk)|[srsp](https://github.com/srsp)|
