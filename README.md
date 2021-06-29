@@ -9,7 +9,7 @@
 
 > Beautiful process data handling for Camunda BPM.
 
-## Why to use this library in every Camunda project?
+## Why to use this library in every Camunda project
 
 If you are a software engineer and run process automation projects in your company or on behalf of the customer
 based on Camunda Process Engine, you probably are familiar with process variables. Camunda offers an API to access
@@ -26,8 +26,8 @@ easy and convenient. We leverage the Camunda API and offer you not only a better
 
 If you want to read more about data in Camunda processes, have a look on those articles:
 
-  - [Data in Process (Part 1)](https://medium.com/holisticon-consultants/data-in-process-part-1-2620bf9abd76)
-  - [Data in Process (Part 2)](https://medium.com/holisticon-consultants/data-in-process-part-2-7c6a109e6ee2)
+  * [Data in Process (Part 1)](https://medium.com/holisticon-consultants/data-in-process-part-1-2620bf9abd76)
+  * [Data in Process (Part 2)](https://medium.com/holisticon-consultants/data-in-process-part-2-7c6a109e6ee2)
 
 ## Quick Introduction
 
@@ -54,7 +54,6 @@ For Gradle Groovy DSL add to your `build.gradle`:
 ``` groovy
 implementation 'io.holunda.data:camunda-bpm-data:1.2.4'
 ```
-
 ### Variable declaration
 Now your setup is completed, and you can declare your variables like this:
 
