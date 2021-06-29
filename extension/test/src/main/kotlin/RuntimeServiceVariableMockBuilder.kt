@@ -1,9 +1,9 @@
 package io.holunda.camunda.bpm.data.mockito
 
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.doAnswer
-import com.nhaarman.mockitokotlin2.eq
-import com.nhaarman.mockitokotlin2.whenever
+import org.mockito.kotlin.any
+import org.mockito.kotlin.doAnswer
+import org.mockito.kotlin.eq
+import org.mockito.kotlin.whenever
 import io.holunda.camunda.bpm.data.factory.VariableFactory
 import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.variable.VariableMap

@@ -1,6 +1,6 @@
 package io.holunda.camunda.bpm.data
 
-import com.nhaarman.mockitokotlin2.mock
+import org.mockito.kotlin.mock
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.stringVariable
 import io.holunda.camunda.bpm.data.reader.CaseServiceVariableReader
 import io.holunda.camunda.bpm.data.reader.RuntimeServiceVariableReader
