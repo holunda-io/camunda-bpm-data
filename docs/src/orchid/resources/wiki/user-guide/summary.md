@@ -1,19 +1,14 @@
 ---
 
 title: User Guide
-pageId: 'user-guide' 
-
+pageId: 'user-guide'
 ---
 
-## {{ page.title }}
+## User Guide
 
-* [Motivation](motivation.ad)
-* [Features](features.ad)
-* [Java Examples](examples-java.ad)
-* [Kotlin Examples](examples-kotlin.ad)
-* [Further Outlook](further-outlook.ad)
-
-
-
-
-
+* [Motivation](motivation.md)
+* [Features](features.md)
+* [Java Examples](examples-java.md)
+* [Kotlin Examples](examples-kotlin.md)
+* [Example for usage without the engine](examples-no-engine.md)
+* [Further Outlook](further-outlook.md)

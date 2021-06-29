@@ -3,7 +3,7 @@ site:
     siteName: Camunda BPM Data
     siteDescription: Beautiful process data handling for Camunda BPM.
     avatar: 'assets/media/favicon.png'
-  version: 1.0.2
+  version: 1.2.4
 
 allPages:
   components:

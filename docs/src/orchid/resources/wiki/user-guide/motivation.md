@@ -2,9 +2,9 @@
 title: Motivation
 ---
 
-== Motivation
+## Motivation
 
-=== Typed access to process variables
+### Typed access to process variables
 
 Camunda BPM engine provide Java API to access the process variables.
 This consists of:
@@ -18,12 +18,12 @@ This consists of:
 All those methods requires the user of the API to know the variable type.
 Here is a usage example:
 
-[source,java]
-----
+
+``` java
 ProcessInstance processInstance = ...;
 List<OrderPosition> orderPositions = (List<OrderPosition>) runtimeService
   .getVariable(processInstance.id, "orderPositions");
-----
+```
 
 This leads to problems during refactoring and makes variable access more complicated than it is. This library addresses
 this issue and allows for more convenient type-safe process variable access.
@@ -31,10 +31,10 @@ this issue and allows for more convenient type-safe process variable access.
 
 More details can be found in:
 
-*  link:https://medium.com/holisticon-consultants/data-in-process-part-1-2620bf9abd76[Data in Process (Part 1)]
-*  link:https://medium.com/holisticon-consultants/data-in-process-part-2-7c6a109e6ee2[Data in Process (Part 2)]
+*  [Data in Process (Part 1)](https://medium.com/holisticon-consultants/data-in-process-part-1-2620bf9abd76)
+*  [Data in Process (Part 2)](https://medium.com/holisticon-consultants/data-in-process-part-2-7c6a109e6ee2)
 
-=== Variable guards
+### Variable guards
 
 Process automation often follows strict rules defined by the business. On the other hand, the process execution itself
 defines rules in terms of pre- and post-conditions on the process payload (stored as process variables in Camunda BPM).
@@ -46,8 +46,8 @@ are used in: `DelegateTask`, `DelegateExecution`, `TaskService`, `RuntimeService
 Here is an example of a task listener verifying that a process variable `ORDER_APPROVED` is set, which
 will throw a `GuardViolationException` if the condition is not met.
 
-[source,java]
-----
+
+``` java
 
 import static io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.exists;
 
@@ -58,9 +58,9 @@ class MyGuardListener extends DefaultGuardTaskListener {
         super(newArrayList(exists(ORDER_APPROVED)), true);
     }
 }
-----
+```
 
-=== Anti-Corruption-Layer
+### Anti-Corruption-Layer
 
 If a process is signalled or hit by a correlated message, there is no way to check if the transported variables are set correctly.
 In addition, the variables are written directly to the execution of the correlated process instance. In case of a multi-instance
@@ -78,8 +78,7 @@ and finally pass over to the `VariableMapTransformer` to map from external to in
 
 Here is the code, required on the client side to correlate the message.
 
-[source,java]
-----
+``` java
 @Component
 class SomeService {
 
@@ -99,13 +98,12 @@ class SomeService {
         runtimeService.correlateMessage("message_1", MESSAGE_ACL.checkAndWrap(variables));
     }
 }
-----
+```
 
 On the process side, the BPMN message catch event should have an `End` listener responsible for unwrapping the values. If the listener is
 implemented as a Spring Bean bounded via delegate expression `${messageAclListener}` then the following code is responsible for providing such a listener:
 
-[source,java]
-----
+``` java
 @Configuration
 class SomeConfiguration {
 
@@ -122,9 +120,7 @@ class SomeConfiguration {
         return MY_ACL.getExecutionListener();
     }
 }
-----
+```
 
 Such a setup will only allow to correlate messages, if the variables provided include a value for the `ORDER_ID`. It will write all
 variables provided (`ORDER_ID` and `ORDER_APPROVED`) into a local scope of the execution.
-
-

@@ -1,17 +1,14 @@
 ---
-
 title: Java Examples
-
 ---
 
-== {{ page.title }}
+## Java Examples
 
 The following example code demonstrates the usage of the library using Java.
 
-=== Define variable
+### Define variable
 
-[source, java]
-----
+``` java
 public class OrderApproval {
   public static final VariableFactory<String> ORDER_ID = stringVariable("orderId");
   public static final VariableFactory<Order> ORDER = customVariable("order", Order.class);
@@ -19,12 +16,11 @@ public class OrderApproval {
   public static final VariableFactory<OrderPosition> ORDER_POSITION = customVariable("orderPosition", OrderPosition.class);
   public static final VariableFactory<BigDecimal> ORDER_TOTAL = customVariable("orderTotal", BigDecimal.class);
 }
-----
+```
 
-=== Read variable from Java delegate
+### Read variable from Java delegate
 
-[source, java]
-----
+``` java
 @Configuration
 class JavaDelegates {
 
@@ -37,14 +33,14 @@ class JavaDelegates {
     };
   }
 }
-----
+```
 
-=== Write variable from Java delegate
+### Write variable from Java delegate
 
-[source,java]
-----
-import java.math.BigDecimal
-;@Configuration
+``` java
+import java.math.BigDecimal;
+
+@Configuration
 class JavaDelegates {
 
   @Bean
@@ -55,14 +51,13 @@ class JavaDelegates {
     };
   }
 }
-----
+```
 
-=== Remove variable from Java delegate
+### Remove variable from Java delegate
 
-[source,java]
-----
-import java.math.BigDecimal
-;@Configuration
+``` java
+import java.math.BigDecimal;
+@Configuration
 class JavaDelegates {
 
   @Bean
@@ -72,12 +67,11 @@ class JavaDelegates {
     };
   }
 }
-----
+```
 
-=== Update variable from Java delegate
+### Update variable from Java delegate
 
-[source,java]
-----
+``` java
 import java.math.BigDecimal;
 @Configuration
 class JavaDelegates {
@@ -90,12 +84,11 @@ class JavaDelegates {
     };
   }
 }
-----
+```
 
-=== Fluent API to remove several variables
+### Fluent API to remove several variables
 
-[source,java]
-----
+``` java
 @Configuration
 class JavaDelegates {
 
@@ -112,12 +105,11 @@ class JavaDelegates {
     };
   }
 }
-----
+```
 
-=== Fluent API to set several variables
+### Fluent API to set several variables
 
-[source,java]
-----
+``` java
 @Component
 class SomeService {
 
@@ -147,12 +139,11 @@ class SomeService {
       runtimeService.startProcessInstanceById("myId", "businessKey", variables);
   }
 }
-----
+```
 
-=== Fluent API to read several variables
+### Fluent API to read several variables
 
-[source,java]
-----
+``` java
 @Component
 class SomeService {
 
@@ -181,13 +172,12 @@ class SomeService {
       return orderId;
   }
 }
-----
+```
 
 
-=== Anti-Corruption-Layer: Wrap variables to correlate
+### Anti-Corruption-Layer: Wrap variables to correlate
 
-[source,java]
-----
+``` java
 @Component
 class SomeService {
 
@@ -204,12 +194,11 @@ class SomeService {
       runtimeService.correlateMessage("message_1", MESSAGE_ACL.wrap(variables));
   }
 }
-----
+```
 
-=== Anti-Corruption-Layer: Check and wrap variables to correlate
+### Anti-Corruption-Layer: Check and wrap variables to correlate
 
-[source,java]
-----
+``` java
 @Component
 class SomeService {
 
@@ -228,9 +217,9 @@ class SomeService {
       runtimeService.correlateMessage("message_1", MESSAGE_ACL.checkAndWrap(variables));
   }
 }
-----
+```
 
-=== Example project
+### Example project
 
 For more examples, please check-out the Java Example project, at
-link:https://github.com/holunda-io/camunda-bpm-data/tree/develop/example/example-java[Github]
+[Github](https://github.com/holunda-io/camunda-bpm-data/tree/develop/example/example-java)
