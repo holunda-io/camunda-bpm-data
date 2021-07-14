@@ -30,7 +30,7 @@
     <jgiven.version>1.0.0</jgiven.version>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
 
-    <kotlin-logging.version>2.0.8</kotlin-logging.version>
+    <kotlin-logging.version>2.0.10</kotlin-logging.version>
     <mockito-kotlin.version>3.2.0</mockito-kotlin.version>
     <camunda-bpm-mockito.version>5.15.0</camunda-bpm-mockito.version>
     <mockito.version>3.11.2</mockito.version>
