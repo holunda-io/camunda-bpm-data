@@ -2,19 +2,47 @@ package io.holunda.camunda.bpm.data;
 
 
 import io.holunda.camunda.bpm.data.builder.VariableMapBuilder;
-import io.holunda.camunda.bpm.data.factory.*;
-import io.holunda.camunda.bpm.data.reader.*;
-import io.holunda.camunda.bpm.data.writer.*;
+import io.holunda.camunda.bpm.data.factory.BasicVariableFactory;
+import io.holunda.camunda.bpm.data.factory.ListVariableFactory;
+import io.holunda.camunda.bpm.data.factory.MapVariableFactory;
+import io.holunda.camunda.bpm.data.factory.SetVariableFactory;
+import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import io.holunda.camunda.bpm.data.reader.RuntimeServiceVariableReader;
+import io.holunda.camunda.bpm.data.reader.TaskServiceVariableReader;
+import io.holunda.camunda.bpm.data.reader.VariableMapReader;
+import io.holunda.camunda.bpm.data.reader.VariableReader;
+import io.holunda.camunda.bpm.data.reader.VariableScopeReader;
+import io.holunda.camunda.bpm.data.writer.CaseServiceVariableWriter;
+import io.holunda.camunda.bpm.data.writer.GlobalVariableWriter;
+import io.holunda.camunda.bpm.data.writer.RuntimeServiceVariableWriter;
+import io.holunda.camunda.bpm.data.writer.TaskServiceVariableWriter;
+import io.holunda.camunda.bpm.data.writer.VariableMapWriter;
+import io.holunda.camunda.bpm.data.writer.VariableScopeWriter;
+import io.holunda.camunda.bpm.data.writer.VariableWriter;
 import org.camunda.bpm.engine.CaseService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
+import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
 import org.camunda.bpm.extension.mockito.delegate.DelegateExecutionFake;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Date;
 
-import static io.holunda.camunda.bpm.data.CamundaBpmData.*;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.builder;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.customVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.dateVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.doubleVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.intVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.listVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.longVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.mapVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.reader;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.setVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.shortVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.writer;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.camunda.bpm.engine.variable.Variables.createVariables;
 import static org.mockito.ArgumentMatchers.any;
@@ -273,6 +301,18 @@ public class CamundaBpmDataTest {
     assertThat(reader).isNotSameAs(reader2);
     assertThat(reader).isEqualTo(reader2);
     assertThat(reader).isInstanceOf(VariableMapReader.class);
+  }
+
+  @Test
+  public void shouldCreateReaderProcessInstanceWithVariables() {
+    var processInstance = mock(ProcessInstanceWithVariables.class);
+    when(processInstance.getVariables()).thenReturn(createVariables());
+    VariableReader readerFromInstance = reader(processInstance);
+    VariableReader readerFromMap = reader(createVariables());
+
+    assertThat(readerFromInstance).isNotSameAs(readerFromMap);
+    assertThat(readerFromInstance).isEqualTo(readerFromMap);
+    assertThat(readerFromInstance).isInstanceOf(VariableMapReader.class);
   }
 
 
