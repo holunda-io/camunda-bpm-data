@@ -117,7 +117,7 @@ public class ApproveOrderTaskController {
 
     @PostMapping("/{taskId}")
     public ResponseEntity<Void> completeTask(@PathVariable("taskId") String taskId, @RequestBody ApproveTaskCompleteDto userInput) {
-        VariableMap vars = builder()
+        VariableMap vars = CamundaBpmData.builder()
             .set(ORDER_APPROVED, userInput.getApproved())
             .build();
         taskService.complete(taskId, vars);
