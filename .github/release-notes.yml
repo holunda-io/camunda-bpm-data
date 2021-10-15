@@ -8,7 +8,7 @@ changelog:
       labels: [ "Type: dependencies" ]
   issues:
     exclude:
-      labels: [ "Type: Incorrect Repository", "Type: question" ]
+      labels: [ "Type: question" ]
   contributors:
     exclude:
-      names: [ "dependabot" ]
+      names: [ "dependabot[bot]" ]
