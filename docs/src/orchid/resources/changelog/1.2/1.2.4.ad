@@ -2,5 +2,14 @@
 version: 1.2.4
 ---
 
+== Feature
+- Create automatic release notes based on milestone assignment of issues, #159
+- Assign name to VariablesGuard to better test that the expected guard has failed, #158
+- Read variables from ProcessInstanceWithVariables, #150
+
+== Fix
+- Provide example without Camunda Engine #129
+- Migrate to official Mockito Kotlin
+- Migrate to Markdown for docs to prepare removal of JavaEden/Orchid
 
 
