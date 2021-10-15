@@ -5,6 +5,7 @@ import io.holunda.camunda.bpm.data.guard.condition.*
 import org.assertj.core.api.Assertions.assertThat
 import org.camunda.bpm.engine.variable.Variables.createVariables
 import org.junit.Test
+import java.util.*
 
 class VariableGuardConditionTest {
 
@@ -77,6 +78,66 @@ class VariableGuardConditionTest {
 
     assertThat(result.size).isEqualTo(1)
     assertThat(result.first().message).isEqualTo("Expecting variable 'stringVariable' to match the condition, but its value 'some' has not.")
+  }
+
+  @Test
+  fun test_matches_regex() {
+    val value = "exreg"
+    val valueVariable = stringVariable(value)
+    val guard = VariablesGuard(valueVariable.matchesRegex(Regex("^regex.*")))
+
+    val vars = createVariables()
+    valueVariable.on(vars).set(value)
+
+    val result = guard.evaluate(vars)
+
+    assertThat(result.size).isEqualTo(1)
+    assertThat(result.first().message).isEqualTo("Expecting variable '$value' to match the regex '^regex.*', but its value '$value' has not.")
+  }
+
+  @Test
+  fun test_matches_regex_with_display_name() {
+    val value = "exreg"
+    val valueVariable = stringVariable(value)
+    val guard = VariablesGuard(valueVariable.matchesRegex(Regex("^regex.*"), "my Regex"))
+
+    val vars = createVariables()
+    valueVariable.on(vars).set(value)
+
+    val result = guard.evaluate(vars)
+
+    assertThat(result.size).isEqualTo(1)
+    assertThat(result.first().message).isEqualTo("Expecting variable '$value' to match the regex 'my Regex', but its value '$value' has not.")
+  }
+
+  @Test
+  fun test_matches_email_regex() {
+    val email = "b.testholisticon.de"
+    val emailVariable = stringVariable(email)
+    val guard = VariablesGuard(emailVariable.isEmail())
+
+    val vars = createVariables()
+    emailVariable.on(vars).set(email)
+
+    val result = guard.evaluate(vars)
+
+    assertThat(result.size).isEqualTo(1)
+    assertThat(result.first().message).isEqualTo("Expecting variable '$email' to match the regex 'E-Mail', but its value '$email' has not.")
+  }
+
+  @Test
+  fun test_matches_uuid_regex() {
+    val uuid = UUID.randomUUID().toString() + "1"
+    val uuidVariable = stringVariable(uuid)
+    val guard = VariablesGuard(uuidVariable.isUuid())
+
+    val vars = createVariables()
+    uuidVariable.on(vars).set(uuid)
+
+    val result = guard.evaluate(vars)
+
+    assertThat(result.size).isEqualTo(1)
+    assertThat(result.first().message).isEqualTo("Expecting variable '$uuid' to match the regex 'UUID', but its value '$uuid' has not.")
   }
 
 }

@@ -51,7 +51,7 @@ class VariableMatchesGuardCondition<T>(
 fun <T> VariableFactory<T>.matches(matcher: (value: T) -> Boolean) = VariableMatchesGuardCondition(this, false, matcher)
 
 /**
- * Creation extension for the condition.
+ * Creation extension for the local condition.
  * @param matcher function that must match the value.
  * @return instance of [VariableMatchesGuardCondition] on current factory.
  */

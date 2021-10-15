@@ -10,6 +10,10 @@ import java.util.function.Function
 class CamundaBpmDataGuardsTest {
 
   val FOO = stringVariable("foo")
+  val EMAIL = "b.test@holisticon.de"
+  val EMAIL_VARIABLE  = stringVariable(EMAIL)
+  val MYUUID = UUID.randomUUID().toString()
+  val UUID_VARIABLE = stringVariable(MYUUID)
 
   @Test
   fun `should construct exists condition`() {
@@ -98,6 +102,78 @@ class CamundaBpmDataGuardsTest {
   }
 
   @Test
+  fun `should construct matchesRegex condition`() {
+    val condition = CamundaBpmDataGuards.matchesRegex(FOO, "^special.*")
+    assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(FOO)
+    assertThat(condition.local).isEqualTo(false)
+    assertThat(condition.evaluate(Optional.of("special_val"))).isEmpty()
+  }
+
+  @Test
+  fun `should construct matchesRegex local condition`() {
+    val condition = CamundaBpmDataGuards.matchesRegexLocal(FOO, "^special.*")
+    assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(FOO)
+    assertThat(condition.local).isEqualTo(true)
+    assertThat(condition.evaluate(Optional.of("special_val"))).isEmpty()
+  }
+
+  @Test
+  fun `should construct matchesRegex with regexDisplayName condition`() {
+    val condition = CamundaBpmDataGuards.matchesRegex(FOO, "^special.*", "special")
+    assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(FOO)
+    assertThat(condition.local).isEqualTo(false)
+    assertThat(condition.evaluate(Optional.of("special_val"))).isEmpty()
+  }
+
+  @Test
+  fun `should construct matchesRegex with regexDisplayName local condition`() {
+    val condition = CamundaBpmDataGuards.matchesRegexLocal(FOO, "^special.*", "special")
+    assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(FOO)
+    assertThat(condition.local).isEqualTo(true)
+    assertThat(condition.evaluate(Optional.of("special_val"))).isEmpty()
+  }
+
+  @Test
+  fun `should construct matchesRegex E-Mail condition`() {
+    val condition = CamundaBpmDataGuards.isEmail(EMAIL_VARIABLE)
+    assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(EMAIL_VARIABLE)
+    assertThat(condition.local).isEqualTo(false)
+    assertThat(condition.evaluate(Optional.of(EMAIL))).isEmpty()
+  }
+
+  @Test
+  fun `should construct matchesRegex E-Mail local condition`() {
+    val condition = CamundaBpmDataGuards.isEmailLocal(EMAIL_VARIABLE)
+    assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(EMAIL_VARIABLE)
+    assertThat(condition.local).isEqualTo(true)
+    assertThat(condition.evaluate(Optional.of(EMAIL))).isEmpty()
+  }
+
+  @Test
+  fun `should construct matchesRegex UUID condition`() {
+    val condition = CamundaBpmDataGuards.isUuid(UUID_VARIABLE)
+    assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(UUID_VARIABLE)
+    assertThat(condition.local).isEqualTo(false)
+    assertThat(condition.evaluate(Optional.of(MYUUID))).isEmpty()
+  }
+
+  @Test
+  fun `should construct matchesRegex UUID local condition`() {
+    val condition = CamundaBpmDataGuards.isUuidLocal(UUID_VARIABLE)
+    assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(UUID_VARIABLE)
+    assertThat(condition.local).isEqualTo(true)
+    assertThat(condition.evaluate(Optional.of(MYUUID))).isEmpty()
+  }
+
+  @Test
   fun `kotlin should construct exists condition`() {
     val condition = FOO.exists()
     assertThat(condition).isInstanceOf(VariableExistsGuardCondition::class.java)
@@ -181,6 +257,78 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(true)
     assertThat(condition.evaluate(Optional.of("special_val_local"))).isEmpty()
+  }
+
+  @Test
+  fun `kotlin should construct matchesRegex condition`() {
+    val condition = FOO.matchesRegex(Regex("^special.*" ))
+    assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(FOO)
+    assertThat(condition.local).isEqualTo(false)
+    assertThat(condition.evaluate(Optional.of("special_val"))).isEmpty()
+  }
+
+  @Test
+  fun `kotlin should construct matchesRegex local condition`() {
+    val condition = FOO.matchesRegexLocal(Regex("^special.*" ))
+    assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(FOO)
+    assertThat(condition.local).isEqualTo(true)
+    assertThat(condition.evaluate(Optional.of("special_val"))).isEmpty()
+  }
+
+  @Test
+  fun `kotlin should construct matchesRegex with regexDisplayName condition`() {
+    val condition = FOO.matchesRegex(Regex("^special.*") ,"special")
+    assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(FOO)
+    assertThat(condition.local).isEqualTo(false)
+    assertThat(condition.evaluate(Optional.of("special_val"))).isEmpty()
+  }
+
+  @Test
+  fun `kotlin should construct matchesRegex with regexDisplayName local condition`() {
+    val condition = FOO.matchesRegexLocal(Regex("^special.*") ,"special")
+    assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(FOO)
+    assertThat(condition.local).isEqualTo(true)
+    assertThat(condition.evaluate(Optional.of("special_val"))).isEmpty()
+  }
+
+  @Test
+  fun `kotlin should construct matchesRegex E-Mail condition`() {
+    val condition = EMAIL_VARIABLE.isEmail()
+    assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(EMAIL_VARIABLE)
+    assertThat(condition.local).isEqualTo(false)
+    assertThat(condition.evaluate(Optional.of(EMAIL))).isEmpty()
+  }
+
+  @Test
+  fun `kotlin should construct matchesRegex E-Mail local condition`() {
+    val condition = EMAIL_VARIABLE.isEmailLocal()
+    assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(EMAIL_VARIABLE)
+    assertThat(condition.local).isEqualTo(true)
+    assertThat(condition.evaluate(Optional.of(EMAIL))).isEmpty()
+  }
+
+  @Test
+  fun `kotlin should construct matchesRegex UUID condition`() {
+    val condition = UUID_VARIABLE.isUuid()
+    assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(UUID_VARIABLE)
+    assertThat(condition.local).isEqualTo(false)
+    assertThat(condition.evaluate(Optional.of(MYUUID))).isEmpty()
+  }
+
+  @Test
+  fun `kotlin should construct matchesRegex UUID local condition`() {
+    val condition = UUID_VARIABLE.isUuidLocal()
+    assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(UUID_VARIABLE)
+    assertThat(condition.local).isEqualTo(true)
+    assertThat(condition.evaluate(Optional.of(MYUUID))).isEmpty()
   }
 
 }
