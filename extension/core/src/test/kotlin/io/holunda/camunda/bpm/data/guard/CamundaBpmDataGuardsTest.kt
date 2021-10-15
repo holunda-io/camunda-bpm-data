@@ -9,11 +9,13 @@ import java.util.function.Function
 
 class CamundaBpmDataGuardsTest {
 
-  val FOO = stringVariable("foo")
-  val EMAIL = "b.test@holisticon.de"
-  val EMAIL_VARIABLE  = stringVariable(EMAIL)
-  val MYUUID = UUID.randomUUID().toString()
-  val UUID_VARIABLE = stringVariable(MYUUID)
+  companion object {
+    private val FOO = stringVariable("foo")
+    private val EMAIL = "b.test@holisticon.de"
+    private val EMAIL_VARIABLE = stringVariable(EMAIL)
+    private val MYUUID = UUID.randomUUID().toString()
+    private val UUID_VARIABLE = stringVariable(MYUUID)
+  }
 
   @Test
   fun `should construct exists condition`() {
@@ -21,6 +23,11 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition).isInstanceOf(VariableExistsGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(false)
+    assertThat(condition.toString()).isEqualTo("Exists condition for variable 'foo'")
+    assertThat(condition.evaluate(Optional.of("value"))).isEmpty()
+    assertThat(condition.evaluate(Optional.empty())).contains(
+      GuardViolation(condition, Optional.empty(), "Expecting variable 'foo' to be set, but it was not found.")
+    )
   }
 
   @Test
@@ -29,6 +36,11 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition).isInstanceOf(VariableExistsGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(true)
+    assertThat(condition.toString()).isEqualTo("Exists condition for local variable 'foo'")
+    assertThat(condition.evaluate(Optional.of("value"))).isEmpty()
+    assertThat(condition.evaluate(Optional.empty())).contains(
+      GuardViolation(condition, Optional.empty(), "Expecting local variable 'foo' to be set, but it was not found.")
+    )
   }
 
   @Test
@@ -37,6 +49,11 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition).isInstanceOf(VariableNotExistsGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(false)
+    assertThat(condition.toString()).isEqualTo("NotExists condition for variable 'foo'")
+    assertThat(condition.evaluate(Optional.empty())).isEmpty()
+    assertThat(condition.evaluate(Optional.of("value"))).contains(
+      GuardViolation(condition, Optional.of("value"), "Expecting variable 'foo' not to be set, but it had a value of 'value'.")
+    )
   }
 
   @Test
@@ -45,6 +62,11 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition).isInstanceOf(VariableNotExistsGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(true)
+    assertThat(condition.toString()).isEqualTo("NotExists condition for local variable 'foo'")
+    assertThat(condition.evaluate(Optional.empty())).isEmpty()
+    assertThat(condition.evaluate(Optional.of("value"))).contains(
+      GuardViolation(condition, Optional.of("value"), "Expecting local variable 'foo' not to be set, but it had a value of 'value'.")
+    )
   }
 
   @Test
@@ -54,6 +76,14 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(false)
     assertThat(condition.value).isEqualTo("val")
+    assertThat(condition.toString()).isEqualTo("Value condition for variable 'foo', value 'val'")
+    assertThat(condition.evaluate(Optional.of("val"))).isEmpty()
+    assertThat(condition.evaluate(Optional.empty())).contains(
+      GuardViolation(CamundaBpmDataGuards.exists(FOO), Optional.empty(), "Expecting variable 'foo' to be set, but it was not found.")
+    )
+    assertThat(condition.evaluate(Optional.of("other"))).contains(
+      GuardViolation(condition, Optional.of("other"), "Expecting variable 'foo' to have value 'val', but it was 'other'.")
+    )
   }
 
   @Test
@@ -63,6 +93,14 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(true)
     assertThat(condition.value).isEqualTo("valLocal")
+    assertThat(condition.toString()).isEqualTo("Value condition for local variable 'foo', value 'valLocal'")
+    assertThat(condition.evaluate(Optional.of("valLocal"))).isEmpty()
+    assertThat(condition.evaluate(Optional.empty())).contains(
+      GuardViolation(CamundaBpmDataGuards.existsLocal(FOO), Optional.empty(), "Expecting local variable 'foo' to be set, but it was not found.")
+    )
+    assertThat(condition.evaluate(Optional.of("other"))).contains(
+      GuardViolation(condition, Optional.of("other"), "Expecting local variable 'foo' to have value 'valLocal', but it was 'other'.")
+    )
   }
 
   @Test
@@ -72,6 +110,14 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(false)
     assertThat(condition.values).containsExactlyInAnyOrder("val1", "val2")
+    assertThat(condition.toString()).isEqualTo("ValueIn condition for variable 'foo', values ['val1', 'val2']")
+    assertThat(condition.evaluate(Optional.of("val1"))).isEmpty()
+    assertThat(condition.evaluate(Optional.empty())).contains(
+      GuardViolation(CamundaBpmDataGuards.exists(FOO), Optional.empty(), "Expecting variable 'foo' to be set, but it was not found.")
+    )
+    assertThat(condition.evaluate(Optional.of("other"))).contains(
+      GuardViolation(condition, Optional.of("other"), "Expecting variable 'foo' to be one of ['val1', 'val2'], but it was 'other'.")
+    )
   }
 
   @Test
@@ -81,24 +127,45 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(true)
     assertThat(condition.values).containsExactlyInAnyOrder("valLocal1", "valLocal2")
+    assertThat(condition.toString()).isEqualTo("ValueIn condition for local variable 'foo', values ['valLocal1', 'valLocal2']")
+    assertThat(condition.evaluate(Optional.of("valLocal1"))).isEmpty()
+    assertThat(condition.evaluate(Optional.empty())).contains(
+      GuardViolation(CamundaBpmDataGuards.existsLocal(FOO), Optional.empty(), "Expecting local variable 'foo' to be set, but it was not found.")
+    )
+    assertThat(condition.evaluate(Optional.of("other"))).contains(
+      GuardViolation(condition, Optional.of("other"), "Expecting local variable 'foo' to be one of ['valLocal1', 'valLocal2'], but it was 'other'.")
+    )
   }
 
   @Test
   fun `should construct matches condition`() {
-    val condition = CamundaBpmDataGuards.matches(FOO, Function<String, Boolean> { it == "special_val" })
+    val condition = CamundaBpmDataGuards.matches(FOO) { it == "special_val" }
     assertThat(condition).isInstanceOf(VariableMatchesGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(false)
+    assertThat(condition.toString()).isEqualTo("Matches condition for variable 'foo'")
     assertThat(condition.evaluate(Optional.of("special_val"))).isEmpty()
+    assertThat(condition.evaluate(Optional.empty())).contains(
+      GuardViolation(CamundaBpmDataGuards.exists(FOO), Optional.empty(), "Expecting variable 'foo' to be set, but it was not found.")
+    )
+    assertThat(condition.evaluate(Optional.of("mismatch"))).contains(
+      GuardViolation(condition, Optional.of("mismatch"), "Expecting variable 'foo' to match the condition, but its value 'mismatch' has not.")
+    )
   }
 
   @Test
   fun `should construct matches local condition`() {
-    val condition = CamundaBpmDataGuards.matchesLocal(FOO, Function<String, Boolean> { it == "special_val_local" })
+    val condition = CamundaBpmDataGuards.matchesLocal(FOO) { it == "special_val_local" }
     assertThat(condition).isInstanceOf(VariableMatchesGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(true)
     assertThat(condition.evaluate(Optional.of("special_val_local"))).isEmpty()
+    assertThat(condition.evaluate(Optional.empty())).contains(
+      GuardViolation(CamundaBpmDataGuards.existsLocal(FOO), Optional.empty(), "Expecting local variable 'foo' to be set, but it was not found.")
+    )
+    assertThat(condition.evaluate(Optional.of("mismatch"))).contains(
+      GuardViolation(condition, Optional.of("mismatch"), "Expecting local variable 'foo' to match the condition, but its value 'mismatch' has not.")
+    )
   }
 
   @Test
@@ -108,6 +175,12 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(false)
     assertThat(condition.evaluate(Optional.of("special_val"))).isEmpty()
+    assertThat(condition.evaluate(Optional.empty())).contains(
+      GuardViolation(CamundaBpmDataGuards.exists(FOO), Optional.empty(), "Expecting variable 'foo' to be set, but it was not found.")
+    )
+    assertThat(condition.evaluate(Optional.of("mismatch"))).contains(
+      GuardViolation(condition, Optional.of("mismatch"), "Expecting variable 'foo' to match the regex '^special.*', but its value 'mismatch' has not.")
+    )
   }
 
   @Test
@@ -117,6 +190,12 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(true)
     assertThat(condition.evaluate(Optional.of("special_val"))).isEmpty()
+    assertThat(condition.evaluate(Optional.empty())).contains(
+      GuardViolation(CamundaBpmDataGuards.existsLocal(FOO), Optional.empty(), "Expecting local variable 'foo' to be set, but it was not found.")
+    )
+    assertThat(condition.evaluate(Optional.of("mismatch"))).contains(
+      GuardViolation(condition, Optional.of("mismatch"), "Expecting local variable 'foo' to match the regex '^special.*', but its value 'mismatch' has not.")
+    )
   }
 
   @Test
@@ -266,6 +345,7 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(false)
     assertThat(condition.evaluate(Optional.of("special_val"))).isEmpty()
+    assertThat(condition.toString()).isEqualTo("MatchesRegex condition for variable '${FOO.name}'")
   }
 
   @Test
@@ -275,6 +355,7 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(true)
     assertThat(condition.evaluate(Optional.of("special_val"))).isEmpty()
+    assertThat(condition.toString()).isEqualTo("MatchesRegex condition for local variable '${FOO.name}'")
   }
 
   @Test
@@ -283,6 +364,7 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(false)
+    assertThat(condition.toString()).isEqualTo("MatchesRegex condition for variable '${FOO.name}'")
     assertThat(condition.evaluate(Optional.of("special_val"))).isEmpty()
   }
 
@@ -292,6 +374,7 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(true)
+    assertThat(condition.toString()).isEqualTo("MatchesRegex condition for local variable '${FOO.name}'")
     assertThat(condition.evaluate(Optional.of("special_val"))).isEmpty()
   }
 
@@ -301,6 +384,7 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(EMAIL_VARIABLE)
     assertThat(condition.local).isEqualTo(false)
+    assertThat(condition.toString()).isEqualTo("MatchesRegex condition for variable '${EMAIL_VARIABLE.name}'")
     assertThat(condition.evaluate(Optional.of(EMAIL))).isEmpty()
   }
 
@@ -310,6 +394,7 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(EMAIL_VARIABLE)
     assertThat(condition.local).isEqualTo(true)
+    assertThat(condition.toString()).isEqualTo("MatchesRegex condition for local variable '${EMAIL_VARIABLE.name}'")
     assertThat(condition.evaluate(Optional.of(EMAIL))).isEmpty()
   }
 
@@ -319,6 +404,7 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(UUID_VARIABLE)
     assertThat(condition.local).isEqualTo(false)
+    assertThat(condition.toString()).isEqualTo("MatchesRegex condition for variable '${UUID_VARIABLE.name}'")
     assertThat(condition.evaluate(Optional.of(MYUUID))).isEmpty()
   }
 
@@ -328,6 +414,7 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition).isInstanceOf(VariableMatchesRegexGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(UUID_VARIABLE)
     assertThat(condition.local).isEqualTo(true)
+    assertThat(condition.toString()).isEqualTo("MatchesRegex condition for local variable '${UUID_VARIABLE.name}'")
     assertThat(condition.evaluate(Optional.of(MYUUID))).isEmpty()
   }
 
