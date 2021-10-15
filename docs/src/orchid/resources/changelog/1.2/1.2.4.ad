@@ -3,6 +3,7 @@ version: 1.2.4
 ---
 
 == Feature
+- New `VariableGuard` supporting Regex matching, #162
 - Create automatic release notes based on milestone assignment of issues, #159
 - Assign name to VariablesGuard to better test that the expected guard has failed, #158
 - Read variables from ProcessInstanceWithVariables, #150

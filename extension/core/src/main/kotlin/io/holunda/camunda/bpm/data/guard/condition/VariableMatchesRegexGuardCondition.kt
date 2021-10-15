@@ -101,13 +101,13 @@ fun <T> VariableFactory<T>.isEmail() = VariableMatchesRegexGuardCondition(this, 
 fun <T> VariableFactory<T>.isEmailLocal() = VariableMatchesRegexGuardCondition(this, true, Regex(EMAIL_REGEX), EMAIL_REGEX_DISPLAY_NAME)
 
 /**
- * Creation extension for an UUID matching regex condition.
+ * Creation extension for a UUID matching regex condition.
  * @return instance of [VariableMatchesRegexGuardCondition] on current factory.
  */
 fun <T> VariableFactory<T>.isUuid() = VariableMatchesRegexGuardCondition(this, false, Regex(UUID_REGEX), UUID_REGEX_DISPLAY_NAME)
 
 /**
- * Creation extension for an UUID matching regex local condition.
+ * Creation extension for a UUID matching regex local condition.
  * @return instance of [VariableMatchesRegexGuardCondition] on current factory.
  */
 fun <T> VariableFactory<T>.isUuidLocal() = VariableMatchesRegexGuardCondition(this, true, Regex(UUID_REGEX), UUID_REGEX_DISPLAY_NAME)

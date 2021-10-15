@@ -21,6 +21,9 @@ title: Features
     - Condition to check if variable has a predefined value.
     - Condition to check if variable has one of predefined values.
     - Condition to check if variable matches condition specified by a custom function.
+    - Condition to check if variable matches provided regular expression.
+    - Condition to check if variable is a valid email address.
+    - Condition to check if variable is a valid UUID.
     - `DefaultGuardTaskListener` to construct variable conditions guards easily.
     - `DefaultGuardExecutionListener` to construct variable conditions guards easily.
 
