@@ -7,6 +7,7 @@ version: 1.2.4
 - Create automatic release notes based on milestone assignment of issues, #159
 - Assign name to VariablesGuard to better test that the expected guard has failed, #158
 - Read variables from ProcessInstanceWithVariables, #150
+- Guard conditions to match against a regex, E-Mail pattern or UUID pattern
 
 == Fix
 - Provide example without Camunda Engine #129

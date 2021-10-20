@@ -206,6 +206,34 @@ class SomeService {
 }
 ```
 
+### Define Guards to validate variables in the process
+
+``` kotlin
+@Configuration
+class VariableGuardConfiguration {
+
+    companion object {
+        const val LOAD_OPERATIONAL_FILE_GUARD = "loadOperationalFileGuard";
+    }
+
+    @Bean(LOAD_OPERATIONAL_FILE_GUARD)
+    fun loadOperationalFileGuard(): ExecutionListener =
+        DefaultGuardExecutionListener(
+            listOf(
+                REQUIRED_VALUE.exists(),
+                FUTURE_VALUE.notExists(),
+                THE_ANSWER.hasValue(42),
+                MY_DIRECTION.hasOneOfValues(setOf("left", "up", "down")),
+                USER_EMAIL.isEmail(),
+                DOCUMENT_ID.isUuid(),
+                DOCUMENT_BODY.matches { return@matches true },
+                DOCUMENT_BODY.matchesRegexLocal(Regex("^Dude.*"), "Starts with 'Dude'")
+            ), true
+        )
+
+}
+```
+
 ### Example project
 
 For more examples, please check-out the Kotlin Example project, at

@@ -219,6 +219,35 @@ class SomeService {
 }
 ```
 
+### Define Guards to validate variables in the process
+
+``` java
+@Configuration
+class VariableGuardConfiguration {
+
+    public static final String MY_GUARD_BEANNAME = "myGuardBeanName";
+
+    @Bean(VariableGuardConfiguration.MY_GUARD_BEANNAME)
+    public ExecutionListener myGuardBeanName() {
+        return new DefaultGuardExecutionListener(
+            Arrays.asList(
+                exists(REQUIRED_VALUE),
+                notExists(FUTURE_VALUE),
+                hasValue(THE_ANSWER, 42),
+                hasOneOfValues(MY_DIRECTION, Set.of("left", "up", "down")),
+                isEmail(USER_EMAIL),
+                isUuid(DOCUMENT_ID),
+                matches(DOCUMENT_BODY, this::myDocumentBodyMatcher),
+                matchesRegex(DOCUMENT_BODY, "^Dude.*", "Starts with 'Dude'")
+            ), true);
+    }
+
+    private Boolean myDocumentBodyMatcher(String body) {
+        return true;
+    }
+}
+```
+
 ### Example project
 
 For more examples, please check-out the Java Example project, at
