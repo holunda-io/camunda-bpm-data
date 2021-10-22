@@ -13,7 +13,7 @@ import org.camunda.bpm.engine.variable.VariableMap
  * @property variableConditions a list of conditions to add to the guard.
  */
 class VariablesGuard(
-  private val name : String = "anonymous",
+  private val name : String?,
   private val variableConditions: List<VariableGuardCondition<*>>
 ) {
 
@@ -28,7 +28,7 @@ class VariablesGuard(
    * Constructs an anonymous guard with a list of conditions.
    * @param variableConditions conditions to add to gurad.
    */
-  constructor(variableConditions: List<VariableGuardCondition<*>>) : this("anonymous", variableConditions)
+  constructor(variableConditions: List<VariableGuardCondition<*>>) : this(null, variableConditions)
 
   /**
    * Constructs an anonymous guard with exactly one condition.
@@ -117,6 +117,6 @@ class VariablesGuard(
   }
 
   override fun toString(): String {
-    return "VariablesGuard[$name](variableConditions=$variableConditions)"
+    return "VariablesGuard%s(variableConditions=$variableConditions)".format(if (name != null) "[$name]" else "")
   }
 }

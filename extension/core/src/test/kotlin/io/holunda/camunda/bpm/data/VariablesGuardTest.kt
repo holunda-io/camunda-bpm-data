@@ -36,9 +36,9 @@ class VariablesGuardTest {
 
   @Test
   fun shouldUseNameInToString() {
-    assertThat(VariablesGuard("MyVariablesGuard", listOf(exists(FOO))).toString()).contains("MyVariablesGuard")
-    assertThat(VariablesGuard(listOf(exists(FOO))).toString()).contains("anonymous")
-    assertThat(VariablesGuard("MyVariablesGuard", exists(FOO)).toString()).contains("MyVariablesGuard")
-    assertThat(VariablesGuard(exists(FOO)).toString()).contains("anonymous")
+    assertThat(VariablesGuard("MyVariablesGuard", listOf(exists(FOO))).toString()).startsWith("VariablesGuard[MyVariablesGuard](")
+    assertThat(VariablesGuard(listOf(exists(FOO))).toString()).startsWith("VariablesGuard(")
+    assertThat(VariablesGuard("MyVariablesGuard", exists(FOO)).toString()).startsWith("VariablesGuard[MyVariablesGuard](")
+    assertThat(VariablesGuard(exists(FOO)).toString()).startsWith("VariablesGuard(")
   }
 }
