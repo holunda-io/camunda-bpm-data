@@ -32,6 +32,13 @@ class VariablesGuardTest {
     val g1 = VariablesGuard.EMPTY
     val g2 = g1.fromExisting(c1).fromExisting(c2).fromExisting(c3)
     assertThat(g2).isEqualTo(VariablesGuard(listOf(c1, c2, c3)))
+  }
 
+  @Test
+  fun shouldUseNameInToString() {
+    assertThat(VariablesGuard("MyVariablesGuard", listOf(exists(FOO))).toString()).contains("MyVariablesGuard")
+    assertThat(VariablesGuard(listOf(exists(FOO))).toString()).contains("anonymous")
+    assertThat(VariablesGuard("MyVariablesGuard", exists(FOO)).toString()).contains("MyVariablesGuard")
+    assertThat(VariablesGuard(exists(FOO)).toString()).contains("anonymous")
   }
 }

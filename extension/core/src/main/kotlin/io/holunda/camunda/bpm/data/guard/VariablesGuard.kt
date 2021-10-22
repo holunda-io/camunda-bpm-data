@@ -9,9 +9,11 @@ import org.camunda.bpm.engine.variable.VariableMap
 /**
  * Guard on a set of variables.
  * @constructor Creates new guard.
+ * @property name optional name of the guard ('anonymous' by default)
  * @property variableConditions a list of conditions to add to the guard.
  */
 class VariablesGuard(
+  private val name : String = "anonymous",
   private val variableConditions: List<VariableGuardCondition<*>>
 ) {
 
@@ -23,10 +25,23 @@ class VariablesGuard(
   }
 
   /**
-   * Constructs a guard with exactly one condition.
+   * Constructs an anonymous guard with a list of conditions.
+   * @param variableConditions conditions to add to gurad.
+   */
+  constructor(variableConditions: List<VariableGuardCondition<*>>) : this("anonymous", variableConditions)
+
+  /**
+   * Constructs an anonymous guard with exactly one condition.
    * @param condition condition to add to gurad.
    */
   constructor(condition: VariableGuardCondition<*>) : this(listOf(condition))
+
+  /**
+   * Constructs a named guard with exactly one condition.
+   * @param name name of the guard.
+   * @param condition condition to add to gurad.
+   */
+  constructor(name: String, condition: VariableGuardCondition<*>) : this(name, listOf(condition))
 
   /**
    * Fluent builder to create a new guard from existing one adding one additional condition.
@@ -80,6 +95,11 @@ class VariablesGuard(
    */
   fun getVariables() = variableConditions.filter { !it.local }.map { it.variableFactory }
 
+  /**
+   * Retireves the name of this guard which can be provided during construction
+   * @return the name of the VariableGuard, 'anonymous' if no name was specified
+   */
+  fun getName() = name
 
   override fun equals(other: Any?): Boolean {
     if (this === other) return true
@@ -97,7 +117,6 @@ class VariablesGuard(
   }
 
   override fun toString(): String {
-    return "VariablesGuard(variableConditions=$variableConditions)"
+    return "VariablesGuard[$name](variableConditions=$variableConditions)"
   }
-
 }
