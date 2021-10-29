@@ -31,7 +31,7 @@ class DefaultGuardExecutionListener(
   override fun notify(execution: DelegateExecution) {
     val violations = guard.evaluate(execution)
     if (violations.isNotEmpty()) {
-      val message = "Guard violated by execution '${execution.id}' in activity '${execution.currentActivityName}'"
+      val message = "${guard.getName() ?: "Guard"} violated by execution '${execution.id}' in activity '${execution.currentActivityName}'"
       violations.forEach {
         logger.error("$message: ${it.message}")
       }
