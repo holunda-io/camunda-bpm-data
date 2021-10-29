@@ -238,12 +238,17 @@ class VariableGuardConfiguration {
                 isEmail(USER_EMAIL),
                 isUuid(DOCUMENT_ID),
                 matches(DOCUMENT_BODY, this::myDocumentBodyMatcher),
+                matches(DOCUMENT_BODY, this::myDocumentBodyMatcher, this::validationMessageSupplier),
                 matchesRegex(DOCUMENT_BODY, "^Dude.*", "Starts with 'Dude'")
             ), true);
     }
 
     private Boolean myDocumentBodyMatcher(String body) {
         return true;
+    }    
+
+    private String validationMessageSupplier(VariableFactory<String> variableFactory, String localLabel, Optional<String> option) {
+        return String.format("Expecting%s variable '%s' to allways match my document body matcher, but its value '%s' has not.", localLabel, variableFactory.getName(), option.orElse(""));
     }
 }
 ```

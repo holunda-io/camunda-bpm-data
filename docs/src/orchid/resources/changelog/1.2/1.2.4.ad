@@ -8,6 +8,7 @@ version: 1.2.4
 - Assign name to VariablesGuard to better test that the expected guard has failed, #158
 - Read variables from ProcessInstanceWithVariables, #150
 - Guard conditions to match against a regex, E-Mail pattern or UUID pattern
+- Guard condition 'matches' now supports a custom violation message supplier
 
 == Fix
 - Provide example without Camunda Engine #129

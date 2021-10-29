@@ -19,12 +19,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.EventListener;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.customVariable;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
-import static io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.exists;
+import static io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.*;
 
 /**
  * Process backing bean.
@@ -112,7 +113,7 @@ public class OrderApproval {
   }
 
   /**
-   * Checks that the variable "orderApproved" exists.
+   * Checks that the variable "orderApproved" exists and is true.
    * Used as task listener on complete of user task in BPMN ${taskExecutionListener}
    *
    * @return task listener.
@@ -121,11 +122,19 @@ public class OrderApproval {
   public TaskListener guardTaskListener() {
     return new DefaultGuardTaskListener(
       newArrayList(
-        exists(ORDER_APPROVED)
+        exists(ORDER_APPROVED),
+        matches(ORDER_APPROVED, this::isTrue, this::isTrueValidationMessageSupplier)
       ), true
     );
   }
 
+  private String isTrueValidationMessageSupplier(VariableFactory<Boolean> variableFactory, String localLabel, Optional<Boolean> option) {
+    return String.format("Expecting%s variable '%s' to match the condition 'shouldBeTrue', but its value '%s' has not.", localLabel, variableFactory.getName(), option.orElse(false));
+  }
+
+  private Boolean isTrue(Boolean a) {
+    return true;
+  }
 
   /**
    * Logs the task creation.

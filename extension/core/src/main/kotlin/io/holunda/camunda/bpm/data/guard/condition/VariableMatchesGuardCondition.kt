@@ -18,7 +18,11 @@ class VariableMatchesGuardCondition<T>(
    */
   variableFactory: VariableFactory<T>,
   local: Boolean = false,
-  private val matcher: (value: T) -> Boolean
+  private val matcher: (value: T) -> Boolean,
+  private val violationMessageSupplier: (variableFactory: VariableFactory<T>, localLabel: String, option: Optional<T>) -> String =
+    { variableFactory, localLabel, option ->
+      "Expecting$localLabel variable '${variableFactory.name}' to match the condition, but its value '${option.get()}' has not."
+    }
 ) : VariableGuardCondition<T>(variableFactory, local) {
 
   private val existsCondition = VariableExistsGuardCondition(variableFactory, local)
@@ -30,7 +34,7 @@ class VariableMatchesGuardCondition<T>(
         GuardViolation(
           condition = this,
           option = option,
-          message = "Expecting$localLabel variable '${variableFactory.name}' to match the condition, but its value '${option.get()}' has not."
+          message = violationMessageSupplier.invoke(variableFactory, localLabel, option)
         )
       )
     }
@@ -56,3 +60,25 @@ fun <T> VariableFactory<T>.matches(matcher: (value: T) -> Boolean) = VariableMat
  * @return instance of [VariableMatchesGuardCondition] on current factory.
  */
 fun <T> VariableFactory<T>.matchesLocal(matcher: (value: T) -> Boolean) = VariableMatchesGuardCondition(this, true, matcher)
+
+/**
+ * Creation extension for the condition.
+ * @param matcher function that must match the value.
+ * @param violationMessageSupplier supplier that specify the violation message.
+ * @return instance of [VariableMatchesGuardCondition] on current factory.
+ */
+fun <T> VariableFactory<T>.matches(
+  violationMessageSupplier: (variableFactory: VariableFactory<T>, localLabel: String, option: Optional<T>) -> String,
+  matcher: (value: T) -> Boolean
+) = VariableMatchesGuardCondition(this, false, matcher, violationMessageSupplier)
+
+/**
+ * Creation extension for the local condition.
+ * @param matcher function that must match the value.
+ * @param violationMessageSupplier supplier that specify the violation message.
+ * @return instance of [VariableMatchesGuardCondition] on current factory.
+ */
+fun <T> VariableFactory<T>.matchesLocal(
+  violationMessageSupplier: (variableFactory: VariableFactory<T>, localLabel: String, option: Optional<T>) -> String,
+  matcher: (value: T) -> Boolean
+) = VariableMatchesGuardCondition(this, true, matcher, violationMessageSupplier)

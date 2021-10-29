@@ -7,10 +7,14 @@ import io.holunda.camunda.bpm.data.example.kotlin.domain.Order
 import io.holunda.camunda.bpm.data.example.kotlin.domain.OrderPosition
 import io.holunda.camunda.bpm.data.example.kotlin.domain.OrderRepository
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER
+import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_APPROVED
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_ID
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_POSITION
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_TOTAL
 import io.holunda.camunda.bpm.data.factory.VariableFactory
+import io.holunda.camunda.bpm.data.guard.condition.exists
+import io.holunda.camunda.bpm.data.guard.condition.matches
+import io.holunda.camunda.bpm.data.guard.integration.DefaultGuardTaskListener
 import mu.KLogging
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.DelegateTask
@@ -21,6 +25,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.event.EventListener
 import java.math.BigDecimal
+import java.util.*
 
 /**
  * Backing bean.
@@ -72,6 +77,23 @@ class OrderApproval {
     val total = ORDER_TOTAL.from(execution).get()
     ORDER_TOTAL.on(execution).set(total)
   }
+
+  /**
+   * Checks that the variable "orderApproved" exists and is true.
+   * Used as task listener on complete of user task in BPMN ${taskExecutionListener}
+   *
+   * @return task listener.
+   */
+  @Bean
+  fun guardTaskListener() = DefaultGuardTaskListener(
+    listOf(
+      ORDER_APPROVED.exists(),
+      ORDER_APPROVED.matches(this::isTrueViolationMessageSupplier) { it == true }
+    ), true
+  )
+
+  private fun isTrueViolationMessageSupplier(variableFactory: VariableFactory<Boolean>, localLabel: String, option: Optional<Boolean>) =
+    "Expecting$localLabel variable '${variableFactory.name}' to be true, but its value '${option.get()}' has not."
 
   /**
    * Log the task id.

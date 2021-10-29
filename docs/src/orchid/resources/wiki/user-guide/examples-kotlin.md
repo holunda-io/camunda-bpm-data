@@ -227,10 +227,13 @@ class VariableGuardConfiguration {
                 USER_EMAIL.isEmail(),
                 DOCUMENT_ID.isUuid(),
                 DOCUMENT_BODY.matches { return@matches true },
+                DOCUMENT_BODY.matches(this::validationMessageSupplier) { return@matches true },
                 DOCUMENT_BODY.matchesRegexLocal(Regex("^Dude.*"), "Starts with 'Dude'")
             ), true
         )
-
+        
+    private fun validationMessageSupplier(variableFactory: VariableFactory<String>, localLabel: String, option: Optional<String>) =
+        "Expecting$localLabel variable '${variableFactory.name}'  to allways match my document body matcher, but its value '${option.get()}' has not."
 }
 ```
 

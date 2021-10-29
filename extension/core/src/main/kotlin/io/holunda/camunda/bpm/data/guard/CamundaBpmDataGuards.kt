@@ -2,6 +2,7 @@ package io.holunda.camunda.bpm.data.guard
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory
 import io.holunda.camunda.bpm.data.guard.condition.*
+import java.util.*
 import java.util.function.Function
 
 /**
@@ -87,6 +88,32 @@ object CamundaBpmDataGuards {
   @JvmStatic
   fun <T> matches(variableFactory: VariableFactory<T>,
                   matcher: Function<T, Boolean>) = variableFactory.matches { matcher.apply(it) }
+
+  /**
+   * Creates matches local condition.
+   * @param variableFactory factory to work on.
+   * @param matcher a matcher function to check the variable value.
+   * @param violationMessageSupplier supplier to specify the violation message
+   */
+  @JvmStatic
+  fun <T> matchesLocal(
+    variableFactory: VariableFactory<T>,
+    matcher: Function<T, Boolean>,
+    violationMessageSupplier: (variableFactory: VariableFactory<T>, localLabel: String, option: Optional<T>) -> String
+  ) = variableFactory.matchesLocal(violationMessageSupplier) { matcher.apply(it) }
+
+  /**
+   * Creates matches condition.
+   * @param variableFactory factory to work on.
+   * @param matcher a matcher function to check the variable value.
+   * @param violationMessageSupplier supplier to specify the violation message
+   */
+  @JvmStatic
+  fun <T> matches(
+    variableFactory: VariableFactory<T>,
+    matcher: Function<T, Boolean>,
+    violationMessageSupplier: (variableFactory: VariableFactory<T>, localLabel: String, option: Optional<T>) -> String
+  ) = variableFactory.matches(violationMessageSupplier) { matcher.apply(it) }
 
   /**
    * Creates matches regex local condition.
