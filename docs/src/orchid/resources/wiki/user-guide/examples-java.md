@@ -248,7 +248,7 @@ class VariableGuardConfiguration {
     }    
 
     private String validationMessageSupplier(VariableFactory<String> variableFactory, String localLabel, Optional<String> option) {
-        return String.format("Expecting%s variable '%s' to allways match my document body matcher, but its value '%s' has not.", localLabel, variableFactory.getName(), option.orElse(""));
+        return String.format("Expecting%s variable '%s' to always match my document body matcher, but its value '%s' has not.", localLabel, variableFactory.getName(), option.orElse(""));
     }
 }
 ```

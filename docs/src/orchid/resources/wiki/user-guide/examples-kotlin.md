@@ -233,7 +233,7 @@ class VariableGuardConfiguration {
         )
         
     private fun validationMessageSupplier(variableFactory: VariableFactory<String>, localLabel: String, option: Optional<String>) =
-        "Expecting$localLabel variable '${variableFactory.name}'  to allways match my document body matcher, but its value '${option.get()}' has not."
+        "Expecting$localLabel variable '${variableFactory.name}' to always match my document body matcher, but its value '${option.get()}' has not."
 }
 ```
 
