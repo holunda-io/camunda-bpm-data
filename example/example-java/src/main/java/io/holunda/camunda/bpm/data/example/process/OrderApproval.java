@@ -122,18 +122,9 @@ public class OrderApproval {
   public TaskListener guardTaskListener() {
     return new DefaultGuardTaskListener(
       newArrayList(
-        exists(ORDER_APPROVED),
-        matches(ORDER_APPROVED, this::isTrue, this::isTrueValidationMessageSupplier)
+        exists(ORDER_APPROVED)
       ), true
     );
-  }
-
-  private String isTrueValidationMessageSupplier(VariableFactory<Boolean> variableFactory, String localLabel, Optional<Boolean> option) {
-    return String.format("Expecting%s variable '%s' to match the condition 'shouldBeTrue', but its value '%s' has not.", localLabel, variableFactory.getName(), option.orElse(false));
-  }
-
-  private Boolean isTrue(Boolean a) {
-    return true;
   }
 
   /**
