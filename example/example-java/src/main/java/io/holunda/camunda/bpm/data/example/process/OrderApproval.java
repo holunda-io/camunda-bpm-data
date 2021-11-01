@@ -19,7 +19,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.EventListener;
 
 import java.math.BigDecimal;
-import java.util.Optional;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable;
