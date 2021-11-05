@@ -81,6 +81,22 @@ class VariableGuardConditionTest {
   }
 
   @Test
+  fun test_matches_with_validation_message_supplier() {
+
+    val guard = VariablesGuard(STRING_VAR.matches({ variableFactory, localLabel, option ->
+      "Expecting$localLabel variable '${variableFactory.name}' to start with 'expected', but its value '${option.get()}' has not."
+    }) { it.startsWith("expected") })
+
+    val vars = createVariables()
+    STRING_VAR.on(vars).set("some")
+
+    val result = guard.evaluate(vars)
+
+    assertThat(result.size).isEqualTo(1)
+    assertThat(result.first().message).isEqualTo("Expecting variable 'stringVariable' to start with 'expected', but its value 'some' has not.")
+  }
+
+  @Test
   fun test_matches_regex() {
     val value = "exreg"
     val valueVariable = stringVariable(value)

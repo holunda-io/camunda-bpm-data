@@ -5,7 +5,6 @@ import io.holunda.camunda.bpm.data.guard.condition.*
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import java.util.*
-import java.util.function.Function
 
 class CamundaBpmDataGuardsTest {
 
@@ -165,6 +164,58 @@ class CamundaBpmDataGuardsTest {
     )
     assertThat(condition.evaluate(Optional.of("mismatch"))).contains(
       GuardViolation(condition, Optional.of("mismatch"), "Expecting local variable 'foo' to match the condition, but its value 'mismatch' has not.")
+    )
+  }
+
+  @Test
+  fun `should construct matches condition with validation message supplier`() {
+    val condition = CamundaBpmDataGuards.matches(FOO, { it == "special_val" }) { variableFactory, localLabel, option ->
+      "Expecting$localLabel variable '${variableFactory.name}' to be 'special_val', but its value '${option.get()}' has not."
+    }
+
+    assertThat(condition).isInstanceOf(VariableMatchesGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(FOO)
+    assertThat(condition.local).isEqualTo(false)
+    assertThat(condition.evaluate(Optional.of("special_val"))).isEmpty()
+    assertThat(condition.evaluate(Optional.empty())).contains(
+      GuardViolation(
+        CamundaBpmDataGuards.exists(FOO),
+        Optional.empty(),
+        "Expecting variable 'foo' to be set, but it was not found."
+      )
+    )
+    assertThat(condition.evaluate(Optional.of("mismatch"))).contains(
+      GuardViolation(
+        condition,
+        Optional.of("mismatch"),
+        "Expecting variable 'foo' to be 'special_val', but its value 'mismatch' has not."
+      )
+    )
+  }
+
+  @Test
+  fun `should construct matches local condition with validation message supplier`() {
+    val condition = CamundaBpmDataGuards.matchesLocal(FOO, { it == "special_val_local" }) { variableFactory, localLabel, option ->
+      "Expecting$localLabel variable '${variableFactory.name}' to be 'special_val_local', but its value '${option.get()}' has not."
+    }
+
+    assertThat(condition).isInstanceOf(VariableMatchesGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(FOO)
+    assertThat(condition.local).isEqualTo(true)
+    assertThat(condition.evaluate(Optional.of("special_val_local"))).isEmpty()
+    assertThat(condition.evaluate(Optional.empty())).contains(
+      GuardViolation(
+        CamundaBpmDataGuards.existsLocal(FOO),
+        Optional.empty(),
+        "Expecting local variable 'foo' to be set, but it was not found."
+      )
+    )
+    assertThat(condition.evaluate(Optional.of("mismatch"))).contains(
+      GuardViolation(
+        condition,
+        Optional.of("mismatch"),
+        "Expecting local variable 'foo' to be 'special_val_local', but its value 'mismatch' has not."
+      )
     )
   }
 
@@ -332,6 +383,28 @@ class CamundaBpmDataGuardsTest {
   @Test
   fun `kotlin should construct matches local condition`() {
     val condition = FOO.matchesLocal { it == "special_val_local" }
+    assertThat(condition).isInstanceOf(VariableMatchesGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(FOO)
+    assertThat(condition.local).isEqualTo(true)
+    assertThat(condition.evaluate(Optional.of("special_val_local"))).isEmpty()
+  }
+
+  @Test
+  fun `kotlin should construct matches condition with Validation Message Supplier`() {
+    val condition = FOO.matches({ variableFactory, localLabel, option ->
+      "Expecting$localLabel variable '${variableFactory.name}' to be 'special_val', but its value '${option.get()}' has not."
+    }) { it == "special_val" }
+    assertThat(condition).isInstanceOf(VariableMatchesGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(FOO)
+    assertThat(condition.local).isEqualTo(false)
+    assertThat(condition.evaluate(Optional.of("special_val"))).isEmpty()
+  }
+
+  @Test
+  fun `kotlin should construct matches local condition with Validation Message Supplier`() {
+    val condition = FOO.matchesLocal({ variableFactory, localLabel, option ->
+      "Expecting$localLabel variable '${variableFactory.name}' to be 'special_val_local', but its value '${option.get()}' has not."
+    }) { it == "special_val_local" }
     assertThat(condition).isInstanceOf(VariableMatchesGuardCondition::class.java)
     assertThat(condition.variableFactory).isEqualTo(FOO)
     assertThat(condition.local).isEqualTo(true)
