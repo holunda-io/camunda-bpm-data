@@ -491,4 +491,24 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition.evaluate(Optional.of(MYUUID))).isEmpty()
   }
 
+  @Test
+  fun `kotlin should construct validBean condition`() {
+    val condition = UUID_VARIABLE.isValidBean()
+    assertThat(condition).isInstanceOf(VariableValidBeanGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(UUID_VARIABLE)
+    assertThat(condition.local).isEqualTo(false)
+    assertThat(condition.toString()).isEqualTo("ValidBean condition for variable '${UUID_VARIABLE.name}'")
+    assertThat(condition.evaluate(Optional.of(MYUUID))).isEmpty()
+  }
+
+  @Test
+  fun `kotlin should construct validBean local condition`() {
+    val condition = UUID_VARIABLE.isValidBeanLocal()
+    assertThat(condition).isInstanceOf(VariableValidBeanGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(UUID_VARIABLE)
+    assertThat(condition.local).isEqualTo(true)
+    assertThat(condition.toString()).isEqualTo("ValidBean condition for local variable '${UUID_VARIABLE.name}'")
+    assertThat(condition.evaluate(Optional.of(MYUUID))).isEmpty()
+  }
+
 }

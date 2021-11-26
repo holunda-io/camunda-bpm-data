@@ -179,4 +179,18 @@ object CamundaBpmDataGuards {
   @JvmStatic
   fun <T> isUuid(variableFactory: VariableFactory<T>) = variableFactory.isUuid()
 
+  /**
+   * Creates valid bean condition.
+   * @param variableFactory factory to work on.
+   */
+  @JvmStatic
+  fun <T> isValidBean(variableFactory: VariableFactory<T>) = variableFactory.isValidBean()
+
+  /**
+   * Creates valid bean local condition.
+   * @param variableFactory factory to work on.
+   */
+  @JvmStatic
+  fun <T> isValidBeanLocal(variableFactory: VariableFactory<T>) = variableFactory.isValidBeanLocal()
+
 }

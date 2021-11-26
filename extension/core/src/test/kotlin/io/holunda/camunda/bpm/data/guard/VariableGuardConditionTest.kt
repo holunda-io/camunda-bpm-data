@@ -1,11 +1,13 @@
 package io.holunda.camunda.bpm.data.guard
 
+import io.holunda.camunda.bpm.data.CamundaBpmData.customVariable
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
 import io.holunda.camunda.bpm.data.guard.condition.*
 import org.assertj.core.api.Assertions.assertThat
 import org.camunda.bpm.engine.variable.Variables.createVariables
 import org.junit.Test
 import java.util.*
+import javax.validation.constraints.Email
 
 class VariableGuardConditionTest {
 
@@ -156,4 +158,21 @@ class VariableGuardConditionTest {
     assertThat(result.first().message).isEqualTo("Expecting variable '$uuid' to match the regex 'UUID', but its value '$uuid' has not.")
   }
 
+  @Test
+  fun test_is_valid_bean() {
+    val person = MyValidBean("peter")
+    val personVariable = customVariable("person", MyValidBean::class.java)
+    val guard = VariablesGuard(personVariable.isValidBean())
+
+    val vars = createVariables()
+    personVariable.on(vars).set(person)
+
+    val result = guard.evaluate(vars)
+
+    assertThat(result.size).isEqualTo(1)
+    assertThat(result.first().message).startsWith("Expecting variable 'person' be a valid bean, but its value '$person' has not.")
+  }
+
 }
+
+data class MyValidBean(@field:Email val email: String)
