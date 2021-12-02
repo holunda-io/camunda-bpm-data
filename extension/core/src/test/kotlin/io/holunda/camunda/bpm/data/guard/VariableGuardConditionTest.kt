@@ -7,6 +7,9 @@ import org.assertj.core.api.Assertions.assertThat
 import org.camunda.bpm.engine.variable.Variables.createVariables
 import org.junit.Test
 import java.util.*
+import java.util.function.Supplier
+import javax.validation.Validation
+import javax.validation.Validator
 import javax.validation.constraints.Email
 
 class VariableGuardConditionTest {
@@ -162,7 +165,8 @@ class VariableGuardConditionTest {
   fun test_is_valid_bean() {
     val person = MyValidBean("peter")
     val personVariable = customVariable("person", MyValidBean::class.java)
-    val guard = VariablesGuard(personVariable.isValidBean())
+    val validatorSupplier: Supplier<Validator> = Supplier { Validation.buildDefaultValidatorFactory().validator }
+    val guard = VariablesGuard(personVariable.isValidBean(validatorSupplier))
 
     val vars = createVariables()
     personVariable.on(vars).set(person)
@@ -170,7 +174,7 @@ class VariableGuardConditionTest {
     val result = guard.evaluate(vars)
 
     assertThat(result.size).isEqualTo(1)
-    assertThat(result.first().message).startsWith("Expecting variable 'person' be a valid bean, but its value '$person' has not.")
+    assertThat(result.first().message).startsWith("Expecting variable 'person' to be a valid bean, but its value '$person' has not.")
   }
 
 }

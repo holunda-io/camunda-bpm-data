@@ -226,9 +226,15 @@ class SomeService {
 class VariableGuardConfiguration {
 
     public static final String MY_GUARD_BEANNAME = "myGuardBeanName";
+        
+    @Bean
+    public Supplier<Validator>  validatorSupplier() {
+        // assuming dependencys to implement javax.validation:validation-api are present
+        return () -> Validation.buildDefaultValidatorFactory().getValidator();
+    }
 
     @Bean(VariableGuardConfiguration.MY_GUARD_BEANNAME)
-    public ExecutionListener myGuardBeanName() {
+    public ExecutionListener myGuardBeanName(Supplier<Validator> validatorSupplier) {
         return new DefaultGuardExecutionListener(
             Arrays.asList(
                 exists(REQUIRED_VALUE),
@@ -240,7 +246,7 @@ class VariableGuardConfiguration {
                 matches(DOCUMENT_BODY, this::myDocumentBodyMatcher),
                 matches(DOCUMENT_BODY, this::myDocumentBodyMatcher, this::validationMessageSupplier),
                 matchesRegex(DOCUMENT_BODY, "^Dude.*", "Starts with 'Dude'"),
-                isValidBean(My_DOCUMENT)
+                isValidBean(My_DOCUMENT, validatorSupplier)
             ), true);
     }
 
