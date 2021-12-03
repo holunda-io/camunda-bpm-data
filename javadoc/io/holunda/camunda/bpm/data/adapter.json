@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "javadoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/adapter",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter"
+  },
+  "data": {},
+  "description": "",
+  "title": "io.holunda.camunda.bpm.data.adapter",
+  "content": "<p>CommentComponent(kind=Text, text=Read and Write adapters for different factories to handle different contexts., value=)<\/p>\n"
+}

@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "kotlindoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/guard/integration/guardviolationexception",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/integration/guardviolationexception"
+  },
+  "data": {},
+  "description": "",
+  "title": "GuardViolationException",
+  "content": "<p>CommentComponent(kind=text, text=Exception indicating a guard violation., value=null)<\/p>\n"
+}

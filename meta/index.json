@@ -1,0 +1,128 @@
+{
+  "ownKey": "index",
+  "childrenPages": {"meta": {
+    "ownKey": "meta",
+    "ownPages": [
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+          "fileName": "assets.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://www.holunda.io/camunda-bpm-data/meta/assets.index.json"
+        },
+        "description": "",
+        "title": "Assets . Index"
+      },
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+          "fileName": "home.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://www.holunda.io/camunda-bpm-data/meta/home.index.json"
+        },
+        "description": "",
+        "title": "Home . Index"
+      },
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+          "fileName": "javadoc.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://www.holunda.io/camunda-bpm-data/meta/javadoc.index.json"
+        },
+        "description": "",
+        "title": "Javadoc . Index"
+      },
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+          "fileName": "kotlindoc.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://www.holunda.io/camunda-bpm-data/meta/kotlindoc.index.json"
+        },
+        "description": "",
+        "title": "Kotlindoc . Index"
+      },
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+          "fileName": "pages.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://www.holunda.io/camunda-bpm-data/meta/pages.index.json"
+        },
+        "description": "",
+        "title": "Pages . Index"
+      },
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+          "fileName": "wiki.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://www.holunda.io/camunda-bpm-data/meta/wiki.index.json"
+        },
+        "description": "",
+        "title": "Wiki . Index"
+      },
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+          "fileName": "changelog.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://www.holunda.io/camunda-bpm-data/meta/changelog.index.json"
+        },
+        "description": "",
+        "title": "Changelog . Index"
+      },
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+          "fileName": "sitemap.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://www.holunda.io/camunda-bpm-data/meta/sitemap.index.json"
+        },
+        "description": "",
+        "title": "Sitemap . Index"
+      },
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+          "fileName": "indices.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://www.holunda.io/camunda-bpm-data/meta/indices.index.json"
+        },
+        "description": "",
+        "title": "Indices . Index"
+      },
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+          "fileName": "all.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://www.holunda.io/camunda-bpm-data/meta/all.index.json"
+        },
+        "description": "",
+        "title": "All . Index"
+      }
+    ]
+  }}
+}

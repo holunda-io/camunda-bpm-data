@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "kotlindoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/mockito/camundabpmdatamockito",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/mockito/camundabpmdatamockito"
+  },
+  "data": {},
+  "description": "",
+  "title": "CamundaBpmDataMockito",
+  "content": "<p>CommentComponent(kind=text, text=Collection of fluent mock builder factory methods., value=null)<\/p>\n"
+}

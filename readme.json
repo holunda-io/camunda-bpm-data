@@ -1,0 +1,17 @@
+{
+  "reference": {
+    "path": "",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "readme",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/readme"
+  },
+  "data": {
+    "title": "Readme",
+    "components": [{"type": "readme"}]
+  },
+  "description": "",
+  "title": "Readme",
+  "content": ""
+}

@@ -1,0 +1,2060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.18.1-SNAPSHOT"/>
+<link rel="icon" href="https://www.holunda.io/camunda-bpm-data/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>TaskServiceMockVerifier</title>
+
+
+<meta name="description" content="Beautiful process data handling for Camunda BPM.">
+
+
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.18.1-SNAPSHOT","baseUrl":"https://www.holunda.io/camunda-bpm-data","environment":"debug","version":"1.2.4"};
+</script>
+
+
+
+
+
+<!-- start:debug info -->
+
+<!-- THEME -->
+<!-- Type: BsDoc -->
+<!-- Class: com.eden.orchid.bsdoc.BSDocTheme -->
+
+<!-- PAGE -->
+<!-- Type: classes -->
+<!-- Class: com.eden.orchid.sourcedoc.page.SourceDocPage -->
+<!-- Layout: index -->
+<!-- Resolved Layout: templates/layouts/index.peb -->
+<!-- Page Template: kotlindocClass, sourceDocPage, classes, page -->
+<!-- Resolved Page Template: templates/pages/sourceDocPage.peb -->
+
+<!-- RESOURCE -->
+<!-- Class: com.eden.orchid.sourcedoc.page.SourceDocResource -->
+<!-- Source Filename:  -->
+
+<!-- COMPLETE PAGE CONFIGURATION -->
+<script>
+    window.allData = {"reference":{"path":"kotlindoc","baseUrl":"https://www.holunda.io/camunda-bpm-data","fileName":"io/holunda/camunda/bpm/data/mockito/taskservicemockverifier","extension":"html","usePrettyUrl":true,"link":"https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/mockito/taskservicemockverifier"},"description":"","title":"TaskServiceMockVerifier"};
+</script>
+
+<!-- end:debug info -->
+
+
+
+
+    <!-- start:inject components -->
+    
+        
+            
+        
+    
+    <!-- end:inject components -->
+
+
+
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/BsDoc/753808c8/assets/css/bsdoc.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/BsDoc/753808c8/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/assets/css/asciidoc-admonitionblock.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/assets/css/orchidSourceDoc.css"  />
+<link rel="stylesheet" type="text/css" href="https://rawgit.com/PrismJS/prism-themes/master/themes/prism-darcula.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-highlight/prism-line-highlight.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/toolbar/prism-toolbar.min.css"  />
+<!-- end:inject styles -->
+
+
+</head>
+<body>
+
+
+
+
+<a class="github-fork-ribbon left-top"
+   href="https://github.com/holunda-io/camunda-bpm-data"
+   title="Fork me on GitHub">Fork me on GitHub</a>
+
+
+<header class="navbar navbar-fixed-top bs-docs-nav">
+    <div class="container">
+        <div class="navbar-header" role="banner">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://www.holunda.io/camunda-bpm-data">Camunda BPM Data</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    
+                        <li><a href="https://www.holunda.io/camunda-bpm-data/quick-start">Quick Start</a></li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">User Guide<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/motivation">Motivation</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/features">Features</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-java">Java Examples</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-kotlin">Kotlin Examples</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-no-engine">Example no engine</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/further-outlook">Further outlook</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/changelog">Changelog</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Developer Guide<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/contribution">Contribution</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/project-setup">Project Setup</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/readme">Readme</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/license">License</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Java Packages<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data">io.holunda.camunda.bpm.data</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter">io.holunda.camunda.bpm.data.adapter</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/basic">io.holunda.camunda.bpm.data.adapter.basic</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/list">io.holunda.camunda.bpm.data.adapter.list</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/map">io.holunda.camunda.bpm.data.adapter.map</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/set">io.holunda.camunda.bpm.data.adapter.set</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/builder">io.holunda.camunda.bpm.data.builder</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory">io.holunda.camunda.bpm.data.factory</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader">io.holunda.camunda.bpm.data.reader</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/writer">io.holunda.camunda.bpm.data.writer</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kotlin Packages<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data">io.holunda.camunda.bpm.data</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/acl">io.holunda.camunda.bpm.data.acl</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/acl/apply">io.holunda.camunda.bpm.data.acl.apply</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/acl/transform">io.holunda.camunda.bpm.data.acl.transform</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/adapter">io.holunda.camunda.bpm.data.adapter</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard">io.holunda.camunda.bpm.data.guard</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/condition">io.holunda.camunda.bpm.data.guard.condition</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/integration">io.holunda.camunda.bpm.data.guard.integration</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/mockito">io.holunda.camunda.bpm.data.mockito</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<div id="top"></div>
+
+
+    <div class="bs-docs-masthead" id="jumbotron">
+        <div class="container">
+            <h1 class="home-title">TaskServiceMockVerifier</h1>
+        </div>
+    </div>
+
+
+<div class="container bs-docs-container">
+    <div class="row">
+        <div class="col-md-9" role="main">
+        <nav aria-label="breadcrumb">
+    <ul class="breadcrumb">
+    
+    
+        <li class="breadcrumb-item"><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc">README</a></li>
+    
+    
+    
+        <li class="breadcrumb-item active" aria-current="page">TaskServiceMockVerifier</li>
+    
+    
+    </ul>
+</nav>
+        
+
+        
+        
+            
+    <!-- start:inject components -->
+    
+        
+            
+        
+            
+                
+                    
+                        <div class="sourcedoc-page orchid-sourcedoc content">
+  
+<div class="sourcedoc-section section-root section-level-1" id="TaskServiceMockVerifier">
+
+
+  <h1 class="sourcedoc-section section-name">TaskServiceMockVerifier</h1>
+  
+    <div class="sourcedoc-section section-element" id="40a478fd636f49ccb3199ca532ee14576bd86e47">
+      
+      <p class="sourcedoc-section section-signature">
+        <code>class <a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/mockito/taskservicemockverifier">TaskServiceMockVerifier</a></code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Verifier for a mocked task service.
+Provides methods for easy verification.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="constructors">
+
+
+  <h2 class="sourcedoc-section section-name">Constructors</h2>
+  
+    <div class="sourcedoc-section section-element" id="abe8728928ea5de91610d1025700966b64a5e169">
+      
+      <h3 class="sourcedoc-section element-name">&lt;init&gt;</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>constructor(taskService: TaskService)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Verifier for a mocked task service.
+Provides methods for easy verification.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="3e91a8999a82a4883d2eb20dcb7f0f7bb4ad7ebf">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="7c22c63af250773a8029436911614f1b7d9c83c5">
+        <td class="sourcedoc-section section-signature">
+          <code>taskService: TaskService</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="methods">
+
+
+  <h2 class="sourcedoc-section section-name">Methods</h2>
+  
+    <div class="sourcedoc-section section-element" id="571a73f2201afd8a92e054fc27279009be691404">
+      
+      <h3 class="sourcedoc-section element-name">verifySet</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; verifySet(variableFactory: VariableFactory<T>&lt;T&gt;, value: T, taskId: String, mode: VerificationMode)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Verifies if the variable has been set globally.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="bd92d517b7a7dc8e70cfa31604574d74e815b9d8">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory defining the variable.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="863fda91f57bc5b798f517d01b508d5d32a0a6fe">
+        <td class="sourcedoc-section section-signature">
+          <code>value: T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>value to set.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="98c8f776c807c8f96b15012b191ff4ca49fd8e7e">
+        <td class="sourcedoc-section section-signature">
+          <code>taskId: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>task id.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="439ae692c7ab7ce1638cc193ac50700338e55935">
+        <td class="sourcedoc-section section-signature">
+          <code>mode: VerificationMode</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>verification mode.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="d4260b4453e5547fecfdb2570b2b1e30faa40ba3">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="3abdee458d33d4b978622e30f762ee9c10564d08">
+      
+      <h3 class="sourcedoc-section element-name">verifySet</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; verifySet(variableFactory: VariableFactory<T>&lt;T&gt;, value: T, taskId: String)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Verifies if the variable has been set globally.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="a8eb4c57a7f28e0dcc255e11b6913d21e860a5ff">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory defining the variable.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="863fda91f57bc5b798f517d01b508d5d32a0a6fe">
+        <td class="sourcedoc-section section-signature">
+          <code>value: T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>value to set.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="98c8f776c807c8f96b15012b191ff4ca49fd8e7e">
+        <td class="sourcedoc-section section-signature">
+          <code>taskId: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>task id.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="af1913c1d7fc58c9e7fe85e999876d103b0e3e1d">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="50eabdd4a000e8072d7a952cb8263dc703304b93">
+      
+      <h3 class="sourcedoc-section element-name">verifySetLocal</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; verifySetLocal(variableFactory: VariableFactory<T>&lt;T&gt;, value: T, taskId: String, mode: VerificationMode)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Verifies if the variable has been set locally.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="c0981af009c4d3c6f7468131a000f0b599e0d8d2">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory defining the variable.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="863fda91f57bc5b798f517d01b508d5d32a0a6fe">
+        <td class="sourcedoc-section section-signature">
+          <code>value: T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>value to set.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="98c8f776c807c8f96b15012b191ff4ca49fd8e7e">
+        <td class="sourcedoc-section section-signature">
+          <code>taskId: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>task id.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="439ae692c7ab7ce1638cc193ac50700338e55935">
+        <td class="sourcedoc-section section-signature">
+          <code>mode: VerificationMode</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>verification mode.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9cdb4d33d8aee0b5add06cfaa2cb474c5ad9b106">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="852d28fefdb2aba0c325b6a150f88da0146cc747">
+      
+      <h3 class="sourcedoc-section element-name">verifySetLocal</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; verifySetLocal(variableFactory: VariableFactory<T>&lt;T&gt;, value: T, taskId: String)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Verifies if the variable has been set locally.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ab9f40d193333b74443d91b794a31bd93d7220dc">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory defining the variable.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="863fda91f57bc5b798f517d01b508d5d32a0a6fe">
+        <td class="sourcedoc-section section-signature">
+          <code>value: T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>value to set.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="98c8f776c807c8f96b15012b191ff4ca49fd8e7e">
+        <td class="sourcedoc-section section-signature">
+          <code>taskId: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>task id.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="c209f242dfec5c6903c2153e49b5e0962003f344">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="329666620041f011515f025e2f17ea448da0b399">
+      
+      <h3 class="sourcedoc-section element-name">verifyGet</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; verifyGet(variableFactory: VariableFactory<T>&lt;T&gt;, taskId: String, mode: VerificationMode)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Verifies if the variable has been retrieved from a global scope.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="79964db95a0cbfee30e839b6251d5c775c451c69">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory defining the variable.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="98c8f776c807c8f96b15012b191ff4ca49fd8e7e">
+        <td class="sourcedoc-section section-signature">
+          <code>taskId: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>task id.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="439ae692c7ab7ce1638cc193ac50700338e55935">
+        <td class="sourcedoc-section section-signature">
+          <code>mode: VerificationMode</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>verification mode.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="043b66073d6a51f9aaeb504520a65ef5fc4c993c">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="0a1b70e182e260683a577d284b4df7549e0edf38">
+      
+      <h3 class="sourcedoc-section element-name">verifyGet</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; verifyGet(variableFactory: VariableFactory<T>&lt;T&gt;, taskId: String)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Verifies if the variable has been retrieved from a global scope.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="43c1b1a03f57cc3a95743d2ec19e43be857fd1e1">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory defining the variable.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="98c8f776c807c8f96b15012b191ff4ca49fd8e7e">
+        <td class="sourcedoc-section section-signature">
+          <code>taskId: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>task id.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="e7d54856da47a115cc39de5cc4193fd4ed9e6607">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="8dedf023efe0b26d7e89b638870df68ba665ada5">
+      
+      <h3 class="sourcedoc-section element-name">verifyGetLocal</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; verifyGetLocal(variableFactory: VariableFactory<T>&lt;T&gt;, taskId: String, mode: VerificationMode)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Verifies if the variable has been retrieved from a local scope.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="26fff2c681c62b14b68010469b600f0a5023be92">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory defining the variable.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="98c8f776c807c8f96b15012b191ff4ca49fd8e7e">
+        <td class="sourcedoc-section section-signature">
+          <code>taskId: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>task id.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="439ae692c7ab7ce1638cc193ac50700338e55935">
+        <td class="sourcedoc-section section-signature">
+          <code>mode: VerificationMode</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>verification mode.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="bf45d0afeed5c241c9c7fd1bdde34832aa3cf4f2">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="51dc39f7602303ba91128f1be056704a929a791f">
+      
+      <h3 class="sourcedoc-section element-name">verifyGetLocal</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; verifyGetLocal(variableFactory: VariableFactory<T>&lt;T&gt;, taskId: String)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Verifies if the variable has been retrieved from a local scope.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="aa5a677c1b2b9136228e982bed1ac84fba76884d">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory defining the variable.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="98c8f776c807c8f96b15012b191ff4ca49fd8e7e">
+        <td class="sourcedoc-section section-signature">
+          <code>taskId: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>task id.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="07565edaeee8486d30c62889ec4de216c7e514c1">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="04222cca87c1f5d00a30c4fc3f3e3f93e010e414">
+      
+      <h3 class="sourcedoc-section element-name">verifyRemove</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; verifyRemove(variableFactory: VariableFactory<T>&lt;T&gt;, taskId: String, mode: VerificationMode)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Verifies if the variable has been removed from a global scope.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="50a6785e2a5e8c2312168255a1ae5a3bb912d594">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory defining the variable.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="98c8f776c807c8f96b15012b191ff4ca49fd8e7e">
+        <td class="sourcedoc-section section-signature">
+          <code>taskId: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>task id.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="439ae692c7ab7ce1638cc193ac50700338e55935">
+        <td class="sourcedoc-section section-signature">
+          <code>mode: VerificationMode</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>verification mode.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="a7a8bc0bb45a48e4a54f51adeaab53b7f861c0c2">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="8052203d8e6e2bf672b651b59e4fd785e0a635dc">
+      
+      <h3 class="sourcedoc-section element-name">verifyRemove</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; verifyRemove(variableFactory: VariableFactory<T>&lt;T&gt;, taskId: String)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Verifies if the variable has been removed from a global scope.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="80e89d5bada8ed9ad5ba2635a6f0887870929b96">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory defining the variable.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="98c8f776c807c8f96b15012b191ff4ca49fd8e7e">
+        <td class="sourcedoc-section section-signature">
+          <code>taskId: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>task id.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="3130f18b62ba2978551e29413252a840b5d9fdd4">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="3abab7b91a7c857bf1b5ee92fa0a56fedec30ace">
+      
+      <h3 class="sourcedoc-section element-name">verifyRemoveLocal</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; verifyRemoveLocal(variableFactory: VariableFactory<T>&lt;T&gt;, taskId: String, mode: VerificationMode)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Verifies if the variable has been removed from a local scope.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="7f48d0d7c2210fa3fe5924359306c2950febeed1">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory defining the variable.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="98c8f776c807c8f96b15012b191ff4ca49fd8e7e">
+        <td class="sourcedoc-section section-signature">
+          <code>taskId: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>task id.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="439ae692c7ab7ce1638cc193ac50700338e55935">
+        <td class="sourcedoc-section section-signature">
+          <code>mode: VerificationMode</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>verification mode.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="240a7eacd427142708cd03a9ec17f98ee1f6c71d">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="1d235198ec1a2481f2874419f2f4aaea9229bcfb">
+      
+      <h3 class="sourcedoc-section element-name">verifyRemoveLocal</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; verifyRemoveLocal(variableFactory: VariableFactory<T>&lt;T&gt;, taskId: String)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Verifies if the variable has been removed from a local scope.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="6f86a080e61ee79fc4c1412b38b1a6930be9b670">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory defining the variable.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="98c8f776c807c8f96b15012b191ff4ca49fd8e7e">
+        <td class="sourcedoc-section section-signature">
+          <code>taskId: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>task id.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="cde803b125988dd792da63d17548c7a7884d3696">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="cca1c7d2dc8273699fd3c709f3d9fa5ba8a32b0e">
+      
+      <h3 class="sourcedoc-section element-name">verifyComplete</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun verifyComplete(taskId: String)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Verifies if the task has been completed without variables.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="2a10620792d6d6d6bafa27b5371fd815ed95ab4b">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="98c8f776c807c8f96b15012b191ff4ca49fd8e7e">
+        <td class="sourcedoc-section section-signature">
+          <code>taskId: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>task id.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="e4c0b2bc11c64703c010f9a00785828204c08e57">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="de3021f7395cb9da2c0e4d737f444dd054aa9790">
+      
+      <h3 class="sourcedoc-section element-name">verifyComplete</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun verifyComplete(variables: VariableMap, taskId: String)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Verifies if the task has been completed with variables.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="2303e461c4ffb8d46812f56c9f0e4e4c9edfd35b">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b140294a4b82f27d691da4c4361697627d1864ba">
+        <td class="sourcedoc-section section-signature">
+          <code>variables: VariableMap</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variables to complete the task.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="98c8f776c807c8f96b15012b191ff4ca49fd8e7e">
+        <td class="sourcedoc-section section-signature">
+          <code>taskId: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>task id.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ded29bb2584fe7e3f88af957cdc7460817bc9558">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="9bd06ecefc2580d65c7ad559b7a5febc7efadff5">
+      
+      <h3 class="sourcedoc-section element-name">verifyNoMoreInteractions</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun verifyNoMoreInteractions()</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Verifies no more interaction has been performed with the mock.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="6af193c37855105ad7ce3a11258bb4139e2fa770">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+</div>
+
+
+
+
+
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        
+        </div>
+
+        <!-- Page navigation
+        =========================================== -->
+        <div class="col-md-3" role="complementary">
+        <div class="bs-docs-sidebar hidden-print" id="bs-docs-sidebar">
+    <section id="search" >
+        <form data-orchid-search="">
+            <div class="input-group">
+                <input type="text" name="query" id="query" class="form-control" placeholder="Search&hellip;">
+                <span class="input-group-btn"><button type="submit" class="btn btn-default">Go</button></span>
+            </div>
+        </form>
+        <div id="search-results" data-orchid-search-results style="display: none;">
+            <b>Search Results</b>
+            <ul></ul>
+        </div>
+        <div id="search-progress" data-orchid-search-progress style="display: none;">
+            <div class="loader">Loading...</div>
+        </div>
+    </section>
+
+    <ul class="nav bs-docs-sidenav">
+        
+        
+            
+                <li class="has-children ">
+                    <a>Constructors</a>
+                    <ul class="nav">
+                        
+                        
+                            
+                                <li class="">
+                                    <a href="#abe8728928ea5de91610d1025700966b64a5e169">constructor(taskService: TaskService)</a>
+                                </li>
+                            
+                        
+                    </ul>
+                </li>
+            
+        
+        
+            
+                <li class="has-children ">
+                    <a>Methods</a>
+                    <ul class="nav">
+                        
+                        
+                            
+                                <li class="">
+                                    <a href="#571a73f2201afd8a92e054fc27279009be691404">fun &lt;T&gt; verifySet(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, value: T, taskId: String, mode: VerificationMode)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#3abdee458d33d4b978622e30f762ee9c10564d08">fun &lt;T&gt; verifySet(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, value: T, taskId: String)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#50eabdd4a000e8072d7a952cb8263dc703304b93">fun &lt;T&gt; verifySetLocal(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, value: T, taskId: String, mode: VerificationMode)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#852d28fefdb2aba0c325b6a150f88da0146cc747">fun &lt;T&gt; verifySetLocal(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, value: T, taskId: String)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#329666620041f011515f025e2f17ea448da0b399">fun &lt;T&gt; verifyGet(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, taskId: String, mode: VerificationMode)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#0a1b70e182e260683a577d284b4df7549e0edf38">fun &lt;T&gt; verifyGet(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, taskId: String)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#8dedf023efe0b26d7e89b638870df68ba665ada5">fun &lt;T&gt; verifyGetLocal(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, taskId: String, mode: VerificationMode)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#51dc39f7602303ba91128f1be056704a929a791f">fun &lt;T&gt; verifyGetLocal(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, taskId: String)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#04222cca87c1f5d00a30c4fc3f3e3f93e010e414">fun &lt;T&gt; verifyRemove(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, taskId: String, mode: VerificationMode)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#8052203d8e6e2bf672b651b59e4fd785e0a635dc">fun &lt;T&gt; verifyRemove(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, taskId: String)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#3abab7b91a7c857bf1b5ee92fa0a56fedec30ace">fun &lt;T&gt; verifyRemoveLocal(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, taskId: String, mode: VerificationMode)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#1d235198ec1a2481f2874419f2f4aaea9229bcfb">fun &lt;T&gt; verifyRemoveLocal(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, taskId: String)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#cca1c7d2dc8273699fd3c709f3d9fa5ba8a32b0e">fun verifyComplete(taskId: String)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#de3021f7395cb9da2c0e4d737f444dd054aa9790">fun verifyComplete(variables: VariableMap, taskId: String)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#9bd06ecefc2580d65c7ad559b7a5febc7efadff5">fun verifyNoMoreInteractions()</a>
+                                </li>
+                            
+                        
+                    </ul>
+                </li>
+            
+        
+    </ul>
+
+    
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+
+    <a class="back-to-top" href="#top">
+        <i class="glyphicon glyphicon-chevron-up"></i> Back to top
+    </a>
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="footer">
+    <div class="container bs-docs-container">
+    <footer class="bs-docs-footer" role="contentinfo">
+    <div class="row">
+        <div class="col-xs-12">
+            <nav aria-label="navigateClasses">
+                <ul class="pager">
+                    
+
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="icons">
+    
+    
+        <a href="https://www.holunda.io/camunda-bpm-data/" class="fa fas fa-home"></a>
+    
+        <a href="https://github.com/holunda-io/camunda-bpm-data" class="fa fa-github"></a>
+    
+        <a href="https://twitter.com/holisticon" class="fa fa-twitter"></a>
+    
+    
+    </div>
+    <br>
+    <p>
+    Documentation template based on the
+    <a href="https://github.com/mistic100/jekyll-bootstrap-doc">Jekyll Bootstrap Doc</a>
+    Jekyll theme by the <a href="https://getbootstrap.com">Bootstrap team</a>. Site created with
+    <a href="https://orchid.run">Orchid</a>.
+</p>
+
+<ul class="bs-docs-footer-links muted">
+    <li>Currently 1.2.4</li>
+</ul>
+
+
+</footer>
+    </div>
+</div>
+
+
+<!-- start:inject scripts -->
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.3.0/bootbox.min.js"></script>
+<script  src="https://www.holunda.io/camunda-bpm-data/BsDoc/753808c8/assets/js/bsdoc.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://unpkg.com/lunr/lunr.js"></script>
+<script  src="https://www.holunda.io/camunda-bpm-data/assets/js/orchidSearch.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-json.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-highlight/prism-line-highlight.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/toolbar/prism-toolbar.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/show-language/prism-show-language.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+<!-- end:inject scripts -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/1.2.0/trianglify.min.js"></script>
+
+<script>
+    $(function () {
+        window.colors = ['#B10000', '#000000'];
+                  
+    trianglify({"x_colors":["#000","#B10000","#000"]});
+
+        buildNav();
+    });
+</script>
+
+</body>
+</html>

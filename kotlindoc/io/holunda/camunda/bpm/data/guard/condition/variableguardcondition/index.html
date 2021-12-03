@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.18.1-SNAPSHOT"/>
+<link rel="icon" href="https://www.holunda.io/camunda-bpm-data/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>VariableGuardCondition</title>
+
+
+<meta name="description" content="Beautiful process data handling for Camunda BPM.">
+
+
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.18.1-SNAPSHOT","baseUrl":"https://www.holunda.io/camunda-bpm-data","environment":"debug","version":"1.2.4"};
+</script>
+
+
+
+
+
+<!-- start:debug info -->
+
+<!-- THEME -->
+<!-- Type: BsDoc -->
+<!-- Class: com.eden.orchid.bsdoc.BSDocTheme -->
+
+<!-- PAGE -->
+<!-- Type: classes -->
+<!-- Class: com.eden.orchid.sourcedoc.page.SourceDocPage -->
+<!-- Layout: index -->
+<!-- Resolved Layout: templates/layouts/index.peb -->
+<!-- Page Template: kotlindocClass, sourceDocPage, classes, page -->
+<!-- Resolved Page Template: templates/pages/sourceDocPage.peb -->
+
+<!-- RESOURCE -->
+<!-- Class: com.eden.orchid.sourcedoc.page.SourceDocResource -->
+<!-- Source Filename:  -->
+
+<!-- COMPLETE PAGE CONFIGURATION -->
+<script>
+    window.allData = {"reference":{"path":"kotlindoc","baseUrl":"https://www.holunda.io/camunda-bpm-data","fileName":"io/holunda/camunda/bpm/data/guard/condition/variableguardcondition","extension":"html","usePrettyUrl":true,"link":"https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/condition/variableguardcondition"},"description":"","title":"VariableGuardCondition"};
+</script>
+
+<!-- end:debug info -->
+
+
+
+
+    <!-- start:inject components -->
+    
+        
+            
+        
+    
+    <!-- end:inject components -->
+
+
+
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/BsDoc/753808c8/assets/css/bsdoc.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/BsDoc/753808c8/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/assets/css/asciidoc-admonitionblock.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/assets/css/orchidSourceDoc.css"  />
+<link rel="stylesheet" type="text/css" href="https://rawgit.com/PrismJS/prism-themes/master/themes/prism-darcula.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-highlight/prism-line-highlight.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/toolbar/prism-toolbar.min.css"  />
+<!-- end:inject styles -->
+
+
+</head>
+<body>
+
+
+
+
+<a class="github-fork-ribbon left-top"
+   href="https://github.com/holunda-io/camunda-bpm-data"
+   title="Fork me on GitHub">Fork me on GitHub</a>
+
+
+<header class="navbar navbar-fixed-top bs-docs-nav">
+    <div class="container">
+        <div class="navbar-header" role="banner">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://www.holunda.io/camunda-bpm-data">Camunda BPM Data</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    
+                        <li><a href="https://www.holunda.io/camunda-bpm-data/quick-start">Quick Start</a></li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">User Guide<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/motivation">Motivation</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/features">Features</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-java">Java Examples</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-kotlin">Kotlin Examples</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-no-engine">Example no engine</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/further-outlook">Further outlook</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/changelog">Changelog</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Developer Guide<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/contribution">Contribution</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/project-setup">Project Setup</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/readme">Readme</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/license">License</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Java Packages<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data">io.holunda.camunda.bpm.data</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter">io.holunda.camunda.bpm.data.adapter</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/basic">io.holunda.camunda.bpm.data.adapter.basic</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/list">io.holunda.camunda.bpm.data.adapter.list</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/map">io.holunda.camunda.bpm.data.adapter.map</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/set">io.holunda.camunda.bpm.data.adapter.set</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/builder">io.holunda.camunda.bpm.data.builder</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory">io.holunda.camunda.bpm.data.factory</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader">io.holunda.camunda.bpm.data.reader</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/writer">io.holunda.camunda.bpm.data.writer</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kotlin Packages<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data">io.holunda.camunda.bpm.data</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/acl">io.holunda.camunda.bpm.data.acl</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/acl/apply">io.holunda.camunda.bpm.data.acl.apply</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/acl/transform">io.holunda.camunda.bpm.data.acl.transform</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/adapter">io.holunda.camunda.bpm.data.adapter</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard">io.holunda.camunda.bpm.data.guard</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/condition">io.holunda.camunda.bpm.data.guard.condition</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/integration">io.holunda.camunda.bpm.data.guard.integration</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/mockito">io.holunda.camunda.bpm.data.mockito</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<div id="top"></div>
+
+
+    <div class="bs-docs-masthead" id="jumbotron">
+        <div class="container">
+            <h1 class="home-title">VariableGuardCondition</h1>
+        </div>
+    </div>
+
+
+<div class="container bs-docs-container">
+    <div class="row">
+        <div class="col-md-9" role="main">
+        <nav aria-label="breadcrumb">
+    <ul class="breadcrumb">
+    
+    
+        <li class="breadcrumb-item"><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc">README</a></li>
+    
+    
+    
+        <li class="breadcrumb-item active" aria-current="page">VariableGuardCondition</li>
+    
+    
+    </ul>
+</nav>
+        
+
+        
+        
+            
+    <!-- start:inject components -->
+    
+        
+            
+        
+            
+                
+                    
+                        <div class="sourcedoc-page orchid-sourcedoc content">
+  
+<div class="sourcedoc-section section-root section-level-1" id="VariableGuardCondition">
+
+
+  <h1 class="sourcedoc-section section-name">VariableGuardCondition</h1>
+  
+    <div class="sourcedoc-section section-element" id="dfa5f29664c29ccfe8f729f1e699834bbca29035">
+      
+      <p class="sourcedoc-section section-signature">
+        <code>abstract class <a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/condition/variableguardcondition">VariableGuardCondition</a></code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Abstract guard condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="fields">
+
+
+  <p class="sourcedoc-section section-name"><strong>Fields</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="a35ef7ad4d7af3ffdbd430acdd70298320c11fae">
+        <td class="sourcedoc-section section-signature">
+          <code>val localLabel: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Label for messages indicating the variable scope (local or global, which is a default).</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="constructors">
+
+
+  <h2 class="sourcedoc-section section-name">Constructors</h2>
+  
+    <div class="sourcedoc-section section-element" id="55461c5dcca66079393d657f9c553efde092a83d">
+      
+      <h3 class="sourcedoc-section element-name">&lt;init&gt;</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>constructor(variableFactory: VariableFactory<T>&lt;T&gt;, local: Boolean)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9b815f0429b413e9d1d4013d6af5e61043e29757">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="681c8c1a69a7dab079d56345572a3765169da2cd">
+        <td class="sourcedoc-section section-signature">
+          <code>local: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="methods">
+
+
+  <h2 class="sourcedoc-section section-name">Methods</h2>
+  
+    <div class="sourcedoc-section section-element" id="b1bc25965b8db9aa235e29993aff82b2f2d0f62f">
+      
+      <h3 class="sourcedoc-section element-name">evaluate</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun evaluate(variableMap: VariableMap): List&lt;<a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/guardviolation">GuardViolation</a>&lt;T&gt;&gt;</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Evaluate the condition on a value retrieved from the variable map.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="62eb792e2c0498c61e8ac98927663a6df9226e51">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="08d8cba30be8432e0e73b8c14786265a56330fbd">
+        <td class="sourcedoc-section section-signature">
+          <code>variableMap: VariableMap</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variables to run the evaluation on.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9ce6d84748abff42c3960105b65dbae9c7fe284b">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="be70269c73857cfed659d4f133517b01963f63ac">
+        <td class="sourcedoc-section section-signature">
+          <code>List&lt;<a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/guardviolation">GuardViolation</a>&lt;T&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>list of guard violations</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="a209a1dd1d4567d78a5a6a984bc2248a2c1fee29">
+      
+      <h3 class="sourcedoc-section element-name">evaluate</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun evaluate(variableScope: VariableScope): List&lt;<a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/guardviolation">GuardViolation</a>&lt;T&gt;&gt;</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Evaluate the condition on a value retrieved from the variable map.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="e84efafddc9a4ff24257b354d10b86100aa5cec1">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c82a085a7ded13b32853fe7fef53dbc30ae2e7d9">
+        <td class="sourcedoc-section section-signature">
+          <code>variableScope: VariableScope</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variable scope (e.g. delegate execution or delegate task) to run the evaluation on.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="66b10866675d2e8b495408ae1e2b27e7686a682d">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="be70269c73857cfed659d4f133517b01963f63ac">
+        <td class="sourcedoc-section section-signature">
+          <code>List&lt;<a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/guardviolation">GuardViolation</a>&lt;T&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>list of guard violations</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="df275905382a3c2fa4b222bfd8a6659f0cf3f26f">
+      
+      <h3 class="sourcedoc-section element-name">evaluate</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun evaluate(taskService: TaskService, taskId: String): List&lt;<a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/guardviolation">GuardViolation</a>&lt;T&gt;&gt;</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Evaluate the condition on a value retrieved from the task service.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9089605a3ae7d248bb84245dfb3a71122c8dd29f">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="7c22c63af250773a8029436911614f1b7d9c83c5">
+        <td class="sourcedoc-section section-signature">
+          <code>taskService: TaskService</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>to retrieve the task from.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="98c8f776c807c8f96b15012b191ff4ca49fd8e7e">
+        <td class="sourcedoc-section section-signature">
+          <code>taskId: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>id of the task to work on.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="758521c923c099d4b2c3a357fe6a6ae2f04a8b2f">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="be70269c73857cfed659d4f133517b01963f63ac">
+        <td class="sourcedoc-section section-signature">
+          <code>List&lt;<a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/guardviolation">GuardViolation</a>&lt;T&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>list of guard violations</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="a1cea17a64bf42ced4a618252db7c12e52f6c14f">
+      
+      <h3 class="sourcedoc-section element-name">evaluate</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun evaluate(runtimeService: RuntimeService, executionId: String): List&lt;<a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/guardviolation">GuardViolation</a>&lt;T&gt;&gt;</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Evaluate the condition on a value retrieved from the runtime service.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="eddc6e3e3575fb75900df1913abdd52c7db3fab6">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="85efba837076a47e819a8d1cdc6a2d3a66b5e951">
+        <td class="sourcedoc-section section-signature">
+          <code>runtimeService: RuntimeService</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>to retrieve the execution from.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="623da3265d76549aceea468e9610ddd5f236229c">
+        <td class="sourcedoc-section section-signature">
+          <code>executionId: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>id of the execution to work on.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="acbf862452af505da88cb2a7a69e31a5258b37ae">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="be70269c73857cfed659d4f133517b01963f63ac">
+        <td class="sourcedoc-section section-signature">
+          <code>List&lt;<a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/guardviolation">GuardViolation</a>&lt;T&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>list of guard violations</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="0b1ac947ad4d70be3376107b95fc8d4e26022519">
+      
+      <h3 class="sourcedoc-section element-name">equals</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>open fun equals(other: Any?): Boolean</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="2674528696e84287cfc535faf244a39723d053b3">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0a1e171af6c91857649972ea14409d21dd91567a">
+        <td class="sourcedoc-section section-signature">
+          <code>other: Any?</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="bafc3b2b8fb68f1d25773d46a8f4532de48659be">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b76ff4906f33c2dd97ddd929b9662ba8cac6174c">
+        <td class="sourcedoc-section section-signature">
+          <code>Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="5eaf60c36a0db6d21c517729141d66812b78c741">
+      
+      <h3 class="sourcedoc-section element-name">hashCode</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>open fun hashCode(): Int</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="148c7c498d346270aaa72cbe42e6bae14f1faf22">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5c89edcac2811a6a9e8072517cae7f3cbfd5049d">
+        <td class="sourcedoc-section section-signature">
+          <code>Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+</div>
+
+
+
+
+
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        
+        </div>
+
+        <!-- Page navigation
+        =========================================== -->
+        <div class="col-md-3" role="complementary">
+        <div class="bs-docs-sidebar hidden-print" id="bs-docs-sidebar">
+    <section id="search" >
+        <form data-orchid-search="">
+            <div class="input-group">
+                <input type="text" name="query" id="query" class="form-control" placeholder="Search&hellip;">
+                <span class="input-group-btn"><button type="submit" class="btn btn-default">Go</button></span>
+            </div>
+        </form>
+        <div id="search-results" data-orchid-search-results style="display: none;">
+            <b>Search Results</b>
+            <ul></ul>
+        </div>
+        <div id="search-progress" data-orchid-search-progress style="display: none;">
+            <div class="loader">Loading...</div>
+        </div>
+    </section>
+
+    <ul class="nav bs-docs-sidenav">
+        
+        
+            
+                <li class="has-children ">
+                    <a>Fields</a>
+                    <ul class="nav">
+                        
+                        
+                            
+                                <li class="">
+                                    <a href="#a35ef7ad4d7af3ffdbd430acdd70298320c11fae">val localLabel: String</a>
+                                </li>
+                            
+                        
+                    </ul>
+                </li>
+            
+        
+        
+            
+                <li class="has-children ">
+                    <a>Constructors</a>
+                    <ul class="nav">
+                        
+                        
+                            
+                                <li class="">
+                                    <a href="#55461c5dcca66079393d657f9c553efde092a83d">constructor(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, local: Boolean)</a>
+                                </li>
+                            
+                        
+                    </ul>
+                </li>
+            
+        
+        
+            
+                <li class="has-children ">
+                    <a>Methods</a>
+                    <ul class="nav">
+                        
+                        
+                            
+                                <li class="">
+                                    <a href="#b1bc25965b8db9aa235e29993aff82b2f2d0f62f">fun evaluate(variableMap: VariableMap): List&lt;GuardViolation&lt;T&gt;&gt;</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#a209a1dd1d4567d78a5a6a984bc2248a2c1fee29">fun evaluate(variableScope: VariableScope): List&lt;GuardViolation&lt;T&gt;&gt;</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#df275905382a3c2fa4b222bfd8a6659f0cf3f26f">fun evaluate(taskService: TaskService, taskId: String): List&lt;GuardViolation&lt;T&gt;&gt;</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#a1cea17a64bf42ced4a618252db7c12e52f6c14f">fun evaluate(runtimeService: RuntimeService, executionId: String): List&lt;GuardViolation&lt;T&gt;&gt;</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#0b1ac947ad4d70be3376107b95fc8d4e26022519">open fun equals(other: Any?): Boolean</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#5eaf60c36a0db6d21c517729141d66812b78c741">open fun hashCode(): Int</a>
+                                </li>
+                            
+                        
+                    </ul>
+                </li>
+            
+        
+    </ul>
+
+    
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+
+    <a class="back-to-top" href="#top">
+        <i class="glyphicon glyphicon-chevron-up"></i> Back to top
+    </a>
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="footer">
+    <div class="container bs-docs-container">
+    <footer class="bs-docs-footer" role="contentinfo">
+    <div class="row">
+        <div class="col-xs-12">
+            <nav aria-label="navigateClasses">
+                <ul class="pager">
+                    
+
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="icons">
+    
+    
+        <a href="https://www.holunda.io/camunda-bpm-data/" class="fa fas fa-home"></a>
+    
+        <a href="https://github.com/holunda-io/camunda-bpm-data" class="fa fa-github"></a>
+    
+        <a href="https://twitter.com/holisticon" class="fa fa-twitter"></a>
+    
+    
+    </div>
+    <br>
+    <p>
+    Documentation template based on the
+    <a href="https://github.com/mistic100/jekyll-bootstrap-doc">Jekyll Bootstrap Doc</a>
+    Jekyll theme by the <a href="https://getbootstrap.com">Bootstrap team</a>. Site created with
+    <a href="https://orchid.run">Orchid</a>.
+</p>
+
+<ul class="bs-docs-footer-links muted">
+    <li>Currently 1.2.4</li>
+</ul>
+
+
+</footer>
+    </div>
+</div>
+
+
+<!-- start:inject scripts -->
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.3.0/bootbox.min.js"></script>
+<script  src="https://www.holunda.io/camunda-bpm-data/BsDoc/753808c8/assets/js/bsdoc.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://unpkg.com/lunr/lunr.js"></script>
+<script  src="https://www.holunda.io/camunda-bpm-data/assets/js/orchidSearch.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-json.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-highlight/prism-line-highlight.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/toolbar/prism-toolbar.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/show-language/prism-show-language.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+<!-- end:inject scripts -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/1.2.0/trianglify.min.js"></script>
+
+<script>
+    $(function () {
+        window.colors = ['#B10000', '#000000'];
+                  
+    trianglify({"x_colors":["#000","#B10000","#000"]});
+
+        buildNav();
+    });
+</script>
+
+</body>
+</html>

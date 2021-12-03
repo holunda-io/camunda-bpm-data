@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "kotlindoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/guard/condition/variablematchesguardcondition",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/condition/variablematchesguardcondition"
+  },
+  "data": {},
+  "description": "",
+  "title": "VariableMatchesGuardCondition",
+  "content": "<p>CommentComponent(kind=text, text=Guard for testing a condition passed by a matcher-function., value=null)<\/p>\n"
+}

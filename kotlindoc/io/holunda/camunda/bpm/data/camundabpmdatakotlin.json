@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "kotlindoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/camundabpmdatakotlin",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/camundabpmdatakotlin"
+  },
+  "data": {},
+  "description": "",
+  "title": "CamundaBpmDataKotlin",
+  "content": "<p>CommentComponent(kind=text, text=Provides reified methods for variable factory construction., value=null)<\/p>\n"
+}

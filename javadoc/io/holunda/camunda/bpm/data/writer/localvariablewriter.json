@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "javadoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/writer/localvariablewriter",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/writer/localvariablewriter"
+  },
+  "data": {},
+  "description": "",
+  "title": "LocalVariableWriter",
+  "content": "<p>CommentComponent(kind=Text, text=Inverting calls to, value=) CommentComponent(kind=typeName, text=WriteAdapter, value=io.holunda.camunda.bpm.data.adapter.WriteAdapter) CommentComponent(kind=Text, text=., value=)<\/p>\n"
+}

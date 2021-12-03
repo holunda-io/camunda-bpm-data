@@ -1,0 +1,2589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.18.1-SNAPSHOT"/>
+<link rel="icon" href="https://www.holunda.io/camunda-bpm-data/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>CamundaBpmDataGuards</title>
+
+
+<meta name="description" content="Beautiful process data handling for Camunda BPM.">
+
+
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.18.1-SNAPSHOT","baseUrl":"https://www.holunda.io/camunda-bpm-data","environment":"debug","version":"1.2.4"};
+</script>
+
+
+
+
+
+<!-- start:debug info -->
+
+<!-- THEME -->
+<!-- Type: BsDoc -->
+<!-- Class: com.eden.orchid.bsdoc.BSDocTheme -->
+
+<!-- PAGE -->
+<!-- Type: classes -->
+<!-- Class: com.eden.orchid.sourcedoc.page.SourceDocPage -->
+<!-- Layout: index -->
+<!-- Resolved Layout: templates/layouts/index.peb -->
+<!-- Page Template: kotlindocObject, sourceDocPage, classes, page -->
+<!-- Resolved Page Template: templates/pages/sourceDocPage.peb -->
+
+<!-- RESOURCE -->
+<!-- Class: com.eden.orchid.sourcedoc.page.SourceDocResource -->
+<!-- Source Filename:  -->
+
+<!-- COMPLETE PAGE CONFIGURATION -->
+<script>
+    window.allData = {"reference":{"path":"kotlindoc","baseUrl":"https://www.holunda.io/camunda-bpm-data","fileName":"io/holunda/camunda/bpm/data/guard/camundabpmdataguards","extension":"html","usePrettyUrl":true,"link":"https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/camundabpmdataguards"},"description":"","title":"CamundaBpmDataGuards"};
+</script>
+
+<!-- end:debug info -->
+
+
+
+
+    <!-- start:inject components -->
+    
+        
+            
+        
+    
+    <!-- end:inject components -->
+
+
+
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/BsDoc/753808c8/assets/css/bsdoc.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/BsDoc/753808c8/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/assets/css/asciidoc-admonitionblock.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/assets/css/orchidSourceDoc.css"  />
+<link rel="stylesheet" type="text/css" href="https://rawgit.com/PrismJS/prism-themes/master/themes/prism-darcula.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-highlight/prism-line-highlight.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/toolbar/prism-toolbar.min.css"  />
+<!-- end:inject styles -->
+
+
+</head>
+<body>
+
+
+
+
+<a class="github-fork-ribbon left-top"
+   href="https://github.com/holunda-io/camunda-bpm-data"
+   title="Fork me on GitHub">Fork me on GitHub</a>
+
+
+<header class="navbar navbar-fixed-top bs-docs-nav">
+    <div class="container">
+        <div class="navbar-header" role="banner">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://www.holunda.io/camunda-bpm-data">Camunda BPM Data</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    
+                        <li><a href="https://www.holunda.io/camunda-bpm-data/quick-start">Quick Start</a></li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">User Guide<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/motivation">Motivation</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/features">Features</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-java">Java Examples</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-kotlin">Kotlin Examples</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-no-engine">Example no engine</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/further-outlook">Further outlook</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/changelog">Changelog</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Developer Guide<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/contribution">Contribution</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/project-setup">Project Setup</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/readme">Readme</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/license">License</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Java Packages<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data">io.holunda.camunda.bpm.data</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter">io.holunda.camunda.bpm.data.adapter</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/basic">io.holunda.camunda.bpm.data.adapter.basic</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/list">io.holunda.camunda.bpm.data.adapter.list</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/map">io.holunda.camunda.bpm.data.adapter.map</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/set">io.holunda.camunda.bpm.data.adapter.set</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/builder">io.holunda.camunda.bpm.data.builder</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory">io.holunda.camunda.bpm.data.factory</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader">io.holunda.camunda.bpm.data.reader</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/writer">io.holunda.camunda.bpm.data.writer</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kotlin Packages<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data">io.holunda.camunda.bpm.data</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/acl">io.holunda.camunda.bpm.data.acl</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/acl/apply">io.holunda.camunda.bpm.data.acl.apply</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/acl/transform">io.holunda.camunda.bpm.data.acl.transform</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/adapter">io.holunda.camunda.bpm.data.adapter</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard">io.holunda.camunda.bpm.data.guard</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/condition">io.holunda.camunda.bpm.data.guard.condition</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/integration">io.holunda.camunda.bpm.data.guard.integration</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/mockito">io.holunda.camunda.bpm.data.mockito</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<div id="top"></div>
+
+
+    <div class="bs-docs-masthead" id="jumbotron">
+        <div class="container">
+            <h1 class="home-title">CamundaBpmDataGuards</h1>
+        </div>
+    </div>
+
+
+<div class="container bs-docs-container">
+    <div class="row">
+        <div class="col-md-9" role="main">
+        <nav aria-label="breadcrumb">
+    <ul class="breadcrumb">
+    
+    
+        <li class="breadcrumb-item"><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc">README</a></li>
+    
+    
+    
+        <li class="breadcrumb-item active" aria-current="page">CamundaBpmDataGuards</li>
+    
+    
+    </ul>
+</nav>
+        
+
+        
+        
+            
+    <!-- start:inject components -->
+    
+        
+            
+        
+            
+                
+                    
+                        <div class="sourcedoc-page orchid-sourcedoc content">
+  
+<div class="sourcedoc-section section-root section-level-1" id="CamundaBpmDataGuards">
+
+
+  <h1 class="sourcedoc-section section-name">CamundaBpmDataGuards</h1>
+  
+    <div class="sourcedoc-section section-element" id="98e659c00dc1d5783d52f909f0ff927a41670ab5">
+      
+      <p class="sourcedoc-section section-signature">
+        <code>object <a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/camundabpmdataguards">CamundaBpmDataGuards</a></code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Guard creation methods.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="methods">
+
+
+  <h2 class="sourcedoc-section section-name">Methods</h2>
+  
+    <div class="sourcedoc-section section-element" id="a5f772142aea7444c5050cc0662383d9971ade4d">
+      
+      <h3 class="sourcedoc-section element-name">exists</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; exists(variableFactory: VariableFactory<T>&lt;T&gt;): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates exists condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f3aa6a95ef6e6a2a2d59f2ad434c545f3cc749de">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="a3426ed8dc036c7476a7fdbfaf6ca58fd30c5c3c">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="65ed48d628b98df32be578dd3f8f625ecb677847">
+      
+      <h3 class="sourcedoc-section element-name">existsLocal</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; existsLocal(variableFactory: VariableFactory<T>&lt;T&gt;): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates exists local condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="a35aef29e41c2e3441ea47229f93d639267a226c">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9c0f43228c5c3abd0309685558b3bd475b132040">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="402ac63364263c6ca5303b3e34c6eee068c2ab29">
+      
+      <h3 class="sourcedoc-section element-name">notExistsLocal</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; notExistsLocal(variableFactory: VariableFactory<T>&lt;T&gt;): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates not exists local condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9deca991214068b504ad44dff2c281d2084abaf5">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f7af462ed3731bae521e9703accfc668476129e9">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="421dfd7453f0adbcb2676e162f0b315530609963">
+      
+      <h3 class="sourcedoc-section element-name">notExists</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; notExists(variableFactory: VariableFactory<T>&lt;T&gt;): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates not exists condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="93b8251221a77024ba4c0f14eb0177817fc39210">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="94374b862858e7d4af9f82adf404ba9b0efb275a">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="dcdd359eb3428431101df7e1490ab72e0d0c5798">
+      
+      <h3 class="sourcedoc-section element-name">hasValueLocal</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; hasValueLocal(variableFactory: VariableFactory<T>&lt;T&gt;, value: T): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates has value local condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="81b17232d239b060fd15c00f3f4645237f93c77e">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="863fda91f57bc5b798f517d01b508d5d32a0a6fe">
+        <td class="sourcedoc-section section-signature">
+          <code>value: T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>value that the variable must have.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="59271a0e6fe964cf5b07ab4cc942f26ec2d05dee">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="ffea5f99c14e711bb3c85aefe600be19f3764b48">
+      
+      <h3 class="sourcedoc-section element-name">hasValue</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; hasValue(variableFactory: VariableFactory<T>&lt;T&gt;, value: T): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates has value condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5798f6b005fbcfc20212118b61c6befd492d0fe4">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="863fda91f57bc5b798f517d01b508d5d32a0a6fe">
+        <td class="sourcedoc-section section-signature">
+          <code>value: T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>value that the variable must have.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="2b605ab0b9486cd5fe2ae59a139ec14bb53a1c6f">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="71c00d5df08685df102f9c192cfc35aad7da0761">
+      
+      <h3 class="sourcedoc-section element-name">hasOneOfValuesLocal</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; hasOneOfValuesLocal(variableFactory: VariableFactory<T>&lt;T&gt;, values: Set&lt;T&gt;): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates has value local condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b6c4ce2a8e7e1214fb02086bbd4c5f8ea723cffb">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="ccceec6db6f7f7b864912bb08d12e0f609bb8e9a">
+        <td class="sourcedoc-section section-signature">
+          <code>values: Set&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>set of values to compare with the variable value.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="29499b9b253b41d31a335758865134f5d8013a3b">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="c6adfb9db1c1085779bbb2aeae92d6bffd603457">
+      
+      <h3 class="sourcedoc-section element-name">hasOneOfValues</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; hasOneOfValues(variableFactory: VariableFactory<T>&lt;T&gt;, values: Set&lt;T&gt;): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates has value condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="abc17a8cf9ce5a8e9d5c8fc57842dfaee64e94a9">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="ccceec6db6f7f7b864912bb08d12e0f609bb8e9a">
+        <td class="sourcedoc-section section-signature">
+          <code>values: Set&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>set of values to compare with the variable value.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b56ddacbaff48e2281fd4f0b81ecf347397b2afa">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="51daafb6303684985b9c6a0841265f38f1c13810">
+      
+      <h3 class="sourcedoc-section element-name">matchesLocal</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; matchesLocal(variableFactory: VariableFactory<T>&lt;T&gt;, matcher: Function&lt;T, Boolean&gt;): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates matches local condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="e0625deeb1a871e98efdb53260b65df8b53d4799">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="2e7043aea6f8cf07a55fe6ba39342aad951a4837">
+        <td class="sourcedoc-section section-signature">
+          <code>matcher: Function&lt;T, Boolean&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>a matcher function to check the variable value.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="99466478b427e75a4bb26fdad5df68366aa640d1">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="61247afb485ddb00414c859855339761e18fac86">
+      
+      <h3 class="sourcedoc-section element-name">matchesLocal</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; matchesLocal(variableFactory: VariableFactory<T>&lt;T&gt;, matcher: Function&lt;T, Boolean&gt;, violationMessageSupplier: (VariableFactory<T>&lt;T&gt;, String, Optional&lt;T&gt;)-&gt;String): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates matches local condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="6c6e78dbe4cbc52c42eb0a7a079c348aba3e207d">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="2e7043aea6f8cf07a55fe6ba39342aad951a4837">
+        <td class="sourcedoc-section section-signature">
+          <code>matcher: Function&lt;T, Boolean&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>a matcher function to check the variable value.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="8146739c0d292ae3fdf8762b0e3014928efb194e">
+        <td class="sourcedoc-section section-signature">
+          <code>violationMessageSupplier: (VariableFactory<T>&lt;T&gt;, String, Optional&lt;T&gt;)-&gt;String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>supplier to specify the violation message</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4d19295b8dc24bfef49f1cb3836d720b6b6cc7cf">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="3ec2f1c613c2a46aebc3c9a34a6fb3ff576e4172">
+      
+      <h3 class="sourcedoc-section element-name">matches</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; matches(variableFactory: VariableFactory<T>&lt;T&gt;, matcher: Function&lt;T, Boolean&gt;): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates matches condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f84e85295b47693174cf5d616a4645b3c62a86e0">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="2e7043aea6f8cf07a55fe6ba39342aad951a4837">
+        <td class="sourcedoc-section section-signature">
+          <code>matcher: Function&lt;T, Boolean&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>a matcher function to check the variable value.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="22645b51e643acf93f3d695d7527bfc00669f27e">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="ad2944b9f06c7e88499d16624b087c96f1068dfd">
+      
+      <h3 class="sourcedoc-section element-name">matches</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; matches(variableFactory: VariableFactory<T>&lt;T&gt;, matcher: Function&lt;T, Boolean&gt;, violationMessageSupplier: (VariableFactory<T>&lt;T&gt;, String, Optional&lt;T&gt;)-&gt;String): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates matches condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="bb1fda198bcfc22a5036d3f39e3f7a8f646cd5c7">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="2e7043aea6f8cf07a55fe6ba39342aad951a4837">
+        <td class="sourcedoc-section section-signature">
+          <code>matcher: Function&lt;T, Boolean&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>a matcher function to check the variable value.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="8146739c0d292ae3fdf8762b0e3014928efb194e">
+        <td class="sourcedoc-section section-signature">
+          <code>violationMessageSupplier: (VariableFactory<T>&lt;T&gt;, String, Optional&lt;T&gt;)-&gt;String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>supplier to specify the violation message</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="6b9f01927b4252be34e66a1bb77448f868b5ef65">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="9820b171836249f95658f5e5980a9a9551814c03">
+      
+      <h3 class="sourcedoc-section element-name">matchesRegexLocal</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; matchesRegexLocal(variableFactory: VariableFactory<T>&lt;T&gt;, regex: String): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates matches regex local condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="99aa204f9a8c0f09a8cee391cd7361f301a8c10e">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="62bef16dbc5135d7c951689cdc39c669c53e731d">
+        <td class="sourcedoc-section section-signature">
+          <code>regex: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>a regex to check the variable value.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="246e94ec879019e89216b97ce481268bc862076a">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="74c2b3afedf09747caf644cb106eebdc346192e9">
+      
+      <h3 class="sourcedoc-section element-name">matchesRegexLocal</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; matchesRegexLocal(variableFactory: VariableFactory<T>&lt;T&gt;, regex: String, regexDisplayName: String): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates matches regex Local condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4a2835e61387d9e04f5f88dd91dde8d425716cdd">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="62bef16dbc5135d7c951689cdc39c669c53e731d">
+        <td class="sourcedoc-section section-signature">
+          <code>regex: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>a regex to check the variable value.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="dbc8b58a9c968f75cf3b29a6868d5270f1c522a2">
+        <td class="sourcedoc-section section-signature">
+          <code>regexDisplayName: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>a display name representing the regex.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4d1078dab313c7180077639def2e7086b9d7e06c">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="23d5a115ac302f460d40863b0e49f0f38f4bb4d8">
+      
+      <h3 class="sourcedoc-section element-name">matchesRegex</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; matchesRegex(variableFactory: VariableFactory<T>&lt;T&gt;, regex: String): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates matches regex condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="df48eb9f74e59d21b909e772a1cf056a57b86e48">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="62bef16dbc5135d7c951689cdc39c669c53e731d">
+        <td class="sourcedoc-section section-signature">
+          <code>regex: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>a regex to check the variable value.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b8d29629549db8fb8625116ce55afeb670b98642">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="7313d8236405d42432d0a4605604a59ab7f01899">
+      
+      <h3 class="sourcedoc-section element-name">matchesRegex</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; matchesRegex(variableFactory: VariableFactory<T>&lt;T&gt;, regex: String, regexDisplayName: String): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates matches regex condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="c2f3955db81505cb410f61be8e1fd26d8c9c4e86">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="62bef16dbc5135d7c951689cdc39c669c53e731d">
+        <td class="sourcedoc-section section-signature">
+          <code>regex: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>a regex to check the variable value.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="dbc8b58a9c968f75cf3b29a6868d5270f1c522a2">
+        <td class="sourcedoc-section section-signature">
+          <code>regexDisplayName: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>a display name representing the regex.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="d2d04cdb93f58059d48478fe62b59f34daa2ef2e">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="1a9c018222697cf05553d8305d60f85d2eec4f37">
+      
+      <h3 class="sourcedoc-section element-name">isEmailLocal</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; isEmailLocal(variableFactory: VariableFactory<T>&lt;T&gt;): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates matches E-Mail regex local condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="cc9546e1301dc2e58e96ea2f2e5875f9ae757af8">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="1b21a58e21d9014750f32899fec81f4c6d0dbf66">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="6ec5afd22d2c3aebc800383e726d169d5f155a06">
+      
+      <h3 class="sourcedoc-section element-name">isEmail</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; isEmail(variableFactory: VariableFactory<T>&lt;T&gt;): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates matches E-Mail regex condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="e2856cdd465958e944d01dcb43a1d79a0beb4143">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="a5f8272f7a92791a0e2914621669c66a8a7f23f7">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="7a354707347361d29bd877543ee8cb087eae5600">
+      
+      <h3 class="sourcedoc-section element-name">isUuidLocal</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; isUuidLocal(variableFactory: VariableFactory<T>&lt;T&gt;): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates matches UUID regex local condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f355b45fce3f7767aec34aad8ec5a1e515062de4">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b71d8975e47b8ae8084c6e0ab6c16b88f794914d">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="48dcde4b14cb3e9af131dd2b6158f7891eb7f95a">
+      
+      <h3 class="sourcedoc-section element-name">isUuid</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; isUuid(variableFactory: VariableFactory<T>&lt;T&gt;): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates matches UUID regex condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="2ff46b4edfae7099b3bc2e0604506d49d3a91cd7">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="74c3aa2d289b45f42b612b1503be0464fb9293e2">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="ba57a38556051a2803b45b092556e0ec3ec784e9">
+      
+      <h3 class="sourcedoc-section element-name">isValidBean</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; isValidBean(variableFactory: VariableFactory<T>&lt;T&gt;, validatorSupplier: Supplier&lt;Validator&gt;): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates valid bean condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="84239baef1aad11745cca5e3d0655c64539df790">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="d80ced625b36a4ab99524b4a6cf92d620d98f11c">
+        <td class="sourcedoc-section section-signature">
+          <code>validatorSupplier: Supplier&lt;Validator&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>supplier for the validator.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="d303114ca421a4d50e7bea0721be0fa6407f8e96">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="0c4521ff4794a60dffb9d185e93a880b1025647a">
+      
+      <h3 class="sourcedoc-section element-name">isValidBeanLocal</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; isValidBeanLocal(variableFactory: VariableFactory<T>&lt;T&gt;, validatorSupplier: Supplier&lt;Validator&gt;): @JvmStatic</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates valid bean local condition.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="836c85075c92d61bf57d24d561aee8fefd563e4c">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b51f64af12780e5b17f1a3f56ddaa483b47c13f2">
+        <td class="sourcedoc-section section-signature">
+          <code>variableFactory: VariableFactory<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>factory to work on.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="d80ced625b36a4ab99524b4a6cf92d620d98f11c">
+        <td class="sourcedoc-section section-signature">
+          <code>validatorSupplier: Supplier&lt;Validator&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>supplier for the validator.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ae21e0f5948485c9b8514f7ee53ce69d6a546a4f">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fb8c05d33e1f500039e53fb2b26be2134d43c806">
+        <td class="sourcedoc-section section-signature">
+          <code>@JvmStatic</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+</div>
+
+
+
+
+
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        
+        </div>
+
+        <!-- Page navigation
+        =========================================== -->
+        <div class="col-md-3" role="complementary">
+        <div class="bs-docs-sidebar hidden-print" id="bs-docs-sidebar">
+    <section id="search" >
+        <form data-orchid-search="">
+            <div class="input-group">
+                <input type="text" name="query" id="query" class="form-control" placeholder="Search&hellip;">
+                <span class="input-group-btn"><button type="submit" class="btn btn-default">Go</button></span>
+            </div>
+        </form>
+        <div id="search-results" data-orchid-search-results style="display: none;">
+            <b>Search Results</b>
+            <ul></ul>
+        </div>
+        <div id="search-progress" data-orchid-search-progress style="display: none;">
+            <div class="loader">Loading...</div>
+        </div>
+    </section>
+
+    <ul class="nav bs-docs-sidenav">
+        
+        
+            
+                <li class="has-children ">
+                    <a>Methods</a>
+                    <ul class="nav">
+                        
+                        
+                            
+                                <li class="">
+                                    <a href="#a5f772142aea7444c5050cc0662383d9971ade4d">fun &lt;T&gt; exists(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#65ed48d628b98df32be578dd3f8f625ecb677847">fun &lt;T&gt; existsLocal(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#402ac63364263c6ca5303b3e34c6eee068c2ab29">fun &lt;T&gt; notExistsLocal(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#421dfd7453f0adbcb2676e162f0b315530609963">fun &lt;T&gt; notExists(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#dcdd359eb3428431101df7e1490ab72e0d0c5798">fun &lt;T&gt; hasValueLocal(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, value: T): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#ffea5f99c14e711bb3c85aefe600be19f3764b48">fun &lt;T&gt; hasValue(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, value: T): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#71c00d5df08685df102f9c192cfc35aad7da0761">fun &lt;T&gt; hasOneOfValuesLocal(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, values: Set&lt;T&gt;): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#c6adfb9db1c1085779bbb2aeae92d6bffd603457">fun &lt;T&gt; hasOneOfValues(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, values: Set&lt;T&gt;): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#51daafb6303684985b9c6a0841265f38f1c13810">fun &lt;T&gt; matchesLocal(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, matcher: Function&lt;T, Boolean&gt;): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#61247afb485ddb00414c859855339761e18fac86">fun &lt;T&gt; matchesLocal(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, matcher: Function&lt;T, Boolean&gt;, violationMessageSupplier: (VariableFactory&lt;T&gt;&lt;T&gt;, String, Optional&lt;T&gt;)-&gt;String): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#3ec2f1c613c2a46aebc3c9a34a6fb3ff576e4172">fun &lt;T&gt; matches(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, matcher: Function&lt;T, Boolean&gt;): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#ad2944b9f06c7e88499d16624b087c96f1068dfd">fun &lt;T&gt; matches(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, matcher: Function&lt;T, Boolean&gt;, violationMessageSupplier: (VariableFactory&lt;T&gt;&lt;T&gt;, String, Optional&lt;T&gt;)-&gt;String): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#9820b171836249f95658f5e5980a9a9551814c03">fun &lt;T&gt; matchesRegexLocal(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, regex: String): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#74c2b3afedf09747caf644cb106eebdc346192e9">fun &lt;T&gt; matchesRegexLocal(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, regex: String, regexDisplayName: String): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#23d5a115ac302f460d40863b0e49f0f38f4bb4d8">fun &lt;T&gt; matchesRegex(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, regex: String): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#7313d8236405d42432d0a4605604a59ab7f01899">fun &lt;T&gt; matchesRegex(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, regex: String, regexDisplayName: String): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#1a9c018222697cf05553d8305d60f85d2eec4f37">fun &lt;T&gt; isEmailLocal(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#6ec5afd22d2c3aebc800383e726d169d5f155a06">fun &lt;T&gt; isEmail(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#7a354707347361d29bd877543ee8cb087eae5600">fun &lt;T&gt; isUuidLocal(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#48dcde4b14cb3e9af131dd2b6158f7891eb7f95a">fun &lt;T&gt; isUuid(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#ba57a38556051a2803b45b092556e0ec3ec784e9">fun &lt;T&gt; isValidBean(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, validatorSupplier: Supplier&lt;Validator&gt;): @JvmStatic</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#0c4521ff4794a60dffb9d185e93a880b1025647a">fun &lt;T&gt; isValidBeanLocal(variableFactory: VariableFactory&lt;T&gt;&lt;T&gt;, validatorSupplier: Supplier&lt;Validator&gt;): @JvmStatic</a>
+                                </li>
+                            
+                        
+                    </ul>
+                </li>
+            
+        
+    </ul>
+
+    
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+
+    <a class="back-to-top" href="#top">
+        <i class="glyphicon glyphicon-chevron-up"></i> Back to top
+    </a>
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="footer">
+    <div class="container bs-docs-container">
+    <footer class="bs-docs-footer" role="contentinfo">
+    <div class="row">
+        <div class="col-xs-12">
+            <nav aria-label="navigateClasses">
+                <ul class="pager">
+                    
+
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="icons">
+    
+    
+        <a href="https://www.holunda.io/camunda-bpm-data/" class="fa fas fa-home"></a>
+    
+        <a href="https://github.com/holunda-io/camunda-bpm-data" class="fa fa-github"></a>
+    
+        <a href="https://twitter.com/holisticon" class="fa fa-twitter"></a>
+    
+    
+    </div>
+    <br>
+    <p>
+    Documentation template based on the
+    <a href="https://github.com/mistic100/jekyll-bootstrap-doc">Jekyll Bootstrap Doc</a>
+    Jekyll theme by the <a href="https://getbootstrap.com">Bootstrap team</a>. Site created with
+    <a href="https://orchid.run">Orchid</a>.
+</p>
+
+<ul class="bs-docs-footer-links muted">
+    <li>Currently 1.2.4</li>
+</ul>
+
+
+</footer>
+    </div>
+</div>
+
+
+<!-- start:inject scripts -->
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.3.0/bootbox.min.js"></script>
+<script  src="https://www.holunda.io/camunda-bpm-data/BsDoc/753808c8/assets/js/bsdoc.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://unpkg.com/lunr/lunr.js"></script>
+<script  src="https://www.holunda.io/camunda-bpm-data/assets/js/orchidSearch.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-json.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-highlight/prism-line-highlight.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/toolbar/prism-toolbar.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/show-language/prism-show-language.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+<!-- end:inject scripts -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/1.2.0/trianglify.min.js"></script>
+
+<script>
+    $(function () {
+        window.colors = ['#B10000', '#000000'];
+                  
+    trianglify({"x_colors":["#000","#B10000","#000"]});
+
+        buildNav();
+    });
+</script>
+
+</body>
+</html>

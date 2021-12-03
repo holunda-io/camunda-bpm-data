@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "wiki",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/wiki"
+  },
+  "data": {},
+  "description": "",
+  "title": "Wiki",
+  "content": ""
+}

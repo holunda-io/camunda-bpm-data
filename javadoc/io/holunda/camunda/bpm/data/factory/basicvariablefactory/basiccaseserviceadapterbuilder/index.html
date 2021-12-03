@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.18.1-SNAPSHOT"/>
+<link rel="icon" href="https://www.holunda.io/camunda-bpm-data/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>BasicVariableFactory.BasicCaseServiceAdapterBuilder</title>
+
+
+<meta name="description" content="Beautiful process data handling for Camunda BPM.">
+
+
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.18.1-SNAPSHOT","baseUrl":"https://www.holunda.io/camunda-bpm-data","environment":"debug","version":"1.2.4"};
+</script>
+
+
+
+
+
+<!-- start:debug info -->
+
+<!-- THEME -->
+<!-- Type: BsDoc -->
+<!-- Class: com.eden.orchid.bsdoc.BSDocTheme -->
+
+<!-- PAGE -->
+<!-- Type: classes -->
+<!-- Class: com.eden.orchid.sourcedoc.page.SourceDocPage -->
+<!-- Layout: index -->
+<!-- Resolved Layout: templates/layouts/index.peb -->
+<!-- Page Template: javadocClass, sourceDocPage, classes, page -->
+<!-- Resolved Page Template: templates/pages/sourceDocPage.peb -->
+
+<!-- RESOURCE -->
+<!-- Class: com.eden.orchid.sourcedoc.page.SourceDocResource -->
+<!-- Source Filename:  -->
+
+<!-- COMPLETE PAGE CONFIGURATION -->
+<script>
+    window.allData = {"reference":{"path":"javadoc","baseUrl":"https://www.holunda.io/camunda-bpm-data","fileName":"io/holunda/camunda/bpm/data/factory/basicvariablefactory/basiccaseserviceadapterbuilder","extension":"html","usePrettyUrl":true,"link":"https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/basicvariablefactory/basiccaseserviceadapterbuilder"},"description":"","title":"BasicVariableFactory.BasicCaseServiceAdapterBuilder"};
+</script>
+
+<!-- end:debug info -->
+
+
+
+
+    <!-- start:inject components -->
+    
+        
+            
+        
+    
+    <!-- end:inject components -->
+
+
+
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/BsDoc/753808c8/assets/css/bsdoc.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/BsDoc/753808c8/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/assets/css/asciidoc-admonitionblock.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/assets/css/orchidSourceDoc.css"  />
+<link rel="stylesheet" type="text/css" href="https://rawgit.com/PrismJS/prism-themes/master/themes/prism-darcula.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-highlight/prism-line-highlight.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/toolbar/prism-toolbar.min.css"  />
+<!-- end:inject styles -->
+
+
+</head>
+<body>
+
+
+
+
+<a class="github-fork-ribbon left-top"
+   href="https://github.com/holunda-io/camunda-bpm-data"
+   title="Fork me on GitHub">Fork me on GitHub</a>
+
+
+<header class="navbar navbar-fixed-top bs-docs-nav">
+    <div class="container">
+        <div class="navbar-header" role="banner">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://www.holunda.io/camunda-bpm-data">Camunda BPM Data</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    
+                        <li><a href="https://www.holunda.io/camunda-bpm-data/quick-start">Quick Start</a></li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">User Guide<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/motivation">Motivation</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/features">Features</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-java">Java Examples</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-kotlin">Kotlin Examples</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-no-engine">Example no engine</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/further-outlook">Further outlook</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/changelog">Changelog</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Developer Guide<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/contribution">Contribution</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/project-setup">Project Setup</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/readme">Readme</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/license">License</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Java Packages<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data">io.holunda.camunda.bpm.data</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter">io.holunda.camunda.bpm.data.adapter</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/basic">io.holunda.camunda.bpm.data.adapter.basic</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/list">io.holunda.camunda.bpm.data.adapter.list</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/map">io.holunda.camunda.bpm.data.adapter.map</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/set">io.holunda.camunda.bpm.data.adapter.set</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/builder">io.holunda.camunda.bpm.data.builder</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory">io.holunda.camunda.bpm.data.factory</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader">io.holunda.camunda.bpm.data.reader</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/writer">io.holunda.camunda.bpm.data.writer</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kotlin Packages<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data">io.holunda.camunda.bpm.data</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/acl">io.holunda.camunda.bpm.data.acl</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/acl/apply">io.holunda.camunda.bpm.data.acl.apply</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/acl/transform">io.holunda.camunda.bpm.data.acl.transform</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/adapter">io.holunda.camunda.bpm.data.adapter</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard">io.holunda.camunda.bpm.data.guard</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/condition">io.holunda.camunda.bpm.data.guard.condition</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/integration">io.holunda.camunda.bpm.data.guard.integration</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/mockito">io.holunda.camunda.bpm.data.mockito</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<div id="top"></div>
+
+
+    <div class="bs-docs-masthead" id="jumbotron">
+        <div class="container">
+            <h1 class="home-title">BasicVariableFactory.BasicCaseServiceAdapterBuilder</h1>
+        </div>
+    </div>
+
+
+<div class="container bs-docs-container">
+    <div class="row">
+        <div class="col-md-9" role="main">
+        <nav aria-label="breadcrumb">
+    <ul class="breadcrumb">
+    
+    
+        <li class="breadcrumb-item"><a href="https://www.holunda.io/camunda-bpm-data/javadoc">README</a></li>
+    
+    
+    
+        <li class="breadcrumb-item active" aria-current="page">BasicVariableFactory.BasicCaseServiceAdapterBuilder</li>
+    
+    
+    </ul>
+</nav>
+        
+
+        
+        
+            
+    <!-- start:inject components -->
+    
+        
+            
+        
+            
+                
+                    
+                        <div class="sourcedoc-page orchid-sourcedoc content">
+  
+<div class="sourcedoc-section section-root section-level-1" id="BasicVariableFactory.BasicCaseServiceAdapterBuilder">
+
+
+  <h1 class="sourcedoc-section section-name">BasicVariableFactory.BasicCaseServiceAdapterBuilder</h1>
+  
+    <div class="sourcedoc-section section-element" id="e4b7336b588dcd3b37f75b6b4a17c8813ac4a65e">
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static class <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/basicvariablefactory/basiccaseserviceadapterbuilder">BasicVariableFactory.BasicCaseServiceAdapterBuilder</a>&lt;T&gt; extends Object</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a builder to encapsulate the case service access.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="constructors">
+
+
+  <h2 class="sourcedoc-section section-name">Constructors</h2>
+  
+    <div class="sourcedoc-section section-element" id="3d50083d6c19c6a9d10762266af9b18e07b19695">
+      
+      <h3 class="sourcedoc-section element-name">BasicCaseServiceAdapterBuilder</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/basicvariablefactory/basiccaseserviceadapterbuilder">BasicCaseServiceAdapterBuilder</a>(<a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/basicvariablefactory">BasicVariableFactory</a>&lt;T&gt; basicVariableFactory, CaseService caseService)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Constructs the builder.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="d2097bae5a661c3a27e1f990046beaf921da9783">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="bde09a44c9e84b6c695e07bde28861a7db91d5c8">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/basicvariablefactory">BasicVariableFactory</a>&lt;T&gt; basicVariableFactory</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variable factory to use.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="ea8e0d07f49c7c0f46b4128b6e3a515a1459f396">
+        <td class="sourcedoc-section section-signature">
+          <code>CaseService caseService</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>task service to build adapter with.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="methods">
+
+
+  <h2 class="sourcedoc-section section-name">Methods</h2>
+  
+    <div class="sourcedoc-section section-element" id="874b549575cf6867237ff8c7fbe2b575928ad5de">
+      
+      <h3 class="sourcedoc-section element-name">on</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/writeadapter">WriteAdapter</a>&lt;T&gt; on(String caseExecutionId)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a write adapter on caseExecution.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="763bebfccd5d19d37fd91eb33cce04ba357b3715">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="543d6c410029e34124f835ad7d0eb158dc8b81a4">
+        <td class="sourcedoc-section section-signature">
+          <code>String caseExecutionId</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>id identifying caseExecution.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ba9c987135a38910545ff88c047d4bde286f1384">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b0add54287c440de69d4fdd21ada4abe66f5224f">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/writeadapter">WriteAdapter</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>write adapter</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="10c7f040b83439f197738bef9297dacd4f72884b">
+      
+      <h3 class="sourcedoc-section element-name">from</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/readadapter">ReadAdapter</a>&lt;T&gt; from(String caseExecutionId)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a read adapter on caseExecution.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5e453034850275d0a754b5e4e2ee7b92e14e603f">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="543d6c410029e34124f835ad7d0eb158dc8b81a4">
+        <td class="sourcedoc-section section-signature">
+          <code>String caseExecutionId</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>id identifying caseExecution.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="a9d887f89d8896dba6927f67c6eeb1a62ed37c12">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="34ce3e58247a81c4f34bc7d4d82a9c5b9fca0791">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/readadapter">ReadAdapter</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>read adapter.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+</div>
+
+
+
+
+
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        
+        </div>
+
+        <!-- Page navigation
+        =========================================== -->
+        <div class="col-md-3" role="complementary">
+        <div class="bs-docs-sidebar hidden-print" id="bs-docs-sidebar">
+    <section id="search" >
+        <form data-orchid-search="">
+            <div class="input-group">
+                <input type="text" name="query" id="query" class="form-control" placeholder="Search&hellip;">
+                <span class="input-group-btn"><button type="submit" class="btn btn-default">Go</button></span>
+            </div>
+        </form>
+        <div id="search-results" data-orchid-search-results style="display: none;">
+            <b>Search Results</b>
+            <ul></ul>
+        </div>
+        <div id="search-progress" data-orchid-search-progress style="display: none;">
+            <div class="loader">Loading...</div>
+        </div>
+    </section>
+
+    <ul class="nav bs-docs-sidenav">
+        
+        
+            
+                <li class="has-children ">
+                    <a>Constructors</a>
+                    <ul class="nav">
+                        
+                        
+                            
+                                <li class="">
+                                    <a href="#3d50083d6c19c6a9d10762266af9b18e07b19695">public BasicCaseServiceAdapterBuilder(BasicVariableFactory&lt;T&gt; basicVariableFactory, CaseService caseService)</a>
+                                </li>
+                            
+                        
+                    </ul>
+                </li>
+            
+        
+        
+            
+                <li class="has-children ">
+                    <a>Methods</a>
+                    <ul class="nav">
+                        
+                        
+                            
+                                <li class="">
+                                    <a href="#874b549575cf6867237ff8c7fbe2b575928ad5de">public WriteAdapter&lt;T&gt; on(String caseExecutionId)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#10c7f040b83439f197738bef9297dacd4f72884b">public ReadAdapter&lt;T&gt; from(String caseExecutionId)</a>
+                                </li>
+                            
+                        
+                    </ul>
+                </li>
+            
+        
+    </ul>
+
+    
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+
+    <a class="back-to-top" href="#top">
+        <i class="glyphicon glyphicon-chevron-up"></i> Back to top
+    </a>
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="footer">
+    <div class="container bs-docs-container">
+    <footer class="bs-docs-footer" role="contentinfo">
+    <div class="row">
+        <div class="col-xs-12">
+            <nav aria-label="navigateClasses">
+                <ul class="pager">
+                    
+
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="icons">
+    
+    
+        <a href="https://www.holunda.io/camunda-bpm-data/" class="fa fas fa-home"></a>
+    
+        <a href="https://github.com/holunda-io/camunda-bpm-data" class="fa fa-github"></a>
+    
+        <a href="https://twitter.com/holisticon" class="fa fa-twitter"></a>
+    
+    
+    </div>
+    <br>
+    <p>
+    Documentation template based on the
+    <a href="https://github.com/mistic100/jekyll-bootstrap-doc">Jekyll Bootstrap Doc</a>
+    Jekyll theme by the <a href="https://getbootstrap.com">Bootstrap team</a>. Site created with
+    <a href="https://orchid.run">Orchid</a>.
+</p>
+
+<ul class="bs-docs-footer-links muted">
+    <li>Currently 1.2.4</li>
+</ul>
+
+
+</footer>
+    </div>
+</div>
+
+
+<!-- start:inject scripts -->
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.3.0/bootbox.min.js"></script>
+<script  src="https://www.holunda.io/camunda-bpm-data/BsDoc/753808c8/assets/js/bsdoc.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://unpkg.com/lunr/lunr.js"></script>
+<script  src="https://www.holunda.io/camunda-bpm-data/assets/js/orchidSearch.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-json.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-highlight/prism-line-highlight.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/toolbar/prism-toolbar.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/show-language/prism-show-language.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+<!-- end:inject scripts -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/1.2.0/trianglify.min.js"></script>
+
+<script>
+    $(function () {
+        window.colors = ['#B10000', '#000000'];
+                  
+    trianglify({"x_colors":["#000","#B10000","#000"]});
+
+        buildNav();
+    });
+</script>
+
+</body>
+</html>

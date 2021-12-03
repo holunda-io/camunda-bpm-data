@@ -1,0 +1,2687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.18.1-SNAPSHOT"/>
+<link rel="icon" href="https://www.holunda.io/camunda-bpm-data/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>CamundaBpmData</title>
+
+
+<meta name="description" content="Beautiful process data handling for Camunda BPM.">
+
+
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.18.1-SNAPSHOT","baseUrl":"https://www.holunda.io/camunda-bpm-data","environment":"debug","version":"1.2.4"};
+</script>
+
+
+
+
+
+<!-- start:debug info -->
+
+<!-- THEME -->
+<!-- Type: BsDoc -->
+<!-- Class: com.eden.orchid.bsdoc.BSDocTheme -->
+
+<!-- PAGE -->
+<!-- Type: classes -->
+<!-- Class: com.eden.orchid.sourcedoc.page.SourceDocPage -->
+<!-- Layout: index -->
+<!-- Resolved Layout: templates/layouts/index.peb -->
+<!-- Page Template: javadocClass, sourceDocPage, classes, page -->
+<!-- Resolved Page Template: templates/pages/sourceDocPage.peb -->
+
+<!-- RESOURCE -->
+<!-- Class: com.eden.orchid.sourcedoc.page.SourceDocResource -->
+<!-- Source Filename:  -->
+
+<!-- COMPLETE PAGE CONFIGURATION -->
+<script>
+    window.allData = {"reference":{"path":"javadoc","baseUrl":"https://www.holunda.io/camunda-bpm-data","fileName":"io/holunda/camunda/bpm/data/camundabpmdata","extension":"html","usePrettyUrl":true,"link":"https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/camundabpmdata"},"description":"","title":"CamundaBpmData"};
+</script>
+
+<!-- end:debug info -->
+
+
+
+
+    <!-- start:inject components -->
+    
+        
+            
+        
+    
+    <!-- end:inject components -->
+
+
+
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/BsDoc/753808c8/assets/css/bsdoc.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/BsDoc/753808c8/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/assets/css/asciidoc-admonitionblock.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/assets/css/orchidSourceDoc.css"  />
+<link rel="stylesheet" type="text/css" href="https://rawgit.com/PrismJS/prism-themes/master/themes/prism-darcula.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-highlight/prism-line-highlight.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/toolbar/prism-toolbar.min.css"  />
+<!-- end:inject styles -->
+
+
+</head>
+<body>
+
+
+
+
+<a class="github-fork-ribbon left-top"
+   href="https://github.com/holunda-io/camunda-bpm-data"
+   title="Fork me on GitHub">Fork me on GitHub</a>
+
+
+<header class="navbar navbar-fixed-top bs-docs-nav">
+    <div class="container">
+        <div class="navbar-header" role="banner">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://www.holunda.io/camunda-bpm-data">Camunda BPM Data</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    
+                        <li><a href="https://www.holunda.io/camunda-bpm-data/quick-start">Quick Start</a></li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">User Guide<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/motivation">Motivation</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/features">Features</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-java">Java Examples</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-kotlin">Kotlin Examples</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-no-engine">Example no engine</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/further-outlook">Further outlook</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/changelog">Changelog</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Developer Guide<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/contribution">Contribution</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/project-setup">Project Setup</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/readme">Readme</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/license">License</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Java Packages<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data">io.holunda.camunda.bpm.data</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter">io.holunda.camunda.bpm.data.adapter</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/basic">io.holunda.camunda.bpm.data.adapter.basic</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/list">io.holunda.camunda.bpm.data.adapter.list</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/map">io.holunda.camunda.bpm.data.adapter.map</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/set">io.holunda.camunda.bpm.data.adapter.set</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/builder">io.holunda.camunda.bpm.data.builder</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory">io.holunda.camunda.bpm.data.factory</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader">io.holunda.camunda.bpm.data.reader</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/writer">io.holunda.camunda.bpm.data.writer</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kotlin Packages<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data">io.holunda.camunda.bpm.data</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/acl">io.holunda.camunda.bpm.data.acl</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/acl/apply">io.holunda.camunda.bpm.data.acl.apply</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/acl/transform">io.holunda.camunda.bpm.data.acl.transform</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/adapter">io.holunda.camunda.bpm.data.adapter</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard">io.holunda.camunda.bpm.data.guard</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/condition">io.holunda.camunda.bpm.data.guard.condition</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/integration">io.holunda.camunda.bpm.data.guard.integration</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/mockito">io.holunda.camunda.bpm.data.mockito</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<div id="top"></div>
+
+
+    <div class="bs-docs-masthead" id="jumbotron">
+        <div class="container">
+            <h1 class="home-title">CamundaBpmData</h1>
+        </div>
+    </div>
+
+
+<div class="container bs-docs-container">
+    <div class="row">
+        <div class="col-md-9" role="main">
+        <nav aria-label="breadcrumb">
+    <ul class="breadcrumb">
+    
+    
+        <li class="breadcrumb-item"><a href="https://www.holunda.io/camunda-bpm-data/javadoc">README</a></li>
+    
+    
+    
+        <li class="breadcrumb-item active" aria-current="page">CamundaBpmData</li>
+    
+    
+    </ul>
+</nav>
+        
+
+        
+        
+            
+    <!-- start:inject components -->
+    
+        
+            
+        
+            
+                
+                    
+                        <div class="sourcedoc-page orchid-sourcedoc content">
+  
+<div class="sourcedoc-section section-root section-level-1" id="CamundaBpmData">
+
+
+  <h1 class="sourcedoc-section section-name">CamundaBpmData</h1>
+  
+    <div class="sourcedoc-section section-element" id="45efb29e65e4598f7e5d4fe719b039019dbad2ab">
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public class <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/camundabpmdata">CamundaBpmData</a> extends Object</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Provides a collection of factory methods for creating variable factories.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="methods">
+
+
+  <h2 class="sourcedoc-section section-name">Methods</h2>
+  
+    <div class="sourcedoc-section section-element" id="b12d01f71df25a5360b831b843607af9bfc2cf3a">
+      
+      <h3 class="sourcedoc-section element-name">stringVariable</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;String&gt; stringVariable(String variableName)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a string variable factory.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9b0f5a3c8b462cb6207002e61e0b316997682b01">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3901daba9ec223466e7344ac36dec74d14ae6507">
+        <td class="sourcedoc-section section-signature">
+          <code>String variableName</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>name of the variable.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="81ec0c8528b73642bccdbed4e451002660ce596f">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b910dc6ca17898f2473f24315a5ae04e90ba7c91">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;String&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variable factory for string.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="db214e3cf0fd012257cf1d7222b51aec0d1e2edc">
+      
+      <h3 class="sourcedoc-section element-name">dateVariable</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;Date&gt; dateVariable(String variableName)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a date variable factory.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9ed85bb518417b7c988a3b7850b2b5b0965e415c">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3901daba9ec223466e7344ac36dec74d14ae6507">
+        <td class="sourcedoc-section section-signature">
+          <code>String variableName</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>name of the variable.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="eb45423d098efbd27307198d0c5fb82114972957">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="d89fa8552f81729313ce94a40c364742b38fb7db">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;Date&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variable factory for date.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="e4a66955c63838f73bcb2715439ce4fc1a5c0f75">
+      
+      <h3 class="sourcedoc-section element-name">intVariable</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;Integer&gt; intVariable(String variableName)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates an integer variable factory.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9c18d48879624d0eda722aedac910e182f21498d">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3901daba9ec223466e7344ac36dec74d14ae6507">
+        <td class="sourcedoc-section section-signature">
+          <code>String variableName</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>name of the variable.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="aedb3af0fcd91e661d224fc5f05f9715e193dde2">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0af43f426d31cccc94de2c40a2e560d77072c7ea">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;Integer&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variable factory for integer.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="8f5a4f736b8a86eb12e9315e4431258ab6e66f62">
+      
+      <h3 class="sourcedoc-section element-name">longVariable</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;Long&gt; longVariable(String variableName)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a long variable factory.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="fa93f8f58a4c9d2629832fb7da3840932faf2b80">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3901daba9ec223466e7344ac36dec74d14ae6507">
+        <td class="sourcedoc-section section-signature">
+          <code>String variableName</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>name of the variable.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="de49fbcaed31ee05f6269954d97c42d869d7eb0f">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="dbbe1d41c45c0cfde1ed7116a58cb565a7aa94ed">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;Long&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variable factory for long.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="cfad7a61f8c7715b6fd611ab589a0e8dadf615ec">
+      
+      <h3 class="sourcedoc-section element-name">shortVariable</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;Short&gt; shortVariable(String variableName)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a short variable factory.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="63b15d029e54a032f54b736e6503bb69ee5a8cd4">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3901daba9ec223466e7344ac36dec74d14ae6507">
+        <td class="sourcedoc-section section-signature">
+          <code>String variableName</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>name of the variable.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="aaf34e6b592868a4f050ffef640e5dc161a47792">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0b1f2beb10262445b8d414a211cba55e9d9d6cbc">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;Short&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variable factory for short.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="b5bef7f7be6236bbae2ab8c55dcf23ae7158d029">
+      
+      <h3 class="sourcedoc-section element-name">doubleVariable</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;Double&gt; doubleVariable(String variableName)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a double variable factory.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="fbe7aabf73b15dab14e180a0988a07e4f5429862">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3901daba9ec223466e7344ac36dec74d14ae6507">
+        <td class="sourcedoc-section section-signature">
+          <code>String variableName</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>name of the variable.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="573d3d51e1e4693b30fb7d573b09328fd98f01dd">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="108f12578f1874e2fe559c6d3ea6d70fb976a762">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;Double&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variable factory for double.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="bbe12fa18f0c0dc97ecfc18cbf9dda70007bd220">
+      
+      <h3 class="sourcedoc-section element-name">booleanVariable</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;Boolean&gt; booleanVariable(String variableName)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a boolean variable factory.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="07b2e399c2176badb4c83d377ecf383a8583405d">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3901daba9ec223466e7344ac36dec74d14ae6507">
+        <td class="sourcedoc-section section-signature">
+          <code>String variableName</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>name of the variable.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4703b0910beab40b66c17fc8bc2aa56309d59adb">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="6e6bd4ef1b280677d0c36b4b1ddcb673823e8808">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;Boolean&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variable factory for boolean.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="f30b400abdb30b4e207740ccc5b7acd4788c0019">
+      
+      <h3 class="sourcedoc-section element-name">customVariable</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static &lt;T&gt;<a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;T&gt; customVariable(String variableName, Class&lt;T&gt; clazz)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a variable factory for custom type.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="cb98c04ac577b76d25ccf8c45e53504f89174e08">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3901daba9ec223466e7344ac36dec74d14ae6507">
+        <td class="sourcedoc-section section-signature">
+          <code>String variableName</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>name of the variable.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="27473e214a66abb79c16f522cb6bf169b4e57723">
+        <td class="sourcedoc-section section-signature">
+          <code>Class&lt;T&gt; clazz</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>class of specifying the type.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="22b367bfdedeb987fa4d6360918845ae28d59718">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f1d6e0ce74a741c34abce6ebae4a3104c4f9d84a">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variable factory for given type.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="61359290c185138fe5c47c118b6dd9bd4e399c5d">
+      
+      <h3 class="sourcedoc-section element-name">listVariable</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static &lt;T&gt;<a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;List&lt;T&gt;&gt; listVariable(String variableName, Class&lt;T&gt; clazz)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a variable factory for list of custom type.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4bd461003f8fe22a8f12e81628ad219ddf35d84e">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3901daba9ec223466e7344ac36dec74d14ae6507">
+        <td class="sourcedoc-section section-signature">
+          <code>String variableName</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>name of the variable.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="27473e214a66abb79c16f522cb6bf169b4e57723">
+        <td class="sourcedoc-section section-signature">
+          <code>Class&lt;T&gt; clazz</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>class of specifying the member type.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="dc31182a611e3839544edaf7beff46b334bdfd22">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="84a3f92b176fd01cdd1cae58b6a07fb2aa893d07">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;List&lt;T&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variable factory for given type.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="458c2b3b9331f85b6e6cb00782a02bbb1d841f98">
+      
+      <h3 class="sourcedoc-section element-name">setVariable</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static &lt;T&gt;<a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;Set&lt;T&gt;&gt; setVariable(String variableName, Class&lt;T&gt; clazz)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a variable factory for set of custom type.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="907ebc53d48cb54b268bdc5ebbea5e8224ef362a">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3901daba9ec223466e7344ac36dec74d14ae6507">
+        <td class="sourcedoc-section section-signature">
+          <code>String variableName</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>name of the variable.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="27473e214a66abb79c16f522cb6bf169b4e57723">
+        <td class="sourcedoc-section section-signature">
+          <code>Class&lt;T&gt; clazz</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>class of specifying the member type.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="a1c1da2553daae9a4f33b5736e6cf7c77b9a5751">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="55b9618148912b865acabbf6853e7cd106a85193">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;Set&lt;T&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variable factory for given type.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="8302d8d8d970b20187d19ef9fa8739e2ebe2d6bb">
+      
+      <h3 class="sourcedoc-section element-name">mapVariable</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static &lt;K, V&gt;<a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;Map&lt;K, V&gt;&gt; mapVariable(String variableName, Class&lt;K&gt; keyClazz, Class&lt;V&gt; valueClazz)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a variable factory for map of custom key and custom value type.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="c6632b8ad806c86be20a6453b62fe6e6c059a652">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3901daba9ec223466e7344ac36dec74d14ae6507">
+        <td class="sourcedoc-section section-signature">
+          <code>String variableName</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>name of the variable.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="0f61b88130b8df62a605849ec0a2fafd397c8cb8">
+        <td class="sourcedoc-section section-signature">
+          <code>Class&lt;K&gt; keyClazz</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>class of specifying the key member type.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="5286c4c7ef38909fc719c766852c2117ddc3b809">
+        <td class="sourcedoc-section section-signature">
+          <code>Class&lt;V&gt; valueClazz</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>class of specifying the value member type.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="2a300eb9db4e204ce8cefa1b218a78974b554533">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b31e0566fd8bfb0fd13231c3c24a04a4262569bd">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory/variablefactory">VariableFactory</a>&lt;Map&lt;K, V&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variable factory for given type.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="b88d4c2d961511550cb5cc7e100097f1d65f31a3">
+      
+      <h3 class="sourcedoc-section element-name">builder</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/builder/variablemapbuilder">VariableMapBuilder</a> builder()</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a new variable map builder.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="fbf5a1af55c5a6a744017e35cdf302995972eb58">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="39e1c1f452b1d8425c33f02fc44070de46f07d01">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/builder/variablemapbuilder">VariableMapBuilder</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>new writer with empty variable map.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="4ac04bca9e6cfe8c0110f3629d026dbce9324afc">
+      
+      <h3 class="sourcedoc-section element-name">writer</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/writer/globalvariablewriter">GlobalVariableWriter</a>&lt;?&gt; writer(VariableMap variables)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a new variable map builder.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="45d508b7ea7669e6d829a835516a1b7755d02419">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="a74de5136e28bd00753933224544291eec2f9a4e">
+        <td class="sourcedoc-section section-signature">
+          <code>VariableMap variables</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>pre-created, potentially non-empty variables.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9d0a74c8668759bdb6203c5da79d5829ac6ab419">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="69a3dd2ac9a3a24edcec9a0872a275fb92404e1a">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/writer/globalvariablewriter">GlobalVariableWriter</a>&lt;?&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>new writer</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="3d78389f5e8e6d4dc3ad6bcb09f7b9842e823cc6">
+      
+      <h3 class="sourcedoc-section element-name">writer</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/writer/variablewriter">VariableWriter</a>&lt;?&gt; writer(VariableScope variableScope)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a new variable scope writer.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="514e0fbbe45514ecd2cd9ad81673c122e2fdca56">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="2aaf7a1eeffa046777cb656843fcf9677d7035f3">
+        <td class="sourcedoc-section section-signature">
+          <code>VariableScope variableScope</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>scope to work on (delegate execution or delegate task).</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="13f9a27d9aae1322b995525ec468c5599bce8775">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fe3b82d2a114abe0667da55069428a14d5a3f07f">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/writer/variablewriter">VariableWriter</a>&lt;?&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>new writer working on provided variable scope.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="552bd7b4815cac8875a343cf93727150545f3c9e">
+      
+      <h3 class="sourcedoc-section element-name">writer</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/writer/variablewriter">VariableWriter</a>&lt;?&gt; writer(RuntimeService runtimeService, String executionId)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a new execution variable writer.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ddcc94873ae3e414d93d41430c832a8cb2421917">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="713267204e24a8aeb2480fa515172423b74eb892">
+        <td class="sourcedoc-section section-signature">
+          <code>RuntimeService runtimeService</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>runtime service to use.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="9e9e13fc3ae73ad022009ec25a658e44f6181134">
+        <td class="sourcedoc-section section-signature">
+          <code>String executionId</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>id of the execution.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="a72bca37bd4f95573c205b55085fab58bdae29a9">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fe3b82d2a114abe0667da55069428a14d5a3f07f">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/writer/variablewriter">VariableWriter</a>&lt;?&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>new writer working on provided process execution.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="9d02fc8b467a66df8aa99b02b8c03c6288f99913">
+      
+      <h3 class="sourcedoc-section element-name">writer</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/writer/variablewriter">VariableWriter</a>&lt;?&gt; writer(TaskService taskService, String taskId)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a new task variable writer.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ef1c9bc1e2d9ddc7e69b88cef6c68252aca22712">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="8c6329d86c1d14032335dbed17d656d46c644d29">
+        <td class="sourcedoc-section section-signature">
+          <code>TaskService taskService</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>task service to use.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="98952c7be9e2b1d435327a739a8cb815854b81cc">
+        <td class="sourcedoc-section section-signature">
+          <code>String taskId</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>task id.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5e7df61047af66646d345dd42b3f5149a7fc2486">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fe3b82d2a114abe0667da55069428a14d5a3f07f">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/writer/variablewriter">VariableWriter</a>&lt;?&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>new writer working on provided user task.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="77c42684d4ba4d4bf8293befad73ff3fcd6fac5e">
+      
+      <h3 class="sourcedoc-section element-name">writer</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/writer/variablewriter">VariableWriter</a>&lt;?&gt; writer(CaseService caseService, String caseExecutionId)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a new caseExecution variable writer.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f57bfb2ed64d20bfb0c26e4b55a7911bd4054881">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="ea8e0d07f49c7c0f46b4128b6e3a515a1459f396">
+        <td class="sourcedoc-section section-signature">
+          <code>CaseService caseService</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>task service to use.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="543d6c410029e34124f835ad7d0eb158dc8b81a4">
+        <td class="sourcedoc-section section-signature">
+          <code>String caseExecutionId</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>caseExecution id.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="dccf3c107fb7b7c4de5899e8db15f7b6951585b5">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fe3b82d2a114abe0667da55069428a14d5a3f07f">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/writer/variablewriter">VariableWriter</a>&lt;?&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>new writer working on provided user task.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="f2c6b366ac102fe52fc7e5cd47e55b8cd4bd6d3c">
+      
+      <h3 class="sourcedoc-section element-name">reader</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader/variablereader">VariableReader</a> reader(TaskService taskService, String taskId)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a new task variable reader.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="710d992a68ab3ba24571212704a7ebba588a1e38">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="8c6329d86c1d14032335dbed17d656d46c644d29">
+        <td class="sourcedoc-section section-signature">
+          <code>TaskService taskService</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the Camunda task service</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="98952c7be9e2b1d435327a739a8cb815854b81cc">
+        <td class="sourcedoc-section section-signature">
+          <code>String taskId</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the id of the task to use</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="af6f85d83b6f4253888efab04f1247f925af5018">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="79c6841256d01ecaa7fff3a206067cd8589392a2">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader/variablereader">VariableReader</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variable reader working on task</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="68f52def782d36136135f83aa17580d699a9fd5b">
+      
+      <h3 class="sourcedoc-section element-name">reader</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader/variablereader">VariableReader</a> reader(RuntimeService runtimeService, String executionId)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a new execution variable reader.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="181a1dcc5457ba828245d0d02b08967c3c1eb2a0">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="713267204e24a8aeb2480fa515172423b74eb892">
+        <td class="sourcedoc-section section-signature">
+          <code>RuntimeService runtimeService</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the Camunda runtime service</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="9e9e13fc3ae73ad022009ec25a658e44f6181134">
+        <td class="sourcedoc-section section-signature">
+          <code>String executionId</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the executionId to use</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="928c3f4036220eab38c00bcb311a6baf1230f3b4">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="79c6841256d01ecaa7fff3a206067cd8589392a2">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader/variablereader">VariableReader</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variable reader working on execution</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="c8b8cbec6726e59b18eeac80ead83a3152519b51">
+      
+      <h3 class="sourcedoc-section element-name">reader</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader/variablereader">VariableReader</a> reader(CaseService caseService, String caseExecutionId)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a new execution variable reader.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="c4c58678aa1ecac91e356762050d6d73aed5f1f7">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="ea8e0d07f49c7c0f46b4128b6e3a515a1459f396">
+        <td class="sourcedoc-section section-signature">
+          <code>CaseService caseService</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the Camunda case service</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="543d6c410029e34124f835ad7d0eb158dc8b81a4">
+        <td class="sourcedoc-section section-signature">
+          <code>String caseExecutionId</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the caseExecutionId to use</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="cd0b45f75cb739dbbba90c6264a0519abbcbe1fe">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="79c6841256d01ecaa7fff3a206067cd8589392a2">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader/variablereader">VariableReader</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variable reader working on execution</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="9e4086ea016b9f2eafc4078cb6f316da47ac89b2">
+      
+      <h3 class="sourcedoc-section element-name">reader</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader/variablereader">VariableReader</a> reader(VariableScope variableScope)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a new variableScope variable reader.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5466d58004e1fa997904186a05e5229d4cb25c99">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="2aaf7a1eeffa046777cb656843fcf9677d7035f3">
+        <td class="sourcedoc-section section-signature">
+          <code>VariableScope variableScope</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the variable scope to use (DelegateExecution, DelegateTask)</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="04fff9f7b87c570ae48950206c50d035a0b2c389">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="79c6841256d01ecaa7fff3a206067cd8589392a2">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader/variablereader">VariableReader</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variable reader working on variableScope</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="50bd520e865d337d1770442fb0efd66847e15543">
+      
+      <h3 class="sourcedoc-section element-name">reader</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader/variablereader">VariableReader</a> reader(VariableMap variableMap)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a new variableMap variable reader.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="41fd2138603118943cb914933efe1117fa1c787a">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="89960f23a0284d27a7b1456b1d29bec3dfba56bd">
+        <td class="sourcedoc-section section-signature">
+          <code>VariableMap variableMap</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the variableMap to use</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ad0b199c39cc885e1c88f16e115ad2f052d7b925">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="79c6841256d01ecaa7fff3a206067cd8589392a2">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader/variablereader">VariableReader</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variable reader working on variableMap</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="0edc470ff693e2aa01a8918076b4b876dc30554e">
+      
+      <h3 class="sourcedoc-section element-name">reader</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader/variablereader">VariableReader</a> reader(ProcessInstanceWithVariables processInstance)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a new processInstance variable reader.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4134b10822e0475b502a3cce9608ee43d896e21f">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="6f3dae23eb5ba2753c81def2cba5c9ee70caef8c">
+        <td class="sourcedoc-section section-signature">
+          <code>ProcessInstanceWithVariables processInstance</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the processInstance with variables to read from</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4e064d3c0d526f09ab43a6dddf5e4e5f8d7c81ee">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="79c6841256d01ecaa7fff3a206067cd8589392a2">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader/variablereader">VariableReader</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variable reader working on the variableMap provided by instance</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="dc67cc3135bb7dcb2590f03d51eb07c74aca3af9">
+      
+      <h3 class="sourcedoc-section element-name">reader</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>public static <a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader/variablereader">VariableReader</a> reader(LockedExternalTask lockedExternalTask)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"><p>Creates a new extern variable reader.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="470e6fd31a31e2e13f1c7b2ecd9fdaa5cbf31041">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="37ca317737d4468725748409a97456bb728e394e">
+        <td class="sourcedoc-section section-signature">
+          <code>LockedExternalTask lockedExternalTask</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the external tasks to use</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="c550f5e844bf03dad2f1379a1903d4b8019209ad">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="79c6841256d01ecaa7fff3a206067cd8589392a2">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader/variablereader">VariableReader</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>variable reader working on external task</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+</div>
+
+
+
+
+
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        
+        </div>
+
+        <!-- Page navigation
+        =========================================== -->
+        <div class="col-md-3" role="complementary">
+        <div class="bs-docs-sidebar hidden-print" id="bs-docs-sidebar">
+    <section id="search" >
+        <form data-orchid-search="">
+            <div class="input-group">
+                <input type="text" name="query" id="query" class="form-control" placeholder="Search&hellip;">
+                <span class="input-group-btn"><button type="submit" class="btn btn-default">Go</button></span>
+            </div>
+        </form>
+        <div id="search-results" data-orchid-search-results style="display: none;">
+            <b>Search Results</b>
+            <ul></ul>
+        </div>
+        <div id="search-progress" data-orchid-search-progress style="display: none;">
+            <div class="loader">Loading...</div>
+        </div>
+    </section>
+
+    <ul class="nav bs-docs-sidenav">
+        
+        
+            
+                <li class="has-children ">
+                    <a>Methods</a>
+                    <ul class="nav">
+                        
+                        
+                            
+                                <li class="">
+                                    <a href="#b12d01f71df25a5360b831b843607af9bfc2cf3a">public static VariableFactory&lt;String&gt; stringVariable(String variableName)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#db214e3cf0fd012257cf1d7222b51aec0d1e2edc">public static VariableFactory&lt;Date&gt; dateVariable(String variableName)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#e4a66955c63838f73bcb2715439ce4fc1a5c0f75">public static VariableFactory&lt;Integer&gt; intVariable(String variableName)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#8f5a4f736b8a86eb12e9315e4431258ab6e66f62">public static VariableFactory&lt;Long&gt; longVariable(String variableName)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#cfad7a61f8c7715b6fd611ab589a0e8dadf615ec">public static VariableFactory&lt;Short&gt; shortVariable(String variableName)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#b5bef7f7be6236bbae2ab8c55dcf23ae7158d029">public static VariableFactory&lt;Double&gt; doubleVariable(String variableName)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#bbe12fa18f0c0dc97ecfc18cbf9dda70007bd220">public static VariableFactory&lt;Boolean&gt; booleanVariable(String variableName)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#f30b400abdb30b4e207740ccc5b7acd4788c0019">public static &lt;T&gt;VariableFactory&lt;T&gt; customVariable(String variableName, Class&lt;T&gt; clazz)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#61359290c185138fe5c47c118b6dd9bd4e399c5d">public static &lt;T&gt;VariableFactory&lt;List&lt;T&gt;&gt; listVariable(String variableName, Class&lt;T&gt; clazz)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#458c2b3b9331f85b6e6cb00782a02bbb1d841f98">public static &lt;T&gt;VariableFactory&lt;Set&lt;T&gt;&gt; setVariable(String variableName, Class&lt;T&gt; clazz)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#8302d8d8d970b20187d19ef9fa8739e2ebe2d6bb">public static &lt;K, V&gt;VariableFactory&lt;Map&lt;K, V&gt;&gt; mapVariable(String variableName, Class&lt;K&gt; keyClazz, Class&lt;V&gt; valueClazz)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#b88d4c2d961511550cb5cc7e100097f1d65f31a3">public static VariableMapBuilder builder()</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#4ac04bca9e6cfe8c0110f3629d026dbce9324afc">public static GlobalVariableWriter&lt;?&gt; writer(VariableMap variables)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#3d78389f5e8e6d4dc3ad6bcb09f7b9842e823cc6">public static VariableWriter&lt;?&gt; writer(VariableScope variableScope)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#552bd7b4815cac8875a343cf93727150545f3c9e">public static VariableWriter&lt;?&gt; writer(RuntimeService runtimeService, String executionId)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#9d02fc8b467a66df8aa99b02b8c03c6288f99913">public static VariableWriter&lt;?&gt; writer(TaskService taskService, String taskId)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#77c42684d4ba4d4bf8293befad73ff3fcd6fac5e">public static VariableWriter&lt;?&gt; writer(CaseService caseService, String caseExecutionId)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#f2c6b366ac102fe52fc7e5cd47e55b8cd4bd6d3c">public static VariableReader reader(TaskService taskService, String taskId)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#68f52def782d36136135f83aa17580d699a9fd5b">public static VariableReader reader(RuntimeService runtimeService, String executionId)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#c8b8cbec6726e59b18eeac80ead83a3152519b51">public static VariableReader reader(CaseService caseService, String caseExecutionId)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#9e4086ea016b9f2eafc4078cb6f316da47ac89b2">public static VariableReader reader(VariableScope variableScope)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#50bd520e865d337d1770442fb0efd66847e15543">public static VariableReader reader(VariableMap variableMap)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#0edc470ff693e2aa01a8918076b4b876dc30554e">public static VariableReader reader(ProcessInstanceWithVariables processInstance)</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#dc67cc3135bb7dcb2590f03d51eb07c74aca3af9">public static VariableReader reader(LockedExternalTask lockedExternalTask)</a>
+                                </li>
+                            
+                        
+                    </ul>
+                </li>
+            
+        
+    </ul>
+
+    
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+
+    <a class="back-to-top" href="#top">
+        <i class="glyphicon glyphicon-chevron-up"></i> Back to top
+    </a>
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="footer">
+    <div class="container bs-docs-container">
+    <footer class="bs-docs-footer" role="contentinfo">
+    <div class="row">
+        <div class="col-xs-12">
+            <nav aria-label="navigateClasses">
+                <ul class="pager">
+                    
+
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="icons">
+    
+    
+        <a href="https://www.holunda.io/camunda-bpm-data/" class="fa fas fa-home"></a>
+    
+        <a href="https://github.com/holunda-io/camunda-bpm-data" class="fa fa-github"></a>
+    
+        <a href="https://twitter.com/holisticon" class="fa fa-twitter"></a>
+    
+    
+    </div>
+    <br>
+    <p>
+    Documentation template based on the
+    <a href="https://github.com/mistic100/jekyll-bootstrap-doc">Jekyll Bootstrap Doc</a>
+    Jekyll theme by the <a href="https://getbootstrap.com">Bootstrap team</a>. Site created with
+    <a href="https://orchid.run">Orchid</a>.
+</p>
+
+<ul class="bs-docs-footer-links muted">
+    <li>Currently 1.2.4</li>
+</ul>
+
+
+</footer>
+    </div>
+</div>
+
+
+<!-- start:inject scripts -->
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.3.0/bootbox.min.js"></script>
+<script  src="https://www.holunda.io/camunda-bpm-data/BsDoc/753808c8/assets/js/bsdoc.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://unpkg.com/lunr/lunr.js"></script>
+<script  src="https://www.holunda.io/camunda-bpm-data/assets/js/orchidSearch.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-json.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-highlight/prism-line-highlight.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/toolbar/prism-toolbar.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/show-language/prism-show-language.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+<!-- end:inject scripts -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/1.2.0/trianglify.min.js"></script>
+
+<script>
+    $(function () {
+        window.colors = ['#B10000', '#000000'];
+                  
+    trianglify({"x_colors":["#000","#B10000","#000"]});
+
+        buildNav();
+    });
+</script>
+
+</body>
+</html>

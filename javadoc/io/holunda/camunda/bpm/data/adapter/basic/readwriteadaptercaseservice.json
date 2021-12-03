@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "javadoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/adapter/basic/readwriteadaptercaseservice",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/basic/readwriteadaptercaseservice"
+  },
+  "data": {},
+  "description": "",
+  "title": "ReadWriteAdapterCaseService",
+  "content": "<p>CommentComponent(kind=Text, text=Read write adapter for case service access., value=)<\/p>\n"
+}

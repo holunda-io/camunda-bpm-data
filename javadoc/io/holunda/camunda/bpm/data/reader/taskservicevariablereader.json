@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "javadoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/reader/taskservicevariablereader",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader/taskservicevariablereader"
+  },
+  "data": {},
+  "description": "",
+  "title": "TaskServiceVariableReader",
+  "content": "<p>CommentComponent(kind=Text, text=Allows reading multiple variable values from, value=) CommentComponent(kind=see, text=TaskService#getVariable(String, String), value=) CommentComponent(kind=Text, text=., value=)<\/p>\n"
+}

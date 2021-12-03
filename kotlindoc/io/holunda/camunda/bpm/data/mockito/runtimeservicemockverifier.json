@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "kotlindoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/mockito/runtimeservicemockverifier",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/mockito/runtimeservicemockverifier"
+  },
+  "data": {},
+  "description": "",
+  "title": "RuntimeServiceMockVerifier",
+  "content": "<p>CommentComponent(kind=text, text=Verifier for a mocked runtime service.\nProvides methods for easy verification., value=null)<\/p>\n"
+}

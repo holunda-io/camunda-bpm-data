@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.18.1-SNAPSHOT"/>
+<link rel="icon" href="https://www.holunda.io/camunda-bpm-data/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>README</title>
+
+
+<meta name="description" content="Beautiful process data handling for Camunda BPM.">
+
+
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.18.1-SNAPSHOT","baseUrl":"https://www.holunda.io/camunda-bpm-data","environment":"debug","version":"1.2.4"};
+</script>
+
+
+
+
+
+<!-- start:debug info -->
+
+<!-- THEME -->
+<!-- Type: BsDoc -->
+<!-- Class: com.eden.orchid.bsdoc.BSDocTheme -->
+
+<!-- PAGE -->
+<!-- Type: javadoc -->
+<!-- Class: com.eden.orchid.sourcedoc.page.SourceDocModuleHomePage -->
+<!-- Layout: index -->
+<!-- Resolved Layout: templates/layouts/index.peb -->
+<!-- Page Template: javadocModule, sourceDocModuleHomepage, javadoc, page -->
+<!-- Resolved Page Template: templates/pages/sourceDocModuleHomepage.peb -->
+
+<!-- RESOURCE -->
+<!-- Class: com.eden.orchid.api.resources.resource.FileResource -->
+<!-- Source Filename: README.md -->
+
+<!-- COMPLETE PAGE CONFIGURATION -->
+<script>
+    window.allData = {"reference":{"path":"javadoc","baseUrl":"https://www.holunda.io/camunda-bpm-data","fileName":"","extension":"html","usePrettyUrl":true,"link":"https://www.holunda.io/camunda-bpm-data/javadoc"},"description":"","title":"README"};
+</script>
+
+<!-- end:debug info -->
+
+
+
+
+    <!-- start:inject components -->
+    
+        
+            
+        
+    
+    <!-- end:inject components -->
+
+
+
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/BsDoc/753808c8/assets/css/bsdoc.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/BsDoc/753808c8/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/assets/css/asciidoc-admonitionblock.css"  />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-data/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://rawgit.com/PrismJS/prism-themes/master/themes/prism-darcula.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-highlight/prism-line-highlight.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/toolbar/prism-toolbar.min.css"  />
+<!-- end:inject styles -->
+
+
+</head>
+<body>
+
+
+
+
+<a class="github-fork-ribbon left-top"
+   href="https://github.com/holunda-io/camunda-bpm-data"
+   title="Fork me on GitHub">Fork me on GitHub</a>
+
+
+<header class="navbar navbar-fixed-top bs-docs-nav">
+    <div class="container">
+        <div class="navbar-header" role="banner">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://www.holunda.io/camunda-bpm-data">Camunda BPM Data</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    
+                        <li><a href="https://www.holunda.io/camunda-bpm-data/quick-start">Quick Start</a></li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">User Guide<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/motivation">Motivation</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/features">Features</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-java">Java Examples</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-kotlin">Kotlin Examples</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-no-engine">Example no engine</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/further-outlook">Further outlook</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/changelog">Changelog</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Developer Guide<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/contribution">Contribution</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/wiki/developer-guide/project-setup">Project Setup</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/readme">Readme</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/license">License</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Java Packages<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data">io.holunda.camunda.bpm.data</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter">io.holunda.camunda.bpm.data.adapter</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/basic">io.holunda.camunda.bpm.data.adapter.basic</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/list">io.holunda.camunda.bpm.data.adapter.list</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/map">io.holunda.camunda.bpm.data.adapter.map</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/set">io.holunda.camunda.bpm.data.adapter.set</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/builder">io.holunda.camunda.bpm.data.builder</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/factory">io.holunda.camunda.bpm.data.factory</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader">io.holunda.camunda.bpm.data.reader</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/writer">io.holunda.camunda.bpm.data.writer</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kotlin Packages<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data">io.holunda.camunda.bpm.data</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/acl">io.holunda.camunda.bpm.data.acl</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/acl/apply">io.holunda.camunda.bpm.data.acl.apply</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/acl/transform">io.holunda.camunda.bpm.data.acl.transform</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/adapter">io.holunda.camunda.bpm.data.adapter</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard">io.holunda.camunda.bpm.data.guard</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/condition">io.holunda.camunda.bpm.data.guard.condition</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/guard/integration">io.holunda.camunda.bpm.data.guard.integration</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-data/kotlindoc/io/holunda/camunda/bpm/data/mockito">io.holunda.camunda.bpm.data.mockito</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<div id="top"></div>
+
+
+    <div class="bs-docs-masthead" id="jumbotron">
+        <div class="container">
+            <h1 class="home-title">README</h1>
+        </div>
+    </div>
+
+
+<div class="container bs-docs-container">
+    <div class="row">
+        <div class="col-md-9" role="main">
+        <nav aria-label="breadcrumb">
+    <ul class="breadcrumb">
+    
+    
+        <li class="breadcrumb-item active" aria-current="page">README</li>
+    
+    
+    </ul>
+</nav>
+        
+
+        
+        
+            
+    <!-- start:inject components -->
+    
+        
+            
+        
+            
+                
+                    
+                        <p><a href="https://github.com/holunda-io/camunda-bpm-data/actions"><img src="https://github.com/holunda-io/camunda-bpm-data/workflows/default/badge.svg" alt="Build Status" /></a>
+<a href="https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data"><img src="https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data/badge.svg" alt="Maven Central" /></a>
+<a href="https://codecov.io/gh/holunda-io/camunda-bpm-data"><img src="https://codecov.io/gh/holunda-io/camunda-bpm-data/branch/master/graph/badge.svg" alt="CodeCov" /></a>
+<a href="https://app.codacy.com/app/zambrovski/camunda-bpm-data?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=holunda-io/camunda-bpm-data&amp;utm_campaign"><img src="https://api.codacy.com/project/badge/Grade/653136bd5cad48c8a9f2621ee304ff26" alt="Codacy" /></a>
+<a href="https://www.holunda.io/camunda-bpm-data/changelog"><img src="https://img.shields.io/badge/CHANGES---yellow" alt="Changes" /></a>
+<a href="https://gitter.im/holunda-io/camunda-bpm-data?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge"><img src="https://badges.gitter.im/holunda-io/camunda-bpm-data.svg" alt="gitter" /></a></p>
+<h2 id="camunda-bpm-data"><a href="#camunda-bpm-data" id="camunda-bpm-data" class="anchor"></a>Camunda BPM Data</h2>
+<blockquote>
+<p>Beautiful process data handling for Camunda BPM.</p>
+</blockquote>
+<h2 id="why-to-use-this-library-in-every-camunda-project"><a href="#why-to-use-this-library-in-every-camunda-project" id="why-to-use-this-library-in-every-camunda-project" class="anchor"></a>Why to use this library in every Camunda project</h2>
+<p>If you are a software engineer and run process automation projects in your company or on behalf of the customer
+based on Camunda Process Engine, you probably are familiar with process variables. Camunda offers an API to access
+them and thereby manipulate the state of the process execution - one of the core features during process automation.</p>
+<p>Unfortunately, as a user of the Camunda API, you have to exactly know the variable type (so the Java class behind it).
+For example, if you store a String in a variable <code>&quot;orderId&quot;</code> you must extract it as a String in every piece of code.
+Since there is no code connection between the different code parts, but the BPMN process model orchestrates
+these snippets to a single process execution, it makes refactoring and testing of process automation projects
+error-prone and challenging.</p>
+<p>This library helps you to overcome these difficulties and make access, manipulation and testing process variables really
+easy and convenient. We leverage the Camunda API and offer you not only a better API but also some <a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/features">additional features</a>.</p>
+<p>If you want to read more about data in Camunda processes, have a look on those articles:</p>
+<ul>
+<li><a href="https://medium.com/holisticon-consultants/data-in-process-part-1-2620bf9abd76">Data in Process (Part 1)</a></li>
+<li><a href="https://medium.com/holisticon-consultants/data-in-process-part-2-7c6a109e6ee2">Data in Process (Part 2)</a></li>
+</ul>
+<h2 id="quick-introduction"><a href="#quick-introduction" id="quick-introduction" class="anchor"></a>Quick Introduction</h2>
+<h3 id="setup"><a href="#setup" id="setup" class="anchor"></a>Setup</h3>
+<p>If you just want to start using the library, put the following dependency into your project <code>pom.xml</code>:</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.holunda.data&lt;/groupId&gt;
+  &lt;artifactId&gt;camunda-bpm-data&lt;/artifactId&gt;
+  &lt;version&gt;1.2.3&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>If you are using Gradle Kotlin DSL add to your <code>build.gradle.kts</code>:</p>
+<pre><code class="language-kotlin">implementation(&quot;io.holunda.data:camunda-bpm-data:1.2.3&quot;)
+</code></pre>
+<p>For Gradle Groovy DSL add to your <code>build.gradle</code>:</p>
+<pre><code class="language-groovy">implementation 'io.holunda.data:camunda-bpm-data:1.2.3'
+</code></pre>
+<h3 id="variable-declaration"><a href="#variable-declaration" id="variable-declaration" class="anchor"></a>Variable declaration</h3>
+<p>Now your setup is completed, and you can declare your variables like this:</p>
+<pre><code class="language-java">import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.*;
+
+public class OrderApproval {
+  public static final VariableFactory&lt;String&gt; ORDER_ID = stringVariable(&quot;orderId&quot;);
+  public static final VariableFactory&lt;Order&gt; ORDER = customVariable(&quot;order&quot;, Order.class);
+  public static final VariableFactory&lt;Boolean&gt; ORDER_APPROVED = booleanVariable(&quot;orderApproved&quot;);
+  public static final VariableFactory&lt;BigDecimal&gt; ORDER_TOTAL = customVariable(&quot;orderTotal&quot;, BigDecimal.class);
+  public static final VariableFactory&lt;OrderPosition&gt; ORDER_POSITION = customVariable(&quot;orderPosition&quot;, OrderPosition.class);
+}
+</code></pre>
+<h3 id="variable-access-from-java-delegate"><a href="#variable-access-from-java-delegate" id="variable-access-from-java-delegate" class="anchor"></a>Variable access from Java Delegate</h3>
+<p>Finally, you want to access them from your Java delegates, Execution or Task Listeners or simple Java components:</p>
+<pre><code class="language-java">public class MyDelegate implements JavaDelegate {
+  @Override
+  public void execute(DelegateExecution execution) {
+    VariableReader reader = CamundaBpmData.reader(execution);
+    OrderPosition orderPosition = reader.get(ORDER_POSITION);
+    BigDecimal oldTotal = reader.getOptional(ORDER_TOTAL).orElse(BigDecimal.ZERO);
+
+    BigDecimal newTotal = oldTotal.add(calculatePrice(orderPosition));
+    ORDER_TOTAL.on(execution).setLocal(newTotal);
+  }
+
+  private BigDecimal calculatePrice(OrderPosition orderPosition) {
+     return orderPosition.getNetCost().multiply(BigDecimal.valueOf(orderPosition.getAmount()));
+  }
+}
+</code></pre>
+<h3 id="variable-access-from-rest-controller"><a href="#variable-access-from-rest-controller" id="variable-access-from-rest-controller" class="anchor"></a>Variable access from REST Controller</h3>
+<p>Now imagine you are implementing a REST controller for a user task form which
+loads data from the process application, displays it, captures some input and
+sends that back to the process application to complete the user task. By doing so,
+you will usually need to access process variables. Here is an example:</p>
+<pre><code class="language-java">@RestController
+@RequestMapping(&quot;/task/approve-order&quot;)
+public class ApproveOrderTaskController {
+
+    private final TaskService taskService;
+
+    public ApproveOrderTaskController(TaskService taskService) {
+        this.taskService = taskService;
+    }
+
+    @GetMapping(&quot;/{taskId}&quot;)
+    public ResponseEntity&lt;ApproveTaskDto&gt; loadTask(@PathVariable(&quot;taskId&quot;) String taskId) {
+        Order order = ORDER.from(taskService, taskId).get();
+        return ResponseEntity.ok(new ApproveTaskDto(order));
+    }
+
+    @PostMapping(&quot;/{taskId}&quot;)
+    public ResponseEntity&lt;Void&gt; completeTask(@PathVariable(&quot;taskId&quot;) String taskId, @RequestBody ApproveTaskCompleteDto userInput) {
+        VariableMap vars = CamundaBpmData.builder()
+            .set(ORDER_APPROVED, userInput.getApproved())
+            .build();
+        taskService.complete(taskId, vars);
+        return ResponseEntity.noContent().build();
+    }
+}
+
+</code></pre>
+<h3 id="testing-correct-variable-access"><a href="#testing-correct-variable-access" id="testing-correct-variable-access" class="anchor"></a>Testing correct variable access</h3>
+<p>If you want to write the test for the REST controller, you will need to stub
+the task service and verify that the correct variables has been set. To simplify
+these tests, we created an additional library module <code>camunda-bpm-data-test</code>.
+Please put the following dependency into your <code>pom.xml</code>:</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.holunda.data&lt;/groupId&gt;
+  &lt;artifactId&gt;camunda-bpm-data-test&lt;/artifactId&gt;
+  &lt;version&gt;1.2.2&lt;/version&gt;
+  &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>Now you can use <code>TaskServiceVariableMockBuilder</code> to stub correct behavior of Camunda Task Service
+and <code>TaskServiceVerifier</code> to verify the correct access to variables easily. Here is the JUnit
+test of the REST controller above, making use of <code>camunda-bpm-data-test</code>.</p>
+<pre><code class="language-java">public class ApproveOrderTaskControllerTest {
+
+    private static Order order = new Order(&quot;ORDER-ID-1&quot;, new Date(), new ArrayList&lt;&gt;());
+    private TaskService taskService = mock(TaskService.class);
+    private TaskServiceMockVerifier verifier = taskServiceMockVerifier(taskService);
+    private ApproveOrderTaskController controller = new ApproveOrderTaskController(taskService);
+    private String taskId;
+
+    @Before
+    public void prepareTest() {
+        reset(taskService);
+        taskId = UUID.randomUUID().toString();
+    }
+
+    @Test
+    public void testLoadTask() {
+        // given
+        taskServiceVariableMockBuilder(taskService).initial(ORDER, order).build();
+        // when
+        ResponseEntity&lt;ApproveTaskDto&gt; responseEntity = controller.loadTask(taskId);
+        // then
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(responseEntity.getBody()).isEqualTo(new ApproveTaskDto(order));
+        verifier.verifyGet(ORDER, taskId);
+        verifier.verifyNoMoreInteractions();
+    }
+
+    @Test
+    public void testCompleteTask() {
+        // when
+        ApproveTaskCompleteDto response = new ApproveTaskCompleteDto(true);
+        ResponseEntity&lt;Void&gt; responseEntity = controller.completeTask(taskId, response);
+        // then
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+        verifier.verifyComplete(builder().set(ORDER_APPROVED, response.getApproved()).build(), taskId);
+        verifier.verifyNoMoreInteractions();
+    }
+}
+</code></pre>
+<h3 id="further-documentation"><a href="#further-documentation" id="further-documentation" class="anchor"></a>Further documentation</h3>
+<p>For further details, please consult our <a href="https://www.holunda.io/camunda-bpm-data/quick-start">Quick Start</a>
+guide or have a look to our primary documentation - <a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide">the User Guide</a></p>
+<h2 id="working-example"><a href="#working-example" id="working-example" class="anchor"></a>Working Example</h2>
+<p>We prepared some typical usage scenarios and implemented two example projects in Java and Kotlin.
+See our <a href="https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples">Examples</a> section for usage and configuration.</p>
+<h2 id="license"><a href="#license" id="license" class="anchor"></a>License</h2>
+<p><a href="https://www.holunda.io/camunda-bpm-data/license"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="Apache License 2" /></a></p>
+<p>This library is developed under Apache 2.0 License.</p>
+<h2 id="contribution"><a href="#contribution" id="contribution" class="anchor"></a>Contribution</h2>
+<p>If you want to contribute to this project, feel free to do so. Start with <a href="http://holunda.io/camunda-bpm-data/wiki/developer-guide/contribution">Contributing guide</a>.</p>
+<h2 id="maintainer"><a href="#maintainer" id="maintainer" class="anchor"></a>Maintainer</h2>
+<table>
+<thead>
+<tr><th align="center"><a href="https://github.com/zambrovski"><img alt="zambrovski" src="https://avatars.githubusercontent.com/u/673128?v=4&s=117 width=117"></a></th><th align="center"><a href="https://github.com/jangalinski"><img alt="jangalinski" src="https://avatars.githubusercontent.com/u/814032?v=4&s=117 width=117"></a></th><th align="center"><a href="https://github.com/christian-maschmann"><img alt="christian-maschmann" src="https://avatars.githubusercontent.com/u/44058891?v=4&s=117 width=117"></a></th><th align="center"><a href="https://github.com/stefanzilske"><img alt="stefanzilske" src="https://avatars.githubusercontent.com/u/10954564?v=4&s=117 width=117"></a></th><th align="center"><a href="https://github.com/nernsting"><img alt="nernsting" src="https://avatars.githubusercontent.com/u/1822388?v=4&s=117 width=117"></a></th><th align="center"><a href="https://github.com/pschalk"><img alt="pschalk" src="https://avatars.githubusercontent.com/u/8512329?v=4&s=117 width=117"></a></th><th align="center"><a href="https://github.com/srsp"><img alt="srsp" src="https://avatars.githubusercontent.com/u/1210541?v=4&s=117 width=117"></a></th></tr>
+</thead>
+<tbody>
+<tr><td align="center"><a href="https://github.com/zambrovski">zambrovski</a></td><td align="center"><a href="https://github.com/jangalinski">jangalinski</a></td><td align="center"><a href="https://github.com/christian-maschmann">christian-maschmann</a></td><td align="center"><a href="https://github.com/stefanzilske">stefanzilske</a></td><td align="center"><a href="https://github.com/nernsting">nernsting</a></td><td align="center"><a href="https://github.com/pschalk">pschalk</a></td><td align="center"><a href="https://github.com/srsp">srsp</a></td></tr>
+</tbody>
+</table>
+
+
+
+<p><b>Roots:</b></p>
+<ul>
+  <li><a href="https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data">io.holunda.camunda.bpm.data</a></li>
+
+</ul>
+
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        
+        </div>
+
+        <!-- Page navigation
+        =========================================== -->
+        <div class="col-md-3" role="complementary">
+        <div class="bs-docs-sidebar hidden-print" id="bs-docs-sidebar">
+    <section id="search" >
+        <form data-orchid-search="">
+            <div class="input-group">
+                <input type="text" name="query" id="query" class="form-control" placeholder="Search&hellip;">
+                <span class="input-group-btn"><button type="submit" class="btn btn-default">Go</button></span>
+            </div>
+        </form>
+        <div id="search-results" data-orchid-search-results style="display: none;">
+            <b>Search Results</b>
+            <ul></ul>
+        </div>
+        <div id="search-progress" data-orchid-search-progress style="display: none;">
+            <div class="loader">Loading...</div>
+        </div>
+    </section>
+
+    <ul class="nav bs-docs-sidenav">
+        
+    </ul>
+
+    
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+
+    <a class="back-to-top" href="#top">
+        <i class="glyphicon glyphicon-chevron-up"></i> Back to top
+    </a>
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="footer">
+    <div class="container bs-docs-container">
+    <footer class="bs-docs-footer" role="contentinfo">
+    <div class="row">
+        <div class="col-xs-12">
+            <nav aria-label="navigateClasses">
+                <ul class="pager">
+                    
+
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="icons">
+    
+    
+        <a href="https://www.holunda.io/camunda-bpm-data/" class="fa fas fa-home"></a>
+    
+        <a href="https://github.com/holunda-io/camunda-bpm-data" class="fa fa-github"></a>
+    
+        <a href="https://twitter.com/holisticon" class="fa fa-twitter"></a>
+    
+    
+    </div>
+    <br>
+    <p>
+    Documentation template based on the
+    <a href="https://github.com/mistic100/jekyll-bootstrap-doc">Jekyll Bootstrap Doc</a>
+    Jekyll theme by the <a href="https://getbootstrap.com">Bootstrap team</a>. Site created with
+    <a href="https://orchid.run">Orchid</a>.
+</p>
+
+<ul class="bs-docs-footer-links muted">
+    <li>Currently 1.2.4</li>
+</ul>
+
+
+</footer>
+    </div>
+</div>
+
+
+<!-- start:inject scripts -->
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.3.0/bootbox.min.js"></script>
+<script  src="https://www.holunda.io/camunda-bpm-data/BsDoc/753808c8/assets/js/bsdoc.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://unpkg.com/lunr/lunr.js"></script>
+<script  src="https://www.holunda.io/camunda-bpm-data/assets/js/orchidSearch.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-json.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-highlight/prism-line-highlight.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/toolbar/prism-toolbar.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/show-language/prism-show-language.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+<!-- end:inject scripts -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/1.2.0/trianglify.min.js"></script>
+
+<script>
+    $(function () {
+        window.colors = ['#B10000', '#000000'];
+                  
+    trianglify({"x_colors":["#000","#B10000","#000"]});
+
+        buildNav();
+    });
+</script>
+
+</body>
+</html>

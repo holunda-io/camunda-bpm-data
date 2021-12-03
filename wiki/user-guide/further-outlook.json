@@ -1,0 +1,22 @@
+{
+  "reference": {
+    "path": "wiki/user-guide",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "further-outlook",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/wiki/user-guide/further-outlook"
+  },
+  "previous": {
+    "path": "wiki/user-guide",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "examples-no-engine",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples-no-engine"
+  },
+  "data": {"title": "Further outlook"},
+  "description": "",
+  "title": "Further outlook",
+  "content": "<h2 id=\"further-outlook\"><a href=\"#further-outlook\" id=\"further-outlook\" class=\"anchor\"><\/a>Further outlook<\/h2>\n<ul>\n<li>Implement Contracts to be able to check guards automatically\n// We implemented all features we could imagine so far, if you are missing something, please\n// open an issue in https://github.com/holunda-io/camunda-bpm-data/issues[Github].<\/li>\n<\/ul>\n"
+}

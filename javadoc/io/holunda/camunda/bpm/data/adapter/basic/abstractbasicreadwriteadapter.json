@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "javadoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/adapter/basic/abstractbasicreadwriteadapter",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/basic/abstractbasicreadwriteadapter"
+  },
+  "data": {},
+  "description": "",
+  "title": "AbstractBasicReadWriteAdapter",
+  "content": "<p>CommentComponent(kind=Text, text=Base class for all basic read-write-adapter., value=)<\/p>\n"
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd"
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <sitemap>
+        <loc>https://www.holunda.io/camunda-bpm-data/sitemap-assets.xml</loc>
+        <lastmod>2021-12-03</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.holunda.io/camunda-bpm-data/sitemap-home.xml</loc>
+        <lastmod>2021-12-03</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.holunda.io/camunda-bpm-data/sitemap-javadoc.xml</loc>
+        <lastmod>2021-12-03</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.holunda.io/camunda-bpm-data/sitemap-kotlindoc.xml</loc>
+        <lastmod>2021-12-03</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.holunda.io/camunda-bpm-data/sitemap-pages.xml</loc>
+        <lastmod>2021-12-03</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.holunda.io/camunda-bpm-data/sitemap-wiki.xml</loc>
+        <lastmod>2021-12-03</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.holunda.io/camunda-bpm-data/sitemap-changelog.xml</loc>
+        <lastmod>2021-12-03</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.holunda.io/camunda-bpm-data/sitemap-external.xml</loc>
+        <lastmod>2021-12-03</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.holunda.io/camunda-bpm-data/sitemap-sitemap.xml</loc>
+        <lastmod>2021-12-03</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.holunda.io/camunda-bpm-data/sitemap-indices.xml</loc>
+        <lastmod>2021-12-03</lastmod>
+    </sitemap>
+    
+</sitemapindex>

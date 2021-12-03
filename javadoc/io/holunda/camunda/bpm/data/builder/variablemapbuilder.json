@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "javadoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/builder/variablemapbuilder",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/builder/variablemapbuilder"
+  },
+  "data": {},
+  "description": "",
+  "title": "VariableMapBuilder",
+  "content": "<p>CommentComponent(kind=Text, text=Builder to create, value=) CommentComponent(kind=see, text=VariableMap, value=) CommentComponent(kind=Text, text=using, value=) CommentComponent(kind=typeName, text=VariableFactory, value=io.holunda.camunda.bpm.data.factory.VariableFactory) CommentComponent(kind=Text, text=., value=)<\/p>\n"
+}

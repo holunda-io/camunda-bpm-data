@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "javadoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data"
+  },
+  "data": {},
+  "description": "",
+  "title": "io.holunda.camunda.bpm.data",
+  "content": "<p>CommentComponent(kind=Text, text=Top-level package of the library., value=)<\/p>\n"
+}

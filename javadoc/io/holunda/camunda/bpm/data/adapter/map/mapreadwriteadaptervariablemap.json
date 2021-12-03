@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "javadoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/adapter/map/mapreadwriteadaptervariablemap",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/adapter/map/mapreadwriteadaptervariablemap"
+  },
+  "data": {},
+  "description": "",
+  "title": "MapReadWriteAdapterVariableMap",
+  "content": "<p>CommentComponent(kind=Text, text=Read-write adapter for variable map., value=)<\/p>\n"
+}

@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "javadoc",
+    "baseUrl": "https://www.holunda.io/camunda-bpm-data",
+    "fileName": "io/holunda/camunda/bpm/data/reader/variablescopereader",
+    "extension": "html",
+    "usePrettyUrl": true,
+    "link": "https://www.holunda.io/camunda-bpm-data/javadoc/io/holunda/camunda/bpm/data/reader/variablescopereader"
+  },
+  "data": {},
+  "description": "",
+  "title": "VariableScopeReader",
+  "content": "<p>CommentComponent(kind=Text, text=Allows reading multiple variable values from, value=) CommentComponent(kind=see, text=VariableScope, value=) CommentComponent(kind=Text, text=(such as, value=) CommentComponent(kind=see, text=org.camunda.bpm.engine.delegate.DelegateExecution, value=) CommentComponent(kind=Text, text=and, value=) CommentComponent(kind=see, text=org.camunda.bpm.engine.delegate.DelegateTask, value=) CommentComponent(kind=Text, text=)., value=)<\/p>\n"
+}
