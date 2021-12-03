@@ -4,6 +4,8 @@ import io.holunda.camunda.bpm.data.factory.VariableFactory
 import io.holunda.camunda.bpm.data.guard.condition.*
 import java.util.*
 import java.util.function.Function
+import java.util.function.Supplier
+import javax.validation.Validator
 
 /**
  * Guard creation methods.
@@ -178,5 +180,21 @@ object CamundaBpmDataGuards {
    */
   @JvmStatic
   fun <T> isUuid(variableFactory: VariableFactory<T>) = variableFactory.isUuid()
+
+  /**
+   * Creates valid bean condition.
+   * @param variableFactory factory to work on.
+   * @param validatorSupplier supplier for the validator.
+   */
+  @JvmStatic
+  fun <T> isValidBean(variableFactory: VariableFactory<T>, validatorSupplier : Supplier<Validator>) = variableFactory.isValidBean(validatorSupplier)
+
+  /**
+   * Creates valid bean local condition.
+   * @param variableFactory factory to work on.
+   * @param validatorSupplier supplier for the validator.
+   */
+  @JvmStatic
+  fun <T> isValidBeanLocal(variableFactory: VariableFactory<T>, validatorSupplier : Supplier<Validator>) = variableFactory.isValidBeanLocal(validatorSupplier)
 
 }

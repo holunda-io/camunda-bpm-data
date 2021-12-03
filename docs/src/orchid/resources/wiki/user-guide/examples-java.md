@@ -226,9 +226,15 @@ class SomeService {
 class VariableGuardConfiguration {
 
     public static final String MY_GUARD_BEANNAME = "myGuardBeanName";
+        
+    @Bean
+    public Supplier<Validator>  validatorSupplier() {
+        // assuming dependencys to implement javax.validation:validation-api are present
+        return () -> Validation.buildDefaultValidatorFactory().getValidator();
+    }
 
     @Bean(VariableGuardConfiguration.MY_GUARD_BEANNAME)
-    public ExecutionListener myGuardBeanName() {
+    public ExecutionListener myGuardBeanName(Supplier<Validator> validatorSupplier) {
         return new DefaultGuardExecutionListener(
             Arrays.asList(
                 exists(REQUIRED_VALUE),
@@ -239,7 +245,8 @@ class VariableGuardConfiguration {
                 isUuid(DOCUMENT_ID),
                 matches(DOCUMENT_BODY, this::myDocumentBodyMatcher),
                 matches(DOCUMENT_BODY, this::myDocumentBodyMatcher, this::validationMessageSupplier),
-                matchesRegex(DOCUMENT_BODY, "^Dude.*", "Starts with 'Dude'")
+                matchesRegex(DOCUMENT_BODY, "^Dude.*", "Starts with 'Dude'"),
+                isValidBean(My_DOCUMENT, validatorSupplier)
             ), true);
     }
 
@@ -250,6 +257,11 @@ class VariableGuardConfiguration {
     private String validationMessageSupplier(VariableFactory<String> variableFactory, String localLabel, Optional<String> option) {
         return String.format("Expecting%s variable '%s' to always match my document body matcher, but its value '%s' has not.", localLabel, variableFactory.getName(), option.orElse(""));
     }
+}
+
+class MyDocument {
+    @Email
+    public String email;    
 }
 ```
 

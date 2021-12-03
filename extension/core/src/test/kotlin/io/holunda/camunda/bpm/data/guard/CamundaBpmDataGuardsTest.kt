@@ -5,6 +5,9 @@ import io.holunda.camunda.bpm.data.guard.condition.*
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import java.util.*
+import java.util.function.Supplier
+import javax.validation.Validation
+import javax.validation.Validator
 
 class CamundaBpmDataGuardsTest {
 
@@ -488,6 +491,28 @@ class CamundaBpmDataGuardsTest {
     assertThat(condition.variableFactory).isEqualTo(UUID_VARIABLE)
     assertThat(condition.local).isEqualTo(true)
     assertThat(condition.toString()).isEqualTo("MatchesRegex condition for local variable '${UUID_VARIABLE.name}'")
+    assertThat(condition.evaluate(Optional.of(MYUUID))).isEmpty()
+  }
+
+  @Test
+  fun `kotlin should construct validBean condition`() {
+    val validatorSupplier: Supplier<Validator> = Supplier { Validation.buildDefaultValidatorFactory().validator }
+    val condition = UUID_VARIABLE.isValidBean(validatorSupplier)
+    assertThat(condition).isInstanceOf(VariableValidBeanGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(UUID_VARIABLE)
+    assertThat(condition.local).isEqualTo(false)
+    assertThat(condition.toString()).isEqualTo("ValidBean condition for variable '${UUID_VARIABLE.name}'")
+    assertThat(condition.evaluate(Optional.of(MYUUID))).isEmpty()
+  }
+
+  @Test
+  fun `kotlin should construct validBean local condition`() {
+    val validatorSupplier: Supplier<Validator> = Supplier { Validation.buildDefaultValidatorFactory().validator }
+    val condition = UUID_VARIABLE.isValidBeanLocal(validatorSupplier)
+    assertThat(condition).isInstanceOf(VariableValidBeanGuardCondition::class.java)
+    assertThat(condition.variableFactory).isEqualTo(UUID_VARIABLE)
+    assertThat(condition.local).isEqualTo(true)
+    assertThat(condition.toString()).isEqualTo("ValidBean condition for local variable '${UUID_VARIABLE.name}'")
     assertThat(condition.evaluate(Optional.of(MYUUID))).isEmpty()
   }
 

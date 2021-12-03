@@ -215,9 +215,15 @@ class VariableGuardConfiguration {
     companion object {
         const val LOAD_OPERATIONAL_FILE_GUARD = "loadOperationalFileGuard";
     }
+    
+    @Bean
+    // assuming dependencys to implement javax.validation:validation-api are present
+    fun validatorSupplier(): Supplier<Validator> = Supplier {
+      Validation.buildDefaultValidatorFactory().validator
+    }
 
     @Bean(LOAD_OPERATIONAL_FILE_GUARD)
-    fun loadOperationalFileGuard(): ExecutionListener =
+    fun loadOperationalFileGuard(validatorSupplier : Supplier<Validator>): ExecutionListener =
         DefaultGuardExecutionListener(
             listOf(
                 REQUIRED_VALUE.exists(),
@@ -228,13 +234,16 @@ class VariableGuardConfiguration {
                 DOCUMENT_ID.isUuid(),
                 DOCUMENT_BODY.matches { return@matches true },
                 DOCUMENT_BODY.matches(this::validationMessageSupplier) { return@matches true },
-                DOCUMENT_BODY.matchesRegexLocal(Regex("^Dude.*"), "Starts with 'Dude'")
+                DOCUMENT_BODY.matchesRegexLocal(Regex("^Dude.*"), "Starts with 'Dude'"),
+                MY_DOCUMENT.isValidBean(validatorSupplier)
             ), true
         )
         
     private fun validationMessageSupplier(variableFactory: VariableFactory<String>, localLabel: String, option: Optional<String>) =
         "Expecting$localLabel variable '${variableFactory.name}' to always match my document body matcher, but its value '${option.get()}' has not."
 }
+
+class MyDocument(@field:Email val email: String)
 ```
 
 ### Example project
