@@ -1,8 +1,8 @@
 package io.holunda.camunda.bpm.data.mockito
 
-import com.nhaarman.mockitokotlin2.times
-import com.nhaarman.mockitokotlin2.verify
-import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
+import org.mockito.kotlin.times
+import org.mockito.kotlin.verify
+import org.mockito.kotlin.verifyNoMoreInteractions
 import io.holunda.camunda.bpm.data.factory.VariableFactory
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.variable.VariableMap

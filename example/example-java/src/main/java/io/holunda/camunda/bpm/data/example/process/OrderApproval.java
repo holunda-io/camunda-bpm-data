@@ -24,7 +24,7 @@ import static com.google.common.collect.Lists.newArrayList;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.customVariable;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
-import static io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.exists;
+import static io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.*;
 
 /**
  * Process backing bean.
@@ -112,7 +112,7 @@ public class OrderApproval {
   }
 
   /**
-   * Checks that the variable "orderApproved" exists.
+   * Checks that the variable "orderApproved" exists and is true.
    * Used as task listener on complete of user task in BPMN ${taskExecutionListener}
    *
    * @return task listener.
@@ -125,7 +125,6 @@ public class OrderApproval {
       ), true
     );
   }
-
 
   /**
    * Logs the task creation.

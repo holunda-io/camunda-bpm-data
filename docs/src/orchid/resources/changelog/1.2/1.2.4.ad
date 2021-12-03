@@ -1,0 +1,26 @@
+---
+version: 1.2.4
+---
+
+== Feature
+- New `VariableGuard` supporting Regex matching, #162
+- Create automatic release notes based on milestone assignment of issues, #159
+- Assign name to VariablesGuard to better test that the expected guard has failed, #158
+- Read variables from ProcessInstanceWithVariables, #150
+- Guard conditions to match against a regex, E-Mail pattern or UUID pattern
+- Guard condition 'matches' supports a custom violation message supplier
+
+== Fix
+- Provide example without Camunda Engine #129
+- Migrate to Markdown for docs to prepare removal of JavaEden/Orchid
+- Fix reified versions of `mapVariable`, `setVariable` and `listVariable` to support nullable types by default, #164
+
+== Chore
+- SpringBoot 2.6.1
+- Camunda 7.16
+- Camunda BPM Assert 13.0.0
+- Camunda Spin 1.11.0
+- Kotlin 1.6.0
+- Migrate to official Mockito Kotlin 4.0.0
+
+

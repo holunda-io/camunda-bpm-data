@@ -85,7 +85,15 @@ object CamundaBpmDataKotlin {
    * @param T The type of the variable.
    * @return instance of [VariableFactory]
    */
-  inline fun <reified T : Any> listVariable(name: String): VariableFactory<List<T>> = ListVariableFactory(name, T::class.java)
+  inline fun <reified T : Any?> listVariable(name: String): VariableFactory<List<T>> = ListVariableFactory(name, T::class.java)
+
+  /**
+   * Reified version of list variable factory.
+   * @param name The name of the variable.
+   * @param T The type of the variable.
+   * @return instance of [VariableFactory]
+   */
+  inline fun <reified T : Any> listVariableNotNull(name: String): VariableFactory<List<T>> = ListVariableFactory(name, T::class.java)
 
   /**
    * Reified version of set variable factory.
@@ -94,7 +102,16 @@ object CamundaBpmDataKotlin {
    * @param wrap a boolean flag controlling if the serializer should wrap a list into a wrapper object. Set this flag to true, if you use complex types as T.
    * @return instance of [VariableFactory]
    */
-  inline fun <reified T : Any> setVariable(name: String): VariableFactory<Set<T>> = SetVariableFactory(name, T::class.java)
+  inline fun <reified T : Any?> setVariable(name: String): VariableFactory<Set<T>> = SetVariableFactory(name, T::class.java)
+
+  /**
+   * Reified version of set variable factory.
+   * @param name The name of the variable.
+   * @param T The type of the variable.
+   * @param wrap a boolean flag controlling if the serializer should wrap a list into a wrapper object. Set this flag to true, if you use complex types as T.
+   * @return instance of [VariableFactory]
+   */
+  inline fun <reified T : Any> setVariableNotNull(name: String): VariableFactory<Set<T>> = SetVariableFactory(name, T::class.java)
 
   /**
    * Reified version of map variable factory.
@@ -103,6 +120,15 @@ object CamundaBpmDataKotlin {
    * @param V The type of the variable value.
    * @return instance of [VariableFactory]
    */
-  inline fun <reified K : Any, reified V : Any> mapVariable(name: String): VariableFactory<Map<K, V>> = MapVariableFactory(name, K::class.java, V::class.java)
+  inline fun <reified K : Any, reified V : Any?> mapVariable(name: String): VariableFactory<Map<K, V>> = MapVariableFactory(name, K::class.java, V::class.java)
+
+  /**
+   * Reified version of map variable factory.
+   * @param name The name of the variable.
+   * @param K The type of the variable key.
+   * @param V The type of the variable value.
+   * @return instance of [VariableFactory]
+   */
+  inline fun <reified K : Any, reified V : Any> mapVariableNotNullable(name: String): VariableFactory<Map<K, V>> = MapVariableFactory(name, K::class.java, V::class.java)
 
 }

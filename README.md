@@ -1,26 +1,15 @@
-[cols="a,a,a,a,a,a,a"]
-|===
-| // ci
-image::https://github.com/holunda-io/camunda-bpm-data/workflows/default/badge.svg[caption="Build Status", link=https://github.com/holunda-io/camunda-bpm-data/actions]
-| // maven central
-image::https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data/badge.svg[caption="Maven Central", link=https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data]
-| // codecov
-image::https://codecov.io/gh/holunda-io/camunda-bpm-data/branch/master/graph/badge.svg[caption="codecov", link=https://codecov.io/gh/holunda-io/camunda-bpm-data]
-| // codacy
-image::https://api.codacy.com/project/badge/Grade/653136bd5cad48c8a9f2621ee304ff26[caption="Codacy Badge", link=https://app.codacy.com/app/zambrovski/camunda-bpm-data?utm_source=github.com&utm_medium=referral&utm_content=holunda-io/camunda-bpm-data&utm_campaign=Badge_Grade_Dashboard]
-| // license
-image::https://img.shields.io/badge/License-Apache%202.0-blue.svg[caption="License", link="https://www.holunda.io/camunda-bpm-data/license"]
-| // changelog
-image::https://img.shields.io/badge/CHANGES----blue.svg[caption="Change log" link="https://www.holunda.io/camunda-bpm-data/changelog"]
-| // gitter
-image::https://badges.gitter.im/holunda-io/camunda-bpm-data.svg[caption="Gitter", link="https://gitter.im/holunda-io/camunda-bpm-data?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"]
-|===
+[![Build Status](https://github.com/holunda-io/camunda-bpm-data/workflows/default/badge.svg)](https://github.com/holunda-io/camunda-bpm-data/actions)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data)
+[![CodeCov](https://codecov.io/gh/holunda-io/camunda-bpm-data/branch/master/graph/badge.svg)](https://codecov.io/gh/holunda-io/camunda-bpm-data)
+[![Codacy](https://api.codacy.com/project/badge/Grade/653136bd5cad48c8a9f2621ee304ff26)](https://app.codacy.com/app/zambrovski/camunda-bpm-data?utm_source=github.com&utm_medium=referral&utm_content=holunda-io/camunda-bpm-data&utm_campaign)
+[![Changes](https://img.shields.io/badge/CHANGES---yellow)](https://www.holunda.io/camunda-bpm-data/changelog)
+[![gitter](https://badges.gitter.im/holunda-io/camunda-bpm-data.svg)](https://gitter.im/holunda-io/camunda-bpm-data?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-== Camunda BPM Data
+## Camunda BPM Data
 
 > Beautiful process data handling for Camunda BPM.
 
-== Why to use this library in every Camunda project?
+## Why to use this library in every Camunda project
 
 If you are a software engineer and run process automation projects in your company or on behalf of the customer
 based on Camunda Process Engine, you probably are familiar with process variables. Camunda offers an API to access
@@ -33,46 +22,42 @@ these snippets to a single process execution, it makes refactoring and testing o
 error-prone and challenging.
 
 This library helps you to overcome these difficulties and make access, manipulation and testing process variables really
-easy and convenient. We leverage the Camunda API and offer you not only a better API but also some link:https://www.holunda.io/camunda-bpm-data/wiki/user-guide/features[additional features].
+easy and convenient. We leverage the Camunda API and offer you not only a better API but also some [additional features](https://www.holunda.io/camunda-bpm-data/wiki/user-guide/features).
 
 If you want to read more about data in Camunda processes, have a look on those articles:
 
-- https://medium.com/holisticon-consultants/data-in-process-part-1-2620bf9abd76[Data in Process (Part 1)]
-- https://medium.com/holisticon-consultants/data-in-process-part-2-7c6a109e6ee2[Data in Process (Part 2)]
+  * [Data in Process (Part 1)](https://medium.com/holisticon-consultants/data-in-process-part-1-2620bf9abd76)
+  * [Data in Process (Part 2)](https://medium.com/holisticon-consultants/data-in-process-part-2-7c6a109e6ee2)
 
+## Quick Introduction
 
-== Quick Introduction
+### Setup
 
-=== Setup
 If you just want to start using the library, put the following dependency into your project `pom.xml`:
 
-[source,xml]
-----
+``` xml
 <dependency>
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data</artifactId>
-  <version>1.2.2</version>
+  <version>1.2.3</version>
 </dependency>
-----
+```
 
 If you are using Gradle Kotlin DSL add to your `build.gradle.kts`:
-[source,kotlin]
-----
-implementation("io.holunda.data:camunda-bpm-data:1.2.2")
-----
+
+``` kotlin
+implementation("io.holunda.data:camunda-bpm-data:1.2.3")
+```
 
 For Gradle Groovy DSL add to your `build.gradle`:
-[source,groovy]
-----
-implementation 'io.holunda.data:camunda-bpm-data:1.2.2'
-----
 
-=== Variable declaration
+``` groovy
+implementation 'io.holunda.data:camunda-bpm-data:1.2.3'
+```
+### Variable declaration
 Now your setup is completed, and you can declare your variables like this:
 
-[source,java]
-----
-
+``` java
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.*;
 
@@ -83,13 +68,12 @@ public class OrderApproval {
   public static final VariableFactory<BigDecimal> ORDER_TOTAL = customVariable("orderTotal", BigDecimal.class);
   public static final VariableFactory<OrderPosition> ORDER_POSITION = customVariable("orderPosition", OrderPosition.class);
 }
-----
+```
+### Variable access from Java Delegate
 
-=== Variable access from Java Delegate
 Finally, you want to access them from your Java delegates, Execution or Task Listeners or simple Java components:
 
-[source,java]
-----
+``` java
 public class MyDelegate implements JavaDelegate {
   @Override
   public void execute(DelegateExecution execution) {
@@ -105,17 +89,16 @@ public class MyDelegate implements JavaDelegate {
      return orderPosition.getNetCost().multiply(BigDecimal.valueOf(orderPosition.getAmount()));
   }
 }
-----
+```
 
-=== Variable access from REST Controller
+### Variable access from REST Controller
 
 Now imagine you are implementing a REST controller for a user task form which
 loads data from the process application, displays it, captures some input and
 sends that back to the process application to complete the user task. By doing so,
 you will usually need to access process variables. Here is an example:
 
-[source, java]
-----
+``` java
 @RestController
 @RequestMapping("/task/approve-order")
 public class ApproveOrderTaskController {
@@ -134,7 +117,7 @@ public class ApproveOrderTaskController {
 
     @PostMapping("/{taskId}")
     public ResponseEntity<Void> completeTask(@PathVariable("taskId") String taskId, @RequestBody ApproveTaskCompleteDto userInput) {
-        VariableMap vars = builder()
+        VariableMap vars = CamundaBpmData.builder()
             .set(ORDER_APPROVED, userInput.getApproved())
             .build();
         taskService.complete(taskId, vars);
@@ -142,30 +125,29 @@ public class ApproveOrderTaskController {
     }
 }
 
-----
+```
 
-=== Testing correct variable access
+### Testing correct variable access
 
 If you want to write the test for the REST controller, you will need to stub
 the task service and verify that the correct variables has been set. To simplify
 these tests, we created an additional library module `camunda-bpm-data-test`.
 Please put the following dependency into your `pom.xml`:
-[source,xml]
-----
+
+``` xml
 <dependency>
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data-test</artifactId>
   <version>1.2.2</version>
   <scope>test</scope>
 </dependency>
-----
+```
 
 Now you can use `TaskServiceVariableMockBuilder` to stub correct behavior of Camunda Task Service
 and `TaskServiceVerifier` to verify the correct access to variables easily. Here is the JUnit
 test of the REST controller above, making use of `camunda-bpm-data-test`.
 
-[source,java]
-----
+``` java
 public class ApproveOrderTaskControllerTest {
 
     private static Order order = new Order("ORDER-ID-1", new Date(), new ArrayList<>());
@@ -204,29 +186,30 @@ public class ApproveOrderTaskControllerTest {
         verifier.verifyNoMoreInteractions();
     }
 }
-----
+```
 
-=== Further documentation
+### Further documentation
 
-For further details, please consult our link:https://www.holunda.io/camunda-bpm-data/quick-start[Quick Start]
-guide or have a look to our primary documentation - link:https://www.holunda.io/camunda-bpm-data/wiki/user-guide[the User Guide].
+For further details, please consult our [Quick Start](https://www.holunda.io/camunda-bpm-data/quick-start)
+guide or have a look to our primary documentation - [the User Guide](https://www.holunda.io/camunda-bpm-data/wiki/user-guide)
 
-== Working Example
+## Working Example
 
 We prepared some typical usage scenarios and implemented two example projects in Java and Kotlin.
-See our link:https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples[Examples] section for usage and configuration.
+See our [Examples](https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples) section for usage and configuration.
 
-== License
+## License
 
-This library is developed under link:https://www.holunda.io/camunda-bpm-data/license[Apache License 2].
+[![Apache License 2](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.holunda.io/camunda-bpm-data/license)
 
-== Contribution
+This library is developed under Apache 2.0 License.
 
-If you want to contribute to this project, feel free to do so. Start with link:http://holunda.io/camunda-bpm-data/wiki/developer-guide/contribution[Contributing guide].
+## Contribution
 
-== Maintainer
+If you want to contribute to this project, feel free to do so. Start with [Contributing guide](http://holunda.io/camunda-bpm-data/wiki/developer-guide/contribution).
 
-* link:https://gihub.com/zambrovski[Simon Zambrovski]
-* link:https://github.com/christian-maschmann[Christian Maschmann]
-* link:https://github.com/jangalinski[Jan Galinski]
-* link:https://github.com/stefanzilske[Stefan Zilske]
+## Maintainer
+
+[<img alt="zambrovski" src="https://avatars.githubusercontent.com/u/673128?v=4&s=117 width=117">](https://github.com/zambrovski) |[<img alt="jangalinski" src="https://avatars.githubusercontent.com/u/814032?v=4&s=117 width=117">](https://github.com/jangalinski) |[<img alt="christian-maschmann" src="https://avatars.githubusercontent.com/u/44058891?v=4&s=117 width=117">](https://github.com/christian-maschmann) |[<img alt="stefanzilske" src="https://avatars.githubusercontent.com/u/10954564?v=4&s=117 width=117">](https://github.com/stefanzilske) |[<img alt="nernsting" src="https://avatars.githubusercontent.com/u/1822388?v=4&s=117 width=117">](https://github.com/nernsting) |[<img alt="pschalk" src="https://avatars.githubusercontent.com/u/8512329?v=4&s=117 width=117">](https://github.com/pschalk) |[<img alt="srsp" src="https://avatars.githubusercontent.com/u/1210541?v=4&s=117 width=117">](https://github.com/srsp) |
+:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+[zambrovski](https://github.com/zambrovski)|[jangalinski](https://github.com/jangalinski)|[christian-maschmann](https://github.com/christian-maschmann)|[stefanzilske](https://github.com/stefanzilske)|[nernsting](https://github.com/nernsting)|[pschalk](https://github.com/pschalk)|[srsp](https://github.com/srsp)|

@@ -36,7 +36,7 @@ class VariableValueGuardCondition<T>(
   }
 
   override fun toString(): String {
-    return "Value condition for$localLabel variable '${super.variableFactory.name}', value $value"
+    return "Value condition for$localLabel variable '${super.variableFactory.name}', value '$value'"
   }
 
 }

@@ -19,6 +19,7 @@ import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.delegate.VariableScope;
 import org.camunda.bpm.engine.externaltask.LockedExternalTask;
+import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
@@ -289,6 +290,17 @@ public class CamundaBpmData {
    */
   public static VariableReader reader(VariableMap variableMap) {
     return new VariableMapReader(variableMap);
+  }
+
+  /**
+   * Creates a new processInstance variable reader.
+   *
+   * @see #reader(VariableMap)
+   * @param processInstance the processInstance with variables to read from
+   * @return variable reader working on the variableMap provided by instance
+   */
+  public static VariableReader reader(ProcessInstanceWithVariables processInstance) {
+    return reader(processInstance.getVariables());
   }
 
   /**

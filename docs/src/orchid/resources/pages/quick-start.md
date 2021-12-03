@@ -3,42 +3,42 @@ title: Quick Start
 pageId: 'quick-start'
 ---
 
-== {{ page.title }}
+## Quick Start
 
-=== Add dependency
+### Add dependency
+
+Current version available in Sonatype OSS Maven Central is:
 
 In Apache Maven add to your `pom.xml`:
 
-[source,xml]
-----
+``` xml
 <dependency>
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data</artifactId>
   <version>${camunda-bpm-data.version}</version>
 </dependency>
-----
+```
 
 For Gradle Kotlin DSL add to your `build.gradle.kts`:
-[source,kotlin]
-----
+
+``` kotlin
 implementation("io.holunda.data:camunda-bpm-data:${camunda-bpm-data.version}")
-----
+```
 
 For Gradle Groovy DSL add to your `build.gradle`:
-[source,groovy]
-----
-implementation 'io.holunda.data:camunda-bpm-data:${camunda-bpm-data.version}'
-----
 
-=== Declare process variable factories
+``` groovy
+implementation 'io.holunda.data:camunda-bpm-data:${camunda-bpm-data.version}'
+```
+
+### Declare process variable factories
 
 First you have to define your process variables, by providing the variable name and type. For providing the type,
 different convenience methods exist:
 
 Here is a example in Java:
 
-[source,java]
-----
+``` java
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.*;
@@ -50,9 +50,9 @@ public class OrderApproval {
   public static final VariableFactory<OrderPosition> ORDER_POSITION = customVariable("orderPosition", OrderPosition.class);
   public static final VariableFactory<BigDecimal> ORDER_TOTAL = customVariable("orderTotal", BigDecimal.class);
 }
-----
+```
 
-=== Access process variables from Java Delegate
+### Access process variables from Java Delegate
 
 If you want to access the process variable, call methods on the `ProcessVariableFactory` to configure the usage context,
 and then invoke the variable access methods.
@@ -60,8 +60,7 @@ and then invoke the variable access methods.
 Here is an example, how it looks like to access variable from `JavaDelegate` implemented in Java. In this example,
 the total amount is calculated from the amounts of order positions and stored in the process variable.
 
-[source, java]
-----
+``` java
 
 @Configuration
 class JavaDelegates {
@@ -76,17 +75,17 @@ class JavaDelegates {
     };
   }
 }
-----
+```
 
-=== Variable access from REST Controller
+### Variable access from REST Controller
 
 Now imagine you are implementing a REST controller for a user task form which
 loads data from the process application, displays it, captures some input and
 sends that back to the process application to complete the user task. By doing so,
 you will usually need to access process variables. Here is an example:
 
-[source, java]
-----
+
+``` java
 @RestController
 @RequestMapping("/task/approve-order")
 public class ApproveOrderTaskController {
@@ -113,30 +112,30 @@ public class ApproveOrderTaskController {
     }
 }
 
-----
+```
 
-=== Testing correct variable access
+### Testing correct variable access
 
 If you want to write the test for the REST controller, you will need to stub
 the task service and verify that the correct variables has been set. To simplify
 these tests, we created an additional library module `camunda-bpm-data-test`.
 Please put the following dependency into your `pom.xml`:
-[source,xml]
-----
+
+``` xml
 <dependency>
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data-test</artifactId>
   <version>1.0.2</version>
   <scope>test</scope>
 </dependency>
-----
+```
 
 Now you can use `TaskServiceVariableMockBuilder` to stub correct behavior of Camunda Task Service
 and `TaskServiceVerifier` to verify the correct access to variables easily. Here is the JUnit
 test of the REST controller above, making use of `camunda-bpm-data-test`.
 
-[source,java]
-----
+
+``` java
 public class ApproveOrderTaskControllerTest {
 
     private static Order order = new Order("ORDER-ID-1", new Date(), new ArrayList<>());
@@ -175,4 +174,4 @@ public class ApproveOrderTaskControllerTest {
         verifier.verifyNoMoreInteractions();
     }
 }
-----
+```

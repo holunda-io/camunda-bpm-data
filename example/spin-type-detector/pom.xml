@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data.example</groupId>
     <artifactId>camunda-bpm-data-example-parent</artifactId>
-    <version>1.2.3</version>
+    <version>1.2.4</version>
   </parent>
 
   <artifactId>camunda-bpm-data-spin-type-detector</artifactId>
@@ -29,6 +29,12 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!-- Engine -->
+    <dependency>
+      <groupId>org.camunda.bpm</groupId>
+      <artifactId>camunda-engine</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>

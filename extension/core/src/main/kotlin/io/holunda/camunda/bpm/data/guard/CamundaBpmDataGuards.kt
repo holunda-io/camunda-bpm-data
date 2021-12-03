@@ -2,7 +2,10 @@ package io.holunda.camunda.bpm.data.guard
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory
 import io.holunda.camunda.bpm.data.guard.condition.*
+import java.util.*
 import java.util.function.Function
+import java.util.function.Supplier
+import javax.validation.Validator
 
 /**
  * Guard creation methods.
@@ -13,7 +16,6 @@ object CamundaBpmDataGuards {
   /**
    * Creates exists condition.
    * @param variableFactory factory to work on.
-   * @param local flag indicating scope (global/local).
    */
   @JvmStatic
   fun <T> exists(variableFactory: VariableFactory<T>) = variableFactory.exists()
@@ -21,7 +23,6 @@ object CamundaBpmDataGuards {
   /**
    * Creates exists local condition.
    * @param variableFactory factory to work on.
-   * @param local flag indicating scope (global/local).
    */
   @JvmStatic
   fun <T> existsLocal(variableFactory: VariableFactory<T>) = variableFactory.existsLocal()
@@ -89,5 +90,111 @@ object CamundaBpmDataGuards {
   @JvmStatic
   fun <T> matches(variableFactory: VariableFactory<T>,
                   matcher: Function<T, Boolean>) = variableFactory.matches { matcher.apply(it) }
+
+  /**
+   * Creates matches local condition.
+   * @param variableFactory factory to work on.
+   * @param matcher a matcher function to check the variable value.
+   * @param violationMessageSupplier supplier to specify the violation message
+   */
+  @JvmStatic
+  fun <T> matchesLocal(
+    variableFactory: VariableFactory<T>,
+    matcher: Function<T, Boolean>,
+    violationMessageSupplier: (variableFactory: VariableFactory<T>, localLabel: String, option: Optional<T>) -> String
+  ) = variableFactory.matchesLocal(violationMessageSupplier) { matcher.apply(it) }
+
+  /**
+   * Creates matches condition.
+   * @param variableFactory factory to work on.
+   * @param matcher a matcher function to check the variable value.
+   * @param violationMessageSupplier supplier to specify the violation message
+   */
+  @JvmStatic
+  fun <T> matches(
+    variableFactory: VariableFactory<T>,
+    matcher: Function<T, Boolean>,
+    violationMessageSupplier: (variableFactory: VariableFactory<T>, localLabel: String, option: Optional<T>) -> String
+  ) = variableFactory.matches(violationMessageSupplier) { matcher.apply(it) }
+
+  /**
+   * Creates matches regex local condition.
+   * @param variableFactory factory to work on.
+   * @param regex a regex to check the variable value.
+   */
+  @JvmStatic
+  fun <T> matchesRegexLocal(variableFactory: VariableFactory<T>, regex: String) = variableFactory.matchesRegexLocal(Regex(regex))
+
+  /**
+   * Creates matches regex Local condition.
+   * @param variableFactory factory to work on.
+   * @param regex a regex to check the variable value.
+   * @param regexDisplayName a display name representing the regex.
+   */
+  @JvmStatic
+  fun <T> matchesRegexLocal(variableFactory: VariableFactory<T>, regex: String, regexDisplayName: String) =
+    variableFactory.matchesRegexLocal(Regex(regex), regexDisplayName)
+
+  /**
+   * Creates matches regex condition.
+   * @param variableFactory factory to work on.
+   * @param regex a regex to check the variable value.
+   */
+  @JvmStatic
+  fun <T> matchesRegex(variableFactory: VariableFactory<T>, regex: String) = variableFactory.matchesRegex(Regex(regex))
+
+  /**
+   * Creates matches regex condition.
+   * @param variableFactory factory to work on.
+   * @param regex a regex to check the variable value.
+   * @param regexDisplayName a display name representing the regex.
+   */
+  @JvmStatic
+  fun <T> matchesRegex(variableFactory: VariableFactory<T>, regex: String, regexDisplayName: String) =
+    variableFactory.matchesRegex(Regex(regex), regexDisplayName)
+
+  /**
+   * Creates matches E-Mail regex local condition.
+   * @param variableFactory factory to work on.
+   */
+  @JvmStatic
+  fun <T> isEmailLocal(variableFactory: VariableFactory<T>) = variableFactory.isEmailLocal()
+
+  /**
+   * Creates matches E-Mail regex condition.
+   * @param variableFactory factory to work on.
+   */
+  @JvmStatic
+  fun <T> isEmail(variableFactory: VariableFactory<T>) = variableFactory.isEmail()
+
+  /**
+   * Creates matches UUID regex local condition.
+   * @param variableFactory factory to work on.
+   */
+  @JvmStatic
+  fun <T> isUuidLocal(variableFactory: VariableFactory<T>) = variableFactory.isUuidLocal()
+
+  /**
+   * Creates matches UUID regex condition.
+   * @param variableFactory factory to work on.
+   */
+  @JvmStatic
+  fun <T> isUuid(variableFactory: VariableFactory<T>) = variableFactory.isUuid()
+
+  /**
+   * Creates valid bean condition.
+   * @param variableFactory factory to work on.
+   * @param validatorSupplier supplier for the validator.
+   */
+  @JvmStatic
+  fun <T> isValidBean(variableFactory: VariableFactory<T>, validatorSupplier : Supplier<Validator>) = variableFactory.isValidBean(validatorSupplier)
+
+  /**
+   * Creates valid bean local condition.
+   * @param variableFactory factory to work on.
+   * @param validatorSupplier supplier for the validator.
+   */
+  @JvmStatic
+  fun <T> isValidBeanLocal(variableFactory: VariableFactory<T>, validatorSupplier : Supplier<Validator>) = variableFactory.isValidBeanLocal(validatorSupplier)
 
 }

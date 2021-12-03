@@ -1,17 +1,14 @@
 ---
-
 title: Kotlin Examples
-
 ---
 
-== {{ page.title }}
+## Kotlin Examples
 
 The following snippets demonstrate the usage of the library from Kotlin
 
-=== Define variable
+### Define variable
 
-[source, kotlin]
-----
+``` kotlin
 
 import io.holunda.data.CamundaBpmDataKotlin
 
@@ -22,12 +19,11 @@ object Variables {
     val ORDER_POSITION: VariableFactory<OrderPosition> = customVariable("orderPosition")
     val ORDER_TOTAL: VariableFactory<BigDecimal> = customVariable("orderTotal")
 }
-----
+```
 
-=== Read variable from Java delegate
+### Read variable from Java delegate
 
-[source, kotlin]
-----
+``` kotlin
 @Configuration
 class JavaDelegates {
 
@@ -37,12 +33,11 @@ class JavaDelegates {
         // order position is of type OrderPosition
     }
 }
-----
+```
 
-=== Write variable from Java delegate
+### Write variable from Java delegate
 
-[source,kotlin]
-----
+``` kotlin
 import java.math.BigDecimal
 
 @Configuration
@@ -56,12 +51,11 @@ class JavaDelegates {
         }
     }
 }
-----
+```
 
-=== Remove variable from Java delegate
+### Remove variable from Java delegate
 
-[source,kotlin]
-----
+``` kotlin
 @Configuration
 class JavaDelegates {
 
@@ -70,12 +64,11 @@ class JavaDelegates {
         ORDER_TOTAL.on(execution).remove()
     }
 }
-----
+```
 
-=== Update variable from Java delegate
+### Update variable from Java delegate
 
-[source, kotlin]
-----
+``` kotlin
 import java.math.BigDecimal
 @Configuration
 class JavaDelegates {
@@ -88,12 +81,11 @@ class JavaDelegates {
         }
     }
 }
-----
+```
 
-=== Fluent API to remove several variables
+### Fluent API to remove several variables
 
-[source,kotlin]
-----
+``` kotlin
 import io.holunda.camunda.bpm.data.remove
 
 @Configuration
@@ -109,12 +101,11 @@ class JavaDelegates {
             .removeLocal(ORDER_POSITIONS)
     }
 }
-----
+```
 
-=== Fluent API to set several variables
+### Fluent API to set several variables
 
-[source,kotlin]
-----
+``` kotlin
 @Component
 class SomeService(
     private val runtimeService: RuntimeService,
@@ -141,12 +132,11 @@ class SomeService(
       runtimeService.startProcessInstanceById("myId", "businessKey", variables)
   }
 }
-----
+```
 
-=== Fluent API to read several variables
+### Fluent API to read several variables
 
-[source,kotlin]
-----
+``` kotlin
 @Component
 class SomeService(
   private val runtimeService: RuntimeService,
@@ -173,12 +163,11 @@ class SomeService(
       return orderId
   }
 }
-----
+```
 
-=== Anti-Corruption-Layer: Wrap variables to correlate
+### Anti-Corruption-Layer: Wrap variables to correlate
 
-[source,kotlin]
-----
+``` kotlin
 @Component
 class SomeService {
 
@@ -192,12 +181,11 @@ class SomeService {
       runtimeService.correlateMessage("message_1", MESSAGE_ACL.wrap(variables));
   }
 }
-----
+```
 
-=== Anti-Corruption-Layer: Check and wrap variables to correlate
+### Anti-Corruption-Layer: Check and wrap variables to correlate
 
-[source,kotlin]
-----
+``` kotlin
 @Component
 class SomeService {
 
@@ -216,10 +204,49 @@ class SomeService {
       runtimeService.correlateMessage("message_1", MESSAGE_ACL.checkAndWrap(variables));
   }
 }
-----
+```
 
+### Define Guards to validate variables in the process
 
-=== Example project
+``` kotlin
+@Configuration
+class VariableGuardConfiguration {
+
+    companion object {
+        const val LOAD_OPERATIONAL_FILE_GUARD = "loadOperationalFileGuard";
+    }
+    
+    @Bean
+    // assuming dependencys to implement javax.validation:validation-api are present
+    fun validatorSupplier(): Supplier<Validator> = Supplier {
+      Validation.buildDefaultValidatorFactory().validator
+    }
+
+    @Bean(LOAD_OPERATIONAL_FILE_GUARD)
+    fun loadOperationalFileGuard(validatorSupplier : Supplier<Validator>): ExecutionListener =
+        DefaultGuardExecutionListener(
+            listOf(
+                REQUIRED_VALUE.exists(),
+                FUTURE_VALUE.notExists(),
+                THE_ANSWER.hasValue(42),
+                MY_DIRECTION.hasOneOfValues(setOf("left", "up", "down")),
+                USER_EMAIL.isEmail(),
+                DOCUMENT_ID.isUuid(),
+                DOCUMENT_BODY.matches { return@matches true },
+                DOCUMENT_BODY.matches(this::validationMessageSupplier) { return@matches true },
+                DOCUMENT_BODY.matchesRegexLocal(Regex("^Dude.*"), "Starts with 'Dude'"),
+                MY_DOCUMENT.isValidBean(validatorSupplier)
+            ), true
+        )
+        
+    private fun validationMessageSupplier(variableFactory: VariableFactory<String>, localLabel: String, option: Optional<String>) =
+        "Expecting$localLabel variable '${variableFactory.name}' to always match my document body matcher, but its value '${option.get()}' has not."
+}
+
+class MyDocument(@field:Email val email: String)
+```
+
+### Example project
 
 For more examples, please check-out the Kotlin Example project, at
-link:https://github.com/holunda-io/camunda-bpm-data/tree/develop/example/example-kotlin[Github].
+[Github](https://github.com/holunda-io/camunda-bpm-data/tree/develop/example/example-kotlin.

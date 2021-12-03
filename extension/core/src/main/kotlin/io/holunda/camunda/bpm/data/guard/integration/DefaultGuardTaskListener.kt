@@ -31,7 +31,7 @@ class DefaultGuardTaskListener(
   override fun notify(task: DelegateTask) {
     val violations = guard.evaluate(task)
     if (violations.isNotEmpty()) {
-      val message = "Guard violated in task '${task.name.removeNewLines()}' (taskId: '${task.id}')"
+      val message = "${guard.getName() ?: "Guard"} violated in task '${task.name.removeNewLines()}' (taskId: '${task.id}')"
       violations.forEach {
         logger.error("$message: ${it.message}")
       }

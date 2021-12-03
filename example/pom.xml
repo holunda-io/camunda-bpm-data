@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data</groupId>
     <artifactId>camunda-bpm-data-parent</artifactId>
-    <version>1.2.3</version>
+    <version>1.2.4</version>
   </parent>
 
   <groupId>io.holunda.data.example</groupId>
@@ -25,6 +25,7 @@
   <modules>
     <module>example-java</module>
     <module>example-kotlin</module>
+    <module>example-no-engine</module>
     <module>spin-type-detector</module>
     <module>itest</module>
     <module>coverage-report-aggregator</module>
@@ -59,18 +60,24 @@
       <dependency>
         <groupId>io.holunda.testing</groupId>
         <artifactId>camunda-bpm-jgiven</artifactId>
-        <version>0.0.7</version>
+        <version>0.0.8</version>
         <scope>test</scope>
       </dependency>
       <dependency>
         <groupId>org.camunda.bpm.assert</groupId>
         <artifactId>camunda-bpm-assert</artifactId>
-        <version>6.0.0</version>
+        <version>${camunda-assert.version}</version>
         <scope>test</scope>
       </dependency>
       <dependency>
         <groupId>com.tngtech.jgiven</groupId>
         <artifactId>jgiven-junit</artifactId>
+        <version>${jgiven.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.tngtech.jgiven</groupId>
+        <artifactId>jgiven-spring-junit4</artifactId>
         <version>${jgiven.version}</version>
         <scope>test</scope>
       </dependency>

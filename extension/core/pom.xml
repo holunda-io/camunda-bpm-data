@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data</groupId>
     <artifactId>camunda-bpm-data-parent</artifactId>
-    <version>1.2.3</version>
+    <version>1.2.4</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
@@ -27,12 +27,33 @@
     </dependency>
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
-      <artifactId>kotlin-stdlib-jdk8</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-reflect</artifactId>
     </dependency>
+
+    <!-- Bean Validation -->
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>2.0.1.Final</version>
+    </dependency>
+
+    <!-- Engine -->
+    <dependency>
+      <groupId>org.camunda.bpm</groupId>
+      <artifactId>camunda-engine</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.spin</groupId>
+      <artifactId>camunda-spin-core</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.spin</groupId>
+      <artifactId>camunda-spin-dataformat-json-jackson</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
     <!-- Log -->
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -45,7 +66,7 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.nhaarman.mockitokotlin2</groupId>
+      <groupId>org.mockito.kotlin</groupId>
       <artifactId>mockito-kotlin</artifactId>
       <scope>test</scope>
     </dependency>
@@ -62,6 +83,18 @@
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>6.2.0.Final</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish</groupId>
+      <artifactId>javax.el</artifactId>
+      <version>3.0.0</version>
       <scope>test</scope>
     </dependency>
     <!-- Jackson -->
