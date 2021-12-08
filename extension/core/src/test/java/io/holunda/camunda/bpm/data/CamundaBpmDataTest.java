@@ -28,21 +28,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Date;
+import java.util.UUID;
 
-import static io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.builder;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.customVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.dateVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.doubleVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.intVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.listVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.longVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.mapVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.reader;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.setVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.shortVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.writer;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.camunda.bpm.engine.variable.Variables.createVariables;
 import static org.mockito.ArgumentMatchers.any;
@@ -146,6 +134,17 @@ public class CamundaBpmDataTest {
     BasicVariableFactory<?> basicFactory = (BasicVariableFactory<?>) factory;
     assertThat(basicFactory.getName()).isEqualTo(VAR_NAME);
     assertThat(basicFactory.getVariableClass()).isEqualTo(Boolean.class);
+  }
+
+  @Test
+  public void shouldCreateUuidVariableFactory() {
+
+    VariableFactory<?> factory = uuidVariable(VAR_NAME);
+    assertThat(factory).isInstanceOf(BasicVariableFactory.class);
+
+    BasicVariableFactory<?> basicFactory = (BasicVariableFactory<?>) factory;
+    assertThat(basicFactory.getName()).isEqualTo(VAR_NAME);
+    assertThat(basicFactory.getVariableClass()).isEqualTo(UUID.class);
   }
 
   @Test

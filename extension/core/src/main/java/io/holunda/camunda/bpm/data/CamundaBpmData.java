@@ -27,6 +27,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 /**
  * Provides a collection of factory methods for creating variable factories.
@@ -114,6 +115,17 @@ public class CamundaBpmData {
   @NotNull
   public static VariableFactory<Boolean> booleanVariable(@NotNull String variableName) {
     return new BasicVariableFactory<>(variableName, Boolean.class);
+  }
+
+  /**
+   * Creates a boolean variable factory.
+   *
+   * @param variableName name of the variable.
+   * @return variable factory for boolean.
+   */
+  @NotNull
+  public static VariableFactory<UUID> uuidVariable(@NotNull String variableName) {
+    return new BasicVariableFactory<>(variableName, UUID.class);
   }
 
   /**
