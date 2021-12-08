@@ -7,7 +7,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-import static io.holunda.camunda.bpm.data.CamundaBpmData.*;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.listVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.mapVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.setVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.uuidVariable;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class VariableFactoryTest {
