@@ -34,6 +34,7 @@ object ValueWrapperUtil {
       Date::class.java -> Variables.dateValue(value as Date?, isTransient)
       Double::class.java, java.lang.Double::class.java -> Variables.doubleValue(value as Double?, isTransient)
       File::class.java -> Variables.fileValue(value as File?, isTransient)
+      UUID::class.java -> Variables.stringValue((value as UUID?)?.toString(), isTransient)
       Object::class.java -> Variables.objectValue(value, isTransient).create() // explicit java.lang.Object as a type
       else -> if (value == null) {
         Variables.untypedNullValue(isTransient)
