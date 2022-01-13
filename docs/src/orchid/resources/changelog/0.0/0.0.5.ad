@@ -1,7 +1,0 @@
----
-version: 0.0.5
----
-
-== Features
-
-* Fluent API to set, update and remove multiple variables on the same context. #10

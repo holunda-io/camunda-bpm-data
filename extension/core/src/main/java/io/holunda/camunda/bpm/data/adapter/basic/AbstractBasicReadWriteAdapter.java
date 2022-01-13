@@ -5,6 +5,8 @@ import io.holunda.camunda.bpm.data.adapter.ValueWrapperUtil;
 import io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException;
 import org.camunda.bpm.engine.variable.value.TypedValue;
 
+import java.util.UUID;
+
 /**
  * Base class for all basic read-write-adapter.
  *
@@ -40,6 +42,9 @@ public abstract class AbstractBasicReadWriteAdapter<T> extends AbstractReadWrite
       return null;
     }
 
+    if (clazz == UUID.class && String.class.isAssignableFrom(value.getClass())) {
+      return (T) UUID.fromString((String) value);
+    }
     if (clazz.isAssignableFrom(value.getClass())) {
       return (T) value;
     }

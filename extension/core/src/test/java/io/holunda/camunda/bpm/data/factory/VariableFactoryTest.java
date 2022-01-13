@@ -5,12 +5,14 @@ import org.junit.Test;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.listVariable;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.mapVariable;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.setVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.uuidVariable;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class VariableFactoryTest {
@@ -27,14 +29,18 @@ public class VariableFactoryTest {
     VariableFactory<String> stringVar2 = stringVariable("string");
     VariableFactory<String> stringVar3 = stringVariable("string2");
     VariableFactory<Boolean> boolVar = booleanVariable("string");
+    VariableFactory<UUID> uuidVar = uuidVariable("uuid");
 
     assertThat(stringVar.equals(stringVar2)).isTrue();
     assertThat(stringVar.equals(stringVar3)).isFalse();
     assertThat(stringVar.equals(boolVar)).isFalse();
+    assertThat(stringVar.equals(uuidVar)).isFalse();
+
 
     assertThat(stringVar.hashCode()).isEqualTo(stringVar2.hashCode());
     assertThat(stringVar.hashCode()).isNotEqualTo(stringVar3.hashCode());
     assertThat(stringVar.hashCode()).isNotEqualTo(boolVar.hashCode());
+    assertThat(stringVar.hashCode()).isNotEqualTo(uuidVar.hashCode());
   }
 
   @Test

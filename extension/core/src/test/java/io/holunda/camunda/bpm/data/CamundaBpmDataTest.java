@@ -28,6 +28,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Date;
+import java.util.UUID;
 
 import static io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.builder;
@@ -42,6 +43,7 @@ import static io.holunda.camunda.bpm.data.CamundaBpmData.reader;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.setVariable;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.shortVariable;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.uuidVariable;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.writer;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.camunda.bpm.engine.variable.Variables.createVariables;
@@ -146,6 +148,17 @@ public class CamundaBpmDataTest {
     BasicVariableFactory<?> basicFactory = (BasicVariableFactory<?>) factory;
     assertThat(basicFactory.getName()).isEqualTo(VAR_NAME);
     assertThat(basicFactory.getVariableClass()).isEqualTo(Boolean.class);
+  }
+
+  @Test
+  public void shouldCreateUuidVariableFactory() {
+
+    VariableFactory<?> factory = uuidVariable(VAR_NAME);
+    assertThat(factory).isInstanceOf(BasicVariableFactory.class);
+
+    BasicVariableFactory<?> basicFactory = (BasicVariableFactory<?>) factory;
+    assertThat(basicFactory.getName()).isEqualTo(VAR_NAME);
+    assertThat(basicFactory.getVariableClass()).isEqualTo(UUID.class);
   }
 
   @Test

@@ -4,7 +4,7 @@
 
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data-parent</artifactId>
-  <version>1.2.4</version>
+  <version>1.2.5</version>
   <name>${project.artifactId}</name>
   <description>Camunda BPM Data</description>
   <url>https://github.com/holunda-io/camunda-bpm-data/</url>
@@ -21,19 +21,19 @@
     <camunda.version.ce>7.16.0</camunda.version.ce>
     <camunda.version.ee>7.16.2-ee</camunda.version.ee>
 
-    <spring-boot.version>2.6.1</spring-boot.version>
+    <spring-boot.version>2.6.2</spring-boot.version>
     <groovy.version>2.4.21</groovy.version>
-    <spin.version>1.12.0</spin.version>
+    <spin.version>1.13.0</spin.version>
     <camunda-assert.version>13.0.0</camunda-assert.version>
 
-    <kotlin.version>1.6.0</kotlin.version>
-    <jgiven.version>1.1.0</jgiven.version>
+    <kotlin.version>1.6.10</kotlin.version>
+    <jgiven.version>1.2.0</jgiven.version>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
 
-    <kotlin-logging.version>2.1.0</kotlin-logging.version>
+    <kotlin-logging.version>2.1.21</kotlin-logging.version>
     <mockito-kotlin.version>4.0.0</mockito-kotlin.version>
     <camunda-bpm-mockito.version>5.16.0</camunda-bpm-mockito.version>
-    <mockito.version>4.1.0</mockito.version>
+    <mockito.version>4.2.0</mockito.version>
 
     <pattern.class.itest>**/*ITest.*</pattern.class.itest>
     <pattern.package.itest>**/itest/**/*.*</pattern.package.itest>
@@ -253,7 +253,7 @@
           <!-- Java compiler -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.1</version>
+          <version>3.9.0</version>
           <configuration>
             <encoding>${project.build.sourceEncoding}</encoding>
             <source>${maven.compiler.source}</source>
@@ -332,7 +332,7 @@
         <plugin>
           <groupId>org.jetbrains.dokka</groupId>
           <artifactId>dokka-maven-plugin</artifactId>
-          <version>1.6.0</version>
+          <version>1.6.10</version>
           <executions>
             <execution>
               <id>attach-javadocs</id>
@@ -366,7 +366,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>build-helper-maven-plugin</artifactId>
-          <version>3.2.0</version>
+          <version>3.3.0</version>
           <executions>
             <execution>
               <phase>generate-sources</phase>
@@ -406,7 +406,7 @@
         <plugin>
           <groupId>com.amashchenko.maven.plugin</groupId>
           <artifactId>gitflow-maven-plugin</artifactId>
-          <version>1.16.0</version>
+          <version>1.17.0</version>
           <configuration>
             <gitFlowConfig>
               <productionBranch>master</productionBranch>
@@ -631,19 +631,6 @@
           </plugin>
         </plugins>
       </build>
-    </profile>
-
-    <profile>
-      <!--
-      Profile for documentation
-      -->
-      <id>docs</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-      </activation>
-      <modules>
-        <module>docs</module>
-      </modules>
     </profile>
 
     <profile>
