@@ -20,8 +20,8 @@ class VariableMatchesGuardCondition<T>(
   local: Boolean = false,
   private val matcher: (value: T) -> Boolean,
   private val violationMessageSupplier: (variableFactory: VariableFactory<T>, localLabel: String, option: Optional<T>) -> String =
-    { variableFactory, localLabel, option ->
-      "Expecting$localLabel variable '${variableFactory.name}' to match the condition, but its value '${option.get()}' has not."
+    { factory, localLabel, option ->
+      "Expecting$localLabel variable '${factory.name}' to match the condition, but its value '${option.get()}' has not."
     }
 ) : VariableGuardCondition<T>(variableFactory, local) {
 

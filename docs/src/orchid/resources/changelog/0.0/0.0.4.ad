@@ -1,7 +1,0 @@
----
-version: 0.0.4
----
-
-== Features
-
-* VariableFactory implements `equals` / `hashcode` based on variable name and type. #22

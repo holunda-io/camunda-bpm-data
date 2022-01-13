@@ -1,9 +1,0 @@
----
-version: 1.0.1
----
-
-== Bugfixes
-
-* Completed JavaDoc and Sources for the `càmunda-bpm-data` parts written in Kotlin (ACL, Guards).
-* Improved test coverage for factories
-* Separated `LocalVariableWriter` from `GlobalVariableWriter` interface.

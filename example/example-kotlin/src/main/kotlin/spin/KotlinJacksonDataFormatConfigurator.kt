@@ -9,7 +9,7 @@ class KotlinJacksonDataFormatConfigurator : DataFormatConfigurator<JacksonJsonDa
 
   override fun configure(dataFormat: JacksonJsonDataFormat) {
     val objectMapper = dataFormat.objectMapper
-    objectMapper.registerModule(KotlinModule())
+    objectMapper.registerModule(KotlinModule.Builder().build())
     objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
   }
 

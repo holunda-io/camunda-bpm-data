@@ -1,9 +1,0 @@
----
-version: 1.0.2
----
-
-== Enhancement
-
-* Read/write adapter for CaseService context, see #59
-* Supports variables via DelegateCaseExecution
-* Implement `CaseServiceVariableMockBuilder` and `CaseServiceVerifier`, see #59

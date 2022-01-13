@@ -635,19 +635,6 @@
 
     <profile>
       <!--
-      Profile for documentation
-      -->
-      <id>docs</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-      </activation>
-      <modules>
-        <module>docs</module>
-      </modules>
-    </profile>
-
-    <profile>
-      <!--
       Profile for building examples and metering coverage
       -->
       <id>examples</id>

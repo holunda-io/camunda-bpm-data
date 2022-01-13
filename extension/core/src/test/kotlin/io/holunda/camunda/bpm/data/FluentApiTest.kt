@@ -45,7 +45,7 @@ class FluentApiTest {
     fake.set(MY_VAR, "new val")
     assertThat(fake[MY_VAR]).isEqualTo("new val")
 
-    fake.update(MY_VAR, { it.capitalize() }, false)
+    fake.update(MY_VAR, { v -> v.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } }, false)
     assertThat(fake[MY_VAR]).isEqualTo("New val")
 
     fake.remove(MY_VAR)
@@ -69,13 +69,13 @@ class FluentApiTest {
     fake.set(MY_VAR, "new val")
     assertThat(fake[MY_VAR]).isEqualTo("new val")
 
-    fake.update(MY_VAR, { it.capitalize() }, false)
+    fake.update(MY_VAR, { v -> v.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } }, false)
     assertThat(fake[MY_VAR]).isEqualTo("New val")
 
     fake.setLocal(MY_VAR, "another new local val")
     assertThat(fake.getLocal(MY_VAR)).isEqualTo("another new local val")
 
-    fake.updateLocal(MY_VAR, { it.capitalize() }, false)
+    fake.updateLocal(MY_VAR, { v -> v.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } }, false)
     assertThat(fake[MY_VAR]).isEqualTo("Another new local val")
 
     fake.removeLocal(MY_VAR)
@@ -84,7 +84,7 @@ class FluentApiTest {
     localVars.set(MY_VAR, "new val")
     assertThat(localVars[MY_VAR]).isEqualTo("new val")
 
-    localVars.update(MY_VAR, { it.capitalize() }, false)
+    localVars.update(MY_VAR, { v -> v.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } }, false)
     assertThat(localVars[MY_VAR]).isEqualTo("New val")
 
     localVars.remove(MY_VAR)
