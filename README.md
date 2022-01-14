@@ -26,6 +26,7 @@ easy and convenient. We leverage the Camunda API and offer you not only a better
 
 If you want to read more about data in Camunda processes, have a look on those articles:
 
+  * [Camunda Nation Podcast - Managing Data in Processes, with Simon Zambrovski](https://podcasts.apple.com/us/podcast/managing-data-in-processes-with-simon-zambrovski/id1478382505?i=1000547023972)
   * [Data in Process (Part 1)](https://medium.com/holisticon-consultants/data-in-process-part-1-2620bf9abd76)
   * [Data in Process (Part 2)](https://medium.com/holisticon-consultants/data-in-process-part-2-7c6a109e6ee2)
 
