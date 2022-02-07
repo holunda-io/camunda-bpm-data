@@ -123,4 +123,40 @@ class KotlinValueWrapperUtilTest {
     Assertions.assertThat(shortValue.value).isNull()
     Assertions.assertThat(shortValue.isTransient).isTrue
   }
+
+  @Test
+  @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
+  fun shouldBeAssignableFromJavaDoubleToKotlinDouble() {
+    val variable = 1.0 as java.lang.Double
+    Assertions.assertThat(ValueWrapperUtil.isAssignableFrom(Double::class.java, variable.javaClass)).isTrue
+  }
+
+  @Test
+  @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
+  fun shouldBeAssignableFromJavaIntegerToKotlinInteger() {
+    val variable = 1 as Integer
+    Assertions.assertThat(ValueWrapperUtil.isAssignableFrom(Int::class.java, variable.javaClass)).isTrue
+  }
+
+  @Test
+  @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
+  fun shouldBeAssignableFromJavaBooleanToKotlinBoolean() {
+    val variable = true as java.lang.Boolean
+    Assertions.assertThat(ValueWrapperUtil.isAssignableFrom(Boolean::class.java, variable.javaClass)).isTrue
+  }
+
+  @Test
+  @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
+  fun shouldBeAssignableFromJavaLongToKotlinLong() {
+    val variable = 1L as java.lang.Long
+    Assertions.assertThat(ValueWrapperUtil.isAssignableFrom(Long::class.java, variable.javaClass)).isTrue
+  }
+
+  @Test
+  @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
+  fun shouldBeAssignableFromJavaShortToKotlinShort() {
+    val variable = java.lang.Short.valueOf(1)
+    Assertions.assertThat(ValueWrapperUtil.isAssignableFrom(Short::class.java, variable.javaClass)).isTrue
+  }
+
 }
