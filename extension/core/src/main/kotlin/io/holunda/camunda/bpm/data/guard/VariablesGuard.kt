@@ -11,37 +11,62 @@ import org.camunda.bpm.engine.variable.VariableMap
  * @constructor Creates new guard.
  * @property name optional name of the guard ('anonymous' by default)
  * @property variableConditions a list of conditions to add to the guard.
+ * @property reduceOperator operation to reduce list of single violations to a result of the guard.
  */
 class VariablesGuard(
-  private val name : String?,
-  private val variableConditions: List<VariableGuardCondition<*>>
+  private val name: String?,
+  private val variableConditions: List<VariableGuardCondition<*>>,
+  private val reduceOperator: ReduceOperator
 ) {
 
   companion object {
     /**
+     * Default guard type checking that none of the conditions has been violated.
+     */
+    val ALL: ReduceOperator = { violations -> violations.flatten() }
+
+    /**
+     * Guard allowing all but one conditions to be violated.
+     */
+    val ONE_OF: ReduceOperator = { violations ->
+      if (violations.none { it.isEmpty() }) {
+        violations.flatten()
+      } else {
+        listOf()
+      }
+    }
+
+    /**
      * Empty guard.
      */
-    val EMPTY = VariablesGuard(listOf())
+    val EMPTY = VariablesGuard(name = null, variableConditions = listOf(), reduceOperator = ALL)
   }
 
   /**
-   * Constructs an anonymous guard with a list of conditions.
-   * @param variableConditions conditions to add to gurad.
+   * Constructs a named guard with a list of conditions and ALL operator.
+   * @param variableConditions conditions to add to guard.
    */
-  constructor(variableConditions: List<VariableGuardCondition<*>>) : this(null, variableConditions)
+  constructor(name: String?, variableConditions: List<VariableGuardCondition<*>>) : this(name = name, variableConditions = variableConditions, reduceOperator = ALL)
+
+
+  /**
+   * Constructs an anonymous guard with a list of conditions.
+   * @param variableConditions conditions to add to guard.
+   */
+  constructor(variableConditions: List<VariableGuardCondition<*>>) : this(name = null, variableConditions = variableConditions, reduceOperator = ALL)
 
   /**
    * Constructs an anonymous guard with exactly one condition.
-   * @param condition condition to add to gurad.
+   * @param condition condition to add to guard.
    */
-  constructor(condition: VariableGuardCondition<*>) : this(listOf(condition))
+  constructor(condition: VariableGuardCondition<*>) : this(name = null, variableConditions = listOf(condition), reduceOperator = ALL)
 
   /**
    * Constructs a named guard with exactly one condition.
    * @param name name of the guard.
-   * @param condition condition to add to gurad.
+   * @param condition condition to add to guard.
    */
-  constructor(name: String, condition: VariableGuardCondition<*>) : this(name, listOf(condition))
+  constructor(name: String, condition: VariableGuardCondition<*>) : this(name = name, variableConditions = listOf(condition), reduceOperator = ALL)
 
   /**
    * Fluent builder to create a new guard from existing one adding one additional condition.
@@ -55,7 +80,7 @@ class VariablesGuard(
    * @return list of violations if any.
    */
   fun evaluate(variableMap: VariableMap): List<GuardViolation<*>> =
-    variableConditions.flatMap { it.evaluate(variableMap) }
+    reduceOperator.invoke(variableConditions.map { it.evaluate(variableMap) })
 
   /**
    * Evaluates the contained conditions on variables from given variable scope.
@@ -63,7 +88,7 @@ class VariablesGuard(
    * @return list of violations if any.
    */
   fun evaluate(variableScope: VariableScope): List<GuardViolation<*>> =
-    variableConditions.flatMap { it.evaluate(variableScope) }
+    reduceOperator.invoke(variableConditions.map { it.evaluate(variableScope) })
 
   /**
    * Evaluates the contained conditions on variables retrieved from task service.
@@ -72,7 +97,7 @@ class VariablesGuard(
    * @return list of violations if any.
    */
   fun evaluate(taskService: TaskService, taskId: String): List<GuardViolation<*>> =
-    variableConditions.flatMap { it.evaluate(taskService, taskId) }
+    reduceOperator.invoke(variableConditions.map { it.evaluate(taskService, taskId) })
 
   /**
    * Evaluates the contained conditions on variables retrieved from runtime service.
@@ -81,7 +106,7 @@ class VariablesGuard(
    * @return list of violations if any.
    */
   fun evaluate(runtimeService: RuntimeService, executionId: String): List<GuardViolation<*>> =
-    variableConditions.flatMap { it.evaluate(runtimeService, executionId) }
+    reduceOperator.invoke(variableConditions.map { it.evaluate(runtimeService, executionId) })
 
   /**
    * Retrieves a list of local variables addressed by this guard.
@@ -96,7 +121,7 @@ class VariablesGuard(
   fun getVariables() = variableConditions.filter { !it.local }.map { it.variableFactory }
 
   /**
-   * Retireves the name of this guard which can be provided during construction
+   * Retrieves the name of this guard which can be provided during construction
    * @return the name of the VariableGuard, 'anonymous' if no name was specified
    */
   fun getName() = name
@@ -120,3 +145,12 @@ class VariablesGuard(
     return "VariablesGuard%s(variableConditions=$variableConditions)".format(if (name != null) "[$name]" else "")
   }
 }
+
+
+/**
+ * Reduce operation.
+ */
+typealias ReduceOperator = (violations: List<List<GuardViolation<*>>>) -> List<GuardViolation<*>>
+
+
+
