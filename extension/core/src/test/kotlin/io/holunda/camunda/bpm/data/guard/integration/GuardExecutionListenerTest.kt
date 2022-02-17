@@ -1,7 +1,9 @@
 package io.holunda.camunda.bpm.data.guard.integration
 
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
+import io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.exists
 import io.holunda.camunda.bpm.data.guard.VariablesGuard
+import io.holunda.camunda.bpm.data.guard.VariablesGuard.Companion.ONE_OF
 import io.holunda.camunda.bpm.data.guard.condition.exists
 import io.holunda.camunda.bpm.data.guard.condition.hasValue
 import org.assertj.core.api.Assertions.assertThat
@@ -15,11 +17,11 @@ class GuardExecutionListenerTest {
 
   @Test
   fun `should do nothing`() {
-    val delegate = DelegateExecutionFake().withId("4711").withCurrentActivityName("some")
-    ORDER_REFERENCE.on(delegate).set("1")
+    val execution = DelegateExecutionFake().withId("4711").withCurrentActivityName("some")
+    ORDER_REFERENCE.on(execution).set("1")
 
     val listener = createListener(true)
-    listener.notify(delegate)
+    listener.notify(execution)
 
     // nothing to do here
     assertThat(true).isTrue
@@ -27,11 +29,11 @@ class GuardExecutionListenerTest {
 
   @Test
   fun `should not throw exception if disabled `() {
-    val delegate = DelegateExecutionFake().withId("4711").withCurrentActivityName("some")
-    ORDER_REFERENCE.on(delegate).set("2")
+    val execution = DelegateExecutionFake().withId("4711").withCurrentActivityName("some")
+    ORDER_REFERENCE.on(execution).set("2")
 
     val listener = createListener(false)
-    listener.notify(delegate)
+    listener.notify(execution)
 
     // nothing to do here
     assertThat(true).isTrue
@@ -39,29 +41,29 @@ class GuardExecutionListenerTest {
 
   @Test
   fun `should throw exception if enabled `() {
-    val delegate = DelegateExecutionFake().withId("4711").withCurrentActivityName("some")
-    ORDER_REFERENCE.on(delegate).set("2")
+    val execution = DelegateExecutionFake().withId("4711").withCurrentActivityName("some")
+    ORDER_REFERENCE.on(execution).set("2")
 
     val listener = createListener(true)
     assertThrows(
-      "Guard violated by execution '${delegate.id}' in activity '${delegate.currentActivityName}'",
+      "Guard violated by execution '${execution.id}' in activity '${execution.currentActivityName}'",
       GuardViolationException::class.java
     ) {
-      listener.notify(delegate)
+      listener.notify(execution)
     }
   }
 
   @Test
   fun `should print name of named guard`() {
-    val delegate = DelegateExecutionFake()
+    val execution = DelegateExecutionFake()
 
     val listener = DefaultGuardExecutionListener(VariablesGuard("NamedGuard", listOf(ORDER_REFERENCE.exists())))
     val exception = assertThrows(GuardViolationException::class.java) {
-      listener.notify(delegate)
+      listener.notify(execution)
     }
     assertThat(exception.message).startsWith("NamedGuard")
   }
 
   private fun createListener(throwE: Boolean = true) =
-    DefaultGuardExecutionListener(listOf(ORDER_REFERENCE.hasValue("1")), throwE)
+    DefaultGuardExecutionListener(VariablesGuard(listOf(ORDER_REFERENCE.hasValue("1"))), throwE)
 }

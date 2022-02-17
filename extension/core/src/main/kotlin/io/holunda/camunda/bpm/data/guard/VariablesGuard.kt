@@ -48,7 +48,6 @@ class VariablesGuard(
    */
   constructor(name: String?, variableConditions: List<VariableGuardCondition<*>>) : this(name = name, variableConditions = variableConditions, reduceOperator = ALL)
 
-
   /**
    * Constructs an anonymous guard with a list of conditions.
    * @param variableConditions conditions to add to guard.

@@ -65,5 +65,5 @@ class GuardTaskListenerTest {
     assertThat(exception.message).startsWith("NamedGuard")
   }
 
-  private fun createListener(throwE: Boolean = true) = DefaultGuardTaskListener(listOf(ORDER_ID.hasValue("1")), throwE)
+  private fun createListener(throwE: Boolean = true) = DefaultGuardTaskListener(VariablesGuard(listOf(ORDER_ID.hasValue("1"))), throwE)
 }

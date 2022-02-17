@@ -26,6 +26,7 @@ class DefaultGuardTaskListener(
    * @param variableConditions condition to check by the guard.
    * @param throwViolations flag controlling if the violation should lead to an exception.
    */
+  @Deprecated("create VariablesGuard and use constructor(guard, throwViolations) instead")
   constructor(variableConditions: List<VariableGuardCondition<*>>, throwViolations: Boolean) : this(VariablesGuard(variableConditions), throwViolations)
 
   override fun notify(task: DelegateTask) {
