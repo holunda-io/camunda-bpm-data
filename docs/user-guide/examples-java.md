@@ -229,17 +229,19 @@ class VariableGuardConfiguration {
     @Bean(VariableGuardConfiguration.MY_GUARD_BEANNAME)
     public ExecutionListener myGuardBeanName(Supplier<Validator> validatorSupplier) {
         return new DefaultGuardExecutionListener(
-            Arrays.asList(
-                exists(REQUIRED_VALUE),
-                notExists(FUTURE_VALUE),
-                hasValue(THE_ANSWER, 42),
-                hasOneOfValues(MY_DIRECTION, Set.of("left", "up", "down")),
-                isEmail(USER_EMAIL),
-                isUuid(DOCUMENT_ID),
-                matches(DOCUMENT_BODY, this::myDocumentBodyMatcher),
-                matches(DOCUMENT_BODY, this::myDocumentBodyMatcher, this::validationMessageSupplier),
-                matchesRegex(DOCUMENT_BODY, "^Dude.*", "Starts with 'Dude'"),
-                isValidBean(My_DOCUMENT, validatorSupplier)
+            new VariablesGuard(
+                Arrays.asList(
+                    exists(REQUIRED_VALUE),
+                    notExists(FUTURE_VALUE),
+                    hasValue(THE_ANSWER, 42),
+                    hasOneOfValues(MY_DIRECTION, Set.of("left", "up", "down")),
+                    isEmail(USER_EMAIL),
+                    isUuid(DOCUMENT_ID),
+                    matches(DOCUMENT_BODY, this::myDocumentBodyMatcher),
+                    matches(DOCUMENT_BODY, this::myDocumentBodyMatcher, this::validationMessageSupplier),
+                    matchesRegex(DOCUMENT_BODY, "^Dude.*", "Starts with 'Dude'"),
+                    isValidBean(My_DOCUMENT, validatorSupplier)
+                )
             ), true);
     }
 

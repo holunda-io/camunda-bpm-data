@@ -116,9 +116,11 @@ public class OrderApproval {
   public TaskListener guardTaskListener() {
     return new DefaultGuardTaskListener(
       new VariablesGuard(
+        "namedGuard",
         List.of(
           exists(ORDER_APPROVED)
-        )), true
+        ),
+        VariablesGuard.ALL), true
     );
   }
 

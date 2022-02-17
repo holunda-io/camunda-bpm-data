@@ -37,8 +37,8 @@ conditions on process variables during the execution of business processes, a co
 the library. A guard consists of a set of `VariableConditions` and can be evaluated in all contexts, the variables
 are used in: `DelegateTask`, `DelegateExecution`, `TaskService`, `RuntimeService`, `VariableMap`.
 
-Here is an example of a task listener verifying that a process variable `ORDER_APPROVED` is set, which
-will throw a `GuardViolationException` if the condition is not met.
+Here is an example of a task listener defining a `VariablesGuard` to test that the process variables `ORDER_APPROVED` and 
+`APPROVER_ID` are set, which will throw a `GuardViolationException` if the condition is not met.
 
 
 ``` java
@@ -49,10 +49,19 @@ import static io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.exists;
 class MyGuardListener extends DefaultGuardTaskListener {
 
     public MyGuardListener() {
-        super(newArrayList(exists(ORDER_APPROVED)), true);
+        super(new VariablesGuard(List.of(exists(ORDER_APPROVED), exists(APPROVER_ID)), true);
     }
 }
 ```
+
+By default, all conditions of a `VariablesGuard` must be met in order to pass the validations. This behaviour can be explicitly  
+defined by passing the `reduceOperator = VariablesGuard.ALL` when creating the `VariablesGuard`. The `reduceOperator` can take 
+the following values:
+
+| `reduceOperator`        | Semantics                                    |
+|-------------------------|----------------------------------------------|
+| `VariablesGuard.ALL`    | All `VariableCondition`s must be met         |
+| `VariablesGuard.ONE_OF` | At least ONE `VariableCondition` must be met |
 
 ## Anti-Corruption-Layer
 

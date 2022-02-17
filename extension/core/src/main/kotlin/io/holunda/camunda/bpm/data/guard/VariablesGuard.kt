@@ -23,11 +23,13 @@ class VariablesGuard(
     /**
      * Default guard type checking that none of the conditions has been violated.
      */
+    @JvmField
     val ALL: ReduceOperator = { violations -> violations.flatten() }
 
     /**
      * Guard allowing all but one conditions to be violated.
      */
+    @JvmField
     val ONE_OF: ReduceOperator = { violations ->
       if (violations.none { it.isEmpty() }) {
         violations.flatten()
