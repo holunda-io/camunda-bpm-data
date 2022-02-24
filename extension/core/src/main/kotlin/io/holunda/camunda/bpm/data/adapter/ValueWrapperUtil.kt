@@ -23,7 +23,12 @@ object ValueWrapperUtil {
   </T> */
   @JvmStatic
   fun <T> getTypedValue(clazz: Class<T>, value: Any?, isTransient: Boolean): TypedValue {
-    require(!(value != null && !isAssignableFrom(clazz, value.javaClass))) { "Couldn't create TypedValue for '" + clazz.name + "' from value '" + value + "'" }
+    require(
+      !(value != null && !isAssignableFrom(
+        clazz,
+        value.javaClass
+      ))
+    ) { "Couldn't create TypedValue for '" + clazz.name + "' from value '" + value + "'" }
 
     return when (clazz) {
       String::class.java -> Variables.stringValue(value as String?, isTransient)
@@ -52,7 +57,8 @@ object ValueWrapperUtil {
    * @param typeOfValue   class extracted from the value.
    * @return true, if the type of value is assignable from the requested type or its unboxed version
    */
-  private fun isAssignableFrom(requestedType: Class<*>, typeOfValue: Class<*>): Boolean =
+  @JvmStatic
+  fun isAssignableFrom(requestedType: Class<*>, typeOfValue: Class<*>): Boolean =
     when {
       requestedType.isPrimitive -> requestedType.kotlin.javaObjectType.isAssignableFrom(typeOfValue)
       requestedType.isAssignableFrom(typeOfValue) -> true

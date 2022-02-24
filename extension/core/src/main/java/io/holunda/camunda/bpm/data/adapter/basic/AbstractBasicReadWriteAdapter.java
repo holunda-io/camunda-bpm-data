@@ -45,7 +45,7 @@ public abstract class AbstractBasicReadWriteAdapter<T> extends AbstractReadWrite
     if (clazz == UUID.class && String.class.isAssignableFrom(value.getClass())) {
       return (T) UUID.fromString((String) value);
     }
-    if (clazz.isAssignableFrom(value.getClass())) {
+    if (clazz.isAssignableFrom(value.getClass()) || ValueWrapperUtil.isAssignableFrom(clazz, value.getClass())) {
       return (T) value;
     }
     throw new WrongVariableTypeException("Error reading " + variableName + ": Couldn't read value of " + clazz + " from " + value);
