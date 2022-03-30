@@ -219,17 +219,19 @@ class VariableGuardConfiguration {
     @Bean(LOAD_OPERATIONAL_FILE_GUARD)
     fun loadOperationalFileGuard(validatorSupplier : Supplier<Validator>): ExecutionListener =
         DefaultGuardExecutionListener(
-            listOf(
-                REQUIRED_VALUE.exists(),
-                FUTURE_VALUE.notExists(),
-                THE_ANSWER.hasValue(42),
-                MY_DIRECTION.hasOneOfValues(setOf("left", "up", "down")),
-                USER_EMAIL.isEmail(),
-                DOCUMENT_ID.isUuid(),
-                DOCUMENT_BODY.matches { return@matches true },
-                DOCUMENT_BODY.matches(this::validationMessageSupplier) { return@matches true },
-                DOCUMENT_BODY.matchesRegexLocal(Regex("^Dude.*"), "Starts with 'Dude'"),
-                MY_DOCUMENT.isValidBean(validatorSupplier)
+            VariablesGuard(
+                listOf(
+                    REQUIRED_VALUE.exists(),
+                    FUTURE_VALUE.notExists(),
+                    THE_ANSWER.hasValue(42),
+                    MY_DIRECTION.hasOneOfValues(setOf("left", "up", "down")),
+                    USER_EMAIL.isEmail(),
+                    DOCUMENT_ID.isUuid(),
+                    DOCUMENT_BODY.matches { return@matches true },
+                    DOCUMENT_BODY.matches(this::validationMessageSupplier) { return@matches true },
+                    DOCUMENT_BODY.matchesRegexLocal(Regex("^Dude.*"), "Starts with 'Dude'"),
+                    MY_DOCUMENT.isValidBean(validatorSupplier)
+                )
             ), true
         )
         

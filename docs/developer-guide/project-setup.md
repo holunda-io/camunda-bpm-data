@@ -47,7 +47,7 @@ If you want to skip the build of examples, please specify the `-DskipExamples` s
 We are using MkDocs for generation of a static site documentation and rely on markdown as much as possible.
 To install it, please run once:
 
-``sh
+```sh
 python3 -m pip install -r ./docs/requirements.txt
 ```
 

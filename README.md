@@ -40,20 +40,20 @@ If you just want to start using the library, put the following dependency into y
 <dependency>
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data</artifactId>
-  <version>1.2.3</version>
+  <version>1.2.5</version>
 </dependency>
 ```
 
 If you are using Gradle Kotlin DSL add to your `build.gradle.kts`:
 
 ``` kotlin
-implementation("io.holunda.data:camunda-bpm-data:1.2.3")
+implementation("io.holunda.data:camunda-bpm-data:1.2.5")
 ```
 
 For Gradle Groovy DSL add to your `build.gradle`:
 
 ``` groovy
-implementation 'io.holunda.data:camunda-bpm-data:1.2.3'
+implementation 'io.holunda.data:camunda-bpm-data:1.2.5'
 ```
 ### Variable declaration
 Now your setup is completed, and you can declare your variables like this:
