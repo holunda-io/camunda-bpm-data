@@ -888,17 +888,19 @@
     <span class="nd">@Bean</span><span class="p">(</span><span class="n">LOAD_OPERATIONAL_FILE_GUARD</span><span class="p">)</span>
     <span class="kd">fun</span> <span class="nf">loadOperationalFileGuard</span><span class="p">(</span><span class="n">validatorSupplier</span> <span class="p">:</span> <span class="n">Supplier</span><span class="o">&lt;</span><span class="n">Validator</span><span class="o">&gt;</span><span class="p">):</span> <span class="n">ExecutionListener</span> <span class="o">=</span>
         <span class="n">DefaultGuardExecutionListener</span><span class="p">(</span>
-            <span class="n">listOf</span><span class="p">(</span>
-                <span class="n">REQUIRED_VALUE</span><span class="p">.</span><span class="na">exists</span><span class="p">(),</span>
-                <span class="n">FUTURE_VALUE</span><span class="p">.</span><span class="na">notExists</span><span class="p">(),</span>
-                <span class="n">THE_ANSWER</span><span class="p">.</span><span class="na">hasValue</span><span class="p">(</span><span class="m">42</span><span class="p">),</span>
-                <span class="n">MY_DIRECTION</span><span class="p">.</span><span class="na">hasOneOfValues</span><span class="p">(</span><span class="n">setOf</span><span class="p">(</span><span class="s">&quot;left&quot;</span><span class="p">,</span> <span class="s">&quot;up&quot;</span><span class="p">,</span> <span class="s">&quot;down&quot;</span><span class="p">)),</span>
-                <span class="n">USER_EMAIL</span><span class="p">.</span><span class="na">isEmail</span><span class="p">(),</span>
-                <span class="n">DOCUMENT_ID</span><span class="p">.</span><span class="na">isUuid</span><span class="p">(),</span>
-                <span class="n">DOCUMENT_BODY</span><span class="p">.</span><span class="na">matches</span> <span class="p">{</span> <span class="k">return</span><span class="nd">@matches</span> <span class="kc">true</span> <span class="p">},</span>
-                <span class="n">DOCUMENT_BODY</span><span class="p">.</span><span class="na">matches</span><span class="p">(</span><span class="k">this</span><span class="o">::</span><span class="n">validationMessageSupplier</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span><span class="nd">@matches</span> <span class="kc">true</span> <span class="p">},</span>
-                <span class="n">DOCUMENT_BODY</span><span class="p">.</span><span class="na">matchesRegexLocal</span><span class="p">(</span><span class="n">Regex</span><span class="p">(</span><span class="s">&quot;^Dude.*&quot;</span><span class="p">),</span> <span class="s">&quot;Starts with &#39;Dude&#39;&quot;</span><span class="p">),</span>
-                <span class="n">MY_DOCUMENT</span><span class="p">.</span><span class="na">isValidBean</span><span class="p">(</span><span class="n">validatorSupplier</span><span class="p">)</span>
+            <span class="n">VariablesGuard</span><span class="p">(</span>
+                <span class="n">listOf</span><span class="p">(</span>
+                    <span class="n">REQUIRED_VALUE</span><span class="p">.</span><span class="na">exists</span><span class="p">(),</span>
+                    <span class="n">FUTURE_VALUE</span><span class="p">.</span><span class="na">notExists</span><span class="p">(),</span>
+                    <span class="n">THE_ANSWER</span><span class="p">.</span><span class="na">hasValue</span><span class="p">(</span><span class="m">42</span><span class="p">),</span>
+                    <span class="n">MY_DIRECTION</span><span class="p">.</span><span class="na">hasOneOfValues</span><span class="p">(</span><span class="n">setOf</span><span class="p">(</span><span class="s">&quot;left&quot;</span><span class="p">,</span> <span class="s">&quot;up&quot;</span><span class="p">,</span> <span class="s">&quot;down&quot;</span><span class="p">)),</span>
+                    <span class="n">USER_EMAIL</span><span class="p">.</span><span class="na">isEmail</span><span class="p">(),</span>
+                    <span class="n">DOCUMENT_ID</span><span class="p">.</span><span class="na">isUuid</span><span class="p">(),</span>
+                    <span class="n">DOCUMENT_BODY</span><span class="p">.</span><span class="na">matches</span> <span class="p">{</span> <span class="k">return</span><span class="nd">@matches</span> <span class="kc">true</span> <span class="p">},</span>
+                    <span class="n">DOCUMENT_BODY</span><span class="p">.</span><span class="na">matches</span><span class="p">(</span><span class="k">this</span><span class="o">::</span><span class="n">validationMessageSupplier</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span><span class="nd">@matches</span> <span class="kc">true</span> <span class="p">},</span>
+                    <span class="n">DOCUMENT_BODY</span><span class="p">.</span><span class="na">matchesRegexLocal</span><span class="p">(</span><span class="n">Regex</span><span class="p">(</span><span class="s">&quot;^Dude.*&quot;</span><span class="p">),</span> <span class="s">&quot;Starts with &#39;Dude&#39;&quot;</span><span class="p">),</span>
+                    <span class="n">MY_DOCUMENT</span><span class="p">.</span><span class="na">isValidBean</span><span class="p">(</span><span class="n">validatorSupplier</span><span class="p">)</span>
+                <span class="p">)</span>
             <span class="p">),</span> <span class="kc">true</span>
         <span class="p">)</span>
 

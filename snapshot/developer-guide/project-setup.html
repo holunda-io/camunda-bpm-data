@@ -762,18 +762,16 @@ file <code>~/.camunda/license.txt</code> and it will be detected automatically.<
 <h4 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">#</a></h4>
 <p>We are using MkDocs for generation of a static site documentation and rely on markdown as much as possible.
 To install it, please run once:</p>
-<p>``sh
-python3 -m pip install -r ./docs/requirements.txt
-<div class="highlight"><pre><span></span><code>!!! note
-
-    If you want to develop your docs in &#39;live&#39; mode, run `mkdocs serve` and access
-    the http://localhost:8000/ from your browser.
-
-For creation of documentation locally, please run:
-
-```sh
-mkdocs build
-</code></pre></div></p>
+<div class="highlight"><pre><span></span><code>python3 -m pip install -r ./docs/requirements.txt
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to develop your docs in 'live' mode, run <code>mkdocs serve</code> and access
+the http://localhost:8000/ from your browser.</p>
+</div>
+<p>For creation of documentation locally, please run:</p>
+<div class="highlight"><pre><span></span><code>mkdocs build
+</code></pre></div>
 <h4 id="generation-of-javadoc-and-sources">Generation of JavaDoc and Sources<a class="headerlink" href="#generation-of-javadoc-and-sources" title="Permanent link">#</a></h4>
 <p>By default, the sources and javadoc API documentation are not generated from the source code. To enable this:</p>
 <div class="highlight"><pre><span></span><code>./mvnw clean install -Prelease -Dgpg.skip<span class="o">=</span><span class="nb">true</span>

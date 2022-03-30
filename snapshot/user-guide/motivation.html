@@ -668,18 +668,39 @@ Rising complexity of the implemented processes makes the compliance to those rul
 conditions on process variables during the execution of business processes, a concept of <code>VariableGuard</code> is provided by
 the library. A guard consists of a set of <code>VariableConditions</code> and can be evaluated in all contexts, the variables
 are used in: <code>DelegateTask</code>, <code>DelegateExecution</code>, <code>TaskService</code>, <code>RuntimeService</code>, <code>VariableMap</code>.</p>
-<p>Here is an example of a task listener verifying that a process variable <code>ORDER_APPROVED</code> is set, which
-will throw a <code>GuardViolationException</code> if the condition is not met.</p>
+<p>Here is an example of a task listener defining a <code>VariablesGuard</code> to test that the process variables <code>ORDER_APPROVED</code> and 
+<code>APPROVER_ID</code> are set, which will throw a <code>GuardViolationException</code> if the condition is not met.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import static</span> <span class="nn">io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.exists</span><span class="p">;</span>
 
 <span class="nd">@Component</span>
 <span class="kd">class</span> <span class="nc">MyGuardListener</span> <span class="kd">extends</span> <span class="n">DefaultGuardTaskListener</span> <span class="p">{</span>
 
     <span class="kd">public</span> <span class="nf">MyGuardListener</span><span class="p">()</span> <span class="p">{</span>
-        <span class="kd">super</span><span class="p">(</span><span class="n">newArrayList</span><span class="p">(</span><span class="n">exists</span><span class="p">(</span><span class="n">ORDER_APPROVED</span><span class="p">)),</span> <span class="kc">true</span><span class="p">);</span>
+        <span class="kd">super</span><span class="p">(</span><span class="k">new</span> <span class="n">VariablesGuard</span><span class="p">(</span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">exists</span><span class="p">(</span><span class="n">ORDER_APPROVED</span><span class="p">),</span> <span class="n">exists</span><span class="p">(</span><span class="n">APPROVER_ID</span><span class="p">)),</span> <span class="kc">true</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<p>By default, all conditions of a <code>VariablesGuard</code> must be met in order to pass the validations. This behaviour can be explicitly<br />
+defined by passing the <code>reduceOperator = VariablesGuard.ALL</code> when creating the <code>VariablesGuard</code>. The <code>reduceOperator</code> can take 
+the following values:</p>
+<table>
+<thead>
+<tr>
+<th><code>reduceOperator</code></th>
+<th>Semantics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VariablesGuard.ALL</code></td>
+<td>All <code>VariableCondition</code>s must be met</td>
+</tr>
+<tr>
+<td><code>VariablesGuard.ONE_OF</code></td>
+<td>At least ONE <code>VariableCondition</code> must be met</td>
+</tr>
+</tbody>
+</table>
 <h2 id="anti-corruption-layer">Anti-Corruption-Layer<a class="headerlink" href="#anti-corruption-layer" title="Permanent link">#</a></h2>
 <p>If a process is signalled or hit by a correlated message, there is no way to check if the transported variables are set correctly.
 In addition, the variables are written directly to the execution of the correlated process instance. In case of a multi-instance
