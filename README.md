@@ -1,7 +1,7 @@
 [![Build Status](https://github.com/holunda-io/camunda-bpm-data/workflows/default/badge.svg)](https://github.com/holunda-io/camunda-bpm-data/actions)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data)
 [![CodeCov](https://codecov.io/gh/holunda-io/camunda-bpm-data/branch/master/graph/badge.svg)](https://codecov.io/gh/holunda-io/camunda-bpm-data)
-[![Codacy](https://api.codacy.com/project/badge/Grade/653136bd5cad48c8a9f2621ee304ff26)](https://app.codacy.com/app/zambrovski/camunda-bpm-data?utm_source=github.com&utm_medium=referral&utm_content=holunda-io/camunda-bpm-data&utm_campaign)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/02d238f71a8243cb96fd2fe322a710eb)](https://www.codacy.com/gh/holunda-io/camunda-bpm-data/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=holunda-io/camunda-bpm-data&amp;utm_campaign=Badge_Grade)
 [![Changes](https://img.shields.io/badge/CHANGES---yellow)](https://www.holunda.io/camunda-bpm-data/changelog)
 [![gitter](https://badges.gitter.im/holunda-io/camunda-bpm-data.svg)](https://gitter.im/holunda-io/camunda-bpm-data?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
@@ -26,6 +26,7 @@ easy and convenient. We leverage the Camunda API and offer you not only a better
 
 If you want to read more about data in Camunda processes, have a look on those articles:
 
+  * [Camunda Nation Podcast - Managing Data in Processes, with Simon Zambrovski](https://podcasts.apple.com/us/podcast/managing-data-in-processes-with-simon-zambrovski/id1478382505?i=1000547023972)
   * [Data in Process (Part 1)](https://medium.com/holisticon-consultants/data-in-process-part-1-2620bf9abd76)
   * [Data in Process (Part 2)](https://medium.com/holisticon-consultants/data-in-process-part-2-7c6a109e6ee2)
 
@@ -39,20 +40,20 @@ If you just want to start using the library, put the following dependency into y
 <dependency>
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data</artifactId>
-  <version>1.2.3</version>
+  <version>1.2.5</version>
 </dependency>
 ```
 
 If you are using Gradle Kotlin DSL add to your `build.gradle.kts`:
 
 ``` kotlin
-implementation("io.holunda.data:camunda-bpm-data:1.2.3")
+implementation("io.holunda.data:camunda-bpm-data:1.2.5")
 ```
 
 For Gradle Groovy DSL add to your `build.gradle`:
 
 ``` groovy
-implementation 'io.holunda.data:camunda-bpm-data:1.2.3'
+implementation 'io.holunda.data:camunda-bpm-data:1.2.5'
 ```
 ### Variable declaration
 Now your setup is completed, and you can declare your variables like this:

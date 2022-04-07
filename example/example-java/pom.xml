@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data.example</groupId>
     <artifactId>camunda-bpm-data-example-parent</artifactId>
-    <version>1.2.5</version>
+    <version>1.2.6</version>
   </parent>
 
   <artifactId>camunda-bpm-data-example-java</artifactId>
@@ -26,10 +26,13 @@
       <artifactId>camunda-bpm-data-spin-type-detector</artifactId>
       <version>${project.parent.version}</version>
     </dependency>
-
     <dependency>
-      <groupId>io.toolisticon.springboot</groupId>
-      <artifactId>springboot-swagger-starter</artifactId>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-ui</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-webmvc-core</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>

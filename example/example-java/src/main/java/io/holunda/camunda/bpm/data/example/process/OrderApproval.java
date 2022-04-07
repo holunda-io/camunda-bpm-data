@@ -4,13 +4,10 @@ import io.holunda.camunda.bpm.data.example.domain.Order;
 import io.holunda.camunda.bpm.data.example.domain.OrderPosition;
 import io.holunda.camunda.bpm.data.example.domain.OrderRepository;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import io.holunda.camunda.bpm.data.guard.VariablesGuard;
 import io.holunda.camunda.bpm.data.guard.integration.DefaultGuardExecutionListener;
 import io.holunda.camunda.bpm.data.guard.integration.DefaultGuardTaskListener;
-import org.camunda.bpm.engine.delegate.DelegateExecution;
-import org.camunda.bpm.engine.delegate.DelegateTask;
-import org.camunda.bpm.engine.delegate.ExecutionListener;
-import org.camunda.bpm.engine.delegate.JavaDelegate;
-import org.camunda.bpm.engine.delegate.TaskListener;
+import org.camunda.bpm.engine.delegate.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +16,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.EventListener;
 
 import java.math.BigDecimal;
+import java.util.List;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.customVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
-import static io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.*;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.*;
+import static io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.exists;
 
 /**
  * Process backing bean.
@@ -108,7 +103,7 @@ public class OrderApproval {
    */
   @Bean
   public ExecutionListener guardExecutionListener() {
-    return new DefaultGuardExecutionListener(newArrayList(exists(ORDER_ID)), true);
+    return new DefaultGuardExecutionListener(new VariablesGuard(List.of(exists(ORDER_ID))), true);
   }
 
   /**
@@ -120,9 +115,12 @@ public class OrderApproval {
   @Bean
   public TaskListener guardTaskListener() {
     return new DefaultGuardTaskListener(
-      newArrayList(
-        exists(ORDER_APPROVED)
-      ), true
+      new VariablesGuard(
+        "namedGuard",
+        List.of(
+          exists(ORDER_APPROVED)
+        ),
+        VariablesGuard.ALL), true
     );
   }
 
