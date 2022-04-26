@@ -192,7 +192,7 @@ public class ApproveOrderTaskControllerTest {
 ### Further documentation
 
 For further details, please consult our [Quick Start](https://www.holunda.io/camunda-bpm-data/snapshot/quick-start)
-guide or have a look to our primary documentation - [the User Guide](https://www.holunda.io/camunda-bpm-data/snapshot/user-guide/index.html)
+guide or have a look to our primary documentation: [User Guide](https://www.holunda.io/camunda-bpm-data/snapshot/user-guide/motivation.html)
 
 ## Working Example
 
