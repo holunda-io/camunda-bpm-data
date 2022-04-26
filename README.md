@@ -22,7 +22,7 @@ these snippets to a single process execution, it makes refactoring and testing o
 error-prone and challenging.
 
 This library helps you to overcome these difficulties and make access, manipulation and testing process variables really
-easy and convenient. We leverage the Camunda Platform 7 API and offer you not only a better API but also some [additional features](https://www.holunda.io/camunda-bpm-data/wiki/user-guide/features).
+easy and convenient. We leverage the Camunda Platform 7 API and offer you not only a better API but also some [additional features](https://www.holunda.io/camunda-bpm-data/snapshot/user-guide/features.html).
 
 If you want to read more about data in Camunda processes, have a look on those articles:
 
@@ -191,23 +191,23 @@ public class ApproveOrderTaskControllerTest {
 
 ### Further documentation
 
-For further details, please consult our [Quick Start](https://www.holunda.io/camunda-bpm-data/quick-start)
-guide or have a look to our primary documentation - [the User Guide](https://www.holunda.io/camunda-bpm-data/wiki/user-guide)
+For further details, please consult our [Quick Start](https://www.holunda.io/camunda-bpm-data/snapshot/quick-start)
+guide or have a look to our primary documentation - [the User Guide](https://www.holunda.io/camunda-bpm-data/snapshot/user-guide/index.html)
 
 ## Working Example
 
 We prepared some typical usage scenarios and implemented two example projects in Java and Kotlin.
-See our [Examples](https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples) section for usage and configuration.
+See our [Examples](https://www.holunda.io/camunda-bpm-data/snapshot/user-guide/examples.html) section for usage and configuration.
 
 ## License
 
-[![Apache License 2](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.holunda.io/camunda-bpm-data/license)
+[![Apache License 2](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
 This library is developed under Apache 2.0 License.
 
 ## Contribution
 
-If you want to contribute to this project, feel free to do so. Start with [Contributing guide](http://holunda.io/camunda-bpm-data/wiki/developer-guide/contribution).
+If you want to contribute to this project, feel free to do so. Start with [Contributing guide](http://holunda.io/camunda-bpm-data/snapshot/developer-guide/contribution.html).
 
 ## Maintainer
 
