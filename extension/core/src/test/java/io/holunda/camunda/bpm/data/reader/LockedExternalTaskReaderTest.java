@@ -26,14 +26,14 @@ import static org.mockito.Mockito.when;
 
 public class LockedExternalTaskReaderTest {
 
-  private static final VariableFactory<String> STRING = stringVariable("myString");
-  private static final VariableFactory<UUID> UUID = uuidVariable("myUuid");
-  private static final VariableFactory<List<String>> LIST = listVariable("myList", String.class);
-  private static final VariableFactory<Set<String>> SET = setVariable("mySet", String.class);
-  private static final VariableFactory<Map<String, String>> MAP = mapVariable("myMap", String.class, String.class);
+  private static final VariableFactory<String> STRING_VAR = stringVariable("myString");
+  private static final VariableFactory<UUID> UUID_VAR = uuidVariable("myUuid");
+  private static final VariableFactory<List<String>> LIST_VAR = listVariable("myList", String.class);
+  private static final VariableFactory<Set<String>> SET_VAR = setVariable("mySet", String.class);
+  private static final VariableFactory<Map<String, String>> MAP_VAR = mapVariable("myMap", String.class, String.class);
 
   private final String stringValue = "value";
-  private final UUID uuidValue = java.util.UUID.randomUUID();
+  private final UUID uuidValue = UUID.randomUUID();
   private final List<String> listValue = asList("foo", "bar");
   private final Set<String> setValue = asHashSet("foo", "bar");
   private final Map<String, String> mapValue = Map.of("a", "b", "c", "d");
@@ -46,71 +46,71 @@ public class LockedExternalTaskReaderTest {
   public void setUp() {
     when(externalTask.getVariables()).thenReturn(
       Variables
-        .putValue(STRING.getName(), stringValue)
-        .putValue(LIST.getName(), listValue)
-        .putValue(SET.getName(), setValue)
-        .putValue(MAP.getName(), mapValue)
-        .putValue(UUID.getName(), uuidValue)
+        .putValue(STRING_VAR.getName(), stringValue)
+        .putValue(LIST_VAR.getName(), listValue)
+        .putValue(SET_VAR.getName(), setValue)
+        .putValue(MAP_VAR.getName(), mapValue)
+        .putValue(UUID_VAR.getName(), uuidValue)
     );
   }
 
   @Test
   public void shouldDelegateGet() {
-    assertThat(reader.get(STRING)).isEqualTo(stringValue);
-    assertThat(reader.get(LIST)).isEqualTo(listValue);
-    assertThat(reader.get(SET)).isEqualTo(setValue);
-    assertThat(reader.get(MAP)).isEqualTo(mapValue);
-    assertThat(reader.get(UUID)).isEqualTo(uuidValue);
-    assertThat(reader.get(UUID)).isInstanceOf(java.util.UUID.class);
+    assertThat(reader.get(STRING_VAR)).isEqualTo(stringValue);
+    assertThat(reader.get(LIST_VAR)).isEqualTo(listValue);
+    assertThat(reader.get(SET_VAR)).isEqualTo(setValue);
+    assertThat(reader.get(MAP_VAR)).isEqualTo(mapValue);
+    assertThat(reader.get(UUID_VAR)).isEqualTo(uuidValue);
+    assertThat(reader.get(UUID_VAR)).isInstanceOf(UUID.class);
   }
 
   @Test
   public void shouldDelegateGetOptional() {
-    assertThat(reader.getOptional(STRING)).hasValue(stringValue);
-    assertThat(reader.getOptional(LIST)).hasValue(listValue);
-    assertThat(reader.getOptional(SET)).hasValue(setValue);
-    assertThat(reader.getOptional(MAP)).hasValue(mapValue);
-    assertThat(reader.getOptional(UUID)).hasValue(uuidValue);
+    assertThat(reader.getOptional(STRING_VAR)).hasValue(stringValue);
+    assertThat(reader.getOptional(LIST_VAR)).hasValue(listValue);
+    assertThat(reader.getOptional(SET_VAR)).hasValue(setValue);
+    assertThat(reader.getOptional(MAP_VAR)).hasValue(mapValue);
+    assertThat(reader.getOptional(UUID_VAR)).hasValue(uuidValue);
     assertThat(reader.getOptional(stringVariable("xxx"))).isEmpty();
   }
 
   @Test
   public void shouldDelegateGetLocalOptional() {
-    assertThatThrownBy(() -> reader.getLocalOptional(STRING))
+    assertThatThrownBy(() -> reader.getLocalOptional(STRING_VAR))
       .isInstanceOf(UnsupportedOperationException.class)
       .hasMessage("Can't get a local variable on an external task");
   }
 
   @Test
   public void shouldDelegateGetLocal() {
-    assertThatThrownBy(() -> reader.getLocal(STRING))
+    assertThatThrownBy(() -> reader.getLocal(STRING_VAR))
       .isInstanceOf(UnsupportedOperationException.class)
       .hasMessage("Can't get a local variable on an external task");
   }
 
   @Test
   public void shouldDelegateGetOrNull() {
-    assertThat(reader.getOrNull(STRING)).isEqualTo(stringValue);
-    assertThat(reader.getOrNull(LIST)).isEqualTo(listValue);
-    assertThat(reader.getOrNull(SET)).isEqualTo(setValue);
-    assertThat(reader.getOrNull(MAP)).isEqualTo(mapValue);
-    assertThat(reader.getOrNull(UUID)).isEqualTo(uuidValue);
+    assertThat(reader.getOrNull(STRING_VAR)).isEqualTo(stringValue);
+    assertThat(reader.getOrNull(LIST_VAR)).isEqualTo(listValue);
+    assertThat(reader.getOrNull(SET_VAR)).isEqualTo(setValue);
+    assertThat(reader.getOrNull(MAP_VAR)).isEqualTo(mapValue);
+    assertThat(reader.getOrNull(UUID_VAR)).isEqualTo(uuidValue);
     assertThat(reader.getOrNull(stringVariable("xxx"))).isNull();
   }
 
   @Test
   public void shouldDelegateGetLocalOrNull() {
-    assertThatThrownBy(() -> reader.getLocalOrNull(STRING))
+    assertThatThrownBy(() -> reader.getLocalOrNull(STRING_VAR))
       .isInstanceOf(UnsupportedOperationException.class)
       .hasMessage("Can't get a local variable on an external task");
   }
 
   @Test
   public void shouldDelegateGetOrDefault() {
-    assertThat(reader.getOrDefault(STRING, "default")).isEqualTo(stringValue);
-    assertThat(reader.getOrDefault(LIST, asList("a", "b"))).isEqualTo(listValue);
-    assertThat(reader.getOrDefault(SET, asHashSet("a", "b"))).isEqualTo(setValue);
-    assertThat(reader.getOrDefault(MAP, Map.of("a", "b", "c", "d"))).isEqualTo(mapValue);
+    assertThat(reader.getOrDefault(STRING_VAR, "default")).isEqualTo(stringValue);
+    assertThat(reader.getOrDefault(LIST_VAR, asList("a", "b"))).isEqualTo(listValue);
+    assertThat(reader.getOrDefault(SET_VAR, asHashSet("a", "b"))).isEqualTo(setValue);
+    assertThat(reader.getOrDefault(MAP_VAR, Map.of("a", "b", "c", "d"))).isEqualTo(mapValue);
 
     assertThat(reader.getOrDefault(stringVariable("xxx"), "default")).isEqualTo("default");
     assertThat(reader.getOrDefault(listVariable("xxx", String.class), asList("a", "b"))).isEqualTo(asList("a", "b"));
@@ -120,7 +120,7 @@ public class LockedExternalTaskReaderTest {
 
   @Test
   public void shouldDelegateGetLocalOrDefault() {
-    assertThatThrownBy(() -> reader.getLocalOrDefault(STRING, stringValue))
+    assertThatThrownBy(() -> reader.getLocalOrDefault(STRING_VAR, stringValue))
       .isInstanceOf(UnsupportedOperationException.class)
       .hasMessage("Can't get a local variable on an external task");
   }

@@ -1,7 +1,6 @@
 package io.holunda.camunda.bpm.data.adapter.basic;
 
 import io.holunda.camunda.bpm.data.adapter.ReadAdapter;
-import io.holunda.camunda.bpm.data.adapter.VariableNotFoundException;
 import org.camunda.bpm.engine.externaltask.LockedExternalTask;
 
 import java.util.Optional;
