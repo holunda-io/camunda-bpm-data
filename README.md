@@ -1,3 +1,6 @@
+## Camunda BPM Data
+
+[![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
 [![Build Status](https://github.com/holunda-io/camunda-bpm-data/workflows/default/badge.svg)](https://github.com/holunda-io/camunda-bpm-data/actions)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data)
 [![CodeCov](https://codecov.io/gh/holunda-io/camunda-bpm-data/branch/master/graph/badge.svg)](https://codecov.io/gh/holunda-io/camunda-bpm-data)
@@ -5,9 +8,7 @@
 [![Changes](https://img.shields.io/badge/CHANGES---yellow)](https://www.holunda.io/camunda-bpm-data/changelog)
 [![gitter](https://badges.gitter.im/holunda-io/camunda-bpm-data.svg)](https://gitter.im/holunda-io/camunda-bpm-data?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-## Camunda BPM Data
-
-> Beautiful process data handling for Camunda BPM.
+> Beautiful process data handling for Camunda Platform 7.
 
 ## Why to use this library in every Camunda project
 
@@ -15,14 +16,14 @@ If you are a software engineer and run process automation projects in your compa
 based on Camunda Process Engine, you probably are familiar with process variables. Camunda offers an API to access
 them and thereby manipulate the state of the process execution - one of the core features during process automation.
 
-Unfortunately, as a user of the Camunda API, you have to exactly know the variable type (so the Java class behind it).
+Unfortunately, as a user of the Camunda Platform 7 API, you have to exactly know the variable type (so the Java class behind it).
 For example, if you store a String in a variable `"orderId"` you must extract it as a String in every piece of code.
 Since there is no code connection between the different code parts, but the BPMN process model orchestrates
 these snippets to a single process execution, it makes refactoring and testing of process automation projects
 error-prone and challenging.
 
 This library helps you to overcome these difficulties and make access, manipulation and testing process variables really
-easy and convenient. We leverage the Camunda API and offer you not only a better API but also some [additional features](https://www.holunda.io/camunda-bpm-data/wiki/user-guide/features).
+easy and convenient. We leverage the Camunda Platform 7 API and offer you not only a better API but also some [additional features](https://www.holunda.io/camunda-bpm-data/snapshot/user-guide/features.html).
 
 If you want to read more about data in Camunda processes, have a look on those articles:
 
@@ -40,20 +41,20 @@ If you just want to start using the library, put the following dependency into y
 <dependency>
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data</artifactId>
-  <version>1.2.5</version>
+  <version>1.2.6</version>
 </dependency>
 ```
 
 If you are using Gradle Kotlin DSL add to your `build.gradle.kts`:
 
 ``` kotlin
-implementation("io.holunda.data:camunda-bpm-data:1.2.5")
+implementation("io.holunda.data:camunda-bpm-data:1.2.6")
 ```
 
 For Gradle Groovy DSL add to your `build.gradle`:
 
 ``` groovy
-implementation 'io.holunda.data:camunda-bpm-data:1.2.5'
+implementation 'io.holunda.data:camunda-bpm-data:1.2.6'
 ```
 ### Variable declaration
 Now your setup is completed, and you can declare your variables like this:
@@ -139,7 +140,7 @@ Please put the following dependency into your `pom.xml`:
 <dependency>
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data-test</artifactId>
-  <version>1.2.2</version>
+  <version>1.2.6</version>
   <scope>test</scope>
 </dependency>
 ```
@@ -191,23 +192,23 @@ public class ApproveOrderTaskControllerTest {
 
 ### Further documentation
 
-For further details, please consult our [Quick Start](https://www.holunda.io/camunda-bpm-data/quick-start)
-guide or have a look to our primary documentation - [the User Guide](https://www.holunda.io/camunda-bpm-data/wiki/user-guide)
+For further details, please consult our [Quick Start](https://www.holunda.io/camunda-bpm-data/snapshot/quick-start)
+guide or have a look to our primary documentation: [User Guide](https://www.holunda.io/camunda-bpm-data/snapshot/user-guide/motivation.html)
 
 ## Working Example
 
 We prepared some typical usage scenarios and implemented two example projects in Java and Kotlin.
-See our [Examples](https://www.holunda.io/camunda-bpm-data/wiki/user-guide/examples) section for usage and configuration.
+See our [Examples](https://www.holunda.io/camunda-bpm-data/snapshot/user-guide/examples.html) section for usage and configuration.
 
 ## License
 
-[![Apache License 2](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.holunda.io/camunda-bpm-data/license)
+[![Apache License 2](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
 This library is developed under Apache 2.0 License.
 
 ## Contribution
 
-If you want to contribute to this project, feel free to do so. Start with [Contributing guide](http://holunda.io/camunda-bpm-data/wiki/developer-guide/contribution).
+If you want to contribute to this project, feel free to do so. Start with [Contributing guide](http://holunda.io/camunda-bpm-data/snapshot/developer-guide/contribution.html).
 
 ## Maintainer
 
