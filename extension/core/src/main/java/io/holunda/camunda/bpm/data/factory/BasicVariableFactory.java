@@ -94,7 +94,7 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
 
   @Override
   public ReadAdapter<T> from(LockedExternalTask lockedExternalTask) {
-    return new ReadAdapterLockedExternalTask<>(lockedExternalTask, name);
+    return new ReadAdapterLockedExternalTask<>(lockedExternalTask, name, clazz);
   }
 
   /**
