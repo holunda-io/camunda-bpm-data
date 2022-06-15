@@ -23,7 +23,7 @@
 
     <spring-boot.version>2.6.7</spring-boot.version>
     <groovy.version>2.4.21</groovy.version>
-    <spin.version>1.14.0</spin.version>
+    <spin.version>1.16.0</spin.version>
     <camunda-assert.version>15.0.0</camunda-assert.version>
 
     <kotlin.version>1.6.21</kotlin.version>
