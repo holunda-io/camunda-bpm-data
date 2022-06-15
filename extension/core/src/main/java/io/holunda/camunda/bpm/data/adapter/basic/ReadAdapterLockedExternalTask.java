@@ -14,24 +14,21 @@ import java.util.Optional;
 @SuppressWarnings("java:S1192")
 public class ReadAdapterLockedExternalTask<T> implements ReadAdapter<T> {
 
-  private final LockedExternalTask lockedExternalTask;
-  private final String variableName;
+  private final ReadAdapter<T> readAdapter;
 
-  public ReadAdapterLockedExternalTask(LockedExternalTask lockedExternalTask, String variableName) {
-    this.lockedExternalTask = lockedExternalTask;
-    this.variableName = variableName;
+  public ReadAdapterLockedExternalTask(LockedExternalTask lockedExternalTask, String variableName, Class<T> clazz) {
+    readAdapter = new ReadWriteAdapterVariableMap<>(lockedExternalTask.getVariables(), variableName, clazz);
   }
 
   @Override
   public T get() {
-    return getOptional().orElseThrow(() -> new VariableNotFoundException("Couldn't find required variable '" + variableName + "'"));
+    return readAdapter.get();
   }
 
   @Override
   @SuppressWarnings("unchecked")
   public Optional<T> getOptional() {
-    return (Optional<T>) Optional.ofNullable(lockedExternalTask.getVariables())
-      .map(it -> it.get(variableName));
+    return readAdapter.getOptional();
   }
 
   @Override
@@ -46,7 +43,7 @@ public class ReadAdapterLockedExternalTask<T> implements ReadAdapter<T> {
 
   @Override
   public T getOrDefault(T defaultValue) {
-    return getOptional().orElse(defaultValue);
+    return readAdapter.getOrDefault(defaultValue);
   }
 
   @Override
@@ -56,7 +53,7 @@ public class ReadAdapterLockedExternalTask<T> implements ReadAdapter<T> {
 
   @Override
   public T getOrNull() {
-    return getOptional().orElse(null);
+    return readAdapter.getOrNull();
   }
 
   @Override

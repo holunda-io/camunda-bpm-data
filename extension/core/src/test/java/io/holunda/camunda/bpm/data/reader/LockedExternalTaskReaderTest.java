@@ -10,11 +10,13 @@ import org.junit.Test;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import static io.holunda.camunda.bpm.data.CamundaBpmData.listVariable;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.mapVariable;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.setVariable;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.uuidVariable;
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -25,11 +27,13 @@ import static org.mockito.Mockito.when;
 public class LockedExternalTaskReaderTest {
 
   private static final VariableFactory<String> STRING = stringVariable("myString");
+  private static final VariableFactory<UUID> UUID = uuidVariable("myUuid");
   private static final VariableFactory<List<String>> LIST = listVariable("myList", String.class);
   private static final VariableFactory<Set<String>> SET = setVariable("mySet", String.class);
   private static final VariableFactory<Map<String, String>> MAP = mapVariable("myMap", String.class, String.class);
 
   private final String stringValue = "value";
+  private final UUID uuidValue = java.util.UUID.randomUUID();
   private final List<String> listValue = asList("foo", "bar");
   private final Set<String> setValue = asHashSet("foo", "bar");
   private final Map<String, String> mapValue = Map.of("a", "b", "c", "d");
@@ -46,6 +50,7 @@ public class LockedExternalTaskReaderTest {
         .putValue(LIST.getName(), listValue)
         .putValue(SET.getName(), setValue)
         .putValue(MAP.getName(), mapValue)
+        .putValue(UUID.getName(), uuidValue)
     );
   }
 
@@ -55,6 +60,8 @@ public class LockedExternalTaskReaderTest {
     assertThat(reader.get(LIST)).isEqualTo(listValue);
     assertThat(reader.get(SET)).isEqualTo(setValue);
     assertThat(reader.get(MAP)).isEqualTo(mapValue);
+    assertThat(reader.get(UUID)).isEqualTo(uuidValue);
+    assertThat(reader.get(UUID)).isInstanceOf(java.util.UUID.class);
   }
 
   @Test
@@ -63,6 +70,7 @@ public class LockedExternalTaskReaderTest {
     assertThat(reader.getOptional(LIST)).hasValue(listValue);
     assertThat(reader.getOptional(SET)).hasValue(setValue);
     assertThat(reader.getOptional(MAP)).hasValue(mapValue);
+    assertThat(reader.getOptional(UUID)).hasValue(uuidValue);
     assertThat(reader.getOptional(stringVariable("xxx"))).isEmpty();
   }
 
@@ -86,6 +94,7 @@ public class LockedExternalTaskReaderTest {
     assertThat(reader.getOrNull(LIST)).isEqualTo(listValue);
     assertThat(reader.getOrNull(SET)).isEqualTo(setValue);
     assertThat(reader.getOrNull(MAP)).isEqualTo(mapValue);
+    assertThat(reader.getOrNull(UUID)).isEqualTo(uuidValue);
     assertThat(reader.getOrNull(stringVariable("xxx"))).isNull();
   }
 
