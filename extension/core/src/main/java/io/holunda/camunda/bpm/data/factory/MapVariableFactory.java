@@ -8,6 +8,8 @@ import io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterRuntimeService
 import io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterTaskService;
 import io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterVariableMap;
 import io.holunda.camunda.bpm.data.adapter.map.MapReadWriteAdapterVariableScope;
+import java.util.Map;
+import java.util.Objects;
 import org.camunda.bpm.engine.CaseService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
@@ -15,9 +17,6 @@ import org.camunda.bpm.engine.delegate.VariableScope;
 import org.camunda.bpm.engine.externaltask.LockedExternalTask;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Map;
-import java.util.Objects;
 
 /**
  * Variable factory of a base parametrized map type.
@@ -27,16 +26,14 @@ import java.util.Objects;
  */
 public class MapVariableFactory<K, V> implements VariableFactory<Map<K, V>> {
 
-  @NotNull
-  private final String name;
+  @NotNull private final String name;
 
-  @NotNull
-  private final Class<K> keyClazz;
+  @NotNull private final Class<K> keyClazz;
 
-  @NotNull
-  private final Class<V> valueClazz;
+  @NotNull private final Class<V> valueClazz;
 
-  public MapVariableFactory(@NotNull String name, @NotNull Class<K> keyClazz, @NotNull Class<V> valueClazz) {
+  public MapVariableFactory(
+      @NotNull String name, @NotNull Class<K> keyClazz, @NotNull Class<V> valueClazz) {
     this.name = name;
     this.keyClazz = keyClazz;
     this.valueClazz = valueClazz;
@@ -64,12 +61,14 @@ public class MapVariableFactory<K, V> implements VariableFactory<Map<K, V>> {
 
   @Override
   public WriteAdapter<Map<K, V>> on(RuntimeService runtimeService, String executionId) {
-    return new MapReadWriteAdapterRuntimeService<>(runtimeService, executionId, name, keyClazz, valueClazz);
+    return new MapReadWriteAdapterRuntimeService<>(
+        runtimeService, executionId, name, keyClazz, valueClazz);
   }
 
   @Override
   public ReadAdapter<Map<K, V>> from(RuntimeService runtimeService, String executionId) {
-    return new MapReadWriteAdapterRuntimeService<>(runtimeService, executionId, name, keyClazz, valueClazz);
+    return new MapReadWriteAdapterRuntimeService<>(
+        runtimeService, executionId, name, keyClazz, valueClazz);
   }
 
   @Override
@@ -84,12 +83,14 @@ public class MapVariableFactory<K, V> implements VariableFactory<Map<K, V>> {
 
   @Override
   public WriteAdapter<Map<K, V>> on(CaseService caseService, String caseExecutionId) {
-    return new MapReadWriteAdapterCaseService<>(caseService, caseExecutionId, name, keyClazz, valueClazz);
+    return new MapReadWriteAdapterCaseService<>(
+        caseService, caseExecutionId, name, keyClazz, valueClazz);
   }
 
   @Override
   public ReadAdapter<Map<K, V>> from(CaseService caseService, String caseExecutionId) {
-    return new MapReadWriteAdapterCaseService<>(caseService, caseExecutionId, name, keyClazz, valueClazz);
+    return new MapReadWriteAdapterCaseService<>(
+        caseService, caseExecutionId, name, keyClazz, valueClazz);
   }
 
   @Override
@@ -125,14 +126,12 @@ public class MapVariableFactory<K, V> implements VariableFactory<Map<K, V>> {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o)
-      return true;
-    if (o == null || getClass() != o.getClass())
-      return false;
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
     MapVariableFactory<?, ?> that = (MapVariableFactory<?, ?>) o;
-    return name.equals(that.name) &&
-      keyClazz.equals(that.keyClazz) &&
-      valueClazz.equals(that.valueClazz);
+    return name.equals(that.name)
+        && keyClazz.equals(that.keyClazz)
+        && valueClazz.equals(that.valueClazz);
   }
 
   @Override
@@ -142,10 +141,14 @@ public class MapVariableFactory<K, V> implements VariableFactory<Map<K, V>> {
 
   @Override
   public String toString() {
-    return "MapVariableFactory{" +
-      "name='" + name + '\'' +
-      ", keyClazz=" + keyClazz +
-      ", valueClazz=" + valueClazz +
-      '}';
+    return "MapVariableFactory{"
+        + "name='"
+        + name
+        + '\''
+        + ", keyClazz="
+        + keyClazz
+        + ", valueClazz="
+        + valueClazz
+        + '}';
   }
 }

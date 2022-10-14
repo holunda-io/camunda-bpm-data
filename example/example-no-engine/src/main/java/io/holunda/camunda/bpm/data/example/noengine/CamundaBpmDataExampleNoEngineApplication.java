@@ -12,10 +12,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CamundaBpmDataExampleNoEngineApplication implements ApplicationRunner {
 
   public static final VariableFactory<String> ORDER_ID = CamundaBpmData.stringVariable("orderId");
-  public static final VariableFactory<Order> ORDER = CamundaBpmData.customVariable("order", Order.class);
+  public static final VariableFactory<Order> ORDER =
+      CamundaBpmData.customVariable("order", Order.class);
 
-  @Autowired
-  private VariableManipulatingService component;
+  @Autowired private VariableManipulatingService component;
 
   @Override
   public void run(ApplicationArguments args) throws Exception {

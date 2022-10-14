@@ -22,6 +22,7 @@ class LocalScopeReplaceStrategyTest {
     verify(executionMock).variablesLocal = variables
     verifyNoMoreInteractions(executionMock)
 
-    Assertions.assertThat(LocalScopeReplaceStrategy.toString()).isEqualTo(LocalScopeReplaceStrategy::class.java.canonicalName)
+    Assertions.assertThat(LocalScopeReplaceStrategy.toString())
+      .isEqualTo(LocalScopeReplaceStrategy::class.java.canonicalName)
   }
 }

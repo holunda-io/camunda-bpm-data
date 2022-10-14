@@ -18,7 +18,8 @@ class VariableValueOneOfGuardCondition<T>(
 ) : VariableGuardCondition<T>(variableFactory, local) {
 
   private val existsCondition = VariableExistsGuardCondition(variableFactory, local)
-  private val valueConditions = values.map { VariableValueGuardCondition(variableFactory, it, local) }
+  private val valueConditions =
+    values.map { VariableValueGuardCondition(variableFactory, it, local) }
 
   override fun evaluate(option: Optional<T>): List<GuardViolation<T>> {
     val violations = existsCondition.evaluate(option).toMutableList()
@@ -28,7 +29,8 @@ class VariableValueOneOfGuardCondition<T>(
           GuardViolation(
             condition = this,
             option = option,
-            message = "Expecting$localLabel variable '${variableFactory.name}' to be one of [${values.joinToString("', '", "'", "'")}], but it was '${option.get()}'."
+            message =
+              "Expecting$localLabel variable '${variableFactory.name}' to be one of [${values.joinToString("', '", "'", "'")}], but it was '${option.get()}'."
           )
         )
       }
@@ -39,7 +41,6 @@ class VariableValueOneOfGuardCondition<T>(
   override fun toString(): String {
     return "ValueIn condition for$localLabel variable '${super.variableFactory.name}', values [${values.joinToString("', '", "'", "'")}]"
   }
-
 }
 
 /**
@@ -47,11 +48,13 @@ class VariableValueOneOfGuardCondition<T>(
  * @param values set of values which are allowed.
  * @return instance of [VariableValueOneOfGuardCondition] on current factory.
  */
-fun <T> VariableFactory<T>.hasOneOfValues(values: Set<T>) = VariableValueOneOfGuardCondition(this, values, false)
+fun <T> VariableFactory<T>.hasOneOfValues(values: Set<T>) =
+  VariableValueOneOfGuardCondition(this, values, false)
 
 /**
  * Creation extension for the local condition.
  * @param values set of values which are allowed.
  * @return instance of [VariableValueOneOfGuardCondition] on current factory.
  */
-fun <T> VariableFactory<T>.hasOneOfValuesLocal(values: Set<T>) = VariableValueOneOfGuardCondition(this, values, true)
+fun <T> VariableFactory<T>.hasOneOfValuesLocal(values: Set<T>) =
+  VariableValueOneOfGuardCondition(this, values, true)

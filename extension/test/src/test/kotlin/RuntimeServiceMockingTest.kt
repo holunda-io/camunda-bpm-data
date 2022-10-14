@@ -1,16 +1,14 @@
 package io.holunda.camunda.bpm.data.mockito
 
-import org.mockito.kotlin.mock
 import io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
+import java.util.*
 import org.assertj.core.api.Assertions.assertThat
 import org.camunda.bpm.engine.RuntimeService
 import org.junit.Test
-import java.util.*
+import org.mockito.kotlin.mock
 
-/**
- * This test demonstrates the mocking capabilities.
- */
+/** This test demonstrates the mocking capabilities. */
 class RuntimeServiceMockingTest {
 
   companion object {
@@ -43,7 +41,6 @@ class RuntimeServiceMockingTest {
     assertThat(orderFlag).isEqualTo(true)
   }
 
-
   /**
    * Test service.
    * @param runtimeService task service to work on.
@@ -62,7 +59,6 @@ class RuntimeServiceMockingTest {
     fun writeFlag(executionId: String, flag: Boolean) =
       ORDER_FLAG.on(runtimeService, executionId).set(flag)
 
-    fun readFlag(executionId: String): Boolean =
-      ORDER_FLAG.from(runtimeService, executionId).get()
+    fun readFlag(executionId: String): Boolean = ORDER_FLAG.from(runtimeService, executionId).get()
   }
 }

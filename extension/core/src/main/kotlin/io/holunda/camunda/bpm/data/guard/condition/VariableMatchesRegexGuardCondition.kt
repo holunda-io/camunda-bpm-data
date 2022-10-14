@@ -18,9 +18,7 @@ import java.util.*
  * @property regexDisplayName regexName display name for the regex.
  */
 class VariableMatchesRegexGuardCondition<T>(
-  /**
-   * Variable factory to work with.
-   */
+  /** Variable factory to work with. */
   variableFactory: VariableFactory<T>,
   local: Boolean = false,
   private val regex: Regex,
@@ -29,9 +27,11 @@ class VariableMatchesRegexGuardCondition<T>(
 
   companion object {
     const val EMAIL_REGEX_DISPLAY_NAME = "E-Mail"
-    const val EMAIL_REGEX = "(?:[a-z0-9!#\$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#\$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
+    const val EMAIL_REGEX =
+      "(?:[a-z0-9!#\$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#\$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
     const val UUID_REGEX_DISPLAY_NAME = "UUID"
-    const val UUID_REGEX = "^[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{12}\$"
+    const val UUID_REGEX =
+      "^[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{12}\$"
   }
 
   private val existsCondition = VariableExistsGuardCondition(variableFactory, local)
@@ -43,7 +43,8 @@ class VariableMatchesRegexGuardCondition<T>(
         GuardViolation(
           condition = this,
           option = option,
-          message = "Expecting$localLabel variable '${variableFactory.name}' to match the regex '${regexDisplayName}', but its value '${option.get()}' has not."
+          message =
+            "Expecting$localLabel variable '${variableFactory.name}' to match the regex '${regexDisplayName}', but its value '${option.get()}' has not."
         )
       )
     }
@@ -61,7 +62,8 @@ class VariableMatchesRegexGuardCondition<T>(
  * @param regex regex that must be matched.
  * @return instance of [VariableMatchesRegexGuardCondition] on current factory.
  */
-fun <T> VariableFactory<T>.matchesRegex(regex: Regex) = VariableMatchesRegexGuardCondition(this, false, regex)
+fun <T> VariableFactory<T>.matchesRegex(regex: Regex) =
+  VariableMatchesRegexGuardCondition(this, false, regex)
 
 /**
  * Creation extension for the condition.
@@ -77,7 +79,8 @@ fun <T> VariableFactory<T>.matchesRegex(regex: Regex, regexDisplayName: String) 
  * @param regex regex that must be matched.
  * @return instance of [VariableMatchesRegexGuardCondition] on current factory.
  */
-fun <T> VariableFactory<T>.matchesRegexLocal(regex: Regex) = VariableMatchesRegexGuardCondition(this, true, regex)
+fun <T> VariableFactory<T>.matchesRegexLocal(regex: Regex) =
+  VariableMatchesRegexGuardCondition(this, true, regex)
 
 /**
  * Creation extension for the local condition.
@@ -92,22 +95,26 @@ fun <T> VariableFactory<T>.matchesRegexLocal(regex: Regex, regexDisplayName: Str
  * Creation extension for an Email matching regex condition.
  * @return instance of [VariableMatchesRegexGuardCondition] on current factory.
  */
-fun <T> VariableFactory<T>.isEmail() = VariableMatchesRegexGuardCondition(this, false, Regex(EMAIL_REGEX), EMAIL_REGEX_DISPLAY_NAME)
+fun <T> VariableFactory<T>.isEmail() =
+  VariableMatchesRegexGuardCondition(this, false, Regex(EMAIL_REGEX), EMAIL_REGEX_DISPLAY_NAME)
 
 /**
  * Creation extension for an Email matching regex local condition.
  * @return instance of [VariableMatchesRegexGuardCondition] on current factory.
  */
-fun <T> VariableFactory<T>.isEmailLocal() = VariableMatchesRegexGuardCondition(this, true, Regex(EMAIL_REGEX), EMAIL_REGEX_DISPLAY_NAME)
+fun <T> VariableFactory<T>.isEmailLocal() =
+  VariableMatchesRegexGuardCondition(this, true, Regex(EMAIL_REGEX), EMAIL_REGEX_DISPLAY_NAME)
 
 /**
  * Creation extension for a UUID matching regex condition.
  * @return instance of [VariableMatchesRegexGuardCondition] on current factory.
  */
-fun <T> VariableFactory<T>.isUuid() = VariableMatchesRegexGuardCondition(this, false, Regex(UUID_REGEX), UUID_REGEX_DISPLAY_NAME)
+fun <T> VariableFactory<T>.isUuid() =
+  VariableMatchesRegexGuardCondition(this, false, Regex(UUID_REGEX), UUID_REGEX_DISPLAY_NAME)
 
 /**
  * Creation extension for a UUID matching regex local condition.
  * @return instance of [VariableMatchesRegexGuardCondition] on current factory.
  */
-fun <T> VariableFactory<T>.isUuidLocal() = VariableMatchesRegexGuardCondition(this, true, Regex(UUID_REGEX), UUID_REGEX_DISPLAY_NAME)
+fun <T> VariableFactory<T>.isUuidLocal() =
+  VariableMatchesRegexGuardCondition(this, true, Regex(UUID_REGEX), UUID_REGEX_DISPLAY_NAME)

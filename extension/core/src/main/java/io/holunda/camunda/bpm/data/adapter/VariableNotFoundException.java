@@ -1,8 +1,6 @@
 package io.holunda.camunda.bpm.data.adapter;
 
-/**
- * Exception indicating that a variable is not found.
- */
+/** Exception indicating that a variable is not found. */
 public class VariableNotFoundException extends RuntimeException {
   /**
    * Constructs the exception.
@@ -12,5 +10,4 @@ public class VariableNotFoundException extends RuntimeException {
   public VariableNotFoundException(String reason) {
     super(reason);
   }
-
 }

@@ -1,9 +1,8 @@
 package io.holunda.camunda.bpm.data.adapter.list;
 
-import org.camunda.bpm.engine.variable.VariableMap;
-
 import java.util.List;
 import java.util.Optional;
+import org.camunda.bpm.engine.variable.VariableMap;
 
 /**
  * Read-write adapter for variable map.
@@ -17,11 +16,12 @@ public class ListReadWriteAdapterVariableMap<T> extends AbstractListReadWriteAda
   /**
    * Constructs the adapter.
    *
-   * @param variableMap  variable map to access.
+   * @param variableMap variable map to access.
    * @param variableName variable to access.
-   * @param memberClazz  class of variable value.
+   * @param memberClazz class of variable value.
    */
-  public ListReadWriteAdapterVariableMap(VariableMap variableMap, String variableName, Class<T> memberClazz) {
+  public ListReadWriteAdapterVariableMap(
+      VariableMap variableMap, String variableName, Class<T> memberClazz) {
     super(variableName, memberClazz);
     this.variableMap = variableMap;
   }
@@ -55,5 +55,4 @@ public class ListReadWriteAdapterVariableMap<T> extends AbstractListReadWriteAda
   public void removeLocal() {
     throw new UnsupportedOperationException("Can't set a local variable on a variable map");
   }
-
 }

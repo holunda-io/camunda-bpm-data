@@ -1,18 +1,17 @@
 package io.holunda.camunda.bpm.data.mockito
 
-import org.mockito.kotlin.mock
-import org.mockito.kotlin.reset
-import org.mockito.kotlin.times
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
 import io.holunda.camunda.bpm.data.mockito.CamundaBpmDataMockito.taskServiceMockVerifier
 import io.holunda.camunda.bpm.data.mockito.CamundaBpmDataMockito.taskServiceVariableMockBuilder
 import io.holunda.camunda.bpm.data.set
+import java.util.*
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.variable.Variables.createVariables
 import org.junit.Before
 import org.junit.Test
-import java.util.*
-import kotlin.concurrent.timer
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.reset
+import org.mockito.kotlin.times
 
 class TaskServiceVerifierTest {
 
@@ -153,7 +152,6 @@ class TaskServiceVerifierTest {
     verifier.verifyNoMoreInteractions()
   }
 
-
   @Test
   fun verifyComplete() {
     val verifier = taskServiceMockVerifier(taskService)
@@ -167,8 +165,7 @@ class TaskServiceVerifierTest {
   fun verifyCompleteWithVars() {
     val verifier = taskServiceMockVerifier(taskService)
     val taskId = UUID.randomUUID().toString()
-    val vars = createVariables()
-      .set(VAR, "someValue")
+    val vars = createVariables().set(VAR, "someValue")
     taskService.complete(taskId, vars)
     verifier.verifyComplete(vars, taskId)
     verifier.verifyNoMoreInteractions()

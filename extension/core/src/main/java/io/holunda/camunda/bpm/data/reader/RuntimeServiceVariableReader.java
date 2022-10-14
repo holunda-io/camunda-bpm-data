@@ -1,11 +1,10 @@
 package io.holunda.camunda.bpm.data.reader;
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
-import org.camunda.bpm.engine.RuntimeService;
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Objects;
 import java.util.Optional;
+import org.camunda.bpm.engine.RuntimeService;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Allows reading multiple variable values from {@link RuntimeService#getVariable(String, String)}.
@@ -19,7 +18,7 @@ public class RuntimeServiceVariableReader implements VariableReader {
    * Constructs a reader operating on execution.
    *
    * @param runtimeService runtime service to use.
-   * @param executionId    execution id.
+   * @param executionId execution id.
    */
   public RuntimeServiceVariableReader(RuntimeService runtimeService, String executionId) {
     this.runtimeService = runtimeService;

@@ -20,15 +20,10 @@ class VariablesGuard(
 ) {
 
   companion object {
-    /**
-     * Default guard type checking that none of the conditions has been violated.
-     */
-    @JvmField
-    val ALL: ReduceOperator = { violations -> violations.flatten() }
+    /** Default guard type checking that none of the conditions has been violated. */
+    @JvmField val ALL: ReduceOperator = { violations -> violations.flatten() }
 
-    /**
-     * Guard allowing all but one conditions to be violated.
-     */
+    /** Guard allowing all but one conditions to be violated. */
     @JvmField
     val ONE_OF: ReduceOperator = { violations ->
       if (violations.none { it.isEmpty() }) {
@@ -38,9 +33,7 @@ class VariablesGuard(
       }
     }
 
-    /**
-     * Empty guard.
-     */
+    /** Empty guard. */
     val EMPTY = VariablesGuard(name = null, variableConditions = listOf(), reduceOperator = ALL)
   }
 
@@ -48,32 +41,43 @@ class VariablesGuard(
    * Constructs a named guard with a list of conditions and ALL operator.
    * @param variableConditions conditions to add to guard.
    */
-  constructor(name: String?, variableConditions: List<VariableGuardCondition<*>>) : this(name = name, variableConditions = variableConditions, reduceOperator = ALL)
+  constructor(
+    name: String?,
+    variableConditions: List<VariableGuardCondition<*>>
+  ) : this(name = name, variableConditions = variableConditions, reduceOperator = ALL)
 
   /**
    * Constructs an anonymous guard with a list of conditions.
    * @param variableConditions conditions to add to guard.
    */
-  constructor(variableConditions: List<VariableGuardCondition<*>>) : this(name = null, variableConditions = variableConditions, reduceOperator = ALL)
+  constructor(
+    variableConditions: List<VariableGuardCondition<*>>
+  ) : this(name = null, variableConditions = variableConditions, reduceOperator = ALL)
 
   /**
    * Constructs an anonymous guard with exactly one condition.
    * @param condition condition to add to guard.
    */
-  constructor(condition: VariableGuardCondition<*>) : this(name = null, variableConditions = listOf(condition), reduceOperator = ALL)
+  constructor(
+    condition: VariableGuardCondition<*>
+  ) : this(name = null, variableConditions = listOf(condition), reduceOperator = ALL)
 
   /**
    * Constructs a named guard with exactly one condition.
    * @param name name of the guard.
    * @param condition condition to add to guard.
    */
-  constructor(name: String, condition: VariableGuardCondition<*>) : this(name = name, variableConditions = listOf(condition), reduceOperator = ALL)
+  constructor(
+    name: String,
+    condition: VariableGuardCondition<*>
+  ) : this(name = name, variableConditions = listOf(condition), reduceOperator = ALL)
 
   /**
    * Fluent builder to create a new guard from existing one adding one additional condition.
    * @param condition to add to existing guard.
    */
-  fun fromExisting(condition: VariableGuardCondition<*>) = VariablesGuard(variableConditions.plus(condition))
+  fun fromExisting(condition: VariableGuardCondition<*>) =
+    VariablesGuard(variableConditions.plus(condition))
 
   /**
    * Evaluates the contained conditions on variables from given variable map.
@@ -143,15 +147,11 @@ class VariablesGuard(
   }
 
   override fun toString(): String {
-    return "VariablesGuard%s(variableConditions=$variableConditions)".format(if (name != null) "[$name]" else "")
+    return "VariablesGuard%s(variableConditions=$variableConditions)".format(
+      if (name != null) "[$name]" else ""
+    )
   }
 }
 
-
-/**
- * Reduce operation.
- */
+/** Reduce operation. */
 typealias ReduceOperator = (violations: List<List<GuardViolation<*>>>) -> List<GuardViolation<*>>
-
-
-

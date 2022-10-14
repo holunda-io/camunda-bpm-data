@@ -1,24 +1,19 @@
 package io.holunda.camunda.bpm.data.writer;
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import java.util.Objects;
+import java.util.function.Function;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
-import java.util.function.Function;
-
-/**
- * Process execution builder allowing for fluent variable setting.
- */
+/** Process execution builder allowing for fluent variable setting. */
 public class RuntimeServiceVariableWriter implements VariableWriter<RuntimeServiceVariableWriter> {
 
   private final RuntimeService runtimeService;
   private final String executionId;
 
-  /**
-   * Creates a writer working on process execution.
-   */
+  /** Creates a writer working on process execution. */
   public RuntimeServiceVariableWriter(RuntimeService runtimeService, String executionId) {
     this.runtimeService = runtimeService;
     this.executionId = executionId;
@@ -44,7 +39,8 @@ public class RuntimeServiceVariableWriter implements VariableWriter<RuntimeServi
 
   @Override
   @NotNull
-  public <T> RuntimeServiceVariableWriter set(VariableFactory<T> factory, T value, boolean isTransient) {
+  public <T> RuntimeServiceVariableWriter set(
+      VariableFactory<T> factory, T value, boolean isTransient) {
     factory.on(this.runtimeService, this.executionId).set(value, isTransient);
     return this;
   }
@@ -57,7 +53,8 @@ public class RuntimeServiceVariableWriter implements VariableWriter<RuntimeServi
 
   @Override
   @NotNull
-  public <T> RuntimeServiceVariableWriter setLocal(VariableFactory<T> factory, T value, boolean isTransient) {
+  public <T> RuntimeServiceVariableWriter setLocal(
+      VariableFactory<T> factory, T value, boolean isTransient) {
     factory.on(this.runtimeService, this.executionId).setLocal(value, isTransient);
     return this;
   }
@@ -77,25 +74,29 @@ public class RuntimeServiceVariableWriter implements VariableWriter<RuntimeServi
   }
 
   @Override
-  public @NotNull <T> RuntimeServiceVariableWriter update(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+  public @NotNull <T> RuntimeServiceVariableWriter update(
+      VariableFactory<T> factory, Function<T, T> valueProcessor) {
     factory.on(this.runtimeService, this.executionId).update(valueProcessor);
     return this;
   }
 
   @Override
-  public @NotNull <T> RuntimeServiceVariableWriter update(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+  public @NotNull <T> RuntimeServiceVariableWriter update(
+      VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
     factory.on(this.runtimeService, this.executionId).update(valueProcessor, isTransient);
     return this;
   }
 
   @Override
-  public @NotNull <T> RuntimeServiceVariableWriter updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+  public @NotNull <T> RuntimeServiceVariableWriter updateLocal(
+      VariableFactory<T> factory, Function<T, T> valueProcessor) {
     factory.on(this.runtimeService, this.executionId).updateLocal(valueProcessor);
     return this;
   }
 
   @Override
-  public @NotNull <T> RuntimeServiceVariableWriter updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+  public @NotNull <T> RuntimeServiceVariableWriter updateLocal(
+      VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
     factory.on(this.runtimeService, this.executionId).updateLocal(valueProcessor, isTransient);
     return this;
   }

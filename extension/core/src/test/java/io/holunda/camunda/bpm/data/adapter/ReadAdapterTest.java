@@ -1,17 +1,16 @@
 package io.holunda.camunda.bpm.data.adapter;
 
-import io.holunda.camunda.bpm.data.CamundaBpmData;
-import io.holunda.camunda.bpm.data.factory.VariableFactory;
-import org.camunda.bpm.engine.RuntimeService;
-import org.camunda.bpm.engine.variable.Variables;
-import org.junit.Test;
-
-import java.util.UUID;
-
 import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+
+import io.holunda.camunda.bpm.data.CamundaBpmData;
+import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import java.util.UUID;
+import org.camunda.bpm.engine.RuntimeService;
+import org.camunda.bpm.engine.variable.Variables;
+import org.junit.Test;
 
 public class ReadAdapterTest {
 
@@ -27,7 +26,8 @@ public class ReadAdapterTest {
 
   @Test
   public void getOrDefault_returns_value_although_default_is_given() {
-    assertThat(FOO.from(CamundaBpmData.builder().set(FOO, "hello").build()).getOrDefault("bar")).isEqualTo("hello");
+    assertThat(FOO.from(CamundaBpmData.builder().set(FOO, "hello").build()).getOrDefault("bar"))
+        .isEqualTo("hello");
   }
 
   @Test
@@ -37,7 +37,8 @@ public class ReadAdapterTest {
 
   @Test
   public void getOrNull_returns_value_if_exists() {
-    assertThat(FOO.from(CamundaBpmData.builder().set(FOO, "hello").build()).getOrNull()).isEqualTo("hello");
+    assertThat(FOO.from(CamundaBpmData.builder().set(FOO, "hello").build()).getOrNull())
+        .isEqualTo("hello");
   }
 
   @Test

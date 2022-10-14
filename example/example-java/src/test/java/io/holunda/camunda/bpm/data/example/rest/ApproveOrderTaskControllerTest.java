@@ -1,18 +1,5 @@
 package io.holunda.camunda.bpm.data.example.rest;
 
-import io.holunda.camunda.bpm.data.example.domain.Order;
-import io.holunda.camunda.bpm.data.mockito.TaskServiceMockVerifier;
-import org.camunda.bpm.engine.TaskService;
-import org.junit.Before;
-import org.junit.Test;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.UUID;
-
 import static io.holunda.camunda.bpm.data.CamundaBpmData.builder;
 import static io.holunda.camunda.bpm.data.example.process.OrderApproval.ORDER;
 import static io.holunda.camunda.bpm.data.example.process.OrderApproval.ORDER_APPROVED;
@@ -23,12 +10,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.reset;
 
-/**
- * Demonstrates the usage of Task Service Variable Mock Builder and Task Service Verifier.
- */
+import io.holunda.camunda.bpm.data.example.domain.Order;
+import io.holunda.camunda.bpm.data.mockito.TaskServiceMockVerifier;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.UUID;
+import org.camunda.bpm.engine.TaskService;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+/** Demonstrates the usage of Task Service Variable Mock Builder and Task Service Verifier. */
 public class ApproveOrderTaskControllerTest {
 
-  private final static Order order = new Order("ORDER-ID-1", new Date(), new ArrayList<>());
+  private static final Order order = new Order("ORDER-ID-1", new Date(), new ArrayList<>());
   private final TaskService taskService = mock(TaskService.class);
   private final TaskServiceMockVerifier verifier = taskServiceMockVerifier(taskService);
   private final ApproveOrderTaskController controller = new ApproveOrderTaskController(taskService);
@@ -44,9 +41,9 @@ public class ApproveOrderTaskControllerTest {
   public void testLoadTask() {
     // given
     taskServiceVariableMockBuilder(taskService)
-      .initial(ORDER, order)
-      .initial(ORDER_TOTAL, BigDecimal.ZERO)
-      .build();
+        .initial(ORDER, order)
+        .initial(ORDER_TOTAL, BigDecimal.ZERO)
+        .build();
     // when
     ResponseEntity<ApproveTaskDto> responseEntity = controller.loadTask(taskId);
     // then
@@ -67,5 +64,4 @@ public class ApproveOrderTaskControllerTest {
     verifier.verifyComplete(builder().set(ORDER_APPROVED, response.getApproved()).build(), taskId);
     verifier.verifyNoMoreInteractions();
   }
-
 }

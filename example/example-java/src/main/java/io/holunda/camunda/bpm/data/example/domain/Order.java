@@ -4,26 +4,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Order business entity.
- */
+/** Order business entity. */
 public class Order {
-  /**
-   * Id of the order.
-   */
+  /** Id of the order. */
   private String orderId;
-  /**
-   * Order create date.
-   */
+  /** Order create date. */
   private Date created;
-  /**
-   * List of order positions.
-   */
+  /** List of order positions. */
   private List<OrderPosition> positions;
 
-  /**
-   * Constructor.
-   */
+  /** Constructor. */
   public Order() {
     this.positions = new ArrayList<>();
   }
@@ -31,8 +21,8 @@ public class Order {
   /**
    * Constructor to pass all member attributes.
    *
-   * @param orderId   order id
-   * @param created   creation date
+   * @param orderId order id
+   * @param created creation date
    * @param positions list of positions.
    */
   public Order(String orderId, Date created, List<OrderPosition> positions) {
@@ -125,10 +115,14 @@ public class Order {
 
   @Override
   public String toString() {
-    return "Order{" +
-      "orderId='" + orderId + '\'' +
-      ", created=" + created +
-      ", positions=" + positions +
-      '}';
+    return "Order{"
+        + "orderId='"
+        + orderId
+        + '\''
+        + ", created="
+        + created
+        + ", positions="
+        + positions
+        + '}';
   }
 }

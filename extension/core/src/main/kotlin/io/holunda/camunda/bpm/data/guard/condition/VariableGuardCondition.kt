@@ -2,16 +2,17 @@ package io.holunda.camunda.bpm.data.guard.condition
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory
 import io.holunda.camunda.bpm.data.guard.GuardViolation
+import java.util.*
 import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.delegate.VariableScope
 import org.camunda.bpm.engine.variable.VariableMap
-import java.util.*
 
 /**
- * Abstract guard condition.
- * <p>
+ * Abstract guard condition. <p>
+ * ```
  *     This class is intended to be subclassed by developers of new variable guards.
+ * ```
  * </p>
  * @constructor Creates a condition.
  * @since 0.0.6
@@ -24,9 +25,7 @@ abstract class VariableGuardCondition<T>(
   internal val local: Boolean = false
 ) {
 
-  /**
-   * Label for messages indicating the variable scope (local or global, which is a default).
-   */
+  /** Label for messages indicating the variable scope (local or global, which is a default). */
   val localLabel: String by lazy { if (local) " local" else "" }
 
   /**
@@ -42,16 +41,23 @@ abstract class VariableGuardCondition<T>(
    * @return list of guard violations
    */
   fun evaluate(variableMap: VariableMap): List<GuardViolation<T>> {
-    return evaluate(if (local) variableFactory.from(variableMap).localOptional else variableFactory.from(variableMap).optional)
+    return evaluate(
+      if (local) variableFactory.from(variableMap).localOptional
+      else variableFactory.from(variableMap).optional
+    )
   }
 
   /**
    * Evaluate the condition on a value retrieved from the variable map.
-   * @param variableScope variable scope (e.g. delegate execution or delegate task) to run the evaluation on.
+   * @param variableScope variable scope (e.g. delegate execution or delegate task) to run the
+   * evaluation on.
    * @return list of guard violations
    */
   fun evaluate(variableScope: VariableScope): List<GuardViolation<T>> {
-    return evaluate(if (local) variableFactory.from(variableScope).localOptional else variableFactory.from(variableScope).optional)
+    return evaluate(
+      if (local) variableFactory.from(variableScope).localOptional
+      else variableFactory.from(variableScope).optional
+    )
   }
 
   /**
@@ -61,7 +67,10 @@ abstract class VariableGuardCondition<T>(
    * @return list of guard violations
    */
   fun evaluate(taskService: TaskService, taskId: String): List<GuardViolation<T>> {
-    return evaluate(if (local) variableFactory.from(taskService, taskId).localOptional else variableFactory.from(taskService, taskId).optional)
+    return evaluate(
+      if (local) variableFactory.from(taskService, taskId).localOptional
+      else variableFactory.from(taskService, taskId).optional
+    )
   }
 
   /**
@@ -71,7 +80,10 @@ abstract class VariableGuardCondition<T>(
    * @return list of guard violations
    */
   fun evaluate(runtimeService: RuntimeService, executionId: String): List<GuardViolation<T>> {
-    return evaluate(if (local) variableFactory.from(runtimeService, executionId).localOptional else variableFactory.from(runtimeService, executionId).optional)
+    return evaluate(
+      if (local) variableFactory.from(runtimeService, executionId).localOptional
+      else variableFactory.from(runtimeService, executionId).optional
+    )
   }
 
   override fun equals(other: Any?): Boolean {
@@ -91,5 +103,4 @@ abstract class VariableGuardCondition<T>(
     result = 31 * result + local.hashCode()
     return result
   }
-
 }

@@ -1,9 +1,8 @@
 package io.holunda.camunda.bpm.data.adapter.basic;
 
 import io.holunda.camunda.bpm.data.adapter.ReadAdapter;
-import org.camunda.bpm.engine.externaltask.LockedExternalTask;
-
 import java.util.Optional;
+import org.camunda.bpm.engine.externaltask.LockedExternalTask;
 
 /**
  * Read-write adapter for external task.
@@ -15,8 +14,10 @@ public class ReadAdapterLockedExternalTask<T> implements ReadAdapter<T> {
 
   private final ReadAdapter<T> readAdapter;
 
-  public ReadAdapterLockedExternalTask(LockedExternalTask lockedExternalTask, String variableName, Class<T> clazz) {
-    readAdapter = new ReadWriteAdapterVariableMap<>(lockedExternalTask.getVariables(), variableName, clazz);
+  public ReadAdapterLockedExternalTask(
+      LockedExternalTask lockedExternalTask, String variableName, Class<T> clazz) {
+    readAdapter =
+        new ReadWriteAdapterVariableMap<>(lockedExternalTask.getVariables(), variableName, clazz);
   }
 
   @Override
@@ -59,5 +60,4 @@ public class ReadAdapterLockedExternalTask<T> implements ReadAdapter<T> {
   public T getLocalOrNull() {
     throw new UnsupportedOperationException("Can't get a local variable on an external task");
   }
-
 }

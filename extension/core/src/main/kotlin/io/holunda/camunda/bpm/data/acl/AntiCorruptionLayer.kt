@@ -11,17 +11,19 @@ import org.camunda.bpm.engine.variable.VariableMap
 import org.camunda.bpm.engine.variable.Variables
 
 /**
- * Defines the ACL (Anti-Corruption-Layer).
- * <p>
+ * Defines the ACL (Anti-Corruption-Layer). <p>
+ * ```
  *     An ACL consists of a variables guard and a mapping function, which is applied, if the condition is matched.
  *     A typical application of an ACL is the protection of external access to the process (signal, message correlation).
  *     To do so, signal / correlate with transient variables only and those got pumped into the execution if the guard is satisfied.
+ * ```
  * </p>
  * @constructor Creates a new ACL.
  * @property precondition Precondition to be fulfilled to pass the ACL.
  * @property variableMapTransformer Mapping to be applied.
  * @property factory Factory to use.
- * @property valueApplicationStrategy Strategy to apply values from transformer to given variable scope.
+ * @property valueApplicationStrategy Strategy to apply values from transformer to given variable
+ * scope.
  */
 class AntiCorruptionLayer(
   val precondition: VariablesGuard,
@@ -34,24 +36,24 @@ class AntiCorruptionLayer(
     const val DEFAULT = "_transient"
 
     /**
-     * Helper to create a Map containing transient variables hidden in the given map under the given key.
+     * Helper to create a Map containing transient variables hidden in the given map under the given
+     * key.
      *
      * @param variableName the variable name to use for the additional variables
-     * @param variables    the variables to store
+     * @param variables the variables to store
      *
      * @return a newly created map containing the given variables as transient objectTypedValue.
      */
     fun wrapAsTypedTransientVariable(variableName: String, variables: VariableMap): VariableMap {
       return Variables.createVariables()
-        .putValueTyped(variableName, Variables.objectValue(variables, true)
-          .create()
-        )
+        .putValueTyped(variableName, Variables.objectValue(variables, true).create())
     }
   }
 
   /**
    * Retrieves the ACL in form of an execution listener.
-   * @return Camunda Execution Listener responsible for variable extraction, guard check and modification.
+   * @return Camunda Execution Listener responsible for variable extraction, guard check and
+   * modification.
    */
   fun getExecutionListener() = ExecutionListener { execution ->
     val variablesExternal = factory.from(execution).get()
@@ -63,7 +65,8 @@ class AntiCorruptionLayer(
 
   /**
    * Retrieves the ACL in form of a task listener.
-   * @return Camunda Task Listener responsible for variable extraction, guard check and modification.
+   * @return Camunda Task Listener responsible for variable extraction, guard check and
+   * modification.
    */
   fun getTaskListener() = TaskListener { task ->
     val variablesExternal = factory.from(task).get()
@@ -87,7 +90,8 @@ class AntiCorruptionLayer(
   }
 
   /**
-   * Checks if the preconditions are satisfied and constructs a variable map transforming and wrapping the variables.
+   * Checks if the preconditions are satisfied and constructs a variable map transforming and
+   * wrapping the variables.
    * @param variableMap variable map containing the variables.
    * @return new variable map
    */

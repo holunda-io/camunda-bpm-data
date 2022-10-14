@@ -1,10 +1,10 @@
 package io.holunda.camunda.bpm.data.factory
 
 import io.holunda.camunda.bpm.data.CamundaBpmData
+import java.util.*
 import org.assertj.core.api.Assertions
 import org.camunda.bpm.engine.variable.Variables
 import org.junit.Test
-import java.util.*
 
 class UUIDVariableFactoryTest {
 

@@ -14,6 +14,11 @@ import io.holunda.camunda.bpm.data.writer.TaskServiceVariableWriter;
 import io.holunda.camunda.bpm.data.writer.VariableMapWriter;
 import io.holunda.camunda.bpm.data.writer.VariableScopeWriter;
 import io.holunda.camunda.bpm.data.writer.VariableWriter;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 import org.camunda.bpm.engine.CaseService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
@@ -23,22 +28,11 @@ import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-
-/**
- * Provides a collection of factory methods for creating variable factories.
- */
+/** Provides a collection of factory methods for creating variable factories. */
 public class CamundaBpmData {
 
-  /**
-   * Hide the instantiations.
-   */
-  private CamundaBpmData() {
-  }
+  /** Hide the instantiations. */
+  private CamundaBpmData() {}
 
   /**
    * Creates a string variable factory.
@@ -132,12 +126,13 @@ public class CamundaBpmData {
    * Creates a variable factory for custom type.
    *
    * @param variableName name of the variable.
-   * @param clazz        class of specifying the type.
-   * @param <T>          factory type.
+   * @param clazz class of specifying the type.
+   * @param <T> factory type.
    * @return variable factory for given type.
    */
   @NotNull
-  public static <T> VariableFactory<T> customVariable(@NotNull String variableName, @NotNull Class<T> clazz) {
+  public static <T> VariableFactory<T> customVariable(
+      @NotNull String variableName, @NotNull Class<T> clazz) {
     return new BasicVariableFactory<>(variableName, clazz);
   }
 
@@ -145,12 +140,13 @@ public class CamundaBpmData {
    * Creates a variable factory for list of custom type.
    *
    * @param variableName name of the variable.
-   * @param clazz        class of specifying the member type.
-   * @param <T>          factory type.
+   * @param clazz class of specifying the member type.
+   * @param <T> factory type.
    * @return variable factory for given type.
    */
   @NotNull
-  public static <T> VariableFactory<List<T>> listVariable(@NotNull String variableName, @NotNull Class<T> clazz) {
+  public static <T> VariableFactory<List<T>> listVariable(
+      @NotNull String variableName, @NotNull Class<T> clazz) {
     return new ListVariableFactory<>(variableName, clazz);
   }
 
@@ -158,12 +154,13 @@ public class CamundaBpmData {
    * Creates a variable factory for set of custom type.
    *
    * @param variableName name of the variable.
-   * @param clazz        class of specifying the member type.
-   * @param <T>          factory type.
+   * @param clazz class of specifying the member type.
+   * @param <T> factory type.
    * @return variable factory for given type.
    */
   @NotNull
-  public static <T> VariableFactory<Set<T>> setVariable(@NotNull String variableName, @NotNull Class<T> clazz) {
+  public static <T> VariableFactory<Set<T>> setVariable(
+      @NotNull String variableName, @NotNull Class<T> clazz) {
     return new SetVariableFactory<>(variableName, clazz);
   }
 
@@ -171,15 +168,15 @@ public class CamundaBpmData {
    * Creates a variable factory for map of custom key and custom value type.
    *
    * @param variableName name of the variable.
-   * @param keyClazz     class of specifying the key member type.
-   * @param valueClazz   class of specifying the value member type.
-   * @param <K>          factory key type.
-   * @param <V>          factory value type.
+   * @param keyClazz class of specifying the key member type.
+   * @param valueClazz class of specifying the value member type.
+   * @param <K> factory key type.
+   * @param <V> factory value type.
    * @return variable factory for given type.
    */
   @NotNull
-  public static <K, V> VariableFactory<Map<K, V>> mapVariable(@NotNull String variableName, @NotNull Class<K> keyClazz,
-                                                              @NotNull Class<V> valueClazz) {
+  public static <K, V> VariableFactory<Map<K, V>> mapVariable(
+      @NotNull String variableName, @NotNull Class<K> keyClazz, @NotNull Class<V> valueClazz) {
     return new MapVariableFactory<>(variableName, keyClazz, valueClazz);
   }
 
@@ -218,7 +215,7 @@ public class CamundaBpmData {
    * Creates a new execution variable writer.
    *
    * @param runtimeService runtime service to use.
-   * @param executionId    id of the execution.
+   * @param executionId id of the execution.
    * @return new writer working on provided process execution.
    */
   @NotNull
@@ -230,7 +227,7 @@ public class CamundaBpmData {
    * Creates a new task variable writer.
    *
    * @param taskService task service to use.
-   * @param taskId      task id.
+   * @param taskId task id.
    * @return new writer working on provided user task.
    */
   @NotNull
@@ -241,7 +238,7 @@ public class CamundaBpmData {
   /**
    * Creates a new caseExecution variable writer.
    *
-   * @param caseService     task service to use.
+   * @param caseService task service to use.
    * @param caseExecutionId caseExecution id.
    * @return new writer working on provided user task.
    */
@@ -254,7 +251,7 @@ public class CamundaBpmData {
    * Creates a new task variable reader.
    *
    * @param taskService the Camunda task service
-   * @param taskId      the id of the task to use
+   * @param taskId the id of the task to use
    * @return variable reader working on task
    */
   @NotNull
@@ -266,7 +263,7 @@ public class CamundaBpmData {
    * Creates a new execution variable reader.
    *
    * @param runtimeService the Camunda runtime service
-   * @param executionId    the executionId to use
+   * @param executionId the executionId to use
    * @return variable reader working on execution
    */
   public static VariableReader reader(RuntimeService runtimeService, String executionId) {
@@ -276,7 +273,7 @@ public class CamundaBpmData {
   /**
    * Creates a new execution variable reader.
    *
-   * @param caseService     the Camunda case service
+   * @param caseService the Camunda case service
    * @param caseExecutionId the caseExecutionId to use
    * @return variable reader working on execution
    */

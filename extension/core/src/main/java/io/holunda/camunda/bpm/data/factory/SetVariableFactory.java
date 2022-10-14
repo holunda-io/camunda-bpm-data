@@ -8,6 +8,8 @@ import io.holunda.camunda.bpm.data.adapter.set.SetReadWriteAdapterRuntimeService
 import io.holunda.camunda.bpm.data.adapter.set.SetReadWriteAdapterTaskService;
 import io.holunda.camunda.bpm.data.adapter.set.SetReadWriteAdapterVariableMap;
 import io.holunda.camunda.bpm.data.adapter.set.SetReadWriteAdapterVariableScope;
+import java.util.Objects;
+import java.util.Set;
 import org.camunda.bpm.engine.CaseService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
@@ -16,9 +18,6 @@ import org.camunda.bpm.engine.externaltask.LockedExternalTask;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
-import java.util.Set;
-
 /**
  * Variable factory of a base parametrized set type.
  *
@@ -26,11 +25,9 @@ import java.util.Set;
  */
 public class SetVariableFactory<T> implements VariableFactory<Set<T>> {
 
-  @NotNull
-  private final String name;
+  @NotNull private final String name;
 
-  @NotNull
-  private final Class<T> memberClazz;
+  @NotNull private final Class<T> memberClazz;
 
   public SetVariableFactory(@NotNull String name, @NotNull Class<T> memberClazz) {
     this.name = name;
@@ -105,13 +102,10 @@ public class SetVariableFactory<T> implements VariableFactory<Set<T>> {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o)
-      return true;
-    if (o == null || getClass() != o.getClass())
-      return false;
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
     SetVariableFactory<?> that = (SetVariableFactory<?>) o;
-    return name.equals(that.name) &&
-      memberClazz.equals(that.memberClazz);
+    return name.equals(that.name) && memberClazz.equals(that.memberClazz);
   }
 
   @Override
@@ -121,9 +115,6 @@ public class SetVariableFactory<T> implements VariableFactory<Set<T>> {
 
   @Override
   public String toString() {
-    return "SetVariableFactory{" +
-      "name='" + name + '\'' +
-      ", memberClazz=" + memberClazz +
-      '}';
+    return "SetVariableFactory{" + "name='" + name + '\'' + ", memberClazz=" + memberClazz + '}';
   }
 }

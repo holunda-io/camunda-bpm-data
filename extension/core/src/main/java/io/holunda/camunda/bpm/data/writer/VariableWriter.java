@@ -7,6 +7,5 @@ import io.holunda.camunda.bpm.data.adapter.WriteAdapter;
  *
  * @param <S> type of concrete Writer for fluent usage.
  */
-public interface VariableWriter<S extends VariableWriter<S>> extends LocalVariableWriter<S>, GlobalVariableWriter<S> {
-
-}
+public interface VariableWriter<S extends VariableWriter<S>>
+    extends LocalVariableWriter<S>, GlobalVariableWriter<S> {}

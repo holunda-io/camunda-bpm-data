@@ -28,10 +28,14 @@ public class OrderPosition {
 
   @Override
   public String toString() {
-    return "OrderPosition{" +
-      "title='" + title + '\'' +
-      ", price=" + price +
-      ", amount=" + amount +
-      '}';
+    return "OrderPosition{"
+        + "title='"
+        + title
+        + '\''
+        + ", price="
+        + price
+        + ", amount="
+        + amount
+        + '}';
   }
 }

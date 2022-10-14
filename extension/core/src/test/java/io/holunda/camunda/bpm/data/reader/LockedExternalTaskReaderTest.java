@@ -1,17 +1,5 @@
 package io.holunda.camunda.bpm.data.reader;
 
-import io.holunda.camunda.bpm.data.CamundaBpmData;
-import io.holunda.camunda.bpm.data.factory.VariableFactory;
-import org.camunda.bpm.engine.externaltask.LockedExternalTask;
-import org.camunda.bpm.engine.variable.Variables;
-import org.junit.Before;
-import org.junit.Test;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-
 import static io.holunda.camunda.bpm.data.CamundaBpmData.listVariable;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.mapVariable;
 import static io.holunda.camunda.bpm.data.CamundaBpmData.setVariable;
@@ -24,13 +12,26 @@ import static org.camunda.bpm.engine.impl.util.CollectionUtil.asHashSet;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import io.holunda.camunda.bpm.data.CamundaBpmData;
+import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import org.camunda.bpm.engine.externaltask.LockedExternalTask;
+import org.camunda.bpm.engine.variable.Variables;
+import org.junit.Before;
+import org.junit.Test;
+
 public class LockedExternalTaskReaderTest {
 
   private static final VariableFactory<String> STRING_VAR = stringVariable("myString");
   private static final VariableFactory<UUID> UUID_VAR = uuidVariable("myUuid");
-  private static final VariableFactory<List<String>> LIST_VAR = listVariable("myList", String.class);
+  private static final VariableFactory<List<String>> LIST_VAR =
+      listVariable("myList", String.class);
   private static final VariableFactory<Set<String>> SET_VAR = setVariable("mySet", String.class);
-  private static final VariableFactory<Map<String, String>> MAP_VAR = mapVariable("myMap", String.class, String.class);
+  private static final VariableFactory<Map<String, String>> MAP_VAR =
+      mapVariable("myMap", String.class, String.class);
 
   private final String stringValue = "value";
   private final UUID uuidValue = UUID.randomUUID();
@@ -41,17 +42,15 @@ public class LockedExternalTaskReaderTest {
   LockedExternalTask externalTask = mock(LockedExternalTask.class);
   private VariableReader reader = CamundaBpmData.reader(externalTask);
 
-
   @Before
   public void setUp() {
-    when(externalTask.getVariables()).thenReturn(
-      Variables
-        .putValue(STRING_VAR.getName(), stringValue)
-        .putValue(LIST_VAR.getName(), listValue)
-        .putValue(SET_VAR.getName(), setValue)
-        .putValue(MAP_VAR.getName(), mapValue)
-        .putValue(UUID_VAR.getName(), uuidValue)
-    );
+    when(externalTask.getVariables())
+        .thenReturn(
+            Variables.putValue(STRING_VAR.getName(), stringValue)
+                .putValue(LIST_VAR.getName(), listValue)
+                .putValue(SET_VAR.getName(), setValue)
+                .putValue(MAP_VAR.getName(), mapValue)
+                .putValue(UUID_VAR.getName(), uuidValue));
   }
 
   @Test
@@ -77,15 +76,15 @@ public class LockedExternalTaskReaderTest {
   @Test
   public void shouldDelegateGetLocalOptional() {
     assertThatThrownBy(() -> reader.getLocalOptional(STRING_VAR))
-      .isInstanceOf(UnsupportedOperationException.class)
-      .hasMessage("Can't get a local variable on an external task");
+        .isInstanceOf(UnsupportedOperationException.class)
+        .hasMessage("Can't get a local variable on an external task");
   }
 
   @Test
   public void shouldDelegateGetLocal() {
     assertThatThrownBy(() -> reader.getLocal(STRING_VAR))
-      .isInstanceOf(UnsupportedOperationException.class)
-      .hasMessage("Can't get a local variable on an external task");
+        .isInstanceOf(UnsupportedOperationException.class)
+        .hasMessage("Can't get a local variable on an external task");
   }
 
   @Test
@@ -101,8 +100,8 @@ public class LockedExternalTaskReaderTest {
   @Test
   public void shouldDelegateGetLocalOrNull() {
     assertThatThrownBy(() -> reader.getLocalOrNull(STRING_VAR))
-      .isInstanceOf(UnsupportedOperationException.class)
-      .hasMessage("Can't get a local variable on an external task");
+        .isInstanceOf(UnsupportedOperationException.class)
+        .hasMessage("Can't get a local variable on an external task");
   }
 
   @Test
@@ -113,15 +112,20 @@ public class LockedExternalTaskReaderTest {
     assertThat(reader.getOrDefault(MAP_VAR, Map.of("a", "b", "c", "d"))).isEqualTo(mapValue);
 
     assertThat(reader.getOrDefault(stringVariable("xxx"), "default")).isEqualTo("default");
-    assertThat(reader.getOrDefault(listVariable("xxx", String.class), asList("a", "b"))).isEqualTo(asList("a", "b"));
-    assertThat(reader.getOrDefault(setVariable("xxx", String.class), asHashSet("a", "b"))).isEqualTo(asHashSet("a", "b"));
-    assertThat(reader.getOrDefault(mapVariable("xxx", String.class, String.class), Map.of("a", "b", "c", "d"))).isEqualTo(Map.of("a", "b", "c", "d"));
+    assertThat(reader.getOrDefault(listVariable("xxx", String.class), asList("a", "b")))
+        .isEqualTo(asList("a", "b"));
+    assertThat(reader.getOrDefault(setVariable("xxx", String.class), asHashSet("a", "b")))
+        .isEqualTo(asHashSet("a", "b"));
+    assertThat(
+            reader.getOrDefault(
+                mapVariable("xxx", String.class, String.class), Map.of("a", "b", "c", "d")))
+        .isEqualTo(Map.of("a", "b", "c", "d"));
   }
 
   @Test
   public void shouldDelegateGetLocalOrDefault() {
     assertThatThrownBy(() -> reader.getLocalOrDefault(STRING_VAR, stringValue))
-      .isInstanceOf(UnsupportedOperationException.class)
-      .hasMessage("Can't get a local variable on an external task");
+        .isInstanceOf(UnsupportedOperationException.class)
+        .hasMessage("Can't get a local variable on an external task");
   }
 }

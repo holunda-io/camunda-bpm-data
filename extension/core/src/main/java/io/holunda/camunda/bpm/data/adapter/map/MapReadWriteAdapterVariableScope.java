@@ -1,9 +1,8 @@
 package io.holunda.camunda.bpm.data.adapter.map;
 
-import org.camunda.bpm.engine.delegate.VariableScope;
-
 import java.util.Map;
 import java.util.Optional;
+import org.camunda.bpm.engine.delegate.VariableScope;
 
 /**
  * Read-write adapter for variable scope.
@@ -19,11 +18,12 @@ public class MapReadWriteAdapterVariableScope<K, V> extends AbstractMapReadWrite
    * Constructs the adapter.
    *
    * @param variableScope variable scope to access.
-   * @param variableName  variable to access.
-   * @param keyClazz      class of variable key.
-   * @param valueClazz    class of variable value.
+   * @param variableName variable to access.
+   * @param keyClazz class of variable key.
+   * @param valueClazz class of variable value.
    */
-  public MapReadWriteAdapterVariableScope(VariableScope variableScope, String variableName, Class<K> keyClazz, Class<V> valueClazz) {
+  public MapReadWriteAdapterVariableScope(
+      VariableScope variableScope, String variableName, Class<K> keyClazz, Class<V> valueClazz) {
     super(variableName, keyClazz, valueClazz);
     this.variableScope = variableScope;
   }
@@ -57,5 +57,4 @@ public class MapReadWriteAdapterVariableScope<K, V> extends AbstractMapReadWrite
   public void removeLocal() {
     variableScope.removeVariableLocal(variableName);
   }
-
 }

@@ -1,19 +1,14 @@
 package io.holunda.camunda.bpm.data.mockito
 
+import io.holunda.camunda.bpm.data.factory.VariableFactory
+import org.camunda.bpm.engine.RuntimeService
 import org.mockito.kotlin.times
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.verifyNoMoreInteractions
-import io.holunda.camunda.bpm.data.factory.VariableFactory
-import org.camunda.bpm.engine.RuntimeService
 import org.mockito.verification.VerificationMode
 
-/**
- * Verifier for a mocked runtime service.
- * Provides methods for easy verification.
- */
-class RuntimeServiceMockVerifier(
-  private val runtimeService: RuntimeService
-) {
+/** Verifier for a mocked runtime service. Provides methods for easy verification. */
+class RuntimeServiceMockVerifier(private val runtimeService: RuntimeService) {
 
   /**
    * Verifies if the variable has been set globally.
@@ -23,8 +18,18 @@ class RuntimeServiceMockVerifier(
    * @param mode verification mode.
    * @param T type of variable.
    */
-  fun <T> verifySet(variableFactory: VariableFactory<T>, value: T, executionId: String, mode: VerificationMode) {
-    verify(runtimeService, mode).setVariable(executionId, variableFactory.name, variableFactory.on(runtimeService, executionId).getTypedValue(value, false))
+  fun <T> verifySet(
+    variableFactory: VariableFactory<T>,
+    value: T,
+    executionId: String,
+    mode: VerificationMode
+  ) {
+    verify(runtimeService, mode)
+      .setVariable(
+        executionId,
+        variableFactory.name,
+        variableFactory.on(runtimeService, executionId).getTypedValue(value, false)
+      )
   }
 
   /**
@@ -46,8 +51,18 @@ class RuntimeServiceMockVerifier(
    * @param T type of variable.
    * @param mode verification mode.
    */
-  fun <T> verifySetLocal(variableFactory: VariableFactory<T>, value: T, executionId: String, mode: VerificationMode) {
-    verify(runtimeService, mode).setVariableLocal(executionId, variableFactory.name, variableFactory.on(runtimeService, executionId).getTypedValue(value, false))
+  fun <T> verifySetLocal(
+    variableFactory: VariableFactory<T>,
+    value: T,
+    executionId: String,
+    mode: VerificationMode
+  ) {
+    verify(runtimeService, mode)
+      .setVariableLocal(
+        executionId,
+        variableFactory.name,
+        variableFactory.on(runtimeService, executionId).getTypedValue(value, false)
+      )
   }
 
   /**
@@ -68,7 +83,11 @@ class RuntimeServiceMockVerifier(
    * @param T type of variable.
    * @param mode verification mode.
    */
-  fun <T> verifyGet(variableFactory: VariableFactory<T>, executionId: String, mode: VerificationMode) {
+  fun <T> verifyGet(
+    variableFactory: VariableFactory<T>,
+    executionId: String,
+    mode: VerificationMode
+  ) {
     verify(runtimeService, mode).getVariable(executionId, variableFactory.name)
   }
 
@@ -83,7 +102,11 @@ class RuntimeServiceMockVerifier(
    * @param T type of variable.
    * @param mode verification mode.
    */
-  fun <T> verifyGetLocal(variableFactory: VariableFactory<T>, executionId: String, mode: VerificationMode) {
+  fun <T> verifyGetLocal(
+    variableFactory: VariableFactory<T>,
+    executionId: String,
+    mode: VerificationMode
+  ) {
     verify(runtimeService, mode).getVariableLocal(executionId, variableFactory.name)
   }
 
@@ -105,7 +128,11 @@ class RuntimeServiceMockVerifier(
    * @param T type of variable.
    * @param mode verification mode.
    */
-  fun <T> verifyRemove(variableFactory: VariableFactory<T>, executionId: String, mode: VerificationMode) {
+  fun <T> verifyRemove(
+    variableFactory: VariableFactory<T>,
+    executionId: String,
+    mode: VerificationMode
+  ) {
     verify(runtimeService, mode).removeVariable(executionId, variableFactory.name)
   }
 
@@ -127,7 +154,11 @@ class RuntimeServiceMockVerifier(
    * @param T type of variable.
    * @param mode verification mode.
    */
-  fun <T> verifyRemoveLocal(variableFactory: VariableFactory<T>, executionId: String, mode: VerificationMode) {
+  fun <T> verifyRemoveLocal(
+    variableFactory: VariableFactory<T>,
+    executionId: String,
+    mode: VerificationMode
+  ) {
     verify(runtimeService, mode).removeVariable(executionId, variableFactory.name)
   }
 

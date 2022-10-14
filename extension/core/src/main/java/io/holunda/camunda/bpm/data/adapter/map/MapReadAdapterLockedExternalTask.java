@@ -2,12 +2,11 @@ package io.holunda.camunda.bpm.data.adapter.map;
 
 import io.holunda.camunda.bpm.data.adapter.ReadAdapter;
 import io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException;
-import org.camunda.bpm.engine.externaltask.LockedExternalTask;
-import org.camunda.bpm.engine.variable.Variables;
-
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
+import org.camunda.bpm.engine.externaltask.LockedExternalTask;
+import org.camunda.bpm.engine.variable.Variables;
 
 /**
  * Read adapter for external task
@@ -23,7 +22,11 @@ public class MapReadAdapterLockedExternalTask<K, V> implements ReadAdapter<Map<K
   private Class<K> keyClazz;
   private Class<V> valueClazz;
 
-  public MapReadAdapterLockedExternalTask(LockedExternalTask lockedExternalTask, String variableName, Class<K> keyClazz, Class<V> valueClazz) {
+  public MapReadAdapterLockedExternalTask(
+      LockedExternalTask lockedExternalTask,
+      String variableName,
+      Class<K> keyClazz,
+      Class<V> valueClazz) {
     this.lockedExternalTask = lockedExternalTask;
     this.variableName = variableName;
     this.keyClazz = keyClazz;
@@ -83,22 +86,30 @@ public class MapReadAdapterLockedExternalTask<K, V> implements ReadAdapter<Map<K
         return Collections.emptyMap();
       } else {
         Map.Entry<?, ?> entry = valueAsMap.entrySet().iterator().next();
-        if (keyClazz.isAssignableFrom(entry.getKey().getClass()) && valueClazz.isAssignableFrom(entry.getValue().getClass())) {
+        if (keyClazz.isAssignableFrom(entry.getKey().getClass())
+            && valueClazz.isAssignableFrom(entry.getValue().getClass())) {
           return (Map<K, V>) valueAsMap;
         } else {
-          throw new WrongVariableTypeException("Error reading " + variableName + ": Wrong map type detected, expected Map<"
-            + keyClazz.getName() + "," + valueClazz.getName()
-            + ", but was not found in " + valueAsMap);
+          throw new WrongVariableTypeException(
+              "Error reading "
+                  + variableName
+                  + ": Wrong map type detected, expected Map<"
+                  + keyClazz.getName()
+                  + ","
+                  + valueClazz.getName()
+                  + ", but was not found in "
+                  + valueAsMap);
         }
       }
     }
 
-    throw new WrongVariableTypeException("Error reading " + variableName + ": Couldn't read value of type Map from " + value);
+    throw new WrongVariableTypeException(
+        "Error reading " + variableName + ": Couldn't read value of type Map from " + value);
   }
 
   private Object getValue() {
     return Optional.ofNullable(lockedExternalTask.getVariables())
-      .orElse(Variables.createVariables())
-      .get(variableName);
+        .orElse(Variables.createVariables())
+        .get(variableName);
   }
 }

@@ -1,9 +1,8 @@
 package io.holunda.camunda.bpm.data.adapter.set;
 
-import org.camunda.bpm.engine.delegate.VariableScope;
-
 import java.util.Optional;
 import java.util.Set;
+import org.camunda.bpm.engine.delegate.VariableScope;
 
 /**
  * Read-write adapter for variable scope.
@@ -18,10 +17,11 @@ public class SetReadWriteAdapterVariableScope<T> extends AbstractSetReadWriteAda
    * Constructs the adapter.
    *
    * @param variableScope variable scope to access.
-   * @param variableName  variable to access.
-   * @param memberClazz   class of member variable value.
+   * @param variableName variable to access.
+   * @param memberClazz class of member variable value.
    */
-  public SetReadWriteAdapterVariableScope(VariableScope variableScope, String variableName, Class<T> memberClazz) {
+  public SetReadWriteAdapterVariableScope(
+      VariableScope variableScope, String variableName, Class<T> memberClazz) {
     super(variableName, memberClazz);
     this.variableScope = variableScope;
   }
@@ -55,5 +55,4 @@ public class SetReadWriteAdapterVariableScope<T> extends AbstractSetReadWriteAda
   public void removeLocal() {
     variableScope.removeVariableLocal(variableName);
   }
-
 }

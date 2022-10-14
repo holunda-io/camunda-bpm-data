@@ -1,20 +1,15 @@
 package io.holunda.camunda.bpm.data.mockito
 
-import org.mockito.kotlin.times
-import org.mockito.kotlin.verify
-import org.mockito.kotlin.verifyNoMoreInteractions
 import io.holunda.camunda.bpm.data.factory.VariableFactory
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.variable.VariableMap
+import org.mockito.kotlin.times
+import org.mockito.kotlin.verify
+import org.mockito.kotlin.verifyNoMoreInteractions
 import org.mockito.verification.VerificationMode
 
-/**
- * Verifier for a mocked task service.
- * Provides methods for easy verification.
- */
-class TaskServiceMockVerifier(
-  private val taskService: TaskService
-) {
+/** Verifier for a mocked task service. Provides methods for easy verification. */
+class TaskServiceMockVerifier(private val taskService: TaskService) {
 
   /**
    * Verifies if the variable has been set globally.
@@ -24,8 +19,18 @@ class TaskServiceMockVerifier(
    * @param T type of variable.
    * @param mode verification mode.
    */
-  fun <T> verifySet(variableFactory: VariableFactory<T>, value: T, taskId: String, mode: VerificationMode) {
-    verify(taskService, mode).setVariable(taskId, variableFactory.name, variableFactory.on(taskService, taskId).getTypedValue(value, false))
+  fun <T> verifySet(
+    variableFactory: VariableFactory<T>,
+    value: T,
+    taskId: String,
+    mode: VerificationMode
+  ) {
+    verify(taskService, mode)
+      .setVariable(
+        taskId,
+        variableFactory.name,
+        variableFactory.on(taskService, taskId).getTypedValue(value, false)
+      )
   }
 
   /**
@@ -48,8 +53,18 @@ class TaskServiceMockVerifier(
    * @param T type of variable.
    * @param mode verification mode.
    */
-  fun <T> verifySetLocal(variableFactory: VariableFactory<T>, value: T, taskId: String, mode: VerificationMode) {
-    verify(taskService, mode).setVariableLocal(taskId, variableFactory.name, variableFactory.on(taskService, taskId).getTypedValue(value, false))
+  fun <T> verifySetLocal(
+    variableFactory: VariableFactory<T>,
+    value: T,
+    taskId: String,
+    mode: VerificationMode
+  ) {
+    verify(taskService, mode)
+      .setVariableLocal(
+        taskId,
+        variableFactory.name,
+        variableFactory.on(taskService, taskId).getTypedValue(value, false)
+      )
   }
 
   /**
@@ -91,7 +106,11 @@ class TaskServiceMockVerifier(
    * @param T type of variable.
    * @param mode verification mode.
    */
-  fun <T> verifyGetLocal(variableFactory: VariableFactory<T>, taskId: String, mode: VerificationMode) {
+  fun <T> verifyGetLocal(
+    variableFactory: VariableFactory<T>,
+    taskId: String,
+    mode: VerificationMode
+  ) {
     verify(taskService, mode).getVariableLocal(taskId, variableFactory.name)
   }
 
@@ -112,7 +131,11 @@ class TaskServiceMockVerifier(
    * @param T type of variable.
    * @param mode verification mode.
    */
-  fun <T> verifyRemove(variableFactory: VariableFactory<T>, taskId: String, mode: VerificationMode) {
+  fun <T> verifyRemove(
+    variableFactory: VariableFactory<T>,
+    taskId: String,
+    mode: VerificationMode
+  ) {
     verify(taskService, mode).removeVariable(taskId, variableFactory.name)
   }
 
@@ -133,7 +156,11 @@ class TaskServiceMockVerifier(
    * @param T type of variable.
    * @param mode verification mode.
    */
-  fun <T> verifyRemoveLocal(variableFactory: VariableFactory<T>, taskId: String, mode: VerificationMode) {
+  fun <T> verifyRemoveLocal(
+    variableFactory: VariableFactory<T>,
+    taskId: String,
+    mode: VerificationMode
+  ) {
     verify(taskService, mode).removeVariable(taskId, variableFactory.name)
   }
 

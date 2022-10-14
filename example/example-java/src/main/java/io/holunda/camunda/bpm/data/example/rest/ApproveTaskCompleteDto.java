@@ -1,19 +1,12 @@
 package io.holunda.camunda.bpm.data.example.rest;
 
-/**
- * DTO to carry the approve task response.
- */
+/** DTO to carry the approve task response. */
 public class ApproveTaskCompleteDto {
-  /**
-   * Response value.
-   */
+  /** Response value. */
   private Boolean approved;
 
-  /**
-   * Empty constructor.
-   */
-  public ApproveTaskCompleteDto() {
-  }
+  /** Empty constructor. */
+  public ApproveTaskCompleteDto() {}
 
   /**
    * Constructs DTO with response.
@@ -44,8 +37,6 @@ public class ApproveTaskCompleteDto {
 
   @Override
   public String toString() {
-    return "ApproveTaskCompleteDto{" +
-      "approved=" + approved +
-      '}';
+    return "ApproveTaskCompleteDto{" + "approved=" + approved + '}';
   }
 }

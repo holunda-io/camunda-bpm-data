@@ -2,36 +2,24 @@ package io.holunda.camunda.bpm.data.example.domain;
 
 import java.math.BigDecimal;
 
-/**
- * Represents order position business entity.
- */
+/** Represents order position business entity. */
 public class OrderPosition {
-  /**
-   * Position title.
-   */
+  /** Position title. */
   private String title;
-  /**
-   * Position net cost per unit.
-   */
+  /** Position net cost per unit. */
   private BigDecimal netCost;
-  /**
-   * amount of units.
-   */
+  /** amount of units. */
   private Long amount;
 
-  /**
-   * Empty constructor.
-   */
-  public OrderPosition() {
-
-  }
+  /** Empty constructor. */
+  public OrderPosition() {}
 
   /**
    * Constructor setting fields.
    *
-   * @param title   title of position.
+   * @param title title of position.
    * @param netCost net cost per unit.
-   * @param amount  amount of units.
+   * @param amount amount of units.
    */
   public OrderPosition(String title, BigDecimal netCost, Long amount) {
     this.title = title;
@@ -123,10 +111,14 @@ public class OrderPosition {
 
   @Override
   public String toString() {
-    return "OrderPosition{" +
-      "title='" + title + '\'' +
-      ", netCost=" + netCost +
-      ", amount=" + amount +
-      '}';
+    return "OrderPosition{"
+        + "title='"
+        + title
+        + '\''
+        + ", netCost="
+        + netCost
+        + ", amount="
+        + amount
+        + '}';
   }
 }

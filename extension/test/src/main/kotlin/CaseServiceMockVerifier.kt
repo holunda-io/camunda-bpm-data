@@ -1,19 +1,14 @@
 package io.holunda.camunda.bpm.data.mockito
 
+import io.holunda.camunda.bpm.data.factory.VariableFactory
+import org.camunda.bpm.engine.CaseService
 import org.mockito.kotlin.times
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.verifyNoMoreInteractions
-import io.holunda.camunda.bpm.data.factory.VariableFactory
-import org.camunda.bpm.engine.CaseService
 import org.mockito.verification.VerificationMode
 
-/**
- * Verifier for a mocked runtime service.
- * Provides methods for easy verification.
- */
-class CaseServiceMockVerifier(
-  private val caseService: CaseService
-) {
+/** Verifier for a mocked runtime service. Provides methods for easy verification. */
+class CaseServiceMockVerifier(private val caseService: CaseService) {
 
   /**
    * Verifies if the variable has been set globally.
@@ -23,8 +18,18 @@ class CaseServiceMockVerifier(
    * @param T type of variable.
    * @param mode verification mode.
    */
-  fun <T> verifySet(variableFactory: VariableFactory<T>, value: T, executionId: String, mode: VerificationMode) {
-    verify(caseService, mode).setVariable(executionId, variableFactory.name, variableFactory.on(caseService, executionId).getTypedValue(value, false))
+  fun <T> verifySet(
+    variableFactory: VariableFactory<T>,
+    value: T,
+    executionId: String,
+    mode: VerificationMode
+  ) {
+    verify(caseService, mode)
+      .setVariable(
+        executionId,
+        variableFactory.name,
+        variableFactory.on(caseService, executionId).getTypedValue(value, false)
+      )
   }
 
   /**
@@ -46,8 +51,18 @@ class CaseServiceMockVerifier(
    * @param T type of variable.
    * @param mode verification mode.
    */
-  fun <T> verifySetLocal(variableFactory: VariableFactory<T>, value: T, executionId: String, mode: VerificationMode) {
-    verify(caseService, mode).setVariableLocal(executionId, variableFactory.name, variableFactory.on(caseService, executionId).getTypedValue(value, false))
+  fun <T> verifySetLocal(
+    variableFactory: VariableFactory<T>,
+    value: T,
+    executionId: String,
+    mode: VerificationMode
+  ) {
+    verify(caseService, mode)
+      .setVariableLocal(
+        executionId,
+        variableFactory.name,
+        variableFactory.on(caseService, executionId).getTypedValue(value, false)
+      )
   }
 
   /**
@@ -68,7 +83,11 @@ class CaseServiceMockVerifier(
    * @param T type of variable.
    * @param mode verification mode.
    */
-  fun <T> verifyGet(variableFactory: VariableFactory<T>, executionId: String, mode: VerificationMode) {
+  fun <T> verifyGet(
+    variableFactory: VariableFactory<T>,
+    executionId: String,
+    mode: VerificationMode
+  ) {
     verify(caseService, mode).getVariable(executionId, variableFactory.name)
   }
 
@@ -89,7 +108,11 @@ class CaseServiceMockVerifier(
    * @param T type of variable.
    * @param mode verification mode.
    */
-  fun <T> verifyGetLocal(variableFactory: VariableFactory<T>, executionId: String, mode: VerificationMode) {
+  fun <T> verifyGetLocal(
+    variableFactory: VariableFactory<T>,
+    executionId: String,
+    mode: VerificationMode
+  ) {
     verify(caseService, mode).getVariableLocal(executionId, variableFactory.name)
   }
 
@@ -110,7 +133,11 @@ class CaseServiceMockVerifier(
    * @param T type of variable.
    * @param mode verification mode.
    */
-  fun <T> verifyRemove(variableFactory: VariableFactory<T>, executionId: String, mode: VerificationMode) {
+  fun <T> verifyRemove(
+    variableFactory: VariableFactory<T>,
+    executionId: String,
+    mode: VerificationMode
+  ) {
     verify(caseService, mode).removeVariable(executionId, variableFactory.name)
   }
 
@@ -131,7 +158,11 @@ class CaseServiceMockVerifier(
    * @param T type of variable.
    * @param mode verification mode.
    */
-  fun <T> verifyRemoveLocal(variableFactory: VariableFactory<T>, executionId: String, mode: VerificationMode) {
+  fun <T> verifyRemoveLocal(
+    variableFactory: VariableFactory<T>,
+    executionId: String,
+    mode: VerificationMode
+  ) {
     verify(caseService, mode).removeVariable(executionId, variableFactory.name)
   }
 

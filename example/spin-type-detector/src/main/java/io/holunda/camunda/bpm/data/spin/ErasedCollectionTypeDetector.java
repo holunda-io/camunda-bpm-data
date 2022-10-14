@@ -2,26 +2,19 @@ package io.holunda.camunda.bpm.data.spin;
 
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
-import org.camunda.spin.spi.TypeDetector;
-
 import java.lang.reflect.TypeVariable;
 import java.util.Collection;
 import java.util.Map;
+import org.camunda.spin.spi.TypeDetector;
 
-/**
- * Detects erased types of Java Collection classes and Map.
- */
+/** Detects erased types of Java Collection classes and Map. */
 public class ErasedCollectionTypeDetector implements TypeDetector {
-  /**
-   * Object instance to use.
-   */
+  /** Object instance to use. */
   public static ErasedCollectionTypeDetector INSTANCE = new ErasedCollectionTypeDetector();
-
 
   @Override
   public boolean canHandle(Object value) {
-    return value instanceof Collection<?>
-      || value instanceof Map<?, ?>;
+    return value instanceof Collection<?> || value instanceof Map<?, ?>;
   }
 
   @Override
@@ -32,7 +25,7 @@ public class ErasedCollectionTypeDetector implements TypeDetector {
   /**
    * Checks if the erased type has the correct number of type bindings.
    *
-   * @param erasedType                  class of the type.
+   * @param erasedType class of the type.
    * @param expectedTypeParametersCount expected number of bindings.
    * @return true if the number of type binding matches expected value.
    */
@@ -46,7 +39,14 @@ public class ErasedCollectionTypeDetector implements TypeDetector {
       return false;
     }
     if (varLen != expectedTypeParametersCount) {
-      throw new IllegalArgumentException("Cannot create TypeBindings for class " + erasedType.getName() + " with " + expectedTypeParametersCount + " type parameter: class expects " + varLen + " type parameters.");
+      throw new IllegalArgumentException(
+          "Cannot create TypeBindings for class "
+              + erasedType.getName()
+              + " with "
+              + expectedTypeParametersCount
+              + " type parameter: class expects "
+              + varLen
+              + " type parameters.");
     }
     return true;
   }
@@ -87,7 +87,11 @@ public class ErasedCollectionTypeDetector implements TypeDetector {
     if (collection instanceof Collection<?>) {
       return (Class<? extends Collection>) collection.getClass();
     } else {
-      throw new IllegalArgumentException("Could not detect class for " + collection + " of type " + collection.getClass().getName());
+      throw new IllegalArgumentException(
+          "Could not detect class for "
+              + collection
+              + " of type "
+              + collection.getClass().getName());
     }
   }
 }

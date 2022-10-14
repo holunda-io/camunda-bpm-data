@@ -1,19 +1,18 @@
 package io.holunda.camunda.bpm.data.factory;
 
-import org.junit.Test;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.listVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.mapVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.setVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
+import static io.holunda.camunda.bpm.data.CamundaBpmData.uuidVariable;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
-
-import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.listVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.mapVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.setVariable;
-import static io.holunda.camunda.bpm.data.CamundaBpmData.uuidVariable;
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Test;
 
 public class VariableFactoryTest {
 
@@ -35,7 +34,6 @@ public class VariableFactoryTest {
     assertThat(stringVar.equals(stringVar3)).isFalse();
     assertThat(stringVar.equals(boolVar)).isFalse();
     assertThat(stringVar.equals(uuidVar)).isFalse();
-
 
     assertThat(stringVar.hashCode()).isEqualTo(stringVar2.hashCode());
     assertThat(stringVar.hashCode()).isNotEqualTo(stringVar3.hashCode());
@@ -77,11 +75,16 @@ public class VariableFactoryTest {
 
   @Test
   public void testMapEqualsHashCode() {
-    VariableFactory<Map<String, Boolean>> stringVar = mapVariable("string", String.class, Boolean.class);
-    VariableFactory<Map<String, Boolean>> stringVar2 = mapVariable("string", String.class, Boolean.class);
-    VariableFactory<Map<String, Boolean>> stringVar3 = mapVariable("string2", String.class, Boolean.class);
-    VariableFactory<Map<String, Integer>> stringVar4 = mapVariable("string2", String.class, Integer.class);
-    VariableFactory<Map<Boolean, Boolean>> boolVar = mapVariable("string", Boolean.class, Boolean.class);
+    VariableFactory<Map<String, Boolean>> stringVar =
+        mapVariable("string", String.class, Boolean.class);
+    VariableFactory<Map<String, Boolean>> stringVar2 =
+        mapVariable("string", String.class, Boolean.class);
+    VariableFactory<Map<String, Boolean>> stringVar3 =
+        mapVariable("string2", String.class, Boolean.class);
+    VariableFactory<Map<String, Integer>> stringVar4 =
+        mapVariable("string2", String.class, Integer.class);
+    VariableFactory<Map<Boolean, Boolean>> boolVar =
+        mapVariable("string", Boolean.class, Boolean.class);
 
     assertThat(stringVar.equals(stringVar2)).isTrue();
     assertThat(stringVar.equals(stringVar3)).isFalse();
@@ -93,5 +96,4 @@ public class VariableFactoryTest {
     assertThat(stringVar.hashCode()).isNotEqualTo(stringVar4.hashCode());
     assertThat(stringVar.hashCode()).isNotEqualTo(boolVar.hashCode());
   }
-
 }

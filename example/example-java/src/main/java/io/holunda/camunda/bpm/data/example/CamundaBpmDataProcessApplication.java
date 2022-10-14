@@ -12,8 +12,7 @@ import org.springframework.context.event.EventListener;
 @EnableProcessApplication
 public class CamundaBpmDataProcessApplication {
 
-  @Autowired
-  private OrderApprovalInstanceFactory orderApprovalInstanceFactory;
+  @Autowired private OrderApprovalInstanceFactory orderApprovalInstanceFactory;
 
   @EventListener
   public void onDeploy(PostDeployEvent event) {

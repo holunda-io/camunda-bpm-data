@@ -7,18 +7,19 @@ import io.holunda.camunda.bpm.data.reader.TaskServiceVariableReader
 import io.holunda.camunda.bpm.data.writer.CaseServiceVariableWriter
 import io.holunda.camunda.bpm.data.writer.RuntimeServiceVariableWriter
 import io.holunda.camunda.bpm.data.writer.TaskServiceVariableWriter
+import java.util.*
 import org.camunda.bpm.engine.CaseService
 import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.delegate.VariableScope
 import org.camunda.bpm.engine.variable.VariableMap
-import java.util.*
 
 /**
  * Getter from local scope.
  * @param factory factory defining the variable.
  */
-fun <T> VariableMap.getOptional(factory: VariableFactory<T>): Optional<T> = factory.from(this).optional
+fun <T> VariableMap.getOptional(factory: VariableFactory<T>): Optional<T> =
+  factory.from(this).optional
 
 /**
  * Fluent setter.
@@ -26,17 +27,14 @@ fun <T> VariableMap.getOptional(factory: VariableFactory<T>): Optional<T> = fact
  * @param value new value.
  * @param isTransient flag for transient access, <code>false</code> by default.
  */
-fun <T> VariableMap.set(factory: VariableFactory<T>, value: T, isTransient: Boolean = false) = this.apply {
-  factory.on(this).set(value, isTransient)
-}
+fun <T> VariableMap.set(factory: VariableFactory<T>, value: T, isTransient: Boolean = false) =
+  this.apply { factory.on(this).set(value, isTransient) }
 
 /**
  * Fluent remover.
  * @param factory factory defining the variable.
  */
-fun <T> VariableMap.remove(factory: VariableFactory<T>) = this.apply {
-  factory.on(this).remove()
-}
+fun <T> VariableMap.remove(factory: VariableFactory<T>) = this.apply { factory.on(this).remove() }
 
 /**
  * Fluent updater.
@@ -44,15 +42,18 @@ fun <T> VariableMap.remove(factory: VariableFactory<T>) = this.apply {
  * @param valueProcessor update function.
  * @param isTransient flag for transient access, <code>false</code> by default.
  */
-fun <T> VariableMap.update(factory: VariableFactory<T>, valueProcessor: (T) -> T, isTransient: Boolean = false) = this.apply {
-  factory.on(this).update(valueProcessor, isTransient)
-}
+fun <T> VariableMap.update(
+  factory: VariableFactory<T>,
+  valueProcessor: (T) -> T,
+  isTransient: Boolean = false
+) = this.apply { factory.on(this).update(valueProcessor, isTransient) }
 
 /**
  * Getter from local scope.
  * @param factory factory defining the variable.
  */
-fun <T> VariableScope.getOptional(factory: VariableFactory<T>): Optional<T> = factory.from(this).optional
+fun <T> VariableScope.getOptional(factory: VariableFactory<T>): Optional<T> =
+  factory.from(this).optional
 
 /**
  * Getter from local scope.
@@ -64,7 +65,8 @@ fun <T> VariableScope.getLocal(factory: VariableFactory<T>): T = factory.from(th
  * Getter from local scope.
  * @param factory factory defining the variable.
  */
-fun <T> VariableScope.getLocalOptional(factory: VariableFactory<T>): Optional<T> = factory.from(this).localOptional
+fun <T> VariableScope.getLocalOptional(factory: VariableFactory<T>): Optional<T> =
+  factory.from(this).localOptional
 
 /**
  * Fluent setter.
@@ -72,17 +74,14 @@ fun <T> VariableScope.getLocalOptional(factory: VariableFactory<T>): Optional<T>
  * @param value new value.
  * @param isTransient flag for transient access, <code>false</code> by default.
  */
-fun <T> VariableScope.set(factory: VariableFactory<T>, value: T, isTransient: Boolean = false) = this.apply {
-  factory.on(this).set(value, isTransient)
-}
+fun <T> VariableScope.set(factory: VariableFactory<T>, value: T, isTransient: Boolean = false) =
+  this.apply { factory.on(this).set(value, isTransient) }
 
 /**
  * Fluent remover.
  * @param factory factory defining the variable.
  */
-fun <T> VariableScope.remove(factory: VariableFactory<T>) = this.apply {
-  factory.on(this).remove()
-}
+fun <T> VariableScope.remove(factory: VariableFactory<T>) = this.apply { factory.on(this).remove() }
 
 /**
  * Fluent updater.
@@ -90,9 +89,11 @@ fun <T> VariableScope.remove(factory: VariableFactory<T>) = this.apply {
  * @param valueProcessor update function.
  * @param isTransient flag for transient access, <code>false</code> by default.
  */
-fun <T> VariableScope.update(factory: VariableFactory<T>, valueProcessor: (T) -> T, isTransient: Boolean = false) = this.apply {
-  factory.on(this).update(valueProcessor, isTransient)
-}
+fun <T> VariableScope.update(
+  factory: VariableFactory<T>,
+  valueProcessor: (T) -> T,
+  isTransient: Boolean = false
+) = this.apply { factory.on(this).update(valueProcessor, isTransient) }
 
 /**
  * Fluent local setter.
@@ -100,17 +101,18 @@ fun <T> VariableScope.update(factory: VariableFactory<T>, valueProcessor: (T) ->
  * @param value new value.
  * @param isTransient flag for transient access, <code>false</code> by default.
  */
-fun <T> VariableScope.setLocal(factory: VariableFactory<T>, value: T, isTransient: Boolean = false) = this.apply {
-  factory.on(this).setLocal(value, isTransient)
-}
+fun <T> VariableScope.setLocal(
+  factory: VariableFactory<T>,
+  value: T,
+  isTransient: Boolean = false
+) = this.apply { factory.on(this).setLocal(value, isTransient) }
 
 /**
  * Fluent local remover.
  * @param factory factory defining the variable.
  */
-fun <T> VariableScope.removeLocal(factory: VariableFactory<T>) = this.apply {
-  factory.on(this).removeLocal()
-}
+fun <T> VariableScope.removeLocal(factory: VariableFactory<T>) =
+  this.apply { factory.on(this).removeLocal() }
 
 /**
  * Fluent local updater.
@@ -118,9 +120,11 @@ fun <T> VariableScope.removeLocal(factory: VariableFactory<T>) = this.apply {
  * @param valueProcessor update function.
  * @param isTransient flag for transient access, <code>false</code> by default.
  */
-fun <T> VariableScope.updateLocal(factory: VariableFactory<T>, valueProcessor: (T) -> T, isTransient: Boolean = false) = this.apply {
-  factory.on(this).updateLocal(valueProcessor, isTransient)
-}
+fun <T> VariableScope.updateLocal(
+  factory: VariableFactory<T>,
+  valueProcessor: (T) -> T,
+  isTransient: Boolean = false
+) = this.apply { factory.on(this).updateLocal(valueProcessor, isTransient) }
 
 /**
  * Helper to access case service writer.

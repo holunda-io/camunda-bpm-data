@@ -12,16 +12,10 @@ import java.util.*
  * @property message violation message
  */
 data class GuardViolation<T>(
-  /**
-   * Guard condition.
-   */
+  /** Guard condition. */
   val condition: VariableGuardCondition<T>,
-  /**
-   * Retrieved value.
-   */
+  /** Retrieved value. */
   val option: Optional<T>,
-  /**
-   * Message, explaining the violation.
-   */
+  /** Message, explaining the violation. */
   val message: String
 )

@@ -9,9 +9,7 @@ import java.util.function.Function;
  */
 public abstract class AbstractReadWriteAdapter<T> implements ReadAdapter<T>, WriteAdapter<T> {
 
-  /**
-   * Variable name.
-   */
+  /** Variable name. */
   protected final String variableName;
 
   /**
@@ -35,12 +33,20 @@ public abstract class AbstractReadWriteAdapter<T> implements ReadAdapter<T>, Wri
 
   @Override
   public T get() {
-    return getOptional().orElseThrow(() -> new VariableNotFoundException("Couldn't find required variable '" + variableName + "'"));
+    return getOptional()
+        .orElseThrow(
+            () ->
+                new VariableNotFoundException(
+                    "Couldn't find required variable '" + variableName + "'"));
   }
 
   @Override
   public T getLocal() {
-    return getLocalOptional().orElseThrow(() -> new VariableNotFoundException("Couldn't find required local variable '" + variableName + "'"));
+    return getLocalOptional()
+        .orElseThrow(
+            () ->
+                new VariableNotFoundException(
+                    "Couldn't find required local variable '" + variableName + "'"));
   }
 
   @Override

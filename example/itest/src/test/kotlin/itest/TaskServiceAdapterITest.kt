@@ -22,22 +22,23 @@ import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Value
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SHORT_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.STRING
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.STRING_LOCAL
+import java.util.*
+import kotlin.collections.HashMap
 import org.camunda.bpm.engine.variable.Variables.createVariables
 import org.junit.Test
 import org.springframework.beans.factory.annotation.Autowired
-import java.util.*
-import kotlin.collections.HashMap
 
 class TaskServiceAdapterITest : CamundaBpmDataITestBase() {
 
-  @Autowired
-  lateinit var delegateConfiguration: DelegateConfiguration
+  @Autowired lateinit var delegateConfiguration: DelegateConfiguration
 
   @Test
   fun `should write to task service adapter`() {
 
     given()
-      .process_with_user_task_and_delegate_is_deployed(delegateExpression = "\${${DelegateConfiguration::readFromVariableScope.name}}")
+      .process_with_user_task_and_delegate_is_deployed(
+        delegateExpression = "\${${DelegateConfiguration::readFromVariableScope.name}}"
+      )
       .and()
       .process_is_started_with_variables(variables = createVariables())
       .and()
@@ -59,20 +60,24 @@ class TaskServiceAdapterITest : CamundaBpmDataITestBase() {
         COMPLEX_SET_VAR.on(taskService, taskId).set(Companion.Values.COMPLEX_SET.value)
         COMPLEX_LIST_VAR.on(taskService, taskId).set(Companion.Values.COMPLEX_LIST.value)
         COMPLEX_MAP_VAR.on(taskService, taskId).set(Companion.Values.COMPLEX_MAP.value)
-
       }
       .and()
       .task_is_completed()
 
     then()
-      .variables_had_value(readValues = delegateConfiguration.vars, variablesWithValue = createKeyValuePairs())
+      .variables_had_value(
+        readValues = delegateConfiguration.vars,
+        variablesWithValue = createKeyValuePairs()
+      )
   }
 
   @Test
   fun `should remove on task service adapter`() {
 
     given()
-      .process_with_user_task_and_delegate_is_deployed(delegateExpression = "\${${DelegateConfiguration::readOptionalFromVariableScope.name}}")
+      .process_with_user_task_and_delegate_is_deployed(
+        delegateExpression = "\${${DelegateConfiguration::readOptionalFromVariableScope.name}}"
+      )
       .and()
       .process_is_started_with_variables(variables = createVariableMapUntyped())
       .and()
@@ -89,18 +94,19 @@ class TaskServiceAdapterITest : CamundaBpmDataITestBase() {
       .task_is_completed()
 
     then()
-      .variables_had_not_value(delegateConfiguration.optionalVars,
+      .variables_had_not_value(
+        delegateConfiguration.optionalVars,
         STRING_VAR,
         LIST_STRING_VAR,
         SET_STRING_VAR,
         MAP_STRING_LONG_VAR
       )
       .and()
-      .variables_had_value(delegateConfiguration.optionalVars,
+      .variables_had_value(
+        delegateConfiguration.optionalVars,
         setOf(LONG_VAR to Optional.of(LONG.value))
       )
   }
-
 
   @Test
   fun `should write to variables-map and read task service adapter`() {
@@ -114,33 +120,33 @@ class TaskServiceAdapterITest : CamundaBpmDataITestBase() {
       .and()
       .process_waits_in_task()
 
-    whenever()
-      .task_is_accessed_in_user_task { taskService, taskId ->
-        vars[STRING_VAR.name] = STRING_VAR.from(taskService, taskId).get()
-        vars[DATE_VAR.name] = DATE_VAR.from(taskService, taskId).get()
-        vars[SHORT_VAR.name] = SHORT_VAR.from(taskService, taskId).get()
-        vars[INT_VAR.name] = INT_VAR.from(taskService, taskId).get()
-        vars[LONG_VAR.name] = LONG_VAR.from(taskService, taskId).get()
-        vars[DOUBLE_VAR.name] = DOUBLE_VAR.from(taskService, taskId).get()
-        vars[BOOLEAN_VAR.name] = BOOLEAN_VAR.from(taskService, taskId).get()
-        vars[COMPLEX_VAR.name] = COMPLEX_VAR.from(taskService, taskId).get()
-        vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(taskService, taskId).get()
-        vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(taskService, taskId).get()
-        vars[MAP_STRING_LONG_VAR.name] = MAP_STRING_LONG_VAR.from(taskService, taskId).get()
-        vars[COMPLEX_SET_VAR.name] = COMPLEX_SET_VAR.from(taskService, taskId).get()
-        vars[COMPLEX_LIST_VAR.name] = COMPLEX_LIST_VAR.from(taskService, taskId).get()
-        vars[COMPLEX_MAP_VAR.name] = COMPLEX_MAP_VAR.from(taskService, taskId).get()
-      }
+    whenever().task_is_accessed_in_user_task { taskService, taskId ->
+      vars[STRING_VAR.name] = STRING_VAR.from(taskService, taskId).get()
+      vars[DATE_VAR.name] = DATE_VAR.from(taskService, taskId).get()
+      vars[SHORT_VAR.name] = SHORT_VAR.from(taskService, taskId).get()
+      vars[INT_VAR.name] = INT_VAR.from(taskService, taskId).get()
+      vars[LONG_VAR.name] = LONG_VAR.from(taskService, taskId).get()
+      vars[DOUBLE_VAR.name] = DOUBLE_VAR.from(taskService, taskId).get()
+      vars[BOOLEAN_VAR.name] = BOOLEAN_VAR.from(taskService, taskId).get()
+      vars[COMPLEX_VAR.name] = COMPLEX_VAR.from(taskService, taskId).get()
+      vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(taskService, taskId).get()
+      vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(taskService, taskId).get()
+      vars[MAP_STRING_LONG_VAR.name] = MAP_STRING_LONG_VAR.from(taskService, taskId).get()
+      vars[COMPLEX_SET_VAR.name] = COMPLEX_SET_VAR.from(taskService, taskId).get()
+      vars[COMPLEX_LIST_VAR.name] = COMPLEX_LIST_VAR.from(taskService, taskId).get()
+      vars[COMPLEX_MAP_VAR.name] = COMPLEX_MAP_VAR.from(taskService, taskId).get()
+    }
 
-    then()
-      .variables_had_value(readValues = vars, variablesWithValue = createKeyValuePairs())
+    then().variables_had_value(readValues = vars, variablesWithValue = createKeyValuePairs())
   }
 
   @Test
   fun `should write local variables to task service adapter`() {
 
     given()
-      .process_with_user_task_and_listener_is_deployed(delegateExpression = "\${${DelegateConfiguration::readLocalFromDelegateTask.name}}")
+      .process_with_user_task_and_listener_is_deployed(
+        delegateExpression = "\${${DelegateConfiguration::readLocalFromDelegateTask.name}}"
+      )
       .and()
       .process_is_started_with_variables(variables = createVariables())
       .and()
@@ -167,9 +173,9 @@ class TaskServiceAdapterITest : CamundaBpmDataITestBase() {
       .task_is_completed()
 
     then()
-      .variables_had_value(readValues = delegateConfiguration.vars, variablesWithValue = createKeyLocalValuePairs())
+      .variables_had_value(
+        readValues = delegateConfiguration.vars,
+        variablesWithValue = createKeyLocalValuePairs()
+      )
   }
-
 }
-
-

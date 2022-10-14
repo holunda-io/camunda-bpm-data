@@ -1,11 +1,11 @@
 package io.holunda.camunda.bpm.data.adapter.basic
 
 import io.holunda.camunda.bpm.data.CamundaBpmData
+import java.util.*
 import org.assertj.core.api.Assertions.assertThat
 import org.camunda.bpm.engine.externaltask.LockedExternalTask
 import org.camunda.bpm.engine.variable.VariableMap
 import org.junit.Test
-import java.util.*
 
 class ReadAdapterLockedExternalTaskTest {
 
@@ -13,23 +13,16 @@ class ReadAdapterLockedExternalTaskTest {
 
   @Test
   fun `get UUID type from variableMap directly`() {
-    val map = CamundaBpmData.builder()
-      .set(uuidVar, UUID.randomUUID())
-      .build()
+    val map = CamundaBpmData.builder().set(uuidVar, UUID.randomUUID()).build()
 
     assertThat(uuidVar.from(map).get()).isInstanceOf(UUID::class.java)
   }
 
   @Test
   fun `get UUID type from ExternalTask`() {
-    val variables = CamundaBpmData.builder()
-      .set(uuidVar, UUID.randomUUID())
-      .build()
+    val variables = CamundaBpmData.builder().set(uuidVar, UUID.randomUUID()).build()
 
-    val task = LockedExternalTaskFake(
-      id = UUID.randomUUID().toString(),
-      variables = variables
-    )
+    val task = LockedExternalTaskFake(id = UUID.randomUUID().toString(), variables = variables)
 
     assertThat(task.variables).isSameAs(variables)
     assertThat(uuidVar.from(task).get()).isInstanceOf(UUID::class.java)

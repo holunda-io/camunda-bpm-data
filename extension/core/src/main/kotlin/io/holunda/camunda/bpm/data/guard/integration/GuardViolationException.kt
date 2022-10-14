@@ -9,10 +9,8 @@ import org.camunda.bpm.engine.ProcessEngineException
  * @param violations list of guard violations.
  * @param reason reason of failure.
  */
-class GuardViolationException(
-  violations: List<GuardViolation<*>>,
-  reason: String
-) : ProcessEngineException(createMessage(reason, violations)) {
+class GuardViolationException(violations: List<GuardViolation<*>>, reason: String) :
+  ProcessEngineException(createMessage(reason, violations)) {
   companion object {
     /**
      * Create a message from a provided message prefix and a list of violations.

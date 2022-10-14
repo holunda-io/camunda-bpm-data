@@ -27,7 +27,8 @@ class VariableValueGuardCondition<T>(
           GuardViolation(
             condition = this,
             option = option,
-            message = "Expecting$localLabel variable '${variableFactory.name}' to have value '$value', but it was '${option.get()}'."
+            message =
+              "Expecting$localLabel variable '${variableFactory.name}' to have value '$value', but it was '${option.get()}'."
           )
         )
       }
@@ -38,7 +39,6 @@ class VariableValueGuardCondition<T>(
   override fun toString(): String {
     return "Value condition for$localLabel variable '${super.variableFactory.name}', value '$value'"
   }
-
 }
 
 /**
@@ -54,4 +54,3 @@ fun <T> VariableFactory<T>.hasValue(value: T) = VariableValueGuardCondition(this
  * @return instance of [VariableValueGuardCondition] on current factory.
  */
 fun <T> VariableFactory<T>.hasValueLocal(value: T) = VariableValueGuardCondition(this, value, true)
-

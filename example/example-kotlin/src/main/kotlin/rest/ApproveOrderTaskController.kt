@@ -4,17 +4,15 @@ import io.holunda.camunda.bpm.data.example.kotlin.domain.Order
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_APPROVED
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_TOTAL
+import java.math.BigDecimal
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.variable.Variables.createVariables
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import java.math.BigDecimal
 
 @RestController
 @RequestMapping("/task/approve-order")
-class ApproveOrderTaskController(
-  private val taskService: TaskService
-) {
+class ApproveOrderTaskController(private val taskService: TaskService) {
 
   @GetMapping("/{taskId}")
   fun loadTask(@PathVariable("taskId") taskId: String): ResponseEntity<ApproveTaskDto> {
@@ -24,7 +22,10 @@ class ApproveOrderTaskController(
   }
 
   @PostMapping("/{taskId}")
-  fun completeTask(@PathVariable("taskId") taskId: String, @RequestBody approveTaskComplete: ApproveTaskCompleteDto): ResponseEntity<Void> {
+  fun completeTask(
+    @PathVariable("taskId") taskId: String,
+    @RequestBody approveTaskComplete: ApproveTaskCompleteDto
+  ): ResponseEntity<Void> {
     val vars = createVariables()
     ORDER_APPROVED.on(vars).set(approveTaskComplete.approved)
     taskService.complete(taskId, vars)

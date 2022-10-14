@@ -15,16 +15,15 @@ import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Value
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SET_STRING
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SHORT
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.STRING
+import java.util.*
 import org.camunda.bpm.engine.variable.Variables.createVariables
 import org.junit.Assert.assertThrows
 import org.junit.Test
 import org.springframework.beans.factory.annotation.Autowired
-import java.util.*
 
 class VariableMapAdapterITest : CamundaBpmDataITestBase() {
 
-  @Autowired
-  lateinit var delegateConfiguration: DelegateConfiguration
+  @Autowired lateinit var delegateConfiguration: DelegateConfiguration
 
   @Test
   fun `should write to map`() {
@@ -46,24 +45,23 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
     COMPLEX_LIST_VAR.on(variables).set(Companion.Values.COMPLEX_LIST.value)
     COMPLEX_MAP_VAR.on(variables).set(Companion.Values.COMPLEX_MAP.value)
 
-
     given()
-      .process_with_delegate_is_deployed(delegateExpression = "\${${delegateConfiguration::readFromVariableScope.name}}")
-    whenever()
-      .process_is_started_with_variables(variables = variables)
-    then()
-      .variables_had_value(delegateConfiguration.vars, createKeyValuePairs())
+      .process_with_delegate_is_deployed(
+        delegateExpression = "\${${delegateConfiguration::readFromVariableScope.name}}"
+      )
+    whenever().process_is_started_with_variables(variables = variables)
+    then().variables_had_value(delegateConfiguration.vars, createKeyValuePairs())
   }
 
   @Test
   fun `should read from map`() {
 
     given()
-      .process_with_delegate_is_deployed(delegateExpression = "\${${DelegateConfiguration::readFromVariableMap.name}}")
-    whenever()
-      .process_is_started_with_variables(variables = createVariableMapUntyped())
-    then()
-      .variables_had_value(delegateConfiguration.vars, createKeyValuePairs())
+      .process_with_delegate_is_deployed(
+        delegateExpression = "\${${DelegateConfiguration::readFromVariableMap.name}}"
+      )
+    whenever().process_is_started_with_variables(variables = createVariableMapUntyped())
+    then().variables_had_value(delegateConfiguration.vars, createKeyValuePairs())
   }
 
   @Test
@@ -77,20 +75,23 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
     MAP_STRING_LONG_VAR.on(variables).remove()
 
     given()
-      .process_with_delegate_is_deployed(delegateExpression = "\${${DelegateConfiguration::readOptionalFromVariableScope.name}}")
+      .process_with_delegate_is_deployed(
+        delegateExpression = "\${${DelegateConfiguration::readOptionalFromVariableScope.name}}"
+      )
 
-    whenever()
-      .process_is_started_with_variables(variables = variables)
+    whenever().process_is_started_with_variables(variables = variables)
 
     then()
-      .variables_had_not_value(delegateConfiguration.optionalVars,
+      .variables_had_not_value(
+        delegateConfiguration.optionalVars,
         STRING_VAR,
         LIST_STRING_VAR,
         SET_STRING_VAR,
         MAP_STRING_LONG_VAR
       )
       .and()
-      .variables_had_value(delegateConfiguration.optionalVars,
+      .variables_had_value(
+        delegateConfiguration.optionalVars,
         setOf(LONG_VAR to Optional.of(LONG.value))
       )
   }
@@ -218,19 +219,15 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
   @Test
   fun `should throw correct WVT exception on basic`() {
 
-
     val variables = createVariableMapUntyped()
     val wrongBasicType: VariableFactory<Int> = intVariable(STRING_VAR.name)
 
     // wrong type
-    assertThrows(WrongVariableTypeException::class.java) {
-      wrongBasicType.from(variables).get()
-    }
+    assertThrows(WrongVariableTypeException::class.java) { wrongBasicType.from(variables).get() }
   }
 
   @Test
   fun `should throw correct WVT exception on basic optional`() {
-
 
     val variables = createVariableMapUntyped()
     val wrongBasicType: VariableFactory<Int> = intVariable(STRING_VAR.name)
@@ -244,7 +241,6 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
   @Test
   fun `should throw correct WVT exception on list `() {
 
-
     val variables = createVariableMapUntyped()
     val wrongListType: VariableFactory<List<Date>> = listVariable(STRING_VAR.name, Date::class.java)
 
@@ -256,7 +252,6 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
 
   @Test
   fun `should throw correct WVT exception on list optional`() {
-
 
     val variables = createVariableMapUntyped()
     val wrongListType: VariableFactory<List<Date>> = listVariable(STRING_VAR.name, Date::class.java)
@@ -270,9 +265,9 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
   @Test
   fun `should throw correct WVT exception on list target`() {
 
-
     val variables = createVariableMapUntyped()
-    val wrongListTargetType: VariableFactory<List<Date>> = listVariable(LIST_STRING_VAR.name, Date::class.java)
+    val wrongListTargetType: VariableFactory<List<Date>> =
+      listVariable(LIST_STRING_VAR.name, Date::class.java)
 
     assertThrows(WrongVariableTypeException::class.java) {
       // wrong type of the list
@@ -283,9 +278,9 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
   @Test
   fun `should throw correct WVT exception on list target optional`() {
 
-
     val variables = createVariableMapUntyped()
-    val wrongListTargetType: VariableFactory<List<Date>> = listVariable(LIST_STRING_VAR.name, Date::class.java)
+    val wrongListTargetType: VariableFactory<List<Date>> =
+      listVariable(LIST_STRING_VAR.name, Date::class.java)
     assertThrows(WrongVariableTypeException::class.java) {
       wrongListTargetType.from(variables).optional
     }
@@ -319,7 +314,8 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
   fun `should throw correct WVT exception on set target`() {
 
     val variables = createVariableMapUntyped()
-    val wrongSetTargetType: VariableFactory<Set<Date>> = setVariable(SET_STRING_VAR.name, Date::class.java)
+    val wrongSetTargetType: VariableFactory<Set<Date>> =
+      setVariable(SET_STRING_VAR.name, Date::class.java)
 
     assertThrows(WrongVariableTypeException::class.java) {
       // wrong type of the set
@@ -331,7 +327,8 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
   fun `should throw correct WVT exception on set target optional`() {
 
     val variables = createVariableMapUntyped()
-    val wrongSetTargetType: VariableFactory<Set<Date>> = setVariable(SET_STRING_VAR.name, Date::class.java)
+    val wrongSetTargetType: VariableFactory<Set<Date>> =
+      setVariable(SET_STRING_VAR.name, Date::class.java)
 
     assertThrows(WrongVariableTypeException::class.java) {
       // wrong type of the set
@@ -342,9 +339,9 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
   @Test
   fun `should throw correct WVT exception on map`() {
 
-
     val variables = createVariableMapUntyped()
-    val wrongMapType: VariableFactory<Map<Date, Date>> = mapVariable(STRING_VAR.name, Date::class.java, Date::class.java)
+    val wrongMapType: VariableFactory<Map<Date, Date>> =
+      mapVariable(STRING_VAR.name, Date::class.java, Date::class.java)
 
     assertThrows(WrongVariableTypeException::class.java) {
       // not a map
@@ -355,9 +352,9 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
   @Test
   fun `should throw correct WVT exception on map optional`() {
 
-
     val variables = createVariableMapUntyped()
-    val wrongMapType: VariableFactory<Map<Date, Date>> = mapVariable(STRING_VAR.name, Date::class.java, Date::class.java)
+    val wrongMapType: VariableFactory<Map<Date, Date>> =
+      mapVariable(STRING_VAR.name, Date::class.java, Date::class.java)
 
     assertThrows(WrongVariableTypeException::class.java) {
       // not a map
@@ -368,9 +365,9 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
   @Test
   fun `should throw correct WVT exception on key map`() {
 
-
     val variables = createVariableMapUntyped()
-    val wrongMapKeyType: VariableFactory<Map<Date, String>> = mapVariable(MAP_STRING_LONG_VAR.name, Date::class.java, String::class.java)
+    val wrongMapKeyType: VariableFactory<Map<Date, String>> =
+      mapVariable(MAP_STRING_LONG_VAR.name, Date::class.java, String::class.java)
     assertThrows(WrongVariableTypeException::class.java) {
       // wrong key type
       wrongMapKeyType.from(variables).get()
@@ -381,7 +378,8 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
   fun `should throw correct WVT exception on map key optional`() {
 
     val variables = createVariableMapUntyped()
-    val wrongMapKeyType: VariableFactory<Map<Date, String>> = mapVariable(MAP_STRING_LONG_VAR.name, Date::class.java, String::class.java)
+    val wrongMapKeyType: VariableFactory<Map<Date, String>> =
+      mapVariable(MAP_STRING_LONG_VAR.name, Date::class.java, String::class.java)
     assertThrows(WrongVariableTypeException::class.java) {
       // wrong key type
       wrongMapKeyType.from(variables).optional
@@ -392,7 +390,8 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
   fun `should throw correct WVT exception on value map`() {
 
     val variables = createVariableMapUntyped()
-    val wrongMapValueType: VariableFactory<Map<String, Date>> = mapVariable(MAP_STRING_LONG_VAR.name, String::class.java, Date::class.java)
+    val wrongMapValueType: VariableFactory<Map<String, Date>> =
+      mapVariable(MAP_STRING_LONG_VAR.name, String::class.java, Date::class.java)
 
     assertThrows(WrongVariableTypeException::class.java) {
       // wrong value type
@@ -404,7 +403,8 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
   fun `should throw correct WVT exception on map value optional`() {
 
     val variables = createVariableMapUntyped()
-    val wrongMapValueType: VariableFactory<Map<String, Date>> = mapVariable(MAP_STRING_LONG_VAR.name, String::class.java, Date::class.java)
+    val wrongMapValueType: VariableFactory<Map<String, Date>> =
+      mapVariable(MAP_STRING_LONG_VAR.name, String::class.java, Date::class.java)
 
     assertThrows(WrongVariableTypeException::class.java) {
       // wrong value type
@@ -412,4 +412,3 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
     }
   }
 }
-

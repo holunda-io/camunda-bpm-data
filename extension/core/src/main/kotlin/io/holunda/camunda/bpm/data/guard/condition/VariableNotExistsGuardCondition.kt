@@ -19,17 +19,19 @@ class VariableNotExistsGuardCondition<T>(
     if (!option.isPresent) {
       super.evaluate(option)
     } else {
-      listOf(GuardViolation(
-        condition = this,
-        option = option,
-        message = "Expecting$localLabel variable '${variableFactory.name}' not to be set, but it had a value of '${option.get()}'.")
+      listOf(
+        GuardViolation(
+          condition = this,
+          option = option,
+          message =
+            "Expecting$localLabel variable '${variableFactory.name}' not to be set, but it had a value of '${option.get()}'."
+        )
       )
     }
 
   override fun toString(): String {
     return "NotExists condition for$localLabel variable '${super.variableFactory.name}'"
   }
-
 }
 
 /**

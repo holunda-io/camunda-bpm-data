@@ -1,16 +1,14 @@
 package io.holunda.camunda.bpm.data
 
-import org.mockito.kotlin.mock
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.stringVariable
 import io.holunda.camunda.bpm.data.mockito.RuntimeServiceMockVerifier
 import io.holunda.camunda.bpm.data.mockito.RuntimeServiceVariableMockBuilder
+import java.util.*
 import org.camunda.bpm.engine.RuntimeService
 import org.junit.Test
-import java.util.*
+import org.mockito.kotlin.mock
 
-/**
- * Test to verify that update is not touching a variable is the value has not changed.
- */
+/** Test to verify that update is not touching a variable is the value has not changed. */
 class SmartUpdateTest {
 
   companion object {

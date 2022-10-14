@@ -1,9 +1,8 @@
 package io.holunda.camunda.bpm.data.adapter.list;
 
-import org.camunda.bpm.engine.CaseService;
-
 import java.util.List;
 import java.util.Optional;
+import org.camunda.bpm.engine.CaseService;
 
 /**
  * Read write adapter for case service access.
@@ -18,12 +17,13 @@ public class ListReadWriteAdapterCaseService<T> extends AbstractListReadWriteAda
   /**
    * Constructs the adapter.
    *
-   * @param caseService     case service to use.
+   * @param caseService case service to use.
    * @param caseExecutionId id of the execution to read from and write to.
-   * @param variableName    name of the variable.
-   * @param memberClazz     class of the variable.
+   * @param variableName name of the variable.
+   * @param memberClazz class of the variable.
    */
-  public ListReadWriteAdapterCaseService(CaseService caseService, String caseExecutionId, String variableName, Class<T> memberClazz) {
+  public ListReadWriteAdapterCaseService(
+      CaseService caseService, String caseExecutionId, String variableName, Class<T> memberClazz) {
     super(variableName, memberClazz);
     this.caseService = caseService;
     this.caseExecutionId = caseExecutionId;
@@ -41,7 +41,8 @@ public class ListReadWriteAdapterCaseService<T> extends AbstractListReadWriteAda
 
   @Override
   public Optional<List<T>> getLocalOptional() {
-    return Optional.ofNullable(getOrNull(caseService.getVariableLocal(caseExecutionId, variableName)));
+    return Optional.ofNullable(
+        getOrNull(caseService.getVariableLocal(caseExecutionId, variableName)));
   }
 
   @Override

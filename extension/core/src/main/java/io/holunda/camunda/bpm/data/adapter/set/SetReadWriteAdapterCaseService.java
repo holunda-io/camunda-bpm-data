@@ -1,9 +1,8 @@
 package io.holunda.camunda.bpm.data.adapter.set;
 
-import org.camunda.bpm.engine.CaseService;
-
 import java.util.Optional;
 import java.util.Set;
+import org.camunda.bpm.engine.CaseService;
 
 /**
  * Read write adapter for runtime service access.
@@ -18,12 +17,13 @@ public class SetReadWriteAdapterCaseService<T> extends AbstractSetReadWriteAdapt
   /**
    * Constructs the adapter.
    *
-   * @param caseService     case service to use.
+   * @param caseService case service to use.
    * @param caseExecutionId id of the execution to read from and write to.
-   * @param variableName    name of the variable.
-   * @param memberClazz     class of the variable.
+   * @param variableName name of the variable.
+   * @param memberClazz class of the variable.
    */
-  public SetReadWriteAdapterCaseService(CaseService caseService, String caseExecutionId, String variableName, Class<T> memberClazz) {
+  public SetReadWriteAdapterCaseService(
+      CaseService caseService, String caseExecutionId, String variableName, Class<T> memberClazz) {
     super(variableName, memberClazz);
     this.caseService = caseService;
     this.caseExecutionId = caseExecutionId;
@@ -41,7 +41,8 @@ public class SetReadWriteAdapterCaseService<T> extends AbstractSetReadWriteAdapt
 
   @Override
   public Optional<Set<T>> getLocalOptional() {
-    return Optional.ofNullable(getOrNull(caseService.getVariableLocal(caseExecutionId, variableName)));
+    return Optional.ofNullable(
+        getOrNull(caseService.getVariableLocal(caseExecutionId, variableName)));
   }
 
   @Override
@@ -58,5 +59,4 @@ public class SetReadWriteAdapterCaseService<T> extends AbstractSetReadWriteAdapt
   public void removeLocal() {
     caseService.removeVariableLocal(caseExecutionId, variableName);
   }
-
 }

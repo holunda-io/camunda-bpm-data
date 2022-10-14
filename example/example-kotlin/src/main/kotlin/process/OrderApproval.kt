@@ -15,6 +15,8 @@ import io.holunda.camunda.bpm.data.factory.VariableFactory
 import io.holunda.camunda.bpm.data.guard.condition.exists
 import io.holunda.camunda.bpm.data.guard.condition.matches
 import io.holunda.camunda.bpm.data.guard.integration.DefaultGuardTaskListener
+import java.math.BigDecimal
+import java.util.*
 import mu.KLogging
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.DelegateTask
@@ -24,17 +26,12 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.event.EventListener
-import java.math.BigDecimal
-import java.util.*
 
-/**
- * Backing bean.
- */
+/** Backing bean. */
 @Configuration
 class OrderApproval {
 
-  @Autowired
-  lateinit var orderRepository: OrderRepository
+  @Autowired lateinit var orderRepository: OrderRepository
 
   companion object : KLogging() {
     const val KEY = "order-approval"
@@ -48,9 +45,7 @@ class OrderApproval {
     val ORDER_TOTAL: VariableFactory<BigDecimal> = customVariable("orderTotal")
   }
 
-  /**
-   * Load a primitive variable by id (string) and store a complex variable (order).
-   */
+  /** Load a primitive variable by id (string) and store a complex variable (order). */
   @Bean
   fun loadOrder() = JavaDelegate { execution ->
     val orderId = ORDER_ID.from(execution).get()
@@ -59,19 +54,17 @@ class OrderApproval {
     ORDER_TOTAL.on(execution).set(BigDecimal.ZERO)
   }
 
-  /**
-   * Load a local order position, write a local variable.
-   */
+  /** Load a local order position, write a local variable. */
   @Bean
   fun calculateOrderPositions() = JavaDelegate { execution ->
     val orderPosition = ORDER_POSITION.from(execution).get()
 
-    ORDER_TOTAL.on(execution).update { total -> total.plus(orderPosition.netCost.times(BigDecimal.valueOf(orderPosition.amount))) }
+    ORDER_TOTAL.on(execution).update { total ->
+      total.plus(orderPosition.netCost.times(BigDecimal.valueOf(orderPosition.amount)))
+    }
   }
 
-  /**
-   * Read a local variable and store it in global variable.
-   */
+  /** Read a local variable and store it in global variable. */
   @Bean
   fun writeOrderTotal() = ExecutionListener { execution ->
     val total = ORDER_TOTAL.from(execution).get()
@@ -79,38 +72,47 @@ class OrderApproval {
   }
 
   /**
-   * Checks that the variable "orderApproved" exists and is true.
-   * Used as task listener on complete of user task in BPMN ${taskExecutionListener}
+   * Checks that the variable "orderApproved" exists and is true. Used as task listener on complete
+   * of user task in BPMN ${taskExecutionListener}
    *
    * @return task listener.
    */
   @Bean
-  fun guardTaskListener() = DefaultGuardTaskListener(
-    listOf(
-      ORDER_APPROVED.exists(),
-      ORDER_APPROVED.matches(this::isTrueViolationMessageSupplier) { it == true }
-    ), true
-  )
+  fun guardTaskListener() =
+    DefaultGuardTaskListener(
+      listOf(
+        ORDER_APPROVED.exists(),
+        ORDER_APPROVED.matches(this::isTrueViolationMessageSupplier) { it == true }
+      ),
+      true
+    )
 
-  private fun isTrueViolationMessageSupplier(variableFactory: VariableFactory<Boolean>, localLabel: String, option: Optional<Boolean>) =
+  private fun isTrueViolationMessageSupplier(
+    variableFactory: VariableFactory<Boolean>,
+    localLabel: String,
+    option: Optional<Boolean>
+  ) =
     "Expecting$localLabel variable '${variableFactory.name}' to be true, but its value '${option.get()}' has not."
 
-  /**
-   * Log the task id.
-   */
+  /** Log the task id. */
   @EventListener(condition = "#task != null && #task.eventName == 'create'")
   fun taskLogger(task: DelegateTask) {
     logger.info("TASK LOGGER: Created user task ${task.id}")
   }
 
-  @EventListener(condition = "#execution != null && #execution.eventName == 'start' && #execution.currentActivityId == 'start_order_created'")
+  @EventListener(
+    condition =
+      "#execution != null && #execution.eventName == 'start' && #execution.currentActivityId == 'start_order_created'"
+  )
   fun processStartLogger(execution: DelegateExecution) {
     logger.info { "INSTANCE LOGGER: Started process instance ${execution.processInstanceId}" }
   }
 
-  @EventListener(condition = "#execution != null && #execution.eventName == 'end' && #execution.currentActivityId == 'end_order_approved'")
+  @EventListener(
+    condition =
+      "#execution != null && #execution.eventName == 'end' && #execution.currentActivityId == 'end_order_approved'"
+  )
   fun processEndLogger(execution: DelegateExecution) {
     logger.info { "INSTANCE LOGGER: Finished process instance ${execution.processInstanceId}" }
   }
-
 }

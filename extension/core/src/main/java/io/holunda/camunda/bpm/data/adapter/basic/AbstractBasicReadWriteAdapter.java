@@ -3,9 +3,8 @@ package io.holunda.camunda.bpm.data.adapter.basic;
 import io.holunda.camunda.bpm.data.adapter.AbstractReadWriteAdapter;
 import io.holunda.camunda.bpm.data.adapter.ValueWrapperUtil;
 import io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException;
-import org.camunda.bpm.engine.variable.value.TypedValue;
-
 import java.util.UUID;
+import org.camunda.bpm.engine.variable.value.TypedValue;
 
 /**
  * Base class for all basic read-write-adapter.
@@ -13,16 +12,14 @@ import java.util.UUID;
  * @param <T> variable type.
  */
 public abstract class AbstractBasicReadWriteAdapter<T> extends AbstractReadWriteAdapter<T> {
-  /**
-   * Variable type.
-   */
+  /** Variable type. */
   protected final Class<T> clazz;
 
   /**
    * Constructs the adapter.
    *
    * @param variableName name of the variable.
-   * @param clazz        variable type.
+   * @param clazz variable type.
    */
   public AbstractBasicReadWriteAdapter(String variableName, Class<T> clazz) {
     super(variableName);
@@ -45,10 +42,12 @@ public abstract class AbstractBasicReadWriteAdapter<T> extends AbstractReadWrite
     if (clazz == UUID.class && String.class.isAssignableFrom(value.getClass())) {
       return (T) UUID.fromString((String) value);
     }
-    if (clazz.isAssignableFrom(value.getClass()) || ValueWrapperUtil.isAssignableFrom(clazz, value.getClass())) {
+    if (clazz.isAssignableFrom(value.getClass())
+        || ValueWrapperUtil.isAssignableFrom(clazz, value.getClass())) {
       return (T) value;
     }
-    throw new WrongVariableTypeException("Error reading " + variableName + ": Couldn't read value of " + clazz + " from " + value);
+    throw new WrongVariableTypeException(
+        "Error reading " + variableName + ": Couldn't read value of " + clazz + " from " + value);
   }
 
   @Override
