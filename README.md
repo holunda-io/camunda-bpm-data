@@ -206,6 +206,15 @@ See our [Examples](https://www.holunda.io/camunda-bpm-data/snapshot/user-guide/e
 
 This library is developed under Apache 2.0 License.
 
+## Development
+
+This code base is formatted using [spotless](https://github.com/diffplug/spotless),
+with [google-java-format](https://github.com/google/google-java-format) for java and [ktfmt](https://github.com/facebook/ktfmt) for kotlin.
+
+To get it working with IntelliJ IDE install **and activate**
+the [google-java-format plugin](https://plugins.jetbrains.com/plugin/8527-google-java-format/)
+and the [ktfmt plugin](https://plugins.jetbrains.com/plugin/14912-ktfmt).
+
 ## Contribution
 
 If you want to contribute to this project, feel free to do so. Start with [Contributing guide](http://holunda.io/camunda-bpm-data/snapshot/developer-guide/contribution.html).

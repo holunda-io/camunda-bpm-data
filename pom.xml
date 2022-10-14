@@ -38,6 +38,8 @@
     <pattern.class.itest>**/*ITest.*</pattern.class.itest>
     <pattern.package.itest>**/itest/**/*.*</pattern.package.itest>
 
+    <spotless.version>2.27.2</spotless.version>
+
     <!-- Skip instrumentalization by default -->
     <jacoco.skip>true</jacoco.skip>
     <!-- Skip KDoc by default -->
@@ -508,6 +510,66 @@
             </execution>
           </executions>
         </plugin>
+
+        <!-- code formatting -->
+        <plugin>
+          <groupId>com.diffplug.spotless</groupId>
+          <artifactId>spotless-maven-plugin</artifactId>
+          <version>${spotless.version}</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>check</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <formats>
+              <format>
+                <!-- handled file types -->
+                <includes>
+                  <include>*.*</include>
+                </includes>
+
+                <!-- applied formatting -->
+                <endWithNewline/>
+                <indent>
+                  <spaces>true</spaces>
+                  <spacesPerTab>2</spacesPerTab>
+                </indent>
+              </format>
+              <format>
+                <!-- handled file types -->
+                <includes>
+                  <include>*.*</include>
+                </includes>
+                <excludes>
+                  <!-- markdown files should not get trailing trimmed -->
+                  <exclude>*.md</exclude>
+                </excludes>
+
+                <!-- applied formatting -->
+                <trimTrailingWhitespace/>
+              </format>
+            </formats>
+            <java>
+              <importOrder />
+              <removeUnusedImports />
+              <!-- apply a specific flavor of google-java-format and reflow long strings -->
+              <googleJavaFormat>
+                <version>1.8</version>
+                <style>GOOGLE</style>
+                <reflowLongStrings>true</reflowLongStrings>
+              </googleJavaFormat>
+            </java>
+            <kotlin>
+              <ktfmt>
+                <version>0.40</version>
+                <style>GOOGLE</style>
+              </ktfmt>
+            </kotlin>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
 
@@ -519,6 +581,10 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>com.diffplug.spotless</groupId>
+        <artifactId>spotless-maven-plugin</artifactId>
       </plugin>
     </plugins>
 
