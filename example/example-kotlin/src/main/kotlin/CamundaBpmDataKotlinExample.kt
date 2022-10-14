@@ -9,7 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.context.event.EventListener
 
-fun main(args: Array<String>) = runApplication<CamundaBpmDataKotlinExampleApplication>(*args).let { Unit }
+fun main(args: Array<String>) =
+  runApplication<CamundaBpmDataKotlinExampleApplication>(*args).let { Unit }
 
 @SpringBootApplication
 @EnableProcessApplication
@@ -17,8 +18,7 @@ class CamundaBpmDataKotlinExampleApplication {
 
   companion object : KLogging()
 
-  @Autowired
-  lateinit var orderApprovalInstanceFactory: OrderApprovalInstanceFactory
+  @Autowired lateinit var orderApprovalInstanceFactory: OrderApprovalInstanceFactory
 
   @EventListener
   fun onDeploy(event: PostDeployEvent) {

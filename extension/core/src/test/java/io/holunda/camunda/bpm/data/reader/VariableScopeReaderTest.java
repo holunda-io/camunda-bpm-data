@@ -1,22 +1,22 @@
 package io.holunda.camunda.bpm.data.reader;
 
+import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.extension.mockito.delegate.DelegateExecutionFake;
 import org.junit.Test;
 
-import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
-import static org.assertj.core.api.Assertions.assertThat;
-
-// Testing is a bit different here because DelegateExecutionFake does not correctly support local variables.
+// Testing is a bit different here because DelegateExecutionFake does not correctly support local
+// variables.
 public class VariableScopeReaderTest {
 
   private static final VariableFactory<String> STRING = stringVariable("myString");
 
   private final String value = "value";
   private final String localValue = "localValue";
-
 
   @Test
   public void shouldDelegateGet() {
@@ -69,16 +69,19 @@ public class VariableScopeReaderTest {
     DelegateExecution execution = new DelegateExecutionFake();
     STRING.on(execution).set(value);
     assertThat(CamundaBpmData.reader(execution).getOrDefault(STRING, "default")).isEqualTo(value);
-    assertThat(CamundaBpmData.reader(execution).getOrDefault(stringVariable("xxx"), "default")).isEqualTo("default");
-
+    assertThat(CamundaBpmData.reader(execution).getOrDefault(stringVariable("xxx"), "default"))
+        .isEqualTo("default");
   }
 
   @Test
   public void shouldDelegateGetLocalOrDefault() {
     DelegateExecution execution = new DelegateExecutionFake();
     STRING.on(execution).setLocal(localValue);
-    assertThat(CamundaBpmData.reader(execution).getLocalOrDefault(STRING, "localDefault")).isEqualTo(localValue);
-    assertThat(CamundaBpmData.reader(execution).getLocalOrDefault(stringVariable("xxx"), "localDefault")).isEqualTo("localDefault");
+    assertThat(CamundaBpmData.reader(execution).getLocalOrDefault(STRING, "localDefault"))
+        .isEqualTo(localValue);
+    assertThat(
+            CamundaBpmData.reader(execution)
+                .getLocalOrDefault(stringVariable("xxx"), "localDefault"))
+        .isEqualTo("localDefault");
   }
-
 }

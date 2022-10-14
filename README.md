@@ -23,13 +23,14 @@ these snippets to a single process execution, it makes refactoring and testing o
 error-prone and challenging.
 
 This library helps you to overcome these difficulties and make access, manipulation and testing process variables really
-easy and convenient. We leverage the Camunda Platform 7 API and offer you not only a better API but also some [additional features](https://www.holunda.io/camunda-bpm-data/snapshot/user-guide/features.html).
+easy and convenient. We leverage the Camunda Platform 7 API and offer you not only a better API but also
+some [additional features](https://www.holunda.io/camunda-bpm-data/snapshot/user-guide/features.html).
 
 If you want to read more about data in Camunda processes, have a look on those articles:
 
-  * [Camunda Nation Podcast - Managing Data in Processes, with Simon Zambrovski](https://podcasts.apple.com/us/podcast/managing-data-in-processes-with-simon-zambrovski/id1478382505?i=1000547023972)
-  * [Data in Process (Part 1)](https://medium.com/holisticon-consultants/data-in-process-part-1-2620bf9abd76)
-  * [Data in Process (Part 2)](https://medium.com/holisticon-consultants/data-in-process-part-2-7c6a109e6ee2)
+* [Camunda Nation Podcast - Managing Data in Processes, with Simon Zambrovski](https://podcasts.apple.com/us/podcast/managing-data-in-processes-with-simon-zambrovski/id1478382505?i=1000547023972)
+* [Data in Process (Part 1)](https://medium.com/holisticon-consultants/data-in-process-part-1-2620bf9abd76)
+* [Data in Process (Part 2)](https://medium.com/holisticon-consultants/data-in-process-part-2-7c6a109e6ee2)
 
 ## Quick Introduction
 
@@ -56,7 +57,9 @@ For Gradle Groovy DSL add to your `build.gradle`:
 ``` groovy
 implementation 'io.holunda.data:camunda-bpm-data:1.2.6'
 ```
+
 ### Variable declaration
+
 Now your setup is completed, and you can declare your variables like this:
 
 ``` java
@@ -71,6 +74,7 @@ public class OrderApproval {
   public static final VariableFactory<OrderPosition> ORDER_POSITION = customVariable("orderPosition", OrderPosition.class);
 }
 ```
+
 ### Variable access from Java Delegate
 
 Finally, you want to access them from your Java delegates, Execution or Task Listeners or simple Java components:
@@ -206,12 +210,22 @@ See our [Examples](https://www.holunda.io/camunda-bpm-data/snapshot/user-guide/e
 
 This library is developed under Apache 2.0 License.
 
+## Development
+
+This code base is formatted using [spotless](https://github.com/diffplug/spotless),
+with [google-java-format](https://github.com/google/google-java-format) for java and [ktfmt](https://github.com/facebook/ktfmt) for kotlin.
+
+To get it working with IntelliJ IDE install **and activate**
+the [google-java-format plugin](https://plugins.jetbrains.com/plugin/8527-google-java-format/)
+and the [ktfmt plugin](https://plugins.jetbrains.com/plugin/14912-ktfmt).
+
 ## Contribution
 
-If you want to contribute to this project, feel free to do so. Start with [Contributing guide](http://holunda.io/camunda-bpm-data/snapshot/developer-guide/contribution.html).
+If you want to contribute to this project, feel free to do so. Start
+with [Contributing guide](http://holunda.io/camunda-bpm-data/snapshot/developer-guide/contribution.html).
 
 ## Maintainer
 
-[<img alt="zambrovski" src="https://avatars.githubusercontent.com/u/673128?v=4&s=117 width=117">](https://github.com/zambrovski) |[<img alt="jangalinski" src="https://avatars.githubusercontent.com/u/814032?v=4&s=117 width=117">](https://github.com/jangalinski) |[<img alt="christian-maschmann" src="https://avatars.githubusercontent.com/u/44058891?v=4&s=117 width=117">](https://github.com/christian-maschmann) |[<img alt="stefanzilske" src="https://avatars.githubusercontent.com/u/10954564?v=4&s=117 width=117">](https://github.com/stefanzilske) |[<img alt="nernsting" src="https://avatars.githubusercontent.com/u/1822388?v=4&s=117 width=117">](https://github.com/nernsting) |[<img alt="pschalk" src="https://avatars.githubusercontent.com/u/8512329?v=4&s=117 width=117">](https://github.com/pschalk) |[<img alt="srsp" src="https://avatars.githubusercontent.com/u/1210541?v=4&s=117 width=117">](https://github.com/srsp) |
-:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-[zambrovski](https://github.com/zambrovski)|[jangalinski](https://github.com/jangalinski)|[christian-maschmann](https://github.com/christian-maschmann)|[stefanzilske](https://github.com/stefanzilske)|[nernsting](https://github.com/nernsting)|[pschalk](https://github.com/pschalk)|[srsp](https://github.com/srsp)|
+| [<img alt="zambrovski" src="https://avatars.githubusercontent.com/u/673128?v=4&s=117 width=117">](https://github.com/zambrovski) | [<img alt="jangalinski" src="https://avatars.githubusercontent.com/u/814032?v=4&s=117 width=117">](https://github.com/jangalinski) | [<img alt="christian-maschmann" src="https://avatars.githubusercontent.com/u/44058891?v=4&s=117 width=117">](https://github.com/christian-maschmann) | [<img alt="stefanzilske" src="https://avatars.githubusercontent.com/u/10954564?v=4&s=117 width=117">](https://github.com/stefanzilske) | [<img alt="nernsting" src="https://avatars.githubusercontent.com/u/1822388?v=4&s=117 width=117">](https://github.com/nernsting) | [<img alt="pschalk" src="https://avatars.githubusercontent.com/u/8512329?v=4&s=117 width=117">](https://github.com/pschalk) | [<img alt="srsp" src="https://avatars.githubusercontent.com/u/1210541?v=4&s=117 width=117">](https://github.com/srsp) |
+|:--------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------:|
+|                                           [zambrovski](https://github.com/zambrovski)                                            |                                           [jangalinski](https://github.com/jangalinski)                                            |                                            [christian-maschmann](https://github.com/christian-maschmann)                                             |                                            [stefanzilske](https://github.com/stefanzilske)                                             |                                            [nernsting](https://github.com/nernsting)                                            |                                            [pschalk](https://github.com/pschalk)                                            |                                            [srsp](https://github.com/srsp)                                            |

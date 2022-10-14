@@ -1,15 +1,12 @@
 package io.holunda.camunda.bpm.data.reader;
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import java.util.Objects;
+import java.util.Optional;
 import org.camunda.bpm.engine.externaltask.LockedExternalTask;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
-import java.util.Optional;
-
-/**
- * Allows reading multiple variable values from {@link LockedExternalTask}).
- */
+/** Allows reading multiple variable values from {@link LockedExternalTask}). */
 public class LockedExternalTaskReader implements VariableReader {
 
   private final LockedExternalTask lockedExternalTask;

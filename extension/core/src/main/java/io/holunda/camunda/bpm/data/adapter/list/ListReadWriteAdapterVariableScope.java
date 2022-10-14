@@ -1,9 +1,8 @@
 package io.holunda.camunda.bpm.data.adapter.list;
 
-import org.camunda.bpm.engine.delegate.VariableScope;
-
 import java.util.List;
 import java.util.Optional;
+import org.camunda.bpm.engine.delegate.VariableScope;
 
 /**
  * Read-write adapter for variable scope.
@@ -18,10 +17,11 @@ public class ListReadWriteAdapterVariableScope<T> extends AbstractListReadWriteA
    * Constructs the adapter.
    *
    * @param variableScope variable scope to access.
-   * @param variableName  variable to access.
-   * @param memberClazz   class of member variable value.
+   * @param variableName variable to access.
+   * @param memberClazz class of member variable value.
    */
-  public ListReadWriteAdapterVariableScope(VariableScope variableScope, String variableName, Class<T> memberClazz) {
+  public ListReadWriteAdapterVariableScope(
+      VariableScope variableScope, String variableName, Class<T> memberClazz) {
     super(variableName, memberClazz);
     this.variableScope = variableScope;
   }
@@ -55,5 +55,4 @@ public class ListReadWriteAdapterVariableScope<T> extends AbstractListReadWriteA
   public void removeLocal() {
     variableScope.removeVariableLocal(variableName);
   }
-
 }

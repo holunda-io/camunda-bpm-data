@@ -1,15 +1,12 @@
 package io.holunda.camunda.bpm.data.reader;
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import java.util.Objects;
+import java.util.Optional;
 import org.camunda.bpm.engine.CaseService;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
-import java.util.Optional;
-
-/**
- * Allows reading multiple variable values from {@link CaseService#getVariable(String, String)}.
- */
+/** Allows reading multiple variable values from {@link CaseService#getVariable(String, String)}. */
 public class CaseServiceVariableReader implements VariableReader {
 
   private final CaseService caseService;
@@ -18,7 +15,7 @@ public class CaseServiceVariableReader implements VariableReader {
   /**
    * Constructs a reader operating on execution.
    *
-   * @param caseService     runtime service to use.
+   * @param caseService runtime service to use.
    * @param caseExecutionId execution id.
    */
   public CaseServiceVariableReader(CaseService caseService, String caseExecutionId) {

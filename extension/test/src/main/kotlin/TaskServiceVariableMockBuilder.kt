@@ -11,9 +11,7 @@ import org.mockito.kotlin.doAnswer
 import org.mockito.kotlin.eq
 import org.mockito.kotlin.whenever
 
-/**
- * Builder to mock the task service behavior regarding variables.
- */
+/** Builder to mock the task service behavior regarding variables. */
 class TaskServiceVariableMockBuilder(
   private val taskService: TaskService,
   private val variables: VariableMap = createVariables(),
@@ -49,53 +47,62 @@ class TaskServiceVariableMockBuilder(
    * @param value initial value.
    * @return fluent builder.
    */
-  fun <T> initialLocal(variableFactory: VariableFactory<T>, value: T): TaskServiceVariableMockBuilder {
+  fun <T> initialLocal(
+    variableFactory: VariableFactory<T>,
+    value: T
+  ): TaskServiceVariableMockBuilder {
     factories.add(variableFactory)
     variableFactory.on(localVariables).set(value)
     return this
   }
 
-  /**
-   * Performs the modifications on the task service.
-   */
+  /** Performs the modifications on the task service. */
   fun build() {
 
     factories.forEach { factory ->
 
       // global
-      doAnswer {
-        factory.from(variables).get()
-      }.whenever(taskService).getVariable(anyString(), eq(factory.name))
+      doAnswer { factory.from(variables).get() }
+        .whenever(taskService)
+        .getVariable(anyString(), eq(factory.name))
 
       doAnswer { invocation ->
-        // Arguments: 0: taskId, 1: variable name, 2: value
-        val value = invocation.getArgument<Any>(2)
-        variables[factory.name] = value
-      }.whenever(taskService).setVariable(anyString(), eq(factory.name), any())
+          // Arguments: 0: taskId, 1: variable name, 2: value
+          val value = invocation.getArgument<Any>(2)
+          variables[factory.name] = value
+        }
+        .whenever(taskService)
+        .setVariable(anyString(), eq(factory.name), any())
 
       // local
-      doAnswer {
-        factory.from(localVariables).get()
-      }.whenever(taskService).getVariableLocal(anyString(), eq(factory.name))
+      doAnswer { factory.from(localVariables).get() }
+        .whenever(taskService)
+        .getVariableLocal(anyString(), eq(factory.name))
 
       doAnswer { invocation ->
-        // Arguments: 0: taskId, 1: variable name, 2: value
-        val value = invocation.getArgument<Any>(2)
-        localVariables[factory.name] = value
-      }.whenever(taskService).setVariableLocal(anyString(), eq(factory.name), any())
+          // Arguments: 0: taskId, 1: variable name, 2: value
+          val value = invocation.getArgument<Any>(2)
+          localVariables[factory.name] = value
+        }
+        .whenever(taskService)
+        .setVariableLocal(anyString(), eq(factory.name), any())
     }
 
     doAnswer { variables }.whenever(taskService).getVariables(anyString())
     doAnswer { invocation ->
-      // Arguments: 0: taskId, 1: licat of variables
-      val variablesList = invocation.getArgument<List<String>>(1)
-      variables.filter { variablesList.contains(it.key) }
-    }.whenever(taskService).getVariables(anyString(), anyList())
+        // Arguments: 0: taskId, 1: licat of variables
+        val variablesList = invocation.getArgument<List<String>>(1)
+        variables.filter { variablesList.contains(it.key) }
+      }
+      .whenever(taskService)
+      .getVariables(anyString(), anyList())
     doAnswer { localVariables }.whenever(taskService).getVariablesLocal(anyString())
     doAnswer { invocation ->
-      // Arguments: 0: taskId, 1: licat of variables
-      val variablesList = invocation.getArgument<List<String>>(1)
-      localVariables.filter { variablesList.contains(it.key) }
-    }.whenever(taskService).getVariablesLocal(anyString(), anyList())
+        // Arguments: 0: taskId, 1: licat of variables
+        val variablesList = invocation.getArgument<List<String>>(1)
+        localVariables.filter { variablesList.contains(it.key) }
+      }
+      .whenever(taskService)
+      .getVariablesLocal(anyString(), anyList())
   }
 }

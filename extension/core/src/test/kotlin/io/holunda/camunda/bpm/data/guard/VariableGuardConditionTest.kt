@@ -3,14 +3,14 @@ package io.holunda.camunda.bpm.data.guard
 import io.holunda.camunda.bpm.data.CamundaBpmData.customVariable
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
 import io.holunda.camunda.bpm.data.guard.condition.*
-import org.assertj.core.api.Assertions.assertThat
-import org.camunda.bpm.engine.variable.Variables.createVariables
-import org.junit.Test
 import java.util.*
 import java.util.function.Supplier
 import javax.validation.Validation
 import javax.validation.Validator
 import javax.validation.constraints.Email
+import org.assertj.core.api.Assertions.assertThat
+import org.camunda.bpm.engine.variable.Variables.createVariables
+import org.junit.Test
 
 class VariableGuardConditionTest {
 
@@ -26,7 +26,8 @@ class VariableGuardConditionTest {
     val result = guard.evaluate(createVariables())
 
     assertThat(result.size).isEqualTo(1)
-    assertThat(result.first().message).isEqualTo("Expecting variable 'stringVariable' to be set, but it was not found.")
+    assertThat(result.first().message)
+      .isEqualTo("Expecting variable 'stringVariable' to be set, but it was not found.")
   }
 
   @Test
@@ -40,7 +41,8 @@ class VariableGuardConditionTest {
     val result = guard.evaluate(vars)
 
     assertThat(result.size).isEqualTo(1)
-    assertThat(result.first().message).isEqualTo("Expecting variable 'stringVariable' not to be set, but it had a value of 'some'.")
+    assertThat(result.first().message)
+      .isEqualTo("Expecting variable 'stringVariable' not to be set, but it had a value of 'some'.")
   }
 
   @Test
@@ -54,7 +56,8 @@ class VariableGuardConditionTest {
     val result = guard.evaluate(vars)
 
     assertThat(result.size).isEqualTo(1)
-    assertThat(result.first().message).isEqualTo("Expecting variable 'stringVariable' to have value 'expected', but it was 'some'.")
+    assertThat(result.first().message)
+      .isEqualTo("Expecting variable 'stringVariable' to have value 'expected', but it was 'some'.")
   }
 
   @Test
@@ -68,7 +71,10 @@ class VariableGuardConditionTest {
     val result = guard.evaluate(vars)
 
     assertThat(result.size).isEqualTo(1)
-    assertThat(result.first().message).isEqualTo("Expecting variable 'stringVariable' to be one of ['expected', 'another expected'], but it was 'some'.")
+    assertThat(result.first().message)
+      .isEqualTo(
+        "Expecting variable 'stringVariable' to be one of ['expected', 'another expected'], but it was 'some'."
+      )
   }
 
   @Test
@@ -82,15 +88,23 @@ class VariableGuardConditionTest {
     val result = guard.evaluate(vars)
 
     assertThat(result.size).isEqualTo(1)
-    assertThat(result.first().message).isEqualTo("Expecting variable 'stringVariable' to match the condition, but its value 'some' has not.")
+    assertThat(result.first().message)
+      .isEqualTo(
+        "Expecting variable 'stringVariable' to match the condition, but its value 'some' has not."
+      )
   }
 
   @Test
   fun test_matches_with_validation_message_supplier() {
 
-    val guard = VariablesGuard(STRING_VAR.matches({ variableFactory, localLabel, option ->
-      "Expecting$localLabel variable '${variableFactory.name}' to start with 'expected', but its value '${option.get()}' has not."
-    }) { it.startsWith("expected") })
+    val guard =
+      VariablesGuard(
+        STRING_VAR.matches({ variableFactory, localLabel, option ->
+          "Expecting$localLabel variable '${variableFactory.name}' to start with 'expected', but its value '${option.get()}' has not."
+        }) {
+          it.startsWith("expected")
+        }
+      )
 
     val vars = createVariables()
     STRING_VAR.on(vars).set("some")
@@ -98,7 +112,10 @@ class VariableGuardConditionTest {
     val result = guard.evaluate(vars)
 
     assertThat(result.size).isEqualTo(1)
-    assertThat(result.first().message).isEqualTo("Expecting variable 'stringVariable' to start with 'expected', but its value 'some' has not.")
+    assertThat(result.first().message)
+      .isEqualTo(
+        "Expecting variable 'stringVariable' to start with 'expected', but its value 'some' has not."
+      )
   }
 
   @Test
@@ -113,7 +130,10 @@ class VariableGuardConditionTest {
     val result = guard.evaluate(vars)
 
     assertThat(result.size).isEqualTo(1)
-    assertThat(result.first().message).isEqualTo("Expecting variable '$value' to match the regex '^regex.*', but its value '$value' has not.")
+    assertThat(result.first().message)
+      .isEqualTo(
+        "Expecting variable '$value' to match the regex '^regex.*', but its value '$value' has not."
+      )
   }
 
   @Test
@@ -128,7 +148,10 @@ class VariableGuardConditionTest {
     val result = guard.evaluate(vars)
 
     assertThat(result.size).isEqualTo(1)
-    assertThat(result.first().message).isEqualTo("Expecting variable '$value' to match the regex 'my Regex', but its value '$value' has not.")
+    assertThat(result.first().message)
+      .isEqualTo(
+        "Expecting variable '$value' to match the regex 'my Regex', but its value '$value' has not."
+      )
   }
 
   @Test
@@ -143,7 +166,10 @@ class VariableGuardConditionTest {
     val result = guard.evaluate(vars)
 
     assertThat(result.size).isEqualTo(1)
-    assertThat(result.first().message).isEqualTo("Expecting variable '$email' to match the regex 'E-Mail', but its value '$email' has not.")
+    assertThat(result.first().message)
+      .isEqualTo(
+        "Expecting variable '$email' to match the regex 'E-Mail', but its value '$email' has not."
+      )
   }
 
   @Test
@@ -158,14 +184,19 @@ class VariableGuardConditionTest {
     val result = guard.evaluate(vars)
 
     assertThat(result.size).isEqualTo(1)
-    assertThat(result.first().message).isEqualTo("Expecting variable '$uuid' to match the regex 'UUID', but its value '$uuid' has not.")
+    assertThat(result.first().message)
+      .isEqualTo(
+        "Expecting variable '$uuid' to match the regex 'UUID', but its value '$uuid' has not."
+      )
   }
 
   @Test
   fun test_is_valid_bean() {
     val person = MyValidBean("peter")
     val personVariable = customVariable("person", MyValidBean::class.java)
-    val validatorSupplier: Supplier<Validator> = Supplier { Validation.buildDefaultValidatorFactory().validator }
+    val validatorSupplier: Supplier<Validator> = Supplier {
+      Validation.buildDefaultValidatorFactory().validator
+    }
     val guard = VariablesGuard(personVariable.isValidBean(validatorSupplier))
 
     val vars = createVariables()
@@ -174,9 +205,11 @@ class VariableGuardConditionTest {
     val result = guard.evaluate(vars)
 
     assertThat(result.size).isEqualTo(1)
-    assertThat(result.first().message).startsWith("Expecting variable 'person' to be a valid bean, but its value '$person' has not.")
+    assertThat(result.first().message)
+      .startsWith(
+        "Expecting variable 'person' to be a valid bean, but its value '$person' has not."
+      )
   }
-
 }
 
 data class MyValidBean(@field:Email val email: String)

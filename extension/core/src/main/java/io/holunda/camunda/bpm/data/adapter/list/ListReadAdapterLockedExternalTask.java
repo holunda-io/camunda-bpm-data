@@ -2,12 +2,11 @@ package io.holunda.camunda.bpm.data.adapter.list;
 
 import io.holunda.camunda.bpm.data.adapter.ReadAdapter;
 import io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException;
-import org.camunda.bpm.engine.externaltask.LockedExternalTask;
-import org.camunda.bpm.engine.variable.Variables;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import org.camunda.bpm.engine.externaltask.LockedExternalTask;
+import org.camunda.bpm.engine.variable.Variables;
 
 /**
  * Read adapter for external task.
@@ -21,7 +20,8 @@ public class ListReadAdapterLockedExternalTask<T> implements ReadAdapter<List<T>
   private final String variableName;
   private final Class<T> memberClazz;
 
-  public ListReadAdapterLockedExternalTask(LockedExternalTask lockedExternalTask, String variableName, Class<T> memberClazz) {
+  public ListReadAdapterLockedExternalTask(
+      LockedExternalTask lockedExternalTask, String variableName, Class<T> memberClazz) {
     this.lockedExternalTask = lockedExternalTask;
     this.variableName = variableName;
     this.memberClazz = memberClazz;
@@ -82,17 +82,25 @@ public class ListReadAdapterLockedExternalTask<T> implements ReadAdapter<List<T>
         if (memberClazz.isAssignableFrom(valueAsList.iterator().next().getClass())) {
           return (List<T>) valueAsList;
         } else {
-          throw new WrongVariableTypeException("Error reading " + variableName + ": Wrong list type detected, expected " + memberClazz.getName() + ", but was not found in " + valueAsList);
+          throw new WrongVariableTypeException(
+              "Error reading "
+                  + variableName
+                  + ": Wrong list type detected, expected "
+                  + memberClazz.getName()
+                  + ", but was not found in "
+                  + valueAsList);
         }
       }
     }
 
-    throw new WrongVariableTypeException("Error reading " + variableName + ": Couldn't read value of type List from " + value);
+    throw new WrongVariableTypeException(
+        "Error reading " + variableName + ": Couldn't read value of type List from " + value);
   }
 
   private T getValue() {
-    return (T) Optional.ofNullable(lockedExternalTask.getVariables())
-      .orElse(Variables.createVariables())
-      .get(variableName);
+    return (T)
+        Optional.ofNullable(lockedExternalTask.getVariables())
+            .orElse(Variables.createVariables())
+            .get(variableName);
   }
 }

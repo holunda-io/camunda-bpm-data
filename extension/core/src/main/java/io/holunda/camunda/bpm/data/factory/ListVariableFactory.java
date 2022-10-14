@@ -8,6 +8,8 @@ import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterRuntimeServi
 import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterTaskService;
 import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterVariableMap;
 import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterVariableScope;
+import java.util.List;
+import java.util.Objects;
 import org.camunda.bpm.engine.CaseService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
@@ -16,9 +18,6 @@ import org.camunda.bpm.engine.externaltask.LockedExternalTask;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-import java.util.Objects;
-
 /**
  * Variable factory of a base parametrized list type.
  *
@@ -26,11 +25,9 @@ import java.util.Objects;
  */
 public class ListVariableFactory<T> implements VariableFactory<List<T>> {
 
-  @NotNull
-  private final String name;
+  @NotNull private final String name;
 
-  @NotNull
-  private final Class<T> memberClazz;
+  @NotNull private final Class<T> memberClazz;
 
   public ListVariableFactory(@NotNull String name, @NotNull Class<T> memberClazz) {
     this.name = name;
@@ -105,13 +102,10 @@ public class ListVariableFactory<T> implements VariableFactory<List<T>> {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o)
-      return true;
-    if (o == null || getClass() != o.getClass())
-      return false;
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
     ListVariableFactory<?> that = (ListVariableFactory<?>) o;
-    return name.equals(that.name) &&
-      memberClazz.equals(that.memberClazz);
+    return name.equals(that.name) && memberClazz.equals(that.memberClazz);
   }
 
   @Override
@@ -121,9 +115,6 @@ public class ListVariableFactory<T> implements VariableFactory<List<T>> {
 
   @Override
   public String toString() {
-    return "ListVariableFactory{" +
-      "name='" + name + '\'' +
-      ", memberClazz=" + memberClazz +
-      '}';
+    return "ListVariableFactory{" + "name='" + name + '\'' + ", memberClazz=" + memberClazz + '}';
   }
 }

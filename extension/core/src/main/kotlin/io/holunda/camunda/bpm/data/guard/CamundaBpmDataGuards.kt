@@ -7,9 +7,7 @@ import java.util.function.Function
 import java.util.function.Supplier
 import javax.validation.Validator
 
-/**
- * Guard creation methods.
- */
+/** Guard creation methods. */
 @Suppress("unused")
 object CamundaBpmDataGuards {
 
@@ -17,8 +15,7 @@ object CamundaBpmDataGuards {
    * Creates exists condition.
    * @param variableFactory factory to work on.
    */
-  @JvmStatic
-  fun <T> exists(variableFactory: VariableFactory<T>) = variableFactory.exists()
+  @JvmStatic fun <T> exists(variableFactory: VariableFactory<T>) = variableFactory.exists()
 
   /**
    * Creates exists local condition.
@@ -38,8 +35,7 @@ object CamundaBpmDataGuards {
    * Creates not exists condition.
    * @param variableFactory factory to work on.
    */
-  @JvmStatic
-  fun <T> notExists(variableFactory: VariableFactory<T>) = variableFactory.notExists()
+  @JvmStatic fun <T> notExists(variableFactory: VariableFactory<T>) = variableFactory.notExists()
 
   /**
    * Creates has value local condition.
@@ -47,7 +43,8 @@ object CamundaBpmDataGuards {
    * @param value value that the variable must have.
    */
   @JvmStatic
-  fun <T> hasValueLocal(variableFactory: VariableFactory<T>, value: T) = variableFactory.hasValueLocal(value)
+  fun <T> hasValueLocal(variableFactory: VariableFactory<T>, value: T) =
+    variableFactory.hasValueLocal(value)
 
   /**
    * Creates has value condition.
@@ -63,7 +60,8 @@ object CamundaBpmDataGuards {
    * @param values set of values to compare with the variable value.
    */
   @JvmStatic
-  fun <T> hasOneOfValuesLocal(variableFactory: VariableFactory<T>, values: Set<T>) = variableFactory.hasOneOfValuesLocal(values)
+  fun <T> hasOneOfValuesLocal(variableFactory: VariableFactory<T>, values: Set<T>) =
+    variableFactory.hasOneOfValuesLocal(values)
 
   /**
    * Creates has value condition.
@@ -71,7 +69,8 @@ object CamundaBpmDataGuards {
    * @param values set of values to compare with the variable value.
    */
   @JvmStatic
-  fun <T> hasOneOfValues(variableFactory: VariableFactory<T>, values: Set<T>) = variableFactory.hasOneOfValues(values)
+  fun <T> hasOneOfValues(variableFactory: VariableFactory<T>, values: Set<T>) =
+    variableFactory.hasOneOfValues(values)
 
   /**
    * Creates matches local condition.
@@ -79,8 +78,8 @@ object CamundaBpmDataGuards {
    * @param matcher a matcher function to check the variable value.
    */
   @JvmStatic
-  fun <T> matchesLocal(variableFactory: VariableFactory<T>,
-                  matcher: Function<T, Boolean>) = variableFactory.matchesLocal { matcher.apply(it) }
+  fun <T> matchesLocal(variableFactory: VariableFactory<T>, matcher: Function<T, Boolean>) =
+    variableFactory.matchesLocal { matcher.apply(it) }
 
   /**
    * Creates matches condition.
@@ -88,8 +87,8 @@ object CamundaBpmDataGuards {
    * @param matcher a matcher function to check the variable value.
    */
   @JvmStatic
-  fun <T> matches(variableFactory: VariableFactory<T>,
-                  matcher: Function<T, Boolean>) = variableFactory.matches { matcher.apply(it) }
+  fun <T> matches(variableFactory: VariableFactory<T>, matcher: Function<T, Boolean>) =
+    variableFactory.matches { matcher.apply(it) }
 
   /**
    * Creates matches local condition.
@@ -101,7 +100,8 @@ object CamundaBpmDataGuards {
   fun <T> matchesLocal(
     variableFactory: VariableFactory<T>,
     matcher: Function<T, Boolean>,
-    violationMessageSupplier: (variableFactory: VariableFactory<T>, localLabel: String, option: Optional<T>) -> String
+    violationMessageSupplier:
+      (variableFactory: VariableFactory<T>, localLabel: String, option: Optional<T>) -> String
   ) = variableFactory.matchesLocal(violationMessageSupplier) { matcher.apply(it) }
 
   /**
@@ -114,7 +114,8 @@ object CamundaBpmDataGuards {
   fun <T> matches(
     variableFactory: VariableFactory<T>,
     matcher: Function<T, Boolean>,
-    violationMessageSupplier: (variableFactory: VariableFactory<T>, localLabel: String, option: Optional<T>) -> String
+    violationMessageSupplier:
+      (variableFactory: VariableFactory<T>, localLabel: String, option: Optional<T>) -> String
   ) = variableFactory.matches(violationMessageSupplier) { matcher.apply(it) }
 
   /**
@@ -123,7 +124,8 @@ object CamundaBpmDataGuards {
    * @param regex a regex to check the variable value.
    */
   @JvmStatic
-  fun <T> matchesRegexLocal(variableFactory: VariableFactory<T>, regex: String) = variableFactory.matchesRegexLocal(Regex(regex))
+  fun <T> matchesRegexLocal(variableFactory: VariableFactory<T>, regex: String) =
+    variableFactory.matchesRegexLocal(Regex(regex))
 
   /**
    * Creates matches regex Local condition.
@@ -132,8 +134,11 @@ object CamundaBpmDataGuards {
    * @param regexDisplayName a display name representing the regex.
    */
   @JvmStatic
-  fun <T> matchesRegexLocal(variableFactory: VariableFactory<T>, regex: String, regexDisplayName: String) =
-    variableFactory.matchesRegexLocal(Regex(regex), regexDisplayName)
+  fun <T> matchesRegexLocal(
+    variableFactory: VariableFactory<T>,
+    regex: String,
+    regexDisplayName: String
+  ) = variableFactory.matchesRegexLocal(Regex(regex), regexDisplayName)
 
   /**
    * Creates matches regex condition.
@@ -141,7 +146,8 @@ object CamundaBpmDataGuards {
    * @param regex a regex to check the variable value.
    */
   @JvmStatic
-  fun <T> matchesRegex(variableFactory: VariableFactory<T>, regex: String) = variableFactory.matchesRegex(Regex(regex))
+  fun <T> matchesRegex(variableFactory: VariableFactory<T>, regex: String) =
+    variableFactory.matchesRegex(Regex(regex))
 
   /**
    * Creates matches regex condition.
@@ -150,8 +156,11 @@ object CamundaBpmDataGuards {
    * @param regexDisplayName a display name representing the regex.
    */
   @JvmStatic
-  fun <T> matchesRegex(variableFactory: VariableFactory<T>, regex: String, regexDisplayName: String) =
-    variableFactory.matchesRegex(Regex(regex), regexDisplayName)
+  fun <T> matchesRegex(
+    variableFactory: VariableFactory<T>,
+    regex: String,
+    regexDisplayName: String
+  ) = variableFactory.matchesRegex(Regex(regex), regexDisplayName)
 
   /**
    * Creates matches E-Mail regex local condition.
@@ -164,8 +173,7 @@ object CamundaBpmDataGuards {
    * Creates matches E-Mail regex condition.
    * @param variableFactory factory to work on.
    */
-  @JvmStatic
-  fun <T> isEmail(variableFactory: VariableFactory<T>) = variableFactory.isEmail()
+  @JvmStatic fun <T> isEmail(variableFactory: VariableFactory<T>) = variableFactory.isEmail()
 
   /**
    * Creates matches UUID regex local condition.
@@ -178,8 +186,7 @@ object CamundaBpmDataGuards {
    * Creates matches UUID regex condition.
    * @param variableFactory factory to work on.
    */
-  @JvmStatic
-  fun <T> isUuid(variableFactory: VariableFactory<T>) = variableFactory.isUuid()
+  @JvmStatic fun <T> isUuid(variableFactory: VariableFactory<T>) = variableFactory.isUuid()
 
   /**
    * Creates valid bean condition.
@@ -187,7 +194,8 @@ object CamundaBpmDataGuards {
    * @param validatorSupplier supplier for the validator.
    */
   @JvmStatic
-  fun <T> isValidBean(variableFactory: VariableFactory<T>, validatorSupplier : Supplier<Validator>) = variableFactory.isValidBean(validatorSupplier)
+  fun <T> isValidBean(variableFactory: VariableFactory<T>, validatorSupplier: Supplier<Validator>) =
+    variableFactory.isValidBean(validatorSupplier)
 
   /**
    * Creates valid bean local condition.
@@ -195,6 +203,8 @@ object CamundaBpmDataGuards {
    * @param validatorSupplier supplier for the validator.
    */
   @JvmStatic
-  fun <T> isValidBeanLocal(variableFactory: VariableFactory<T>, validatorSupplier : Supplier<Validator>) = variableFactory.isValidBeanLocal(validatorSupplier)
-
+  fun <T> isValidBeanLocal(
+    variableFactory: VariableFactory<T>,
+    validatorSupplier: Supplier<Validator>
+  ) = variableFactory.isValidBeanLocal(validatorSupplier)
 }

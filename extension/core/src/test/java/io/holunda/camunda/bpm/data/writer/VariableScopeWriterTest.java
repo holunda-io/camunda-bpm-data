@@ -1,12 +1,12 @@
 package io.holunda.camunda.bpm.data.writer;
 
+import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.extension.mockito.delegate.DelegateExecutionFake;
 import org.junit.Test;
-
-import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class VariableScopeWriterTest {
 
@@ -16,19 +16,14 @@ public class VariableScopeWriterTest {
   public void testSet() {
     DelegateExecutionFake execution = DelegateExecutionFake.of().withId("4711");
 
-    CamundaBpmData
-      .writer(execution)
-      .set(STRING, "value")
-      .variables();
+    CamundaBpmData.writer(execution).set(STRING, "value").variables();
     assertThat(execution.getVariable(STRING.getName())).isEqualTo("value");
   }
 
   @Test
   public void testSetLocal() {
     DelegateExecutionFake execution = DelegateExecutionFake.of().withId("4711");
-    CamundaBpmData
-      .writer(execution)
-      .setLocal(STRING, "value");
+    CamundaBpmData.writer(execution).setLocal(STRING, "value");
     assertThat(execution.getVariableLocal(STRING.getName())).isEqualTo("value");
   }
 
@@ -36,8 +31,7 @@ public class VariableScopeWriterTest {
   public void testRemove() {
     DelegateExecutionFake execution = DelegateExecutionFake.of().withId("4711");
     STRING.on(execution).set("value");
-    CamundaBpmData.writer(execution)
-      .remove(STRING);
+    CamundaBpmData.writer(execution).remove(STRING);
     assertThat(execution.getVariableNames()).isEmpty();
   }
 
@@ -45,10 +39,7 @@ public class VariableScopeWriterTest {
   public void testRemoveLocal() {
     DelegateExecutionFake execution = DelegateExecutionFake.of().withId("4711");
     STRING.on(execution).setLocal("value");
-    CamundaBpmData
-      .writer(execution)
-      .removeLocal(STRING);
+    CamundaBpmData.writer(execution).removeLocal(STRING);
     assertThat(execution.getVariableNames()).isEmpty();
   }
-
 }

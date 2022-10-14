@@ -13,5 +13,6 @@ class KotlinJacksonDataFormatConfigurator : DataFormatConfigurator<JacksonJsonDa
     objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
   }
 
-  override fun getDataFormatClass(): Class<JacksonJsonDataFormat> = JacksonJsonDataFormat::class.java
+  override fun getDataFormatClass(): Class<JacksonJsonDataFormat> =
+    JacksonJsonDataFormat::class.java
 }

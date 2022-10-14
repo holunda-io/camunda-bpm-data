@@ -1,8 +1,7 @@
 package io.holunda.camunda.bpm.data.adapter.basic;
 
-import org.camunda.bpm.engine.RuntimeService;
-
 import java.util.Optional;
+import org.camunda.bpm.engine.RuntimeService;
 
 /**
  * Read write adapter for runtime service access.
@@ -18,11 +17,12 @@ public class ReadWriteAdapterRuntimeService<T> extends AbstractBasicReadWriteAda
    * Constructs the adapter.
    *
    * @param runtimeService runtime service to use.
-   * @param executionId    id of the execution to read from and write to.
-   * @param variableName   name of the variable.
-   * @param clazz          class of the variable.
+   * @param executionId id of the execution to read from and write to.
+   * @param variableName name of the variable.
+   * @param clazz class of the variable.
    */
-  public ReadWriteAdapterRuntimeService(RuntimeService runtimeService, String executionId, String variableName, Class<T> clazz) {
+  public ReadWriteAdapterRuntimeService(
+      RuntimeService runtimeService, String executionId, String variableName, Class<T> clazz) {
     super(variableName, clazz);
     this.runtimeService = runtimeService;
     this.executionId = executionId;
@@ -40,7 +40,8 @@ public class ReadWriteAdapterRuntimeService<T> extends AbstractBasicReadWriteAda
 
   @Override
   public Optional<T> getLocalOptional() {
-    return Optional.ofNullable(getOrNull(runtimeService.getVariableLocal(executionId, variableName)));
+    return Optional.ofNullable(
+        getOrNull(runtimeService.getVariableLocal(executionId, variableName)));
   }
 
   @Override

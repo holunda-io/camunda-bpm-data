@@ -1,9 +1,8 @@
 package io.holunda.camunda.bpm.data.adapter.list;
 
-import org.camunda.bpm.engine.TaskService;
-
 import java.util.List;
 import java.util.Optional;
+import org.camunda.bpm.engine.TaskService;
 
 /**
  * Read write adapter for task service access.
@@ -18,12 +17,13 @@ public class ListReadWriteAdapterTaskService<T> extends AbstractListReadWriteAda
   /**
    * Constructs the adapter.
    *
-   * @param taskService  task service to use.
-   * @param taskId       id of the task to read from and write to.
+   * @param taskService task service to use.
+   * @param taskId id of the task to read from and write to.
    * @param variableName name of the variable.
-   * @param memberClazz  class of the variable.
+   * @param memberClazz class of the variable.
    */
-  public ListReadWriteAdapterTaskService(TaskService taskService, String taskId, String variableName, Class<T> memberClazz) {
+  public ListReadWriteAdapterTaskService(
+      TaskService taskService, String taskId, String variableName, Class<T> memberClazz) {
     super(variableName, memberClazz);
     this.taskService = taskService;
     this.taskId = taskId;
@@ -58,5 +58,4 @@ public class ListReadWriteAdapterTaskService<T> extends AbstractListReadWriteAda
   public void removeLocal() {
     taskService.removeVariableLocal(taskId, variableName);
   }
-
 }

@@ -1,9 +1,8 @@
 package io.holunda.camunda.bpm.data.adapter.map;
 
-import org.camunda.bpm.engine.variable.VariableMap;
-
 import java.util.Map;
 import java.util.Optional;
+import org.camunda.bpm.engine.variable.VariableMap;
 
 /**
  * Read-write adapter for variable map.
@@ -18,12 +17,13 @@ public class MapReadWriteAdapterVariableMap<K, V> extends AbstractMapReadWriteAd
   /**
    * Constructs the adapter.
    *
-   * @param variableMap  variable map to access.
+   * @param variableMap variable map to access.
    * @param variableName variable to access.
-   * @param keyClazz     class of variable key.
-   * @param valueClazz   class of variable value.
+   * @param keyClazz class of variable key.
+   * @param valueClazz class of variable value.
    */
-  public MapReadWriteAdapterVariableMap(VariableMap variableMap, String variableName, Class<K> keyClazz, Class<V> valueClazz) {
+  public MapReadWriteAdapterVariableMap(
+      VariableMap variableMap, String variableName, Class<K> keyClazz, Class<V> valueClazz) {
     super(variableName, keyClazz, valueClazz);
     this.variableMap = variableMap;
   }
@@ -57,5 +57,4 @@ public class MapReadWriteAdapterVariableMap<K, V> extends AbstractMapReadWriteAd
   public void removeLocal() {
     throw new UnsupportedOperationException("Can't set a local variable on a variable map");
   }
-
 }

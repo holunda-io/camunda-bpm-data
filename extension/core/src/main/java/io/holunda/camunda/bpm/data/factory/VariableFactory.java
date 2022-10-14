@@ -51,7 +51,7 @@ public interface VariableFactory<T> {
    * Creates a write adapter on execution.
    *
    * @param runtimeService underlying runtime service to work on.
-   * @param executionId    id identifying execution.
+   * @param executionId id identifying execution.
    * @return write adapter
    */
   WriteAdapter<T> on(RuntimeService runtimeService, String executionId);
@@ -60,7 +60,7 @@ public interface VariableFactory<T> {
    * Creates a read adapter on execution.
    *
    * @param runtimeService underlying runtime service to work on.
-   * @param executionId    id identifying execution.
+   * @param executionId id identifying execution.
    * @return read adapter.
    */
   ReadAdapter<T> from(RuntimeService runtimeService, String executionId);
@@ -69,7 +69,7 @@ public interface VariableFactory<T> {
    * Creates a write adapter on task.
    *
    * @param taskService underlying task service to work on.
-   * @param taskId      id identifying task.
+   * @param taskId id identifying task.
    * @return write adapter
    */
   WriteAdapter<T> on(TaskService taskService, String taskId);
@@ -78,7 +78,7 @@ public interface VariableFactory<T> {
    * Creates a read adapter on task.
    *
    * @param taskService underlying task service to work on.
-   * @param taskId      id identifying task.
+   * @param taskId id identifying task.
    * @return read adapter.
    */
   ReadAdapter<T> from(TaskService taskService, String taskId);
@@ -86,7 +86,7 @@ public interface VariableFactory<T> {
   /**
    * Creates a write adapter on task.
    *
-   * @param caseService     underlying case service to work on.
+   * @param caseService underlying case service to work on.
    * @param caseExecutionId id identifying case execution.
    * @return write adapter
    */
@@ -95,7 +95,7 @@ public interface VariableFactory<T> {
   /**
    * Creates a read adapter on task.
    *
-   * @param caseService     underlying case service to work on.
+   * @param caseService underlying case service to work on.
    * @param caseExecutionId id identifying case execution.
    * @return read adapter.
    */

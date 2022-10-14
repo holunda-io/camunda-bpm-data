@@ -1,9 +1,8 @@
 package io.holunda.camunda.bpm.data.adapter.map;
 
-import org.camunda.bpm.engine.TaskService;
-
 import java.util.Map;
 import java.util.Optional;
+import org.camunda.bpm.engine.TaskService;
 
 /**
  * Read write adapter for task service access.
@@ -19,14 +18,18 @@ public class MapReadWriteAdapterTaskService<K, V> extends AbstractMapReadWriteAd
   /**
    * Constructs the adapter.
    *
-   * @param taskService  task service to use.
-   * @param taskId       id of the task to read from and write to.
+   * @param taskService task service to use.
+   * @param taskId id of the task to read from and write to.
    * @param variableName name of the variable.
-   * @param keyClazz     class of the key of variable.
-   * @param valueClazz   class of variable.
+   * @param keyClazz class of the key of variable.
+   * @param valueClazz class of variable.
    */
   public MapReadWriteAdapterTaskService(
-    TaskService taskService, String taskId, String variableName, Class<K> keyClazz, Class<V> valueClazz) {
+      TaskService taskService,
+      String taskId,
+      String variableName,
+      Class<K> keyClazz,
+      Class<V> valueClazz) {
     super(variableName, keyClazz, valueClazz);
     this.taskService = taskService;
     this.taskId = taskId;
@@ -61,5 +64,4 @@ public class MapReadWriteAdapterTaskService<K, V> extends AbstractMapReadWriteAd
   public void removeLocal() {
     taskService.removeVariableLocal(taskId, variableName);
   }
-
 }

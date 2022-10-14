@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.time.Instant;
 import java.util.Date;
-
 import org.camunda.bpm.engine.variable.type.PrimitiveValueType;
 import org.camunda.bpm.engine.variable.value.BooleanValue;
 import org.camunda.bpm.engine.variable.value.DateValue;
@@ -43,7 +42,8 @@ public class ValueWrapperUtilTest {
 
   @Test
   public void shouldReturnIntegerValue() {
-    TypedValue integerValue = ValueWrapperUtil.getTypedValue(Integer.class, Integer.MIN_VALUE, false);
+    TypedValue integerValue =
+        ValueWrapperUtil.getTypedValue(Integer.class, Integer.MIN_VALUE, false);
     assertThat(integerValue).isInstanceOf(IntegerValue.class);
     assertThat(integerValue.getType()).isExactlyInstanceOf(PrimitiveValueType.INTEGER.getClass());
     assertThat(integerValue.getValue()).isEqualTo(Integer.MIN_VALUE);
@@ -60,7 +60,6 @@ public class ValueWrapperUtilTest {
     assertThat(integerValue.getType()).isExactlyInstanceOf(PrimitiveValueType.INTEGER.getClass());
     assertThat(integerValue.getValue()).isNull();
     assertThat(integerValue.isTransient()).isTrue();
-
   }
 
   @Test
@@ -84,7 +83,6 @@ public class ValueWrapperUtilTest {
     assertThat(dateValue.getType()).isExactlyInstanceOf(PrimitiveValueType.DATE.getClass());
     assertThat(dateValue.getValue()).isNull();
     assertThat(dateValue.isTransient()).isTrue();
-
   }
 
   @Test
@@ -106,7 +104,6 @@ public class ValueWrapperUtilTest {
     assertThat(booleanValue.getType()).isExactlyInstanceOf(PrimitiveValueType.BOOLEAN.getClass());
     assertThat(booleanValue.getValue()).isNull();
     assertThat(booleanValue.isTransient()).isTrue();
-
   }
 
   @Test
@@ -128,7 +125,6 @@ public class ValueWrapperUtilTest {
     assertThat(longValue.getType()).isExactlyInstanceOf(PrimitiveValueType.LONG.getClass());
     assertThat(longValue.getValue()).isNull();
     assertThat(longValue.isTransient()).isTrue();
-
   }
 
   @Test
@@ -171,7 +167,6 @@ public class ValueWrapperUtilTest {
     assertThat(shortValue.getType()).isExactlyInstanceOf(PrimitiveValueType.SHORT.getClass());
     assertThat(shortValue.getValue()).isNull();
     assertThat(shortValue.isTransient()).isTrue();
-
   }
 
   @Test
@@ -194,7 +189,6 @@ public class ValueWrapperUtilTest {
     assertThat(objectValue.getType()).isExactlyInstanceOf(PrimitiveValueType.OBJECT.getClass());
     assertThat(objectValue.getValue()).isNull();
     assertThat(objectValue.isTransient()).isTrue();
-
   }
 
   @Test
@@ -214,13 +208,11 @@ public class ValueWrapperUtilTest {
     assertThat(untypedValue.getType()).isInstanceOf(PrimitiveValueType.NULL.getClass());
     assertThat(untypedValue.getValue()).isNull();
     assertThat(untypedValue.isTransient()).isTrue();
-
   }
 
   @Test
   public void shouldThrowExceptionOnWrongType() {
     assertThatThrownBy(() -> ValueWrapperUtil.getTypedValue(Date.class, Instant.now(), false))
-      .isInstanceOf(IllegalArgumentException.class);
+        .isInstanceOf(IllegalArgumentException.class);
   }
-
 }

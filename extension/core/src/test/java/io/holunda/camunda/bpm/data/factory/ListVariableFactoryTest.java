@@ -1,11 +1,16 @@
 package io.holunda.camunda.bpm.data.factory;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
+
 import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterCaseService;
 import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterRuntimeService;
 import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterTaskService;
 import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterVariableMap;
 import io.holunda.camunda.bpm.data.adapter.list.ListReadWriteAdapterVariableScope;
+import java.util.List;
+import java.util.UUID;
 import org.camunda.bpm.engine.CaseService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
@@ -13,15 +18,10 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.junit.Test;
 
-import java.util.List;
-import java.util.UUID;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-
 public class ListVariableFactoryTest {
 
-  private final ListVariableFactory<String> variableFactory = new ListVariableFactory<>("string", String.class);
+  private final ListVariableFactory<String> variableFactory =
+      new ListVariableFactory<>("string", String.class);
 
   @Test
   public void shouldHaveNameAndVariableClass() {
@@ -36,7 +36,6 @@ public class ListVariableFactoryTest {
     assertThat(variableFactory).isEqualTo(variableFactory);
     assertThat(variableFactory.hashCode()).isEqualTo(variableFactory.hashCode());
 
-
     assertThat(variableFactory).isNotEqualTo(foo);
     assertThat(variableFactory.hashCode()).isNotEqualTo(foo.hashCode());
   }
@@ -45,8 +44,10 @@ public class ListVariableFactoryTest {
   public void shouldReturnAdapterForDelegateExecution() {
     DelegateExecution delegateExecution = mock(DelegateExecution.class);
 
-    assertThat(variableFactory.on(delegateExecution)).isInstanceOf(ListReadWriteAdapterVariableScope.class);
-    assertThat(variableFactory.from(delegateExecution)).isInstanceOf(ListReadWriteAdapterVariableScope.class);
+    assertThat(variableFactory.on(delegateExecution))
+        .isInstanceOf(ListReadWriteAdapterVariableScope.class);
+    assertThat(variableFactory.from(delegateExecution))
+        .isInstanceOf(ListReadWriteAdapterVariableScope.class);
   }
 
   @Test
@@ -54,7 +55,8 @@ public class ListVariableFactoryTest {
     VariableMap variableMap = mock(VariableMap.class);
 
     assertThat(variableFactory.on(variableMap)).isInstanceOf(ListReadWriteAdapterVariableMap.class);
-    assertThat(variableFactory.from(variableMap)).isInstanceOf(ListReadWriteAdapterVariableMap.class);
+    assertThat(variableFactory.from(variableMap))
+        .isInstanceOf(ListReadWriteAdapterVariableMap.class);
   }
 
   @Test
@@ -62,8 +64,10 @@ public class ListVariableFactoryTest {
     RuntimeService runtimeService = mock(RuntimeService.class);
     String executionId = UUID.randomUUID().toString();
 
-    assertThat(variableFactory.on(runtimeService, executionId)).isInstanceOf(ListReadWriteAdapterRuntimeService.class);
-    assertThat(variableFactory.from(runtimeService, executionId)).isInstanceOf(ListReadWriteAdapterRuntimeService.class);
+    assertThat(variableFactory.on(runtimeService, executionId))
+        .isInstanceOf(ListReadWriteAdapterRuntimeService.class);
+    assertThat(variableFactory.from(runtimeService, executionId))
+        .isInstanceOf(ListReadWriteAdapterRuntimeService.class);
   }
 
   @Test
@@ -71,8 +75,10 @@ public class ListVariableFactoryTest {
     TaskService taskService = mock(TaskService.class);
     String taskId = UUID.randomUUID().toString();
 
-    assertThat(variableFactory.on(taskService, taskId)).isInstanceOf(ListReadWriteAdapterTaskService.class);
-    assertThat(variableFactory.from(taskService, taskId)).isInstanceOf(ListReadWriteAdapterTaskService.class);
+    assertThat(variableFactory.on(taskService, taskId))
+        .isInstanceOf(ListReadWriteAdapterTaskService.class);
+    assertThat(variableFactory.from(taskService, taskId))
+        .isInstanceOf(ListReadWriteAdapterTaskService.class);
   }
 
   @Test
@@ -80,8 +86,9 @@ public class ListVariableFactoryTest {
     CaseService caseService = mock(CaseService.class);
     String caseExecutionId = UUID.randomUUID().toString();
 
-    assertThat(variableFactory.on(caseService, caseExecutionId)).isInstanceOf(ListReadWriteAdapterCaseService.class);
-    assertThat(variableFactory.from(caseService, caseExecutionId)).isInstanceOf(ListReadWriteAdapterCaseService.class);
+    assertThat(variableFactory.on(caseService, caseExecutionId))
+        .isInstanceOf(ListReadWriteAdapterCaseService.class);
+    assertThat(variableFactory.from(caseService, caseExecutionId))
+        .isInstanceOf(ListReadWriteAdapterCaseService.class);
   }
-
 }

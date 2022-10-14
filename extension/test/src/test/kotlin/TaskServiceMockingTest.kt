@@ -1,16 +1,14 @@
 package io.holunda.camunda.bpm.data.mockito
 
-import org.mockito.kotlin.mock
 import io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
+import java.util.*
 import org.assertj.core.api.Assertions.assertThat
 import org.camunda.bpm.engine.TaskService
 import org.junit.Test
-import java.util.*
+import org.mockito.kotlin.mock
 
-/**
- * This test demonstrates the mocking capabilities.
- */
+/** This test demonstrates the mocking capabilities. */
 class TaskServiceMockingTest {
 
   companion object {
@@ -43,18 +41,15 @@ class TaskServiceMockingTest {
     assertThat(orderFlag).isEqualTo(true)
   }
 
-
   /**
    * Test service.
    * @param taskService task service to work on.
    */
   class TaskServiceAwareService(val taskService: TaskService) {
 
-    fun readOrderId(taskId: String): String =
-      ORDER_ID.from(taskService, taskId).get()
+    fun readOrderId(taskId: String): String = ORDER_ID.from(taskService, taskId).get()
 
-    fun writeOrderId(taskId: String, value: String) =
-      ORDER_ID.on(taskService, taskId).set(value)
+    fun writeOrderId(taskId: String, value: String) = ORDER_ID.on(taskService, taskId).set(value)
 
     fun localFlagExists(taskId: String) =
       taskService.getVariablesLocal(taskId).containsKey(ORDER_FLAG.name)
@@ -62,7 +57,6 @@ class TaskServiceMockingTest {
     fun writeLocalFlag(taskId: String, flag: Boolean) =
       ORDER_FLAG.on(taskService, taskId).setLocal(flag)
 
-    fun readLocalFlag(taskId: String): Boolean =
-      ORDER_FLAG.from(taskService, taskId).local
+    fun readLocalFlag(taskId: String): Boolean = ORDER_FLAG.from(taskService, taskId).local
   }
 }

@@ -1,17 +1,12 @@
 package io.holunda.camunda.bpm.data.example.process;
 
+import java.util.function.Supplier;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 
-import java.util.function.Supplier;
-
-/**
- * Order Approval process instance supplier.
- */
+/** Order Approval process instance supplier. */
 public class OrderApprovalInstance implements Supplier<ProcessInstance> {
 
-  /**
-   * Underlying instance.
-   */
+  /** Underlying instance. */
   private final ProcessInstance instance;
 
   /**

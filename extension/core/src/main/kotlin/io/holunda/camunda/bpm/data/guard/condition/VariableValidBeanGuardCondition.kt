@@ -15,9 +15,7 @@ import javax.validation.Validator
  * @param local flag indicating the variable scope (global/local). Defaults to global.
  */
 class VariableValidBeanGuardCondition<T>(
-  /**
-   * Variable factory to work with.
-   */
+  /** Variable factory to work with. */
   variableFactory: VariableFactory<T>,
   private val validatorSupplier: Supplier<Validator>,
   local: Boolean = false
@@ -34,8 +32,9 @@ class VariableValidBeanGuardCondition<T>(
           GuardViolation(
             condition = this,
             option = option,
-            message = "Expecting$localLabel variable '${variableFactory.name}' to be a valid bean, but its value '${option.get()}' has not." +
-              constraintViolations.joinToString(separator = ". ", prefix = " ") { it.message }
+            message =
+              "Expecting$localLabel variable '${variableFactory.name}' to be a valid bean, but its value '${option.get()}' has not." +
+                constraintViolations.joinToString(separator = ". ", prefix = " ") { it.message }
           )
         )
       }
@@ -47,7 +46,6 @@ class VariableValidBeanGuardCondition<T>(
   override fun toString(): String {
     return "ValidBean condition for$localLabel variable '${super.variableFactory.name}'"
   }
-
 }
 
 /**

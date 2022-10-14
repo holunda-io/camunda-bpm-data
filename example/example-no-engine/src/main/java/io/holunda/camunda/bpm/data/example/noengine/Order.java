@@ -29,10 +29,14 @@ public class Order {
 
   @Override
   public String toString() {
-    return "Order{" +
-      "orderId='" + orderId + '\'' +
-      ", createdOn=" + createdOn +
-      ", positions=" + positions +
-      '}';
+    return "Order{"
+        + "orderId='"
+        + orderId
+        + '\''
+        + ", createdOn="
+        + createdOn
+        + ", positions="
+        + positions
+        + '}';
   }
 }

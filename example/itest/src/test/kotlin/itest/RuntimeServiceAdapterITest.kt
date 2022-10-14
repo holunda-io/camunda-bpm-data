@@ -14,15 +14,14 @@ import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Value
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SET_STRING
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SHORT
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.STRING
+import java.util.*
 import org.camunda.bpm.engine.variable.Variables.createVariables
 import org.junit.Test
 import org.springframework.beans.factory.annotation.Autowired
-import java.util.*
 
 class RuntimeServiceAdapterITest : CamundaBpmDataITestBase() {
 
-  @Autowired
-  lateinit var delegateConfiguration: DelegateConfiguration
+  @Autowired lateinit var delegateConfiguration: DelegateConfiguration
 
   @Test
   fun `should write to runtime service adapter`() {
@@ -30,7 +29,9 @@ class RuntimeServiceAdapterITest : CamundaBpmDataITestBase() {
     val variables = createVariables()
 
     given()
-      .process_with_user_task_and_delegate_is_deployed(delegateExpression = "\${${DelegateConfiguration::readFromVariableScope.name}}")
+      .process_with_user_task_and_delegate_is_deployed(
+        delegateExpression = "\${${DelegateConfiguration::readFromVariableScope.name}}"
+      )
       .and()
       .process_is_started_with_variables(variables = variables)
       .and()
@@ -57,14 +58,19 @@ class RuntimeServiceAdapterITest : CamundaBpmDataITestBase() {
       .task_is_completed()
 
     then()
-      .variables_had_value(readValues = delegateConfiguration.vars, variablesWithValue = createKeyValuePairs())
+      .variables_had_value(
+        readValues = delegateConfiguration.vars,
+        variablesWithValue = createKeyValuePairs()
+      )
   }
 
   @Test
   fun `should remove on runtime service adapter`() {
 
     given()
-      .process_with_user_task_and_delegate_is_deployed(delegateExpression = "\${${DelegateConfiguration::readOptionalFromVariableScope.name}}")
+      .process_with_user_task_and_delegate_is_deployed(
+        delegateExpression = "\${${DelegateConfiguration::readOptionalFromVariableScope.name}}"
+      )
       .and()
       .process_is_started_with_variables(variables = createVariableMapUntyped())
       .and()
@@ -81,14 +87,18 @@ class RuntimeServiceAdapterITest : CamundaBpmDataITestBase() {
       .task_is_completed()
 
     then()
-      .variables_had_not_value(delegateConfiguration.optionalVars,
+      .variables_had_not_value(
+        delegateConfiguration.optionalVars,
         STRING_VAR,
         LIST_STRING_VAR,
         SET_STRING_VAR,
         MAP_STRING_LONG_VAR
       )
       .and()
-      .variables_had_value(delegateConfiguration.optionalVars, setOf(LONG_VAR to Optional.of(LONG.value)))
+      .variables_had_value(
+        delegateConfiguration.optionalVars,
+        setOf(LONG_VAR to Optional.of(LONG.value))
+      )
   }
 
   @Test
@@ -101,27 +111,23 @@ class RuntimeServiceAdapterITest : CamundaBpmDataITestBase() {
       .and()
       .process_is_started_with_variables(variables = createVariableMapUntyped())
 
-    whenever()
-      .execution_is_accessed_in_wait_state { runtimeService, executionId ->
-        vars[STRING_VAR.name] = STRING_VAR.from(runtimeService, executionId).get()
-        vars[DATE_VAR.name] = DATE_VAR.from(runtimeService, executionId).get()
-        vars[SHORT_VAR.name] = SHORT_VAR.from(runtimeService, executionId).get()
-        vars[INT_VAR.name] = INT_VAR.from(runtimeService, executionId).get()
-        vars[LONG_VAR.name] = LONG_VAR.from(runtimeService, executionId).get()
-        vars[DOUBLE_VAR.name] = DOUBLE_VAR.from(runtimeService, executionId).get()
-        vars[BOOLEAN_VAR.name] = BOOLEAN_VAR.from(runtimeService, executionId).get()
-        vars[COMPLEX_VAR.name] = COMPLEX_VAR.from(runtimeService, executionId).get()
-        vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(runtimeService, executionId).get()
-        vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(runtimeService, executionId).get()
-        vars[MAP_STRING_LONG_VAR.name] = MAP_STRING_LONG_VAR.from(runtimeService, executionId).get()
-        vars[COMPLEX_SET_VAR.name] = COMPLEX_SET_VAR.from(runtimeService, executionId).get()
-        vars[COMPLEX_LIST_VAR.name] = COMPLEX_LIST_VAR.from(runtimeService, executionId).get()
-        vars[COMPLEX_MAP_VAR.name] = COMPLEX_MAP_VAR.from(runtimeService, executionId).get()
-      }
+    whenever().execution_is_accessed_in_wait_state { runtimeService, executionId ->
+      vars[STRING_VAR.name] = STRING_VAR.from(runtimeService, executionId).get()
+      vars[DATE_VAR.name] = DATE_VAR.from(runtimeService, executionId).get()
+      vars[SHORT_VAR.name] = SHORT_VAR.from(runtimeService, executionId).get()
+      vars[INT_VAR.name] = INT_VAR.from(runtimeService, executionId).get()
+      vars[LONG_VAR.name] = LONG_VAR.from(runtimeService, executionId).get()
+      vars[DOUBLE_VAR.name] = DOUBLE_VAR.from(runtimeService, executionId).get()
+      vars[BOOLEAN_VAR.name] = BOOLEAN_VAR.from(runtimeService, executionId).get()
+      vars[COMPLEX_VAR.name] = COMPLEX_VAR.from(runtimeService, executionId).get()
+      vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(runtimeService, executionId).get()
+      vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(runtimeService, executionId).get()
+      vars[MAP_STRING_LONG_VAR.name] = MAP_STRING_LONG_VAR.from(runtimeService, executionId).get()
+      vars[COMPLEX_SET_VAR.name] = COMPLEX_SET_VAR.from(runtimeService, executionId).get()
+      vars[COMPLEX_LIST_VAR.name] = COMPLEX_LIST_VAR.from(runtimeService, executionId).get()
+      vars[COMPLEX_MAP_VAR.name] = COMPLEX_MAP_VAR.from(runtimeService, executionId).get()
+    }
 
-    then()
-      .variables_had_value(vars, variablesWithValue = createKeyValuePairs())
+    then().variables_had_value(vars, variablesWithValue = createKeyValuePairs())
   }
 }
-
-

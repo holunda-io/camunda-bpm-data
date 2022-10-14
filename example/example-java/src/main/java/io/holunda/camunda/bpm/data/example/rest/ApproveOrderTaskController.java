@@ -1,15 +1,14 @@
 package io.holunda.camunda.bpm.data.example.rest;
 
+import static io.holunda.camunda.bpm.data.CamundaBpmData.builder;
+import static io.holunda.camunda.bpm.data.example.process.OrderApproval.*;
+
 import io.holunda.camunda.bpm.data.example.domain.Order;
+import java.math.BigDecimal;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.math.BigDecimal;
-
-import static io.holunda.camunda.bpm.data.CamundaBpmData.builder;
-import static io.holunda.camunda.bpm.data.example.process.OrderApproval.*;
 
 @RestController
 @RequestMapping("/task/approve-order")
@@ -29,10 +28,9 @@ public class ApproveOrderTaskController {
   }
 
   @PostMapping("/{taskId}")
-  public ResponseEntity<Void> completeTask(@PathVariable("taskId") String taskId, @RequestBody ApproveTaskCompleteDto userInput) {
-    VariableMap vars = builder()
-      .set(ORDER_APPROVED, userInput.getApproved())
-      .build();
+  public ResponseEntity<Void> completeTask(
+      @PathVariable("taskId") String taskId, @RequestBody ApproveTaskCompleteDto userInput) {
+    VariableMap vars = builder().set(ORDER_APPROVED, userInput.getApproved()).build();
     taskService.complete(taskId, vars);
     return ResponseEntity.noContent().build();
   }

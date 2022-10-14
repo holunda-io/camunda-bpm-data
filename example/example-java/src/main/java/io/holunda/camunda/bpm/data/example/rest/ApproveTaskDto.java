@@ -1,29 +1,19 @@
 package io.holunda.camunda.bpm.data.example.rest;
 
 import io.holunda.camunda.bpm.data.example.domain.Order;
-
 import java.math.BigDecimal;
 
-/**
- * Simple DTO carrying the order and the total.
- */
+/** Simple DTO carrying the order and the total. */
 public class ApproveTaskDto {
 
-  /**
-   * Order to carry.
-   */
+  /** Order to carry. */
   private Order order;
 
-  /**
-   * Order total.
-   */
+  /** Order total. */
   private BigDecimal orderTotal;
 
-  /**
-   * Empty constructor.
-   */
-  public ApproveTaskDto() {
-  }
+  /** Empty constructor. */
+  public ApproveTaskDto() {}
 
   /**
    * Constructs the DTO with order.
@@ -97,9 +87,6 @@ public class ApproveTaskDto {
 
   @Override
   public String toString() {
-    return "ApproveTaskDto{" +
-      "order=" + order +
-      ", orderTotal=" + orderTotal +
-      '}';
+    return "ApproveTaskDto{" + "order=" + order + ", orderTotal=" + orderTotal + '}';
   }
 }

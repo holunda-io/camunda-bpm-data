@@ -1,10 +1,16 @@
 package io.holunda.camunda.bpm.data.example.process;
 
+import static io.holunda.camunda.bpm.data.example.process.OrderApproval.*;
+import static io.holunda.camunda.bpm.data.example.process.OrderApproval.Elements.*;
+import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.*;
 
 import com.google.common.collect.Lists;
 import io.holunda.camunda.bpm.data.builder.VariableMapBuilder;
 import io.holunda.camunda.bpm.data.example.domain.Order;
 import io.holunda.camunda.bpm.data.example.domain.OrderPosition;
+import java.math.BigDecimal;
+import java.sql.Date;
+import java.time.Instant;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.engine.test.Deployment;
 import org.camunda.bpm.engine.test.ProcessEngineRule;
@@ -15,24 +21,15 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import java.math.BigDecimal;
-import java.sql.Date;
-import java.time.Instant;
-
-import static io.holunda.camunda.bpm.data.example.process.OrderApproval.Elements.*;
-import static io.holunda.camunda.bpm.data.example.process.OrderApproval.*;
-import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.*;
-
 @Deployment(resources = "order_approval.bpmn")
 public class OrderApprovalProcessTest {
 
   @Rule
-  public final ProcessEngineRule rule = new StandaloneInMemoryTestConfiguration(
-    Lists.newArrayList(new SpinProcessEnginePlugin())
-  ).rule();
+  public final ProcessEngineRule rule =
+      new StandaloneInMemoryTestConfiguration(Lists.newArrayList(new SpinProcessEnginePlugin()))
+          .rule();
 
   private OrderApprovalInstanceFactory factory;
-
 
   @Before
   public void register() {
@@ -104,17 +101,19 @@ public class OrderApprovalProcessTest {
     assertThat(instance.get()).hasPassed(element(end_order_rejected));
   }
 
-
-  /**
-   * Stub for the test.
-   */
+  /** Stub for the test. */
   static class MockOrderApproval {
     public JavaDelegate loadOrder() {
       return execution -> {
-        ORDER.on(execution).set(new Order("1", Date.from(Instant.now()), Lists.newArrayList(
-          new OrderPosition("Pencil", BigDecimal.valueOf(1.99), 3L),
-          new OrderPosition("Sheet", BigDecimal.valueOf(0.17), 3L)
-        )));
+        ORDER
+            .on(execution)
+            .set(
+                new Order(
+                    "1",
+                    Date.from(Instant.now()),
+                    Lists.newArrayList(
+                        new OrderPosition("Pencil", BigDecimal.valueOf(1.99), 3L),
+                        new OrderPosition("Sheet", BigDecimal.valueOf(0.17), 3L))));
       };
     }
 
@@ -125,9 +124,7 @@ public class OrderApprovalProcessTest {
     }
 
     public JavaDelegate writeOrderTotal() {
-      return execution -> {
-      };
+      return execution -> {};
     }
   }
-
 }

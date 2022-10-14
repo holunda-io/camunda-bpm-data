@@ -27,15 +27,17 @@ class DefaultGuardExecutionListener(
    * @param throwViolations flag controlling if the violation should lead to an exception.
    */
   @Deprecated("create VariablesGuard and use constructor(guard, throwViolations) instead")
-  constructor(variableConditions: List<VariableGuardCondition<*>>, throwViolations: Boolean) : this(VariablesGuard(variableConditions), throwViolations)
+  constructor(
+    variableConditions: List<VariableGuardCondition<*>>,
+    throwViolations: Boolean
+  ) : this(VariablesGuard(variableConditions), throwViolations)
 
   override fun notify(execution: DelegateExecution) {
     val violations = guard.evaluate(execution)
     if (violations.isNotEmpty()) {
-      val message = "${guard.getName() ?: "Guard"} violated by execution '${execution.id}' in activity '${execution.currentActivityName}'"
-      violations.forEach {
-        logger.error("$message: ${it.message}")
-      }
+      val message =
+        "${guard.getName() ?: "Guard"} violated by execution '${execution.id}' in activity '${execution.currentActivityName}'"
+      violations.forEach { logger.error("$message: ${it.message}") }
       if (throwViolations) {
         throw GuardViolationException(violations = violations, reason = message)
       }

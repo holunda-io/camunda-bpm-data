@@ -1,6 +1,5 @@
 package io.holunda.camunda.bpm.data
 
-import org.mockito.kotlin.mock
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.stringVariable
 import io.holunda.camunda.bpm.data.reader.CaseServiceVariableReader
 import io.holunda.camunda.bpm.data.reader.RuntimeServiceVariableReader
@@ -8,6 +7,7 @@ import io.holunda.camunda.bpm.data.reader.TaskServiceVariableReader
 import io.holunda.camunda.bpm.data.writer.CaseServiceVariableWriter
 import io.holunda.camunda.bpm.data.writer.RuntimeServiceVariableWriter
 import io.holunda.camunda.bpm.data.writer.TaskServiceVariableWriter
+import java.util.*
 import org.assertj.core.api.Assertions.assertThat
 import org.camunda.bpm.engine.CaseService
 import org.camunda.bpm.engine.RuntimeService
@@ -16,7 +16,7 @@ import org.camunda.bpm.engine.variable.Variables.createVariables
 import org.camunda.bpm.engine.variable.Variables.stringValue
 import org.camunda.bpm.extension.mockito.delegate.DelegateExecutionFake
 import org.junit.Test
-import java.util.*
+import org.mockito.kotlin.mock
 
 class FluentApiTest {
 
@@ -32,20 +32,26 @@ class FluentApiTest {
     val vars = createVariables().putValueTyped(NAME, stringValue(VALUE))
     val fake = DelegateExecutionFake("executionId").withVariables(vars)
 
-    @Suppress("ReplaceGetOrSet")
-    assertThat(vars.get(MY_VAR)).isEqualTo(VALUE)
+    @Suppress("ReplaceGetOrSet") assertThat(vars.get(MY_VAR)).isEqualTo(VALUE)
     assertThat(vars[MY_VAR]).isEqualTo(VALUE)
     assertThat(vars.getOptional(MY_VAR)).isEqualTo(Optional.of(VALUE))
 
-    @Suppress("ReplaceGetOrSet")
-    assertThat(fake.get(MY_VAR)).isEqualTo(VALUE)
+    @Suppress("ReplaceGetOrSet") assertThat(fake.get(MY_VAR)).isEqualTo(VALUE)
     assertThat(fake[MY_VAR]).isEqualTo(VALUE)
     assertThat(fake.getOptional(MY_VAR)).isEqualTo(Optional.of(VALUE))
 
     fake.set(MY_VAR, "new val")
     assertThat(fake[MY_VAR]).isEqualTo("new val")
 
-    fake.update(MY_VAR, { v -> v.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } }, false)
+    fake.update(
+      MY_VAR,
+      { v ->
+        v.replaceFirstChar {
+          if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
+        }
+      },
+      false
+    )
     assertThat(fake[MY_VAR]).isEqualTo("New val")
 
     fake.remove(MY_VAR)
@@ -58,8 +64,7 @@ class FluentApiTest {
     val fake = DelegateExecutionFake("executionId").withVariablesLocal(localVars)
 
     // global reads local
-    @Suppress("ReplaceGetOrSet")
-    assertThat(fake.get(MY_VAR)).isEqualTo(LOCAL_VALUE)
+    @Suppress("ReplaceGetOrSet") assertThat(fake.get(MY_VAR)).isEqualTo(LOCAL_VALUE)
     assertThat(fake[MY_VAR]).isEqualTo(LOCAL_VALUE)
     assertThat(fake.getOptional(MY_VAR)).isEqualTo(Optional.of(LOCAL_VALUE))
 
@@ -69,13 +74,29 @@ class FluentApiTest {
     fake.set(MY_VAR, "new val")
     assertThat(fake[MY_VAR]).isEqualTo("new val")
 
-    fake.update(MY_VAR, { v -> v.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } }, false)
+    fake.update(
+      MY_VAR,
+      { v ->
+        v.replaceFirstChar {
+          if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
+        }
+      },
+      false
+    )
     assertThat(fake[MY_VAR]).isEqualTo("New val")
 
     fake.setLocal(MY_VAR, "another new local val")
     assertThat(fake.getLocal(MY_VAR)).isEqualTo("another new local val")
 
-    fake.updateLocal(MY_VAR, { v -> v.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } }, false)
+    fake.updateLocal(
+      MY_VAR,
+      { v ->
+        v.replaceFirstChar {
+          if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
+        }
+      },
+      false
+    )
     assertThat(fake[MY_VAR]).isEqualTo("Another new local val")
 
     fake.removeLocal(MY_VAR)
@@ -84,7 +105,15 @@ class FluentApiTest {
     localVars.set(MY_VAR, "new val")
     assertThat(localVars[MY_VAR]).isEqualTo("new val")
 
-    localVars.update(MY_VAR, { v -> v.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } }, false)
+    localVars.update(
+      MY_VAR,
+      { v ->
+        v.replaceFirstChar {
+          if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
+        }
+      },
+      false
+    )
     assertThat(localVars[MY_VAR]).isEqualTo("New val")
 
     localVars.remove(MY_VAR)
@@ -104,6 +133,5 @@ class FluentApiTest {
     assertThat(case.reader("case-id")).isEqualTo(CaseServiceVariableReader(case, "case-id"))
     assertThat(runtime.reader("id")).isEqualTo(RuntimeServiceVariableReader(runtime, "id"))
     assertThat(task.reader("task-id")).isEqualTo(TaskServiceVariableReader(task, "task-id"))
-
   }
 }

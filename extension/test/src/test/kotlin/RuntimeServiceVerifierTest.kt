@@ -1,17 +1,17 @@
 package io.holunda.camunda.bpm.data.mockito
 
-import org.mockito.kotlin.mock
-import org.mockito.kotlin.reset
-import org.mockito.kotlin.times
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
 import io.holunda.camunda.bpm.data.mockito.CamundaBpmDataMockito.runtimeServiceMockVerifier
 import io.holunda.camunda.bpm.data.mockito.CamundaBpmDataMockito.runtimeServiceVariableMockBuilder
+import java.util.*
 import org.camunda.bpm.engine.RuntimeService
 import org.junit.Assert.assertThrows
 import org.junit.Before
 import org.junit.Test
 import org.mockito.exceptions.verification.TooManyActualInvocations
-import java.util.*
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.reset
+import org.mockito.kotlin.times
 
 class RuntimeServiceVerifierTest {
 
@@ -43,9 +43,7 @@ class RuntimeServiceVerifierTest {
     val executionId = UUID.randomUUID().toString()
     VAR.from(runtimeService, executionId).get()
     VAR.from(runtimeService, executionId).get()
-    assertThrows(TooManyActualInvocations::class.java) {
-      verifier.verifyGet(VAR, executionId)
-    }
+    assertThrows(TooManyActualInvocations::class.java) { verifier.verifyGet(VAR, executionId) }
     verifier.verifyGet(VAR, executionId, times(2))
     verifier.verifyNoMoreInteractions()
   }
@@ -154,5 +152,4 @@ class RuntimeServiceVerifierTest {
     verifier.verifyRemoveLocal(VAR, executionId, times(2))
     verifier.verifyNoMoreInteractions()
   }
-
 }

@@ -1,23 +1,21 @@
 package io.holunda.camunda.bpm.data.writer;
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import java.util.Objects;
+import java.util.function.Function;
 import org.camunda.bpm.engine.delegate.VariableScope;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
-import java.util.function.Function;
-
-/**
- * Variable scope builder allowing for fluent variable setting.
- */
+/** Variable scope builder allowing for fluent variable setting. */
 public class VariableScopeWriter implements VariableWriter<VariableScopeWriter> {
 
   private final VariableScope scope;
 
   /**
    * Creates a builder with provided variable map.
-   * <p>The provided variables are modified by reference.</p>
+   *
+   * <p>The provided variables are modified by reference.
    *
    * @param variables variables to work on.
    */
@@ -46,31 +44,36 @@ public class VariableScopeWriter implements VariableWriter<VariableScopeWriter> 
 
   @Override
   @NotNull
-  public <T> VariableScopeWriter setLocal(VariableFactory<T> factory, T value, boolean isTransient) {
+  public <T> VariableScopeWriter setLocal(
+      VariableFactory<T> factory, T value, boolean isTransient) {
     factory.on(this.scope).setLocal(value, isTransient);
     return this;
   }
 
   @Override
-  public @NotNull <T> VariableScopeWriter update(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+  public @NotNull <T> VariableScopeWriter update(
+      VariableFactory<T> factory, Function<T, T> valueProcessor) {
     factory.on(this.scope).update(valueProcessor);
     return this;
   }
 
   @Override
-  public @NotNull <T> VariableScopeWriter update(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+  public @NotNull <T> VariableScopeWriter update(
+      VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
     factory.on(this.scope).update(valueProcessor, isTransient);
     return this;
   }
 
   @Override
-  public @NotNull <T> VariableScopeWriter updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+  public @NotNull <T> VariableScopeWriter updateLocal(
+      VariableFactory<T> factory, Function<T, T> valueProcessor) {
     factory.on(this.scope).updateLocal(valueProcessor);
     return this;
   }
 
   @Override
-  public @NotNull <T> VariableScopeWriter updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+  public @NotNull <T> VariableScopeWriter updateLocal(
+      VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
     factory.on(this.scope).updateLocal(valueProcessor, isTransient);
     return this;
   }

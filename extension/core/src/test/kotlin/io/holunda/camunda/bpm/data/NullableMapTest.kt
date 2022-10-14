@@ -26,7 +26,6 @@ internal class NullableMapTest {
     assertThat(second).isNull()
   }
 
-
   @Test
   fun `test null values map`() {
     val data = mapOf("first" to 1, "second" to null, "last" to "string")
@@ -38,5 +37,4 @@ internal class NullableMapTest {
     val second = result.getValue("second")
     assertThat(second).isNull()
   }
-
 }

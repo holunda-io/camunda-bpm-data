@@ -3,10 +3,9 @@ package io.holunda.camunda.bpm.data.adapter.list;
 import io.holunda.camunda.bpm.data.adapter.AbstractReadWriteAdapter;
 import io.holunda.camunda.bpm.data.adapter.ValueWrapperUtil;
 import io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException;
-import org.camunda.bpm.engine.variable.value.TypedValue;
-
 import java.util.Collections;
 import java.util.List;
+import org.camunda.bpm.engine.variable.value.TypedValue;
 
 /**
  * Base class for all list read-write adapter.
@@ -15,16 +14,14 @@ import java.util.List;
  */
 public abstract class AbstractListReadWriteAdapter<T> extends AbstractReadWriteAdapter<List<T>> {
 
-  /**
-   * Member class.
-   */
+  /** Member class. */
   protected final Class<T> memberClazz;
 
   /**
    * Constructs the adapter.
    *
    * @param variableName name of variable.
-   * @param memberClazz  member class.
+   * @param memberClazz member class.
    */
   public AbstractListReadWriteAdapter(String variableName, Class<T> memberClazz) {
     super(variableName);
@@ -51,12 +48,19 @@ public abstract class AbstractListReadWriteAdapter<T> extends AbstractReadWriteA
         if (memberClazz.isAssignableFrom(valueAsList.iterator().next().getClass())) {
           return (List<T>) valueAsList;
         } else {
-          throw new WrongVariableTypeException("Error reading " + variableName + ": Wrong list type detected, expected " + memberClazz.getName() + ", but was not found in " + valueAsList);
+          throw new WrongVariableTypeException(
+              "Error reading "
+                  + variableName
+                  + ": Wrong list type detected, expected "
+                  + memberClazz.getName()
+                  + ", but was not found in "
+                  + valueAsList);
         }
       }
     }
 
-    throw new WrongVariableTypeException("Error reading " + variableName + ": Couldn't read value of type List from " + value);
+    throw new WrongVariableTypeException(
+        "Error reading " + variableName + ": Couldn't read value of type List from " + value);
   }
 
   @Override

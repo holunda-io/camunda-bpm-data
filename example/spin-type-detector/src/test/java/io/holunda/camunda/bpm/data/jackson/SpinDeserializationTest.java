@@ -1,13 +1,12 @@
 package io.holunda.camunda.bpm.data.jackson;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.camunda.spin.Spin.JSON;
+
+import java.util.List;
 import org.assertj.core.util.Lists;
 import org.camunda.spin.json.SpinJsonNode;
 import org.junit.Test;
-
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.camunda.spin.Spin.JSON;
 
 public class SpinDeserializationTest {
 
@@ -19,7 +18,8 @@ public class SpinDeserializationTest {
 
     String json = "[{\"foo\":\"value\",\"bar\":17},{\"foo\":\"value2\",\"bar\":11}]";
     SpinJsonNode spinNode = JSON(json);
-    List<MyComplexType> deserialized = spinNode.mapTo("java.util.ArrayList<" + MyComplexType.class.getName() + ">");
+    List<MyComplexType> deserialized =
+        spinNode.mapTo("java.util.ArrayList<" + MyComplexType.class.getName() + ">");
     assertThat(deserialized).containsExactlyInAnyOrder(value1, value2);
   }
 
@@ -29,5 +29,4 @@ public class SpinDeserializationTest {
     String json = JSON(list).toString();
     assertThat(json).isEqualTo("[{\"foo\":\"value\",\"bar\":17},{\"foo\":\"value2\",\"bar\":11}]");
   }
-
 }

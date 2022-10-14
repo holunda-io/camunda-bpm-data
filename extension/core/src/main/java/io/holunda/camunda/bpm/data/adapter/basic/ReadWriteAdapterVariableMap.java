@@ -1,8 +1,7 @@
 package io.holunda.camunda.bpm.data.adapter.basic;
 
-import org.camunda.bpm.engine.variable.VariableMap;
-
 import java.util.Optional;
+import org.camunda.bpm.engine.variable.VariableMap;
 
 /**
  * Read-write adapter for variable map.
@@ -16,9 +15,9 @@ public class ReadWriteAdapterVariableMap<T> extends AbstractBasicReadWriteAdapte
   /**
    * Constructs the adapter.
    *
-   * @param variableMap  variable map to access.
+   * @param variableMap variable map to access.
    * @param variableName variable to access.
-   * @param clazz        class of variable value.
+   * @param clazz class of variable value.
    */
   public ReadWriteAdapterVariableMap(VariableMap variableMap, String variableName, Class<T> clazz) {
     super(variableName, clazz);

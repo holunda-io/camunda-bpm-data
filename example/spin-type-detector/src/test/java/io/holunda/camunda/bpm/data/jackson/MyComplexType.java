@@ -4,8 +4,7 @@ public class MyComplexType {
   private String foo;
   private Integer bar;
 
-  public MyComplexType() {
-  }
+  public MyComplexType() {}
 
   public MyComplexType(String foo, Integer bar) {
     this.bar = bar;

@@ -10,19 +10,20 @@ import java.util.*
  * @param variableFactory factory to work on.
  * @param local flag indicating if local or global scope is required.
  */
-class VariableExistsGuardCondition<T>(
-  variableFactory: VariableFactory<T>,
-  local: Boolean = false
-) : VariableGuardCondition<T>(variableFactory, local) {
+class VariableExistsGuardCondition<T>(variableFactory: VariableFactory<T>, local: Boolean = false) :
+  VariableGuardCondition<T>(variableFactory, local) {
 
   override fun evaluate(option: Optional<T>) =
     if (option.isPresent) {
       super.evaluate(option)
     } else {
-      listOf(GuardViolation(
-        condition = this,
-        option = option,
-        message = "Expecting$localLabel variable '${variableFactory.name}' to be set, but it was not found.")
+      listOf(
+        GuardViolation(
+          condition = this,
+          option = option,
+          message =
+            "Expecting$localLabel variable '${variableFactory.name}' to be set, but it was not found."
+        )
       )
     }
 

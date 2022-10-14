@@ -1,24 +1,19 @@
 package io.holunda.camunda.bpm.data.writer;
 
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
+import java.util.Objects;
+import java.util.function.Function;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
-import java.util.function.Function;
-
-/**
- * User task builder allowing for fluent variable setting.
- */
+/** User task builder allowing for fluent variable setting. */
 public class TaskServiceVariableWriter implements VariableWriter<TaskServiceVariableWriter> {
 
   private final TaskService taskService;
   private final String taskId;
 
-  /**
-   * Creates a builder working on a user task.
-   */
+  /** Creates a builder working on a user task. */
   public TaskServiceVariableWriter(TaskService taskService, String taskId) {
     this.taskService = taskService;
     this.taskId = taskId;
@@ -44,7 +39,8 @@ public class TaskServiceVariableWriter implements VariableWriter<TaskServiceVari
 
   @Override
   @NotNull
-  public <T> TaskServiceVariableWriter set(VariableFactory<T> factory, T value, boolean isTransient) {
+  public <T> TaskServiceVariableWriter set(
+      VariableFactory<T> factory, T value, boolean isTransient) {
     factory.on(this.taskService, this.taskId).set(value, isTransient);
     return this;
   }
@@ -57,7 +53,8 @@ public class TaskServiceVariableWriter implements VariableWriter<TaskServiceVari
 
   @Override
   @NotNull
-  public <T> TaskServiceVariableWriter setLocal(VariableFactory<T> factory, T value, boolean isTransient) {
+  public <T> TaskServiceVariableWriter setLocal(
+      VariableFactory<T> factory, T value, boolean isTransient) {
     factory.on(this.taskService, this.taskId).setLocal(value, isTransient);
     return this;
   }
@@ -77,25 +74,29 @@ public class TaskServiceVariableWriter implements VariableWriter<TaskServiceVari
   }
 
   @Override
-  public @NotNull <T> TaskServiceVariableWriter update(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+  public @NotNull <T> TaskServiceVariableWriter update(
+      VariableFactory<T> factory, Function<T, T> valueProcessor) {
     factory.on(this.taskService, this.taskId).update(valueProcessor);
     return this;
   }
 
   @Override
-  public @NotNull <T> TaskServiceVariableWriter update(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+  public @NotNull <T> TaskServiceVariableWriter update(
+      VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
     factory.on(this.taskService, this.taskId).update(valueProcessor, isTransient);
     return this;
   }
 
   @Override
-  public @NotNull <T> TaskServiceVariableWriter updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor) {
+  public @NotNull <T> TaskServiceVariableWriter updateLocal(
+      VariableFactory<T> factory, Function<T, T> valueProcessor) {
     factory.on(this.taskService, this.taskId).updateLocal(valueProcessor);
     return this;
   }
 
   @Override
-  public @NotNull <T> TaskServiceVariableWriter updateLocal(VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
+  public @NotNull <T> TaskServiceVariableWriter updateLocal(
+      VariableFactory<T> factory, Function<T, T> valueProcessor, boolean isTransient) {
     factory.on(this.taskService, this.taskId).updateLocal(valueProcessor, isTransient);
     return this;
   }

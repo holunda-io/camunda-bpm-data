@@ -24,6 +24,7 @@ class GlobalScopeReplaceStrategyTest {
     verify(executionMock).variables = variables
     verifyNoMoreInteractions(executionMock)
 
-    assertThat(GlobalScopeReplaceStrategy.toString()).isEqualTo(GlobalScopeReplaceStrategy::class.java.canonicalName)
+    assertThat(GlobalScopeReplaceStrategy.toString())
+      .isEqualTo(GlobalScopeReplaceStrategy::class.java.canonicalName)
   }
 }

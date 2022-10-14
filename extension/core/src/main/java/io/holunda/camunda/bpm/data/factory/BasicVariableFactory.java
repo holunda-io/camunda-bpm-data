@@ -8,6 +8,7 @@ import io.holunda.camunda.bpm.data.adapter.basic.ReadWriteAdapterRuntimeService;
 import io.holunda.camunda.bpm.data.adapter.basic.ReadWriteAdapterTaskService;
 import io.holunda.camunda.bpm.data.adapter.basic.ReadWriteAdapterVariableMap;
 import io.holunda.camunda.bpm.data.adapter.basic.ReadWriteAdapterVariableScope;
+import java.util.Objects;
 import org.camunda.bpm.engine.CaseService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
@@ -16,8 +17,6 @@ import org.camunda.bpm.engine.externaltask.LockedExternalTask;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
-
 /**
  * Variable factory of a base type(non parametrized).
  *
@@ -25,16 +24,14 @@ import java.util.Objects;
  */
 public class BasicVariableFactory<T> implements VariableFactory<T> {
 
-  @NotNull
-  private final String name;
+  @NotNull private final String name;
 
-  @NotNull
-  private final Class<T> clazz;
+  @NotNull private final Class<T> clazz;
 
   /**
    * Creates variable factory for a given type and name.
    *
-   * @param name  name of the variable.
+   * @param name name of the variable.
    * @param clazz class of the type.
    */
   public BasicVariableFactory(@NotNull String name, @NotNull Class<T> clazz) {
@@ -145,13 +142,10 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o)
-      return true;
-    if (o == null || getClass() != o.getClass())
-      return false;
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
     BasicVariableFactory<?> that = (BasicVariableFactory<?>) o;
-    return name.equals(that.name) &&
-      clazz.equals(that.clazz);
+    return name.equals(that.name) && clazz.equals(that.clazz);
   }
 
   @Override
@@ -161,10 +155,7 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
 
   @Override
   public String toString() {
-    return "BasicVariableFactory{" +
-      "name='" + name + '\'' +
-      ", clazz=" + clazz +
-      '}';
+    return "BasicVariableFactory{" + "name='" + name + '\'' + ", clazz=" + clazz + '}';
   }
 
   /**
@@ -181,20 +172,20 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
      * Constructs the builder.
      *
      * @param basicVariableFactory variable factory to use.
-     * @param runtimeService       task service to build adapter with.
+     * @param runtimeService task service to build adapter with.
      */
-    public BasicRuntimeServiceAdapterBuilder(BasicVariableFactory<T> basicVariableFactory, RuntimeService runtimeService) {
+    public BasicRuntimeServiceAdapterBuilder(
+        BasicVariableFactory<T> basicVariableFactory, RuntimeService runtimeService) {
       this.runtimeService = runtimeService;
       this.basicVariableFactory = basicVariableFactory;
     }
 
     private ReadWriteAdapterRuntimeService<T> readWriteAdapter(String executionId) {
       return new ReadWriteAdapterRuntimeService<>(
-        runtimeService,
-        executionId,
-        basicVariableFactory.getName(),
-        basicVariableFactory.getVariableClass()
-      );
+          runtimeService,
+          executionId,
+          basicVariableFactory.getName(),
+          basicVariableFactory.getVariableClass());
     }
 
     /**
@@ -232,20 +223,20 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
      * Constructs the builder.
      *
      * @param basicVariableFactory variable factory to use.
-     * @param taskService          task service to build adapter with.
+     * @param taskService task service to build adapter with.
      */
-    public BasicTaskServiceAdapterBuilder(BasicVariableFactory<T> basicVariableFactory, TaskService taskService) {
+    public BasicTaskServiceAdapterBuilder(
+        BasicVariableFactory<T> basicVariableFactory, TaskService taskService) {
       this.taskService = taskService;
       this.basicVariableFactory = basicVariableFactory;
     }
 
     private ReadWriteAdapterTaskService<T> readWriteAdapter(String taskId) {
       return new ReadWriteAdapterTaskService<>(
-        taskService,
-        taskId,
-        basicVariableFactory.getName(),
-        basicVariableFactory.getVariableClass()
-      );
+          taskService,
+          taskId,
+          basicVariableFactory.getName(),
+          basicVariableFactory.getVariableClass());
     }
 
     /**
@@ -269,7 +260,6 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
     }
   }
 
-
   /**
    * Creates a builder to encapsulate the case service access.
    *
@@ -284,20 +274,20 @@ public class BasicVariableFactory<T> implements VariableFactory<T> {
      * Constructs the builder.
      *
      * @param basicVariableFactory variable factory to use.
-     * @param caseService          task service to build adapter with.
+     * @param caseService task service to build adapter with.
      */
-    public BasicCaseServiceAdapterBuilder(BasicVariableFactory<T> basicVariableFactory, CaseService caseService) {
+    public BasicCaseServiceAdapterBuilder(
+        BasicVariableFactory<T> basicVariableFactory, CaseService caseService) {
       this.caseService = caseService;
       this.basicVariableFactory = basicVariableFactory;
     }
 
     private ReadWriteAdapterCaseService<T> readWriteAdapter(String caseExecutionId) {
       return new ReadWriteAdapterCaseService<>(
-        caseService,
-        caseExecutionId,
-        basicVariableFactory.getName(),
-        basicVariableFactory.getVariableClass()
-      );
+          caseService,
+          caseExecutionId,
+          basicVariableFactory.getName(),
+          basicVariableFactory.getVariableClass());
     }
 
     /**

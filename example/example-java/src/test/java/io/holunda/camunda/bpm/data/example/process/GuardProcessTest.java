@@ -1,8 +1,14 @@
 package io.holunda.camunda.bpm.data.example.process;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
+
 import com.google.common.collect.Lists;
 import io.holunda.camunda.bpm.data.example.domain.Order;
 import io.holunda.camunda.bpm.data.guard.integration.GuardViolationException;
+import java.sql.Date;
+import java.time.Instant;
+import java.util.ArrayList;
 import org.camunda.bpm.engine.ProcessEngineException;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.engine.runtime.Job;
@@ -16,19 +22,12 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import java.sql.Date;
-import java.time.Instant;
-import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mock;
-
 @Deployment(resources = "order_approval.bpmn")
 public class GuardProcessTest {
   @Rule
-  public final ProcessEngineRule rule = new StandaloneInMemoryTestConfiguration(
-    Lists.newArrayList(new SpinProcessEnginePlugin())
-  ).rule();
+  public final ProcessEngineRule rule =
+      new StandaloneInMemoryTestConfiguration(Lists.newArrayList(new SpinProcessEnginePlugin()))
+          .rule();
 
   @Before
   public void register() {
@@ -41,7 +40,9 @@ public class GuardProcessTest {
   static class MockOrderApproval {
     public JavaDelegate loadOrder() {
       return execution -> {
-        OrderApproval.ORDER.on(execution).set(new Order("1", Date.from(Instant.now()), new ArrayList<>()));
+        OrderApproval.ORDER
+            .on(execution)
+            .set(new Order("1", Date.from(Instant.now()), new ArrayList<>()));
       };
     }
 
@@ -54,17 +55,18 @@ public class GuardProcessTest {
   public void shouldFireExceptionIfOrderIdIsMissing() {
 
     assertThrows(
-      GuardViolationException.class,
-      // manual start by-passing the factory
-      () -> rule.getRuntimeService().startProcessInstanceByKey(OrderApproval.KEY),
-      "Guard violated by execution '6' in activity 'Order created'\nExpecting variable 'orderId' to be set, but it was not found.\n");
-
+        GuardViolationException.class,
+        // manual start by-passing the factory
+        () -> rule.getRuntimeService().startProcessInstanceByKey(OrderApproval.KEY),
+        "Guard violated by execution '6' in activity 'Order created'\n"
+            + "Expecting variable 'orderId' to be set, but it was not found.\n");
   }
 
   @Test
   public void shouldFireExceptionApproveDecisionIsMissing() {
 
-    OrderApprovalInstanceFactory factory = new OrderApprovalInstanceFactory(rule.getRuntimeService());
+    OrderApprovalInstanceFactory factory =
+        new OrderApprovalInstanceFactory(rule.getRuntimeService());
     factory.start("1");
 
     // async after start
@@ -73,10 +75,9 @@ public class GuardProcessTest {
     Task task = rule.getTaskService().createTaskQuery().singleResult();
 
     assertThrows(
-      ProcessEngineException.class,
-      () -> rule.getTaskService().complete(task.getId()),
-      "Guard violated in task 'Approve order' (taskId: '21')\nExpecting variable 'orderApproved' to be set, but it was not found.\n"
-    );
+        ProcessEngineException.class,
+        () -> rule.getTaskService().complete(task.getId()),
+        "Guard violated in task 'Approve order' (taskId: '21')\n"
+            + "Expecting variable 'orderApproved' to be set, but it was not found.\n");
   }
-
 }

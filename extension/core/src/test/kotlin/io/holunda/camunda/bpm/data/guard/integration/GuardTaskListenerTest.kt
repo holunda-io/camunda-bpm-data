@@ -11,9 +11,7 @@ import org.junit.Test
 
 val ORDER_ID = stringVariable("orderID")
 
-/**
- * Test of listener behavior.
- */
+/** Test of listener behavior. */
 class GuardTaskListenerTest {
 
   @Test
@@ -59,11 +57,11 @@ class GuardTaskListenerTest {
     val delegateTask = DelegateTaskFake().withId("4711").withName("task name")
 
     val listener = DefaultGuardTaskListener(VariablesGuard("NamedGuard", listOf(ORDER_ID.exists())))
-    val exception = assertThrows(GuardViolationException::class.java) {
-      listener.notify(delegateTask)
-    }
+    val exception =
+      assertThrows(GuardViolationException::class.java) { listener.notify(delegateTask) }
     assertThat(exception.message).startsWith("NamedGuard")
   }
 
-  private fun createListener(throwE: Boolean = true) = DefaultGuardTaskListener(VariablesGuard(listOf(ORDER_ID.hasValue("1"))), throwE)
+  private fun createListener(throwE: Boolean = true) =
+    DefaultGuardTaskListener(VariablesGuard(listOf(ORDER_ID.hasValue("1"))), throwE)
 }

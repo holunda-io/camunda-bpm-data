@@ -13,13 +13,12 @@ import java.util.*
  * @property matcher matcher function, specifying the condition.
  */
 class VariableMatchesGuardCondition<T>(
-  /**
-   * Variable factory to work with.
-   */
+  /** Variable factory to work with. */
   variableFactory: VariableFactory<T>,
   local: Boolean = false,
   private val matcher: (value: T) -> Boolean,
-  private val violationMessageSupplier: (variableFactory: VariableFactory<T>, localLabel: String, option: Optional<T>) -> String =
+  private val violationMessageSupplier:
+    (variableFactory: VariableFactory<T>, localLabel: String, option: Optional<T>) -> String =
     { factory, localLabel, option ->
       "Expecting$localLabel variable '${factory.name}' to match the condition, but its value '${option.get()}' has not."
     }
@@ -44,7 +43,6 @@ class VariableMatchesGuardCondition<T>(
   override fun toString(): String {
     return "Matches condition for$localLabel variable '${super.variableFactory.name}'"
   }
-
 }
 
 /**
@@ -52,14 +50,16 @@ class VariableMatchesGuardCondition<T>(
  * @param matcher function that must match the value.
  * @return instance of [VariableMatchesGuardCondition] on current factory.
  */
-fun <T> VariableFactory<T>.matches(matcher: (value: T) -> Boolean) = VariableMatchesGuardCondition(this, false, matcher)
+fun <T> VariableFactory<T>.matches(matcher: (value: T) -> Boolean) =
+  VariableMatchesGuardCondition(this, false, matcher)
 
 /**
  * Creation extension for the local condition.
  * @param matcher function that must match the value.
  * @return instance of [VariableMatchesGuardCondition] on current factory.
  */
-fun <T> VariableFactory<T>.matchesLocal(matcher: (value: T) -> Boolean) = VariableMatchesGuardCondition(this, true, matcher)
+fun <T> VariableFactory<T>.matchesLocal(matcher: (value: T) -> Boolean) =
+  VariableMatchesGuardCondition(this, true, matcher)
 
 /**
  * Creation extension for the condition.
@@ -68,7 +68,8 @@ fun <T> VariableFactory<T>.matchesLocal(matcher: (value: T) -> Boolean) = Variab
  * @return instance of [VariableMatchesGuardCondition] on current factory.
  */
 fun <T> VariableFactory<T>.matches(
-  violationMessageSupplier: (variableFactory: VariableFactory<T>, localLabel: String, option: Optional<T>) -> String,
+  violationMessageSupplier:
+    (variableFactory: VariableFactory<T>, localLabel: String, option: Optional<T>) -> String,
   matcher: (value: T) -> Boolean
 ) = VariableMatchesGuardCondition(this, false, matcher, violationMessageSupplier)
 
@@ -79,6 +80,7 @@ fun <T> VariableFactory<T>.matches(
  * @return instance of [VariableMatchesGuardCondition] on current factory.
  */
 fun <T> VariableFactory<T>.matchesLocal(
-  violationMessageSupplier: (variableFactory: VariableFactory<T>, localLabel: String, option: Optional<T>) -> String,
+  violationMessageSupplier:
+    (variableFactory: VariableFactory<T>, localLabel: String, option: Optional<T>) -> String,
   matcher: (value: T) -> Boolean
 ) = VariableMatchesGuardCondition(this, true, matcher, violationMessageSupplier)

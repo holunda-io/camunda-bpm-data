@@ -3,10 +3,9 @@ package io.holunda.camunda.bpm.data.adapter.map;
 import io.holunda.camunda.bpm.data.adapter.AbstractReadWriteAdapter;
 import io.holunda.camunda.bpm.data.adapter.ValueWrapperUtil;
 import io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException;
-import org.camunda.bpm.engine.variable.value.TypedValue;
-
 import java.util.Collections;
 import java.util.Map;
+import org.camunda.bpm.engine.variable.value.TypedValue;
 
 /**
  * Base class for all map type read write adapter.
@@ -14,23 +13,20 @@ import java.util.Map;
  * @param <K> key type.
  * @param <V> value type.
  */
-public abstract class AbstractMapReadWriteAdapter<K, V> extends AbstractReadWriteAdapter<Map<K, V>> {
+public abstract class AbstractMapReadWriteAdapter<K, V>
+    extends AbstractReadWriteAdapter<Map<K, V>> {
 
-  /**
-   * Key type.
-   */
+  /** Key type. */
   protected final Class<K> keyClazz;
-  /**
-   * Value type.
-   */
+  /** Value type. */
   protected final Class<V> valueClazz;
 
   /**
    * Constructs adapter.
    *
    * @param variableName name of the variable.
-   * @param keyClazz     key class.
-   * @param valueClazz   value class.
+   * @param keyClazz key class.
+   * @param valueClazz value class.
    */
   public AbstractMapReadWriteAdapter(String variableName, Class<K> keyClazz, Class<V> valueClazz) {
     super(variableName);
@@ -56,17 +52,25 @@ public abstract class AbstractMapReadWriteAdapter<K, V> extends AbstractReadWrit
         return Collections.emptyMap();
       } else {
         Map.Entry<?, ?> entry = valueAsMap.entrySet().iterator().next();
-        if (keyClazz.isAssignableFrom(entry.getKey().getClass()) && valueClazz.isAssignableFrom(entry.getValue().getClass())) {
+        if (keyClazz.isAssignableFrom(entry.getKey().getClass())
+            && valueClazz.isAssignableFrom(entry.getValue().getClass())) {
           return (Map<K, V>) valueAsMap;
         } else {
-          throw new WrongVariableTypeException("Error reading " + variableName + ": Wrong map type detected, expected Map<"
-            + keyClazz.getName() + "," + valueClazz.getName()
-            + ", but was not found in " + valueAsMap);
+          throw new WrongVariableTypeException(
+              "Error reading "
+                  + variableName
+                  + ": Wrong map type detected, expected Map<"
+                  + keyClazz.getName()
+                  + ","
+                  + valueClazz.getName()
+                  + ", but was not found in "
+                  + valueAsMap);
         }
       }
     }
 
-    throw new WrongVariableTypeException("Error reading " + variableName + ": Couldn't read value of type Map from " + value);
+    throw new WrongVariableTypeException(
+        "Error reading " + variableName + ": Couldn't read value of type Map from " + value);
   }
 
   @Override

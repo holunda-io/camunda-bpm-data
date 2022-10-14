@@ -3,7 +3,6 @@ package io.holunda.camunda.bpm.data.guard.integration
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
 import io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.exists
 import io.holunda.camunda.bpm.data.guard.VariablesGuard
-import io.holunda.camunda.bpm.data.guard.VariablesGuard.Companion.ONE_OF
 import io.holunda.camunda.bpm.data.guard.condition.exists
 import io.holunda.camunda.bpm.data.guard.condition.hasValue
 import org.assertj.core.api.Assertions.assertThat
@@ -57,10 +56,9 @@ class GuardExecutionListenerTest {
   fun `should print name of named guard`() {
     val execution = DelegateExecutionFake()
 
-    val listener = DefaultGuardExecutionListener(VariablesGuard("NamedGuard", listOf(ORDER_REFERENCE.exists())))
-    val exception = assertThrows(GuardViolationException::class.java) {
-      listener.notify(execution)
-    }
+    val listener =
+      DefaultGuardExecutionListener(VariablesGuard("NamedGuard", listOf(ORDER_REFERENCE.exists())))
+    val exception = assertThrows(GuardViolationException::class.java) { listener.notify(execution) }
     assertThat(exception.message).startsWith("NamedGuard")
   }
 

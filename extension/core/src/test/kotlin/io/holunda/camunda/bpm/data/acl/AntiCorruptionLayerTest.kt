@@ -26,24 +26,28 @@ class AntiCorruptionLayerTest {
 
   val TRANSIENT = customVariable("__transient", VariableMap::class.java)
 
-  val MY_ACL = CamundaBpmDataACL.guardTransformingLocalReplace(
-    TRANSIENT.name,
-    VariablesGuard(listOf(exists(FOO), BAZ.matches { it.length > 2 })),
-    IdentityVariableMapTransformer
-  )
+  val MY_ACL =
+    CamundaBpmDataACL.guardTransformingLocalReplace(
+      TRANSIENT.name,
+      VariablesGuard(listOf(exists(FOO), BAZ.matches { it.length > 2 })),
+      IdentityVariableMapTransformer
+    )
 
-  val mapper = object : VariableMapTransformer {
-    override fun transform(variableMap: VariableMap): VariableMap = builder()
-      .set(FOO, FOO.from(variableMap).get())
-      .set(BAZ, BAZ.from(variableMap).get().substring(1))
-      .build()
+  val mapper =
+    object : VariableMapTransformer {
+      override fun transform(variableMap: VariableMap): VariableMap =
+        builder()
+          .set(FOO, FOO.from(variableMap).get())
+          .set(BAZ, BAZ.from(variableMap).get().substring(1))
+          .build()
+    }
 
-  }
-
-  val MY_ACL2 = CamundaBpmDataACL.guardTransformingLocalReplace(
-    TRANSIENT.name,
-    VariablesGuard(listOf(exists(FOO), BAZ.matches { it.length > 2 })), mapper
-  )
+  val MY_ACL2 =
+    CamundaBpmDataACL.guardTransformingLocalReplace(
+      TRANSIENT.name,
+      VariablesGuard(listOf(exists(FOO), BAZ.matches { it.length > 2 })),
+      mapper
+    )
 
   @Test
   fun `should wrap variables directly`() {
@@ -88,12 +92,14 @@ class AntiCorruptionLayerTest {
     assertThat(TRANSIENT.from(wrapped).get()).isEqualTo(mapper.transform(vars))
   }
 
-
   @Test
   fun `should fail checking and wrapping variables`() {
     val vars = builder().set(FOO, "foo1").set(BAZ, "ba").build()
 
-    assertThrows("ACL Guard Error:\n\tExpecting variable 'baz' to match the condition, but its value 'ba' has not.", GuardViolationException::class.java) {
+    assertThrows(
+      "ACL Guard Error:\n\tExpecting variable 'baz' to match the condition, but its value 'ba' has not.",
+      GuardViolationException::class.java
+    ) {
       MY_ACL.checkAndWrap(vars)
     }
   }
@@ -104,19 +110,13 @@ class AntiCorruptionLayerTest {
     setupEngineConfiguration()
 
     val listener = MY_ACL.getExecutionListener()
-    val wrappedVars = MY_ACL.checkAndWrap(
-      builder()
-        .set(FOO, "foo1")
-        .set(BAZ, "baz2")
-        .build()
-    )
+    val wrappedVars = MY_ACL.checkAndWrap(builder().set(FOO, "foo1").set(BAZ, "baz2").build())
 
     val fake = DelegateExecutionFake().withVariables(wrappedVars)
     listener.notify(fake)
 
     assertThat(fake.hasVariableLocal(FOO.name)).isTrue
     assertThat(fake.hasVariableLocal(BAZ.name)).isTrue
-
   }
 
   @Test
@@ -125,32 +125,26 @@ class AntiCorruptionLayerTest {
     setupEngineConfiguration()
 
     val listener = MY_ACL.getTaskListener()
-    val wrappedVars = MY_ACL.checkAndWrap(
-      builder()
-        .set(FOO, "foo1")
-        .set(BAZ, "baz2")
-        .build()
-    )
+    val wrappedVars = MY_ACL.checkAndWrap(builder().set(FOO, "foo1").set(BAZ, "baz2").build())
 
     val fake = DelegateTaskFake().withVariables(wrappedVars)
     listener.notify(fake)
 
     assertThat(fake.hasVariableLocal(FOO.name)).isTrue
     assertThat(fake.hasVariableLocal(BAZ.name)).isTrue
-
   }
 
-
   private fun setupEngineConfiguration() {
-    val config = object : StandaloneInMemProcessEngineConfiguration() {
-      init {
-        history = ProcessEngineConfiguration.HISTORY_FULL
-        databaseSchemaUpdate = ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE
-        jobExecutorActivate = false
-        expressionManager = MockExpressionManager()
-        javaSerializationFormatEnabled = true
+    val config =
+      object : StandaloneInMemProcessEngineConfiguration() {
+        init {
+          history = ProcessEngineConfiguration.HISTORY_FULL
+          databaseSchemaUpdate = ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE
+          jobExecutorActivate = false
+          expressionManager = MockExpressionManager()
+          javaSerializationFormatEnabled = true
+        }
       }
-    }
 
     Context.setProcessEngineConfiguration(config)
   }

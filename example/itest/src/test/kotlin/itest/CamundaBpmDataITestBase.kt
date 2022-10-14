@@ -40,6 +40,9 @@ import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Value
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.SHORT_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.STRING
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.STRING_LOCAL
+import java.time.Instant
+import java.time.temporal.ChronoUnit
+import java.util.*
 import org.camunda.bpm.engine.delegate.JavaDelegate
 import org.camunda.bpm.engine.delegate.TaskListener
 import org.camunda.bpm.engine.delegate.VariableScope
@@ -54,22 +57,19 @@ import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.junit4.SpringRunner
-import java.time.Instant
-import java.time.temporal.ChronoUnit
-import java.util.*
 
-/**
- * Alias for the when
- */
+/** Alias for the when */
 fun <G, W, T> ScenarioTestBase<G, W, T>.whenever(): W = `when`()
 
-/**
- * Base for ITests.
- */
+/** Base for ITests. */
 @RunWith(SpringRunner::class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = [CamundaBpmDataITestBase.TestApplication::class])
+@SpringBootTest(
+  webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+  classes = [CamundaBpmDataITestBase.TestApplication::class]
+)
 @ActiveProfiles("itest")
-abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionStage, AssertStage>() {
+abstract class CamundaBpmDataITestBase :
+  SpringScenarioTest<ActionStage, ActionStage, AssertStage>() {
 
   companion object {
 
@@ -83,10 +83,12 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
     val COMPLEX_VAR: VariableFactory<ComplexDataStructure> = customVariable("Complex Variable")
     val LIST_STRING_VAR: VariableFactory<List<String>> = listVariable("List Of String Variable")
     val SET_STRING_VAR: VariableFactory<Set<String>> = setVariable("Set Of String Variable")
-    val MAP_STRING_LONG_VAR: VariableFactory<Map<String, String>> = mapVariable("Map Of String to String Variable")
+    val MAP_STRING_LONG_VAR: VariableFactory<Map<String, String>> =
+      mapVariable("Map Of String to String Variable")
     val COMPLEX_SET_VAR: VariableFactory<Set<ComplexDataStructure>> = setVariable("Complex Set")
     val COMPLEX_LIST_VAR: VariableFactory<List<ComplexDataStructure>> = listVariable("Complex List")
-    val COMPLEX_MAP_VAR: VariableFactory<Map<String, ComplexDataStructure>> = mapVariable("Complex Map")
+    val COMPLEX_MAP_VAR: VariableFactory<Map<String, ComplexDataStructure>> =
+      mapVariable("Complex Map")
 
     object Values {
       val now = Date.from(Instant.now())
@@ -102,19 +104,29 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       val COMPLEX = VariableValue(COMPLEX_VAR, ComplexDataStructure("string", 17, now))
       val LIST_STRING = VariableValue(LIST_STRING_VAR, listOf("Hello", "World"))
       val SET_STRING = VariableValue(SET_STRING_VAR, setOf("Kermit", "Piggy"))
-      val MAP_STRING_LONG = VariableValue(MAP_STRING_LONG_VAR, mapOf("Twelve" to now.toString(), "Eleven" to now.toString()))
-      val COMPLEX_SET = VariableValue(COMPLEX_SET_VAR, setOf(
-        ComplexDataStructure("one", 1, now),
-        ComplexDataStructure("two", 2, yesterday)
-      ))
-      val COMPLEX_LIST = VariableValue(COMPLEX_LIST_VAR, listOf(
-        ComplexDataStructure("one", 1, now),
-        ComplexDataStructure("two", 2, yesterday)
-      ))
-      val COMPLEX_MAP = VariableValue(COMPLEX_MAP_VAR, mapOf(
-        "1" to ComplexDataStructure("one", 1, now),
-        "2" to ComplexDataStructure("two", 2, yesterday)
-      ))
+      val MAP_STRING_LONG =
+        VariableValue(
+          MAP_STRING_LONG_VAR,
+          mapOf("Twelve" to now.toString(), "Eleven" to now.toString())
+        )
+      val COMPLEX_SET =
+        VariableValue(
+          COMPLEX_SET_VAR,
+          setOf(ComplexDataStructure("one", 1, now), ComplexDataStructure("two", 2, yesterday))
+        )
+      val COMPLEX_LIST =
+        VariableValue(
+          COMPLEX_LIST_VAR,
+          listOf(ComplexDataStructure("one", 1, now), ComplexDataStructure("two", 2, yesterday))
+        )
+      val COMPLEX_MAP =
+        VariableValue(
+          COMPLEX_MAP_VAR,
+          mapOf(
+            "1" to ComplexDataStructure("one", 1, now),
+            "2" to ComplexDataStructure("two", 2, yesterday)
+          )
+        )
 
       val STRING_LOCAL = VariableValue(STRING_VAR, "localValue")
       val DATE_LOCAL = VariableValue(DATE_VAR, yesterday)
@@ -126,60 +138,76 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       val COMPLEX_LOCAL = VariableValue(COMPLEX_VAR, ComplexDataStructure("foobar", 12, yesterday))
       val LIST_STRING_LOCAL = VariableValue(LIST_STRING_VAR, listOf("Foo", "Bar"))
       val SET_STRING_LOCAL = VariableValue(SET_STRING_VAR, setOf("Homer", "Marge"))
-      val MAP_STRING_DATE_LOCAL = VariableValue(MAP_STRING_LONG_VAR, mapOf("Ten" to yesterday.toString(), "Nine" to yesterday.toString()))
-      val COMPLEX_SET_LOCAL = VariableValue(COMPLEX_SET_VAR, setOf(
-        ComplexDataStructure("one local", 1, now),
-        ComplexDataStructure("two local", 2, yesterday)
-      ))
-      val COMPLEX_LIST_LOCAL = VariableValue(COMPLEX_LIST_VAR, listOf(
-        ComplexDataStructure("one local", 1, now),
-        ComplexDataStructure("two local", 2, yesterday)
-      ))
-      val COMPLEX_MAP_LOCAL = VariableValue(COMPLEX_MAP_VAR, mapOf(
-        "1" to ComplexDataStructure("one local", 1, now),
-        "2" to ComplexDataStructure("two local", 2, yesterday)
-      ))
+      val MAP_STRING_DATE_LOCAL =
+        VariableValue(
+          MAP_STRING_LONG_VAR,
+          mapOf("Ten" to yesterday.toString(), "Nine" to yesterday.toString())
+        )
+      val COMPLEX_SET_LOCAL =
+        VariableValue(
+          COMPLEX_SET_VAR,
+          setOf(
+            ComplexDataStructure("one local", 1, now),
+            ComplexDataStructure("two local", 2, yesterday)
+          )
+        )
+      val COMPLEX_LIST_LOCAL =
+        VariableValue(
+          COMPLEX_LIST_VAR,
+          listOf(
+            ComplexDataStructure("one local", 1, now),
+            ComplexDataStructure("two local", 2, yesterday)
+          )
+        )
+      val COMPLEX_MAP_LOCAL =
+        VariableValue(
+          COMPLEX_MAP_VAR,
+          mapOf(
+            "1" to ComplexDataStructure("one local", 1, now),
+            "2" to ComplexDataStructure("two local", 2, yesterday)
+          )
+        )
     }
 
-    private val allValues = mapOf(
-      COMPLEX_SET_VAR to COMPLEX_SET,
-      COMPLEX_LIST_VAR to COMPLEX_LIST,
-      COMPLEX_MAP_VAR to COMPLEX_MAP,
-      STRING_VAR to STRING,
-      DATE_VAR to DATE,
-      SHORT_VAR to SHORT,
-      INT_VAR to INT,
-      LONG_VAR to LONG,
-      DOUBLE_VAR to DOUBLE,
-      BOOLEAN_VAR to BOOLEAN,
-      COMPLEX_VAR to COMPLEX,
-      LIST_STRING_VAR to LIST_STRING,
-      SET_STRING_VAR to SET_STRING,
-      MAP_STRING_LONG_VAR to MAP_STRING_LONG
-    )
+    private val allValues =
+      mapOf(
+        COMPLEX_SET_VAR to COMPLEX_SET,
+        COMPLEX_LIST_VAR to COMPLEX_LIST,
+        COMPLEX_MAP_VAR to COMPLEX_MAP,
+        STRING_VAR to STRING,
+        DATE_VAR to DATE,
+        SHORT_VAR to SHORT,
+        INT_VAR to INT,
+        LONG_VAR to LONG,
+        DOUBLE_VAR to DOUBLE,
+        BOOLEAN_VAR to BOOLEAN,
+        COMPLEX_VAR to COMPLEX,
+        LIST_STRING_VAR to LIST_STRING,
+        SET_STRING_VAR to SET_STRING,
+        MAP_STRING_LONG_VAR to MAP_STRING_LONG
+      )
 
-    private val allLocalValues = mapOf(
-      COMPLEX_SET_VAR to COMPLEX_SET_LOCAL,
-      COMPLEX_LIST_VAR to COMPLEX_LIST_LOCAL,
-      COMPLEX_MAP_VAR to COMPLEX_MAP_LOCAL,
-      STRING_VAR to STRING_LOCAL,
-      DATE_VAR to DATE_LOCAL,
-      SHORT_VAR to SHORT_LOCAL,
-      INT_VAR to INT_LOCAL,
-      LONG_VAR to LONG_LOCAL,
-      DOUBLE_VAR to DOUBLE_LOCAL,
-      BOOLEAN_VAR to BOOLEAN_LOCAL,
-      COMPLEX_VAR to COMPLEX_LOCAL,
-      LIST_STRING_VAR to LIST_STRING_LOCAL,
-      SET_STRING_VAR to SET_STRING_LOCAL,
-      MAP_STRING_LONG_VAR to MAP_STRING_DATE_LOCAL
-    )
+    private val allLocalValues =
+      mapOf(
+        COMPLEX_SET_VAR to COMPLEX_SET_LOCAL,
+        COMPLEX_LIST_VAR to COMPLEX_LIST_LOCAL,
+        COMPLEX_MAP_VAR to COMPLEX_MAP_LOCAL,
+        STRING_VAR to STRING_LOCAL,
+        DATE_VAR to DATE_LOCAL,
+        SHORT_VAR to SHORT_LOCAL,
+        INT_VAR to INT_LOCAL,
+        LONG_VAR to LONG_LOCAL,
+        DOUBLE_VAR to DOUBLE_LOCAL,
+        BOOLEAN_VAR to BOOLEAN_LOCAL,
+        COMPLEX_VAR to COMPLEX_LOCAL,
+        LIST_STRING_VAR to LIST_STRING_LOCAL,
+        SET_STRING_VAR to SET_STRING_LOCAL,
+        MAP_STRING_LONG_VAR to MAP_STRING_DATE_LOCAL
+      )
 
     fun createVariableMapUntyped(): VariableMap {
       val variables = createVariables()
-      allValues.values.forEach {
-        variables.putValue(it.variable.name, it.value)
-      }
+      allValues.values.forEach { variables.putValue(it.variable.name, it.value) }
       return variables
     }
 
@@ -250,9 +278,7 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       readLocalVarsFromVariableScope(variableScope = delegateTask)
     }
 
-    /**
-     * Writes local properties from variable scope.
-     */
+    /** Writes local properties from variable scope. */
     private fun readLocalVarsFromVariableScope(variableScope: VariableScope) {
       vars[STRING_VAR.name] = STRING_VAR.from(variableScope).local
       vars[DATE_VAR.name] = DATE_VAR.from(variableScope).local
@@ -268,7 +294,6 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       vars[COMPLEX_SET_VAR.name] = COMPLEX_SET_VAR.from(variableScope).local
       vars[COMPLEX_LIST_VAR.name] = COMPLEX_LIST_VAR.from(variableScope).local
       vars[COMPLEX_MAP_VAR.name] = COMPLEX_MAP_VAR.from(variableScope).local
-
     }
 
     @Bean
@@ -276,7 +301,6 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       val nonExisting = stringVariable("non-existing")
       nonExisting.from(delegateExecution).get()
     }
-
 
     @Bean
     fun readFromVariableMap() = JavaDelegate { delegateExecution ->
@@ -314,7 +338,6 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       COMPLEX_SET_VAR.on(delegateExecution).set(COMPLEX_SET.value)
       COMPLEX_LIST_VAR.on(delegateExecution).set(COMPLEX_LIST.value)
       COMPLEX_MAP_VAR.on(delegateExecution).set(COMPLEX_MAP.value)
-
     }
 
     @Bean
@@ -359,32 +382,22 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
     }
   }
 
-
-  /**
-   * Value holder.
-   */
+  /** Value holder. */
   data class VariableValue<T : Any?>(val variable: VariableFactory<T>, val value: T)
 
-  /**
-   * Complex data structure.
-   */
+  /** Complex data structure. */
   data class ComplexDataStructure(
     val someStringValue: String,
     val someIntValue: Int,
     val someDateValue: Date
   ) {
-    @JsonIgnore
-    val valueToIgnore: String = "some hidden value"
+    @JsonIgnore val valueToIgnore: String = "some hidden value"
   }
 
-  /**
-   * Application to start
-   */
+  /** Application to start */
   @EnableJGiven
   @ComponentScan
   @SpringBootConfiguration
   @EnableAutoConfiguration
   class TestApplication
 }
-
-

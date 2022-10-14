@@ -1,9 +1,8 @@
 package io.holunda.camunda.bpm.data.adapter.map;
 
-import org.camunda.bpm.engine.RuntimeService;
-
 import java.util.Map;
 import java.util.Optional;
+import org.camunda.bpm.engine.RuntimeService;
 
 /**
  * Read write adapter for runtime service access.
@@ -20,13 +19,17 @@ public class MapReadWriteAdapterRuntimeService<K, V> extends AbstractMapReadWrit
    * Constructs the adapter.
    *
    * @param runtimeService runtime service to use.
-   * @param executionId    id of the execution to read from and write to.
-   * @param variableName   name of the variable.
-   * @param keyClazz       class of the key variable.
-   * @param valueClazz     class of the value variable.
+   * @param executionId id of the execution to read from and write to.
+   * @param variableName name of the variable.
+   * @param keyClazz class of the key variable.
+   * @param valueClazz class of the value variable.
    */
   public MapReadWriteAdapterRuntimeService(
-    RuntimeService runtimeService, String executionId, String variableName, Class<K> keyClazz, Class<V> valueClazz) {
+      RuntimeService runtimeService,
+      String executionId,
+      String variableName,
+      Class<K> keyClazz,
+      Class<V> valueClazz) {
     super(variableName, keyClazz, valueClazz);
     this.runtimeService = runtimeService;
     this.executionId = executionId;
@@ -44,7 +47,8 @@ public class MapReadWriteAdapterRuntimeService<K, V> extends AbstractMapReadWrit
 
   @Override
   public Optional<Map<K, V>> getLocalOptional() {
-    return Optional.ofNullable(getOrNull(runtimeService.getVariableLocal(executionId, variableName)));
+    return Optional.ofNullable(
+        getOrNull(runtimeService.getVariableLocal(executionId, variableName)));
   }
 
   @Override

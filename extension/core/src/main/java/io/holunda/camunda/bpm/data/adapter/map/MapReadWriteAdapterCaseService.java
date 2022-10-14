@@ -1,9 +1,8 @@
 package io.holunda.camunda.bpm.data.adapter.map;
 
-import org.camunda.bpm.engine.CaseService;
-
 import java.util.Map;
 import java.util.Optional;
+import org.camunda.bpm.engine.CaseService;
 
 /**
  * Read write adapter for case service access.
@@ -19,14 +18,18 @@ public class MapReadWriteAdapterCaseService<K, V> extends AbstractMapReadWriteAd
   /**
    * Constructs the adapter.
    *
-   * @param caseService     case service to use.
+   * @param caseService case service to use.
    * @param caseExecutionId id of the execution to read from and write to.
-   * @param variableName    name of the variable.
-   * @param keyClazz        class of the key variable.
-   * @param valueClazz      class of the value variable.
+   * @param variableName name of the variable.
+   * @param keyClazz class of the key variable.
+   * @param valueClazz class of the value variable.
    */
   public MapReadWriteAdapterCaseService(
-    CaseService caseService, String caseExecutionId, String variableName, Class<K> keyClazz, Class<V> valueClazz) {
+      CaseService caseService,
+      String caseExecutionId,
+      String variableName,
+      Class<K> keyClazz,
+      Class<V> valueClazz) {
     super(variableName, keyClazz, valueClazz);
     this.caseService = caseService;
     this.caseExecutionId = caseExecutionId;
@@ -44,7 +47,8 @@ public class MapReadWriteAdapterCaseService<K, V> extends AbstractMapReadWriteAd
 
   @Override
   public Optional<Map<K, V>> getLocalOptional() {
-    return Optional.ofNullable(getOrNull(caseService.getVariableLocal(caseExecutionId, variableName)));
+    return Optional.ofNullable(
+        getOrNull(caseService.getVariableLocal(caseExecutionId, variableName)));
   }
 
   @Override
