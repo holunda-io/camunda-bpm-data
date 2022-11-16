@@ -23,7 +23,7 @@ import org.camunda.bpm.engine.CaseService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
-import org.camunda.bpm.extension.mockito.delegate.DelegateExecutionFake;
+import org.camunda.community.mockito.delegate.DelegateExecutionFake;
 import org.junit.Before;
 import org.junit.Test;
 

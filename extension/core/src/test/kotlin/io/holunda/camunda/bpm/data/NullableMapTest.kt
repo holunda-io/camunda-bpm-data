@@ -6,7 +6,7 @@ import io.holunda.camunda.bpm.data.NullableMapTest.TestVariables.NO_NULL_MAP
 import io.holunda.camunda.bpm.data.NullableMapTest.TestVariables.NULL_MAP
 import io.holunda.camunda.bpm.data.factory.VariableFactory
 import org.assertj.core.api.Assertions.assertThat
-import org.camunda.bpm.extension.mockito.CamundaMockito.delegateExecutionFake
+import org.camunda.community.mockito.CamundaMockito.delegateExecutionFake
 import org.junit.Test
 
 internal class NullableMapTest {

@@ -6,7 +6,7 @@ import io.holunda.camunda.bpm.data.example.kotlin.domain.OrderPosition
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_POSITION
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_TOTAL
 import org.assertj.core.api.Assertions.assertThat
-import org.camunda.bpm.extension.mockito.CamundaMockito.delegateExecutionFake
+import org.camunda.community.mockito.CamundaMockito.delegateExecutionFake
 import org.junit.jupiter.api.Test
 import java.math.BigDecimal
 

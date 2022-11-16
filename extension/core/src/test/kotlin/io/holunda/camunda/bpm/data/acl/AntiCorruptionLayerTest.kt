@@ -14,8 +14,8 @@ import org.camunda.bpm.engine.impl.context.Context
 import org.camunda.bpm.engine.test.mock.MockExpressionManager
 import org.camunda.bpm.engine.variable.VariableMap
 import org.camunda.bpm.engine.variable.value.ObjectValue
-import org.camunda.bpm.extension.mockito.delegate.DelegateExecutionFake
-import org.camunda.bpm.extension.mockito.delegate.DelegateTaskFake
+import org.camunda.community.mockito.delegate.DelegateExecutionFake
+import org.camunda.community.mockito.delegate.DelegateTaskFake
 import org.junit.Assert.assertThrows
 import org.junit.Test
 
