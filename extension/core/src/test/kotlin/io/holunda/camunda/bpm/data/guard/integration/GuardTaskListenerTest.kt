@@ -5,7 +5,7 @@ import io.holunda.camunda.bpm.data.guard.VariablesGuard
 import io.holunda.camunda.bpm.data.guard.condition.exists
 import io.holunda.camunda.bpm.data.guard.condition.hasValue
 import org.assertj.core.api.Assertions.assertThat
-import org.camunda.bpm.extension.mockito.delegate.DelegateTaskFake
+import org.camunda.community.mockito.delegate.DelegateTaskFake
 import org.junit.Assert.assertThrows
 import org.junit.Test
 

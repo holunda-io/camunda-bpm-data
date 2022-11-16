@@ -158,8 +158,9 @@
       <artifactId>jgiven-spring-junit4</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.camunda.bpm.extension.mockito</groupId>
-      <artifactId>camunda-bpm-mockito</artifactId>
+      <groupId>org.camunda.community.mockito</groupId>
+      <artifactId>camunda-platform-7-mockito</artifactId>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 

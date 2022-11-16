@@ -5,7 +5,6 @@
 .project
 .settings/
 .meta-data/
-.java-version
 .DS_Store
 target/
 pom.xml.versionsBackup
