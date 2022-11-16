@@ -15,7 +15,7 @@
   <packaging>pom</packaging>
 
   <properties>
-    <springdoc.version>1.6.9</springdoc.version>
+    <springdoc.version>1.6.12</springdoc.version>
     <jacoco.skip>true</jacoco.skip>
     <maven.javadoc.skip>true</maven.javadoc.skip>
     <maven.sources.skip>true</maven.sources.skip>
