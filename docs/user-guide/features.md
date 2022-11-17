@@ -30,7 +30,7 @@
     - Factory methods to create `AntiCorruptionLayer` with a `VariableGuard` (see `CamundaBpmDataACL`)
     - Factory methods to create `AntiCorruptionLayer` without a `VariableGuard` (see `CamundaBpmDataMapper`)
 
-* Testing variable access and mocking `RuntimeService`, `TaskService` and `CaseService`.
+* Testing variable access and mocking `RuntimeService`, `TaskService` and `CaseService` (will be moved to [camunda-platform-7-mockito](https://github.com/camunda-community-hub/camunda-platform-7-mockito))
     - Builder to create Mockito-based behaviour of `RuntimeService` accessing variables.
     - Builder to create Mockito-based behaviour of `TaskServiceService` accessing variables.
     - Builder to create Mockito-based behaviour of `CaseServiceService` accessing variables.

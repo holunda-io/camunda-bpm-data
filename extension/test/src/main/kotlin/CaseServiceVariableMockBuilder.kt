@@ -14,6 +14,11 @@ import org.mockito.ArgumentMatchers.anyString
 /**
  * Builder to mock the runtime service behavior regarding variables.
  */
+@Deprecated(
+  message = "Moved to camunda-platform-7-mockito, will be removed in 1.3.x",
+  replaceWith = ReplaceWith("CaseServiceStubBuilder", "org.camunda.community.mockito.service.CaseServiceStubBuilder"),
+  level = DeprecationLevel.WARNING
+)
 class CaseServiceVariableMockBuilder(
   private val caseService: CaseService,
   private val variables: VariableMap = createVariables(),
