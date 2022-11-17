@@ -12,6 +12,11 @@ import org.mockito.verification.VerificationMode
  * Verifier for a mocked task service.
  * Provides methods for easy verification.
  */
+@Deprecated(
+  message = "Moved to camunda-platform-7-mockito, will be removed in 1.3.x",
+  replaceWith = ReplaceWith("TaskServiceVerification", "org.camunda.community.mockito.verify.TaskServiceVerification"),
+  level = DeprecationLevel.WARNING
+)
 class TaskServiceMockVerifier(
   private val taskService: TaskService
 ) {

@@ -2,7 +2,7 @@ package io.holunda.camunda.bpm.data.writer;
 
 import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
-import org.camunda.bpm.extension.mockito.delegate.DelegateExecutionFake;
+import org.camunda.community.mockito.delegate.DelegateExecutionFake;
 import org.junit.Test;
 
 import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
@@ -37,7 +37,7 @@ public class VariableScopeWriterTest {
     DelegateExecutionFake execution = DelegateExecutionFake.of().withId("4711");
     STRING.on(execution).set("value");
     CamundaBpmData.writer(execution)
-      .remove(STRING);
+                  .remove(STRING);
     assertThat(execution.getVariableNames()).isEmpty();
   }
 

@@ -11,6 +11,11 @@ import org.mockito.verification.VerificationMode
  * Verifier for a mocked runtime service.
  * Provides methods for easy verification.
  */
+@Deprecated(
+  message = "Moved to camunda-platform-7-mockito, will be removed in 1.3.x",
+  replaceWith = ReplaceWith("CaseServiceVerification", "org.camunda.community.mockito.verify.CaseServiceVerification"),
+  level = DeprecationLevel.WARNING
+)
 class CaseServiceMockVerifier(
   private val caseService: CaseService
 ) {

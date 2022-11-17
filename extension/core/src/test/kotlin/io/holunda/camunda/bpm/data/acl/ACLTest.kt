@@ -15,7 +15,7 @@ import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.task
 import org.camunda.bpm.engine.test.mock.MockExpressionManager
 import org.camunda.bpm.engine.variable.VariableMap
-import org.camunda.bpm.extension.mockito.CamundaMockito
+import org.camunda.community.mockito.CamundaMockito.registerInstance
 import org.junit.Rule
 import org.junit.Test
 
@@ -49,7 +49,7 @@ class TransientVariableMappingListenerTest {
   fun `ACL signal sub-process with variables does not set variables on processInstance`() {
 
     // given
-    CamundaMockito.registerInstance("mapper", ACL_LR.getExecutionListener())
+    registerInstance("mapper", ACL_LR.getExecutionListener())
 
     val processInstance = camunda.runtimeService.startProcessInstanceByKey(
       "eventBasedSubprocess_with_transientMapping"
@@ -74,7 +74,7 @@ class TransientVariableMappingListenerTest {
   fun `ACL signal sub-process with variables passes guard sets does not set variables on process instance`() {
 
     // given
-    CamundaMockito.registerInstance("mapper", ACL_GTLR.getExecutionListener())
+    registerInstance("mapper", ACL_GTLR.getExecutionListener())
 
     val processInstance = camunda.runtimeService.startProcessInstanceByKey(
       "eventBasedSubprocess_with_transientMapping"

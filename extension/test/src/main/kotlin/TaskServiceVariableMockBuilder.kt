@@ -14,6 +14,11 @@ import org.mockito.kotlin.whenever
 /**
  * Builder to mock the task service behavior regarding variables.
  */
+@Deprecated(
+  message = "Moved to camunda-platform-7-mockito, will be removed in 1.3.x",
+  replaceWith = ReplaceWith("TaskServiceStubBuilder", "org.camunda.community.mockito.service.TaskServiceStubBuilder"),
+  level = DeprecationLevel.WARNING
+)
 class TaskServiceVariableMockBuilder(
   private val taskService: TaskService,
   private val variables: VariableMap = createVariables(),

@@ -4,7 +4,7 @@
 
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data-parent</artifactId>
-  <version>1.2.7</version>
+  <version>1.2.8</version>
   <name>${project.artifactId}</name>
   <description>Camunda BPM Data</description>
   <url>https://github.com/holunda-io/camunda-bpm-data/</url>
@@ -18,22 +18,21 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <version.java>${java.version}</version.java>
 
-    <camunda.version.ce>7.16.0</camunda.version.ce>
-    <camunda.version.ee>7.16.2-ee</camunda.version.ee>
+    <camunda.version.ce>7.18.0</camunda.version.ce>
+    <camunda.version.ee>7.18.0-ee</camunda.version.ee>
 
-    <spring-boot.version>2.6.7</spring-boot.version>
+    <spring-boot.version>2.7.5</spring-boot.version>
     <groovy.version>2.4.21</groovy.version>
-    <spin.version>1.16.0</spin.version>
+    <spin.version>1.18.0</spin.version>
     <camunda-assert.version>15.0.0</camunda-assert.version>
 
-    <kotlin.version>1.7.0</kotlin.version>
-    <jgiven.version>1.2.2</jgiven.version>
+    <kotlin.version>1.7.21</kotlin.version>
+    <jgiven.version>1.2.4</jgiven.version>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
 
-    <kotlin-logging.version>2.1.23</kotlin-logging.version>
+    <kotlin-logging.version>3.0.4</kotlin-logging.version>
     <mockito-kotlin.version>4.0.0</mockito-kotlin.version>
-    <camunda-bpm-mockito.version>5.16.0</camunda-bpm-mockito.version>
-    <mockito.version>4.4.0</mockito.version>
+    <camunda-platform-7-mockito.version>6.17.1</camunda-platform-7-mockito.version>
 
     <pattern.class.itest>**/*ITest.*</pattern.class.itest>
     <pattern.package.itest>**/itest/**/*.*</pattern.package.itest>
@@ -96,10 +95,10 @@
       </dependency>
 
       <dependency>
-        <groupId>org.camunda.bpm.extension.mockito</groupId>
-        <artifactId>camunda-bpm-mockito</artifactId>
+        <groupId>org.camunda.community.mockito</groupId>
+        <artifactId>camunda-platform-7-mockito</artifactId>
         <scope>test</scope>
-        <version>${camunda-bpm-mockito.version}</version>
+        <version>${camunda-platform-7-mockito.version}</version>
       </dependency>
       <dependency>
         <groupId>org.camunda.bpm.springboot</groupId>
@@ -293,7 +292,7 @@
           <!-- resources -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-resources-plugin</artifactId>
-          <version>3.2.0</version>
+          <version>3.3.0</version>
           <configuration>
             <encoding>${project.build.sourceEncoding}</encoding>
           </configuration>
@@ -331,7 +330,7 @@
         <plugin>
           <groupId>org.jetbrains.dokka</groupId>
           <artifactId>dokka-maven-plugin</artifactId>
-          <version>1.6.21</version>
+          <version>1.7.20</version>
           <executions>
             <execution>
               <id>attach-javadocs</id>
@@ -405,7 +404,7 @@
         <plugin>
           <groupId>com.amashchenko.maven.plugin</groupId>
           <artifactId>gitflow-maven-plugin</artifactId>
-          <version>1.18.0</version>
+          <version>1.19.0</version>
           <configuration>
             <gitFlowConfig>
               <productionBranch>master</productionBranch>
@@ -450,7 +449,7 @@
         <!-- Deploy -->
         <plugin>
           <artifactId>maven-deploy-plugin</artifactId>
-          <version>2.8.2</version>
+          <version>3.0.0</version>
           <configuration>
             <skip>true</skip>
           </configuration>
@@ -481,7 +480,7 @@
         <!-- Install -->
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
-          <version>2.5.2</version>
+          <version>3.0.1</version>
         </plugin>
 
         <!-- Enforce -->
