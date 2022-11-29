@@ -4,8 +4,8 @@ import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.externaltask.LockedExternalTask;
 import org.camunda.bpm.engine.variable.Variables;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Map;
@@ -42,7 +42,7 @@ public class LockedExternalTaskReaderTest {
   private VariableReader reader = CamundaBpmData.reader(externalTask);
 
 
-  @Before
+  @BeforeEach
   public void setUp() {
     when(externalTask.getVariables()).thenReturn(
       Variables

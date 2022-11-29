@@ -14,7 +14,7 @@ import org.camunda.bpm.spring.boot.starter.test.helper.StandaloneInMemoryTestCon
 import org.camunda.spin.plugin.impl.SpinProcessEnginePlugin;
 import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.sql.Date;
 import java.time.Instant;

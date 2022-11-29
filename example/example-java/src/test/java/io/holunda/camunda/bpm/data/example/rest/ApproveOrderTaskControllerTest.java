@@ -4,7 +4,7 @@ import io.holunda.camunda.bpm.data.example.domain.Order;
 import io.holunda.camunda.bpm.data.mockito.TaskServiceMockVerifier;
 import org.camunda.bpm.engine.TaskService;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 

@@ -24,7 +24,7 @@
     <spring-boot.version>2.7.5</spring-boot.version>
     <groovy.version>2.4.21</groovy.version>
     <spin.version>1.18.0</spin.version>
-    <camunda-assert.version>15.0.0</camunda-assert.version>
+    <camunda-assert.version>${camunda.version.ce}</camunda-assert.version>
 
     <kotlin.version>1.7.21</kotlin.version>
     <jgiven.version>1.2.4</jgiven.version>
@@ -32,7 +32,7 @@
 
     <kotlin-logging.version>3.0.4</kotlin-logging.version>
     <mockito-kotlin.version>4.1.0</mockito-kotlin.version>
-    <camunda-platform-7-mockito.version>6.17.1</camunda-platform-7-mockito.version>
+    <camunda-platform-7-mockito.version>6.18.0</camunda-platform-7-mockito.version>
 
     <pattern.class.itest>**/*ITest.*</pattern.class.itest>
     <pattern.package.itest>**/itest/**/*.*</pattern.package.itest>
@@ -45,7 +45,7 @@
 
   <modules>
     <module>extension/core</module>
-    <module>extension/test</module>
+    <module>extension/c7</module>
   </modules>
 
   <dependencyManagement>
@@ -71,12 +71,6 @@
         <groupId>io.github.microutils</groupId>
         <artifactId>kotlin-logging-jvm</artifactId>
         <version>${kotlin-logging.version}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib</artifactId>
-          </exclusion>
-        </exclusions>
       </dependency>
 
       <dependency>
@@ -103,13 +97,7 @@
       <dependency>
         <groupId>org.camunda.bpm.springboot</groupId>
         <artifactId>camunda-bpm-spring-boot-starter-test</artifactId>
-        <version>${camunda.version}</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.camunda.bpm.assert</groupId>
-        <artifactId>camunda-bpm-assert</artifactId>
-        <version>${camunda-assert.version}</version>
+        <version>${camunda.version.ce}</version>
         <scope>test</scope>
       </dependency>
       <dependency>
@@ -138,8 +126,8 @@
     </dependency>
 
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
       <scope>test</scope>
     </dependency>
 
@@ -544,7 +532,7 @@
           <dependency>
             <groupId>org.camunda.bpm.springboot</groupId>
             <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
-            <version>${camunda.version}</version>
+            <version>${camunda.version.ce}</version>
           </dependency>
         </dependencies>
       </dependencyManagement>
@@ -571,7 +559,7 @@
           <dependency>
             <groupId>org.camunda.bpm.springboot</groupId>
             <artifactId>camunda-bpm-spring-boot-starter-webapp-ee</artifactId>
-            <version>${camunda.version}</version>
+            <version>${camunda.version.ee}</version>
           </dependency>
         </dependencies>
       </dependencyManagement>

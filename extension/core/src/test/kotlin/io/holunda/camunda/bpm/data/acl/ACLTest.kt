@@ -13,18 +13,21 @@ import org.camunda.bpm.engine.test.Deployment
 import org.camunda.bpm.engine.test.ProcessEngineRule
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.task
+import org.camunda.bpm.engine.test.junit5.ProcessEngineExtension
 import org.camunda.bpm.engine.test.mock.MockExpressionManager
 import org.camunda.bpm.engine.variable.VariableMap
 import org.camunda.community.mockito.CamundaMockito.registerInstance
-import org.junit.Rule
-import org.junit.Test
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.RegisterExtension
+
 
 @Deployment(resources = ["eventBasedSubprocess_no_transientMapping.bpmn", "eventBasedSubprocess_with_transientMapping.bpmn"])
 class TransientVariableMappingListenerTest {
 
-  @Suppress("RedundantVisibilityModifier")
-  @get: Rule
-  public val camunda = camunda()
+  @RegisterExtension
+  val camunda: ProcessEngineExtension = ProcessEngineExtension.builder()
+    .configurationResource("audithistory.camunda.cfg.xml")
+    .build()
 
   @Test
   fun `NO ACL signal sub-process with variables sets variables on processInstance`() {

@@ -14,6 +14,7 @@
 
   <properties>
     <jacoco.skip>false</jacoco.skip>
+    <skipTests>false</skipTests>
   </properties>
 
   <dependencies>
@@ -151,11 +152,11 @@
     </dependency>
     <dependency>
       <groupId>com.tngtech.jgiven</groupId>
-      <artifactId>jgiven-junit</artifactId>
+      <artifactId>jgiven-junit5</artifactId>
     </dependency>
     <dependency>
       <groupId>com.tngtech.jgiven</groupId>
-      <artifactId>jgiven-spring-junit4</artifactId>
+      <artifactId>jgiven-spring-junit5</artifactId>
     </dependency>
     <dependency>
       <groupId>org.camunda.community.mockito</groupId>
@@ -184,7 +185,7 @@
           </includes>
           <!-- Sets the VM argument line used when unit tests are run. -->
           <!-- prevent the annoying ForkedBooter process from stealing window focus on Mac OS -->
-          <argLine>-Djava.awt.headless=true ${argLine} -XX:+StartAttachListener</argLine>
+          <argLine>-Djava.awt.headless=true @{argLine} -XX:+StartAttachListener</argLine>
           <runOrder>random</runOrder>
         </configuration>
       </plugin>

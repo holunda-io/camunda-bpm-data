@@ -6,8 +6,8 @@ import io.holunda.camunda.bpm.data.guard.condition.exists
 import io.holunda.camunda.bpm.data.guard.condition.hasValue
 import org.assertj.core.api.Assertions.assertThat
 import org.camunda.community.mockito.delegate.DelegateExecutionFake
-import org.junit.Assert.assertThrows
-import org.junit.Test
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 val ORDER_REFERENCE = stringVariable("orderReference")
 
@@ -43,9 +43,8 @@ class GuardExecutionListenerTest {
     ORDER_REFERENCE.on(execution).set("2")
 
     val listener = createListener(true)
-    assertThrows(
+    assertThrows<GuardViolationException>(
       "Guard violated by execution '${execution.id}' in activity '${execution.currentActivityName}'",
-      GuardViolationException::class.java
     ) {
       listener.notify(execution)
     }
@@ -56,7 +55,7 @@ class GuardExecutionListenerTest {
     val execution = DelegateExecutionFake()
 
     val listener = DefaultGuardExecutionListener(VariablesGuard("NamedGuard", listOf(ORDER_REFERENCE.exists())))
-    val exception = assertThrows(GuardViolationException::class.java) {
+    val exception = assertThrows<GuardViolationException> {
       listener.notify(execution)
     }
     assertThat(exception.message).startsWith("NamedGuard")

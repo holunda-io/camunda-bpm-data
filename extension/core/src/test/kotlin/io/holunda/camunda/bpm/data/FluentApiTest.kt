@@ -15,7 +15,7 @@ import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.variable.Variables.createVariables
 import org.camunda.bpm.engine.variable.Variables.stringValue
 import org.camunda.community.mockito.delegate.DelegateExecutionFake
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import java.util.*
 
 class FluentApiTest {

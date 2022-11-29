@@ -12,6 +12,7 @@ import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variable
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_POSITION
 import io.holunda.camunda.bpm.data.example.kotlin.process.OrderApproval.Variables.ORDER_TOTAL
 import io.holunda.camunda.bpm.data.factory.VariableFactory
+import io.holunda.camunda.bpm.data.guard.VariablesGuard
 import io.holunda.camunda.bpm.data.guard.condition.exists
 import io.holunda.camunda.bpm.data.guard.condition.matches
 import io.holunda.camunda.bpm.data.guard.integration.DefaultGuardTaskListener
@@ -86,10 +87,10 @@ class OrderApproval {
    */
   @Bean
   fun guardTaskListener() = DefaultGuardTaskListener(
-    listOf(
+    VariablesGuard(listOf(
       ORDER_APPROVED.exists(),
       ORDER_APPROVED.matches(this::isTrueViolationMessageSupplier) { it == true }
-    ), true
+    )), true
   )
 
   private fun isTrueViolationMessageSupplier(variableFactory: VariableFactory<Boolean>, localLabel: String, option: Optional<Boolean>) =

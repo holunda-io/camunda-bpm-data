@@ -16,8 +16,8 @@ import org.camunda.bpm.engine.variable.VariableMap
 import org.camunda.bpm.engine.variable.value.ObjectValue
 import org.camunda.community.mockito.delegate.DelegateExecutionFake
 import org.camunda.community.mockito.delegate.DelegateTaskFake
-import org.junit.Assert.assertThrows
-import org.junit.Test
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class AntiCorruptionLayerTest {
 
@@ -92,8 +92,7 @@ class AntiCorruptionLayerTest {
   @Test
   fun `should fail checking and wrapping variables`() {
     val vars = builder().set(FOO, "foo1").set(BAZ, "ba").build()
-
-    assertThrows("ACL Guard Error:\n\tExpecting variable 'baz' to match the condition, but its value 'ba' has not.", GuardViolationException::class.java) {
+    assertThrows<GuardViolationException>("ACL Guard Error:\n\tExpecting variable 'baz' to match the condition, but its value 'ba' has not.") {
       MY_ACL.checkAndWrap(vars)
     }
   }

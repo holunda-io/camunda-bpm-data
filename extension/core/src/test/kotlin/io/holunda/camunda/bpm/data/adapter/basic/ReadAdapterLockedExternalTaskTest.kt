@@ -4,7 +4,7 @@ import io.holunda.camunda.bpm.data.CamundaBpmData
 import org.assertj.core.api.Assertions.assertThat
 import org.camunda.bpm.engine.externaltask.LockedExternalTask
 import org.camunda.bpm.engine.variable.VariableMap
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import java.util.*
 
 class ReadAdapterLockedExternalTaskTest {

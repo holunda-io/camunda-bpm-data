@@ -24,8 +24,8 @@ import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
 import org.camunda.community.mockito.delegate.DelegateExecutionFake;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 import java.util.UUID;
@@ -59,7 +59,7 @@ public class CamundaBpmDataTest {
   private final CaseService caseService = mock(CaseService.class);
 
 
-  @Before
+  @BeforeEach
   public void setupStubs() {
     when(runtimeService.getVariablesLocalTyped(any())).thenReturn(createVariables());
     when(runtimeService.getVariablesTyped(any())).thenReturn(createVariables());
