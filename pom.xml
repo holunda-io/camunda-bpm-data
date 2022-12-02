@@ -22,7 +22,6 @@
     <camunda.version.ee>7.18.0-ee</camunda.version.ee>
 
     <spring-boot.version>2.7.5</spring-boot.version>
-    <groovy.version>2.4.21</groovy.version>
     <spin.version>1.18.0</spin.version>
     <camunda-assert.version>${camunda.version.ce}</camunda-assert.version>
 
@@ -300,7 +299,7 @@
             </excludes>
             <!-- Sets the VM argument line used when unit tests are run. -->
             <!-- prevent the annoying ForkedBooter process from stealing window focus on Mac OS -->
-            <argLine>-Djava.awt.headless=true ${argLine} -XX:+StartAttachListener -Xmx1024m -XX:MaxPermSize=256m</argLine>
+            <argLine>-Djava.awt.headless=true @{argLine} -XX:+StartAttachListener</argLine>
             <systemPropertyVariables>
               <jgiven.report.dir>${project.build.directory}/jgiven-reports</jgiven.report.dir>
             </systemPropertyVariables>

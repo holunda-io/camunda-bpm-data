@@ -7,13 +7,13 @@ import io.holunda.camunda.bpm.data.example.domain.Order;
 import io.holunda.camunda.bpm.data.example.domain.OrderPosition;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.engine.test.Deployment;
-import org.camunda.bpm.engine.test.ProcessEngineRule;
+import org.camunda.bpm.engine.test.junit5.ProcessEngineExtension;
 import org.camunda.bpm.engine.test.mock.Mocks;
 import org.camunda.bpm.spring.boot.starter.test.helper.StandaloneInMemoryTestConfiguration;
 import org.camunda.spin.plugin.impl.SpinProcessEnginePlugin;
-import org.junit.Before;
-import org.junit.Rule;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -26,17 +26,18 @@ import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.*;
 @Deployment(resources = "order_approval.bpmn")
 public class OrderApprovalProcessTest {
 
-  @Rule
-  public final ProcessEngineRule rule = new StandaloneInMemoryTestConfiguration(
-    Lists.newArrayList(new SpinProcessEnginePlugin())
-  ).rule();
+  @RegisterExtension
+  private static final ProcessEngineExtension engine = ProcessEngineExtension
+    .builder()
+    .useProcessEngine(new StandaloneInMemoryTestConfiguration(new SpinProcessEnginePlugin()).buildProcessEngine())
+    .build();
 
   private OrderApprovalInstanceFactory factory;
 
 
-  @Before
+  @BeforeEach
   public void register() {
-    factory = new OrderApprovalInstanceFactory(rule.getRuntimeService());
+    factory = new OrderApprovalInstanceFactory(engine.getRuntimeService());
     OrderApproval config = new OrderApproval();
     Mocks.register("guardExecutionListener", config.guardExecutionListener());
     Mocks.register("guardTaskListener", config.guardTaskListener());

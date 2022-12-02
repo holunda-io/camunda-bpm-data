@@ -1,9 +1,10 @@
 package io.holunda.camunda.bpm.data.example.rest;
 
 import io.holunda.camunda.bpm.data.example.domain.Order;
-import io.holunda.camunda.bpm.data.mockito.TaskServiceMockVerifier;
 import org.camunda.bpm.engine.TaskService;
-import org.junit.Before;
+import org.camunda.community.mockito.service.TaskServiceStubBuilder;
+import org.camunda.community.mockito.verify.TaskServiceVerification;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +15,7 @@ import java.util.Date;
 import java.util.UUID;
 
 import static io.holunda.camunda.bpm.data.CamundaBpmData.builder;
-import static io.holunda.camunda.bpm.data.example.process.OrderApproval.ORDER;
-import static io.holunda.camunda.bpm.data.example.process.OrderApproval.ORDER_APPROVED;
-import static io.holunda.camunda.bpm.data.example.process.OrderApproval.ORDER_TOTAL;
-import static io.holunda.camunda.bpm.data.mockito.CamundaBpmDataMockito.taskServiceMockVerifier;
-import static io.holunda.camunda.bpm.data.mockito.CamundaBpmDataMockito.taskServiceVariableMockBuilder;
+import static io.holunda.camunda.bpm.data.example.process.OrderApproval.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.reset;
@@ -30,11 +27,11 @@ public class ApproveOrderTaskControllerTest {
 
   private final static Order order = new Order("ORDER-ID-1", new Date(), new ArrayList<>());
   private final TaskService taskService = mock(TaskService.class);
-  private final TaskServiceMockVerifier verifier = taskServiceMockVerifier(taskService);
+  private final TaskServiceVerification verifier = new TaskServiceVerification(taskService);
   private final ApproveOrderTaskController controller = new ApproveOrderTaskController(taskService);
   private String taskId;
 
-  @Before
+  @BeforeEach
   public void prepareTest() {
     reset(taskService);
     taskId = UUID.randomUUID().toString();
@@ -43,9 +40,9 @@ public class ApproveOrderTaskControllerTest {
   @Test
   public void testLoadTask() {
     // given
-    taskServiceVariableMockBuilder(taskService)
-      .initial(ORDER, order)
-      .initial(ORDER_TOTAL, BigDecimal.ZERO)
+    new TaskServiceStubBuilder(taskService)
+      .defineAndInitialize(ORDER, order)
+      .defineAndInitialize(ORDER_TOTAL, BigDecimal.ZERO)
       .build();
     // when
     ResponseEntity<ApproveTaskDto> responseEntity = controller.loadTask(taskId);

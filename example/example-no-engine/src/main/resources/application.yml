@@ -5,7 +5,4 @@ spring:
     name: Camunda BPM Data No Engine Example
   jpa:
     open-in-view: true
-  groovy:
-    template:
-      check-template-location: false
 

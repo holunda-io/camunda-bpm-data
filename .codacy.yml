@@ -1,5 +1,11 @@
 ---
+engines:
+  duplications:
+    exclude_paths:
+      - "**/src/test/kotlin/**"
+
 exclude_paths:
-  - '.github/**'
-  - 'docs/**'
+  - "README.md"
+  - ".github/**"
+  - "docs/**"
   - '**/packages.md'

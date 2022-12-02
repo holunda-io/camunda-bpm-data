@@ -24,11 +24,6 @@ import org.junit.jupiter.api.extension.RegisterExtension
 @Deployment(resources = ["eventBasedSubprocess_no_transientMapping.bpmn", "eventBasedSubprocess_with_transientMapping.bpmn"])
 class TransientVariableMappingListenerTest {
 
-  @RegisterExtension
-  val camunda: ProcessEngineExtension = ProcessEngineExtension.builder()
-    .configurationResource("audithistory.camunda.cfg.xml")
-    .build()
-
   @Test
   fun `NO ACL signal sub-process with variables sets variables on processInstance`() {
 
@@ -134,7 +129,8 @@ class TransientVariableMappingListenerTest {
       variablesGuard = VariablesGuard(
         listOf(
           BAZ.matches { it > 40L },
-          FOO.exists())
+          FOO.exists()
+        )
       ),
       variableMapTransformer = object : VariableMapTransformer {
         override fun transform(variableMap: VariableMap): VariableMap {
@@ -147,17 +143,19 @@ class TransientVariableMappingListenerTest {
       }
     )
 
-    private fun camunda(): ProcessEngineRule {
-      return ProcessEngineRule(
-        object : StandaloneInMemProcessEngineConfiguration() {
-          init {
-            history = ProcessEngineConfiguration.HISTORY_FULL
-            databaseSchemaUpdate = ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE
-            jobExecutorActivate = false
-            expressionManager = MockExpressionManager()
-          }
-        }.buildProcessEngine())
-    }
+
+    @RegisterExtension
+    val camunda: ProcessEngineExtension = ProcessEngineExtension.builder().useProcessEngine(
+      object : StandaloneInMemProcessEngineConfiguration() {
+        init {
+          history = ProcessEngineConfiguration.HISTORY_AUDIT
+          databaseSchemaUpdate = ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE
+          jobExecutorActivate = false
+          expressionManager = MockExpressionManager()
+        }
+      }.buildProcessEngine()
+    ).build()
+
   }
 
 }
