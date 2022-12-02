@@ -42,12 +42,6 @@
         <artifactId>camunda-bpm-data</artifactId>
         <version>${project.version}</version>
       </dependency>
-      <dependency>
-        <groupId>io.holunda.data</groupId>
-        <artifactId>camunda-bpm-data-test</artifactId>
-        <scope>test</scope>
-        <version>${project.version}</version>
-      </dependency>
 
       <!-- TOOLS -->
       <dependency>

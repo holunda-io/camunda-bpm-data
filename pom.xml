@@ -90,8 +90,18 @@
       <dependency>
         <groupId>org.camunda.community.mockito</groupId>
         <artifactId>camunda-platform-7-mockito</artifactId>
-        <scope>test</scope>
         <version>${camunda-platform-7-mockito.version}</version>
+        <scope>test</scope>
+        <exclusions>
+          <exclusion>
+            <groupId>io.holunda.data</groupId>
+            <artifactId>camunda-bpm-data</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>io.holunda.data</groupId>
+            <artifactId>camunda-bpm-data-test</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.camunda.bpm.springboot</groupId>

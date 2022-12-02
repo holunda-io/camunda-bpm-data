@@ -84,11 +84,6 @@
 
     <!-- Testing -->
     <dependency>
-      <groupId>io.holunda.data</groupId>
-      <artifactId>camunda-bpm-data-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>org.camunda.bpm</groupId>
       <artifactId>camunda-bpm-assert</artifactId>
       <scope>test</scope>

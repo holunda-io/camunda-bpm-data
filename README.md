@@ -133,28 +133,18 @@ public class ApproveOrderTaskController {
 
 If you want to write the test for the REST controller, you will need to stub
 the task service and verify that the correct variables has been set. To simplify
-these tests, we created an additional library module `camunda-bpm-data-test`.
-Please put the following dependency into your `pom.xml`:
+these tests, we added some helper code to the famous library `camunda-platform-7-mockito`.
 
-``` xml
-<dependency>
-  <groupId>io.holunda.data</groupId>
-  <artifactId>camunda-bpm-data-test</artifactId>
-  <version>1.2.6</version>
-  <scope>test</scope>
-</dependency>
-```
-
-Now you can use `TaskServiceVariableMockBuilder` to stub correct behavior of Camunda Task Service
-and `TaskServiceVerifier` to verify the correct access to variables easily. Here is the JUnit
-test of the REST controller above, making use of `camunda-bpm-data-test`.
+Now you can use `TaskServiceVariableStubBuilder` to stub correct behavior of Camunda Task Service
+and `TaskServiceVerification` to verify the correct access to variables easily. Here is the JUnit
+test of the REST controller above, making use of `camunda-platform-7-mockito`.
 
 ``` java
 public class ApproveOrderTaskControllerTest {
 
     private static Order order = new Order("ORDER-ID-1", new Date(), new ArrayList<>());
     private TaskService taskService = mock(TaskService.class);
-    private TaskServiceMockVerifier verifier = taskServiceMockVerifier(taskService);
+    private TaskServiceVerification verifier = new TaskServiceVerification(taskService);
     private ApproveOrderTaskController controller = new ApproveOrderTaskController(taskService);
     private String taskId;
 
@@ -167,7 +157,7 @@ public class ApproveOrderTaskControllerTest {
     @Test
     public void testLoadTask() {
         // given
-        taskServiceVariableMockBuilder(taskService).initial(ORDER, order).build();
+        new TaskServiceVariableStubBuilder(taskService).initial(ORDER, order).build();
         // when
         ResponseEntity<ApproveTaskDto> responseEntity = controller.loadTask(taskId);
         // then

@@ -98,7 +98,6 @@ Currently, the following modules are released to OSS Maven Central:
 
 * camunda-bpm-data-parent
 * camunda-bpm-data
-* camunda-bpm-data-test
 
 #### Trigger new release
 

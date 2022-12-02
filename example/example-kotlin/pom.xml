@@ -109,12 +109,6 @@
 
     <!-- Testing -->
     <dependency>
-      <groupId>io.holunda.data</groupId>
-      <artifactId>camunda-bpm-data-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
       <groupId>io.holunda.testing</groupId>
       <artifactId>camunda-bpm-jgiven</artifactId>
     </dependency>
