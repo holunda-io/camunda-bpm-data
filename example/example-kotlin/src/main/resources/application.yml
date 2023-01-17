@@ -5,9 +5,6 @@ spring:
     name: Camunda BPM Data Kotlin Example
   jpa:
     open-in-view: true
-  groovy:
-    template:
-      check-template-location: false
 
 camunda:
   bpm:

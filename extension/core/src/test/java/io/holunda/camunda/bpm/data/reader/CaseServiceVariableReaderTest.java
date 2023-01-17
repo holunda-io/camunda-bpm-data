@@ -3,9 +3,9 @@ package io.holunda.camunda.bpm.data.reader;
 import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.CaseService;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.util.UUID;
@@ -22,13 +22,13 @@ public class CaseServiceVariableReaderTest {
   private final String value = "value";
   private final String localValue = "localValue";
 
-  @Before
+  @BeforeEach
   public void mockExecution() {
     when(caseService.getVariable(this.taskId, STRING.getName())).thenReturn(value);
     when(caseService.getVariableLocal(this.taskId, STRING.getName())).thenReturn(localValue);
   }
 
-  @After
+  @AfterEach
   public void after() {
     Mockito.reset(caseService);
   }

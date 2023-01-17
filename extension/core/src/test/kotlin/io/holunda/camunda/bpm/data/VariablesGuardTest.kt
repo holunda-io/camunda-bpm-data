@@ -10,7 +10,7 @@ import io.holunda.camunda.bpm.data.guard.VariablesGuard.Companion.ALL
 import io.holunda.camunda.bpm.data.guard.VariablesGuard.Companion.ONE_OF
 import org.assertj.core.api.Assertions.assertThat
 import org.camunda.community.mockito.delegate.DelegateExecutionFake
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import java.util.*
 
 class VariablesGuardTest {

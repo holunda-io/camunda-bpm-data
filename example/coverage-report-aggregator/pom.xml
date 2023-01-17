@@ -25,12 +25,6 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>io.holunda.data</groupId>
-      <artifactId>camunda-bpm-data-test</artifactId>
-      <version>${project.version}</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
       <groupId>io.holunda.data.example</groupId>
       <artifactId>camunda-bpm-data-integration-test</artifactId>
       <version>${project.version}</version>

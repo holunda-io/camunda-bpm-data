@@ -16,7 +16,7 @@ import org.camunda.bpm.engine.variable.value.ObjectValue;
 import org.camunda.bpm.engine.variable.value.ShortValue;
 import org.camunda.bpm.engine.variable.value.StringValue;
 import org.camunda.bpm.engine.variable.value.TypedValue;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class ValueWrapperUtilTest {
 
