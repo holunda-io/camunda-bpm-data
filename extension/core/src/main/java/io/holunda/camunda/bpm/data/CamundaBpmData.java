@@ -118,10 +118,10 @@ public class CamundaBpmData {
   }
 
   /**
-   * Creates a boolean variable factory.
+   * Creates an uuid variable factory.
    *
    * @param variableName name of the variable.
-   * @return variable factory for boolean.
+   * @return variable factory for uuid.
    */
   @NotNull
   public static VariableFactory<UUID> uuidVariable(@NotNull String variableName) {
