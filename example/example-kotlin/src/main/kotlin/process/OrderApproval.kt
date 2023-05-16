@@ -1,7 +1,7 @@
 package io.holunda.camunda.bpm.data.example.kotlin.process
 
-import io.holunda.camunda.bpm.data.CamundaBpmData.booleanVariable
-import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.booleanVariable
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.stringVariable
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.customVariable
 import io.holunda.camunda.bpm.data.example.kotlin.domain.Order
 import io.holunda.camunda.bpm.data.example.kotlin.domain.OrderPosition

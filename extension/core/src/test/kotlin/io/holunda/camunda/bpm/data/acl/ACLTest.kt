@@ -1,6 +1,7 @@
 package io.holunda.camunda.bpm.data.acl
 
 import io.holunda.camunda.bpm.data.CamundaBpmData
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin
 import io.holunda.camunda.bpm.data.acl.transform.VariableMapTransformer
 import io.holunda.camunda.bpm.data.guard.VariablesGuard
 import io.holunda.camunda.bpm.data.guard.condition.*
@@ -10,7 +11,6 @@ import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration
 import org.camunda.bpm.engine.test.Deployment
-import org.camunda.bpm.engine.test.ProcessEngineRule
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.task
 import org.camunda.bpm.engine.test.junit5.ProcessEngineExtension
@@ -103,9 +103,9 @@ class TransientVariableMappingListenerTest {
 
   companion object {
 
-    private val FOO = CamundaBpmData.stringVariable("foo")
-    private val BAZ = CamundaBpmData.longVariable("baz")
-    private val BAZ_INTERNAL = CamundaBpmData.longVariable("baz__int")
+    private val FOO = CamundaBpmDataKotlin.stringVariable("foo")
+    private val BAZ = CamundaBpmDataKotlin.longVariable("baz")
+    private val BAZ_INTERNAL = CamundaBpmDataKotlin.longVariable("baz__int")
 
     private val ACL_LR = CamundaBpmDataMapper.identityReplace("transient", true)
 

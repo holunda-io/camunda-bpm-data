@@ -1,6 +1,10 @@
 package io.holunda.camunda.bpm.data.itest
 
-import io.holunda.camunda.bpm.data.CamundaBpmData.*
+import io.holunda.camunda.bpm.data.CamundaBpmData.intVariable
+import io.holunda.camunda.bpm.data.CamundaBpmData.listVariable
+import io.holunda.camunda.bpm.data.CamundaBpmData.mapVariable
+import io.holunda.camunda.bpm.data.CamundaBpmData.setVariable
+import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
 import io.holunda.camunda.bpm.data.adapter.VariableNotFoundException
 import io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException
 import io.holunda.camunda.bpm.data.factory.VariableFactory
@@ -220,7 +224,8 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
 
 
     val variables = createVariableMapUntyped()
-    val wrongBasicType: VariableFactory<Int> = intVariable(STRING_VAR.name)
+    @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
+    val wrongBasicType: VariableFactory<Integer> = intVariable(STRING_VAR.name)
 
     // wrong type
     assertThrows(WrongVariableTypeException::class.java) {
@@ -233,7 +238,8 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
 
 
     val variables = createVariableMapUntyped()
-    val wrongBasicType: VariableFactory<Int> = intVariable(STRING_VAR.name)
+    @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
+    val wrongBasicType: VariableFactory<Integer> = intVariable(STRING_VAR.name)
 
     assertThrows(WrongVariableTypeException::class.java) {
       // wrong type

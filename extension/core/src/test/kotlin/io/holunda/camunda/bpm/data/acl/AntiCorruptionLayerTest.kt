@@ -1,6 +1,8 @@
 package io.holunda.camunda.bpm.data.acl
 
-import io.holunda.camunda.bpm.data.CamundaBpmData.*
+import io.holunda.camunda.bpm.data.CamundaBpmData.builder
+import io.holunda.camunda.bpm.data.CamundaBpmData.customVariable
+import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
 import io.holunda.camunda.bpm.data.acl.transform.IdentityVariableMapTransformer
 import io.holunda.camunda.bpm.data.acl.transform.VariableMapTransformer
 import io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.exists

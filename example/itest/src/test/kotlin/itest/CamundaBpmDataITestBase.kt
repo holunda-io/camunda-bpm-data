@@ -4,9 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 import com.tngtech.jgiven.base.ScenarioTestBase
 import com.tngtech.jgiven.integration.spring.EnableJGiven
 import com.tngtech.jgiven.integration.spring.junit5.SpringScenarioTest
-import io.holunda.camunda.bpm.data.CamundaBpmData.*
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.booleanVariable
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.longVariable
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.shortVariable
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.customVariable
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.dateVariable
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.doubleVariable
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.intVariable
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.listVariable
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.mapVariable
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.setVariable
