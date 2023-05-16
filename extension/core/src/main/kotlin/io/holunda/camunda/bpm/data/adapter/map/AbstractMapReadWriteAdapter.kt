@@ -36,6 +36,7 @@ abstract class AbstractMapReadWriteAdapter<K, V>(
       } else {
         val (key, value1) = valueAsMap.entries.iterator().next()
         if (keyClazz.isAssignableFrom(key!!.javaClass) && valueClazz.isAssignableFrom(value1!!.javaClass)) {
+          @Suppress("UNCHECKED_CAST")
           valueAsMap as Map<K, V>
         } else {
           throw WrongVariableTypeException(

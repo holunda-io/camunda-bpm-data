@@ -30,6 +30,7 @@ abstract class AbstractListReadWriteAdapter<T>(variableName: String, protected v
         emptyList()
       } else {
         if (memberClazz.isAssignableFrom(valueAsList.iterator().next()!!.javaClass)) {
+          @Suppress("UNCHECKED_CAST")
           valueAsList as List<T>
         } else {
           throw WrongVariableTypeException("Error reading " + variableName + ": Wrong list type detected, expected " + memberClazz.name + ", but was not found in " + valueAsList)

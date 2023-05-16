@@ -29,7 +29,8 @@ abstract class AbstractSetReadWriteAdapter<T>(variableName: String, protected va
                 emptySet()
             } else {
                 if (memberClazz.isAssignableFrom(valueAsList.iterator().next()!!.javaClass)) {
-                    valueAsList as Set<T>
+                  @Suppress("UNCHECKED_CAST")
+                  valueAsList as Set<T>
                 } else {
                     throw WrongVariableTypeException("Error reading " + variableName + ": Wrong set type detected, expected " + memberClazz.name + ", but was not found in " + valueAsList)
                 }

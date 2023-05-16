@@ -1,7 +1,7 @@
 package io.holunda.camunda.bpm.data.adapter.basic
 
-import io.holunda.camunda.bpm.data.adapter.ReadAdapter
 import org.camunda.bpm.engine.externaltask.LockedExternalTask
+import org.camunda.bpm.engine.variable.Variables
 import java.util.*
 
 /**
@@ -9,17 +9,29 @@ import java.util.*
  *
  * @param [T] type of value.
  */
-class ReadAdapterLockedExternalTask<T : Any>(lockedExternalTask: LockedExternalTask, variableName: String, clazz: Class<T>) :
-  ReadAdapter<T>
-{
-  private val readAdapter: ReadAdapter<T> = ReadWriteAdapterVariableMap(lockedExternalTask.variables, variableName, clazz)
-
-  override fun get(): T {
-    return readAdapter.get()
-  }
+class ReadAdapterLockedExternalTask<T : Any>(
+  private val lockedExternalTask: LockedExternalTask,
+  variableName: String,
+  clazz: Class<T>
+) : AbstractBasicReadWriteAdapter<T>(variableName, clazz) {
+  private val value: Any?
+    get() = Optional.ofNullable(lockedExternalTask.variables)
+      .orElse(Variables.createVariables())[variableName]
 
   override fun getOptional(): Optional<T> {
-    return readAdapter.getOptional()
+    return Optional.ofNullable(
+      getOrNull(
+        value
+      )
+    )
+  }
+
+  override fun set(value: T, isTransient: Boolean) {
+    throw UnsupportedOperationException("Can't set a variable on an external task")
+  }
+
+  override fun setLocal(value: T, isTransient: Boolean) {
+    throw UnsupportedOperationException("Can't set a local variable on an external task")
   }
 
   override fun getLocal(): T {
@@ -30,19 +42,19 @@ class ReadAdapterLockedExternalTask<T : Any>(lockedExternalTask: LockedExternalT
     throw UnsupportedOperationException("Can't get a local variable on an external task")
   }
 
-  override fun getOrDefault(defaultValue: T): T {
-    return readAdapter.getOrDefault(defaultValue)
-  }
-
   override fun getLocalOrDefault(defaultValue: T): T {
     throw UnsupportedOperationException("Can't get a local variable on an external task")
   }
 
-  override fun getOrNull(): T? {
-    return readAdapter.getOrNull()
-  }
-
   override fun getLocalOrNull(): T {
     throw UnsupportedOperationException("Can't get a local variable on an external task")
+  }
+
+  override fun remove() {
+    throw UnsupportedOperationException("Can't remove a variable on an external task")
+  }
+
+  override fun removeLocal() {
+    throw UnsupportedOperationException("Can't remove a local variable on an external task")
   }
 }

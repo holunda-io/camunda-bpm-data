@@ -1,7 +1,5 @@
 package io.holunda.camunda.bpm.data.adapter.set
 
-import io.holunda.camunda.bpm.data.adapter.ReadAdapter
-import io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException
 import org.camunda.bpm.engine.externaltask.LockedExternalTask
 import org.camunda.bpm.engine.variable.Variables
 import java.util.*
@@ -15,16 +13,26 @@ import java.util.*
  * @param memberClazz class of the variable.
  */
 class SetReadAdapterLockedExternalTask<T>(
-  private val lockedExternalTask: LockedExternalTask,
-  private val variableName: String,
-  private val memberClazz: Class<T>
-) : ReadAdapter<Set<T>> {
-  override fun get(): Set<T> {
-    return getOptional().get()
-  }
+  private val lockedExternalTask: LockedExternalTask, variableName: String, memberClazz: Class<T>
+) : AbstractSetReadWriteAdapter<T>(variableName, memberClazz) {
+
+  private val value: Any?
+    get() = Optional.ofNullable(lockedExternalTask.variables).orElse(Variables.createVariables())[variableName]
 
   override fun getOptional(): Optional<Set<T>> {
-    return Optional.ofNullable(getOrNull())
+    return Optional.ofNullable(
+      getOrNull(
+        value
+      )
+    )
+  }
+
+  override fun set(value: Set<T>, isTransient: Boolean) {
+    throw UnsupportedOperationException("Can't set a variable on an external task")
+  }
+
+  override fun setLocal(value: Set<T>, isTransient: Boolean) {
+    throw UnsupportedOperationException("Can't set a local variable on an external task")
   }
 
   override fun getLocal(): Set<T> {
@@ -43,34 +51,17 @@ class SetReadAdapterLockedExternalTask<T>(
     throw UnsupportedOperationException("Can't get a local variable on an external task")
   }
 
-  override fun getOrNull(): Set<T>? {
-    return getOrNull(value)
-  }
-
   override fun getLocalOrNull(): Set<T> {
     throw UnsupportedOperationException("Can't get a local variable on an external task")
   }
 
-  private fun getOrNull(value: T?): Set<T>? {
-    if (value == null) {
-      return null
-    }
-    if (MutableSet::class.java.isAssignableFrom(value.javaClass)) {
-      val valueAsSet = value as Set<*>
-      return if (valueAsSet.isEmpty()) {
-        emptySet()
-      } else {
-        if (memberClazz.isAssignableFrom(valueAsSet.iterator().next()!!.javaClass)) {
-          valueAsSet as Set<T>
-        } else {
-          throw WrongVariableTypeException("Error reading " + variableName + ": Wrong list type detected, expected " + memberClazz.name + ", but was not found in " + valueAsSet)
-        }
-      }
-    }
-    throw WrongVariableTypeException("Error reading $variableName: Couldn't read value of type List from $value")
+  override fun remove() {
+    throw UnsupportedOperationException("Can't remove a variable on an external task")
   }
 
-  private val value: T?
-    get() = Optional.ofNullable(lockedExternalTask.variables)
-      .orElse(Variables.createVariables())[variableName] as T?
+  override fun removeLocal() {
+    throw UnsupportedOperationException("Can't remove a local variable on an external task")
+  }
+
+
 }
