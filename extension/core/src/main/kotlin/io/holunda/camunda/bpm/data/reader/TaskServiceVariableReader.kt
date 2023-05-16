@@ -11,7 +11,7 @@ import java.util.*
  */
 class TaskServiceVariableReader(private val taskService: TaskService, private val taskId: String) : VariableReader {
     override fun <T> getOptional(variableFactory: VariableFactory<T>): Optional<T> {
-        return variableFactory.from(taskService, taskId).optional
+        return variableFactory.from(taskService, taskId).getOptional()
     }
 
     override fun <T> get(variableFactory: VariableFactory<T>): T {
@@ -19,11 +19,11 @@ class TaskServiceVariableReader(private val taskService: TaskService, private va
     }
 
     override fun <T> getLocal(variableFactory: VariableFactory<T>): T {
-        return variableFactory.from(taskService, taskId).local
+        return variableFactory.from(taskService, taskId).getLocal()
     }
 
     override fun <T> getLocalOptional(variableFactory: VariableFactory<T>): Optional<T> {
-        return variableFactory.from(taskService, taskId).localOptional
+        return variableFactory.from(taskService, taskId).getLocalOptional()
     }
 
     override fun equals(other: Any?): Boolean {
@@ -34,8 +34,6 @@ class TaskServiceVariableReader(private val taskService: TaskService, private va
     }
 
     override fun hashCode(): Int {
-        var result = taskService.hashCode()
-        result = 31 * result + taskId.hashCode()
-        return result
+      return Objects.hash(taskService, taskId)
     }
 }

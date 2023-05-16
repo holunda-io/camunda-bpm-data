@@ -16,7 +16,7 @@ class CaseServiceVariableReader(
 ) : VariableReader {
 
     override fun <T> getOptional(variableFactory: VariableFactory<T>): Optional<T> {
-        return variableFactory.from(caseService, caseExecutionId).optional
+        return variableFactory.from(caseService, caseExecutionId).getOptional()
     }
 
     override fun <T> get(variableFactory: VariableFactory<T>): T {
@@ -24,11 +24,11 @@ class CaseServiceVariableReader(
     }
 
     override fun <T> getLocal(variableFactory: VariableFactory<T>): T {
-        return variableFactory.from(caseService, caseExecutionId).local
+        return variableFactory.from(caseService, caseExecutionId).getLocal()
     }
 
     override fun <T> getLocalOptional(variableFactory: VariableFactory<T>): Optional<T> {
-        return variableFactory.from(caseService, caseExecutionId).localOptional
+        return variableFactory.from(caseService, caseExecutionId).getLocalOptional()
     }
 
     override fun equals(other: Any?): Boolean {
@@ -39,8 +39,6 @@ class CaseServiceVariableReader(
     }
 
     override fun hashCode(): Int {
-        var result = caseService.hashCode()
-        result = 31 * result + caseExecutionId.hashCode()
-        return result
+      return Objects.hash(caseService, caseExecutionId)
     }
 }

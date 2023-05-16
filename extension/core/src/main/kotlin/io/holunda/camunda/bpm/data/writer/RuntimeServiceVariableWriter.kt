@@ -3,6 +3,7 @@ package io.holunda.camunda.bpm.data.writer
 import io.holunda.camunda.bpm.data.factory.VariableFactory
 import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.variable.VariableMap
+import java.util.*
 import java.util.function.Function
 
 /**
@@ -89,8 +90,6 @@ class RuntimeServiceVariableWriter(private val runtimeService: RuntimeService, p
   }
 
   override fun hashCode(): Int {
-    var result = runtimeService.hashCode()
-    result = 31 * result + executionId.hashCode()
-    return result
+    return Objects.hash(runtimeService, executionId)
   }
 }

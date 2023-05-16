@@ -122,7 +122,7 @@ object CamundaBpmData {
      * @return variable factory for given type.
     </T> */
     @JvmStatic
-    fun <T> customVariable(variableName: String, clazz: Class<T>): VariableFactory<T> {
+    fun <T: Any> customVariable(variableName: String, clazz: Class<T>): VariableFactory<T> {
         return BasicVariableFactory(variableName, clazz)
     }
 

@@ -10,7 +10,7 @@ import java.util.*
  */
 class LockedExternalTaskReader(private val lockedExternalTask: LockedExternalTask) : VariableReader {
     override fun <T> getOptional(variableFactory: VariableFactory<T>): Optional<T> {
-        return variableFactory.from(lockedExternalTask).optional
+        return variableFactory.from(lockedExternalTask).getOptional()
     }
 
     override fun <T> get(variableFactory: VariableFactory<T>): T {
@@ -18,11 +18,11 @@ class LockedExternalTaskReader(private val lockedExternalTask: LockedExternalTas
     }
 
     override fun <T> getLocal(variableFactory: VariableFactory<T>): T {
-        return variableFactory.from(lockedExternalTask).local
+        return variableFactory.from(lockedExternalTask).getLocal()
     }
 
     override fun <T> getLocalOptional(variableFactory: VariableFactory<T>): Optional<T> {
-        return variableFactory.from(lockedExternalTask).localOptional
+        return variableFactory.from(lockedExternalTask).getLocalOptional()
     }
 
     override fun equals(other: Any?): Boolean {

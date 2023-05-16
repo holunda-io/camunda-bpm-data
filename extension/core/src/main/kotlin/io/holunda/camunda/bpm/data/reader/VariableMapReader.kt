@@ -11,7 +11,7 @@ import java.util.*
 class VariableMapReader(private val variableMap: VariableMap) : VariableReader {
 
   override fun <T> getOptional(variableFactory: VariableFactory<T>): Optional<T> {
-    return variableFactory.from(variableMap).optional
+    return variableFactory.from(variableMap).getOptional()
   }
 
   override fun <T> get(variableFactory: VariableFactory<T>): T {
@@ -19,11 +19,11 @@ class VariableMapReader(private val variableMap: VariableMap) : VariableReader {
   }
 
   override fun <T> getLocal(variableFactory: VariableFactory<T>): T {
-    return variableFactory.from(variableMap).local
+    return variableFactory.from(variableMap).getLocal()
   }
 
   override fun <T> getLocalOptional(variableFactory: VariableFactory<T>): Optional<T> {
-    return variableFactory.from(variableMap).localOptional
+    return variableFactory.from(variableMap).getLocalOptional()
   }
 
   override fun equals(other: Any?): Boolean {
