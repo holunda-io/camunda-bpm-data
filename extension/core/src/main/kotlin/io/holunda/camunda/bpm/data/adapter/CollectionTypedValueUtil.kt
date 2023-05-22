@@ -23,12 +23,12 @@ object CollectionTypedValueUtil {
      * @param [C]            type of collection.
      * @return collection of specified type or null.
      */
-    fun <T, C : Collection<T>?> readFromTypedValue(
+    fun <T: Any, C : Collection<T>> readFromTypedValue(
         typedValue: TypedValue?,
         variableName: String,
         memberClazz: Class<T>,
         objectMapper: ObjectMapper,
-        collectionType: CollectionType?
+        collectionType: CollectionType
     ): C? {
         if (typedValue == null) {
             return null
@@ -37,11 +37,11 @@ object CollectionTypedValueUtil {
             val json = typedValue.valueSerialized
             try {
                 val values = objectMapper.readValue<C>(json, collectionType)
-                if (values!!.isEmpty()) {
+                if (values.isEmpty()) {
                     values
                 } else {
                     val value: T = values.iterator().next()
-                    if (memberClazz.isAssignableFrom(value!!::class.java)) {
+                    if (memberClazz.isAssignableFrom(value::class.java)) {
                         values
                     } else {
                         throw WrongVariableTypeException("Error reading " + variableName + ": Wrong member type detected, expected " + memberClazz.name + ", but was not found in " + values)
@@ -68,9 +68,9 @@ object CollectionTypedValueUtil {
      * @param [V]          type of myp value.
      * @return map of specified types or null.
      */
-    fun <K, V> readFromTypedValue(
+    fun <K: Any, V: Any> readFromTypedValue(
         typedValue: TypedValue?, variableName: String, keyClazz: Class<K>, valueClazz: Class<V>,
-        objectMapper: ObjectMapper, mapType: MapType?
+        objectMapper: ObjectMapper, mapType: MapType
     ): Map<K, V>? {
         if (typedValue == null) {
             return null
@@ -83,7 +83,7 @@ object CollectionTypedValueUtil {
                     map
                 } else {
                     val (key, value) = map.entries.iterator().next()
-                    if (valueClazz.isAssignableFrom(value!!::class.java) && keyClazz.isAssignableFrom(key!!::class.java)) {
+                    if (valueClazz.isAssignableFrom(value::class.java) && keyClazz.isAssignableFrom(key::class.java)) {
                         map
                     } else {
                         throw WrongVariableTypeException(

@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.time.Instant;
 import java.util.Date;
+import java.util.UUID;
 
 import org.camunda.bpm.engine.variable.type.PrimitiveValueType;
 import org.camunda.bpm.engine.variable.value.BooleanValue;
@@ -150,6 +151,14 @@ public class ValueWrapperUtilTest {
     assertThat(stringValue.getType()).isExactlyInstanceOf(PrimitiveValueType.STRING.getClass());
     assertThat(stringValue.getValue()).isNull();
     assertThat(stringValue.isTransient()).isTrue();
+
+    UUID uuid = UUID.randomUUID();
+    stringValue = ValueWrapperUtil.getTypedValue(UUID.class, uuid, true);
+    assertThat(stringValue).isInstanceOf(StringValue.class);
+    assertThat(stringValue.getType()).isExactlyInstanceOf(PrimitiveValueType.STRING.getClass());
+    assertThat(stringValue.getValue()).isEqualTo(uuid.toString());
+    assertThat(stringValue.isTransient()).isTrue();
+
   }
 
   @Test
