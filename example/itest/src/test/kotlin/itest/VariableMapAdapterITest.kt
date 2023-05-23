@@ -1,6 +1,10 @@
 package io.holunda.camunda.bpm.data.itest
 
-import io.holunda.camunda.bpm.data.CamundaBpmData.*
+import io.holunda.camunda.bpm.data.CamundaBpmData.intVariable
+import io.holunda.camunda.bpm.data.CamundaBpmData.listVariable
+import io.holunda.camunda.bpm.data.CamundaBpmData.mapVariable
+import io.holunda.camunda.bpm.data.CamundaBpmData.setVariable
+import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
 import io.holunda.camunda.bpm.data.adapter.VariableNotFoundException
 import io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException
 import io.holunda.camunda.bpm.data.factory.VariableFactory
@@ -162,56 +166,56 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
   @Test
   fun `should throw correct UO exception on basic getLocal`() {
     assertThrows(UnsupportedOperationException::class.java) {
-      STRING_VAR.from(createVariableMapUntyped()).local
+      STRING_VAR.from(createVariableMapUntyped()).getLocal()
     }
   }
 
   @Test
   fun `should throw correct UO exception on list getLocal`() {
     assertThrows(UnsupportedOperationException::class.java) {
-      LIST_STRING_VAR.from(createVariableMapUntyped()).local
+      LIST_STRING_VAR.from(createVariableMapUntyped()).getLocal()
     }
   }
 
   @Test
   fun `should throw correct UO exception on set getLocal`() {
     assertThrows(UnsupportedOperationException::class.java) {
-      SET_STRING_VAR.from(createVariableMapUntyped()).local
+      SET_STRING_VAR.from(createVariableMapUntyped()).getLocal()
     }
   }
 
   @Test
   fun `should throw correct UO exception on map getLocal`() {
     assertThrows(UnsupportedOperationException::class.java) {
-      MAP_STRING_LONG_VAR.from(createVariableMapUntyped()).local
+      MAP_STRING_LONG_VAR.from(createVariableMapUntyped()).getLocal()
     }
   }
 
   @Test
   fun `should throw correct UO exception on basic getLocalOptional`() {
     assertThrows(UnsupportedOperationException::class.java) {
-      STRING_VAR.from(createVariableMapUntyped()).localOptional
+      STRING_VAR.from(createVariableMapUntyped()).getLocalOptional()
     }
   }
 
   @Test
   fun `should throw correct UO exception on list getLocalOptional`() {
     assertThrows(UnsupportedOperationException::class.java) {
-      LIST_STRING_VAR.from(createVariableMapUntyped()).localOptional
+      LIST_STRING_VAR.from(createVariableMapUntyped()).getLocalOptional()
     }
   }
 
   @Test
   fun `should throw correct UO exception on set getLocalOptional`() {
     assertThrows(UnsupportedOperationException::class.java) {
-      SET_STRING_VAR.from(createVariableMapUntyped()).localOptional
+      SET_STRING_VAR.from(createVariableMapUntyped()).getLocalOptional()
     }
   }
 
   @Test
   fun `should throw correct UO exception on map getLocalOptional`() {
     assertThrows(UnsupportedOperationException::class.java) {
-      MAP_STRING_LONG_VAR.from(createVariableMapUntyped()).localOptional
+      MAP_STRING_LONG_VAR.from(createVariableMapUntyped()).getLocalOptional()
     }
   }
 
@@ -220,7 +224,8 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
 
 
     val variables = createVariableMapUntyped()
-    val wrongBasicType: VariableFactory<Int> = intVariable(STRING_VAR.name)
+    @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
+    val wrongBasicType: VariableFactory<Integer> = intVariable(STRING_VAR.name)
 
     // wrong type
     assertThrows(WrongVariableTypeException::class.java) {
@@ -233,11 +238,12 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
 
 
     val variables = createVariableMapUntyped()
-    val wrongBasicType: VariableFactory<Int> = intVariable(STRING_VAR.name)
+    @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
+    val wrongBasicType: VariableFactory<Integer> = intVariable(STRING_VAR.name)
 
     assertThrows(WrongVariableTypeException::class.java) {
       // wrong type
-      wrongBasicType.from(variables).optional
+      wrongBasicType.from(variables).getOptional()
     }
   }
 
@@ -263,7 +269,7 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
 
     assertThrows(WrongVariableTypeException::class.java) {
       // not a list
-      wrongListType.from(variables).optional
+      wrongListType.from(variables).getOptional()
     }
   }
 
@@ -287,7 +293,7 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
     val variables = createVariableMapUntyped()
     val wrongListTargetType: VariableFactory<List<Date>> = listVariable(LIST_STRING_VAR.name, Date::class.java)
     assertThrows(WrongVariableTypeException::class.java) {
-      wrongListTargetType.from(variables).optional
+      wrongListTargetType.from(variables).getOptional()
     }
   }
 
@@ -311,7 +317,7 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
 
     assertThrows(WrongVariableTypeException::class.java) {
       // not a set
-      wrongSetType.from(variables).optional
+      wrongSetType.from(variables).getOptional()
     }
   }
 
@@ -335,7 +341,7 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
 
     assertThrows(WrongVariableTypeException::class.java) {
       // wrong type of the set
-      wrongSetTargetType.from(variables).optional
+      wrongSetTargetType.from(variables).getOptional()
     }
   }
 
@@ -361,7 +367,7 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
 
     assertThrows(WrongVariableTypeException::class.java) {
       // not a map
-      wrongMapType.from(variables).optional
+      wrongMapType.from(variables).getOptional()
     }
   }
 
@@ -384,7 +390,7 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
     val wrongMapKeyType: VariableFactory<Map<Date, String>> = mapVariable(MAP_STRING_LONG_VAR.name, Date::class.java, String::class.java)
     assertThrows(WrongVariableTypeException::class.java) {
       // wrong key type
-      wrongMapKeyType.from(variables).optional
+      wrongMapKeyType.from(variables).getOptional()
     }
   }
 
@@ -408,7 +414,7 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
 
     assertThrows(WrongVariableTypeException::class.java) {
       // wrong value type
-      wrongMapValueType.from(variables).optional
+      wrongMapValueType.from(variables).getOptional()
     }
   }
 }

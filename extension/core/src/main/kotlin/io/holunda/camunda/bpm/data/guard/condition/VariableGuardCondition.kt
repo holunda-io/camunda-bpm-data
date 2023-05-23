@@ -42,7 +42,7 @@ abstract class VariableGuardCondition<T>(
    * @return list of guard violations
    */
   fun evaluate(variableMap: VariableMap): List<GuardViolation<T>> {
-    return evaluate(if (local) variableFactory.from(variableMap).localOptional else variableFactory.from(variableMap).optional)
+    return evaluate(if (local) variableFactory.from(variableMap).getLocalOptional() else variableFactory.from(variableMap).getOptional())
   }
 
   /**
@@ -51,7 +51,7 @@ abstract class VariableGuardCondition<T>(
    * @return list of guard violations
    */
   fun evaluate(variableScope: VariableScope): List<GuardViolation<T>> {
-    return evaluate(if (local) variableFactory.from(variableScope).localOptional else variableFactory.from(variableScope).optional)
+    return evaluate(if (local) variableFactory.from(variableScope).getLocalOptional() else variableFactory.from(variableScope).getOptional())
   }
 
   /**
@@ -61,7 +61,7 @@ abstract class VariableGuardCondition<T>(
    * @return list of guard violations
    */
   fun evaluate(taskService: TaskService, taskId: String): List<GuardViolation<T>> {
-    return evaluate(if (local) variableFactory.from(taskService, taskId).localOptional else variableFactory.from(taskService, taskId).optional)
+    return evaluate(if (local) variableFactory.from(taskService, taskId).getLocalOptional() else variableFactory.from(taskService, taskId).getOptional())
   }
 
   /**
@@ -71,7 +71,7 @@ abstract class VariableGuardCondition<T>(
    * @return list of guard violations
    */
   fun evaluate(runtimeService: RuntimeService, executionId: String): List<GuardViolation<T>> {
-    return evaluate(if (local) variableFactory.from(runtimeService, executionId).localOptional else variableFactory.from(runtimeService, executionId).optional)
+    return evaluate(if (local) variableFactory.from(runtimeService, executionId).getLocalOptional() else variableFactory.from(runtimeService, executionId).getOptional())
   }
 
   override fun equals(other: Any?): Boolean {
