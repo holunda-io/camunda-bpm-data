@@ -25,7 +25,7 @@
     <spin.version>1.18.1</spin.version>
     <camunda-assert.version>${camunda.version.ce}</camunda-assert.version>
 
-    <kotlin.version>1.8.21</kotlin.version>
+    <kotlin.version>1.8.22</kotlin.version>
     <jgiven.version>1.2.5</jgiven.version>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
 
