@@ -61,6 +61,7 @@ class ActionStage : Stage<ActionStage>() {
   ): ActionStage {
 
     val instance = Bpmn.createExecutableProcess(processDefinitionKey)
+      .camundaHistoryTimeToLive(1)
       .startEvent("start")
       .serviceTask("service_task")
       .camundaDelegateExpression(delegateExpression)
@@ -78,6 +79,7 @@ class ActionStage : Stage<ActionStage>() {
   ): ActionStage {
 
     val instance = Bpmn.createExecutableProcess(processDefinitionKey)
+      .camundaHistoryTimeToLive(1)
       .startEvent("start")
       .userTask(taskDefinitionKey)
       .endEvent("end")
@@ -95,6 +97,7 @@ class ActionStage : Stage<ActionStage>() {
   ): ActionStage {
 
     val instance = Bpmn.createExecutableProcess(processDefinitionKey)
+      .camundaHistoryTimeToLive(1)
       .startEvent("start")
       .userTask(taskDefinitionKey)
       .serviceTask("service_task")
@@ -113,6 +116,7 @@ class ActionStage : Stage<ActionStage>() {
   ): ActionStage {
 
     val instance = Bpmn.createExecutableProcess(processDefinitionKey)
+      .camundaHistoryTimeToLive(1)
       .startEvent("start")
       .userTask(taskDefinitionKey)
       .camundaTaskListenerDelegateExpression("complete", delegateExpression)
@@ -130,6 +134,7 @@ class ActionStage : Stage<ActionStage>() {
   ): ActionStage {
 
     val instance = Bpmn.createExecutableProcess(processDefinitionKey)
+      .camundaHistoryTimeToLive(1)
       .startEvent("start")
       .serviceTask("modifying_service_task")
       .camundaDelegateExpression(modifyingDelegateExpression)

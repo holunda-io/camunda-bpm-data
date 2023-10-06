@@ -4,7 +4,7 @@ import io.holunda.camunda.bpm.data.factory.VariableFactory
 import io.holunda.camunda.bpm.data.guard.GuardViolation
 import java.util.*
 import java.util.function.Supplier
-import javax.validation.Validator
+import jakarta.validation.Validator
 
 /**
  * Condition to check if the variable is a valid bean.

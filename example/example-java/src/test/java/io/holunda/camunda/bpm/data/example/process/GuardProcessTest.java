@@ -26,7 +26,7 @@ import static org.mockito.Mockito.mock;
 public class GuardProcessTest {
 
   @RegisterExtension
-  private static final ProcessEngineExtension engine = ProcessEngineExtension
+  public static final ProcessEngineExtension engine = ProcessEngineExtension
     .builder()
     .useProcessEngine(new StandaloneInMemoryTestConfiguration(new SpinProcessEnginePlugin()).buildProcessEngine())
     .build();
@@ -35,9 +35,11 @@ public class GuardProcessTest {
   @BeforeEach
   public void register() {
     OrderApproval config = new OrderApproval();
+    MockOrderApproval mockOrderApproval = new MockOrderApproval();
     Mocks.register("guardExecutionListener", config.guardExecutionListener());
     Mocks.register("guardTaskListener", config.guardTaskListener());
-    Mocks.register("orderApproval", new MockOrderApproval());
+    Mocks.register("loadOrder", mockOrderApproval.loadOrder());
+    Mocks.register("calculateOrderPositions", mockOrderApproval.calculateOrderPositions());
   }
 
   static class MockOrderApproval {
