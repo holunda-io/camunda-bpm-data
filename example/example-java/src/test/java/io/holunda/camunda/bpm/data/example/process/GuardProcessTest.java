@@ -26,7 +26,7 @@ import static org.mockito.Mockito.mock;
 public class GuardProcessTest {
 
   @RegisterExtension
-  private static final ProcessEngineExtension engine = ProcessEngineExtension
+  public static final ProcessEngineExtension engine = ProcessEngineExtension
     .builder()
     .useProcessEngine(new StandaloneInMemoryTestConfiguration(new SpinProcessEnginePlugin()).buildProcessEngine())
     .build();

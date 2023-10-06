@@ -107,11 +107,6 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>io.holunda.testing</groupId>
-      <artifactId>camunda-bpm-jgiven</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>com.tngtech.jgiven</groupId>
       <artifactId>jgiven-junit5</artifactId>
       <scope>test</scope>
