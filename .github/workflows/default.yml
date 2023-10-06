@@ -28,10 +28,10 @@ jobs:
       run: chmod +x ./mvnw
 
     - name: Build
-      run: ./mvnw clean package
+      run: ./mvnw clean package -ntp
 
     - name: Run integration tests and generate coverage reports
-      run: ./mvnw -Pitest verify failsafe:verify
+      run: ./mvnw -Pitest verify failsafe:verify -ntp
 
     - name: Upload coverage to Codecov
       if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
