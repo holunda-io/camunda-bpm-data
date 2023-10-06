@@ -42,7 +42,6 @@
 
   <modules>
     <module>extension/core</module>
-    <module>extension/c7</module>
   </modules>
 
   <dependencyManagement>
