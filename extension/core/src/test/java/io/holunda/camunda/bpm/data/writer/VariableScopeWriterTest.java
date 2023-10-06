@@ -1,8 +1,8 @@
 package io.holunda.camunda.bpm.data.writer;
 
 import io.holunda.camunda.bpm.data.CamundaBpmData;
+import io.holunda.camunda.bpm.data.DelegateExecutionFake;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
-import org.camunda.community.mockito.delegate.DelegateExecutionFake;
 import org.junit.jupiter.api.Test;
 
 import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
