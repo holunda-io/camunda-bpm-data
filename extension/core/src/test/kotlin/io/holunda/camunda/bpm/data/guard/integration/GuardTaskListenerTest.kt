@@ -1,11 +1,11 @@
 package io.holunda.camunda.bpm.data.guard.integration
 
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
+import io.holunda.camunda.bpm.data.DelegateTaskFake
 import io.holunda.camunda.bpm.data.guard.VariablesGuard
 import io.holunda.camunda.bpm.data.guard.condition.exists
 import io.holunda.camunda.bpm.data.guard.condition.hasValue
 import org.assertj.core.api.Assertions.assertThat
-import org.camunda.community.mockito.delegate.DelegateTaskFake
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
