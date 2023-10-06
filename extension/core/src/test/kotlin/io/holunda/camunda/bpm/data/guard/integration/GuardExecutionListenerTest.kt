@@ -1,11 +1,11 @@
 package io.holunda.camunda.bpm.data.guard.integration
 
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
+import io.holunda.camunda.bpm.data.DelegateExecutionFake
 import io.holunda.camunda.bpm.data.guard.VariablesGuard
 import io.holunda.camunda.bpm.data.guard.condition.exists
 import io.holunda.camunda.bpm.data.guard.condition.hasValue
 import org.assertj.core.api.Assertions.assertThat
-import org.camunda.community.mockito.delegate.DelegateExecutionFake
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -15,7 +15,7 @@ class GuardExecutionListenerTest {
 
   @Test
   fun `should do nothing`() {
-    val execution = DelegateExecutionFake().withId("4711").withCurrentActivityName("some")
+    val execution = DelegateExecutionFake.of().withId("4711").withCurrentActivityName("some")
     ORDER_REFERENCE.on(execution).set("1")
 
     val listener = createListener(true)
@@ -27,7 +27,7 @@ class GuardExecutionListenerTest {
 
   @Test
   fun `should not throw exception if disabled `() {
-    val execution = DelegateExecutionFake().withId("4711").withCurrentActivityName("some")
+    val execution = DelegateExecutionFake.of().withId("4711").withCurrentActivityName("some")
     ORDER_REFERENCE.on(execution).set("2")
 
     val listener = createListener(false)
@@ -39,7 +39,7 @@ class GuardExecutionListenerTest {
 
   @Test
   fun `should throw exception if enabled `() {
-    val execution = DelegateExecutionFake().withId("4711").withCurrentActivityName("some")
+    val execution = DelegateExecutionFake.of().withId("4711").withCurrentActivityName("some")
     ORDER_REFERENCE.on(execution).set("2")
 
     val listener = createListener(true)
