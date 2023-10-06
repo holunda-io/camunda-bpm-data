@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data.example</groupId>
     <artifactId>camunda-bpm-data-example-parent</artifactId>
-    <version>1.2.8</version>
+    <version>1.3.0</version>
   </parent>
 
   <artifactId>camunda-bpm-data-integration-test</artifactId>
@@ -14,6 +14,7 @@
 
   <properties>
     <jacoco.skip>false</jacoco.skip>
+    <skipTests>false</skipTests>
   </properties>
 
   <dependencies>
@@ -67,42 +68,6 @@
     </dependency>
 
     <dependency>
-      <groupId>org.codehaus.groovy</groupId>
-      <artifactId>groovy</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.codehaus.groovy</groupId>
-      <artifactId>groovy-datetime</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.codehaus.groovy</groupId>
-      <artifactId>groovy-jmx</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.codehaus.groovy</groupId>
-      <artifactId>groovy-json</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.codehaus.groovy</groupId>
-      <artifactId>groovy-jsr223</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.codehaus.groovy</groupId>
-      <artifactId>groovy-macro</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.codehaus.groovy</groupId>
-      <artifactId>groovy-nio</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.codehaus.groovy</groupId>
-      <artifactId>groovy-templates</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.codehaus.groovy</groupId>
-      <artifactId>groovy-xml</artifactId>
-    </dependency>
-    <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
     </dependency>
@@ -132,13 +97,9 @@
     </dependency>
     <!-- Testing -->
     <dependency>
-      <groupId>io.holunda.data</groupId>
-      <artifactId>camunda-bpm-data-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>org.mockito.kotlin</groupId>
       <artifactId>mockito-kotlin</artifactId>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -148,18 +109,16 @@
     <dependency>
       <groupId>io.holunda.testing</groupId>
       <artifactId>camunda-bpm-jgiven</artifactId>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>com.tngtech.jgiven</groupId>
-      <artifactId>jgiven-junit</artifactId>
+      <artifactId>jgiven-junit5</artifactId>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>com.tngtech.jgiven</groupId>
-      <artifactId>jgiven-spring-junit4</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.camunda.community.mockito</groupId>
-      <artifactId>camunda-platform-7-mockito</artifactId>
+      <artifactId>jgiven-spring-junit5</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -184,7 +143,7 @@
           </includes>
           <!-- Sets the VM argument line used when unit tests are run. -->
           <!-- prevent the annoying ForkedBooter process from stealing window focus on Mac OS -->
-          <argLine>-Djava.awt.headless=true ${argLine} -XX:+StartAttachListener</argLine>
+          <argLine>-Djava.awt.headless=true @{argLine} -XX:+StartAttachListener</argLine>
           <runOrder>random</runOrder>
         </configuration>
       </plugin>

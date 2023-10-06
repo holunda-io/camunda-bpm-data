@@ -1,13 +1,13 @@
 package io.holunda.camunda.bpm.data.guard.integration
 
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
+import io.holunda.camunda.bpm.data.DelegateTaskFake
 import io.holunda.camunda.bpm.data.guard.VariablesGuard
 import io.holunda.camunda.bpm.data.guard.condition.exists
 import io.holunda.camunda.bpm.data.guard.condition.hasValue
 import org.assertj.core.api.Assertions.assertThat
-import org.camunda.community.mockito.delegate.DelegateTaskFake
-import org.junit.Assert.assertThrows
-import org.junit.Test
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 val ORDER_ID = stringVariable("orderID")
 
@@ -46,9 +46,8 @@ class GuardTaskListenerTest {
     ORDER_ID.on(delegateTask).set("2")
     val listener = createListener(true)
 
-    assertThrows(
+    assertThrows<GuardViolationException>(
       "Guard violated in task '${delegateTask.name}' (taskId: '${delegateTask.id}')",
-      GuardViolationException::class.java
     ) {
       listener.notify(delegateTask)
     }
@@ -59,7 +58,7 @@ class GuardTaskListenerTest {
     val delegateTask = DelegateTaskFake().withId("4711").withName("task name")
 
     val listener = DefaultGuardTaskListener(VariablesGuard("NamedGuard", listOf(ORDER_ID.exists())))
-    val exception = assertThrows(GuardViolationException::class.java) {
+    val exception = assertThrows<GuardViolationException>() {
       listener.notify(delegateTask)
     }
     assertThat(exception.message).startsWith("NamedGuard")

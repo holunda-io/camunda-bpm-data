@@ -1,10 +1,10 @@
 package io.holunda.camunda.bpm.data.reader;
 
 import io.holunda.camunda.bpm.data.CamundaBpmData;
+import io.holunda.camunda.bpm.data.DelegateExecutionFake;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
-import org.camunda.community.mockito.delegate.DelegateExecutionFake;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable;
 import static org.assertj.core.api.Assertions.assertThat;

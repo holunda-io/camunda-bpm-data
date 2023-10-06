@@ -72,6 +72,14 @@ object CamundaBpmDataKotlin {
   fun booleanVariable(variableName: String): VariableFactory<Boolean> = BasicVariableFactory(variableName, Boolean::class.java)
 
   /**
+   * Creates an uuid variable factory.
+   *
+   * @param variableName name of the variable.
+   * @return variable factory for uuid.
+   */
+  fun uuidVariable(variableName: String): VariableFactory<UUID> = BasicVariableFactory(variableName, UUID::class.java)
+
+  /**
    * Reified version of the basic variable factory.
    * @param name The name of the variable.
    * @param T The type of the variable.

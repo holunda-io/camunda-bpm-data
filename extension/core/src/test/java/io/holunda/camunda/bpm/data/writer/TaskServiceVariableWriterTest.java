@@ -4,9 +4,9 @@ import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.variable.Variables;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.util.UUID;
@@ -24,13 +24,13 @@ public class TaskServiceVariableWriterTest {
 
   private final TaskService taskService = Mockito.mock(TaskService.class);
 
-  @Before
+  @BeforeEach
   public void setUp() {
     when(taskService.getVariable(TASK_ID, STRING.getName())).thenReturn(VALUE);
     when(taskService.getVariableLocal(TASK_ID, STRING.getName())).thenReturn(VALUE);
   }
 
-  @After
+  @AfterEach
   public void after() {
     Mockito.reset(taskService);
   }

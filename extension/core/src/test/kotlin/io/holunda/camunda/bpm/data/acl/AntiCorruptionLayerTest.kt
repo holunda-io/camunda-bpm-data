@@ -1,6 +1,10 @@
 package io.holunda.camunda.bpm.data.acl
 
-import io.holunda.camunda.bpm.data.CamundaBpmData.*
+import io.holunda.camunda.bpm.data.CamundaBpmData.builder
+import io.holunda.camunda.bpm.data.CamundaBpmData.customVariable
+import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
+import io.holunda.camunda.bpm.data.DelegateExecutionFake
+import io.holunda.camunda.bpm.data.DelegateTaskFake
 import io.holunda.camunda.bpm.data.acl.transform.IdentityVariableMapTransformer
 import io.holunda.camunda.bpm.data.acl.transform.VariableMapTransformer
 import io.holunda.camunda.bpm.data.guard.CamundaBpmDataGuards.exists
@@ -14,10 +18,8 @@ import org.camunda.bpm.engine.impl.context.Context
 import org.camunda.bpm.engine.test.mock.MockExpressionManager
 import org.camunda.bpm.engine.variable.VariableMap
 import org.camunda.bpm.engine.variable.value.ObjectValue
-import org.camunda.community.mockito.delegate.DelegateExecutionFake
-import org.camunda.community.mockito.delegate.DelegateTaskFake
-import org.junit.Assert.assertThrows
-import org.junit.Test
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class AntiCorruptionLayerTest {
 
@@ -92,8 +94,7 @@ class AntiCorruptionLayerTest {
   @Test
   fun `should fail checking and wrapping variables`() {
     val vars = builder().set(FOO, "foo1").set(BAZ, "ba").build()
-
-    assertThrows("ACL Guard Error:\n\tExpecting variable 'baz' to match the condition, but its value 'ba' has not.", GuardViolationException::class.java) {
+    assertThrows<GuardViolationException>("ACL Guard Error:\n\tExpecting variable 'baz' to match the condition, but its value 'ba' has not.") {
       MY_ACL.checkAndWrap(vars)
     }
   }

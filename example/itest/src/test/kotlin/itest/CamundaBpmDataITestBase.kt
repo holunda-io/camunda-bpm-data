@@ -3,10 +3,14 @@ package io.holunda.camunda.bpm.data.itest
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.tngtech.jgiven.base.ScenarioTestBase
 import com.tngtech.jgiven.integration.spring.EnableJGiven
-import com.tngtech.jgiven.integration.spring.SpringScenarioTest
-import io.holunda.camunda.bpm.data.CamundaBpmData.*
+import com.tngtech.jgiven.integration.spring.junit5.SpringScenarioTest
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.booleanVariable
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.longVariable
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.shortVariable
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.customVariable
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.dateVariable
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.doubleVariable
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.intVariable
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.listVariable
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.mapVariable
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.setVariable
@@ -45,7 +49,7 @@ import org.camunda.bpm.engine.delegate.TaskListener
 import org.camunda.bpm.engine.delegate.VariableScope
 import org.camunda.bpm.engine.variable.VariableMap
 import org.camunda.bpm.engine.variable.Variables.createVariables
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.boot.SpringBootConfiguration
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.boot.test.context.SpringBootTest
@@ -53,7 +57,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
 import org.springframework.test.context.ActiveProfiles
-import org.springframework.test.context.junit4.SpringRunner
+import org.springframework.test.context.junit.jupiter.SpringExtension
 import java.time.Instant
 import java.time.temporal.ChronoUnit
 import java.util.*
@@ -66,7 +70,7 @@ fun <G, W, T> ScenarioTestBase<G, W, T>.whenever(): W = `when`()
 /**
  * Base for ITests.
  */
-@RunWith(SpringRunner::class)
+@ExtendWith(SpringExtension::class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = [CamundaBpmDataITestBase.TestApplication::class])
 @ActiveProfiles("itest")
 abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionStage, AssertStage>() {
@@ -103,18 +107,24 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       val LIST_STRING = VariableValue(LIST_STRING_VAR, listOf("Hello", "World"))
       val SET_STRING = VariableValue(SET_STRING_VAR, setOf("Kermit", "Piggy"))
       val MAP_STRING_LONG = VariableValue(MAP_STRING_LONG_VAR, mapOf("Twelve" to now.toString(), "Eleven" to now.toString()))
-      val COMPLEX_SET = VariableValue(COMPLEX_SET_VAR, setOf(
-        ComplexDataStructure("one", 1, now),
-        ComplexDataStructure("two", 2, yesterday)
-      ))
-      val COMPLEX_LIST = VariableValue(COMPLEX_LIST_VAR, listOf(
-        ComplexDataStructure("one", 1, now),
-        ComplexDataStructure("two", 2, yesterday)
-      ))
-      val COMPLEX_MAP = VariableValue(COMPLEX_MAP_VAR, mapOf(
-        "1" to ComplexDataStructure("one", 1, now),
-        "2" to ComplexDataStructure("two", 2, yesterday)
-      ))
+      val COMPLEX_SET = VariableValue(
+        COMPLEX_SET_VAR, setOf(
+          ComplexDataStructure("one", 1, now),
+          ComplexDataStructure("two", 2, yesterday)
+        )
+      )
+      val COMPLEX_LIST = VariableValue(
+        COMPLEX_LIST_VAR, listOf(
+          ComplexDataStructure("one", 1, now),
+          ComplexDataStructure("two", 2, yesterday)
+        )
+      )
+      val COMPLEX_MAP = VariableValue(
+        COMPLEX_MAP_VAR, mapOf(
+          "1" to ComplexDataStructure("one", 1, now),
+          "2" to ComplexDataStructure("two", 2, yesterday)
+        )
+      )
 
       val STRING_LOCAL = VariableValue(STRING_VAR, "localValue")
       val DATE_LOCAL = VariableValue(DATE_VAR, yesterday)
@@ -127,18 +137,24 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
       val LIST_STRING_LOCAL = VariableValue(LIST_STRING_VAR, listOf("Foo", "Bar"))
       val SET_STRING_LOCAL = VariableValue(SET_STRING_VAR, setOf("Homer", "Marge"))
       val MAP_STRING_DATE_LOCAL = VariableValue(MAP_STRING_LONG_VAR, mapOf("Ten" to yesterday.toString(), "Nine" to yesterday.toString()))
-      val COMPLEX_SET_LOCAL = VariableValue(COMPLEX_SET_VAR, setOf(
-        ComplexDataStructure("one local", 1, now),
-        ComplexDataStructure("two local", 2, yesterday)
-      ))
-      val COMPLEX_LIST_LOCAL = VariableValue(COMPLEX_LIST_VAR, listOf(
-        ComplexDataStructure("one local", 1, now),
-        ComplexDataStructure("two local", 2, yesterday)
-      ))
-      val COMPLEX_MAP_LOCAL = VariableValue(COMPLEX_MAP_VAR, mapOf(
-        "1" to ComplexDataStructure("one local", 1, now),
-        "2" to ComplexDataStructure("two local", 2, yesterday)
-      ))
+      val COMPLEX_SET_LOCAL = VariableValue(
+        COMPLEX_SET_VAR, setOf(
+          ComplexDataStructure("one local", 1, now),
+          ComplexDataStructure("two local", 2, yesterday)
+        )
+      )
+      val COMPLEX_LIST_LOCAL = VariableValue(
+        COMPLEX_LIST_VAR, listOf(
+          ComplexDataStructure("one local", 1, now),
+          ComplexDataStructure("two local", 2, yesterday)
+        )
+      )
+      val COMPLEX_MAP_LOCAL = VariableValue(
+        COMPLEX_MAP_VAR, mapOf(
+          "1" to ComplexDataStructure("one local", 1, now),
+          "2" to ComplexDataStructure("two local", 2, yesterday)
+        )
+      )
     }
 
     private val allValues = mapOf(
@@ -206,20 +222,20 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
 
     @Bean
     fun readOptionalFromVariableScope() = JavaDelegate { delegateExecution ->
-      optionalVars[STRING_VAR.name] = STRING_VAR.from(delegateExecution).optional
-      optionalVars[DATE_VAR.name] = DATE_VAR.from(delegateExecution).optional
-      optionalVars[SHORT_VAR.name] = SHORT_VAR.from(delegateExecution).optional
-      optionalVars[INT_VAR.name] = INT_VAR.from(delegateExecution).optional
-      optionalVars[LONG_VAR.name] = LONG_VAR.from(delegateExecution).optional
-      optionalVars[DOUBLE_VAR.name] = DOUBLE_VAR.from(delegateExecution).optional
-      optionalVars[BOOLEAN_VAR.name] = BOOLEAN_VAR.from(delegateExecution).optional
-      optionalVars[COMPLEX_VAR.name] = COMPLEX_VAR.from(delegateExecution).optional
-      optionalVars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(delegateExecution).optional
-      optionalVars[SET_STRING_VAR.name] = SET_STRING_VAR.from(delegateExecution).optional
-      optionalVars[MAP_STRING_LONG_VAR.name] = MAP_STRING_LONG_VAR.from(delegateExecution).optional
-      optionalVars[COMPLEX_SET_VAR.name] = COMPLEX_SET_VAR.from(delegateExecution).optional
-      optionalVars[COMPLEX_LIST_VAR.name] = COMPLEX_LIST_VAR.from(delegateExecution).optional
-      optionalVars[COMPLEX_MAP_VAR.name] = COMPLEX_MAP_VAR.from(delegateExecution).optional
+      optionalVars[STRING_VAR.name] = STRING_VAR.from(delegateExecution).getOptional()
+      optionalVars[DATE_VAR.name] = DATE_VAR.from(delegateExecution).getOptional()
+      optionalVars[SHORT_VAR.name] = SHORT_VAR.from(delegateExecution).getOptional()
+      optionalVars[INT_VAR.name] = INT_VAR.from(delegateExecution).getOptional()
+      optionalVars[LONG_VAR.name] = LONG_VAR.from(delegateExecution).getOptional()
+      optionalVars[DOUBLE_VAR.name] = DOUBLE_VAR.from(delegateExecution).getOptional()
+      optionalVars[BOOLEAN_VAR.name] = BOOLEAN_VAR.from(delegateExecution).getOptional()
+      optionalVars[COMPLEX_VAR.name] = COMPLEX_VAR.from(delegateExecution).getOptional()
+      optionalVars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(delegateExecution).getOptional()
+      optionalVars[SET_STRING_VAR.name] = SET_STRING_VAR.from(delegateExecution).getOptional()
+      optionalVars[MAP_STRING_LONG_VAR.name] = MAP_STRING_LONG_VAR.from(delegateExecution).getOptional()
+      optionalVars[COMPLEX_SET_VAR.name] = COMPLEX_SET_VAR.from(delegateExecution).getOptional()
+      optionalVars[COMPLEX_LIST_VAR.name] = COMPLEX_LIST_VAR.from(delegateExecution).getOptional()
+      optionalVars[COMPLEX_MAP_VAR.name] = COMPLEX_MAP_VAR.from(delegateExecution).getOptional()
     }
 
     @Bean
@@ -254,20 +270,20 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
      * Writes local properties from variable scope.
      */
     private fun readLocalVarsFromVariableScope(variableScope: VariableScope) {
-      vars[STRING_VAR.name] = STRING_VAR.from(variableScope).local
-      vars[DATE_VAR.name] = DATE_VAR.from(variableScope).local
-      vars[SHORT_VAR.name] = SHORT_VAR.from(variableScope).local
-      vars[INT_VAR.name] = INT_VAR.from(variableScope).local
-      vars[LONG_VAR.name] = LONG_VAR.from(variableScope).local
-      vars[DOUBLE_VAR.name] = DOUBLE_VAR.from(variableScope).local
-      vars[BOOLEAN_VAR.name] = BOOLEAN_VAR.from(variableScope).local
-      vars[COMPLEX_VAR.name] = COMPLEX_VAR.from(variableScope).local
-      vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(variableScope).local
-      vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(variableScope).local
-      vars[MAP_STRING_LONG_VAR.name] = MAP_STRING_LONG_VAR.from(variableScope).local
-      vars[COMPLEX_SET_VAR.name] = COMPLEX_SET_VAR.from(variableScope).local
-      vars[COMPLEX_LIST_VAR.name] = COMPLEX_LIST_VAR.from(variableScope).local
-      vars[COMPLEX_MAP_VAR.name] = COMPLEX_MAP_VAR.from(variableScope).local
+      vars[STRING_VAR.name] = STRING_VAR.from(variableScope).getLocal()
+      vars[DATE_VAR.name] = DATE_VAR.from(variableScope).getLocal()
+      vars[SHORT_VAR.name] = SHORT_VAR.from(variableScope).getLocal()
+      vars[INT_VAR.name] = INT_VAR.from(variableScope).getLocal()
+      vars[LONG_VAR.name] = LONG_VAR.from(variableScope).getLocal()
+      vars[DOUBLE_VAR.name] = DOUBLE_VAR.from(variableScope).getLocal()
+      vars[BOOLEAN_VAR.name] = BOOLEAN_VAR.from(variableScope).getLocal()
+      vars[COMPLEX_VAR.name] = COMPLEX_VAR.from(variableScope).getLocal()
+      vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(variableScope).getLocal()
+      vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(variableScope).getLocal()
+      vars[MAP_STRING_LONG_VAR.name] = MAP_STRING_LONG_VAR.from(variableScope).getLocal()
+      vars[COMPLEX_SET_VAR.name] = COMPLEX_SET_VAR.from(variableScope).getLocal()
+      vars[COMPLEX_LIST_VAR.name] = COMPLEX_LIST_VAR.from(variableScope).getLocal()
+      vars[COMPLEX_MAP_VAR.name] = COMPLEX_MAP_VAR.from(variableScope).getLocal()
 
     }
 

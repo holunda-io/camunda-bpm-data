@@ -9,8 +9,8 @@ import io.holunda.camunda.bpm.data.guard.VariablesGuard
 import io.holunda.camunda.bpm.data.guard.VariablesGuard.Companion.ALL
 import io.holunda.camunda.bpm.data.guard.VariablesGuard.Companion.ONE_OF
 import org.assertj.core.api.Assertions.assertThat
-import org.camunda.community.mockito.delegate.DelegateExecutionFake
-import org.junit.Test
+import org.camunda.bpm.engine.variable.Variables
+import org.junit.jupiter.api.Test
 import java.util.*
 
 class VariablesGuardTest {
@@ -54,15 +54,27 @@ class VariablesGuardTest {
   @Test
   fun shouldEvaluateOneOf() {
     val executionWithBoth = DelegateExecutionFake()
-      .withVariable(FOO.name, "foo")
-      .withVariable(BAR.name, "bar")
-
+      .withVariables(
+        Variables.createVariables().apply {
+          putValue(FOO.name, "foo")
+          putValue(BAR.name, "bar")
+        }
+      )
 
     val executionWithBAR = DelegateExecutionFake()
-      .withVariable(BAR.name, "bar")
+      .withVariables(
+        Variables.createVariables().apply {
+          putValue(BAR.name, "bar")
+        }
+      )
+
 
     val executionWithFOO = DelegateExecutionFake()
-      .withVariable(FOO.name, "foo")
+      .withVariables(
+        Variables.createVariables().apply {
+          putValue(FOO.name, "foo")
+        }
+      )
 
     val emptyExecution = DelegateExecutionFake()
 
@@ -81,11 +93,19 @@ class VariablesGuardTest {
   @Test
   fun shouldEvaluateAll() {
     val executionWithBoth = DelegateExecutionFake()
-      .withVariable(FOO.name, "foo")
-      .withVariable(BAR.name, "bar")
+      .withVariables(
+        Variables.createVariables().apply {
+          putValue(FOO.name, "foo")
+          putValue(BAR.name, "bar")
+        }
+      )
 
     val executionWithFOO = DelegateExecutionFake()
-      .withVariable(FOO.name, "foo")
+      .withVariables(
+        Variables.createVariables().apply {
+          putValue(FOO.name, "foo")
+        }
+      )
 
     val emptyExecution = DelegateExecutionFake()
 

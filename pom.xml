@@ -4,7 +4,7 @@
 
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data-parent</artifactId>
-  <version>1.2.8</version>
+  <version>1.3.0</version>
   <name>${project.artifactId}</name>
   <description>Camunda BPM Data</description>
   <url>https://github.com/holunda-io/camunda-bpm-data/</url>
@@ -18,21 +18,20 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <version.java>${java.version}</version.java>
 
-    <camunda.version.ce>7.18.0</camunda.version.ce>
-    <camunda.version.ee>7.18.0-ee</camunda.version.ee>
+    <camunda.version.ce>7.19.0</camunda.version.ce>
+    <camunda.version.ee>7.19.0-ee</camunda.version.ee>
 
-    <spring-boot.version>2.7.5</spring-boot.version>
-    <groovy.version>2.4.21</groovy.version>
-    <spin.version>1.18.0</spin.version>
-    <camunda-assert.version>15.0.0</camunda-assert.version>
+    <spring-boot.version>2.7.6</spring-boot.version>
+    <spin.version>1.21.0</spin.version>
+    <camunda-assert.version>${camunda.version.ce}</camunda-assert.version>
 
-    <kotlin.version>1.7.21</kotlin.version>
-    <jgiven.version>1.2.4</jgiven.version>
+    <kotlin.version>1.9.10</kotlin.version>
+    <jgiven.version>1.3.0</jgiven.version>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
 
-    <kotlin-logging.version>3.0.4</kotlin-logging.version>
-    <mockito-kotlin.version>4.0.0</mockito-kotlin.version>
-    <camunda-platform-7-mockito.version>6.17.1</camunda-platform-7-mockito.version>
+    <kotlin-logging.version>3.0.5</kotlin-logging.version>
+    <mockito-kotlin.version>5.1.0</mockito-kotlin.version>
+    <camunda-platform-7-mockito.version>6.19.0</camunda-platform-7-mockito.version>
 
     <pattern.class.itest>**/*ITest.*</pattern.class.itest>
     <pattern.package.itest>**/itest/**/*.*</pattern.package.itest>
@@ -45,7 +44,7 @@
 
   <modules>
     <module>extension/core</module>
-    <module>extension/test</module>
+    <module>extension/c7</module>
   </modules>
 
   <dependencyManagement>
@@ -71,12 +70,6 @@
         <groupId>io.github.microutils</groupId>
         <artifactId>kotlin-logging-jvm</artifactId>
         <version>${kotlin-logging.version}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib</artifactId>
-          </exclusion>
-        </exclusions>
       </dependency>
 
       <dependency>
@@ -93,23 +86,10 @@
         <type>pom</type>
         <version>${spin.version}</version>
       </dependency>
-
-      <dependency>
-        <groupId>org.camunda.community.mockito</groupId>
-        <artifactId>camunda-platform-7-mockito</artifactId>
-        <scope>test</scope>
-        <version>${camunda-platform-7-mockito.version}</version>
-      </dependency>
       <dependency>
         <groupId>org.camunda.bpm.springboot</groupId>
         <artifactId>camunda-bpm-spring-boot-starter-test</artifactId>
-        <version>${camunda.version}</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.camunda.bpm.assert</groupId>
-        <artifactId>camunda-bpm-assert</artifactId>
-        <version>${camunda-assert.version}</version>
+        <version>${camunda.version.ce}</version>
         <scope>test</scope>
       </dependency>
       <dependency>
@@ -127,7 +107,7 @@
     <dependency>
       <groupId>org.jetbrains</groupId>
       <artifactId>annotations</artifactId>
-      <version>23.0.0</version>
+      <version>24.0.1</version>
     </dependency>
 
     <!-- Testing -->
@@ -138,8 +118,8 @@
     </dependency>
 
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
       <scope>test</scope>
     </dependency>
 
@@ -159,14 +139,14 @@
           <!-- cleaning -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
-          <version>3.2.0</version>
+          <version>3.3.1</version>
         </plugin>
 
         <!-- Coverage metering -->
         <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
-          <version>0.8.8</version>
+          <version>0.8.10</version>
           <executions>
             <execution>
               <id>pre-unit-test</id>
@@ -189,8 +169,8 @@
           <groupId>org.jetbrains.kotlin</groupId>
           <version>${kotlin.version}</version>
           <configuration>
-            <languageVersion>1.5</languageVersion>
-            <apiVersion>1.5</apiVersion>
+            <languageVersion>1.9</languageVersion>
+            <apiVersion>1.9</apiVersion>
             <args>
               <arg>-Xinline-classes</arg>
             </args>
@@ -251,7 +231,7 @@
           <!-- Java compiler -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.10.1</version>
+          <version>3.11.0</version>
           <configuration>
             <encoding>${project.build.sourceEncoding}</encoding>
             <source>${maven.compiler.source}</source>
@@ -292,7 +272,7 @@
           <!-- resources -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-resources-plugin</artifactId>
-          <version>3.3.0</version>
+          <version>3.3.1</version>
           <configuration>
             <encoding>${project.build.sourceEncoding}</encoding>
           </configuration>
@@ -301,7 +281,7 @@
         <!-- Unit Tests -->
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.2</version>
+          <version>3.1.2</version>
           <configuration>
             <useSystemClassLoader>false</useSystemClassLoader>
             <shutdown>kill</shutdown>
@@ -312,7 +292,7 @@
             </excludes>
             <!-- Sets the VM argument line used when unit tests are run. -->
             <!-- prevent the annoying ForkedBooter process from stealing window focus on Mac OS -->
-            <argLine>-Djava.awt.headless=true ${argLine} -XX:+StartAttachListener -Xmx1024m -XX:MaxPermSize=256m</argLine>
+            <argLine>-Djava.awt.headless=true @{argLine} -XX:+StartAttachListener</argLine>
             <systemPropertyVariables>
               <jgiven.report.dir>${project.build.directory}/jgiven-reports</jgiven.report.dir>
             </systemPropertyVariables>
@@ -323,14 +303,14 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>2.22.2</version>
+          <version>3.1.2</version>
         </plugin>
 
         <!-- JavaDoc for Java and KDoc for Kotlin -->
         <plugin>
           <groupId>org.jetbrains.dokka</groupId>
           <artifactId>dokka-maven-plugin</artifactId>
-          <version>1.7.20</version>
+          <version>1.9.0</version>
           <executions>
             <execution>
               <id>attach-javadocs</id>
@@ -364,7 +344,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>build-helper-maven-plugin</artifactId>
-          <version>3.3.0</version>
+          <version>3.4.0</version>
           <executions>
             <execution>
               <phase>generate-sources</phase>
@@ -384,7 +364,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-source-plugin</artifactId>
-          <version>3.2.1</version>
+          <version>3.3.0</version>
           <executions>
             <execution>
               <id>attach-sources</id>
@@ -404,7 +384,7 @@
         <plugin>
           <groupId>com.amashchenko.maven.plugin</groupId>
           <artifactId>gitflow-maven-plugin</artifactId>
-          <version>1.19.0</version>
+          <version>1.20.0</version>
           <configuration>
             <gitFlowConfig>
               <productionBranch>master</productionBranch>
@@ -426,7 +406,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-gpg-plugin</artifactId>
-          <version>3.0.1</version>
+          <version>3.1.0</version>
           <configuration>
             <gpgArguments>
               <arg>--batch</arg>
@@ -449,7 +429,7 @@
         <!-- Deploy -->
         <plugin>
           <artifactId>maven-deploy-plugin</artifactId>
-          <version>3.0.0</version>
+          <version>3.1.1</version>
           <configuration>
             <skip>true</skip>
           </configuration>
@@ -480,14 +460,14 @@
         <!-- Install -->
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
-          <version>3.0.1</version>
+          <version>3.1.1</version>
         </plugin>
 
         <!-- Enforce -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.4.1</version>
           <executions>
             <execution>
               <id>enforce-maven</id>
@@ -537,14 +517,14 @@
         </property>
       </activation>
       <properties>
-        <camunda.version>${camunda.version.ce}</camunda.version>
+        <camunda.version>7.19.0</camunda.version>
       </properties>
       <dependencyManagement>
         <dependencies>
           <dependency>
             <groupId>org.camunda.bpm.springboot</groupId>
             <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
-            <version>${camunda.version}</version>
+            <version>${camunda.version.ce}</version>
           </dependency>
         </dependencies>
       </dependencyManagement>
@@ -571,7 +551,7 @@
           <dependency>
             <groupId>org.camunda.bpm.springboot</groupId>
             <artifactId>camunda-bpm-spring-boot-starter-webapp-ee</artifactId>
-            <version>${camunda.version}</version>
+            <version>${camunda.version.ee}</version>
           </dependency>
         </dependencies>
       </dependencyManagement>

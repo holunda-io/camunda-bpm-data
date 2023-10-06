@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data</groupId>
     <artifactId>camunda-bpm-data-parent</artifactId>
-    <version>1.2.8</version>
+    <version>1.3.0</version>
   </parent>
 
   <groupId>io.holunda.data.example</groupId>
@@ -15,7 +15,9 @@
   <packaging>pom</packaging>
 
   <properties>
-    <springdoc.version>1.6.12</springdoc.version>
+    <springdoc.version>1.7.0</springdoc.version>
+    <camunda-bpm-jgiven.version>0.4.1</camunda-bpm-jgiven.version>
+
     <jacoco.skip>true</jacoco.skip>
     <maven.javadoc.skip>true</maven.javadoc.skip>
     <maven.sources.skip>true</maven.sources.skip>
@@ -40,19 +42,8 @@
         <artifactId>camunda-bpm-data</artifactId>
         <version>${project.version}</version>
       </dependency>
-      <dependency>
-        <groupId>io.holunda.data</groupId>
-        <artifactId>camunda-bpm-data-test</artifactId>
-        <scope>test</scope>
-        <version>${project.version}</version>
-      </dependency>
 
       <!-- TOOLS -->
-      <dependency>
-        <groupId>org.codehaus.groovy</groupId>
-        <artifactId>groovy-all</artifactId>
-        <version>${groovy.version}</version>
-      </dependency>
       <dependency>
         <groupId>org.springdoc</groupId>
         <artifactId>springdoc-openapi-ui</artifactId>
@@ -64,26 +55,31 @@
         <version>${springdoc.version}</version>
       </dependency>
       <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-kotlin</artifactId>
+        <version>${springdoc.version}</version>
+      </dependency>
+      <dependency>
         <groupId>io.holunda.testing</groupId>
         <artifactId>camunda-bpm-jgiven</artifactId>
-        <version>0.2.0</version>
+        <version>${camunda-bpm-jgiven.version}</version>
         <scope>test</scope>
       </dependency>
       <dependency>
-        <groupId>org.camunda.bpm.assert</groupId>
+        <groupId>org.camunda.bpm</groupId>
         <artifactId>camunda-bpm-assert</artifactId>
         <version>${camunda-assert.version}</version>
         <scope>test</scope>
       </dependency>
       <dependency>
         <groupId>com.tngtech.jgiven</groupId>
-        <artifactId>jgiven-junit</artifactId>
+        <artifactId>jgiven-junit5</artifactId>
         <version>${jgiven.version}</version>
         <scope>test</scope>
       </dependency>
       <dependency>
         <groupId>com.tngtech.jgiven</groupId>
-        <artifactId>jgiven-spring-junit4</artifactId>
+        <artifactId>jgiven-spring-junit5</artifactId>
         <version>${jgiven.version}</version>
         <scope>test</scope>
       </dependency>

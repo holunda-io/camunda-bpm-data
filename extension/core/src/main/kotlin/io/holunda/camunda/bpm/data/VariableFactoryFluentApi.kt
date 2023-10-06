@@ -18,7 +18,7 @@ import java.util.*
  * Getter from local scope.
  * @param factory factory defining the variable.
  */
-fun <T> VariableMap.getOptional(factory: VariableFactory<T>): Optional<T> = factory.from(this).optional
+fun <T> VariableMap.getOptional(factory: VariableFactory<T>): Optional<T> = factory.from(this).getOptional()
 
 /**
  * Fluent setter.
@@ -52,19 +52,19 @@ fun <T> VariableMap.update(factory: VariableFactory<T>, valueProcessor: (T) -> T
  * Getter from local scope.
  * @param factory factory defining the variable.
  */
-fun <T> VariableScope.getOptional(factory: VariableFactory<T>): Optional<T> = factory.from(this).optional
+fun <T> VariableScope.getOptional(factory: VariableFactory<T>): Optional<T> = factory.from(this).getOptional()
 
 /**
  * Getter from local scope.
  * @param factory factory defining the variable.
  */
-fun <T> VariableScope.getLocal(factory: VariableFactory<T>): T = factory.from(this).local
+fun <T> VariableScope.getLocal(factory: VariableFactory<T>): T = factory.from(this).getLocal()
 
 /**
  * Getter from local scope.
  * @param factory factory defining the variable.
  */
-fun <T> VariableScope.getLocalOptional(factory: VariableFactory<T>): Optional<T> = factory.from(this).localOptional
+fun <T> VariableScope.getLocalOptional(factory: VariableFactory<T>): Optional<T> = factory.from(this).getLocalOptional()
 
 /**
  * Fluent setter.
@@ -126,34 +126,40 @@ fun <T> VariableScope.updateLocal(factory: VariableFactory<T>, valueProcessor: (
  * Helper to access case service writer.
  * @param caseExecutionId id of the execution.
  */
-fun CaseService.writer(caseExecutionId: String) = CaseServiceVariableWriter(this, caseExecutionId)
+fun CaseService.writer(caseExecutionId: String) =
+    CaseServiceVariableWriter(this, caseExecutionId)
 
 /**
  * Helper to access runtime service writer.
  * @param executionId id of the execution.
  */
-fun RuntimeService.writer(executionId: String) = RuntimeServiceVariableWriter(this, executionId)
+fun RuntimeService.writer(executionId: String) =
+    RuntimeServiceVariableWriter(this, executionId)
 
 /**
  * Helper to access task service writer.
  * @param taskId id of the task.
  */
-fun TaskService.writer(taskId: String) = TaskServiceVariableWriter(this, taskId)
+fun TaskService.writer(taskId: String) =
+    TaskServiceVariableWriter(this, taskId)
 
 /**
  * Helper to access case service reader.
  * @param caseExecutionId id of the execution.
  */
-fun CaseService.reader(caseExecutionId: String) = CaseServiceVariableReader(this, caseExecutionId)
+fun CaseService.reader(caseExecutionId: String) =
+    CaseServiceVariableReader(this, caseExecutionId)
 
 /**
  * Helper to access runtime service reader.
  * @param executionId id of the execution.
  */
-fun RuntimeService.reader(executionId: String) = RuntimeServiceVariableReader(this, executionId)
+fun RuntimeService.reader(executionId: String) =
+    RuntimeServiceVariableReader(this, executionId)
 
 /**
  * Helper to access task service reader.
  * @param taskId id of the task.
  */
-fun TaskService.reader(taskId: String) = TaskServiceVariableReader(this, taskId)
+fun TaskService.reader(taskId: String) =
+    TaskServiceVariableReader(this, taskId)

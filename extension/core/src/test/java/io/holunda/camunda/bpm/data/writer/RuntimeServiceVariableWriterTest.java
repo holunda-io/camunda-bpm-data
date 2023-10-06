@@ -4,9 +4,9 @@ import io.holunda.camunda.bpm.data.CamundaBpmData;
 import io.holunda.camunda.bpm.data.factory.VariableFactory;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.variable.Variables;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.util.UUID;
@@ -25,13 +25,13 @@ public class RuntimeServiceVariableWriterTest {
   private static final String LOCAL_VALUE = "localValue";
   private final RuntimeService runtimeService = Mockito.mock(RuntimeService.class);
 
-  @Before
+  @BeforeEach
   public void setUp() {
     when(runtimeService.getVariable(EXECUTION_ID, STRING.getName())).thenReturn(VALUE);
     when(runtimeService.getVariableLocal(EXECUTION_ID, STRING.getName())).thenReturn(LOCAL_VALUE);
   }
 
-  @After
+  @AfterEach
   public void after() {
     Mockito.reset(runtimeService);
   }

@@ -17,10 +17,10 @@ object ValueWrapperUtil {
    * @param clazz       class of value.
    * @param value       value to encapsulate.
    * @param isTransient transient flag.
-   * @param <T>         type of value.
+   * @param [T]         type of value.
    * @return typed value.
    * @throws IllegalArgumentException if value and clazz are incompatible.
-  </T> */
+   */
   @JvmStatic
   fun <T> getTypedValue(clazz: Class<T>, value: Any?, isTransient: Boolean): TypedValue {
     require(

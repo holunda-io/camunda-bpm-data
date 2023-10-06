@@ -14,8 +14,7 @@ import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.variable.Variables.createVariables
 import org.camunda.bpm.engine.variable.Variables.stringValue
-import org.camunda.community.mockito.delegate.DelegateExecutionFake
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import java.util.*
 
 class FluentApiTest {
@@ -97,13 +96,43 @@ class FluentApiTest {
     val runtime: RuntimeService = mock()
     val task: TaskService = mock()
 
-    assertThat(case.writer("case-id")).isEqualTo(CaseServiceVariableWriter(case, "case-id"))
-    assertThat(runtime.writer("id")).isEqualTo(RuntimeServiceVariableWriter(runtime, "id"))
-    assertThat(task.writer("task-id")).isEqualTo(TaskServiceVariableWriter(task, "task-id"))
+    assertThat(case.writer("case-id")).isEqualTo(
+      CaseServiceVariableWriter(
+        case,
+        "case-id"
+      )
+    )
+    assertThat(runtime.writer("id")).isEqualTo(
+      RuntimeServiceVariableWriter(
+        runtime,
+        "id"
+      )
+    )
+    assertThat(task.writer("task-id")).isEqualTo(
+      TaskServiceVariableWriter(
+        task,
+        "task-id"
+      )
+    )
 
-    assertThat(case.reader("case-id")).isEqualTo(CaseServiceVariableReader(case, "case-id"))
-    assertThat(runtime.reader("id")).isEqualTo(RuntimeServiceVariableReader(runtime, "id"))
-    assertThat(task.reader("task-id")).isEqualTo(TaskServiceVariableReader(task, "task-id"))
+    assertThat(case.reader("case-id")).isEqualTo(
+      CaseServiceVariableReader(
+        case,
+        "case-id"
+      )
+    )
+    assertThat(runtime.reader("id")).isEqualTo(
+      RuntimeServiceVariableReader(
+        runtime,
+        "id"
+      )
+    )
+    assertThat(task.reader("task-id")).isEqualTo(
+      TaskServiceVariableReader(
+        task,
+        "task-id"
+      )
+    )
 
   }
 }

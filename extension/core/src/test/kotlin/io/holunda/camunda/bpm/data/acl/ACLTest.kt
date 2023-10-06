@@ -1,6 +1,7 @@
 package io.holunda.camunda.bpm.data.acl
 
 import io.holunda.camunda.bpm.data.CamundaBpmData
+import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin
 import io.holunda.camunda.bpm.data.acl.transform.VariableMapTransformer
 import io.holunda.camunda.bpm.data.guard.VariablesGuard
 import io.holunda.camunda.bpm.data.guard.condition.*
@@ -10,21 +11,18 @@ import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration
 import org.camunda.bpm.engine.test.Deployment
-import org.camunda.bpm.engine.test.ProcessEngineRule
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.task
+import org.camunda.bpm.engine.test.junit5.ProcessEngineExtension
 import org.camunda.bpm.engine.test.mock.MockExpressionManager
+import org.camunda.bpm.engine.test.mock.Mocks
 import org.camunda.bpm.engine.variable.VariableMap
-import org.camunda.community.mockito.CamundaMockito.registerInstance
-import org.junit.Rule
-import org.junit.Test
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.RegisterExtension
+
 
 @Deployment(resources = ["eventBasedSubprocess_no_transientMapping.bpmn", "eventBasedSubprocess_with_transientMapping.bpmn"])
 class TransientVariableMappingListenerTest {
-
-  @Suppress("RedundantVisibilityModifier")
-  @get: Rule
-  public val camunda = camunda()
 
   @Test
   fun `NO ACL signal sub-process with variables sets variables on processInstance`() {
@@ -49,7 +47,7 @@ class TransientVariableMappingListenerTest {
   fun `ACL signal sub-process with variables does not set variables on processInstance`() {
 
     // given
-    registerInstance("mapper", ACL_LR.getExecutionListener())
+    Mocks.register("mapper", ACL_LR.getExecutionListener())
 
     val processInstance = camunda.runtimeService.startProcessInstanceByKey(
       "eventBasedSubprocess_with_transientMapping"
@@ -74,7 +72,7 @@ class TransientVariableMappingListenerTest {
   fun `ACL signal sub-process with variables passes guard sets does not set variables on process instance`() {
 
     // given
-    registerInstance("mapper", ACL_GTLR.getExecutionListener())
+    Mocks.register("mapper", ACL_GTLR.getExecutionListener())
 
     val processInstance = camunda.runtimeService.startProcessInstanceByKey(
       "eventBasedSubprocess_with_transientMapping"
@@ -105,9 +103,9 @@ class TransientVariableMappingListenerTest {
 
   companion object {
 
-    private val FOO = CamundaBpmData.stringVariable("foo")
-    private val BAZ = CamundaBpmData.longVariable("baz")
-    private val BAZ_INTERNAL = CamundaBpmData.longVariable("baz__int")
+    private val FOO = CamundaBpmDataKotlin.stringVariable("foo")
+    private val BAZ = CamundaBpmDataKotlin.longVariable("baz")
+    private val BAZ_INTERNAL = CamundaBpmDataKotlin.longVariable("baz__int")
 
     private val ACL_LR = CamundaBpmDataMapper.identityReplace("transient", true)
 
@@ -131,7 +129,8 @@ class TransientVariableMappingListenerTest {
       variablesGuard = VariablesGuard(
         listOf(
           BAZ.matches { it > 40L },
-          FOO.exists())
+          FOO.exists()
+        )
       ),
       variableMapTransformer = object : VariableMapTransformer {
         override fun transform(variableMap: VariableMap): VariableMap {
@@ -144,17 +143,19 @@ class TransientVariableMappingListenerTest {
       }
     )
 
-    private fun camunda(): ProcessEngineRule {
-      return ProcessEngineRule(
-        object : StandaloneInMemProcessEngineConfiguration() {
-          init {
-            history = ProcessEngineConfiguration.HISTORY_FULL
-            databaseSchemaUpdate = ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE
-            jobExecutorActivate = false
-            expressionManager = MockExpressionManager()
-          }
-        }.buildProcessEngine())
-    }
+
+    @RegisterExtension
+    val camunda: ProcessEngineExtension = ProcessEngineExtension.builder().useProcessEngine(
+      object : StandaloneInMemProcessEngineConfiguration() {
+        init {
+          history = ProcessEngineConfiguration.HISTORY_AUDIT
+          databaseSchemaUpdate = ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE
+          jobExecutorActivate = false
+          expressionManager = MockExpressionManager()
+        }
+      }.buildProcessEngine()
+    ).build()
+
   }
 
 }

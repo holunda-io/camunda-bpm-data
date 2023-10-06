@@ -3,7 +3,7 @@ package io.holunda.camunda.bpm.data.guard
 import io.holunda.camunda.bpm.data.CamundaBpmData.stringVariable
 import io.holunda.camunda.bpm.data.guard.condition.*
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import java.util.*
 import java.util.function.Supplier
 import javax.validation.Validation

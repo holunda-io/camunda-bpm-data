@@ -2,11 +2,7 @@ package io.holunda.camunda.bpm.data.itest
 
 import io.holunda.camunda.bpm.data.adapter.VariableNotFoundException
 import org.camunda.bpm.engine.variable.Variables.createVariables
-import org.junit.Assert.assertThrows
-import org.junit.Rule
-import org.junit.Test
-import org.junit.function.ThrowingRunnable
-import org.junit.rules.ExpectedException
+import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import java.util.*
 
@@ -52,14 +48,16 @@ class VariableScopeAdapterITest : CamundaBpmDataITestBase() {
       .process_is_started_with_variables(variables = createVariableMapUntyped())
 
     then()
-      .variables_had_not_value(delegateConfiguration.optionalVars,
+      .variables_had_not_value(
+        delegateConfiguration.optionalVars,
         STRING_VAR,
         LIST_STRING_VAR,
         SET_STRING_VAR,
         MAP_STRING_LONG_VAR
       )
       .and()
-      .variables_had_value(delegateConfiguration.optionalVars,
+      .variables_had_value(
+        delegateConfiguration.optionalVars,
         setOf(LONG_VAR to Optional.of(Companion.Values.LONG.value))
       )
 
@@ -73,7 +71,7 @@ class VariableScopeAdapterITest : CamundaBpmDataITestBase() {
       .process_with_delegate_is_deployed(delegateExpression = "\${${DelegateConfiguration::readNonExisting.name}}")
 
     whenever()
-        .process_is_started_with_variables(variables = createVariableMapUntyped(), expectedException = VariableNotFoundException::class.java)
+      .process_is_started_with_variables(variables = createVariableMapUntyped(), expectedException = VariableNotFoundException::class.java)
 
   }
 
