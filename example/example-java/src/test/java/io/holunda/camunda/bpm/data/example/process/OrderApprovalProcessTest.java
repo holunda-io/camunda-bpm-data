@@ -1,7 +1,5 @@
 package io.holunda.camunda.bpm.data.example.process;
 
-
-import com.google.common.collect.Lists;
 import io.holunda.camunda.bpm.data.builder.VariableMapBuilder;
 import io.holunda.camunda.bpm.data.example.domain.Order;
 import io.holunda.camunda.bpm.data.example.domain.OrderPosition;
@@ -18,6 +16,7 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.Instant;
+import java.util.Arrays;
 
 import static io.holunda.camunda.bpm.data.example.process.OrderApproval.Elements.*;
 import static io.holunda.camunda.bpm.data.example.process.OrderApproval.*;
@@ -27,7 +26,7 @@ import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.*;
 public class OrderApprovalProcessTest {
 
   @RegisterExtension
-  private static final ProcessEngineExtension engine = ProcessEngineExtension
+  public static final ProcessEngineExtension engine = ProcessEngineExtension
     .builder()
     .useProcessEngine(new StandaloneInMemoryTestConfiguration(new SpinProcessEnginePlugin()).buildProcessEngine())
     .build();
@@ -39,9 +38,12 @@ public class OrderApprovalProcessTest {
   public void register() {
     factory = new OrderApprovalInstanceFactory(engine.getRuntimeService());
     OrderApproval config = new OrderApproval();
+    MockOrderApproval approval = new MockOrderApproval();
     Mocks.register("guardExecutionListener", config.guardExecutionListener());
     Mocks.register("guardTaskListener", config.guardTaskListener());
-    Mocks.register("orderApproval", new MockOrderApproval());
+    Mocks.register("loadOrder", approval.loadOrder());
+    Mocks.register("writeOrderTotal", approval.writeOrderTotal());
+    Mocks.register("calculateOrderPositions", approval.calculateOrderPositions());
   }
 
   @Test
@@ -98,7 +100,7 @@ public class OrderApprovalProcessTest {
 
     // complete user task
     complete(task(), new VariableMapBuilder().set(ORDER_APPROVED, false).build());
-    // pass async oafter user task
+    // pass async after user task
     execute(job());
 
     assertThat(instance.get()).isEnded();
@@ -112,7 +114,7 @@ public class OrderApprovalProcessTest {
   static class MockOrderApproval {
     public JavaDelegate loadOrder() {
       return execution -> {
-        ORDER.on(execution).set(new Order("1", Date.from(Instant.now()), Lists.newArrayList(
+        ORDER.on(execution).set(new Order("1", Date.from(Instant.now()), Arrays.asList(
           new OrderPosition("Pencil", BigDecimal.valueOf(1.99), 3L),
           new OrderPosition("Sheet", BigDecimal.valueOf(0.17), 3L)
         )));
