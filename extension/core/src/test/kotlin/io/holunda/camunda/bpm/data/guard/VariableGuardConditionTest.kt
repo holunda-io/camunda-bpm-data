@@ -8,9 +8,9 @@ import org.camunda.bpm.engine.variable.Variables.createVariables
 import org.junit.jupiter.api.Test
 import java.util.*
 import java.util.function.Supplier
-import javax.validation.Validation
-import javax.validation.Validator
-import javax.validation.constraints.Email
+import jakarta.validation.Validation
+import jakarta.validation.Validator
+import jakarta.validation.constraints.Email
 
 class VariableGuardConditionTest {
 

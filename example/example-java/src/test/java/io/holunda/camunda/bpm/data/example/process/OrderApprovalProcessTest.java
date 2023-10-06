@@ -38,9 +38,12 @@ public class OrderApprovalProcessTest {
   public void register() {
     factory = new OrderApprovalInstanceFactory(engine.getRuntimeService());
     OrderApproval config = new OrderApproval();
+    MockOrderApproval approval = new MockOrderApproval();
     Mocks.register("guardExecutionListener", config.guardExecutionListener());
     Mocks.register("guardTaskListener", config.guardTaskListener());
-    Mocks.register("orderApproval", new MockOrderApproval());
+    Mocks.register("loadOrder", approval.loadOrder());
+    Mocks.register("writeOrderTotal", approval.writeOrderTotal());
+    Mocks.register("calculateOrderPositions", approval.calculateOrderPositions());
   }
 
   @Test
@@ -97,7 +100,7 @@ public class OrderApprovalProcessTest {
 
     // complete user task
     complete(task(), new VariableMapBuilder().set(ORDER_APPROVED, false).build());
-    // pass async oafter user task
+    // pass async after user task
     execute(job());
 
     assertThat(instance.get()).isEnded();

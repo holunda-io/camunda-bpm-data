@@ -35,9 +35,11 @@ public class GuardProcessTest {
   @BeforeEach
   public void register() {
     OrderApproval config = new OrderApproval();
+    MockOrderApproval mockOrderApproval = new MockOrderApproval();
     Mocks.register("guardExecutionListener", config.guardExecutionListener());
     Mocks.register("guardTaskListener", config.guardTaskListener());
-    Mocks.register("orderApproval", new MockOrderApproval());
+    Mocks.register("loadOrder", mockOrderApproval.loadOrder());
+    Mocks.register("calculateOrderPositions", mockOrderApproval.calculateOrderPositions());
   }
 
   static class MockOrderApproval {

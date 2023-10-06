@@ -21,8 +21,8 @@
     <camunda.version.ce>7.20.0</camunda.version.ce>
     <camunda.version.ee>7.20.0-ee</camunda.version.ee>
 
-    <spring-boot.version>2.7.6</spring-boot.version>
-    <spin.version>1.21.0</spin.version>
+    <spring-boot.version>3.1.4</spring-boot.version>
+    <spin.version>1.22.0</spin.version>
     <camunda-assert.version>${camunda.version.ce}</camunda-assert.version>
 
     <kotlin.version>1.9.10</kotlin.version>
@@ -31,10 +31,8 @@
 
     <kotlin-logging.version>3.0.5</kotlin-logging.version>
     <mockito-kotlin.version>5.1.0</mockito-kotlin.version>
-    <camunda-platform-7-mockito.version>6.19.0</camunda-platform-7-mockito.version>
 
-    <pattern.class.itest>**/*ITest.*</pattern.class.itest>
-    <pattern.package.itest>**/itest/**/*.*</pattern.package.itest>
+    <pattern.class.itest>%regex[.*ITest.*]</pattern.class.itest>
 
     <!-- Skip instrumentalization by default -->
     <jacoco.skip>true</jacoco.skip>
@@ -288,7 +286,6 @@
             <runOrder>random</runOrder>
             <excludes>
               <exclude>${pattern.class.itest}</exclude>
-              <exclude>${pattern.package.itest}</exclude>
             </excludes>
             <!-- Sets the VM argument line used when unit tests are run. -->
             <!-- prevent the annoying ForkedBooter process from stealing window focus on Mac OS -->
@@ -304,7 +301,24 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-failsafe-plugin</artifactId>
           <version>3.1.2</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>integration-test</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <includes>
+              <include>${pattern.class.itest}</include>
+            </includes>
+            <!-- Sets the VM argument line used when unit tests are run. -->
+            <!-- prevent the annoying ForkedBooter process from stealing window focus on Mac OS -->
+            <argLine>-Djava.awt.headless=true @{argLine} -XX:+StartAttachListener</argLine>
+            <runOrder>random</runOrder>
+          </configuration>
         </plugin>
+
 
         <!-- JavaDoc for Java and KDoc for Kotlin -->
         <plugin>
@@ -333,7 +347,7 @@
                 <lineSuffix>#L</lineSuffix>
               </link>
             </sourceLinks>
-            <jdkVersion>11</jdkVersion>
+            <jdkVersion>17</jdkVersion>
             <sourceDirectories>
               <dir>${project.basedir}/src/main/kotlin</dir>
               <dir>${project.basedir}/src/main/java</dir>
@@ -477,10 +491,10 @@
               <configuration>
                 <rules>
                   <requireMavenVersion>
-                    <version>3.6.2</version>
+                    <version>3.9.0</version>
                   </requireMavenVersion>
                   <requireJavaVersion>
-                    <version>11</version>
+                    <version>17</version>
                   </requireJavaVersion>
                 </rules>
               </configuration>

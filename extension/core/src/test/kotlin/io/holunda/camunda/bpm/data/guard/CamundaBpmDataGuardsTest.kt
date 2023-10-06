@@ -6,8 +6,8 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.util.*
 import java.util.function.Supplier
-import javax.validation.Validation
-import javax.validation.Validator
+import jakarta.validation.Validation
+import jakarta.validation.Validator
 
 class CamundaBpmDataGuardsTest {
 

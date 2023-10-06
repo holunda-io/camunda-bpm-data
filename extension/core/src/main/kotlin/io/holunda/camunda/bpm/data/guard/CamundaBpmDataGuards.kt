@@ -5,7 +5,7 @@ import io.holunda.camunda.bpm.data.guard.condition.*
 import java.util.*
 import java.util.function.Function
 import java.util.function.Supplier
-import javax.validation.Validator
+import jakarta.validation.Validator
 
 /**
  * Guard creation methods.
