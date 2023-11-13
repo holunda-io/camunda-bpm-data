@@ -19,22 +19,22 @@ class RuntimeServiceVariableWriter(private val runtimeService: RuntimeService, p
     return runtimeService.getVariablesLocalTyped(executionId)
   }
 
-  override fun <T> set(variableFactory: VariableFactory<T>, value: T): RuntimeServiceVariableWriter {
+  override fun <T> set(variableFactory: VariableFactory<T>, value: T?): RuntimeServiceVariableWriter {
     return this.set(variableFactory, value, false)
   }
 
-  override fun <T> set(variableFactory: VariableFactory<T>, value: T, isTransient: Boolean): RuntimeServiceVariableWriter {
+  override fun <T> set(variableFactory: VariableFactory<T>, value: T?, isTransient: Boolean): RuntimeServiceVariableWriter {
     variableFactory.on(runtimeService, executionId)[value] = isTransient
     return this
   }
 
-  override fun <T> setLocal(variableFactory: VariableFactory<T>, value: T): RuntimeServiceVariableWriter {
+  override fun <T> setLocal(variableFactory: VariableFactory<T>, value: T?): RuntimeServiceVariableWriter {
     return this.setLocal(variableFactory, value, false)
   }
 
   override fun <T> setLocal(
     variableFactory: VariableFactory<T>,
-    value: T,
+    value: T?,
     isTransient: Boolean
   ): RuntimeServiceVariableWriter {
     variableFactory.on(runtimeService, executionId).setLocal(value, isTransient)
@@ -51,14 +51,14 @@ class RuntimeServiceVariableWriter(private val runtimeService: RuntimeService, p
     return this
   }
 
-  override fun <T> update(variableFactory: VariableFactory<T>, valueProcessor: Function<T, T>): RuntimeServiceVariableWriter {
+  override fun <T> update(variableFactory: VariableFactory<T>, valueProcessor: Function<T?, T?>): RuntimeServiceVariableWriter {
     variableFactory.on(runtimeService, executionId).update(valueProcessor)
     return this
   }
 
   override fun <T> update(
     variableFactory: VariableFactory<T>,
-    valueProcessor: Function<T, T>,
+    valueProcessor: Function<T?, T?>,
     isTransient: Boolean
   ): RuntimeServiceVariableWriter {
     variableFactory.on(runtimeService, executionId).update(valueProcessor, isTransient)
@@ -67,7 +67,7 @@ class RuntimeServiceVariableWriter(private val runtimeService: RuntimeService, p
 
   override fun <T> updateLocal(
     variableFactory: VariableFactory<T>,
-    valueProcessor: Function<T, T>
+    valueProcessor: Function<T?, T?>
   ): RuntimeServiceVariableWriter {
     variableFactory.on(runtimeService, executionId).updateLocal(valueProcessor)
     return this
@@ -75,7 +75,7 @@ class RuntimeServiceVariableWriter(private val runtimeService: RuntimeService, p
 
   override fun <T> updateLocal(
     variableFactory: VariableFactory<T>,
-    valueProcessor: Function<T, T>,
+    valueProcessor: Function<T?, T?>,
     isTransient: Boolean
   ): RuntimeServiceVariableWriter {
     variableFactory.on(runtimeService, executionId).updateLocal(valueProcessor, isTransient)

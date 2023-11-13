@@ -31,8 +31,8 @@ class MapReadWriteAdapterRuntimeService<K, V>(
     )
   }
 
-  override fun set(value: Map<K, V>, isTransient: Boolean) {
-    runtimeService.setVariable(executionId, variableName, getTypedValue(value, isTransient))
+  override fun set(value: Map<K, V>?, isTransient: Boolean) {
+    runtimeService.setVariable(executionId, variableName, getTypedValue(value ?: mapOf<K,V>(), isTransient))
   }
 
   override fun getLocalOptional(): Optional<Map<K, V>> {
@@ -45,8 +45,8 @@ class MapReadWriteAdapterRuntimeService<K, V>(
     )
   }
 
-  override fun setLocal(value: Map<K, V>, isTransient: Boolean) {
-    runtimeService.setVariableLocal(executionId, variableName, getTypedValue(value, isTransient))
+  override fun setLocal(value: Map<K, V>?, isTransient: Boolean) {
+    runtimeService.setVariableLocal(executionId, variableName, getTypedValue(value ?: mapOf<K,V>(), isTransient))
   }
 
   override fun remove() {

@@ -22,15 +22,15 @@ class ListReadWriteAdapterVariableMap<T>(
     return Optional.ofNullable(getOrNull(variableMap[variableName]))
   }
 
-  override fun set(value: List<T>, isTransient: Boolean) {
-    variableMap.putValueTyped(variableName, getTypedValue(value, isTransient))
+  override fun set(value: List<T>?, isTransient: Boolean) {
+    variableMap.putValueTyped(variableName, getTypedValue(value ?: listOf<T>(), isTransient))
   }
 
   override fun getLocalOptional(): Optional<List<T>> {
     throw UnsupportedOperationException("Can't get a local variable on a variable map")
   }
 
-  override fun setLocal(value: List<T>, isTransient: Boolean) {
+  override fun setLocal(value: List<T>?, isTransient: Boolean) {
     throw UnsupportedOperationException("Can't set a local variable on a variable map")
   }
 

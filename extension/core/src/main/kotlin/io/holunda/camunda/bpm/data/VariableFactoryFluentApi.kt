@@ -44,7 +44,7 @@ fun <T> VariableMap.remove(factory: VariableFactory<T>) = this.apply {
  * @param valueProcessor update function.
  * @param isTransient flag for transient access, <code>false</code> by default.
  */
-fun <T> VariableMap.update(factory: VariableFactory<T>, valueProcessor: (T) -> T, isTransient: Boolean = false) = this.apply {
+fun <T> VariableMap.update(factory: VariableFactory<T>, valueProcessor: (T?) -> T?, isTransient: Boolean = false) = this.apply {
   factory.on(this).update(valueProcessor, isTransient)
 }
 
@@ -90,7 +90,7 @@ fun <T> VariableScope.remove(factory: VariableFactory<T>) = this.apply {
  * @param valueProcessor update function.
  * @param isTransient flag for transient access, <code>false</code> by default.
  */
-fun <T> VariableScope.update(factory: VariableFactory<T>, valueProcessor: (T) -> T, isTransient: Boolean = false) = this.apply {
+fun <T> VariableScope.update(factory: VariableFactory<T>, valueProcessor: (T?) -> T?, isTransient: Boolean = false) = this.apply {
   factory.on(this).update(valueProcessor, isTransient)
 }
 
@@ -118,7 +118,7 @@ fun <T> VariableScope.removeLocal(factory: VariableFactory<T>) = this.apply {
  * @param valueProcessor update function.
  * @param isTransient flag for transient access, <code>false</code> by default.
  */
-fun <T> VariableScope.updateLocal(factory: VariableFactory<T>, valueProcessor: (T) -> T, isTransient: Boolean = false) = this.apply {
+fun <T> VariableScope.updateLocal(factory: VariableFactory<T>, valueProcessor: (T?) -> T?, isTransient: Boolean = false) = this.apply {
   factory.on(this).updateLocal(valueProcessor, isTransient)
 }
 

@@ -9,11 +9,11 @@ import java.util.function.Function
  * @param variableName variable name,
  */
 abstract class AbstractReadWriteAdapter<T>(protected val variableName: String) : ReadAdapter<T>, WriteAdapter<T> {
-    override fun set(value: T) {
+    override fun set(value: T?) {
         set(value, false)
     }
 
-    override fun setLocal(value: T) {
+    override fun setLocal(value: T?) {
         setLocal(value, false)
     }
 
@@ -25,7 +25,7 @@ abstract class AbstractReadWriteAdapter<T>(protected val variableName: String) :
         return getLocalOptional().orElseThrow { VariableNotFoundException("Couldn't find required local variable '$variableName'") }
     }
 
-    override fun update(valueProcessor: Function<T, T>, isTransient: Boolean) {
+    override fun update(valueProcessor: Function<T?, T?>, isTransient: Boolean) {
         val oldValue = get()
         val newValue = valueProcessor.apply(oldValue)
         if (oldValue != newValue) {
@@ -34,7 +34,7 @@ abstract class AbstractReadWriteAdapter<T>(protected val variableName: String) :
         }
     }
 
-    override fun updateLocal(valueProcessor: Function<T, T>, isTransient: Boolean) {
+    override fun updateLocal(valueProcessor: Function<T?, T?>, isTransient: Boolean) {
         val oldValue = getLocal()
         val newValue = valueProcessor.apply(oldValue)
         if (oldValue != newValue) {
@@ -43,11 +43,11 @@ abstract class AbstractReadWriteAdapter<T>(protected val variableName: String) :
         }
     }
 
-    override fun update(valueProcessor: Function<T, T>) {
+    override fun update(valueProcessor: Function<T?, T?>) {
         update(valueProcessor, false)
     }
 
-    override fun updateLocal(valueProcessor: Function<T, T>) {
+    override fun updateLocal(valueProcessor: Function<T?, T?>) {
         updateLocal(valueProcessor, false)
     }
 }

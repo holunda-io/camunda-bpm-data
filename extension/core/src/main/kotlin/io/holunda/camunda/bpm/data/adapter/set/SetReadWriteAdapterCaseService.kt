@@ -28,8 +28,8 @@ class SetReadWriteAdapterCaseService<T>(
     )
   }
 
-  override fun set(value: Set<T>, isTransient: Boolean) {
-    caseService.setVariable(caseExecutionId, variableName, getTypedValue(value, isTransient))
+  override fun set(value: Set<T>?, isTransient: Boolean) {
+    caseService.setVariable(caseExecutionId, variableName, getTypedValue(value ?: setOf<T>(), isTransient))
   }
 
   override fun getLocalOptional(): Optional<Set<T>> {
@@ -42,8 +42,8 @@ class SetReadWriteAdapterCaseService<T>(
     )
   }
 
-  override fun setLocal(value: Set<T>, isTransient: Boolean) {
-    caseService.setVariableLocal(caseExecutionId, variableName, getTypedValue(value, isTransient))
+  override fun setLocal(value: Set<T>?, isTransient: Boolean) {
+    caseService.setVariableLocal(caseExecutionId, variableName, getTypedValue(value ?: setOf<T>(), isTransient))
   }
 
   override fun remove() {

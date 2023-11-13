@@ -14,7 +14,7 @@ interface WriteAdapter<T> {
      *
      * @param value value to write.
      */
-    fun set(value: T)
+    fun set(value: T?)
 
     /**
      * Writes a value as a transient variable.
@@ -22,14 +22,14 @@ interface WriteAdapter<T> {
      * @param value       value to write.
      * @param isTransient allows to specify if the variable is transient.
      */
-    operator fun set(value: T, isTransient: Boolean)
+    operator fun set(value: T?, isTransient: Boolean)
 
     /**
      * Writes a local variable.
      *
      * @param value value to write.
      */
-    fun setLocal(value: T)
+    fun setLocal(value: T?)
 
     /**
      * Writes a local variable.
@@ -37,7 +37,7 @@ interface WriteAdapter<T> {
      * @param value       value to write.
      * @param isTransient allows to specify if the variable is transient.
      */
-    fun setLocal(value: T, isTransient: Boolean)
+    fun setLocal(value: T?, isTransient: Boolean)
 
     /**
      * Removes a variable from the scope.
@@ -55,7 +55,7 @@ interface WriteAdapter<T> {
      *
      * @param valueProcessor function updating the value based on the old value.
      */
-    fun update(valueProcessor: Function<T, T>)
+    fun update(valueProcessor: Function<T?, T?>)
 
     /**
      * Updates a local variable using provided value processor.
@@ -63,7 +63,7 @@ interface WriteAdapter<T> {
      *
      * @param valueProcessor function updating the value based on the old value.
      */
-    fun updateLocal(valueProcessor: Function<T, T>)
+    fun updateLocal(valueProcessor: Function<T?, T?>)
 
     /**
      * Updates a variable using provided value processor.
@@ -72,7 +72,7 @@ interface WriteAdapter<T> {
      * @param valueProcessor function updating the value based on the old value.
      * @param isTransient    transient flag.
      */
-    fun update(valueProcessor: Function<T, T>, isTransient: Boolean)
+    fun update(valueProcessor: Function<T?, T?>, isTransient: Boolean)
 
     /**
      * Updates a local variable using provided value processor.
@@ -81,7 +81,7 @@ interface WriteAdapter<T> {
      * @param valueProcessor function updating the value based on the old value.
      * @param isTransient    transient flag.
      */
-    fun updateLocal(valueProcessor: Function<T, T>, isTransient: Boolean)
+    fun updateLocal(valueProcessor: Function<T?, T?>, isTransient: Boolean)
 
     /**
      * Constructs typed value.

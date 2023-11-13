@@ -19,7 +19,7 @@ interface GlobalVariableWriter<S : GlobalVariableWriter<S>> {
      * @return current writer instance
      * @see [io.holunda.camunda.bpm.data.adapter.WriteAdapter.set]
     </T> */
-    operator fun <T> set(variableFactory: VariableFactory<T>, value: T): S
+    operator fun <T> set(variableFactory: VariableFactory<T>, value: T?): S
 
     /**
      * Sets the (transient) value for the provided variable and returns the builder (fluently).
@@ -31,7 +31,7 @@ interface GlobalVariableWriter<S : GlobalVariableWriter<S>> {
      * @return current writer instance
      * @see [io.holunda.camunda.bpm.data.adapter.WriteAdapter.set]
     </T> */
-    operator fun <T> set(variableFactory: VariableFactory<T>, value: T, isTransient: Boolean): S
+    operator fun <T> set(variableFactory: VariableFactory<T>, value: T?, isTransient: Boolean): S
 
     /**
      * Sets the global value for the provided variable and returns the builder (fluently).
@@ -42,7 +42,7 @@ interface GlobalVariableWriter<S : GlobalVariableWriter<S>> {
      * @return current writer instance
      * @see [io.holunda.camunda.bpm.data.adapter.WriteAdapter.setLocal]
     </T> */
-    fun <T> update(variableFactory: VariableFactory<T>, valueProcessor: Function<T, T>): S
+    fun <T> update(variableFactory: VariableFactory<T>, valueProcessor: Function<T?, T?>): S
 
     /**
      * Updates the global (transient) value for the provided variable and returns the builder (fluently).
@@ -54,7 +54,7 @@ interface GlobalVariableWriter<S : GlobalVariableWriter<S>> {
      * @return current writer instance
      * @see [io.holunda.camunda.bpm.data.adapter.WriteAdapter.setLocal]
     </T> */
-    fun <T> update(variableFactory: VariableFactory<T>, valueProcessor: Function<T, T>, isTransient: Boolean): S
+    fun <T> update(variableFactory: VariableFactory<T>, valueProcessor: Function<T?, T?>, isTransient: Boolean): S
 
     /**
      * Removes the value for the provided variable and returns the builder (fluently).

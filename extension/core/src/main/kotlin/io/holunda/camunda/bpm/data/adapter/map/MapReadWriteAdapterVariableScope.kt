@@ -23,16 +23,16 @@ class MapReadWriteAdapterVariableScope<K, V>(
     return Optional.ofNullable(getOrNull(variableScope.getVariable(variableName)))
   }
 
-  override fun set(value: Map<K, V>, isTransient: Boolean) {
-    variableScope.setVariable(variableName, getTypedValue(value, isTransient))
+  override fun set(value: Map<K, V>?, isTransient: Boolean) {
+    variableScope.setVariable(variableName, getTypedValue(value ?: mapOf<K,V>(), isTransient))
   }
 
   override fun getLocalOptional(): Optional<Map<K, V>> {
     return Optional.ofNullable(getOrNull(variableScope.getVariableLocal(variableName)))
   }
 
-  override fun setLocal(value: Map<K, V>, isTransient: Boolean) {
-    variableScope.setVariableLocal(variableName, getTypedValue(value, isTransient))
+  override fun setLocal(value: Map<K, V>?, isTransient: Boolean) {
+    variableScope.setVariableLocal(variableName, getTypedValue(value ?: mapOf<K,V>(), isTransient))
   }
 
   override fun remove() {

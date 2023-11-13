@@ -27,11 +27,11 @@ class ListReadAdapterLockedExternalTask<T>(
     )
   }
 
-  override fun set(value: List<T>, isTransient: Boolean) {
+  override fun set(value: List<T>?, isTransient: Boolean) {
     throw UnsupportedOperationException("Can't set a variable on an external task")
   }
 
-  override fun setLocal(value: List<T>, isTransient: Boolean) {
+  override fun setLocal(value: List<T>?, isTransient: Boolean) {
     throw UnsupportedOperationException("Can't set a local variable on an external task")
   }
 

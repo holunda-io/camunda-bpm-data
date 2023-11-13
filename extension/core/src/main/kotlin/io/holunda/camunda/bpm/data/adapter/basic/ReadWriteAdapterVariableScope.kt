@@ -16,7 +16,7 @@ class ReadWriteAdapterVariableScope<T: Any>(
   variableName: String,
   clazz: Class<T>
 ) : AbstractBasicReadWriteAdapter<T>(variableName, clazz) {
-  override fun set(value: T, isTransient: Boolean) {
+  override fun set(value: T?, isTransient: Boolean) {
     variableScope.setVariable(variableName, getTypedValue(value, isTransient))
   }
 
@@ -24,7 +24,7 @@ class ReadWriteAdapterVariableScope<T: Any>(
     return Optional.ofNullable(getOrNull(variableScope.getVariableLocal(variableName)))
   }
 
-  override fun setLocal(value: T, isTransient: Boolean) {
+  override fun setLocal(value: T?, isTransient: Boolean) {
     variableScope.setVariableLocal(variableName, getTypedValue(value, isTransient))
   }
 

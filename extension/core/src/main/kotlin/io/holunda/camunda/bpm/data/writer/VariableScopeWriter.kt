@@ -10,46 +10,46 @@ import java.util.function.Function
  * @param scope variables to work on.
  */
 class VariableScopeWriter(private val scope: VariableScope) : VariableWriter<VariableScopeWriter> {
-  override fun <T> set(variableFactory: VariableFactory<T>, value: T): VariableScopeWriter {
+  override fun <T> set(variableFactory: VariableFactory<T>, value: T?): VariableScopeWriter {
     return this.set(variableFactory, value, false)
   }
 
-  override fun <T> set(variableFactory: VariableFactory<T>, value: T, isTransient: Boolean): VariableScopeWriter {
+  override fun <T> set(variableFactory: VariableFactory<T>, value: T?, isTransient: Boolean): VariableScopeWriter {
     variableFactory.on(scope)[value] = isTransient
     return this
   }
 
-  override fun <T> setLocal(variableFactory: VariableFactory<T>, value: T): VariableScopeWriter {
+  override fun <T> setLocal(variableFactory: VariableFactory<T>, value: T?): VariableScopeWriter {
     return this.setLocal(variableFactory, value, false)
   }
 
-  override fun <T> setLocal(variableFactory: VariableFactory<T>, value: T, isTransient: Boolean): VariableScopeWriter {
+  override fun <T> setLocal(variableFactory: VariableFactory<T>, value: T?, isTransient: Boolean): VariableScopeWriter {
     variableFactory.on(scope).setLocal(value, isTransient)
     return this
   }
 
-  override fun <T> update(variableFactory: VariableFactory<T>, valueProcessor: Function<T, T>): VariableScopeWriter {
+  override fun <T> update(variableFactory: VariableFactory<T>, valueProcessor: Function<T?, T?>): VariableScopeWriter {
     variableFactory.on(scope).update(valueProcessor)
     return this
   }
 
   override fun <T> update(
     variableFactory: VariableFactory<T>,
-    valueProcessor: Function<T, T>,
+    valueProcessor: Function<T?, T?>,
     isTransient: Boolean
   ): VariableScopeWriter {
     variableFactory.on(scope).update(valueProcessor, isTransient)
     return this
   }
 
-  override fun <T> updateLocal(variableFactory: VariableFactory<T>, valueProcessor: Function<T, T>): VariableScopeWriter {
+  override fun <T> updateLocal(variableFactory: VariableFactory<T>, valueProcessor: Function<T?, T?>): VariableScopeWriter {
     variableFactory.on(scope).updateLocal(valueProcessor)
     return this
   }
 
   override fun <T> updateLocal(
     variableFactory: VariableFactory<T>,
-    valueProcessor: Function<T, T>,
+    valueProcessor: Function<T?, T?>,
     isTransient: Boolean
   ): VariableScopeWriter {
     variableFactory.on(scope).updateLocal(valueProcessor, isTransient)

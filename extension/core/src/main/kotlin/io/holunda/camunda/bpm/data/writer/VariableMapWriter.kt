@@ -9,11 +9,11 @@ import java.util.function.Function
  * @param variables variables to work on.
  */
 class VariableMapWriter(private val variables: VariableMap) : GlobalVariableWriter<VariableMapWriter> {
-  override fun <T> set(variableFactory: VariableFactory<T>, value: T): VariableMapWriter {
+  override fun <T> set(variableFactory: VariableFactory<T>, value: T?): VariableMapWriter {
     return this.set(variableFactory, value, false)
   }
 
-  override fun <T> set(variableFactory: VariableFactory<T>, value: T, isTransient: Boolean): VariableMapWriter {
+  override fun <T> set(variableFactory: VariableFactory<T>, value: T?, isTransient: Boolean): VariableMapWriter {
     variableFactory.on(variables)[value] = isTransient
     return this
   }
@@ -23,14 +23,14 @@ class VariableMapWriter(private val variables: VariableMap) : GlobalVariableWrit
     return this
   }
 
-  override fun <T> update(variableFactory: VariableFactory<T>, valueProcessor: Function<T, T>): VariableMapWriter {
+  override fun <T> update(variableFactory: VariableFactory<T>, valueProcessor: Function<T?, T?>): VariableMapWriter {
     variableFactory.on(variables).update(valueProcessor)
     return this
   }
 
   override fun <T> update(
     variableFactory: VariableFactory<T>,
-    valueProcessor: Function<T, T>,
+    valueProcessor: Function<T?, T?>,
     isTransient: Boolean
   ): VariableMapWriter {
     variableFactory.on(variables).update(valueProcessor, isTransient)

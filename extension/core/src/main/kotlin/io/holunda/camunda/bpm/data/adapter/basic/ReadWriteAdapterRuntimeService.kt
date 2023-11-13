@@ -22,7 +22,7 @@ class ReadWriteAdapterRuntimeService<T : Any>(
     return Optional.ofNullable(getOrNull(runtimeService.getVariable(executionId, variableName)))
   }
 
-  override fun set(value: T, isTransient: Boolean) {
+  override fun set(value: T?, isTransient: Boolean) {
     runtimeService.setVariable(executionId, variableName, getTypedValue(value, isTransient))
   }
 
@@ -30,7 +30,7 @@ class ReadWriteAdapterRuntimeService<T : Any>(
     return Optional.ofNullable(getOrNull(runtimeService.getVariableLocal(executionId, variableName)))
   }
 
-  override fun setLocal(value: T, isTransient: Boolean) {
+  override fun setLocal(value: T?, isTransient: Boolean) {
     runtimeService.setVariableLocal(executionId, variableName, getTypedValue(value, isTransient))
   }
 

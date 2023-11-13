@@ -19,20 +19,20 @@ class TaskServiceVariableWriter(private val taskService: TaskService, private va
     return taskService.getVariablesLocalTyped(taskId)
   }
 
-  override fun <T> set(variableFactory: VariableFactory<T>, value: T): TaskServiceVariableWriter {
+  override fun <T> set(variableFactory: VariableFactory<T>, value: T?): TaskServiceVariableWriter {
     return this.set(variableFactory, value, false)
   }
 
-  override fun <T> set(variableFactory: VariableFactory<T>, value: T, isTransient: Boolean): TaskServiceVariableWriter {
+  override fun <T> set(variableFactory: VariableFactory<T>, value: T?, isTransient: Boolean): TaskServiceVariableWriter {
     variableFactory.on(taskService, taskId)[value] = isTransient
     return this
   }
 
-  override fun <T> setLocal(variableFactory: VariableFactory<T>, value: T): TaskServiceVariableWriter {
+  override fun <T> setLocal(variableFactory: VariableFactory<T>, value: T?): TaskServiceVariableWriter {
     return this.setLocal(variableFactory, value, false)
   }
 
-  override fun <T> setLocal(variableFactory: VariableFactory<T>, value: T, isTransient: Boolean): TaskServiceVariableWriter {
+  override fun <T> setLocal(variableFactory: VariableFactory<T>, value: T?, isTransient: Boolean): TaskServiceVariableWriter {
     variableFactory.on(taskService, taskId).setLocal(value, isTransient)
     return this
   }
@@ -47,14 +47,14 @@ class TaskServiceVariableWriter(private val taskService: TaskService, private va
     return this
   }
 
-  override fun <T> update(variableFactory: VariableFactory<T>, valueProcessor: Function<T, T>): TaskServiceVariableWriter {
+  override fun <T> update(variableFactory: VariableFactory<T>, valueProcessor: Function<T?, T?>): TaskServiceVariableWriter {
     variableFactory.on(taskService, taskId).update(valueProcessor)
     return this
   }
 
   override fun <T> update(
     variableFactory: VariableFactory<T>,
-    valueProcessor: Function<T, T>,
+    valueProcessor: Function<T?, T?>,
     isTransient: Boolean
   ): TaskServiceVariableWriter {
     variableFactory.on(taskService, taskId).update(valueProcessor, isTransient)
@@ -63,7 +63,7 @@ class TaskServiceVariableWriter(private val taskService: TaskService, private va
 
   override fun <T> updateLocal(
     variableFactory: VariableFactory<T>,
-    valueProcessor: Function<T, T>
+    valueProcessor: Function<T?, T?>
   ): TaskServiceVariableWriter {
     variableFactory.on(taskService, taskId).updateLocal(valueProcessor)
     return this
@@ -71,7 +71,7 @@ class TaskServiceVariableWriter(private val taskService: TaskService, private va
 
   override fun <T> updateLocal(
     variableFactory: VariableFactory<T>,
-    valueProcessor: Function<T, T>,
+    valueProcessor: Function<T?, T?>,
     isTransient: Boolean
   ): TaskServiceVariableWriter {
     variableFactory.on(taskService, taskId).updateLocal(valueProcessor, isTransient)

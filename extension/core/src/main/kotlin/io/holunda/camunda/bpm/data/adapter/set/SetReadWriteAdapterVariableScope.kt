@@ -20,16 +20,16 @@ class SetReadWriteAdapterVariableScope<T>(
     return Optional.ofNullable(getOrNull(variableScope.getVariable(variableName)))
   }
 
-  override fun set(value: Set<T>, isTransient: Boolean) {
-    variableScope.setVariable(variableName, getTypedValue(value, isTransient))
+  override fun set(value: Set<T>?, isTransient: Boolean) {
+    variableScope.setVariable(variableName, getTypedValue(value ?: setOf<T>(), isTransient))
   }
 
   override fun getLocalOptional(): Optional<Set<T>> {
     return Optional.ofNullable(getOrNull(variableScope.getVariableLocal(variableName)))
   }
 
-  override fun setLocal(value: Set<T>, isTransient: Boolean) {
-    variableScope.setVariableLocal(variableName, getTypedValue(value, isTransient))
+  override fun setLocal(value: Set<T>?, isTransient: Boolean) {
+    variableScope.setVariableLocal(variableName, getTypedValue(value ?: setOf<T>(), isTransient))
   }
 
   override fun remove() {

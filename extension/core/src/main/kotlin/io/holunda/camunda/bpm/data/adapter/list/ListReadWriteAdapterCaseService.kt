@@ -29,8 +29,8 @@ class ListReadWriteAdapterCaseService<T>(
     )
   }
 
-  override fun set(value: List<T>, isTransient: Boolean) {
-    caseService.setVariable(caseExecutionId, variableName, getTypedValue(value, isTransient))
+  override fun set(value: List<T>?, isTransient: Boolean) {
+    caseService.setVariable(caseExecutionId, variableName, getTypedValue(value ?: listOf<T>(), isTransient))
   }
 
   override fun getLocalOptional(): Optional<List<T>> {
@@ -43,8 +43,8 @@ class ListReadWriteAdapterCaseService<T>(
     )
   }
 
-  override fun setLocal(value: List<T>, isTransient: Boolean) {
-    caseService.setVariableLocal(caseExecutionId, variableName, getTypedValue(value, isTransient))
+  override fun setLocal(value: List<T>?, isTransient: Boolean) {
+    caseService.setVariableLocal(caseExecutionId, variableName, getTypedValue(value ?: listOf<T>(), isTransient))
   }
 
   override fun remove() {

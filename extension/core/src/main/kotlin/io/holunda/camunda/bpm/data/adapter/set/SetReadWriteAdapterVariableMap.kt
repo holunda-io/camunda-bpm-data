@@ -20,15 +20,15 @@ class SetReadWriteAdapterVariableMap<T>(
     return Optional.ofNullable(getOrNull(variableMap[variableName]))
   }
 
-  override fun set(value: Set<T>, isTransient: Boolean) {
-    variableMap.putValueTyped(variableName, getTypedValue(value, isTransient))
+  override fun set(value: Set<T>?, isTransient: Boolean) {
+    variableMap.putValueTyped(variableName, getTypedValue(value ?: setOf<T>(), isTransient))
   }
 
   override fun getLocalOptional(): Optional<Set<T>> {
     throw UnsupportedOperationException("Can't get a local variable on a variable map")
   }
 
-  override fun setLocal(value: Set<T>, isTransient: Boolean) {
+  override fun setLocal(value: Set<T>?, isTransient: Boolean) {
     throw UnsupportedOperationException("Can't set a local variable on a variable map")
   }
 

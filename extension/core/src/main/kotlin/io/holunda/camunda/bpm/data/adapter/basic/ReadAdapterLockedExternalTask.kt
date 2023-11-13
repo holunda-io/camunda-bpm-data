@@ -26,11 +26,11 @@ class ReadAdapterLockedExternalTask<T : Any>(
     )
   }
 
-  override fun set(value: T, isTransient: Boolean) {
+  override fun set(value: T?, isTransient: Boolean) {
     throw UnsupportedOperationException("Can't set a variable on an external task")
   }
 
-  override fun setLocal(value: T, isTransient: Boolean) {
+  override fun setLocal(value: T?, isTransient: Boolean) {
     throw UnsupportedOperationException("Can't set a local variable on an external task")
   }
 

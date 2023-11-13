@@ -23,7 +23,7 @@ class ReadWriteAdapterCaseService<T : Any>(
     return Optional.ofNullable(getOrNull(caseService.getVariable(caseExecutionId, variableName)))
   }
 
-  override fun set(value: T, isTransient: Boolean) {
+  override fun set(value: T?, isTransient: Boolean) {
     caseService.setVariable(caseExecutionId, variableName, getTypedValue(value, isTransient))
   }
 
@@ -31,7 +31,7 @@ class ReadWriteAdapterCaseService<T : Any>(
     return Optional.ofNullable(getOrNull(caseService.getVariableLocal(caseExecutionId, variableName)))
   }
 
-  override fun setLocal(value: T, isTransient: Boolean) {
+  override fun setLocal(value: T?, isTransient: Boolean) {
     caseService.setVariableLocal(caseExecutionId, variableName, getTypedValue(value, isTransient))
   }
 

@@ -21,16 +21,16 @@ class ListReadWriteAdapterVariableScope<T>(
     return Optional.ofNullable(getOrNull(variableScope.getVariable(variableName)))
   }
 
-  override fun set(value: List<T>, isTransient: Boolean) {
-    variableScope.setVariable(variableName, getTypedValue(value, isTransient))
+  override fun set(value: List<T>?, isTransient: Boolean) {
+    variableScope.setVariable(variableName, getTypedValue(value ?: listOf<T>(), isTransient))
   }
 
   override fun getLocalOptional(): Optional<List<T>> {
     return Optional.ofNullable(getOrNull(variableScope.getVariableLocal(variableName)))
   }
 
-  override fun setLocal(value: List<T>, isTransient: Boolean) {
-    variableScope.setVariableLocal(variableName, getTypedValue(value, isTransient))
+  override fun setLocal(value: List<T>?, isTransient: Boolean) {
+    variableScope.setVariableLocal(variableName, getTypedValue(value ?: listOf<T>(), isTransient))
   }
 
   override fun remove() {

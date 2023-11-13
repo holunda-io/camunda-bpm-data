@@ -25,16 +25,16 @@ class MapReadWriteAdapterTaskService<K, V>(
     return Optional.ofNullable(getOrNull(taskService.getVariable(taskId, variableName)))
   }
 
-  override fun set(value: Map<K, V>, isTransient: Boolean) {
-    taskService.setVariable(taskId, variableName, getTypedValue(value, isTransient))
+  override fun set(value: Map<K, V>?, isTransient: Boolean) {
+    taskService.setVariable(taskId, variableName, getTypedValue(value ?: mapOf<K,V>(), isTransient))
   }
 
   override fun getLocalOptional(): Optional<Map<K, V>> {
     return Optional.ofNullable(getOrNull(taskService.getVariableLocal(taskId, variableName)))
   }
 
-  override fun setLocal(value: Map<K, V>, isTransient: Boolean) {
-    taskService.setVariableLocal(taskId, variableName, getTypedValue(value, isTransient))
+  override fun setLocal(value: Map<K, V>?, isTransient: Boolean) {
+    taskService.setVariableLocal(taskId, variableName, getTypedValue(value ?: mapOf<K,V>(), isTransient))
   }
 
   override fun remove() {

@@ -23,15 +23,15 @@ class MapReadWriteAdapterVariableMap<K, V>(
     return Optional.ofNullable(getOrNull(variableMap[variableName]))
   }
 
-  override fun set(value: Map<K, V>, isTransient: Boolean) {
-    variableMap.putValueTyped(variableName, getTypedValue(value, isTransient))
+  override fun set(value: Map<K, V>?, isTransient: Boolean) {
+    variableMap.putValueTyped(variableName, getTypedValue(value ?: mapOf<K,V>(), isTransient))
   }
 
   override fun getLocalOptional(): Optional<Map<K, V>> {
     throw UnsupportedOperationException("Can't get a local variable on a variable map")
   }
 
-  override fun setLocal(value: Map<K, V>, isTransient: Boolean) {
+  override fun setLocal(value: Map<K, V>?, isTransient: Boolean) {
     throw UnsupportedOperationException("Can't set a local variable on a variable map")
   }
 

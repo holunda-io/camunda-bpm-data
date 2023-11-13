@@ -31,8 +31,8 @@ class MapReadWriteAdapterCaseService<K, V>(
         )
     }
 
-    override fun set(value: Map<K, V>, isTransient: Boolean) {
-        caseService.setVariable(caseExecutionId, variableName, getTypedValue(value, isTransient))
+    override fun set(value: Map<K, V>?, isTransient: Boolean) {
+        caseService.setVariable(caseExecutionId, variableName, getTypedValue(value ?: mapOf<K,V>(), isTransient))
     }
 
     override fun getLocalOptional(): Optional<Map<K, V>> {
@@ -45,8 +45,8 @@ class MapReadWriteAdapterCaseService<K, V>(
         )
     }
 
-    override fun setLocal(value: Map<K, V>, isTransient: Boolean) {
-        caseService.setVariableLocal(caseExecutionId, variableName, getTypedValue(value, isTransient))
+    override fun setLocal(value: Map<K, V>?, isTransient: Boolean) {
+        caseService.setVariableLocal(caseExecutionId, variableName, getTypedValue(value ?: mapOf<K,V>(), isTransient))
     }
 
     override fun remove() {

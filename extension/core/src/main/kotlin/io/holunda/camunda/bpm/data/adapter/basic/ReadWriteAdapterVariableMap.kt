@@ -18,7 +18,7 @@ class ReadWriteAdapterVariableMap<T : Any>(private val variableMap: VariableMap,
     return Optional.ofNullable(getOrNull(variableMap[variableName]))
   }
 
-  override fun set(value: T, isTransient: Boolean) {
+  override fun set(value: T?, isTransient: Boolean) {
     variableMap.putValueTyped(variableName, getTypedValue(value, isTransient))
   }
 
@@ -26,7 +26,7 @@ class ReadWriteAdapterVariableMap<T : Any>(private val variableMap: VariableMap,
     throw UnsupportedOperationException("Can't get a local variable on a variable map")
   }
 
-  override fun setLocal(value: T, isTransient: Boolean) {
+  override fun setLocal(value: T?, isTransient: Boolean) {
     throw UnsupportedOperationException("Can't set a local variable on a variable map")
   }
 

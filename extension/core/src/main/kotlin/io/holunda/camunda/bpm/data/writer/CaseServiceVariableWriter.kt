@@ -20,34 +20,34 @@ class CaseServiceVariableWriter(private val caseService: CaseService, private va
     return caseService.getVariablesLocalTyped(caseExecutionId)
   }
 
-  override fun <T> set(variableFactory: VariableFactory<T>, value: T): CaseServiceVariableWriter {
+  override fun <T> set(variableFactory: VariableFactory<T>, value: T?): CaseServiceVariableWriter {
     return this.set(variableFactory, value, false)
   }
 
-  override fun <T> set(variableFactory: VariableFactory<T>, value: T, isTransient: Boolean): CaseServiceVariableWriter {
+  override fun <T> set(variableFactory: VariableFactory<T>, value: T?, isTransient: Boolean): CaseServiceVariableWriter {
     variableFactory.on(caseService, caseExecutionId)[value] = isTransient
     return this
   }
 
-  override fun <T> setLocal(variableFactory: VariableFactory<T>, value: T): CaseServiceVariableWriter {
+  override fun <T> setLocal(variableFactory: VariableFactory<T>, value: T?): CaseServiceVariableWriter {
     return this.setLocal(variableFactory, value, false)
   }
 
-  override fun <T> setLocal(variableFactory: VariableFactory<T>, value: T, isTransient: Boolean): CaseServiceVariableWriter {
+  override fun <T> setLocal(variableFactory: VariableFactory<T>, value: T?, isTransient: Boolean): CaseServiceVariableWriter {
     variableFactory.on(caseService, caseExecutionId).setLocal(value, isTransient)
     return this
   }
 
   override fun <T> updateLocal(
     variableFactory: VariableFactory<T>,
-    valueProcessor: Function<T, T>
+    valueProcessor: Function<T?, T?>
   ): CaseServiceVariableWriter {
     return updateLocal(variableFactory, valueProcessor, false)
   }
 
   override fun <T> updateLocal(
     variableFactory: VariableFactory<T>,
-    valueProcessor: Function<T, T>,
+    valueProcessor: Function<T?, T?>,
     isTransient: Boolean
   ): CaseServiceVariableWriter {
     variableFactory.on(caseService, caseExecutionId).updateLocal(valueProcessor, isTransient)
@@ -64,14 +64,14 @@ class CaseServiceVariableWriter(private val caseService: CaseService, private va
     return this
   }
 
-  override fun <T> update(variableFactory: VariableFactory<T>, valueProcessor: Function<T, T>): CaseServiceVariableWriter {
+  override fun <T> update(variableFactory: VariableFactory<T>, valueProcessor: Function<T?, T?>): CaseServiceVariableWriter {
     variableFactory.on(caseService, caseExecutionId).update(valueProcessor)
     return this
   }
 
   override fun <T> update(
     variableFactory: VariableFactory<T>,
-    valueProcessor: Function<T, T>,
+    valueProcessor: Function<T?, T?>,
     isTransient: Boolean
   ): CaseServiceVariableWriter {
     variableFactory.on(caseService, caseExecutionId).updateLocal(valueProcessor, isTransient)

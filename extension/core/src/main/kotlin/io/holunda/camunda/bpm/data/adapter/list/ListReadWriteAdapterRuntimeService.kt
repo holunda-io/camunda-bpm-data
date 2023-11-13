@@ -29,8 +29,8 @@ class ListReadWriteAdapterRuntimeService<T>(
     )
   }
 
-  override fun set(value: List<T>, isTransient: Boolean) {
-    runtimeService.setVariable(executionId, variableName, getTypedValue(value, isTransient))
+  override fun set(value: List<T>?, isTransient: Boolean) {
+    runtimeService.setVariable(executionId, variableName, getTypedValue(value ?: listOf<T>(), isTransient))
   }
 
   override fun getLocalOptional(): Optional<List<T>> {
@@ -43,8 +43,8 @@ class ListReadWriteAdapterRuntimeService<T>(
     )
   }
 
-  override fun setLocal(value: List<T>, isTransient: Boolean) {
-    runtimeService.setVariableLocal(executionId, variableName, getTypedValue(value, isTransient))
+  override fun setLocal(value: List<T>?, isTransient: Boolean) {
+    runtimeService.setVariableLocal(executionId, variableName, getTypedValue(value ?: listOf<T>(), isTransient))
   }
 
   override fun remove() {

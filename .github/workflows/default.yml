@@ -10,9 +10,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -33,12 +31,15 @@ jobs:
     - name: Run integration tests and generate coverage reports
       run: ./mvnw -Pitest verify failsafe:verify -ntp
 
+  coverage:
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    steps:
     - name: Upload coverage to Codecov
       if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
       uses: codecov/codecov-action@v3
       with:
         token: ${{secrets.CODECOV_TOKEN}}
-
     - name: Upload test coverage to Codacy
       if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
       run: bash <(curl -Ls https://coverage.codacy.com/get.sh)

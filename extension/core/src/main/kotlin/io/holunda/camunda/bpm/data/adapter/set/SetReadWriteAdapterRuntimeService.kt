@@ -22,8 +22,8 @@ class SetReadWriteAdapterRuntimeService<T>(
     return Optional.ofNullable(getOrNull(runtimeService.getVariable(executionId, variableName)))
   }
 
-  override fun set(value: Set<T>, isTransient: Boolean) {
-    runtimeService.setVariable(executionId, variableName, getTypedValue(value, isTransient))
+  override fun set(value: Set<T>?, isTransient: Boolean) {
+    runtimeService.setVariable(executionId, variableName, getTypedValue(value ?: setOf<T>(), isTransient))
   }
 
   override fun getLocalOptional(): Optional<Set<T>> {
@@ -36,8 +36,8 @@ class SetReadWriteAdapterRuntimeService<T>(
     )
   }
 
-  override fun setLocal(value: Set<T>, isTransient: Boolean) {
-    runtimeService.setVariableLocal(executionId, variableName, getTypedValue(value, isTransient))
+  override fun setLocal(value: Set<T>?, isTransient: Boolean) {
+    runtimeService.setVariableLocal(executionId, variableName, getTypedValue(value ?: setOf<T>(), isTransient))
   }
 
   override fun remove() {

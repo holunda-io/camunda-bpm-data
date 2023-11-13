@@ -55,11 +55,11 @@ class MapReadAdapterLockedExternalTask<K, V>(
     throw UnsupportedOperationException("Can't remove a local variable on an external task")
   }
 
-  override fun set(value: Map<K, V>, isTransient: Boolean) {
+  override fun set(value: Map<K, V>?, isTransient: Boolean) {
     throw UnsupportedOperationException("Can't set a variable on an external task")
   }
 
-  override fun setLocal(value: Map<K, V>, isTransient: Boolean) {
+  override fun setLocal(value: Map<K, V>?, isTransient: Boolean) {
     throw UnsupportedOperationException("Can't set a local variable on an external task")
   }
 
