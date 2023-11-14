@@ -30,10 +30,6 @@ jobs:
     - name: Run integration tests and generate coverage reports
       run: ./mvnw -Pitest verify failsafe:verify
 
-  deploy:
-    needs: [ build ]
-    runs-on: ubuntu-latest
-    steps:
       # Get GPG private key into GPG
     - name: Import GPG Owner Trust
       run: echo ${{ secrets.GPG_OWNERTRUST }} | base64 --decode | gpg --import-ownertrust
@@ -47,10 +43,12 @@ jobs:
         OSS_CENTRAL_USERNAME: "${{ secrets.SONATYPE_USERNAME }}"
         OSS_CENTRAL_PASSWORD: "${{ secrets.SONATYPE_PASSWORD }}"
 
-  coverage:
-    needs: [ build ]
-    runs-on: ubuntu-latest
-    steps:
+    - name: Upload coverage to Codecov
+      if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
+      uses: codecov/codecov-action@v3
+      with:
+        token: ${{secrets.CODECOV_TOKEN}}
+
     - name: Upload test coverage to Codacy
       if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
       run: bash <(curl -Ls https://coverage.codacy.com/get.sh)
