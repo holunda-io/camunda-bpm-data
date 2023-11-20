@@ -42,7 +42,7 @@ class OrderApproval {
   }
 
   object Variables {
-    val ORDER_ID = stringVariable("orderId")
+    val ORDER_ID = stringVariable("orderId").nonNull
     val ORDER: VariableFactory<Order> = customVariable("order")
     val ORDER_APPROVED = booleanVariable("orderApproved")
     val ORDER_POSITION: VariableFactory<OrderPosition> = customVariable("orderPosition")

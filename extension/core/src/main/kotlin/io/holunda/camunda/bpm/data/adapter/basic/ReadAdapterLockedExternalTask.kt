@@ -9,7 +9,7 @@ import java.util.*
  *
  * @param [T] type of value.
  */
-class ReadAdapterLockedExternalTask<T : Any>(
+class ReadAdapterLockedExternalTask<T : Any?>(
   private val lockedExternalTask: LockedExternalTask,
   variableName: String,
   clazz: Class<T>
@@ -23,7 +23,7 @@ class ReadAdapterLockedExternalTask<T : Any>(
       getOrNull(
         value
       )
-    )
+    ) as Optional<T>
   }
 
   override fun set(value: T, isTransient: Boolean) {

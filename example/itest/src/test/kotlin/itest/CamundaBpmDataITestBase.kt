@@ -77,7 +77,7 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
 
   companion object {
 
-    val STRING_VAR: VariableFactory<String> = stringVariable("String Variable")
+    val STRING_VAR: VariableFactory<String> = stringVariable("String Variable").nonNull
     val DATE_VAR: VariableFactory<Date> = dateVariable("Date Variable")
     val SHORT_VAR: VariableFactory<Short> = shortVariable("Short Variable")
     val INT_VAR: VariableFactory<Int> = intVariable("Int Variable")

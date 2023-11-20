@@ -15,7 +15,7 @@ object CamundaBpmDataKotlin {
    *
    * @return variable factory for string.
    */
-  fun stringVariable(variableName: String): VariableFactory<String> = BasicVariableFactory(variableName, String::class.java)
+  fun stringVariable(variableName: String): VariableFactory<String?> = BasicVariableFactory.forType<String?>(variableName)
 
   /**
    * Creates a date variable factory.

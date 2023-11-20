@@ -12,14 +12,14 @@ import java.util.*
  * @param variableName name of the variable.
  * @param clazz        class of the variable.
 </T> */
-class ReadWriteAdapterTaskService<T: Any>(
+class ReadWriteAdapterTaskService<T: Any?>(
     private val taskService: TaskService,
     private val taskId: String,
     variableName: String,
     clazz: Class<T>
 ) : AbstractBasicReadWriteAdapter<T>(variableName, clazz) {
     override fun getOptional(): Optional<T> {
-        return Optional.ofNullable(getOrNull(taskService.getVariable(taskId, variableName)))
+        return Optional.ofNullable(getOrNull(taskService.getVariable(taskId, variableName))) as Optional<T>
     }
 
     override fun set(value: T, isTransient: Boolean) {
@@ -27,7 +27,7 @@ class ReadWriteAdapterTaskService<T: Any>(
     }
 
     override fun getLocalOptional(): Optional<T> {
-        return Optional.ofNullable(getOrNull(taskService.getVariableLocal(taskId, variableName)))
+        return Optional.ofNullable(getOrNull(taskService.getVariableLocal(taskId, variableName))) as Optional<T>
     }
 
     override fun setLocal(value: T, isTransient: Boolean) {

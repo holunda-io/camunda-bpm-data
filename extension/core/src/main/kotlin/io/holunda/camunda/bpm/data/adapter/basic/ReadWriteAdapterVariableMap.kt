@@ -11,11 +11,11 @@ import java.util.*
  * @param variableName variable to access.
  * @param clazz        class of variable value.
  */
-class ReadWriteAdapterVariableMap<T : Any>(private val variableMap: VariableMap, variableName: String, clazz: Class<T>) :
+class ReadWriteAdapterVariableMap<T : Any?>(private val variableMap: VariableMap, variableName: String, clazz: Class<T>) :
   AbstractBasicReadWriteAdapter<T>(variableName, clazz) {
 
   override fun getOptional(): Optional<T> {
-    return Optional.ofNullable(getOrNull(variableMap[variableName]))
+    return Optional.ofNullable(getOrNull(variableMap[variableName])) as Optional<T>
   }
 
   override fun set(value: T, isTransient: Boolean) {

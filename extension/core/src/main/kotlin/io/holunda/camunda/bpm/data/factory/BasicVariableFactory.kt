@@ -18,10 +18,14 @@ import java.util.*
  * @param name  name of the variable.
  * @param variableClass class of the type.
  */
-class BasicVariableFactory<T : Any>(
+class BasicVariableFactory<T : Any?>(
   override val name: String,
   val variableClass: Class<T>
 ) : VariableFactory<T> {
+
+  companion object {
+    inline fun <reified T> forType(name: String) = BasicVariableFactory(name, T::class.java)
+  }
 
   override fun on(variableScope: VariableScope): WriteAdapter<T> {
     return ReadWriteAdapterVariableScope(variableScope, name, variableClass)
@@ -156,7 +160,7 @@ class BasicVariableFactory<T : Any>(
    * @param basicVariableFactory variable factory to use.
    * @param runtimeService       task service to build adapter with.
    */
-  class BasicRuntimeServiceAdapterBuilder<T: Any>(
+  class BasicRuntimeServiceAdapterBuilder<T: Any?>(
     private val basicVariableFactory: BasicVariableFactory<T>,
     private val runtimeService: RuntimeService
   ) {
@@ -197,7 +201,7 @@ class BasicVariableFactory<T : Any>(
    * @param basicVariableFactory variable factory to use.
    * @param taskService          task service to build adapter with.
    */
-  class BasicTaskServiceAdapterBuilder<T: Any>(private val basicVariableFactory: BasicVariableFactory<T>, private val taskService: TaskService) {
+  class BasicTaskServiceAdapterBuilder<T: Any?>(private val basicVariableFactory: BasicVariableFactory<T>, private val taskService: TaskService) {
     private fun readWriteAdapter(taskId: String): ReadWriteAdapterTaskService<T> {
       return ReadWriteAdapterTaskService(
         taskService,
@@ -235,7 +239,7 @@ class BasicVariableFactory<T : Any>(
    * @param basicVariableFactory variable factory to use.
    * @param caseService          task service to build adapter with.
    */
-  class BasicCaseServiceAdapterBuilder<T: Any>(private val basicVariableFactory: BasicVariableFactory<T>, private val caseService: CaseService) {
+  class BasicCaseServiceAdapterBuilder<T: Any?>(private val basicVariableFactory: BasicVariableFactory<T>, private val caseService: CaseService) {
     private fun readWriteAdapter(caseExecutionId: String): ReadWriteAdapterCaseService<T> {
       return ReadWriteAdapterCaseService(
         caseService,
