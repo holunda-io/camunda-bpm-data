@@ -103,9 +103,9 @@ class TransientVariableMappingListenerTest {
 
   companion object {
 
-    private val FOO = CamundaBpmDataKotlin.stringVariable("foo")
-    private val BAZ = CamundaBpmDataKotlin.longVariable("baz")
-    private val BAZ_INTERNAL = CamundaBpmDataKotlin.longVariable("baz__int")
+    private val FOO = CamundaBpmDataKotlin.stringVariable("foo").nonNull
+    private val BAZ = CamundaBpmDataKotlin.longVariable("baz").nonNull
+    private val BAZ_INTERNAL = CamundaBpmDataKotlin.longVariable("baz__int").nonNull
 
     private val ACL_LR = CamundaBpmDataMapper.identityReplace("transient", true)
 

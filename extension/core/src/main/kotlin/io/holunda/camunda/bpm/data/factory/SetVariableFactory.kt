@@ -18,6 +18,10 @@ import java.util.*
  */
 class SetVariableFactory<T>(override val name: String, val memberClass: Class<T>) : VariableFactory<Set<T>> {
 
+  companion object {
+    inline fun <reified T> forType(name: String) = SetVariableFactory(name, T::class.java)
+  }
+
   override fun on(variableScope: VariableScope): WriteAdapter<Set<T>> {
     return SetReadWriteAdapterVariableScope(variableScope, name, memberClass)
   }

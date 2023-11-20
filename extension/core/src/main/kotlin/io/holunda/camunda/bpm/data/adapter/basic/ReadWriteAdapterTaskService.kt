@@ -19,6 +19,7 @@ class ReadWriteAdapterTaskService<T: Any?>(
     clazz: Class<T>
 ) : AbstractBasicReadWriteAdapter<T>(variableName, clazz) {
     override fun getOptional(): Optional<T> {
+        @Suppress("UNCHECKED_CAST")
         return Optional.ofNullable(getOrNull(taskService.getVariable(taskId, variableName))) as Optional<T>
     }
 
@@ -27,6 +28,7 @@ class ReadWriteAdapterTaskService<T: Any?>(
     }
 
     override fun getLocalOptional(): Optional<T> {
+        @Suppress("UNCHECKED_CAST")
         return Optional.ofNullable(getOrNull(taskService.getVariableLocal(taskId, variableName))) as Optional<T>
     }
 

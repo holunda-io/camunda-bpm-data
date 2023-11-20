@@ -21,6 +21,7 @@ class ReadWriteAdapterVariableScope<T: Any?>(
   }
 
   override fun getLocalOptional(): Optional<T> {
+    @Suppress("UNCHECKED_CAST")
     return Optional.ofNullable(getOrNull(variableScope.getVariableLocal(variableName))) as Optional<T>
   }
 
@@ -29,6 +30,7 @@ class ReadWriteAdapterVariableScope<T: Any?>(
   }
 
   override fun getOptional(): Optional<T> {
+    @Suppress("UNCHECKED_CAST")
     return Optional.ofNullable(getOrNull(variableScope.getVariable(variableName))) as Optional<T>
   }
 

@@ -20,6 +20,7 @@ class ReadWriteAdapterCaseService<T : Any?>(
 ) : AbstractBasicReadWriteAdapter<T>(variableName, clazz) {
 
   override fun getOptional(): Optional<T> {
+    @Suppress("UNCHECKED_CAST")
     return Optional.ofNullable(getOrNull(caseService.getVariable(caseExecutionId, variableName))) as Optional<T>
   }
 
@@ -28,6 +29,7 @@ class ReadWriteAdapterCaseService<T : Any?>(
   }
 
   override fun getLocalOptional(): Optional<T> {
+    @Suppress("UNCHECKED_CAST")
     return Optional.ofNullable(getOrNull(caseService.getVariableLocal(caseExecutionId, variableName))) as Optional<T>
   }
 

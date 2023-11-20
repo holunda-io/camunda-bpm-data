@@ -78,12 +78,12 @@ abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionS
   companion object {
 
     val STRING_VAR: VariableFactory<String> = stringVariable("String Variable").nonNull
-    val DATE_VAR: VariableFactory<Date> = dateVariable("Date Variable")
-    val SHORT_VAR: VariableFactory<Short> = shortVariable("Short Variable")
-    val INT_VAR: VariableFactory<Int> = intVariable("Int Variable")
-    val LONG_VAR: VariableFactory<Long> = longVariable("Long Variable")
-    val DOUBLE_VAR: VariableFactory<Double> = doubleVariable("Double Variable")
-    val BOOLEAN_VAR: VariableFactory<Boolean> = booleanVariable("Boolean Variable")
+    val DATE_VAR: VariableFactory<Date> = dateVariable("Date Variable").nonNull
+    val SHORT_VAR: VariableFactory<Short> = shortVariable("Short Variable").nonNull
+    val INT_VAR: VariableFactory<Int> = intVariable("Int Variable").nonNull
+    val LONG_VAR: VariableFactory<Long> = longVariable("Long Variable").nonNull
+    val DOUBLE_VAR: VariableFactory<Double> = doubleVariable("Double Variable").nonNull
+    val BOOLEAN_VAR: VariableFactory<Boolean> = booleanVariable("Boolean Variable").nonNull
     val COMPLEX_VAR: VariableFactory<ComplexDataStructure> = customVariable("Complex Variable")
     val LIST_STRING_VAR: VariableFactory<List<String>> = listVariable("List Of String Variable")
     val SET_STRING_VAR: VariableFactory<Set<String>> = setVariable("Set Of String Variable")

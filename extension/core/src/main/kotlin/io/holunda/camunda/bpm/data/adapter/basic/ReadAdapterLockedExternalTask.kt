@@ -19,6 +19,7 @@ class ReadAdapterLockedExternalTask<T : Any?>(
       .orElse(Variables.createVariables())[variableName]
 
   override fun getOptional(): Optional<T> {
+    @Suppress("UNCHECKED_CAST")
     return Optional.ofNullable(
       getOrNull(
         value

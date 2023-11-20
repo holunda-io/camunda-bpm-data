@@ -15,6 +15,7 @@ class ReadWriteAdapterVariableMap<T : Any?>(private val variableMap: VariableMap
   AbstractBasicReadWriteAdapter<T>(variableName, clazz) {
 
   override fun getOptional(): Optional<T> {
+    @Suppress("UNCHECKED_CAST")
     return Optional.ofNullable(getOrNull(variableMap[variableName])) as Optional<T>
   }
 
