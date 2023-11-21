@@ -20,7 +20,7 @@
   <dependencies>
     <dependency>
       <groupId>io.holunda.data</groupId>
-      <artifactId>camunda-bpm-data</artifactId>
+      <artifactId>camunda-bpm-data-c7</artifactId>
       <version>${project.version}</version>
       <scope>compile</scope>
     </dependency>
