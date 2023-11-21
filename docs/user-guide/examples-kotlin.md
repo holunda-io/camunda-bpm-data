@@ -23,7 +23,7 @@ class JavaDelegates {
 
     @Bean
     fun calculateOrderPositions() = JavaDelegate { execution ->
-        val orderPosition = ORDER_POSITION.from(execution).get()
+        val orderPosition = VariableScopeReader.of(ORDER_POSITION, execution).get()
         // order position is of type OrderPosition
     }
 }
@@ -39,8 +39,8 @@ class JavaDelegates {
 
     @Bean
     fun calculateOrderPositions() = JavaDelegate { execution ->
-        val orderPosition = ORDER_POSITION.from(execution).get()
-        ORDER_TOTAL.on(execution).set {
+        val orderPosition = VariableScopeReader.of(ORDER_POSITION, execution).get()
+        VariableScopeWriter.of(ORDER_TOTAL, execution).set {
             orderPosition.netCost.times(BigDecimal.valueOf(orderPosition.amount))
         }
     }
@@ -55,7 +55,7 @@ class JavaDelegates {
 
     @Bean
     fun removeTotal() = JavaDelegate { execution ->
-        ORDER_TOTAL.on(execution).remove()
+        VariableScopeWriter.of(ORDER_TOTAL, execution).remove()
     }
 }
 ```
@@ -69,8 +69,8 @@ class JavaDelegates {
 
     @Bean
     fun calculateOrderPositions() = JavaDelegate { execution ->
-        val orderPosition = ORDER_POSITION.from(execution).get()
-        ORDER_TOTAL.on(execution).update {
+        val orderPosition = VariableScopeReader.of(ORDER_POSITION, execution).get()
+        VariableScopeWriter.of(ORDER_TOTAL, execution).update {
             it.plus(orderPosition.netCost.times(BigDecimal.valueOf(orderPosition.amount)))
         }
     }

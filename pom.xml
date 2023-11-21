@@ -41,7 +41,9 @@
   </properties>
 
   <modules>
-    <module>extension/core</module>
+    <module>extension/api</module>
+    <module>extension/c7</module>
+    <module>extension/legacy</module>
   </modules>
 
   <dependencyManagement>
