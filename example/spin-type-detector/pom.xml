@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data.example</groupId>
     <artifactId>camunda-bpm-data-example-parent</artifactId>
-    <version>1.4.1-SNAPSHOT</version>
+    <version>1.5.0</version>
   </parent>
 
   <artifactId>camunda-bpm-data-spin-type-detector</artifactId>
