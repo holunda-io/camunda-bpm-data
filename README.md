@@ -6,7 +6,7 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data)
 [![CodeCov](https://codecov.io/gh/holunda-io/camunda-bpm-data/branch/master/graph/badge.svg)](https://codecov.io/gh/holunda-io/camunda-bpm-data)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/02d238f71a8243cb96fd2fe322a710eb)](https://www.codacy.com/gh/holunda-io/camunda-bpm-data/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=holunda-io/camunda-bpm-data&amp;utm_campaign=Badge_Grade)
-[![Release notes](https://img.shields.io/badge/RELEASE NOTES---yellow)](https://www.holunda.io/camunda-bpm-data/releases)
+[![Release notes](https://img.shields.io/badge/RELEASE_NOTES-yellow)](https://www.holunda.io/camunda-bpm-data/releases)
 
 
 > Beautiful process data handling for Camunda Platform 7.
