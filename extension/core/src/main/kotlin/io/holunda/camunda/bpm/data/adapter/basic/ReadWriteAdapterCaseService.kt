@@ -12,7 +12,7 @@ import java.util.*
  * @param variableName    name of the variable.
  * @param clazz           class of the variable.
  */
-class ReadWriteAdapterCaseService<T : Any>(
+class ReadWriteAdapterCaseService<T : Any?>(
   private val caseService: CaseService,
   private val caseExecutionId: String,
   variableName: String,
@@ -20,7 +20,8 @@ class ReadWriteAdapterCaseService<T : Any>(
 ) : AbstractBasicReadWriteAdapter<T>(variableName, clazz) {
 
   override fun getOptional(): Optional<T> {
-    return Optional.ofNullable(getOrNull(caseService.getVariable(caseExecutionId, variableName)))
+    @Suppress("UNCHECKED_CAST")
+    return Optional.ofNullable(getOrNull(caseService.getVariable(caseExecutionId, variableName))) as Optional<T>
   }
 
   override fun set(value: T, isTransient: Boolean) {
@@ -28,7 +29,8 @@ class ReadWriteAdapterCaseService<T : Any>(
   }
 
   override fun getLocalOptional(): Optional<T> {
-    return Optional.ofNullable(getOrNull(caseService.getVariableLocal(caseExecutionId, variableName)))
+    @Suppress("UNCHECKED_CAST")
+    return Optional.ofNullable(getOrNull(caseService.getVariableLocal(caseExecutionId, variableName))) as Optional<T>
   }
 
   override fun setLocal(value: T, isTransient: Boolean) {

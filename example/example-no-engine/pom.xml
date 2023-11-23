@@ -20,13 +20,6 @@
     <dependency>
       <groupId>io.holunda.data</groupId>
       <artifactId>camunda-bpm-data</artifactId>
-      <exclusions>
-        <!-- Camunda Engine is NOT on the classpath -->
-        <exclusion>
-          <groupId>org.camunda.bpm</groupId>
-          <artifactId>camunda-engine</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
 
     <dependency>

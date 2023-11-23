@@ -20,14 +20,6 @@
   </properties>
 
   <dependencies>
-
-    <!--
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>camunda-bpm-data-c7</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    -->
     <!-- Kotlin -->
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
