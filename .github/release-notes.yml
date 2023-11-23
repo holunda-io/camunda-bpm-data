@@ -1,5 +1,7 @@
 changelog:
   sections:
+    - title: ":zap: Breaking Changes"
+      labels: [ "Type: breaking" ]
     - title: ":rocket: Enhancements & Features"
       labels: [ "Type: enhancement", "Type: documentation", "Type: example" ]
     - title: ":bug: Bug Fixes"

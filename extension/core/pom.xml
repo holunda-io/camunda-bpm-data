@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data</groupId>
     <artifactId>camunda-bpm-data-parent</artifactId>
-    <version>1.4.0</version>
+    <version>1.5.0</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
@@ -20,14 +20,6 @@
   </properties>
 
   <dependencies>
-
-    <!--
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>camunda-bpm-data-c7</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    -->
     <!-- Kotlin -->
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
@@ -103,7 +95,7 @@
     <dependency>
       <groupId>jakarta.el</groupId>
       <artifactId>jakarta.el-api</artifactId>
-      <version>4.0.0</version>
+      <version>5.0.1</version>
       <scope>test</scope>
     </dependency>
     <dependency>

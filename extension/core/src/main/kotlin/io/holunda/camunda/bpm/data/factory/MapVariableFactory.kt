@@ -23,6 +23,10 @@ class MapVariableFactory<K, V>(
   val valueClass: Class<V>
 ) : VariableFactory<Map<K, V>> {
 
+  companion object {
+    inline fun <reified K, reified V> forType(name: String) = MapVariableFactory(name, K::class.java, V::class.java)
+  }
+
   override fun on(variableScope: VariableScope): WriteAdapter<Map<K, V>> {
     return MapReadWriteAdapterVariableScope(
       variableScope,

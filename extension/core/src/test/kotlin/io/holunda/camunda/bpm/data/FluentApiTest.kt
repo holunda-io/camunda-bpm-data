@@ -23,7 +23,7 @@ class FluentApiTest {
     const val NAME = "myString"
     const val VALUE = "some random value"
     const val LOCAL_VALUE = "other local value"
-    val MY_VAR = stringVariable(NAME)
+    val MY_VAR = stringVariable(NAME).nonNull
   }
 
   @Test

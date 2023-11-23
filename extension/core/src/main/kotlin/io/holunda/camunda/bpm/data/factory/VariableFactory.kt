@@ -15,6 +15,10 @@ import org.camunda.bpm.engine.variable.VariableMap
  * @param [T] type of the factory.
  */
 interface VariableFactory<T> {
+
+  @Suppress("UNCHECKED_CAST")
+  val nonNull: VariableFactory<T & Any> get() = this as VariableFactory<T & Any>
+
   /**
    * Creates a write adapter for variable scope.
    *

@@ -11,7 +11,7 @@ import java.util.*
  * @param variableName  variable to access.
  * @param clazz         class of variable value.
  */
-class ReadWriteAdapterVariableScope<T: Any>(
+class ReadWriteAdapterVariableScope<T: Any?>(
   private val variableScope: VariableScope,
   variableName: String,
   clazz: Class<T>
@@ -21,7 +21,8 @@ class ReadWriteAdapterVariableScope<T: Any>(
   }
 
   override fun getLocalOptional(): Optional<T> {
-    return Optional.ofNullable(getOrNull(variableScope.getVariableLocal(variableName)))
+    @Suppress("UNCHECKED_CAST")
+    return Optional.ofNullable(getOrNull(variableScope.getVariableLocal(variableName))) as Optional<T>
   }
 
   override fun setLocal(value: T, isTransient: Boolean) {
@@ -29,7 +30,8 @@ class ReadWriteAdapterVariableScope<T: Any>(
   }
 
   override fun getOptional(): Optional<T> {
-    return Optional.ofNullable(getOrNull(variableScope.getVariable(variableName)))
+    @Suppress("UNCHECKED_CAST")
+    return Optional.ofNullable(getOrNull(variableScope.getVariable(variableName))) as Optional<T>
   }
 
   override fun remove() {

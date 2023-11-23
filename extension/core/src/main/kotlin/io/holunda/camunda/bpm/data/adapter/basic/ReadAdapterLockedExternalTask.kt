@@ -9,7 +9,7 @@ import java.util.*
  *
  * @param [T] type of value.
  */
-class ReadAdapterLockedExternalTask<T : Any>(
+class ReadAdapterLockedExternalTask<T : Any?>(
   private val lockedExternalTask: LockedExternalTask,
   variableName: String,
   clazz: Class<T>
@@ -19,11 +19,12 @@ class ReadAdapterLockedExternalTask<T : Any>(
       .orElse(Variables.createVariables())[variableName]
 
   override fun getOptional(): Optional<T> {
+    @Suppress("UNCHECKED_CAST")
     return Optional.ofNullable(
       getOrNull(
         value
       )
-    )
+    ) as Optional<T>
   }
 
   override fun set(value: T, isTransient: Boolean) {
