@@ -2,7 +2,7 @@
 
 [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
 [![Camunda 7.20](https://img.shields.io/badge/Camunda%20Version-7.20-orange.svg)](https://docs.camunda.org/manual/7.20/)
-[![Build Status](https://github.com/holunda-io/camunda-bpm-data/workflows/default/badge.svg)](https://github.com/holunda-io/camunda-bpm-data/actions)
+[![Development branches](https://github.com/holunda-io/camunda-bpm-data/actions/workflows/default.yml/badge.svg)](https://github.com/holunda-io/camunda-bpm-data/actions/workflows/default.yml)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data)
 [![CodeCov](https://codecov.io/gh/holunda-io/camunda-bpm-data/branch/master/graph/badge.svg)](https://codecov.io/gh/holunda-io/camunda-bpm-data)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/02d238f71a8243cb96fd2fe322a710eb)](https://www.codacy.com/gh/holunda-io/camunda-bpm-data/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=holunda-io/camunda-bpm-data&amp;utm_campaign=Badge_Grade)
