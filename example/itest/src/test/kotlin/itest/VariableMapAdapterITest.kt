@@ -25,6 +25,8 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import java.util.*
 
+
+@Suppress("DEPRECATION") // FIXME: remove this suppression as soon as deprecation is removed
 class VariableMapAdapterITest : CamundaBpmDataITestBase() {
 
   @Autowired

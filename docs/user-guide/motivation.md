@@ -5,6 +5,8 @@ This consists of:
 
 * `RuntimeService` methods
 * `TaskService` methods
+* `CaseService` methods
+* `ExernalTaskService` methods
 * Methods on `DelegateExecution`
 * Methods on `DelegateTask`
 * `VariableMap`

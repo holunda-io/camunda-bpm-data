@@ -61,10 +61,10 @@ class JavaDelegates {
   @Bean
   public JavaDelegate calculateOrderPositions() {
     return execution -> {
-      OrderPosition orderPosition = ORDER_POSITION.from(execution).get();
-      BigDecimal oldTotal = ORDER_TOTAL.from(execution).getOptional().orElse(BigDecimal.ZERO);
+      OrderPosition orderPosition = VariableScopeReader.of(ORDER_POSITION, execution).get();
+      BigDecimal oldTotal = VariableScopeReader.of(ORDER_TOTAL, execution).getOptional().orElse(BigDecimal.ZERO);
       BigDecimal newTotal = oldTotal.add(orderPosition.getNetCost().multiply(BigDecimal.valueOf(orderPosition.getAmount())));
-      ORDER_TOTAL.on(execution).setLocal(newTotal);
+      VariableScopeWriter.of(ORDER_TOTAL, execution).setLocal(newTotal);
     };
   }
 }
@@ -92,7 +92,7 @@ public class ApproveOrderTaskController {
 
     @GetMapping("/{taskId}")
     public ResponseEntity<ApproveTaskDto> loadTask(@PathVariable("taskId") String taskId) {
-        Order order = ORDER.from(taskService, taskId).get();
+        Order order = VariableScopeReader.of(ORDER, taskService, taskId).get();
         return ResponseEntity.ok(new ApproveTaskDto(order));
     }
 

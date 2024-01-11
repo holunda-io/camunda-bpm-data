@@ -22,9 +22,9 @@ In the same time, we started a discussion with Camunda Team to provide a dedicat
 
 ``` xml
 <dependency>
-      <groupId>io.holunda.camunda-api</groupId>
-      <artifactId>camunda-bpm-engine-api</artifactId>
-      <version>${camunda.version}</version>
+  <groupId>io.holunda.camunda-api</groupId>
+  <artifactId>camunda-bpm-engine-api</artifactId>
+  <version>${camunda.version}</version>
 </dependency>
 ```
 

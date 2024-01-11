@@ -73,6 +73,7 @@ fun <G, W, T> ScenarioTestBase<G, W, T>.whenever(): W = `when`()
 @ExtendWith(SpringExtension::class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = [CamundaBpmDataITestBase.TestApplication::class])
 @ActiveProfiles("itest")
+@Suppress("DEPRECATION") // FIXME: remove this suppression as soon as deprecation is removed
 abstract class CamundaBpmDataITestBase : SpringScenarioTest<ActionStage, ActionStage, AssertStage>() {
 
   companion object {

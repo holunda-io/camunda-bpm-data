@@ -16,6 +16,8 @@ import io.holunda.camunda.bpm.data.guard.VariablesGuard
 import io.holunda.camunda.bpm.data.guard.condition.exists
 import io.holunda.camunda.bpm.data.guard.condition.matches
 import io.holunda.camunda.bpm.data.guard.integration.DefaultGuardTaskListener
+import io.holunda.camunda.bpm.data.reader.VariableScopeReader
+import io.holunda.camunda.bpm.data.writer.VariableScopeWriter
 import mu.KLogging
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.DelegateTask
@@ -54,10 +56,10 @@ class OrderApproval {
    */
   @Bean
   fun loadOrder() = JavaDelegate { execution ->
-    val orderId = ORDER_ID.from(execution).get()
+    val orderId = VariableScopeReader.of(ORDER_ID, execution).get()
     val order = orderRepository.loadOrder(orderId)
-    ORDER.on(execution).set(order)
-    ORDER_TOTAL.on(execution).set(BigDecimal.ZERO)
+    VariableScopeWriter.of(ORDER, execution).set(order)
+    VariableScopeWriter.of(ORDER_TOTAL, execution).set(BigDecimal.ZERO)
   }
 
   /**
@@ -65,9 +67,8 @@ class OrderApproval {
    */
   @Bean
   fun calculateOrderPositions() = JavaDelegate { execution ->
-    val orderPosition = ORDER_POSITION.from(execution).get()
-
-    ORDER_TOTAL.on(execution).update { total -> total.plus(orderPosition.netCost.times(BigDecimal.valueOf(orderPosition.amount))) }
+    val orderPosition = VariableScopeReader.of(ORDER_POSITION, execution).get()
+    VariableScopeWriter.of(ORDER_TOTAL, execution).update { total -> total.plus(orderPosition.netCost.times(BigDecimal.valueOf(orderPosition.amount))) }
   }
 
   /**
@@ -75,8 +76,8 @@ class OrderApproval {
    */
   @Bean
   fun writeOrderTotal() = ExecutionListener { execution ->
-    val total = ORDER_TOTAL.from(execution).get()
-    ORDER_TOTAL.on(execution).set(total)
+    val total = VariableScopeReader.of(ORDER_TOTAL, execution).get()
+    VariableScopeWriter.of(ORDER_TOTAL, execution).set(total)
   }
 
   /**
