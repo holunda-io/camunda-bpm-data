@@ -40,9 +40,7 @@ abstract class AbstractMapReadWriteAdapter<K, V>(
           valueAsMap as Map<K, V>
         } else {
           throw WrongVariableTypeException(
-            "Error reading " + variableName + ": Wrong map type detected, expected Map<"
-              + keyClazz.name + "," + valueClazz.name
-              + ", but was not found in " + valueAsMap
+            "Error reading $variableName: Wrong map type detected, expected Map<${keyClazz.name},${valueClazz.name}, but was not found in $valueAsMap"
           )
         }
       }
@@ -51,6 +49,6 @@ abstract class AbstractMapReadWriteAdapter<K, V>(
   }
 
   override fun getTypedValue(value: Any?, isTransient: Boolean): TypedValue {
-    return getTypedValue<MutableMap<*, *>>(MutableMap::class.java, value, isTransient)
+    return getTypedValue(MutableMap::class.java, value, isTransient)
   }
 }
