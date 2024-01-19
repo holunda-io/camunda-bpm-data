@@ -14,7 +14,7 @@ class TaskServiceVariableReader(private val taskService: TaskService, private va
         return variableFactory.from(taskService, taskId).getOptional()
     }
 
-    override fun <T> get(variableFactory: VariableFactory<T>): T {
+    override operator fun <T> get(variableFactory: VariableFactory<T>): T {
         return variableFactory.from(taskService, taskId).get()
     }
 
