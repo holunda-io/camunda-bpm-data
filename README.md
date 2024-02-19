@@ -182,6 +182,11 @@ public class ApproveOrderTaskControllerTest {
 }
 ```
 
+### Kotlin
+
+If you use kotlin, there is an own collection of factory methods by simple using `CamundaBpmDataKotlin` instead of `CamundaBpmData`.
+For usage examples, see here: [Examples Kotlin](https://www.holunda.io/camunda-bpm-data/snapshot/user-guide/examples-kotlin.html)
+
 ### Further documentation
 
 For further details, please consult our [Quick Start](https://www.holunda.io/camunda-bpm-data/snapshot/quick-start)
