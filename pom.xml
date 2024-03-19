@@ -22,7 +22,7 @@
     <camunda.version.ee>7.20.0-ee</camunda.version.ee>
 
     <spring-boot.version>3.2.2</spring-boot.version>
-    <spin.version>1.22.0</spin.version>
+    <spin.version>1.23.0</spin.version>
     <camunda-assert.version>${camunda.version.ce}</camunda-assert.version>
 
     <kotlin.version>1.9.22</kotlin.version>
