@@ -8,6 +8,7 @@ import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Value
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.DATE
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.DOUBLE
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.INT
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LIST_MAP_STRING_OBJECT
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LIST_STRING
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LONG
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.MAP_STRING_LONG
@@ -52,6 +53,7 @@ class RuntimeServiceAdapterITest : CamundaBpmDataITestBase() {
         COMPLEX_SET_VAR.on(runtimeService, executionId).set(COMPLEX_SET.value)
         COMPLEX_LIST_VAR.on(runtimeService, executionId).set(COMPLEX_LIST.value)
         COMPLEX_MAP_VAR.on(runtimeService, executionId).set(COMPLEX_MAP.value)
+        LIST_MAP_STRING_OBJECT_VAR.on(runtimeService, executionId).set(LIST_MAP_STRING_OBJECT.value)
       }
       .and()
       .task_is_completed()
@@ -114,6 +116,7 @@ class RuntimeServiceAdapterITest : CamundaBpmDataITestBase() {
         vars[LIST_STRING_VAR.name] = LIST_STRING_VAR.from(runtimeService, executionId).get()
         vars[SET_STRING_VAR.name] = SET_STRING_VAR.from(runtimeService, executionId).get()
         vars[MAP_STRING_LONG_VAR.name] = MAP_STRING_LONG_VAR.from(runtimeService, executionId).get()
+        vars[LIST_MAP_STRING_OBJECT_VAR.name] = LIST_MAP_STRING_OBJECT_VAR.from(runtimeService, executionId).get()
         vars[COMPLEX_SET_VAR.name] = COMPLEX_SET_VAR.from(runtimeService, executionId).get()
         vars[COMPLEX_LIST_VAR.name] = COMPLEX_LIST_VAR.from(runtimeService, executionId).get()
         vars[COMPLEX_MAP_VAR.name] = COMPLEX_MAP_VAR.from(runtimeService, executionId).get()

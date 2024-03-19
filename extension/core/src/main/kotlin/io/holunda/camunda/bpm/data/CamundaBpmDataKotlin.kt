@@ -104,10 +104,27 @@ object CamundaBpmDataKotlin {
   inline fun <reified T : Any> listVariableNotNull(name: String): VariableFactory<List<T>> = ListVariableFactory.forType(name)
 
   /**
+   * Reified version of list of maps variable factory.
+   * @param name The name of the variable.
+   * @param K The type of the variable key.
+   * @param V The type of the variable value.
+   * @return instance of [VariableFactory]
+   */
+  inline fun <reified K : Any, reified V : Any?> listOfMapsVariable(name: String): VariableFactory<List<Map<K, V>>> = ListOfMapsVariableFactory.forType(name)
+
+  /**
+   * Reified version of list of maps  variable factory.
+   * @param name The name of the variable.
+   * @param K The type of the variable key.
+   * @param V The type of the variable value.
+   * @return instance of [VariableFactory]
+   */
+  inline fun <reified K : Any, reified V : Any?> listOfMapsVariableNotNull(name: String): VariableFactory<List<Map<K, V>>> = ListOfMapsVariableFactory.forType(name)
+
+  /**
    * Reified version of set variable factory.
    * @param name The name of the variable.
    * @param T The type of the variable.
-   * @param wrap a boolean flag controlling if the serializer should wrap a list into a wrapper object. Set this flag to true, if you use complex types as T.
    * @return instance of [VariableFactory]
    */
   inline fun <reified T : Any?> setVariable(name: String): VariableFactory<Set<T>> = SetVariableFactory.forType(name)
@@ -116,7 +133,6 @@ object CamundaBpmDataKotlin {
    * Reified version of set variable factory.
    * @param name The name of the variable.
    * @param T The type of the variable.
-   * @param wrap a boolean flag controlling if the serializer should wrap a list into a wrapper object. Set this flag to true, if you use complex types as T.
    * @return instance of [VariableFactory]
    */
   inline fun <reified T : Any> setVariableNotNull(name: String): VariableFactory<Set<T>> = SetVariableFactory.forType(name)

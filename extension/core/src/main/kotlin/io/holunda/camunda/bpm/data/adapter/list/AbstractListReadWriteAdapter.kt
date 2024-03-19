@@ -33,7 +33,9 @@ abstract class AbstractListReadWriteAdapter<T>(variableName: String, protected v
           @Suppress("UNCHECKED_CAST")
           valueAsList as List<T>
         } else {
-          throw WrongVariableTypeException("Error reading " + variableName + ": Wrong list type detected, expected " + memberClazz.name + ", but was not found in " + valueAsList)
+          throw WrongVariableTypeException(
+            "Error reading $variableName: Wrong list type detected, expected ${memberClazz.name}, but was not found in $valueAsList"
+          )
         }
       }
     }
@@ -41,6 +43,6 @@ abstract class AbstractListReadWriteAdapter<T>(variableName: String, protected v
   }
 
   override fun getTypedValue(value: Any?, isTransient: Boolean): TypedValue {
-    return getTypedValue<MutableList<*>>(MutableList::class.java, value, isTransient)
+    return getTypedValue(MutableList::class.java, value, isTransient)
   }
 }

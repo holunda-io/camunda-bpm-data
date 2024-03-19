@@ -10,9 +10,13 @@ import io.holunda.camunda.bpm.data.adapter.WrongVariableTypeException
 import io.holunda.camunda.bpm.data.factory.VariableFactory
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.BOOLEAN
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX_LIST
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX_MAP
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX_SET
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.DATE
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.DOUBLE
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.INT
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LIST_MAP_STRING_OBJECT
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LIST_STRING
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LONG
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.MAP_STRING_LONG
@@ -46,9 +50,10 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
     LIST_STRING_VAR.on(variables).set(LIST_STRING.value)
     SET_STRING_VAR.on(variables).set(SET_STRING.value)
     MAP_STRING_LONG_VAR.on(variables).set(MAP_STRING_LONG.value)
-    COMPLEX_SET_VAR.on(variables).set(Companion.Values.COMPLEX_SET.value)
-    COMPLEX_LIST_VAR.on(variables).set(Companion.Values.COMPLEX_LIST.value)
-    COMPLEX_MAP_VAR.on(variables).set(Companion.Values.COMPLEX_MAP.value)
+    LIST_MAP_STRING_OBJECT_VAR.on(variables).set(LIST_MAP_STRING_OBJECT.value)
+    COMPLEX_SET_VAR.on(variables).set(COMPLEX_SET.value)
+    COMPLEX_LIST_VAR.on(variables).set(COMPLEX_LIST.value)
+    COMPLEX_MAP_VAR.on(variables).set(COMPLEX_MAP.value)
 
 
     given()
@@ -79,6 +84,7 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
     LIST_STRING_VAR.on(variables).remove()
     SET_STRING_VAR.on(variables).remove()
     MAP_STRING_LONG_VAR.on(variables).remove()
+    LIST_MAP_STRING_OBJECT_VAR.on(variables).remove()
 
     given()
       .process_with_delegate_is_deployed(delegateExpression = "\${${DelegateConfiguration::readOptionalFromVariableScope.name}}")
@@ -91,7 +97,8 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
         STRING_VAR,
         LIST_STRING_VAR,
         SET_STRING_VAR,
-        MAP_STRING_LONG_VAR
+        MAP_STRING_LONG_VAR,
+        LIST_MAP_STRING_OBJECT_VAR
       )
       .and()
       .variables_had_value(delegateConfiguration.optionalVars,
@@ -118,6 +125,13 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
   fun `should throw correct UO exception on list setLocal`() {
     assertThrows(UnsupportedOperationException::class.java) {
       LIST_STRING_VAR.on(createVariableMapUntyped()).setLocal(LIST_STRING.value)
+    }
+  }
+
+  @Test
+  fun `should throw correct UO exception on list of maps setLocal`() {
+    assertThrows(UnsupportedOperationException::class.java) {
+      LIST_MAP_STRING_OBJECT_VAR.on(createVariableMapUntyped()).setLocal(LIST_MAP_STRING_OBJECT.value)
     }
   }
 
@@ -150,6 +164,13 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
   }
 
   @Test
+  fun `should throw correct UO exception on list of maps removeLocal`() {
+    assertThrows(UnsupportedOperationException::class.java) {
+      LIST_MAP_STRING_OBJECT_VAR.on(createVariableMapUntyped()).removeLocal()
+    }
+  }
+
+  @Test
   fun `should throw correct UO exception on set removeLocal`() {
     assertThrows(UnsupportedOperationException::class.java) {
       SET_STRING_VAR.on(createVariableMapUntyped()).removeLocal()
@@ -178,6 +199,13 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
   }
 
   @Test
+  fun `should throw correct UO exception on list of maps getLocal`() {
+    assertThrows(UnsupportedOperationException::class.java) {
+      LIST_MAP_STRING_OBJECT_VAR.from(createVariableMapUntyped()).getLocal()
+    }
+  }
+
+  @Test
   fun `should throw correct UO exception on set getLocal`() {
     assertThrows(UnsupportedOperationException::class.java) {
       SET_STRING_VAR.from(createVariableMapUntyped()).getLocal()
@@ -202,6 +230,13 @@ class VariableMapAdapterITest : CamundaBpmDataITestBase() {
   fun `should throw correct UO exception on list getLocalOptional`() {
     assertThrows(UnsupportedOperationException::class.java) {
       LIST_STRING_VAR.from(createVariableMapUntyped()).getLocalOptional()
+    }
+  }
+
+  @Test
+  fun `should throw correct UO exception on list of maps getLocalOptional`() {
+    assertThrows(UnsupportedOperationException::class.java) {
+      LIST_MAP_STRING_OBJECT_VAR.from(createVariableMapUntyped()).getLocalOptional()
     }
   }
 

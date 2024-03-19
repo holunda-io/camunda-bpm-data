@@ -32,7 +32,7 @@ abstract class AbstractSetReadWriteAdapter<T>(variableName: String, protected va
                   @Suppress("UNCHECKED_CAST")
                   valueAsList as Set<T>
                 } else {
-                    throw WrongVariableTypeException("Error reading " + variableName + ": Wrong set type detected, expected " + memberClazz.name + ", but was not found in " + valueAsList)
+                    throw WrongVariableTypeException("Error reading $variableName: Wrong set type detected, expected ${memberClazz.name}, but was not found in $valueAsList")
                 }
             }
         }
@@ -40,6 +40,6 @@ abstract class AbstractSetReadWriteAdapter<T>(variableName: String, protected va
     }
 
     override fun getTypedValue(value: Any?, isTransient: Boolean): TypedValue {
-        return getTypedValue<MutableSet<*>>(MutableSet::class.java, value, isTransient)
+        return getTypedValue(MutableSet::class.java, value, isTransient)
     }
 }

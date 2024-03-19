@@ -3,13 +3,21 @@ package io.holunda.camunda.bpm.data.itest
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.BOOLEAN
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.BOOLEAN_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX_LIST
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX_LIST_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX_LOCAL
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX_MAP
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX_MAP_LOCAL
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX_SET
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.COMPLEX_SET_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.DATE
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.DATE_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.DOUBLE
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.DOUBLE_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.INT
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.INT_LOCAL
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LIST_MAP_STRING_OBJECT
+import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LIST_MAP_STRING_OBJECT_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LIST_STRING
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LIST_STRING_LOCAL
 import io.holunda.camunda.bpm.data.itest.CamundaBpmDataITestBase.Companion.Values.LONG
@@ -56,9 +64,10 @@ class TaskServiceAdapterITest : CamundaBpmDataITestBase() {
         LIST_STRING_VAR.on(taskService, taskId).set(LIST_STRING.value)
         SET_STRING_VAR.on(taskService, taskId).set(SET_STRING.value)
         MAP_STRING_LONG_VAR.on(taskService, taskId).set(MAP_STRING_LONG.value)
-        COMPLEX_SET_VAR.on(taskService, taskId).set(Companion.Values.COMPLEX_SET.value)
-        COMPLEX_LIST_VAR.on(taskService, taskId).set(Companion.Values.COMPLEX_LIST.value)
-        COMPLEX_MAP_VAR.on(taskService, taskId).set(Companion.Values.COMPLEX_MAP.value)
+        COMPLEX_SET_VAR.on(taskService, taskId).set(COMPLEX_SET.value)
+        COMPLEX_LIST_VAR.on(taskService, taskId).set(COMPLEX_LIST.value)
+        COMPLEX_MAP_VAR.on(taskService, taskId).set(COMPLEX_MAP.value)
+        LIST_MAP_STRING_OBJECT_VAR.on(taskService, taskId).set(LIST_MAP_STRING_OBJECT.value)
 
       }
       .and()
@@ -130,6 +139,7 @@ class TaskServiceAdapterITest : CamundaBpmDataITestBase() {
         vars[COMPLEX_SET_VAR.name] = COMPLEX_SET_VAR.from(taskService, taskId).get()
         vars[COMPLEX_LIST_VAR.name] = COMPLEX_LIST_VAR.from(taskService, taskId).get()
         vars[COMPLEX_MAP_VAR.name] = COMPLEX_MAP_VAR.from(taskService, taskId).get()
+        vars[LIST_MAP_STRING_OBJECT_VAR.name] = LIST_MAP_STRING_OBJECT_VAR.from(taskService, taskId).get()
       }
 
     then()
@@ -159,9 +169,10 @@ class TaskServiceAdapterITest : CamundaBpmDataITestBase() {
         LIST_STRING_VAR.on(taskService, taskId).setLocal(LIST_STRING_LOCAL.value)
         SET_STRING_VAR.on(taskService, taskId).setLocal(SET_STRING_LOCAL.value)
         MAP_STRING_LONG_VAR.on(taskService, taskId).setLocal(MAP_STRING_DATE_LOCAL.value)
-        COMPLEX_SET_VAR.on(taskService, taskId).setLocal(Companion.Values.COMPLEX_SET_LOCAL.value)
-        COMPLEX_LIST_VAR.on(taskService, taskId).setLocal(Companion.Values.COMPLEX_LIST_LOCAL.value)
-        COMPLEX_MAP_VAR.on(taskService, taskId).setLocal(Companion.Values.COMPLEX_MAP_LOCAL.value)
+        LIST_MAP_STRING_OBJECT_VAR.on(taskService, taskId).setLocal(LIST_MAP_STRING_OBJECT_LOCAL.value)
+        COMPLEX_SET_VAR.on(taskService, taskId).setLocal(COMPLEX_SET_LOCAL.value)
+        COMPLEX_LIST_VAR.on(taskService, taskId).setLocal(COMPLEX_LIST_LOCAL.value)
+        COMPLEX_MAP_VAR.on(taskService, taskId).setLocal(COMPLEX_MAP_LOCAL.value)
       }
       .and()
       .task_is_completed()

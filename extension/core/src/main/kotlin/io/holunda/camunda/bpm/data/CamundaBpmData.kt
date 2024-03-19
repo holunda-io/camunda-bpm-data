@@ -139,6 +139,21 @@ object CamundaBpmData {
         return ListVariableFactory(variableName, clazz)
     }
 
+  /**
+   * Creates a variable factory for list of custom type.
+   *
+   * @param variableName name of the variable.
+   * @param keyClazz     class of specifying the key type.
+   * @param valueClazz   class of specifying the value type.
+   * @param <K>          factory key type.
+   * @param <V>          factory value type.
+   * @return variable factory for given type.
+  </T> */
+  @JvmStatic
+  fun <K, V> listOfMapsVariable(variableName: String, keyClazz: Class<K>, valueClazz: Class<V>): VariableFactory<List<Map<K, V>>> {
+    return ListOfMapsVariableFactory(variableName, keyClazz, valueClazz)
+  }
+
     /**
      * Creates a variable factory for set of custom type.
      *
