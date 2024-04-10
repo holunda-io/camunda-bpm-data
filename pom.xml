@@ -30,7 +30,7 @@
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
 
     <kotlin-logging.version>3.0.5</kotlin-logging.version>
-    <mockito-kotlin.version>5.2.1</mockito-kotlin.version>
+    <mockito-kotlin.version>5.3.1</mockito-kotlin.version>
 
     <pattern.class.itest>%regex[.*ITest.*]</pattern.class.itest>
 
