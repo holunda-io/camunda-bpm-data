@@ -14,7 +14,7 @@ class RuntimeServiceVariableReader(private val runtimeService: RuntimeService, p
     return variableFactory.from(runtimeService, executionId).getOptional()
   }
 
-  override fun <T> get(variableFactory: VariableFactory<T>): T {
+  override operator fun <T> get(variableFactory: VariableFactory<T>): T {
     return variableFactory.from(runtimeService, executionId).get()
   }
 

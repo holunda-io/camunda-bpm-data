@@ -2,12 +2,12 @@
 
 [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
 [![Camunda 7.20](https://img.shields.io/badge/Camunda%20Version-7.20-orange.svg)](https://docs.camunda.org/manual/7.20/)
-[![Build Status](https://github.com/holunda-io/camunda-bpm-data/workflows/default/badge.svg)](https://github.com/holunda-io/camunda-bpm-data/actions)
+[![Development branches](https://github.com/holunda-io/camunda-bpm-data/actions/workflows/default.yml/badge.svg)](https://github.com/holunda-io/camunda-bpm-data/actions/workflows/default.yml)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data)
 [![CodeCov](https://codecov.io/gh/holunda-io/camunda-bpm-data/branch/master/graph/badge.svg)](https://codecov.io/gh/holunda-io/camunda-bpm-data)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/02d238f71a8243cb96fd2fe322a710eb)](https://www.codacy.com/gh/holunda-io/camunda-bpm-data/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=holunda-io/camunda-bpm-data&amp;utm_campaign=Badge_Grade)
-[![Changes](https://img.shields.io/badge/CHANGES---yellow)](https://www.holunda.io/camunda-bpm-data/changelog)
-[![gitter](https://badges.gitter.im/holunda-io/camunda-bpm-data.svg)](https://gitter.im/holunda-io/camunda-bpm-data?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Release notes](https://img.shields.io/badge/RELEASE_NOTES-yellow)](https://www.holunda.io/camunda-bpm-data/releases)
+
 
 > Beautiful process data handling for Camunda Platform 7.
 
@@ -42,20 +42,20 @@ If you just want to start using the library, put the following dependency into y
 <dependency>
   <groupId>io.holunda.data</groupId>
   <artifactId>camunda-bpm-data</artifactId>
-  <version>1.4.0</version>
+  <version>1.5.0</version>
 </dependency>
 ```
 
 If you are using Gradle Kotlin DSL add to your `build.gradle.kts`:
 
 ``` kotlin
-implementation("io.holunda.data:camunda-bpm-data:1.4.0")
+implementation("io.holunda.data:camunda-bpm-data:1.5.0")
 ```
 
 For Gradle Groovy DSL add to your `build.gradle`:
 
 ``` groovy
-implementation 'io.holunda.data:camunda-bpm-data:1.4.0'
+implementation 'io.holunda.data:camunda-bpm-data:1.5.0'
 ```
 ### Variable declaration
 Now your setup is completed, and you can declare your variables like this:
@@ -114,7 +114,8 @@ public class ApproveOrderTaskController {
 
     @GetMapping("/{taskId}")
     public ResponseEntity<ApproveTaskDto> loadTask(@PathVariable("taskId") String taskId) {
-        Order order = ORDER.from(taskService, taskId).get();
+        VariableReader reader = CamundaBpmData.reader(taskService, taskId);
+        Order order = reader.get(ORDER);
         return ResponseEntity.ok(new ApproveTaskDto(order));
     }
 
@@ -180,6 +181,11 @@ public class ApproveOrderTaskControllerTest {
     }
 }
 ```
+
+### Kotlin
+
+If you use kotlin, there is an own collection of factory methods by simple using `CamundaBpmDataKotlin` instead of `CamundaBpmData`.
+For usage examples, see here: [Examples Kotlin](https://www.holunda.io/camunda-bpm-data/snapshot/user-guide/examples-kotlin.html)
 
 ### Further documentation
 

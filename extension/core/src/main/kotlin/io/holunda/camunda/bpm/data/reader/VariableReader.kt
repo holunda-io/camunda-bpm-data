@@ -24,7 +24,7 @@ interface VariableReader {
      * @return value of variable
      * @throws IllegalStateException if variable is not set
     </T> */
-    fun <T> get(variableFactory: VariableFactory<T>): T
+    operator fun <T> get(variableFactory: VariableFactory<T>): T
 
     /**
      * Uses [io.holunda.camunda.bpm.data.adapter.ReadAdapter.getLocal] to access variable value.
@@ -63,7 +63,7 @@ interface VariableReader {
      * @param defaultValue      the default value if the variable is not set
      * @return value or default
      */
-    fun <T> getOrDefault(variableFactory: VariableFactory<T>, defaultValue: T?): T? {
+    fun <T> getOrDefault(variableFactory: VariableFactory<T>, defaultValue: T): T {
         return getOptional(variableFactory).orElse(defaultValue)
     }
 

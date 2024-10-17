@@ -13,7 +13,7 @@ class VariableScopeReader(private val variableScope: VariableScope) : VariableRe
     return variableFactory.from(variableScope).getOptional()
   }
 
-  override fun <T> get(variableFactory: VariableFactory<T>): T {
+  override operator fun <T> get(variableFactory: VariableFactory<T>): T {
     return variableFactory.from(variableScope).get()
   }
 
