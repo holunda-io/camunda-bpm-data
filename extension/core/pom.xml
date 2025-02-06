@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data</groupId>
     <artifactId>camunda-bpm-data-parent</artifactId>
-    <version>1.6.0</version>
+    <version>1.6.1</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
@@ -34,7 +34,7 @@
     <dependency>
       <groupId>jakarta.validation</groupId>
       <artifactId>jakarta.validation-api</artifactId>
-      <version>3.1.0</version>
+      <version>3.1.1</version>
     </dependency>
 
     <!-- Engine -->
@@ -89,7 +89,7 @@
     <dependency>
       <groupId>org.hibernate.validator</groupId>
       <artifactId>hibernate-validator</artifactId>
-      <version>8.0.1.Final</version>
+      <version>8.0.2.Final</version>
       <scope>test</scope>
     </dependency>
     <dependency>
