@@ -1,5 +1,6 @@
 package io.holunda.camunda.bpm.data.example.kotlin.process
 
+import io.github.oshai.kotlinlogging.KotlinLogging
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.booleanVariable
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.stringVariable
 import io.holunda.camunda.bpm.data.CamundaBpmDataKotlin.customVariable
@@ -16,7 +17,6 @@ import io.holunda.camunda.bpm.data.guard.VariablesGuard
 import io.holunda.camunda.bpm.data.guard.condition.exists
 import io.holunda.camunda.bpm.data.guard.condition.matches
 import io.holunda.camunda.bpm.data.guard.integration.DefaultGuardTaskListener
-import mu.KLogging
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.DelegateTask
 import org.camunda.bpm.engine.delegate.ExecutionListener
@@ -28,6 +28,8 @@ import org.springframework.context.event.EventListener
 import java.math.BigDecimal
 import java.util.*
 
+private val logger = KotlinLogging.logger {}
+
 /**
  * Backing bean.
  */
@@ -37,7 +39,7 @@ class OrderApproval {
   @Autowired
   lateinit var orderRepository: OrderRepository
 
-  companion object : KLogging() {
+  companion object {
     const val KEY = "order-approval"
   }
 
