@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data.example</groupId>
     <artifactId>camunda-bpm-data-example-parent</artifactId>
-    <version>1.6.1</version>
+    <version>1.6.2</version>
   </parent>
 
   <artifactId>camunda-bpm-data-example-no-engine</artifactId>
@@ -75,8 +75,9 @@
       <artifactId>kotlin-reflect</artifactId>
     </dependency>
     <dependency>
-      <groupId>io.github.microutils</groupId>
+      <groupId>io.github.oshai</groupId>
       <artifactId>kotlin-logging-jvm</artifactId>
+      <version>${kotlin-logging.version}</version>
     </dependency>
 
     <!-- Testing -->

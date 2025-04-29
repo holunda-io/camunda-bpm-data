@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.holunda.data.example</groupId>
     <artifactId>camunda-bpm-data-example-parent</artifactId>
-    <version>1.6.1</version>
+    <version>1.6.2</version>
   </parent>
 
   <artifactId>camunda-bpm-data-example-kotlin</artifactId>
@@ -84,15 +84,11 @@
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-reflect</artifactId>
     </dependency>
+
     <dependency>
-      <groupId>io.github.microutils</groupId>
+      <groupId>io.github.oshai</groupId>
       <artifactId>kotlin-logging-jvm</artifactId>
-      <exclusions>
-        <exclusion>
-          <groupId>org.jetbrains.kotlin</groupId>
-          <artifactId>kotlin-stdlib</artifactId>
-        </exclusion>
-      </exclusions>
+      <version>${kotlin-logging.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springdoc</groupId>
