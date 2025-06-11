@@ -1,15 +1,18 @@
 ## Camunda BPM Data
 
+> Beautiful process data handling for Camunda Platform 7.
+
 [![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
-[![Camunda 7.20](https://img.shields.io/badge/Camunda%20Version-7.20-orange.svg)](https://docs.camunda.org/manual/7.20/)
 [![Development branches](https://github.com/holunda-io/camunda-bpm-data/actions/workflows/default.yml/badge.svg)](https://github.com/holunda-io/camunda-bpm-data/actions/workflows/default.yml)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holunda.data/camunda-bpm-data)
 [![CodeCov](https://codecov.io/gh/holunda-io/camunda-bpm-data/branch/master/graph/badge.svg)](https://codecov.io/gh/holunda-io/camunda-bpm-data)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/02d238f71a8243cb96fd2fe322a710eb)](https://www.codacy.com/gh/holunda-io/camunda-bpm-data/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=holunda-io/camunda-bpm-data&amp;utm_campaign=Badge_Grade)
-[![Release notes](https://img.shields.io/badge/RELEASE_NOTES-yellow)](https://www.holunda.io/camunda-bpm-data/releases)
 
+# Relocation
 
-> Beautiful process data handling for Camunda Platform 7.
+This project is **relocated** to https://github.com/holunda-io/c7 and **will be developed** further there.
+Last release produced from this location was **2025.05.1**
+This repository will be archived.
 
 ## Why to use this library in every Camunda project
 
@@ -202,13 +205,3 @@ See our [Examples](https://www.holunda.io/camunda-bpm-data/snapshot/user-guide/e
 [![Apache License 2](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
 This library is developed under Apache 2.0 License.
-
-## Contribution
-
-If you want to contribute to this project, feel free to do so. Start with [Contributing guide](http://holunda.io/camunda-bpm-data/snapshot/developer-guide/contribution.html).
-
-## Maintainer
-
-[<img alt="zambrovski" src="https://avatars.githubusercontent.com/u/673128?v=4&s=117 width=117">](https://github.com/zambrovski) |[<img alt="jangalinski" src="https://avatars.githubusercontent.com/u/814032?v=4&s=117 width=117">](https://github.com/jangalinski) |[<img alt="christian-maschmann" src="https://avatars.githubusercontent.com/u/44058891?v=4&s=117 width=117">](https://github.com/christian-maschmann) |[<img alt="stefanzilske" src="https://avatars.githubusercontent.com/u/10954564?v=4&s=117 width=117">](https://github.com/stefanzilske) |[<img alt="nernsting" src="https://avatars.githubusercontent.com/u/1822388?v=4&s=117 width=117">](https://github.com/nernsting) |[<img alt="pschalk" src="https://avatars.githubusercontent.com/u/8512329?v=4&s=117 width=117">](https://github.com/pschalk) |[<img alt="srsp" src="https://avatars.githubusercontent.com/u/1210541?v=4&s=117 width=117">](https://github.com/srsp) |
-:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-[zambrovski](https://github.com/zambrovski)|[jangalinski](https://github.com/jangalinski)|[christian-maschmann](https://github.com/christian-maschmann)|[stefanzilske](https://github.com/stefanzilske)|[nernsting](https://github.com/nernsting)|[pschalk](https://github.com/pschalk)|[srsp](https://github.com/srsp)|
